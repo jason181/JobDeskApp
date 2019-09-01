@@ -21,7 +21,8 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 
-  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
   <!-- <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet"> -->
 
   <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
