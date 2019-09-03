@@ -4,7 +4,7 @@
       id="panel-view"
       dark>
     
-        <v-toolbar id="core-toolbar" dark style="background: #424242;" flat prominent>
+        <v-toolbar id="core-toolbar"  style="background: #424242;" flat prominent>
             <div class="v-toolbar-title">
                 <v-toolbar-title class="font-weight-light text-general">
                     <v-btn v-if="responsive" class="default v-btn--simple" icon @click.stop="onClickBtn">
@@ -24,7 +24,7 @@
                         hide-details
                         color="purple"
                     />
-                    <router-link v-ripple class="toolbar-items" to="/">
+                    <router-link v-ripple class="toolbar-items" to="/panel/dashboard">
                         <v-icon color>mdi-home</v-icon>
                     </router-link>
                     <v-menu bottom left content-class offset-y transition="slide-y-transition">
@@ -88,7 +88,7 @@
                     />
                 </v-list-tile-avatar>
                 <v-list-tile-title class="title">
-                    Vuetify Admin Dash
+                    Work Panel
                 </v-list-tile-title>
                 </v-list-tile>
                 <v-divider/>
@@ -151,13 +151,13 @@ export default {
             "Another Notification",
             "Another One - Dj Khalid voice"
         ],
-        title: "I got a digital dash -Future Hendrixx",
+        title: "Panel",
         responsive: false,
         responsiveInput: false,
-         logo: 'http://localhost:8000/img/redditicon.png',
+         logo: 'http://localhost:8000/img/reunion.png',
         links: [
         {
-            to: '/',
+            to: '/panel/dashboard',
             icon: 'mdi-view-dashboard',
             text: 'Dashboard'
         },
@@ -166,12 +166,28 @@ export default {
             icon: 'mdi-account',
             text: 'User Profile'
         },
+        {
+            to: '/panel/job-desk',
+            icon: 'assignment_turned_in',
+            text: 'Job Desk'
+        },
         ],
+        color: 'general',
+        image :'',
+        inputValue: {
+            drawer: null,
+            color: 'general',
+            image :'',
+        }
     
     }),
 
     computed: {
         // ...mapGetters(["authorized"])
+
+        items () {
+            return this.$t('Layout.View.items')
+        }
     },
 
     watch: {
@@ -207,7 +223,7 @@ export default {
         },
         logout: function() {
             // this.$store.dispatch("logout").then(() => {
-                this.$router.push("");
+                this.$router.push("/login");
             // });
         }
     }

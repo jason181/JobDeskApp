@@ -25,7 +25,7 @@
                   :rules="[() => !!username || 'This field is required']"
                   prepend-icon="mdi-account"
                   label="Login"
-                  placeholder="TotallyNotThanos"
+                  placeholder="Username"
                   required
                 />
                 <v-text-field
@@ -94,7 +94,7 @@ export default {
     login: function () {
       let username = this.username
       let password = this.password
-      this.$router.push('/dashboard')
+      this.$router.push('/panel/dashboard')
     //   this.$store.dispatch('login', { username, password })
     //     .then(() => this.$router.push('/dashboard'))
     //     .catch(err => {

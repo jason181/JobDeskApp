@@ -48,7 +48,7 @@ Vue.router = router
 new Vue({
     el: '#app',
     router,
-    vuetify : new Vuetify(),
+    // vuetify : new Vuetify(),
     // store,
     // data: {
     //     themeColor: '#1E88E5',

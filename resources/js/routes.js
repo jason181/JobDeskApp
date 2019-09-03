@@ -4,6 +4,8 @@ import LoginForm from './components/LoginForm'
 import PanelPage from './views/PanelPage'
 import Dashboard from './components/Dashboard'
 import Profile from './components/Profile'
+import JobDesk from './components/JobDesk'
+
 
 
 
@@ -43,7 +45,7 @@ export const routes = [
 
         children: [
           {
-            path: '',
+            path: 'login',
             component: LoginForm,
           }
         ]
@@ -58,8 +60,12 @@ export const routes = [
       component: PanelPage,
       children: [
         {
-          path: '',
-          name: 'Dashboard',
+          path: 'dashboard',
+          meta: {
+            name: 'Dashboard',
+            // requiresAuth: true
+          },
+          // name: 'Dashboard',
           component : Dashboard
         },
         {
@@ -69,6 +75,14 @@ export const routes = [
             // requiresAuth: true
           },
           component : Profile
+        },
+        {
+          path: 'job-desk',
+          meta: {
+            name: 'Job Desk',
+            // requiresAuth: true
+          },
+          component : JobDesk
         },
       ]
     }
