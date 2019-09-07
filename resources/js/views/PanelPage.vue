@@ -4,7 +4,7 @@
       id="panel-view"
       dark>
     
-        <v-toolbar id="core-toolbar"  style="background: #424242;" flat prominent>
+        <v-toolbar id="core-toolbar"  flat prominent>
             <div class="v-toolbar-title">
                 <v-toolbar-title class="font-weight-light text-general">
                     <v-btn v-if="responsive" class="default v-btn--simple" icon @click.stop="onClickBtn">
@@ -92,6 +92,18 @@
                 </v-list-tile-title>
                 </v-list-tile>
                 <v-divider/>
+                <v-list-tile>
+                 <span class="white--text subheading mt-1"> <v-icon>person</v-icon> Nama Lengkap</span>
+                </v-list-tile>
+                <v-list-tile>
+                 <span class="white--text subheading mt-1"> <v-icon>work</v-icon> Divisi</span>
+                </v-list-tile>
+                <v-list-tile>
+                 <span class="white--text subheading mt-1"> <v-icon>spa</v-icon> Jabatan</span>
+                </v-list-tile>
+                
+                <v-divider/>
+
                 <v-list-tile
                 v-if="responsive"
                 >
