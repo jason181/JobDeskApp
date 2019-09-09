@@ -33,7 +33,7 @@
         <v-card hover v-ripple class="scroll-y" flat style="background: #424242 !important;" v-for="project in projects" :key="project.title" @click="openTaskDialog(project)">
           <v-layout row wrap :class="`pa-3 project ${project.status}`">
             <v-flex xs12 md4 >
-              <div class="caption grey--text">Project title</div>
+              <div class="caption grey--text">Project Title</div>
               <div>{{ project.title }}</div>
             </v-flex>
             <v-flex xs6 sm4 md2>
@@ -41,7 +41,7 @@
               <div>{{ project.task }}</div>
             </v-flex>
             <v-flex xs6 sm4 md2>
-              <div class="caption grey--text">Due by</div>
+              <div class="caption grey--text">Due Date</div>
               <div>{{ project.due }}</div>
             </v-flex>
             <v-flex xs6 sm4 md2> 

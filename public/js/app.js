@@ -2325,6 +2325,340 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDesk.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDesk.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      projects: [{
+        tasks: [{
+          project: 'Rumah Sakit Arsitektur',
+          division: 'Desain',
+          title: 'Denah Depan',
+          due: '2019-09-08',
+          status: 'ongoing',
+          progress: '75',
+          desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
+          remaining: '2 day 3 hour'
+        }, {
+          project: 'Rumah Sakit Arsitektur',
+          division: 'Desain',
+          title: 'Denah Ruang Tamu',
+          due: '2019-09-08',
+          status: 'untake',
+          progress: '0',
+          desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
+          remaining: '2 day 3 hour'
+        }],
+        title: 'Rumah Sakit Arsitektur',
+        due: '2019-09-08'
+      }],
+      files: [],
+      editTask: {
+        project: '',
+        division: '',
+        title: '',
+        due: '',
+        status: '',
+        progress: '',
+        desc: ''
+      },
+      initEditTask: {
+        project: '',
+        division: '',
+        title: '',
+        due: '',
+        status: '',
+        progress: '',
+        desc: ''
+      },
+      taskDialog: false,
+      date: new Date().toISOString().substr(0, 10),
+      dateDialog: false,
+      fileName: '',
+      fileUrl: '',
+      file: ''
+    };
+  },
+  methods: {
+    // sortBy(prop) {
+    //   this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
+    // },
+    openTaskDialog: function openTaskDialog(data) {
+      this.taskDialog = true;
+      this.editTask = data;
+    },
+    pickFile: function pickFile() {
+      this.$refs.file.click();
+    },
+    onFilePicked: function onFilePicked(e) {
+      var _this = this;
+
+      var files = e.target.files;
+
+      if (files[0] !== undefined) {
+        this.fileName = files[0].name;
+
+        if (this.fileName.lastIndexOf('.') <= 0) {
+          // console.log("Masuk return")
+          return;
+        }
+
+        var fr = new FileReader();
+        fr.readAsDataURL(files[0]);
+        fr.addEventListener('load', function () {
+          // console.log(fr.result)
+          //  console.log("Masuk FR")
+          _this.fileUrl = fr.result;
+          _this.file = files[0];
+        });
+      } else {
+        // console.log("else")
+        this.fileName = '';
+        this.fileUrl = ''; // this.editedItem.image =''
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoginForm.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LoginForm.vue?vue&type=script&lang=js& ***!
@@ -2817,6 +3151,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.project.complete{\r\n  border-left: 4px solid #3cd1c2 !Important;\n}\n.project.ongoing{\r\n  border-left: 4px solid #ffaa2c !Important;\n}\n.project.overdue{\r\n  border-left: 4px solid #f83e70 !Important;\n}\n.v-chip.complete{\r\n  background: #3cd1c2 !Important;\n}\n.v-chip.ongoing{\r\n  background: #ffaa2c !Important;\n}\n.v-chip.overdue{\r\n  background: #f83e70 !Important;\n}\r\n\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDesk.vue?vue&type=style&index=0&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDesk.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.project.complete{\r\n  border-left: 4px solid #3cd1c2 !Important;\r\n  border-color:#3cd1c2 !Important;\n}\n.project.ongoing{\r\n  border-left: 4px solid #ffaa2c !Important;\n}\n.project.overdue{\r\n  border-left: 4px solid #f83e70 !Important;\n}\n.project.untake{\r\n  border-left: 4px solid green !Important;\r\n  border-color:green !Important;\n}\n.v-chip.complete{\r\n  background: #3cd1c2 !Important;\n}\n.v-chip.ongoing{\r\n  background: #ffaa2c !Important;\n}\n.v-chip.overdue{\r\n  background: #f83e70 !Important;\n}\n.v-chip.untake{\r\n  background: green !Important;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -3495,6 +3848,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Dashboard.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dashboard.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDesk.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDesk.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDesk.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDesk.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4264,7 +4647,7 @@ var render = function() {
                     [
                       _c("v-flex", { attrs: { xs12: "", md4: "" } }, [
                         _c("div", { staticClass: "caption grey--text" }, [
-                          _vm._v("Project title")
+                          _vm._v("Project Title")
                         ]),
                         _vm._v(" "),
                         _c("div", [_vm._v(_vm._s(project.title))])
@@ -4280,7 +4663,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("v-flex", { attrs: { xs6: "", sm4: "", md2: "" } }, [
                         _c("div", { staticClass: "caption grey--text" }, [
-                          _vm._v("Due by")
+                          _vm._v("Due Date")
                         ]),
                         _vm._v(" "),
                         _c("div", [_vm._v(_vm._s(project.due))])
@@ -4774,7 +5157,637 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-container", [_vm._v("\n    Job Desk\n")])
+  return _c(
+    "div",
+    { staticClass: "jobdesk" },
+    [
+      _c(
+        "v-container",
+        [
+          _c(
+            "v-layout",
+            { staticClass: "mb-3", attrs: { "justify-start": "" } },
+            [
+              _c(
+                "h3",
+                { staticStyle: { "border-bottom": "white solid 3px" } },
+                [_vm._v("LIST PROJECT")]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "v-expansion-panel",
+            _vm._l(_vm.projects, function(project) {
+              return _c(
+                "v-expansion-panel-content",
+                {
+                  key: project.title,
+                  attrs: { "expand-icon": "mdi-menu-down" },
+                  scopedSlots: _vm._u(
+                    [
+                      {
+                        key: "header",
+                        fn: function() {
+                          return [
+                            _c(
+                              "v-layout",
+                              { class: "pa-3", attrs: { row: "", wrap: "" } },
+                              [
+                                _c("v-flex", { attrs: { xs12: "", md4: "" } }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "caption grey--text" },
+                                    [_vm._v("Project Title")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", [_vm._v(_vm._s(project.title))])
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "v-flex",
+                                  { attrs: { xs6: "", sm4: "", md2: "" } },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "caption grey--text" },
+                                      [_vm._v("Due Date")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", [_vm._v(_vm._s(project.due))])
+                                  ]
+                                )
+                              ],
+                              1
+                            )
+                          ]
+                        },
+                        proxy: true
+                      }
+                    ],
+                    null,
+                    true
+                  )
+                },
+                [
+                  _vm._v(" "),
+                  _c(
+                    "v-card",
+                    { staticClass: "grey darken-2" },
+                    [
+                      _c(
+                        "v-container",
+                        _vm._l(project.tasks, function(task) {
+                          return _c(
+                            "v-card",
+                            {
+                              directives: [
+                                { name: "ripple", rawName: "v-ripple" }
+                              ],
+                              key: task.title,
+                              staticClass: "scroll-y",
+                              staticStyle: { background: "#424242 !important" },
+                              attrs: { hover: "", flat: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.openTaskDialog(task)
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "v-layout",
+                                {
+                                  class: "pa-3  project " + task.status,
+                                  attrs: { row: "", wrap: "" }
+                                },
+                                [
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", md4: "" } },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "caption grey--text" },
+                                        [_vm._v("Division")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", [_vm._v(_vm._s(task.division))])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs6: "", sm4: "", md2: "" } },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "caption grey--text" },
+                                        [_vm._v("Task")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", [_vm._v(_vm._s(task.title))])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs6: "", sm4: "", md2: "" } },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "caption grey--text" },
+                                        [_vm._v("Due Date")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", [_vm._v(_vm._s(task.due))])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs6: "", sm4: "", md2: "" } },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "caption grey--text" },
+                                        [_vm._v("Progress")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        [
+                                          _c(
+                                            "v-progress-linear",
+                                            {
+                                              attrs: {
+                                                color: "red",
+                                                height: "20",
+                                                value: task.progress
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "p",
+                                                {
+                                                  staticClass: "text-xs-center"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(task.progress) + "%"
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs2: "", sm4: "", md2: "" } },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "right" },
+                                        [
+                                          _c(
+                                            "v-chip",
+                                            {
+                                              class:
+                                                " white--text my-2 caption " +
+                                                task.status,
+                                              attrs: { small: "" }
+                                            },
+                                            [_vm._v(_vm._s(task.status))]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("v-divider")
+                            ],
+                            1
+                          )
+                        }),
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            }),
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { row: "", "justify-center": "" } },
+            [
+              _c(
+                "v-dialog",
+                {
+                  attrs: { persistent: "", "max-width": "600px" },
+                  model: {
+                    value: _vm.taskDialog,
+                    callback: function($$v) {
+                      _vm.taskDialog = $$v
+                    },
+                    expression: "taskDialog"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c("v-card-title", [
+                        _c("span", { staticClass: "headline" }, [
+                          _vm._v(_vm._s(_vm.editTask.project))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-text",
+                        [
+                          _c(
+                            "v-container",
+                            { attrs: { "grid-list-md": "" } },
+                            [
+                              _c(
+                                "v-layout",
+                                { attrs: { wrap: "" } },
+                                [
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Task",
+                                          readonly: "",
+                                          "prepend-icon": "description"
+                                        },
+                                        model: {
+                                          value: _vm.editTask.title,
+                                          callback: function($$v) {
+                                            _vm.$set(_vm.editTask, "title", $$v)
+                                          },
+                                          expression: "editTask.title"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "" } },
+                                    [
+                                      _c("v-textarea", {
+                                        attrs: {
+                                          outline: "",
+                                          readonly: "",
+                                          label: "Description"
+                                        },
+                                        model: {
+                                          value: _vm.editTask.desc,
+                                          callback: function($$v) {
+                                            _vm.$set(_vm.editTask, "desc", $$v)
+                                          },
+                                          expression: "editTask.desc"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", md6: "" } },
+                                    [
+                                      _c(
+                                        "v-menu",
+                                        {
+                                          attrs: {
+                                            "close-on-content-click": false,
+                                            "nudge-right": 40,
+                                            transition: "scale-transition",
+                                            "offset-y": "",
+                                            "full-width": "",
+                                            "min-width": "290px",
+                                            readonly: ""
+                                          },
+                                          scopedSlots: _vm._u([
+                                            {
+                                              key: "activator",
+                                              fn: function(ref) {
+                                                var on = ref.on
+                                                return [
+                                                  _c(
+                                                    "v-text-field",
+                                                    _vm._g(
+                                                      {
+                                                        attrs: {
+                                                          label: "Due Date",
+                                                          "prepend-icon":
+                                                            "event",
+                                                          readonly: ""
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editTask.due,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editTask,
+                                                              "due",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editTask.due"
+                                                        }
+                                                      },
+                                                      on
+                                                    )
+                                                  )
+                                                ]
+                                              }
+                                            }
+                                          ]),
+                                          model: {
+                                            value: _vm.dateDialog,
+                                            callback: function($$v) {
+                                              _vm.dateDialog = $$v
+                                            },
+                                            expression: "dateDialog"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(" "),
+                                          _c("v-date-picker", {
+                                            attrs: { readonly: "" },
+                                            on: {
+                                              input: function($event) {
+                                                _vm.dateDialog = false
+                                              }
+                                            },
+                                            model: {
+                                              value: _vm.editTask.due,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.editTask,
+                                                  "due",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "editTask.due"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", md6: "" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Time Remaining",
+                                          "prepend-icon": "timer",
+                                          readonly: ""
+                                        },
+                                        model: {
+                                          value: _vm.editTask.remaining,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.editTask,
+                                              "remaining",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "editTask.remaining"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", md4: "" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Progress",
+                                          "prepend-icon": "timeline",
+                                          counter: "3",
+                                          type: "number"
+                                        },
+                                        model: {
+                                          value: _vm.editTask.progress,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.editTask,
+                                              "progress",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "editTask.progress"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", md8: "" } },
+                                    [
+                                      _c(
+                                        "v-progress-linear",
+                                        {
+                                          attrs: {
+                                            color: "red",
+                                            height: "20",
+                                            value: _vm.editTask.progress
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "p",
+                                            { staticClass: "text-xs-center" },
+                                            [
+                                              _vm._v(
+                                                _vm._s(_vm.editTask.progress) +
+                                                  "%"
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          counter: "",
+                                          label: "Upload File",
+                                          multiple: "",
+                                          placeholder: "Select your files",
+                                          "prepend-icon": "mdi-paperclip",
+                                          outlined: "",
+                                          "show-size": 1000
+                                        },
+                                        on: { click: _vm.pickFile },
+                                        scopedSlots: _vm._u([
+                                          {
+                                            key: "selection",
+                                            fn: function(ref) {
+                                              var index = ref.index
+                                              var text = ref.text
+                                              return [
+                                                index < 2
+                                                  ? _c(
+                                                      "v-chip",
+                                                      {
+                                                        attrs: {
+                                                          color:
+                                                            "deep-purple accent-4",
+                                                          dark: "",
+                                                          label: "",
+                                                          small: ""
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                " +
+                                                            _vm._s(text) +
+                                                            "\n                                "
+                                                        )
+                                                      ]
+                                                    )
+                                                  : index === 2
+                                                  ? _c(
+                                                      "span",
+                                                      {
+                                                        staticClass:
+                                                          "overline grey--text text--darken-3 mx-2"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                +" +
+                                                            _vm._s(
+                                                              _vm.file.length -
+                                                                2
+                                                            ) +
+                                                            " File(s)\n                                "
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e()
+                                              ]
+                                            }
+                                          }
+                                        ]),
+                                        model: {
+                                          value: _vm.file,
+                                          callback: function($$v) {
+                                            _vm.file = $$v
+                                          },
+                                          expression: "file"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        ref: "file",
+                                        staticStyle: { display: "none" },
+                                        attrs: { type: "file", accept: "*" },
+                                        on: { change: _vm.onFilePicked }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("small", [_vm._v("*indicates required field")])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "blue darken-1", flat: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.taskDialog = false
+                                }
+                              }
+                            },
+                            [_vm._v("Close")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "blue darken-1", flat: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.taskDialog = false
+                                }
+                              }
+                            },
+                            [_vm._v("Save")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -46645,15 +47658,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _JobDesk_vue_vue_type_template_id_6d28265b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./JobDesk.vue?vue&type=template&id=6d28265b& */ "./resources/js/components/JobDesk.vue?vue&type=template&id=6d28265b&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _JobDesk_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./JobDesk.vue?vue&type=script&lang=js& */ "./resources/js/components/JobDesk.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _JobDesk_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./JobDesk.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/JobDesk.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _JobDesk_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _JobDesk_vue_vue_type_template_id_6d28265b___WEBPACK_IMPORTED_MODULE_0__["render"],
   _JobDesk_vue_vue_type_template_id_6d28265b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -46667,6 +47684,36 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/JobDesk.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/JobDesk.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/JobDesk.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDesk_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDesk.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDesk.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDesk_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/JobDesk.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/JobDesk.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDesk_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDesk.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDesk.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDesk_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDesk_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDesk_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDesk_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDesk_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
