@@ -10,7 +10,7 @@ class Proyek extends Model
     //
     use SoftDeletes;
     protected $table = 'proyeks';
-    protected $primaryKey = 'Id';
+    protected $primaryKey = 'Id_Proyek';
     public $timestamp = true;
     protected $fillable = [
         'Kode',
