@@ -173,11 +173,11 @@ export default {
             icon: 'mdi-view-dashboard',
             text: 'Dashboard'
         },
-        {
-            to: '/panel/user-profile',
-            icon: 'mdi-account',
-            text: 'User Profile'
-        },
+        // {
+        //     to: '/panel/user-profile',
+        //     icon: 'mdi-account',
+        //     text: 'User Profile'
+        // },
         {
             to: '/panel/job-desk',
             icon: 'assignment_turned_in',

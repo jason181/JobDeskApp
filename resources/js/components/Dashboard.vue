@@ -76,6 +76,7 @@
             <v-card-title>
               <span class="headline">{{editProject.title}}</span>
             </v-card-title>
+            <v-divider></v-divider>
             <v-card-text>
               <v-container grid-list-md>
                 <v-layout wrap>
@@ -214,6 +215,7 @@
               </v-container>
               <small>*indicates required field</small>
             </v-card-text>
+            <v-divider></v-divider>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" flat @click="taskDialog = false">Close</v-btn>
@@ -223,7 +225,6 @@
         </v-dialog>
       </v-layout>
      <!-- Task Dialog -->
-
 
     </v-container>
    
@@ -266,6 +267,7 @@ export default {
         { title: 'Mall Arsitektur2', task: 'Denah Halam', due: '2019-09-08', status: 'overdue', progress: '40',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
 
       ],
+      
       taskDialog:false,
       date: new Date().toISOString().substr(0, 10),
       dateDialog: false,

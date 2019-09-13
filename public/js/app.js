@@ -2155,6 +2155,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2563,6 +2564,290 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2575,7 +2860,8 @@ __webpack_require__.r(__webpack_exports__);
           status: 'ongoing',
           progress: '75',
           desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-          remaining: '2 day 3 hour'
+          remaining: '2 day 3 hour',
+          user: 'Jason'
         }, {
           project: 'Rumah Sakit Arsitektur',
           division: 'Desain',
@@ -2584,33 +2870,62 @@ __webpack_require__.r(__webpack_exports__);
           status: 'untake',
           progress: '0',
           desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-          remaining: '2 day 3 hour'
+          remaining: '2 day 3 hour',
+          user: ''
         }],
         title: 'Rumah Sakit Arsitektur',
         due: '2019-09-08'
       }],
+      editProject: {
+        tasks: [],
+        title: '',
+        start: '',
+        due: '',
+        value: '',
+        target_outcome: '',
+        note: '',
+        client_name: '',
+        client_address: ''
+      },
+      initProject: {
+        tasks: [],
+        title: '',
+        start: '',
+        due: '',
+        value: '',
+        target_outcome: '',
+        note: '',
+        client_name: '',
+        client_address: ''
+      },
       files: [],
       editTask: {
         project: '',
         division: '',
         title: '',
         due: '',
-        status: '',
-        progress: '',
-        desc: ''
+        status: 'untake',
+        progress: '0',
+        desc: '',
+        user: ''
       },
       initEditTask: {
         project: '',
         division: '',
         title: '',
         due: '',
-        status: '',
-        progress: '',
-        desc: ''
+        status: 'untake',
+        progress: '0',
+        desc: '',
+        user: ''
       },
+      division: ['Desain', 'Produksi', 'Pendukung', 'Umum'],
+      addDialog: false,
       taskDialog: false,
       date: new Date().toISOString().substr(0, 10),
       dateDialog: false,
+      startDate: false,
+      finishDate: false,
       fileName: '',
       fileUrl: '',
       file: ''
@@ -2620,6 +2935,20 @@ __webpack_require__.r(__webpack_exports__);
     // sortBy(prop) {
     //   this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
     // },
+    addProject: function addProject(data) {
+      this.projects.push(data);
+    },
+    addTask: function addTask(data) {
+      console.log(data); // Object.assign(this.editProject.tasks[0],data)
+
+      this.editProject.tasks.push(this.editTask); // this.editProject.tasks.push(Object.assign({}, data));
+    },
+    closeAddDialog: function closeAddDialog() {
+      this.addDialog = false;
+      this.editProject = Object.assign({}, this.initProject);
+      this.editProject.tasks = [];
+      this.editTask = Object.assign({}, this.initEditTask);
+    },
     openTaskDialog: function openTaskDialog(data) {
       this.taskDialog = true;
       this.editTask = data;
@@ -2980,11 +3309,12 @@ __webpack_require__.r(__webpack_exports__);
         to: '/panel/dashboard',
         icon: 'mdi-view-dashboard',
         text: 'Dashboard'
-      }, {
-        to: '/panel/user-profile',
-        icon: 'mdi-account',
-        text: 'User Profile'
-      }, {
+      }, // {
+      //     to: '/panel/user-profile',
+      //     icon: 'mdi-account',
+      //     text: 'User Profile'
+      // },
+      {
         to: '/panel/job-desk',
         icon: 'assignment_turned_in',
         text: 'Job Desk'
@@ -4753,6 +5083,8 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
+                      _c("v-divider"),
+                      _vm._v(" "),
                       _c(
                         "v-card-text",
                         [
@@ -5086,6 +5418,8 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
+                      _c("v-divider"),
+                      _vm._v(" "),
                       _c(
                         "v-card-actions",
                         [
@@ -5174,6 +5508,41 @@ var render = function() {
                 [_vm._v("LIST PROJECT")]
               )
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { staticClass: "mb-3", attrs: { row: "" } },
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: {
+                    slot: "activator",
+                    small: "",
+                    flat: "",
+                    color: "grey"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.addDialog = true
+                    }
+                  },
+                  slot: "activator"
+                },
+                [
+                  _c("v-icon", { attrs: { small: "", left: "" } }, [
+                    _vm._v("create_new_folder")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "caption " }, [
+                    _vm._v("Add Project")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
           ),
           _vm._v(" "),
           _c(
@@ -5410,11 +5779,27 @@ var render = function() {
                   _c(
                     "v-card",
                     [
-                      _c("v-card-title", [
-                        _c("span", { staticClass: "headline" }, [
-                          _vm._v(_vm._s(_vm.editTask.project))
-                        ])
-                      ]),
+                      _c(
+                        "v-card-title",
+                        [
+                          _c("span", { staticClass: "headline" }, [
+                            _vm._v(_vm._s(_vm.editTask.project))
+                          ]),
+                          _vm._v(" "),
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _vm.editTask.status != "untake"
+                            ? _c("span", [
+                                _vm._v(
+                                  "Taken By : " + _vm._s(_vm.editTask.user)
+                                )
+                              ])
+                            : _vm._e()
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-divider"),
                       _vm._v(" "),
                       _c(
                         "v-card-text",
@@ -5597,7 +5982,9 @@ var render = function() {
                                           label: "Progress",
                                           "prepend-icon": "timeline",
                                           counter: "3",
-                                          type: "number"
+                                          type: "number",
+                                          readonly:
+                                            _vm.editTask.status == "untake"
                                         },
                                         model: {
                                           value: _vm.editTask.progress,
@@ -5657,7 +6044,9 @@ var render = function() {
                                           placeholder: "Select your files",
                                           "prepend-icon": "mdi-paperclip",
                                           outlined: "",
-                                          "show-size": 1000
+                                          "show-size": 1000,
+                                          disabled:
+                                            _vm.editTask.status == "untake"
                                         },
                                         on: { click: _vm.pickFile },
                                         scopedSlots: _vm._u([
@@ -5740,6 +6129,8 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
+                      _c("v-divider"),
+                      _vm._v(" "),
                       _c(
                         "v-card-actions",
                         [
@@ -5758,17 +6149,1192 @@ var render = function() {
                             [_vm._v("Close")]
                           ),
                           _vm._v(" "),
+                          _vm.editTask.status == "untake"
+                            ? _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "blue darken-1", flat: "" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.taskDialog = false
+                                    }
+                                  }
+                                },
+                                [_vm._v("Take")]
+                              )
+                            : _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "blue darken-1", flat: "" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.taskDialog = false
+                                    }
+                                  }
+                                },
+                                [_vm._v("Save")]
+                              )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { row: "", "justify-center": "" } },
+            [
+              _c(
+                "v-dialog",
+                {
+                  attrs: {
+                    fullscreen: "",
+                    "hide-overlay": "",
+                    transition: "dialog-bottom-transition"
+                  },
+                  model: {
+                    value: _vm.addDialog,
+                    callback: function($$v) {
+                      _vm.addDialog = $$v
+                    },
+                    expression: "addDialog"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-toolbar",
+                        [
                           _c(
                             "v-btn",
                             {
-                              attrs: { color: "blue darken-1", flat: "" },
+                              attrs: { icon: "", dark: "" },
                               on: {
                                 click: function($event) {
-                                  _vm.taskDialog = false
+                                  return _vm.closeAddDialog()
                                 }
                               }
                             },
-                            [_vm._v("Save")]
+                            [_c("v-icon", [_vm._v("close")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-toolbar-title",
+                            { staticClass: "white--text" },
+                            [_vm._v("Add Project")]
+                          ),
+                          _vm._v(" "),
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-toolbar-items",
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { dark: "", flat: "" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.addProject(_vm.editProject)
+                                      _vm.closeAddDialog()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Save")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-container",
+                        { attrs: { fluid: "" } },
+                        [
+                          _c(
+                            "v-layout",
+                            { attrs: { row: "", wrap: "" } },
+                            [
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    { attrs: { height: "100%" } },
+                                    [
+                                      _c(
+                                        "v-card-title",
+                                        { staticClass: "justify-center" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "headline" },
+                                            [_vm._v("Project Information")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-card-text",
+                                        [
+                                          _c(
+                                            "v-container",
+                                            [
+                                              _c(
+                                                "v-layout",
+                                                {
+                                                  attrs: { row: "", wrap: "" }
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs12: "" } },
+                                                    [
+                                                      _c("v-text-field", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label: "Project Name",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editProject
+                                                              .title,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editProject,
+                                                              "title",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editProject.title"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      staticClass: "pr-2",
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md6: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-text-field", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label: "Value",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editProject
+                                                              .value,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editProject,
+                                                              "value",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editProject.value"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md6: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-text-field", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label:
+                                                            "Target Outcome",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editProject
+                                                              .target_outcome,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editProject,
+                                                              "target_outcome",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editProject.target_outcome"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      staticClass: "pr-2",
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md6: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-menu",
+                                                        {
+                                                          attrs: {
+                                                            "close-on-content-click": false,
+                                                            "nudge-right": 40,
+                                                            transition:
+                                                              "scale-transition",
+                                                            "offset-y": "",
+                                                            "full-width": "",
+                                                            "min-width": "290px"
+                                                          },
+                                                          scopedSlots: _vm._u([
+                                                            {
+                                                              key: "activator",
+                                                              fn: function(
+                                                                ref
+                                                              ) {
+                                                                var on = ref.on
+                                                                return [
+                                                                  _c(
+                                                                    "v-text-field",
+                                                                    _vm._g(
+                                                                      {
+                                                                        attrs: {
+                                                                          label:
+                                                                            "Start Date",
+                                                                          "prepend-icon":
+                                                                            "event",
+                                                                          box:
+                                                                            "",
+                                                                          readonly:
+                                                                            ""
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .editProject
+                                                                              .start,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm.editProject,
+                                                                              "start",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "editProject.start"
+                                                                        }
+                                                                      },
+                                                                      on
+                                                                    )
+                                                                  )
+                                                                ]
+                                                              }
+                                                            }
+                                                          ]),
+                                                          model: {
+                                                            value:
+                                                              _vm.startDate,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.startDate = $$v
+                                                            },
+                                                            expression:
+                                                              "startDate"
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(" "),
+                                                          _c("v-date-picker", {
+                                                            on: {
+                                                              input: function(
+                                                                $event
+                                                              ) {
+                                                                _vm.startDate = false
+                                                              }
+                                                            },
+                                                            model: {
+                                                              value:
+                                                                _vm.editProject
+                                                                  .start,
+                                                              callback: function(
+                                                                $$v
+                                                              ) {
+                                                                _vm.$set(
+                                                                  _vm.editProject,
+                                                                  "start",
+                                                                  $$v
+                                                                )
+                                                              },
+                                                              expression:
+                                                                "editProject.start"
+                                                            }
+                                                          })
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md6: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-menu",
+                                                        {
+                                                          attrs: {
+                                                            "close-on-content-click": false,
+                                                            "nudge-right": 40,
+                                                            transition:
+                                                              "scale-transition",
+                                                            "offset-y": "",
+                                                            "full-width": "",
+                                                            "min-width": "290px"
+                                                          },
+                                                          scopedSlots: _vm._u([
+                                                            {
+                                                              key: "activator",
+                                                              fn: function(
+                                                                ref
+                                                              ) {
+                                                                var on = ref.on
+                                                                return [
+                                                                  _c(
+                                                                    "v-text-field",
+                                                                    _vm._g(
+                                                                      {
+                                                                        attrs: {
+                                                                          label:
+                                                                            "Finish Date",
+                                                                          "prepend-icon":
+                                                                            "event",
+                                                                          box:
+                                                                            "",
+                                                                          readonly:
+                                                                            ""
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .editProject
+                                                                              .due,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm.editProject,
+                                                                              "due",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "editProject.due"
+                                                                        }
+                                                                      },
+                                                                      on
+                                                                    )
+                                                                  )
+                                                                ]
+                                                              }
+                                                            }
+                                                          ]),
+                                                          model: {
+                                                            value:
+                                                              _vm.finishDate,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.finishDate = $$v
+                                                            },
+                                                            expression:
+                                                              "finishDate"
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(" "),
+                                                          _c("v-date-picker", {
+                                                            on: {
+                                                              input: function(
+                                                                $event
+                                                              ) {
+                                                                _vm.finishDate = false
+                                                              }
+                                                            },
+                                                            model: {
+                                                              value:
+                                                                _vm.editProject
+                                                                  .due,
+                                                              callback: function(
+                                                                $$v
+                                                              ) {
+                                                                _vm.$set(
+                                                                  _vm.editProject,
+                                                                  "due",
+                                                                  $$v
+                                                                )
+                                                              },
+                                                              expression:
+                                                                "editProject.due"
+                                                            }
+                                                          })
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs12: "" } },
+                                                    [
+                                                      _c("v-textarea", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label: "Note",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editProject
+                                                              .note,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editProject,
+                                                              "note",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editProject.note"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    { attrs: { height: "100%" } },
+                                    [
+                                      _c(
+                                        "v-card-title",
+                                        { staticClass: "justify-center" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "headline" },
+                                            [_vm._v("Client Information")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-card-text",
+                                        [
+                                          _c(
+                                            "v-container",
+                                            [
+                                              _c(
+                                                "v-layout",
+                                                {
+                                                  attrs: { row: "", wrap: "" }
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs8: "" } },
+                                                    [
+                                                      _c("v-text-field", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label: "Client Name",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editProject
+                                                              .client_name,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editProject,
+                                                              "client_name",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editProject.client_name"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs12: "" } },
+                                                    [
+                                                      _c("v-textarea", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label:
+                                                            "Client Address",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editProject
+                                                              .client_address,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editProject,
+                                                              "client_address",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editProject.client_address"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    { attrs: { height: "100%" } },
+                                    [
+                                      _c(
+                                        "v-card-title",
+                                        { staticClass: "justify-center" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "headline" },
+                                            [_vm._v("Task Desk")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-card-text",
+                                        [
+                                          _c(
+                                            "v-container",
+                                            [
+                                              _c(
+                                                "v-layout",
+                                                {
+                                                  attrs: { row: "", wrap: "" }
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs8: "" } },
+                                                    [
+                                                      _c("v-text-field", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label: "Task Name",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editTask.title,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editTask,
+                                                              "title",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editTask.title"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      staticClass: "pr-2",
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md6: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-select", {
+                                                        attrs: {
+                                                          items: _vm.division,
+                                                          box: "",
+                                                          label: "Division",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editTask
+                                                              .division,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editTask,
+                                                              "division",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editTask.division"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md6: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-menu",
+                                                        {
+                                                          attrs: {
+                                                            "close-on-content-click": false,
+                                                            "nudge-right": 40,
+                                                            transition:
+                                                              "scale-transition",
+                                                            "offset-y": "",
+                                                            "full-width": "",
+                                                            "min-width": "290px"
+                                                          },
+                                                          scopedSlots: _vm._u([
+                                                            {
+                                                              key: "activator",
+                                                              fn: function(
+                                                                ref
+                                                              ) {
+                                                                var on = ref.on
+                                                                return [
+                                                                  _c(
+                                                                    "v-text-field",
+                                                                    _vm._g(
+                                                                      {
+                                                                        attrs: {
+                                                                          label:
+                                                                            "Due Date",
+                                                                          "prepend-icon":
+                                                                            "event",
+                                                                          box:
+                                                                            "",
+                                                                          readonly:
+                                                                            ""
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .editTask
+                                                                              .due,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm.editTask,
+                                                                              "due",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "editTask.due"
+                                                                        }
+                                                                      },
+                                                                      on
+                                                                    )
+                                                                  )
+                                                                ]
+                                                              }
+                                                            }
+                                                          ]),
+                                                          model: {
+                                                            value:
+                                                              _vm.dateDialog,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.dateDialog = $$v
+                                                            },
+                                                            expression:
+                                                              "dateDialog"
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(" "),
+                                                          _c("v-date-picker", {
+                                                            on: {
+                                                              input: function(
+                                                                $event
+                                                              ) {
+                                                                _vm.dateDialog = false
+                                                              }
+                                                            },
+                                                            model: {
+                                                              value:
+                                                                _vm.editTask
+                                                                  .due,
+                                                              callback: function(
+                                                                $$v
+                                                              ) {
+                                                                _vm.$set(
+                                                                  _vm.editTask,
+                                                                  "due",
+                                                                  $$v
+                                                                )
+                                                              },
+                                                              expression:
+                                                                "editTask.due"
+                                                            }
+                                                          })
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs12: "" } },
+                                                    [
+                                                      _c("v-textarea", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label: "Description",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editTask.desc,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editTask,
+                                                              "desc",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editTask.desc"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs12: "" } },
+                                                    [
+                                                      _c(
+                                                        "v-btn",
+                                                        {
+                                                          attrs: {
+                                                            color: "green"
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              return _vm.addTask(
+                                                                _vm.editTask
+                                                              )
+                                                            }
+                                                          }
+                                                        },
+                                                        [_vm._v("Add Task")]
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("v-divider"),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "" } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    [
+                                      _c(
+                                        "v-card-title",
+                                        { staticClass: "justify-center" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "headline" },
+                                            [_vm._v("Task List")]
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _vm.editProject.tasks.length != 0
+                                    ? _c(
+                                        "v-card-text",
+                                        _vm._l(_vm.editProject.tasks, function(
+                                          task
+                                        ) {
+                                          return _c(
+                                            "v-card",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "ripple",
+                                                  rawName: "v-ripple"
+                                                }
+                                              ],
+                                              key: task.title,
+                                              staticClass: "scroll-y",
+                                              staticStyle: {
+                                                background: "#424242 !important"
+                                              },
+                                              attrs: { hover: "", flat: "" },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.openTaskDialog(
+                                                    task
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "v-layout",
+                                                {
+                                                  class:
+                                                    "pa-3  project " +
+                                                    task.status,
+                                                  attrs: { row: "", wrap: "" }
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md4: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "caption grey--text"
+                                                        },
+                                                        [_vm._v("Division")]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c("div", [
+                                                        _vm._v(
+                                                          _vm._s(task.division)
+                                                        )
+                                                      ])
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs6: "",
+                                                        sm4: "",
+                                                        md2: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "caption grey--text"
+                                                        },
+                                                        [_vm._v("Task")]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c("div", [
+                                                        _vm._v(
+                                                          _vm._s(task.title)
+                                                        )
+                                                      ])
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs6: "",
+                                                        sm4: "",
+                                                        md2: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "caption grey--text"
+                                                        },
+                                                        [_vm._v("Due Date")]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c("div", [
+                                                        _vm._v(_vm._s(task.due))
+                                                      ])
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs6: "",
+                                                        sm4: "",
+                                                        md2: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "caption grey--text"
+                                                        },
+                                                        [_vm._v("Progress")]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        [
+                                                          _c(
+                                                            "v-progress-linear",
+                                                            {
+                                                              attrs: {
+                                                                color: "red",
+                                                                height: "20",
+                                                                value:
+                                                                  task.progress
+                                                              }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "p",
+                                                                {
+                                                                  staticClass:
+                                                                    "text-xs-center"
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    _vm._s(
+                                                                      task.progress
+                                                                    ) + "%"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ]
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs2: "",
+                                                        sm4: "",
+                                                        md2: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass: "right"
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-chip",
+                                                            {
+                                                              class:
+                                                                " white--text my-2 caption " +
+                                                                task.status,
+                                                              attrs: {
+                                                                small: ""
+                                                              }
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  task.status
+                                                                )
+                                                              )
+                                                            ]
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ]
+                                                  )
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c("v-divider")
+                                            ],
+                                            1
+                                          )
+                                        }),
+                                        1
+                                      )
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ],
+                            1
                           )
                         ],
                         1
