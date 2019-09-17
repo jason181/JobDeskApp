@@ -3,19 +3,19 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Divisi;
+use App\Divisi_Role;
 
-class DivisiTransformers extends TransformerAbstract
+class DivisiRoleTransformers extends TransformerAbstract
 {
     /**
      * Transform Branch.
      *
      * @param Branch $branch
      */
-    public function transform(Divisi $divisi)
+    public function transform(Divisi_Role $divisi)
     {
         return [
-            'Id_Divisi'     => $divisi->Id_Divisi,
+            'Id_Divisi_Role'=> $divisi->Id_Divisi_Role,
             'Kode'          => $divisi->Kode,
             'Keterangan'    => $divisi->Keterangan
         ];

@@ -12,7 +12,7 @@ class Karyawan extends Model
     protected $primaryKey = 'Id_Karyawan';
     public $timestamp = true;
     protected $fillable = [
-        'Id_Divisi',
+        'Id_Divisi_Role',
         'Id_Jabatan',
         'Kode',
         'Nama',
@@ -25,9 +25,9 @@ class Karyawan extends Model
         'Nomor_SKA'
     ];
 
-    public function divisis()
+    public function divisi_roles()
     {
-        return $this->belongsTo('App\Divisi','Id_Divisi');
+        return $this->belongsTo('App\Divisi_Role','Id_Divisi_Role');
     }
 
     public function jabatans()

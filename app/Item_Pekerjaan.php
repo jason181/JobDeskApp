@@ -14,20 +14,21 @@ class Item_Pekerjaan extends Model
     public $timestamp = true;
     protected $fillable = [
         'Id_Proyek',
-        'Id_Divisi',
-        'Item',
+        'Id_Divisi_Role',
+        'Nama',
         'Kode',
         'Satuan',
-        'Durasi'
+        'Tanggal_Selesai',
+        'Persentase'
     ];
     public function proyeks()
     {
         return $this->belongsTo('App\Proyek','Id_Proyek');
     }
 
-    public function divisis()
+    public function divisi_roles()
     {
-        return $this->belongsTo('App\Divisi','Id_Divisi');
+        return $this->belongsTo('App\Divisi_Role','Id_Divisi_Role');
     }
 
     public function sub_item_pekerjaans()

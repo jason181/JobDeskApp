@@ -16,7 +16,7 @@ class Log_Pengerjaan extends Model
         'Id_Akun',
         'Waktu_Mulai',
         'Waktu_Selesai',
-        'Persentase',
+        'Progress',
         'Berkas',
         'Catatan'
     ];

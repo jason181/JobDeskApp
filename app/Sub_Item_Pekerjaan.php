@@ -16,8 +16,8 @@ class Sub_Item_Pekerjaan extends Model
         'Id_Item_Pekerjaan',
         'Nama',
         'Kode',
-        'Durasi',
-        'Berkas'
+        'Tanggal_Selesai',
+        'Persentase',
     ];
     
     public function log_pengerjaans()
@@ -27,7 +27,7 @@ class Sub_Item_Pekerjaan extends Model
 
     public function akses_pekerjaans()
     {
-        return $this->belongsTo('App\Akses_Pekerjaan','Id_Sub_Item_Pekerjaan');
+        return $this->hasMany('App\Akses_Pekerjaan','Id_Sub_Item_Pekerjaan');
     }
 
     public function item_pekerjaans()

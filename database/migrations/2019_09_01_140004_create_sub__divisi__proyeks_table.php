@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubItemPekerjaansTable extends Migration
+class CreateSubDivisiProyeksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,17 @@ class CreateSubItemPekerjaansTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_item_pekerjaans', function (Blueprint $table) {
-            $table->increments('Id_Sub_Item_Pekerjaan');
-            $table->unsignedInteger('Id_Item_Pekerjaan');
-            $table->string('Kode',50);
+        Schema::create('sub_divisi_proyeks', function (Blueprint $table) {
+            $table->increments('Id_Sub_Divisi_Proyek');
+            $table->unsignedInteger('Id_Divisi_Proyek');
             $table->date('Tanggal_Selesai');
             $table->integer('Persentase');
-            // $table->string('Berkas',255);
+            
             $table->softDeletes();
             $table->timestamps();
-
-            $table  ->foreign('Id_Item_Pekerjaan')
-                    ->references('Id_Item_Pekerjaan')
-                    ->on('item_pekerjaans')
+            $table  ->foreign('Id_Divisi_Proyek')
+                    ->references('Id_Divisi_Proyek')
+                    ->on('divisi_proyeks')
                     ->onChange('cascade')
                     ->onDelete('cascade');
         });
@@ -38,6 +36,6 @@ class CreateSubItemPekerjaansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_item_pekerjaans');
+        Schema::dropIfExists('sub__divisi__proyeks');
     }
 }

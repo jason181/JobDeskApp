@@ -19,7 +19,7 @@ class CreateLogPengerjaansTable extends Migration
             $table->unsignedInteger('Id_Akun');
             $table->time('Waktu_Mulai');
             $table->time('Waktu_Selesai');
-            $table->integer('Persentase');
+            $table->integer('Progress');
             $table->string('Berkas',255);
             $table->string('Catatan',255);
 

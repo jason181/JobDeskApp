@@ -19,8 +19,8 @@ class SubItemPekerjaanTransformers extends TransformerAbstract
             'Id_Item_Pekerjaan'     => $sub_item->Id_Item_Pekerjaan,
             'Nama'                  => $sub_item->Nama,
             'Kode'                  => $sub_item->Kode,
-            'Durasi'                => $sub_item->Durasi,
-            'Berkas'                => $sub_item->Berkas
+            'Tanggal_Selesai'       => $sub_item->Tanggal_Selesai,
+            'Persentase'            => $sub_item->Persentase
         ];
     }
 }

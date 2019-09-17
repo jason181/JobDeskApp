@@ -17,11 +17,12 @@ class ItemPekerjaanTransformers extends TransformerAbstract
         return [
             'Id_Item_Pekerjaan' => $item->Id_Item_Pekerjaan,
             'Id_Proyek'         => $item->Id_Proyek,
-            'Id_Divisi'         => $item->Id_Divisi,
-            'Item'              => $item->Item,
+            'Id_Divisi_Role'    => $item->Id_Divisi_Role,
+            'Nama'              => $item->Nama,
             'Kode'              => $item->Kode,
             'Satuan'            => $item->Satuan,
-            'Durasi'            => $item->Durasi,
+            'Tanggal_Selesai'   => $item->Tanggal_Selesai,
+            'Persentase'        => $item->Durasi,
         ];
     }
 }

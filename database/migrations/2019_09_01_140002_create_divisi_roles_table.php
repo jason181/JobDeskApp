@@ -13,8 +13,8 @@ class CreateDivisisTable extends Migration
      */
     public function up()
     {
-        Schema::create('divisis', function (Blueprint $table) {
-            $table->increments('Id_Divisi');
+        Schema::create('divisi_roles', function (Blueprint $table) {
+            $table->increments('Id_Divisi_Role');
             $table->string('Kode',50);
             $table->string('Deskripsi',255);
             

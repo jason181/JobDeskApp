@@ -15,24 +15,25 @@ class CreateItemPekerjaansTable extends Migration
     {
         Schema::create('item_pekerjaans', function (Blueprint $table) {
             $table->increments('Id_Item_Pekerjaan');
-            $table->unsignedInteger('Id_Proyek');
-            $table->unsignedInteger('Id_Divisi');
-            $table->string('Item',50);
+            $table->unsignedInteger('Id_Sub_Divisi_Proyek');
+            $table->unsignedInteger('Id_Divisi_Role');
+            $table->string('Nama',50);
             $table->string('Kode',50);
             $table->string('Satuan',50);
-            $table->integer('Durasi');
+            $table->date('Tanggal_Selesai');
+            $table->integer('Persentase');
 
             $table->softDeletes();
             $table->timestamps();
 
-            $table  ->foreign('Id_Proyek')
-                    ->references('Id_Proyek')
-                    ->on('proyeks')
+            $table  ->foreign('Id_Sub_Divisi_Proyek')
+                    ->references('Id_Sub_Divisi_Proyek')
+                    ->on('sub_divisi_proyeks')
                     ->onChange('cascade')
                     ->onDelete('cascade');
-            $table  ->foreign('Id_Divisi')
-                    ->references('Id_Divisi')
-                    ->on('divisis')
+            $table  ->foreign('Id_Divisi_Role')
+                    ->references('Id_Divisi_Role')
+                    ->on('divisi_roles')
                     ->onChange('cascade')
                     ->onDelete('cascade');
         });
