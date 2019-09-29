@@ -5,6 +5,8 @@ import PanelPage from './views/PanelPage'
 import Dashboard from './components/Dashboard'
 import Profile from './components/Profile'
 import JobDesk from './components/JobDesk'
+import JobDeskV2 from './components/JobDeskV2'
+import JobDeskV3 from './components/JobDeskV3'
 
 
 
@@ -83,6 +85,22 @@ export const routes = [
             // requiresAuth: true
           },
           component : JobDesk
+        },
+        {
+          path: 'job-desk2',
+          meta: {
+            name: 'Job Desk V2',
+            // requiresAuth: true
+          },
+          component : JobDeskV2
+        },
+        {
+          path: 'job-desk3',
+          meta: {
+            name: 'Job Desk V3',
+            // requiresAuth: true
+          },
+          component : JobDeskV3
         },
       ]
     }

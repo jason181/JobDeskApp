@@ -2988,6 +2988,2035 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV2.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDeskV2.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      tasks: [{
+        project: 'Rumah Sakit Arsitektur',
+        division: 'Desain',
+        title: 'Denah Depan',
+        due: '2019-09-08',
+        status: 'ongoing',
+        progress: '75',
+        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
+        remaining: '2 day 3 hour',
+        user: 'Jason'
+      }, {
+        project: 'Rumah Sakit Arsitektur',
+        division: 'Desain',
+        title: 'Denah Ruang Tamu',
+        due: '2019-09-08',
+        status: 'untake',
+        progress: '0',
+        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
+        remaining: '2 day 3 hour',
+        user: ''
+      }],
+      projects: [{
+        title: 'Rumah Sakit Arsitektur',
+        due: '2019-09-08',
+        div: [{
+          name: 'Admin',
+          progress: '30',
+          sub_div: [{}]
+        }, {
+          name: 'Design Arsi',
+          progress: '',
+          sub_div: [{
+            name: 'Design',
+            progress: '10',
+            task: [{
+              name: 'Konsep',
+              progress: '10',
+              sub_task: [{
+                project: 'Rumah Sakit Arsitektur',
+                division: 'Desain',
+                title: 'Konsep Denah Depan',
+                due: '2019-09-08',
+                status: 'ongoing',
+                progress: '75',
+                desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
+                remaining: '2 day 3 hour',
+                user: 'Jason'
+              }]
+            }]
+          }, {
+            name: 'Produksi',
+            progress: '20',
+            task: [{}]
+          }]
+        }]
+      }],
+      editProject: {
+        tasks: [],
+        title: '',
+        start: '',
+        due: '',
+        value: '',
+        target_outcome: '',
+        note: '',
+        client_name: '',
+        client_address: ''
+      },
+      initProject: {
+        tasks: [],
+        title: '',
+        start: '',
+        due: '',
+        value: '',
+        target_outcome: '',
+        note: '',
+        client_name: '',
+        client_address: ''
+      },
+      files: [],
+      editTask: {
+        project: '',
+        division: '',
+        title: '',
+        due: '',
+        status: 'untake',
+        progress: '0',
+        desc: '',
+        user: ''
+      },
+      initEditTask: {
+        project: '',
+        division: '',
+        title: '',
+        due: '',
+        status: 'untake',
+        progress: '0',
+        desc: '',
+        user: ''
+      },
+      division: ['Desain', 'Produksi', 'Pendukung', 'Umum'],
+      addDialog: false,
+      taskDialog: false,
+      date: new Date().toISOString().substr(0, 10),
+      dateDialog: false,
+      startDate: false,
+      finishDate: false,
+      fileName: '',
+      fileUrl: '',
+      file: ''
+    };
+  },
+  methods: {
+    // sortBy(prop) {
+    //   this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
+    // },
+    addProject: function addProject(data) {
+      this.projects.push(data);
+    },
+    addTask: function addTask(data) {
+      console.log(data); // Object.assign(this.editProject.tasks[0],data)
+
+      this.editProject.tasks.push(this.editTask); // this.editProject.tasks.push(Object.assign({}, data));
+    },
+    closeAddDialog: function closeAddDialog() {
+      this.addDialog = false;
+      this.editProject = Object.assign({}, this.initProject);
+      this.editProject.tasks = [];
+      this.editTask = Object.assign({}, this.initEditTask);
+    },
+    openTaskDialog: function openTaskDialog(data) {
+      this.taskDialog = true;
+      this.editTask = data;
+    },
+    pickFile: function pickFile() {
+      this.$refs.file.click();
+    },
+    onFilePicked: function onFilePicked(e) {
+      var _this = this;
+
+      var files = e.target.files;
+
+      if (files[0] !== undefined) {
+        this.fileName = files[0].name;
+
+        if (this.fileName.lastIndexOf('.') <= 0) {
+          // console.log("Masuk return")
+          return;
+        }
+
+        var fr = new FileReader();
+        fr.readAsDataURL(files[0]);
+        fr.addEventListener('load', function () {
+          // console.log(fr.result)
+          //  console.log("Masuk FR")
+          _this.fileUrl = fr.result;
+          _this.file = files[0];
+        });
+      } else {
+        // console.log("else")
+        this.fileName = '';
+        this.fileUrl = ''; // this.editedItem.image =''
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV3.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDeskV3.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      log_pengerjaan: [{
+        id: '1',
+        fileName: 'Denah.zip',
+        fileUrl: 'https://78.media.tumblr.com/tumblr_m39nv7PcCU1r326q7o1_500.png',
+        date: '2019-09-09',
+        note: 'Kurang dikit lagi, Terlalu berat'
+      }, {
+        id: '2',
+        fileName: 'Denah.zip',
+        fileUrl: 'https://78.media.tumblr.com/tumblr_m39nv7PcCU1r326q7o1_500.png',
+        date: '2019-09-08',
+        note: ''
+      }],
+      projects: [{
+        tasks: [{
+          project: 'Rumah Sakit Arsitektur',
+          division: 'Desain Arsi',
+          sub_division: 'Desain',
+          task: 'Konsep',
+          sub_task: 'Denah Depan',
+          due: '2019-09-08',
+          status: 'ongoing',
+          progress: '75',
+          desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
+          remaining: '2 day 3 hour',
+          user: 'Jason'
+        }, {
+          project: 'Rumah Sakit Arsitektur',
+          division: 'Desain Arsi',
+          sub_division: 'QS',
+          task: 'Quality Checking',
+          sub_task: 'Denah Depan',
+          due: '2019-09-08',
+          status: 'untake',
+          progress: '0',
+          desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
+          remaining: '2 day 3 hour',
+          user: ''
+        }],
+        title: 'Rumah Sakit Arsitektur',
+        due: '2019-09-08'
+      }],
+      editProject: {
+        tasks: [],
+        title: '',
+        start: '',
+        due: '',
+        value: '',
+        target_outcome: '',
+        note: '',
+        client_name: '',
+        client_address: ''
+      },
+      initProject: {
+        tasks: [],
+        title: '',
+        start: '',
+        due: '',
+        value: '',
+        target_outcome: '',
+        note: '',
+        client_name: '',
+        client_address: ''
+      },
+      files: [],
+      editTask: {
+        project: '',
+        division: '',
+        title: '',
+        due: '',
+        status: 'untake',
+        progress: '0',
+        desc: '',
+        user: ''
+      },
+      initEditTask: {
+        project: '',
+        division: '',
+        title: '',
+        due: '',
+        status: 'untake',
+        progress: '0',
+        desc: '',
+        user: ''
+      },
+      division: ['Desain Arsi', 'Admin'],
+      sub_division: [],
+      task: [],
+      data_sub_division: [{
+        division: 'Desain Arsi',
+        name: 'Desain'
+      }, {
+        division: 'Desain Arsi',
+        name: 'Produksi'
+      }, {
+        division: 'Desain Arsi',
+        name: 'QS'
+      }],
+      data_task: [{
+        sub_division: 'Desain',
+        name: 'Konsep'
+      }, {
+        sub_division: 'Desain',
+        name: 'D.D'
+      }, {
+        division: 'Desain',
+        name: 'Skema'
+      }],
+      filterDiv: '',
+      filterSubDiv: '',
+      filterTask: '',
+      noteDialog: false,
+      noteText: '',
+      addDialog: false,
+      taskDialog: false,
+      date: new Date().toISOString().substr(0, 10),
+      dateDialog: false,
+      startDate: false,
+      finishDate: false,
+      fileName: '',
+      fileUrl: '',
+      file: '',
+      // Add Dialog 2
+      e1: 0,
+      addDialog2: false,
+      ad_division: [{
+        name: 'Desain Arsi',
+        contribute: '50%',
+        due_date: ''
+      }, {
+        name: 'Admin',
+        contribute: '2%',
+        due_date: ''
+      }],
+      div_headers: [{
+        text: 'Name',
+        align: 'left',
+        sortable: false,
+        value: 'name'
+      }, {
+        text: 'Contribute',
+        value: 'contribute',
+        align: 'center'
+      }, {
+        text: 'Target Date',
+        value: 'due',
+        align: 'center'
+      }],
+      //Data Dummy
+      detailDialog: false,
+      expandDetail: false,
+      d_division: [{
+        id: '2',
+        progress: '70',
+        name: 'Admin'
+      }, {
+        id: '1',
+        progress: '70',
+        name: 'Desain Arsi'
+      }],
+      d_sub_division: [{
+        id: '1',
+        id_div: '1',
+        progress: '70',
+        name: 'Desain'
+      }],
+      d_task: [{
+        id: '1',
+        sub_div: '1',
+        progress: '70',
+        name: 'Konsep'
+      }],
+      d_sub_task: [{
+        id: '1',
+        sub_task: '1',
+        progress: '70',
+        name: 'Denah Depan'
+      }],
+      search: '',
+      headers: [{
+        text: 'Name',
+        align: 'left',
+        sortable: false,
+        value: 'name'
+      }, {
+        text: 'Division',
+        value: 'division',
+        align: 'center'
+      }, {
+        text: 'Contribute',
+        value: 'contribute',
+        align: 'center'
+      }],
+      d_user: [{
+        name: 'Vian Handika',
+        division: 'Desain Arsi',
+        contribute: '50%',
+        task_list: [{
+          name: 'Denah Depan',
+          task: 'Konsep',
+          sub_div: 'Desain',
+          contribute: '50%'
+        }, {
+          name: 'Denah Belakang',
+          task: 'Konsep',
+          sub_div: 'Desain',
+          contribute: '50%'
+        }]
+      }]
+    };
+  },
+  computed: {// filteredTask(data){
+    //     if(this.filterDiv!="")
+    //     {
+    //         return data.filter(obj=>obj.division==this.filterDiv)
+    //     }
+    //     else 
+    //     {
+    //         return data.tasks
+    //     }
+    // }
+  },
+  methods: {
+    // sortBy(prop) {
+    //   this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
+    // },
+    addProject: function addProject(data) {
+      this.projects.push(data);
+    },
+    addTask: function addTask(data) {
+      console.log(data); // Object.assign(this.editProject.tasks[0],data)
+
+      this.editProject.tasks.push(this.editTask); // this.editProject.tasks.push(Object.assign({}, data));
+    },
+    closeAddDialog: function closeAddDialog() {
+      this.addDialog = false;
+      this.editProject = Object.assign({}, this.initProject);
+      this.editProject.tasks = [];
+      this.editTask = Object.assign({}, this.initEditTask);
+    },
+    openTaskDialog: function openTaskDialog(data) {
+      this.taskDialog = true;
+      this.editTask = data;
+    },
+    getSubDivision: function getSubDivision() {
+      var _this = this;
+
+      this.sub_division = this.data_sub_division.filter(function (obj) {
+        return obj.division == _this.filterDiv;
+      });
+      this.filterSubDiv = '';
+    },
+    getTask: function getTask() {
+      var _this2 = this;
+
+      this.task = this.data_task.filter(function (obj) {
+        return obj.sub_division == _this2.filterSubDiv;
+      });
+      this.filterTask = '';
+    },
+    filteredTask: function filteredTask(data) {
+      var _this3 = this;
+
+      if (this.filterDiv != "") {
+        // console.log("in")
+        if (this.filterSubDiv != "") {
+          if (this.filterTask != "") {
+            return data.filter(function (obj) {
+              return obj.division == _this3.filterDiv && obj.sub_division == _this3.filterSubDiv && obj.task == _this3.filterTask;
+            });
+          } else {
+            return data.filter(function (obj) {
+              return obj.division == _this3.filterDiv && obj.sub_division == _this3.filterSubDiv;
+            });
+          }
+        } else {
+          return data.filter(function (obj) {
+            return obj.division == _this3.filterDiv;
+          });
+        }
+      } else {
+        return data;
+      }
+    },
+    clearFilter: function clearFilter() {
+      this.filterDiv = '';
+      this.filterSubDiv = '';
+      this.filterTask = '';
+    },
+    pickFile: function pickFile() {
+      this.$refs.file.click();
+    },
+    onFilePicked: function onFilePicked(e) {
+      var _this4 = this;
+
+      var files = e.target.files;
+
+      if (files[0] !== undefined) {
+        this.fileName = files[0].name;
+
+        if (this.fileName.lastIndexOf('.') <= 0) {
+          // console.log("Masuk return")
+          return;
+        }
+
+        var fr = new FileReader();
+        fr.readAsDataURL(files[0]);
+        fr.addEventListener('load', function () {
+          // console.log(fr.result)
+          //  console.log("Masuk FR")
+          _this4.fileUrl = fr.result;
+          _this4.file = files[0];
+        });
+      } else {
+        // console.log("else")
+        this.fileName = '';
+        this.fileUrl = ''; // this.editedItem.image =''
+      }
+    },
+    forceFileDownload: function forceFileDownload(response) {
+      var url = window.URL.createObjectURL(new Blob([response.data]));
+      var link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'file.png'); //or any other extension
+
+      document.body.appendChild(link);
+      link.click();
+    },
+    downloadWithVueResource: function downloadWithVueResource(data) {
+      var _this5 = this;
+
+      this.$http({
+        method: 'get',
+        url: data.fileUrl,
+        responseType: 'arraybuffer'
+      }).then(function (response) {
+        _this5.forceFileDownload(response);
+      })["catch"](function () {
+        return console.log('error occured');
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoginForm.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LoginForm.vue?vue&type=script&lang=js& ***!
@@ -3318,6 +5347,14 @@ __webpack_require__.r(__webpack_exports__);
         to: '/panel/job-desk',
         icon: 'assignment_turned_in',
         text: 'Job Desk'
+      }, {
+        to: '/panel/job-desk2',
+        icon: 'assignment_turned_in',
+        text: 'Job Desk V2'
+      }, {
+        to: '/panel/job-desk3',
+        icon: 'assignment_turned_in',
+        text: 'Job Desk V3'
       }],
       color: 'general',
       image: '',
@@ -3500,6 +5537,44 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.project.complete{\r\n  border-left: 4px solid #3cd1c2 !Important;\r\n  border-color:#3cd1c2 !Important;\n}\n.project.ongoing{\r\n  border-left: 4px solid #ffaa2c !Important;\n}\n.project.overdue{\r\n  border-left: 4px solid #f83e70 !Important;\n}\n.project.untake{\r\n  border-left: 4px solid green !Important;\r\n  border-color:green !Important;\n}\n.v-chip.complete{\r\n  background: #3cd1c2 !Important;\n}\n.v-chip.ongoing{\r\n  background: #ffaa2c !Important;\n}\n.v-chip.overdue{\r\n  background: #f83e70 !Important;\n}\n.v-chip.untake{\r\n  background: green !Important;\n}\r\n\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV2.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDeskV2.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.project.complete{\r\n  border-left: 4px solid #3cd1c2 !Important;\r\n  border-color:#3cd1c2 !Important;\n}\n.project.ongoing{\r\n  border-left: 4px solid #ffaa2c !Important;\n}\n.project.overdue{\r\n  border-left: 4px solid #f83e70 !Important;\n}\n.project.untake{\r\n  border-left: 4px solid green !Important;\r\n  border-color:green !Important;\n}\n.v-chip.complete{\r\n  background: #3cd1c2 !Important;\n}\n.v-chip.ongoing{\r\n  background: #ffaa2c !Important;\n}\n.v-chip.overdue{\r\n  background: #f83e70 !Important;\n}\n.v-chip.untake{\r\n  background: green !Important;\n}\r\n\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV3.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDeskV3.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.d_div{\r\n  border-left: 4px solid #3cd1c2 !Important;\r\n  border-color:#3cd1c2 !Important;\n}\n.d_sub_div{\r\n  border-left: 4px solid #00B8D4 !Important;\r\n  border-color:#00B8D4 !Important;\n}\n.d_task{\r\n  border-left: 4px solid #0091EA !Important;\r\n  border-color:#0091EA !Important;\n}\n.d_sub_task{\r\n  /* border-left: 4px solid #004D40 !Important;\r\n  border-color:#004D40 !Important; */\n}\n.project.complete{\r\n  border-left: 4px solid #3cd1c2 !Important;\r\n  border-color:#3cd1c2 !Important;\n}\n.project.ongoing{\r\n  border-left: 4px solid #ffaa2c !Important;\n}\n.project.overdue{\r\n  border-left: 4px solid #f83e70 !Important;\n}\n.project.untake{\r\n  border-left: 4px solid green !Important;\r\n  border-color:green !Important;\n}\n.v-chip.complete{\r\n  background: #3cd1c2 !Important;\n}\n.v-chip.ongoing{\r\n  background: #ffaa2c !Important;\n}\n.v-chip.overdue{\r\n  background: #f83e70 !Important;\n}\n.v-chip.untake{\r\n  background: green !Important;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -4208,6 +6283,66 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDesk.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDesk.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV2.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDeskV2.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDeskV2.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV2.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV3.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDeskV3.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDeskV3.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV3.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -7330,6 +9465,5703 @@ var render = function() {
                                         1
                                       )
                                     : _vm._e()
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV2.vue?vue&type=template&id=041b9e37&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDeskV2.vue?vue&type=template&id=041b9e37& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "jobdesk" },
+    [
+      _c(
+        "v-container",
+        [
+          _c(
+            "v-layout",
+            { staticClass: "mb-3", attrs: { "justify-start": "" } },
+            [
+              _c(
+                "h3",
+                { staticStyle: { "border-bottom": "white solid 3px" } },
+                [_vm._v("LIST PROJECT")]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { staticClass: "mb-3", attrs: { row: "" } },
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: {
+                    slot: "activator",
+                    small: "",
+                    flat: "",
+                    color: "grey"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.addDialog = true
+                    }
+                  },
+                  slot: "activator"
+                },
+                [
+                  _c("v-icon", { attrs: { small: "", left: "" } }, [
+                    _vm._v("create_new_folder")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "caption " }, [
+                    _vm._v("Add Project")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-expansion-panel",
+            [
+              _c(
+                "v-expansion-panel-content",
+                {
+                  attrs: { "expand-icon": "mdi-menu-down" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "header",
+                      fn: function() {
+                        return [
+                          _c(
+                            "v-layout",
+                            { class: "pa-3", attrs: { row: "", wrap: "" } },
+                            [
+                              _c("v-flex", { attrs: { xs12: "", md4: "" } }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "caption grey--text" },
+                                  [_vm._v("Project Title")]
+                                ),
+                                _vm._v(" "),
+                                _c("div", [_vm._v("Project Title")])
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs6: "", sm4: "", md2: "" } },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "caption grey--text" },
+                                    [_vm._v("Due Date")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", [_vm._v("Project Due")])
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ]
+                      },
+                      proxy: true
+                    }
+                  ])
+                },
+                [
+                  _vm._v(" "),
+                  _c(
+                    "v-container",
+                    { staticClass: "grey darken-2" },
+                    [
+                      _c(
+                        "v-expansion-panel",
+                        [
+                          _c(
+                            "v-expansion-panel-content",
+                            {
+                              attrs: { "expand-icon": "mdi-menu-down" },
+                              scopedSlots: _vm._u([
+                                {
+                                  key: "header",
+                                  fn: function() {
+                                    return [
+                                      _c(
+                                        "v-layout",
+                                        {
+                                          class: "pa-3",
+                                          attrs: { row: "", wrap: "" }
+                                        },
+                                        [
+                                          _c(
+                                            "v-flex",
+                                            { attrs: { xs12: "", md4: "" } },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "caption grey--text"
+                                                },
+                                                [_vm._v("Division")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("div", [
+                                                _vm._v("Divison Name")
+                                              ])
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-flex",
+                                            {
+                                              attrs: {
+                                                xs6: "",
+                                                sm4: "",
+                                                md2: ""
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "caption grey--text"
+                                                },
+                                                [_vm._v("Div Progress")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("div", [
+                                                _vm._v("Div Progress")
+                                              ])
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ]
+                                  },
+                                  proxy: true
+                                }
+                              ])
+                            },
+                            [
+                              _vm._v(" "),
+                              _c(
+                                "v-container",
+                                { staticClass: "grey darken-2" },
+                                [
+                                  _c(
+                                    "v-expansion-panel",
+                                    [
+                                      _c(
+                                        "v-expansion-panel-content",
+                                        {
+                                          attrs: {
+                                            "expand-icon": "mdi-menu-down"
+                                          },
+                                          scopedSlots: _vm._u([
+                                            {
+                                              key: "header",
+                                              fn: function() {
+                                                return [
+                                                  _c(
+                                                    "v-layout",
+                                                    {
+                                                      class: "pa-3",
+                                                      attrs: {
+                                                        row: "",
+                                                        wrap: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-flex",
+                                                        {
+                                                          attrs: {
+                                                            xs12: "",
+                                                            md4: ""
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "caption grey--text"
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "Sub Division"
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("div", [
+                                                            _vm._v(
+                                                              "Sub Divison Name"
+                                                            )
+                                                          ])
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-flex",
+                                                        {
+                                                          attrs: {
+                                                            xs6: "",
+                                                            sm4: "",
+                                                            md2: ""
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "caption grey--text"
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "Sub Div Progress"
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("div", [
+                                                            _vm._v(
+                                                              "Sub Div Progress"
+                                                            )
+                                                          ])
+                                                        ]
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ]
+                                              },
+                                              proxy: true
+                                            }
+                                          ])
+                                        },
+                                        [
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-container",
+                                            { staticClass: "grey darken-2" },
+                                            [
+                                              _c(
+                                                "v-expansion-panel",
+                                                [
+                                                  _c(
+                                                    "v-expansion-panel-content",
+                                                    {
+                                                      attrs: {
+                                                        "expand-icon":
+                                                          "mdi-menu-down"
+                                                      },
+                                                      scopedSlots: _vm._u([
+                                                        {
+                                                          key: "header",
+                                                          fn: function() {
+                                                            return [
+                                                              _c(
+                                                                "v-layout",
+                                                                {
+                                                                  class: "pa-3",
+                                                                  attrs: {
+                                                                    row: "",
+                                                                    wrap: ""
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "v-flex",
+                                                                    {
+                                                                      attrs: {
+                                                                        xs12:
+                                                                          "",
+                                                                        md4: ""
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "div",
+                                                                        {
+                                                                          staticClass:
+                                                                            "caption grey--text"
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            "Task"
+                                                                          )
+                                                                        ]
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "div",
+                                                                        [
+                                                                          _vm._v(
+                                                                            "Task Name"
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    ]
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "v-flex",
+                                                                    {
+                                                                      attrs: {
+                                                                        xs6: "",
+                                                                        sm4: "",
+                                                                        md2: ""
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "div",
+                                                                        {
+                                                                          staticClass:
+                                                                            "caption grey--text"
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            "Task Progress"
+                                                                          )
+                                                                        ]
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "div",
+                                                                        [
+                                                                          _vm._v(
+                                                                            "Task Progress"
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    ]
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            ]
+                                                          },
+                                                          proxy: true
+                                                        }
+                                                      ])
+                                                    },
+                                                    [
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-card",
+                                                        {
+                                                          staticClass:
+                                                            "grey darken-2"
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-container",
+                                                            _vm._l(
+                                                              _vm.tasks,
+                                                              function(task) {
+                                                                return _c(
+                                                                  "v-card",
+                                                                  {
+                                                                    directives: [
+                                                                      {
+                                                                        name:
+                                                                          "ripple",
+                                                                        rawName:
+                                                                          "v-ripple"
+                                                                      }
+                                                                    ],
+                                                                    key:
+                                                                      task.title,
+                                                                    staticClass:
+                                                                      "scroll-y",
+                                                                    staticStyle: {
+                                                                      background:
+                                                                        "#424242 !important"
+                                                                    },
+                                                                    attrs: {
+                                                                      hover: "",
+                                                                      flat: ""
+                                                                    },
+                                                                    on: {
+                                                                      click: function(
+                                                                        $event
+                                                                      ) {
+                                                                        return _vm.openTaskDialog(
+                                                                          task
+                                                                        )
+                                                                      }
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "v-layout",
+                                                                      {
+                                                                        class:
+                                                                          "pa-3  project " +
+                                                                          task.status,
+                                                                        attrs: {
+                                                                          row:
+                                                                            "",
+                                                                          wrap:
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "v-flex",
+                                                                          {
+                                                                            attrs: {
+                                                                              xs12:
+                                                                                "",
+                                                                              md4:
+                                                                                ""
+                                                                            }
+                                                                          },
+                                                                          [
+                                                                            _c(
+                                                                              "div",
+                                                                              {
+                                                                                staticClass:
+                                                                                  "caption grey--text"
+                                                                              },
+                                                                              [
+                                                                                _vm._v(
+                                                                                  "Division"
+                                                                                )
+                                                                              ]
+                                                                            ),
+                                                                            _vm._v(
+                                                                              " "
+                                                                            ),
+                                                                            _c(
+                                                                              "div",
+                                                                              [
+                                                                                _vm._v(
+                                                                                  _vm._s(
+                                                                                    task.division
+                                                                                  )
+                                                                                )
+                                                                              ]
+                                                                            )
+                                                                          ]
+                                                                        ),
+                                                                        _vm._v(
+                                                                          " "
+                                                                        ),
+                                                                        _c(
+                                                                          "v-flex",
+                                                                          {
+                                                                            attrs: {
+                                                                              xs6:
+                                                                                "",
+                                                                              sm4:
+                                                                                "",
+                                                                              md2:
+                                                                                ""
+                                                                            }
+                                                                          },
+                                                                          [
+                                                                            _c(
+                                                                              "div",
+                                                                              {
+                                                                                staticClass:
+                                                                                  "caption grey--text"
+                                                                              },
+                                                                              [
+                                                                                _vm._v(
+                                                                                  "Task"
+                                                                                )
+                                                                              ]
+                                                                            ),
+                                                                            _vm._v(
+                                                                              " "
+                                                                            ),
+                                                                            _c(
+                                                                              "div",
+                                                                              [
+                                                                                _vm._v(
+                                                                                  _vm._s(
+                                                                                    task.title
+                                                                                  )
+                                                                                )
+                                                                              ]
+                                                                            )
+                                                                          ]
+                                                                        ),
+                                                                        _vm._v(
+                                                                          " "
+                                                                        ),
+                                                                        _c(
+                                                                          "v-flex",
+                                                                          {
+                                                                            attrs: {
+                                                                              xs6:
+                                                                                "",
+                                                                              sm4:
+                                                                                "",
+                                                                              md2:
+                                                                                ""
+                                                                            }
+                                                                          },
+                                                                          [
+                                                                            _c(
+                                                                              "div",
+                                                                              {
+                                                                                staticClass:
+                                                                                  "caption grey--text"
+                                                                              },
+                                                                              [
+                                                                                _vm._v(
+                                                                                  "Due Date"
+                                                                                )
+                                                                              ]
+                                                                            ),
+                                                                            _vm._v(
+                                                                              " "
+                                                                            ),
+                                                                            _c(
+                                                                              "div",
+                                                                              [
+                                                                                _vm._v(
+                                                                                  _vm._s(
+                                                                                    task.due
+                                                                                  )
+                                                                                )
+                                                                              ]
+                                                                            )
+                                                                          ]
+                                                                        ),
+                                                                        _vm._v(
+                                                                          " "
+                                                                        ),
+                                                                        _c(
+                                                                          "v-flex",
+                                                                          {
+                                                                            attrs: {
+                                                                              xs6:
+                                                                                "",
+                                                                              sm4:
+                                                                                "",
+                                                                              md2:
+                                                                                ""
+                                                                            }
+                                                                          },
+                                                                          [
+                                                                            _c(
+                                                                              "div",
+                                                                              {
+                                                                                staticClass:
+                                                                                  "caption grey--text"
+                                                                              },
+                                                                              [
+                                                                                _vm._v(
+                                                                                  "Progress"
+                                                                                )
+                                                                              ]
+                                                                            ),
+                                                                            _vm._v(
+                                                                              " "
+                                                                            ),
+                                                                            _c(
+                                                                              "div",
+                                                                              [
+                                                                                _c(
+                                                                                  "v-progress-linear",
+                                                                                  {
+                                                                                    attrs: {
+                                                                                      color:
+                                                                                        "red",
+                                                                                      height:
+                                                                                        "20",
+                                                                                      value:
+                                                                                        task.progress
+                                                                                    }
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "p",
+                                                                                      {
+                                                                                        staticClass:
+                                                                                          "text-xs-center"
+                                                                                      },
+                                                                                      [
+                                                                                        _vm._v(
+                                                                                          _vm._s(
+                                                                                            task.progress
+                                                                                          ) +
+                                                                                            "%"
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ]
+                                                                                )
+                                                                              ],
+                                                                              1
+                                                                            )
+                                                                          ]
+                                                                        ),
+                                                                        _vm._v(
+                                                                          " "
+                                                                        ),
+                                                                        _c(
+                                                                          "v-flex",
+                                                                          {
+                                                                            attrs: {
+                                                                              xs2:
+                                                                                "",
+                                                                              sm4:
+                                                                                "",
+                                                                              md2:
+                                                                                ""
+                                                                            }
+                                                                          },
+                                                                          [
+                                                                            _c(
+                                                                              "div",
+                                                                              {
+                                                                                staticClass:
+                                                                                  "right"
+                                                                              },
+                                                                              [
+                                                                                _c(
+                                                                                  "v-chip",
+                                                                                  {
+                                                                                    class:
+                                                                                      " white--text my-2 caption " +
+                                                                                      task.status,
+                                                                                    attrs: {
+                                                                                      small:
+                                                                                        ""
+                                                                                    }
+                                                                                  },
+                                                                                  [
+                                                                                    _vm._v(
+                                                                                      _vm._s(
+                                                                                        task.status
+                                                                                      )
+                                                                                    )
+                                                                                  ]
+                                                                                )
+                                                                              ],
+                                                                              1
+                                                                            )
+                                                                          ]
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "v-divider"
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                )
+                                                              }
+                                                            ),
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV3.vue?vue&type=template&id=0429b5b8&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDeskV3.vue?vue&type=template&id=0429b5b8& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "jobdesk" },
+    [
+      _c(
+        "v-container",
+        [
+          _c(
+            "v-layout",
+            { staticClass: "mb-3", attrs: { "justify-start": "" } },
+            [
+              _c(
+                "h3",
+                { staticStyle: { "border-bottom": "white solid 3px" } },
+                [_vm._v("LIST PROJECT")]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { staticClass: "mb-3", attrs: { row: "" } },
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: {
+                    slot: "activator",
+                    small: "",
+                    flat: "",
+                    color: "grey"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.addDialog2 = true
+                    }
+                  },
+                  slot: "activator"
+                },
+                [
+                  _c("v-icon", { attrs: { small: "", left: "" } }, [
+                    _vm._v("create_new_folder")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "caption " }, [
+                    _vm._v("Add Project")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-expansion-panel",
+            _vm._l(_vm.projects, function(project) {
+              return _c(
+                "v-expansion-panel-content",
+                {
+                  key: project.title,
+                  attrs: { "expand-icon": "mdi-menu-down" },
+                  scopedSlots: _vm._u(
+                    [
+                      {
+                        key: "header",
+                        fn: function() {
+                          return [
+                            _c(
+                              "v-layout",
+                              { class: "pa-3", attrs: { row: "", wrap: "" } },
+                              [
+                                _c("v-flex", { attrs: { xs12: "", md4: "" } }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "caption grey--text" },
+                                    [_vm._v("Project Title")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", [_vm._v(_vm._s(project.title))])
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "v-flex",
+                                  { attrs: { xs6: "", sm4: "", md2: "" } },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "caption grey--text" },
+                                      [_vm._v("Due Date")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", [_vm._v(_vm._s(project.due))])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("v-spacer"),
+                                _vm._v(" "),
+                                _c(
+                                  "v-flex",
+                                  [
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: { small: "" },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.detailDialog = !_vm.detailDialog
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Detail")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ]
+                        },
+                        proxy: true
+                      }
+                    ],
+                    null,
+                    true
+                  )
+                },
+                [
+                  _vm._v(" "),
+                  _c(
+                    "v-card",
+                    { staticClass: "grey darken-2" },
+                    [
+                      _c(
+                        "v-container",
+                        [
+                          _c(
+                            "v-card",
+                            [
+                              _c("v-card-title", [
+                                _c("span", [_vm._v("Filter")])
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "v-layout",
+                                { attrs: { row: "" } },
+                                [
+                                  _c(
+                                    "v-flex",
+                                    {
+                                      staticClass: "pl-2",
+                                      attrs: { xs12: "", sm6: "", md2: "" }
+                                    },
+                                    [
+                                      _c("v-select", {
+                                        attrs: {
+                                          items: _vm.division,
+                                          "item-text": "name",
+                                          "item-value": "name",
+                                          box: "",
+                                          label: "Divison"
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            return _vm.getSubDivision()
+                                          }
+                                        },
+                                        model: {
+                                          value: _vm.filterDiv,
+                                          callback: function($$v) {
+                                            _vm.filterDiv = $$v
+                                          },
+                                          expression: "filterDiv"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    {
+                                      staticClass: "pl-2",
+                                      attrs: { xs12: "", sm6: "", md2: "" }
+                                    },
+                                    [
+                                      _c("v-select", {
+                                        attrs: {
+                                          items: _vm.sub_division,
+                                          "item-text": "name",
+                                          "item-value": "name",
+                                          box: "",
+                                          label: "Sub Division"
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            return _vm.getTask()
+                                          }
+                                        },
+                                        model: {
+                                          value: _vm.filterSubDiv,
+                                          callback: function($$v) {
+                                            _vm.filterSubDiv = $$v
+                                          },
+                                          expression: "filterSubDiv"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    {
+                                      staticClass: "pl-2",
+                                      attrs: { xs12: "", sm6: "", md2: "" }
+                                    },
+                                    [
+                                      _c("v-select", {
+                                        attrs: {
+                                          items: _vm.task,
+                                          "item-text": "name",
+                                          "item-value": "name",
+                                          box: "",
+                                          label: "Task"
+                                        },
+                                        model: {
+                                          value: _vm.filterTask,
+                                          callback: function($$v) {
+                                            _vm.filterTask = $$v
+                                          },
+                                          expression: "filterTask"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    {
+                                      staticClass: "pl-2",
+                                      attrs: { xs12: "", sm6: "", md2: "" }
+                                    },
+                                    [
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.clearFilter()
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Clear")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.filteredTask(project.tasks), function(
+                            task
+                          ) {
+                            return _c(
+                              "v-card",
+                              {
+                                directives: [
+                                  { name: "ripple", rawName: "v-ripple" }
+                                ],
+                                key: task.title,
+                                staticClass: "scroll-y",
+                                staticStyle: {
+                                  background: "#424242 !important"
+                                },
+                                attrs: { hover: "", flat: "" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.openTaskDialog(task)
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "v-layout",
+                                  {
+                                    class: "pa-3  project " + task.status,
+                                    attrs: { row: "", wrap: "" }
+                                  },
+                                  [
+                                    _c(
+                                      "v-flex",
+                                      { attrs: { xs12: "", md4: "" } },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "caption grey--text" },
+                                          [_vm._v(_vm._s(task.division))]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("div", [
+                                          _vm._v(_vm._s(task.sub_division))
+                                        ])
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-flex",
+                                      { attrs: { xs6: "", sm4: "", md2: "" } },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "caption grey--text" },
+                                          [_vm._v(_vm._s(task.task))]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("div", [
+                                          _vm._v(_vm._s(task.sub_task))
+                                        ])
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-flex",
+                                      { attrs: { xs6: "", sm4: "", md2: "" } },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "caption grey--text" },
+                                          [_vm._v("Due Date")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("div", [_vm._v(_vm._s(task.due))])
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-flex",
+                                      { attrs: { xs6: "", sm4: "", md2: "" } },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "caption grey--text" },
+                                          [_vm._v("Progress")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          [
+                                            _c(
+                                              "v-progress-linear",
+                                              {
+                                                attrs: {
+                                                  color: "red",
+                                                  height: "20",
+                                                  value: task.progress
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "p",
+                                                  {
+                                                    staticClass:
+                                                      "text-xs-center"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(task.progress) +
+                                                        "%"
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-flex",
+                                      { attrs: { xs2: "", sm4: "", md2: "" } },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "right" },
+                                          [
+                                            _c(
+                                              "v-chip",
+                                              {
+                                                class:
+                                                  " white--text my-2 caption " +
+                                                  task.status,
+                                                attrs: { small: "" }
+                                              },
+                                              [_vm._v(_vm._s(task.status))]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c("v-divider")
+                              ],
+                              1
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            }),
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { row: "", "justify-center": "" } },
+            [
+              _c(
+                "v-dialog",
+                {
+                  attrs: {
+                    scrollable: "",
+                    persistent: "",
+                    "max-width": "600px"
+                  },
+                  model: {
+                    value: _vm.taskDialog,
+                    callback: function($$v) {
+                      _vm.taskDialog = $$v
+                    },
+                    expression: "taskDialog"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-card-title",
+                        [
+                          _c("span", { staticClass: "headline" }, [
+                            _vm._v(_vm._s(_vm.editTask.project))
+                          ]),
+                          _vm._v(" "),
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _vm.editTask.status != "untake"
+                            ? _c("span", [
+                                _vm._v(
+                                  "Taken By : " + _vm._s(_vm.editTask.user)
+                                )
+                              ])
+                            : _vm._e()
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-divider"),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-4" }, [
+                        _vm._v("Desain Arsi > Desain > Konsep")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-text",
+                        [
+                          _c(
+                            "v-container",
+                            { attrs: { "grid-list-md": "" } },
+                            [
+                              _c(
+                                "v-layout",
+                                { attrs: { wrap: "" } },
+                                [
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Task",
+                                          readonly: "",
+                                          "prepend-icon": "description"
+                                        },
+                                        model: {
+                                          value: _vm.editTask.sub_task,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.editTask,
+                                              "sub_task",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "editTask.sub_task"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "" } },
+                                    [
+                                      _c("v-textarea", {
+                                        attrs: {
+                                          outline: "",
+                                          readonly: "",
+                                          label: "Description"
+                                        },
+                                        model: {
+                                          value: _vm.editTask.desc,
+                                          callback: function($$v) {
+                                            _vm.$set(_vm.editTask, "desc", $$v)
+                                          },
+                                          expression: "editTask.desc"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", md6: "" } },
+                                    [
+                                      _c(
+                                        "v-menu",
+                                        {
+                                          attrs: {
+                                            "close-on-content-click": false,
+                                            "nudge-right": 40,
+                                            transition: "scale-transition",
+                                            "offset-y": "",
+                                            "full-width": "",
+                                            "min-width": "290px",
+                                            readonly: ""
+                                          },
+                                          scopedSlots: _vm._u([
+                                            {
+                                              key: "activator",
+                                              fn: function(ref) {
+                                                var on = ref.on
+                                                return [
+                                                  _c(
+                                                    "v-text-field",
+                                                    _vm._g(
+                                                      {
+                                                        attrs: {
+                                                          label: "Due Date",
+                                                          "prepend-icon":
+                                                            "event",
+                                                          readonly: ""
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editTask.due,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editTask,
+                                                              "due",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editTask.due"
+                                                        }
+                                                      },
+                                                      on
+                                                    )
+                                                  )
+                                                ]
+                                              }
+                                            }
+                                          ]),
+                                          model: {
+                                            value: _vm.dateDialog,
+                                            callback: function($$v) {
+                                              _vm.dateDialog = $$v
+                                            },
+                                            expression: "dateDialog"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(" "),
+                                          _c("v-date-picker", {
+                                            attrs: { readonly: "" },
+                                            on: {
+                                              input: function($event) {
+                                                _vm.dateDialog = false
+                                              }
+                                            },
+                                            model: {
+                                              value: _vm.editTask.due,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.editTask,
+                                                  "due",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "editTask.due"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", md6: "" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Time Remaining",
+                                          "prepend-icon": "timer",
+                                          readonly: ""
+                                        },
+                                        model: {
+                                          value: _vm.editTask.remaining,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.editTask,
+                                              "remaining",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "editTask.remaining"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", md4: "" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Progress",
+                                          "prepend-icon": "timeline",
+                                          counter: "3",
+                                          type: "number",
+                                          readonly:
+                                            _vm.editTask.status == "untake"
+                                        },
+                                        model: {
+                                          value: _vm.editTask.progress,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.editTask,
+                                              "progress",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "editTask.progress"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", md8: "" } },
+                                    [
+                                      _c(
+                                        "v-progress-linear",
+                                        {
+                                          attrs: {
+                                            color: "red",
+                                            height: "20",
+                                            value: _vm.editTask.progress
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "p",
+                                            { staticClass: "text-xs-center" },
+                                            [
+                                              _vm._v(
+                                                _vm._s(_vm.editTask.progress) +
+                                                  "%"
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          counter: "",
+                                          label: "Upload File",
+                                          multiple: "",
+                                          placeholder: "Select your files",
+                                          "prepend-icon": "mdi-paperclip",
+                                          outlined: "",
+                                          "show-size": 1000,
+                                          disabled:
+                                            _vm.editTask.status == "untake"
+                                        },
+                                        on: { click: _vm.pickFile },
+                                        scopedSlots: _vm._u([
+                                          {
+                                            key: "selection",
+                                            fn: function(ref) {
+                                              var index = ref.index
+                                              var text = ref.text
+                                              return [
+                                                index < 2
+                                                  ? _c(
+                                                      "v-chip",
+                                                      {
+                                                        attrs: {
+                                                          color:
+                                                            "deep-purple accent-4",
+                                                          dark: "",
+                                                          label: "",
+                                                          small: ""
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                " +
+                                                            _vm._s(text) +
+                                                            "\n                                "
+                                                        )
+                                                      ]
+                                                    )
+                                                  : index === 2
+                                                  ? _c(
+                                                      "span",
+                                                      {
+                                                        staticClass:
+                                                          "overline grey--text text--darken-3 mx-2"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                +" +
+                                                            _vm._s(
+                                                              _vm.file.length -
+                                                                2
+                                                            ) +
+                                                            " File(s)\n                                "
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e()
+                                              ]
+                                            }
+                                          }
+                                        ]),
+                                        model: {
+                                          value: _vm.file,
+                                          callback: function($$v) {
+                                            _vm.file = $$v
+                                          },
+                                          expression: "file"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        ref: "file",
+                                        staticStyle: { display: "none" },
+                                        attrs: { type: "file", accept: "*" },
+                                        on: { change: _vm.onFilePicked }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "" } },
+                                    [
+                                      _c(
+                                        "v-list",
+                                        { attrs: { subheader: "" } },
+                                        [
+                                          _c("v-subheader", [
+                                            _vm._v("Log Progress")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("v-divider"),
+                                          _vm._v(" "),
+                                          _vm._l(_vm.log_pengerjaan, function(
+                                            item
+                                          ) {
+                                            return _c(
+                                              "v-list-tile",
+                                              {
+                                                key: item.id,
+                                                attrs: { avatar: "" }
+                                              },
+                                              [
+                                                _c(
+                                                  "v-list-tile-avatar",
+                                                  [
+                                                    _c("v-icon", [
+                                                      _vm._v("folder")
+                                                    ])
+                                                  ],
+                                                  1
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "v-list-tile-content",
+                                                  [
+                                                    _c(
+                                                      "v-layout",
+                                                      {
+                                                        staticStyle: {
+                                                          width: "100%"
+                                                        },
+                                                        attrs: { row: "" }
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "v-flex",
+                                                          {
+                                                            attrs: { xs6: "" }
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "caption grey--text"
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  "File Name"
+                                                                )
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c("div", [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  item.fileName
+                                                                )
+                                                              )
+                                                            ])
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "v-flex",
+                                                          {
+                                                            attrs: { xs6: "" }
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "caption grey--text"
+                                                              },
+                                                              [_vm._v("Date")]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c("div", [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  item.date
+                                                                )
+                                                              )
+                                                            ])
+                                                          ]
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ],
+                                                  1
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "v-list-tile-action",
+                                                  [
+                                                    _c(
+                                                      "v-layout",
+                                                      { attrs: { row: "" } },
+                                                      [
+                                                        _c(
+                                                          "v-flex",
+                                                          {
+                                                            attrs: { xs6: "" }
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "v-btn",
+                                                              {
+                                                                attrs: {
+                                                                  icon: "",
+                                                                  ripple: ""
+                                                                },
+                                                                on: {
+                                                                  click: function(
+                                                                    $event
+                                                                  ) {
+                                                                    return _vm.downloadWithVueResource(
+                                                                      item
+                                                                    )
+                                                                  }
+                                                                }
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "v-icon",
+                                                                  {
+                                                                    attrs: {
+                                                                      color:
+                                                                        "grey lighten-1"
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      "cloud_download"
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ],
+                                                              1
+                                                            )
+                                                          ],
+                                                          1
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "v-flex",
+                                                          {
+                                                            attrs: { xs6: "" }
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "v-btn",
+                                                              {
+                                                                attrs: {
+                                                                  icon: "",
+                                                                  ripple: ""
+                                                                },
+                                                                on: {
+                                                                  click: function(
+                                                                    $event
+                                                                  ) {
+                                                                    _vm.noteDialog = !_vm.noteDialog
+                                                                    _vm.noteText =
+                                                                      item.note
+                                                                  }
+                                                                }
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "v-icon",
+                                                                  {
+                                                                    attrs: {
+                                                                      color:
+                                                                        "grey lighten-1"
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      "message"
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ],
+                                                              1
+                                                            )
+                                                          ],
+                                                          1
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          })
+                                        ],
+                                        2
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("small", [_vm._v("*indicates required field")])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-divider"),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "blue darken-1", flat: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.taskDialog = false
+                                }
+                              }
+                            },
+                            [_vm._v("Close")]
+                          ),
+                          _vm._v(" "),
+                          _vm.editTask.status == "untake"
+                            ? _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "blue darken-1", flat: "" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.taskDialog = false
+                                    }
+                                  }
+                                },
+                                [_vm._v("Take")]
+                              )
+                            : _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "blue darken-1", flat: "" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.taskDialog = false
+                                    }
+                                  }
+                                },
+                                [_vm._v("Save")]
+                              )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { row: "", "justify-center": "" } },
+            [
+              _c(
+                "v-dialog",
+                {
+                  attrs: {
+                    fullscreen: "",
+                    "hide-overlay": "",
+                    transition: "dialog-bottom-transition"
+                  },
+                  model: {
+                    value: _vm.addDialog,
+                    callback: function($$v) {
+                      _vm.addDialog = $$v
+                    },
+                    expression: "addDialog"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-toolbar",
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { icon: "", dark: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.closeAddDialog()
+                                }
+                              }
+                            },
+                            [_c("v-icon", [_vm._v("close")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-toolbar-title",
+                            { staticClass: "white--text" },
+                            [_vm._v("Add Project")]
+                          ),
+                          _vm._v(" "),
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-toolbar-items",
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { dark: "", flat: "" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.addProject(_vm.editProject)
+                                      _vm.closeAddDialog()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Save")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-container",
+                        { attrs: { fluid: "" } },
+                        [
+                          _c(
+                            "v-layout",
+                            { attrs: { row: "", wrap: "" } },
+                            [
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    { attrs: { height: "100%" } },
+                                    [
+                                      _c(
+                                        "v-card-title",
+                                        { staticClass: "justify-center" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "headline" },
+                                            [_vm._v("Project Information")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-card-text",
+                                        [
+                                          _c(
+                                            "v-container",
+                                            [
+                                              _c(
+                                                "v-layout",
+                                                {
+                                                  attrs: { row: "", wrap: "" }
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs12: "" } },
+                                                    [
+                                                      _c("v-text-field", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label: "Project Name",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editProject
+                                                              .title,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editProject,
+                                                              "title",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editProject.title"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      staticClass: "pr-2",
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md6: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-text-field", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label: "Value",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editProject
+                                                              .value,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editProject,
+                                                              "value",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editProject.value"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md6: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-text-field", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label:
+                                                            "Target Outcome",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editProject
+                                                              .target_outcome,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editProject,
+                                                              "target_outcome",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editProject.target_outcome"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      staticClass: "pr-2",
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md6: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-menu",
+                                                        {
+                                                          attrs: {
+                                                            "close-on-content-click": false,
+                                                            "nudge-right": 40,
+                                                            transition:
+                                                              "scale-transition",
+                                                            "offset-y": "",
+                                                            "full-width": "",
+                                                            "min-width": "290px"
+                                                          },
+                                                          scopedSlots: _vm._u([
+                                                            {
+                                                              key: "activator",
+                                                              fn: function(
+                                                                ref
+                                                              ) {
+                                                                var on = ref.on
+                                                                return [
+                                                                  _c(
+                                                                    "v-text-field",
+                                                                    _vm._g(
+                                                                      {
+                                                                        attrs: {
+                                                                          label:
+                                                                            "Start Date",
+                                                                          "prepend-icon":
+                                                                            "event",
+                                                                          box:
+                                                                            "",
+                                                                          readonly:
+                                                                            ""
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .editProject
+                                                                              .start,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm.editProject,
+                                                                              "start",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "editProject.start"
+                                                                        }
+                                                                      },
+                                                                      on
+                                                                    )
+                                                                  )
+                                                                ]
+                                                              }
+                                                            }
+                                                          ]),
+                                                          model: {
+                                                            value:
+                                                              _vm.startDate,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.startDate = $$v
+                                                            },
+                                                            expression:
+                                                              "startDate"
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(" "),
+                                                          _c("v-date-picker", {
+                                                            on: {
+                                                              input: function(
+                                                                $event
+                                                              ) {
+                                                                _vm.startDate = false
+                                                              }
+                                                            },
+                                                            model: {
+                                                              value:
+                                                                _vm.editProject
+                                                                  .start,
+                                                              callback: function(
+                                                                $$v
+                                                              ) {
+                                                                _vm.$set(
+                                                                  _vm.editProject,
+                                                                  "start",
+                                                                  $$v
+                                                                )
+                                                              },
+                                                              expression:
+                                                                "editProject.start"
+                                                            }
+                                                          })
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md6: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-menu",
+                                                        {
+                                                          attrs: {
+                                                            "close-on-content-click": false,
+                                                            "nudge-right": 40,
+                                                            transition:
+                                                              "scale-transition",
+                                                            "offset-y": "",
+                                                            "full-width": "",
+                                                            "min-width": "290px"
+                                                          },
+                                                          scopedSlots: _vm._u([
+                                                            {
+                                                              key: "activator",
+                                                              fn: function(
+                                                                ref
+                                                              ) {
+                                                                var on = ref.on
+                                                                return [
+                                                                  _c(
+                                                                    "v-text-field",
+                                                                    _vm._g(
+                                                                      {
+                                                                        attrs: {
+                                                                          label:
+                                                                            "Finish Date",
+                                                                          "prepend-icon":
+                                                                            "event",
+                                                                          box:
+                                                                            "",
+                                                                          readonly:
+                                                                            ""
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .editProject
+                                                                              .due,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm.editProject,
+                                                                              "due",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "editProject.due"
+                                                                        }
+                                                                      },
+                                                                      on
+                                                                    )
+                                                                  )
+                                                                ]
+                                                              }
+                                                            }
+                                                          ]),
+                                                          model: {
+                                                            value:
+                                                              _vm.finishDate,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.finishDate = $$v
+                                                            },
+                                                            expression:
+                                                              "finishDate"
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(" "),
+                                                          _c("v-date-picker", {
+                                                            on: {
+                                                              input: function(
+                                                                $event
+                                                              ) {
+                                                                _vm.finishDate = false
+                                                              }
+                                                            },
+                                                            model: {
+                                                              value:
+                                                                _vm.editProject
+                                                                  .due,
+                                                              callback: function(
+                                                                $$v
+                                                              ) {
+                                                                _vm.$set(
+                                                                  _vm.editProject,
+                                                                  "due",
+                                                                  $$v
+                                                                )
+                                                              },
+                                                              expression:
+                                                                "editProject.due"
+                                                            }
+                                                          })
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs12: "" } },
+                                                    [
+                                                      _c("v-textarea", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label: "Note",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editProject
+                                                              .note,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editProject,
+                                                              "note",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editProject.note"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    { attrs: { height: "100%" } },
+                                    [
+                                      _c(
+                                        "v-card-title",
+                                        { staticClass: "justify-center" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "headline" },
+                                            [_vm._v("Client Information")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-card-text",
+                                        [
+                                          _c(
+                                            "v-container",
+                                            [
+                                              _c(
+                                                "v-layout",
+                                                {
+                                                  attrs: { row: "", wrap: "" }
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs8: "" } },
+                                                    [
+                                                      _c("v-text-field", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label: "Client Name",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editProject
+                                                              .client_name,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editProject,
+                                                              "client_name",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editProject.client_name"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs12: "" } },
+                                                    [
+                                                      _c("v-textarea", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label:
+                                                            "Client Address",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editProject
+                                                              .client_address,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editProject,
+                                                              "client_address",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editProject.client_address"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    { attrs: { height: "100%" } },
+                                    [
+                                      _c(
+                                        "v-card-title",
+                                        { staticClass: "justify-center" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "headline" },
+                                            [_vm._v("Task Desk")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-card-text",
+                                        [
+                                          _c(
+                                            "v-container",
+                                            [
+                                              _c(
+                                                "v-layout",
+                                                {
+                                                  attrs: { row: "", wrap: "" }
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs8: "" } },
+                                                    [
+                                                      _c("v-text-field", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label: "Task Name",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editTask.title,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editTask,
+                                                              "title",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editTask.title"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      staticClass: "pr-2",
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md6: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-select", {
+                                                        attrs: {
+                                                          items: _vm.division,
+                                                          box: "",
+                                                          label: "Division",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editTask
+                                                              .division,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editTask,
+                                                              "division",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editTask.division"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md6: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-menu",
+                                                        {
+                                                          attrs: {
+                                                            "close-on-content-click": false,
+                                                            "nudge-right": 40,
+                                                            transition:
+                                                              "scale-transition",
+                                                            "offset-y": "",
+                                                            "full-width": "",
+                                                            "min-width": "290px"
+                                                          },
+                                                          scopedSlots: _vm._u([
+                                                            {
+                                                              key: "activator",
+                                                              fn: function(
+                                                                ref
+                                                              ) {
+                                                                var on = ref.on
+                                                                return [
+                                                                  _c(
+                                                                    "v-text-field",
+                                                                    _vm._g(
+                                                                      {
+                                                                        attrs: {
+                                                                          label:
+                                                                            "Due Date",
+                                                                          "prepend-icon":
+                                                                            "event",
+                                                                          box:
+                                                                            "",
+                                                                          readonly:
+                                                                            ""
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .editTask
+                                                                              .due,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm.editTask,
+                                                                              "due",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "editTask.due"
+                                                                        }
+                                                                      },
+                                                                      on
+                                                                    )
+                                                                  )
+                                                                ]
+                                                              }
+                                                            }
+                                                          ]),
+                                                          model: {
+                                                            value:
+                                                              _vm.dateDialog,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.dateDialog = $$v
+                                                            },
+                                                            expression:
+                                                              "dateDialog"
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(" "),
+                                                          _c("v-date-picker", {
+                                                            on: {
+                                                              input: function(
+                                                                $event
+                                                              ) {
+                                                                _vm.dateDialog = false
+                                                              }
+                                                            },
+                                                            model: {
+                                                              value:
+                                                                _vm.editTask
+                                                                  .due,
+                                                              callback: function(
+                                                                $$v
+                                                              ) {
+                                                                _vm.$set(
+                                                                  _vm.editTask,
+                                                                  "due",
+                                                                  $$v
+                                                                )
+                                                              },
+                                                              expression:
+                                                                "editTask.due"
+                                                            }
+                                                          })
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs12: "" } },
+                                                    [
+                                                      _c("v-textarea", {
+                                                        attrs: {
+                                                          box: "",
+                                                          label: "Description",
+                                                          "prepend-icon":
+                                                            "contact_support"
+                                                        },
+                                                        model: {
+                                                          value:
+                                                            _vm.editTask.desc,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              _vm.editTask,
+                                                              "desc",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "editTask.desc"
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    { attrs: { xs12: "" } },
+                                                    [
+                                                      _c(
+                                                        "v-btn",
+                                                        {
+                                                          attrs: {
+                                                            color: "green"
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              return _vm.addTask(
+                                                                _vm.editTask
+                                                              )
+                                                            }
+                                                          }
+                                                        },
+                                                        [_vm._v("Add Task")]
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("v-divider"),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "" } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    [
+                                      _c(
+                                        "v-card-title",
+                                        { staticClass: "justify-center" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "headline" },
+                                            [_vm._v("Task List")]
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _vm.editProject.tasks.length != 0
+                                    ? _c(
+                                        "v-card-text",
+                                        _vm._l(_vm.editProject.tasks, function(
+                                          task
+                                        ) {
+                                          return _c(
+                                            "v-card",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "ripple",
+                                                  rawName: "v-ripple"
+                                                }
+                                              ],
+                                              key: task.title,
+                                              staticClass: "scroll-y",
+                                              staticStyle: {
+                                                background: "#424242 !important"
+                                              },
+                                              attrs: { hover: "", flat: "" },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.openTaskDialog(
+                                                    task
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "v-layout",
+                                                {
+                                                  class:
+                                                    "pa-3  project " +
+                                                    task.status,
+                                                  attrs: { row: "", wrap: "" }
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs12: "",
+                                                        md4: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "caption grey--text"
+                                                        },
+                                                        [_vm._v("Division")]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c("div", [
+                                                        _vm._v(
+                                                          _vm._s(task.division)
+                                                        )
+                                                      ])
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs6: "",
+                                                        sm4: "",
+                                                        md2: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "caption grey--text"
+                                                        },
+                                                        [_vm._v("Task")]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c("div", [
+                                                        _vm._v(
+                                                          _vm._s(task.title)
+                                                        )
+                                                      ])
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs6: "",
+                                                        sm4: "",
+                                                        md2: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "caption grey--text"
+                                                        },
+                                                        [_vm._v("Due Date")]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c("div", [
+                                                        _vm._v(_vm._s(task.due))
+                                                      ])
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs6: "",
+                                                        sm4: "",
+                                                        md2: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "caption grey--text"
+                                                        },
+                                                        [_vm._v("Progress")]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        [
+                                                          _c(
+                                                            "v-progress-linear",
+                                                            {
+                                                              attrs: {
+                                                                color: "red",
+                                                                height: "20",
+                                                                value:
+                                                                  task.progress
+                                                              }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "p",
+                                                                {
+                                                                  staticClass:
+                                                                    "text-xs-center"
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    _vm._s(
+                                                                      task.progress
+                                                                    ) + "%"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ]
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-flex",
+                                                    {
+                                                      attrs: {
+                                                        xs2: "",
+                                                        sm4: "",
+                                                        md2: ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass: "right"
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-chip",
+                                                            {
+                                                              class:
+                                                                " white--text my-2 caption " +
+                                                                task.status,
+                                                              attrs: {
+                                                                small: ""
+                                                              }
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  task.status
+                                                                )
+                                                              )
+                                                            ]
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ]
+                                                  )
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c("v-divider")
+                                            ],
+                                            1
+                                          )
+                                        }),
+                                        1
+                                      )
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { row: "", "justify-center": "" } },
+            [
+              _c(
+                "v-dialog",
+                {
+                  attrs: {
+                    fullscreen: "",
+                    "hide-overlay": "",
+                    transition: "dialog-bottom-transition"
+                  },
+                  model: {
+                    value: _vm.addDialog2,
+                    callback: function($$v) {
+                      _vm.addDialog2 = $$v
+                    },
+                    expression: "addDialog2"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-toolbar",
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { icon: "", dark: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.addDialog2 = !_vm.addDialog2
+                                }
+                              }
+                            },
+                            [_c("v-icon", [_vm._v("close")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-toolbar-title",
+                            { staticClass: "white--text" },
+                            [_vm._v("Add Project")]
+                          ),
+                          _vm._v(" "),
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-toolbar-items",
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { dark: "", flat: "" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.addDialog2 = !_vm.addDialog2
+                                    }
+                                  }
+                                },
+                                [_vm._v("Save")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-container",
+                        { attrs: { fluid: "" } },
+                        [
+                          _c(
+                            "v-layout",
+                            { attrs: { row: "", wrap: "" } },
+                            [
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md8: "" } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    {
+                                      staticStyle: { margin: "4px" },
+                                      attrs: {
+                                        color: "grey darken-2",
+                                        height: "100%"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "v-card-title",
+                                        { staticClass: "justify-center" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "headline" },
+                                            [_vm._v("Project Form")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-card-text",
+                                        [
+                                          _c(
+                                            "v-stepper",
+                                            {
+                                              model: {
+                                                value: _vm.e1,
+                                                callback: function($$v) {
+                                                  _vm.e1 = $$v
+                                                },
+                                                expression: "e1"
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "v-stepper-header",
+                                                [
+                                                  _c(
+                                                    "v-stepper-step",
+                                                    {
+                                                      attrs: {
+                                                        complete: "",
+                                                        editable: "",
+                                                        step: "1"
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                                Project Information\n                                                "
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("v-divider"),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-stepper-step",
+                                                    {
+                                                      attrs: {
+                                                        complete: "",
+                                                        editable: "",
+                                                        step: "2"
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                                Division\n                                                "
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("v-divider"),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-stepper-step",
+                                                    {
+                                                      attrs: {
+                                                        complete: "",
+                                                        editable: "",
+                                                        step: "3"
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                                Sub Divison\n                                                "
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("v-divider"),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-stepper-step",
+                                                    {
+                                                      attrs: {
+                                                        complete: "",
+                                                        editable: "",
+                                                        step: "4"
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                                Task\n                                                "
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("v-divider"),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-stepper-step",
+                                                    {
+                                                      attrs: {
+                                                        complete: "",
+                                                        editable: "",
+                                                        step: "5"
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                                Sub Task\n                                                "
+                                                      )
+                                                    ]
+                                                  )
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-stepper-items",
+                                                [
+                                                  _c(
+                                                    "v-stepper-content",
+                                                    { attrs: { step: "1" } },
+                                                    [
+                                                      _c(
+                                                        "v-card",
+                                                        {
+                                                          attrs: {
+                                                            height: "100%"
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-card-text",
+                                                            [
+                                                              _c(
+                                                                "v-container",
+                                                                [
+                                                                  _c(
+                                                                    "v-layout",
+                                                                    {
+                                                                      attrs: {
+                                                                        row: "",
+                                                                        wrap: ""
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "v-flex",
+                                                                        {
+                                                                          attrs: {
+                                                                            xs12:
+                                                                              ""
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-text-field",
+                                                                            {
+                                                                              attrs: {
+                                                                                box:
+                                                                                  "",
+                                                                                label:
+                                                                                  "Project Name",
+                                                                                "prepend-icon":
+                                                                                  "contact_support"
+                                                                              },
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm
+                                                                                    .editProject
+                                                                                    .title,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.$set(
+                                                                                    _vm.editProject,
+                                                                                    "title",
+                                                                                    $$v
+                                                                                  )
+                                                                                },
+                                                                                expression:
+                                                                                  "editProject.title"
+                                                                              }
+                                                                            }
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-flex",
+                                                                        {
+                                                                          staticClass:
+                                                                            "pr-2",
+                                                                          attrs: {
+                                                                            xs12:
+                                                                              "",
+                                                                            md6:
+                                                                              ""
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-text-field",
+                                                                            {
+                                                                              attrs: {
+                                                                                box:
+                                                                                  "",
+                                                                                label:
+                                                                                  "Value",
+                                                                                "prepend-icon":
+                                                                                  "contact_support"
+                                                                              },
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm
+                                                                                    .editProject
+                                                                                    .value,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.$set(
+                                                                                    _vm.editProject,
+                                                                                    "value",
+                                                                                    $$v
+                                                                                  )
+                                                                                },
+                                                                                expression:
+                                                                                  "editProject.value"
+                                                                              }
+                                                                            }
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-flex",
+                                                                        {
+                                                                          attrs: {
+                                                                            xs12:
+                                                                              "",
+                                                                            md6:
+                                                                              ""
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-text-field",
+                                                                            {
+                                                                              attrs: {
+                                                                                box:
+                                                                                  "",
+                                                                                label:
+                                                                                  "Target Outcome",
+                                                                                "prepend-icon":
+                                                                                  "contact_support"
+                                                                              },
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm
+                                                                                    .editProject
+                                                                                    .target_outcome,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.$set(
+                                                                                    _vm.editProject,
+                                                                                    "target_outcome",
+                                                                                    $$v
+                                                                                  )
+                                                                                },
+                                                                                expression:
+                                                                                  "editProject.target_outcome"
+                                                                              }
+                                                                            }
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-flex",
+                                                                        {
+                                                                          staticClass:
+                                                                            "pr-2",
+                                                                          attrs: {
+                                                                            xs12:
+                                                                              "",
+                                                                            md6:
+                                                                              ""
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-menu",
+                                                                            {
+                                                                              attrs: {
+                                                                                "close-on-content-click": false,
+                                                                                "nudge-right": 40,
+                                                                                transition:
+                                                                                  "scale-transition",
+                                                                                "offset-y":
+                                                                                  "",
+                                                                                "full-width":
+                                                                                  "",
+                                                                                "min-width":
+                                                                                  "290px"
+                                                                              },
+                                                                              scopedSlots: _vm._u(
+                                                                                [
+                                                                                  {
+                                                                                    key:
+                                                                                      "activator",
+                                                                                    fn: function(
+                                                                                      ref
+                                                                                    ) {
+                                                                                      var on =
+                                                                                        ref.on
+                                                                                      return [
+                                                                                        _c(
+                                                                                          "v-text-field",
+                                                                                          _vm._g(
+                                                                                            {
+                                                                                              attrs: {
+                                                                                                label:
+                                                                                                  "Start Date",
+                                                                                                "prepend-icon":
+                                                                                                  "event",
+                                                                                                box:
+                                                                                                  "",
+                                                                                                readonly:
+                                                                                                  ""
+                                                                                              },
+                                                                                              model: {
+                                                                                                value:
+                                                                                                  _vm
+                                                                                                    .editProject
+                                                                                                    .start,
+                                                                                                callback: function(
+                                                                                                  $$v
+                                                                                                ) {
+                                                                                                  _vm.$set(
+                                                                                                    _vm.editProject,
+                                                                                                    "start",
+                                                                                                    $$v
+                                                                                                  )
+                                                                                                },
+                                                                                                expression:
+                                                                                                  "editProject.start"
+                                                                                              }
+                                                                                            },
+                                                                                            on
+                                                                                          )
+                                                                                        )
+                                                                                      ]
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              ),
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm.startDate,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.startDate = $$v
+                                                                                },
+                                                                                expression:
+                                                                                  "startDate"
+                                                                              }
+                                                                            },
+                                                                            [
+                                                                              _vm._v(
+                                                                                " "
+                                                                              ),
+                                                                              _c(
+                                                                                "v-date-picker",
+                                                                                {
+                                                                                  on: {
+                                                                                    input: function(
+                                                                                      $event
+                                                                                    ) {
+                                                                                      _vm.startDate = false
+                                                                                    }
+                                                                                  },
+                                                                                  model: {
+                                                                                    value:
+                                                                                      _vm
+                                                                                        .editProject
+                                                                                        .start,
+                                                                                    callback: function(
+                                                                                      $$v
+                                                                                    ) {
+                                                                                      _vm.$set(
+                                                                                        _vm.editProject,
+                                                                                        "start",
+                                                                                        $$v
+                                                                                      )
+                                                                                    },
+                                                                                    expression:
+                                                                                      "editProject.start"
+                                                                                  }
+                                                                                }
+                                                                              )
+                                                                            ],
+                                                                            1
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-flex",
+                                                                        {
+                                                                          attrs: {
+                                                                            xs12:
+                                                                              "",
+                                                                            md6:
+                                                                              ""
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-menu",
+                                                                            {
+                                                                              attrs: {
+                                                                                "close-on-content-click": false,
+                                                                                "nudge-right": 40,
+                                                                                transition:
+                                                                                  "scale-transition",
+                                                                                "offset-y":
+                                                                                  "",
+                                                                                "full-width":
+                                                                                  "",
+                                                                                "min-width":
+                                                                                  "290px"
+                                                                              },
+                                                                              scopedSlots: _vm._u(
+                                                                                [
+                                                                                  {
+                                                                                    key:
+                                                                                      "activator",
+                                                                                    fn: function(
+                                                                                      ref
+                                                                                    ) {
+                                                                                      var on =
+                                                                                        ref.on
+                                                                                      return [
+                                                                                        _c(
+                                                                                          "v-text-field",
+                                                                                          _vm._g(
+                                                                                            {
+                                                                                              attrs: {
+                                                                                                label:
+                                                                                                  "Finish Date",
+                                                                                                "prepend-icon":
+                                                                                                  "event",
+                                                                                                box:
+                                                                                                  "",
+                                                                                                readonly:
+                                                                                                  ""
+                                                                                              },
+                                                                                              model: {
+                                                                                                value:
+                                                                                                  _vm
+                                                                                                    .editProject
+                                                                                                    .due,
+                                                                                                callback: function(
+                                                                                                  $$v
+                                                                                                ) {
+                                                                                                  _vm.$set(
+                                                                                                    _vm.editProject,
+                                                                                                    "due",
+                                                                                                    $$v
+                                                                                                  )
+                                                                                                },
+                                                                                                expression:
+                                                                                                  "editProject.due"
+                                                                                              }
+                                                                                            },
+                                                                                            on
+                                                                                          )
+                                                                                        )
+                                                                                      ]
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              ),
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm.finishDate,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.finishDate = $$v
+                                                                                },
+                                                                                expression:
+                                                                                  "finishDate"
+                                                                              }
+                                                                            },
+                                                                            [
+                                                                              _vm._v(
+                                                                                " "
+                                                                              ),
+                                                                              _c(
+                                                                                "v-date-picker",
+                                                                                {
+                                                                                  on: {
+                                                                                    input: function(
+                                                                                      $event
+                                                                                    ) {
+                                                                                      _vm.finishDate = false
+                                                                                    }
+                                                                                  },
+                                                                                  model: {
+                                                                                    value:
+                                                                                      _vm
+                                                                                        .editProject
+                                                                                        .due,
+                                                                                    callback: function(
+                                                                                      $$v
+                                                                                    ) {
+                                                                                      _vm.$set(
+                                                                                        _vm.editProject,
+                                                                                        "due",
+                                                                                        $$v
+                                                                                      )
+                                                                                    },
+                                                                                    expression:
+                                                                                      "editProject.due"
+                                                                                  }
+                                                                                }
+                                                                              )
+                                                                            ],
+                                                                            1
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-flex",
+                                                                        {
+                                                                          attrs: {
+                                                                            xs12:
+                                                                              ""
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-textarea",
+                                                                            {
+                                                                              attrs: {
+                                                                                box:
+                                                                                  "",
+                                                                                label:
+                                                                                  "Note",
+                                                                                "prepend-icon":
+                                                                                  "contact_support"
+                                                                              },
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm
+                                                                                    .editProject
+                                                                                    .note,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.$set(
+                                                                                    _vm.editProject,
+                                                                                    "note",
+                                                                                    $$v
+                                                                                  )
+                                                                                },
+                                                                                expression:
+                                                                                  "editProject.note"
+                                                                              }
+                                                                            }
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      )
+                                                                    ],
+                                                                    1
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        {
+                                                          attrs: {
+                                                            color: "primary"
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              _vm.e1 = 2
+                                                            }
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                Next\n                                                "
+                                                          )
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        { attrs: { flat: "" } },
+                                                        [_vm._v("Cancel")]
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-stepper-content",
+                                                    { attrs: { step: "2" } },
+                                                    [
+                                                      _c(
+                                                        "v-card",
+                                                        {
+                                                          attrs: {
+                                                            height: "100%"
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-card-text",
+                                                            [
+                                                              _c(
+                                                                "v-container",
+                                                                [
+                                                                  _c(
+                                                                    "v-toolbar",
+                                                                    {
+                                                                      attrs: {
+                                                                        flat:
+                                                                          "",
+                                                                        color:
+                                                                          "grey darken-3"
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "v-text-field",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-1",
+                                                                          attrs: {
+                                                                            label:
+                                                                              "Name",
+                                                                            box:
+                                                                              ""
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-text-field",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-1",
+                                                                          attrs: {
+                                                                            label:
+                                                                              "Contribute",
+                                                                            box:
+                                                                              ""
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-text-field",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-1",
+                                                                          attrs: {
+                                                                            label:
+                                                                              "Target Date",
+                                                                            box:
+                                                                              ""
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-divider",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-2",
+                                                                          attrs: {
+                                                                            inset:
+                                                                              "",
+                                                                            vertical:
+                                                                              ""
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-btn",
+                                                                        [
+                                                                          _vm._v(
+                                                                            "Add"
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    ],
+                                                                    1
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "v-data-table",
+                                                                    {
+                                                                      attrs: {
+                                                                        headers:
+                                                                          _vm.div_headers,
+                                                                        items:
+                                                                          _vm.ad_division
+                                                                      },
+                                                                      scopedSlots: _vm._u(
+                                                                        [
+                                                                          {
+                                                                            key:
+                                                                              "items",
+                                                                            fn: function(
+                                                                              props
+                                                                            ) {
+                                                                              return [
+                                                                                _c(
+                                                                                  "td",
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .name,
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          large:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "name",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "name",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-text-field",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        label:
+                                                                                                          "Edit",
+                                                                                                        "single-line":
+                                                                                                          "",
+                                                                                                        counter:
+                                                                                                          ""
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .name,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "name",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.name"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _vm._v(
+                                                                                          " " +
+                                                                                            _vm._s(
+                                                                                              props
+                                                                                                .item
+                                                                                                .name
+                                                                                            ) +
+                                                                                            "\n                                                                    "
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-right"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .contribute,
+                                                                                          large:
+                                                                                            "",
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "contribute",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "contribute",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-text-field",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        label:
+                                                                                                          "Edit",
+                                                                                                        "single-line":
+                                                                                                          "",
+                                                                                                        counter:
+                                                                                                          "",
+                                                                                                        autofocus:
+                                                                                                          ""
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .contribute,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "contribute",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.contribute"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .contribute
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-right"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .due_date,
+                                                                                          large:
+                                                                                            "",
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "due_date",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "due_date",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-text-field",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        label:
+                                                                                                          "Edit",
+                                                                                                        "single-line":
+                                                                                                          "",
+                                                                                                        counter:
+                                                                                                          "",
+                                                                                                        autofocus:
+                                                                                                          ""
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .due_date,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "due_date",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.due_date"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .due_date
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                )
+                                                                              ]
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      )
+                                                                    }
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        {
+                                                          attrs: {
+                                                            color: "primary"
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              _vm.e1 = 3
+                                                            }
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                Next\n                                                "
+                                                          )
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        { attrs: { flat: "" } },
+                                                        [_vm._v("Cancel")]
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-stepper-content",
+                                                    { attrs: { step: "3" } },
+                                                    [
+                                                      _c("v-card", {
+                                                        staticClass: "mb-5",
+                                                        attrs: {
+                                                          color:
+                                                            "grey lighten-1",
+                                                          height: "200px"
+                                                        }
+                                                      }),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        {
+                                                          attrs: {
+                                                            color: "primary"
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              _vm.e1 = 4
+                                                            }
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                Continue\n                                                "
+                                                          )
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        { attrs: { flat: "" } },
+                                                        [_vm._v("Cancel")]
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-stepper-content",
+                                                    { attrs: { step: "4" } },
+                                                    [
+                                                      _c("v-card", {
+                                                        staticClass: "mb-5",
+                                                        attrs: {
+                                                          color:
+                                                            "grey lighten-1",
+                                                          height: "200px"
+                                                        }
+                                                      }),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        {
+                                                          attrs: {
+                                                            color: "primary"
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              _vm.e1 = 5
+                                                            }
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                Continue\n                                                "
+                                                          )
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        { attrs: { flat: "" } },
+                                                        [_vm._v("Cancel")]
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    {
+                                      staticStyle: { margin: "4px" },
+                                      attrs: {
+                                        color: "grey darken-2",
+                                        height: "100%"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "v-card-title",
+                                        { staticClass: "justify-center" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "headline" },
+                                            [_vm._v("Project Structure")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-card-text",
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                slot: "activator",
+                                                small: ""
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.expandDetail = !_vm.expandDetail
+                                                }
+                                              },
+                                              slot: "activator"
+                                            },
+                                            [
+                                              _c(
+                                                "v-icon",
+                                                {
+                                                  attrs: { small: "", left: "" }
+                                                },
+                                                [_vm._v("filter_list")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                { staticClass: "caption " },
+                                                [_vm._v("Expand")]
+                                              )
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list",
+                                            {
+                                              staticStyle: {
+                                                height: "300px",
+                                                "overflow-y": "auto"
+                                              },
+                                              attrs: { expand: "" }
+                                            },
+                                            [
+                                              _c(
+                                                "v-list-group",
+                                                {
+                                                  attrs: { value: "true" },
+                                                  scopedSlots: _vm._u([
+                                                    {
+                                                      key: "activator",
+                                                      fn: function() {
+                                                        return [
+                                                          _c(
+                                                            "v-list-tile",
+                                                            [
+                                                              _c(
+                                                                "v-list-tile-content",
+                                                                [
+                                                                  _c(
+                                                                    "v-list-tile-title",
+                                                                    [
+                                                                      _c(
+                                                                        "span",
+                                                                        [
+                                                                          _vm._v(
+                                                                            " Project Title"
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    ]
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ]
+                                                      },
+                                                      proxy: true
+                                                    }
+                                                  ])
+                                                },
+                                                [
+                                                  _vm._v(" "),
+                                                  _vm._l(
+                                                    _vm.d_division,
+                                                    function(div) {
+                                                      return _c(
+                                                        "v-list-group",
+                                                        {
+                                                          key: div.id,
+                                                          staticClass:
+                                                            "pl-2 pr-2",
+                                                          attrs: {
+                                                            value:
+                                                              _vm.expandDetail
+                                                          },
+                                                          scopedSlots: _vm._u(
+                                                            [
+                                                              {
+                                                                key:
+                                                                  "activator",
+                                                                fn: function() {
+                                                                  return [
+                                                                    _c(
+                                                                      "v-list-tile",
+                                                                      {
+                                                                        staticClass:
+                                                                          "d_div"
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "v-list-tile-content",
+                                                                          [
+                                                                            _c(
+                                                                              "v-list-tile-title",
+                                                                              [
+                                                                                _vm._v(
+                                                                                  _vm._s(
+                                                                                    div.name
+                                                                                  ) +
+                                                                                    "\n                                                                "
+                                                                                )
+                                                                              ]
+                                                                            )
+                                                                          ],
+                                                                          1
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    )
+                                                                  ]
+                                                                },
+                                                                proxy: true
+                                                              }
+                                                            ],
+                                                            null,
+                                                            true
+                                                          )
+                                                        },
+                                                        [
+                                                          _vm._v(" "),
+                                                          _vm._l(
+                                                            _vm.d_sub_division,
+                                                            function(subdiv) {
+                                                              return _c(
+                                                                "v-list-group",
+                                                                {
+                                                                  key:
+                                                                    subdiv.id,
+                                                                  staticClass:
+                                                                    "pl-2 pr-2",
+                                                                  attrs: {
+                                                                    value:
+                                                                      _vm.expandDetail
+                                                                  },
+                                                                  scopedSlots: _vm._u(
+                                                                    [
+                                                                      {
+                                                                        key:
+                                                                          "activator",
+                                                                        fn: function() {
+                                                                          return [
+                                                                            _c(
+                                                                              "v-list-tile",
+                                                                              {
+                                                                                staticClass:
+                                                                                  "d_sub_div"
+                                                                              },
+                                                                              [
+                                                                                _c(
+                                                                                  "v-list-tile-content",
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-list-tile-title",
+                                                                                      [
+                                                                                        _vm._v(
+                                                                                          _vm._s(
+                                                                                            subdiv.name
+                                                                                          ) +
+                                                                                            "\n                                                                    "
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                )
+                                                                              ],
+                                                                              1
+                                                                            )
+                                                                          ]
+                                                                        },
+                                                                        proxy: true
+                                                                      }
+                                                                    ],
+                                                                    null,
+                                                                    true
+                                                                  )
+                                                                },
+                                                                [
+                                                                  _vm._v(" "),
+                                                                  _vm._l(
+                                                                    _vm.d_task,
+                                                                    function(
+                                                                      task
+                                                                    ) {
+                                                                      return _c(
+                                                                        "v-list-group",
+                                                                        {
+                                                                          key:
+                                                                            task.id,
+                                                                          staticClass:
+                                                                            "pl-2 pr-2",
+                                                                          attrs: {
+                                                                            value:
+                                                                              _vm.expandDetail
+                                                                          },
+                                                                          scopedSlots: _vm._u(
+                                                                            [
+                                                                              {
+                                                                                key:
+                                                                                  "activator",
+                                                                                fn: function() {
+                                                                                  return [
+                                                                                    _c(
+                                                                                      "v-list-tile",
+                                                                                      {
+                                                                                        staticClass:
+                                                                                          "d_task"
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "v-list-tile-content",
+                                                                                          [
+                                                                                            _c(
+                                                                                              "v-list-tile-title",
+                                                                                              [
+                                                                                                _vm._v(
+                                                                                                  _vm._s(
+                                                                                                    task.name
+                                                                                                  ) +
+                                                                                                    "\n                                                                        "
+                                                                                                )
+                                                                                              ]
+                                                                                            )
+                                                                                          ],
+                                                                                          1
+                                                                                        )
+                                                                                      ],
+                                                                                      1
+                                                                                    )
+                                                                                  ]
+                                                                                },
+                                                                                proxy: true
+                                                                              }
+                                                                            ],
+                                                                            null,
+                                                                            true
+                                                                          )
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _vm._l(
+                                                                            _vm.d_sub_task,
+                                                                            function(
+                                                                              subtask
+                                                                            ) {
+                                                                              return _c(
+                                                                                "v-list-tile",
+                                                                                {
+                                                                                  key:
+                                                                                    subtask.id,
+                                                                                  staticClass:
+                                                                                    "d_sub_task pl-2 pr-5 mr-3 "
+                                                                                },
+                                                                                [
+                                                                                  _c(
+                                                                                    "v-list-tile-content",
+                                                                                    [
+                                                                                      _c(
+                                                                                        "v-list-tile-title",
+                                                                                        [
+                                                                                          _vm._v(
+                                                                                            _vm._s(
+                                                                                              subtask.name
+                                                                                            ) +
+                                                                                              "\n                                                                    "
+                                                                                          )
+                                                                                        ]
+                                                                                      )
+                                                                                    ],
+                                                                                    1
+                                                                                  )
+                                                                                ],
+                                                                                1
+                                                                              )
+                                                                            }
+                                                                          )
+                                                                        ],
+                                                                        2
+                                                                      )
+                                                                    }
+                                                                  )
+                                                                ],
+                                                                2
+                                                              )
+                                                            }
+                                                          )
+                                                        ],
+                                                        2
+                                                      )
+                                                    }
+                                                  )
+                                                ],
+                                                2
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-dialog",
+            {
+              attrs: { "max-width": "290" },
+              model: {
+                value: _vm.noteDialog,
+                callback: function($$v) {
+                  _vm.noteDialog = $$v
+                },
+                expression: "noteDialog"
+              }
+            },
+            [
+              _c(
+                "v-card",
+                [
+                  _c("v-card-title", { staticClass: "headline" }, [
+                    _vm._v("Note")
+                  ]),
+                  _vm._v(" "),
+                  _c("v-card-text", [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.noteText) +
+                        "\n                "
+                    )
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { row: "", "justify-center": "" } },
+            [
+              _c(
+                "v-dialog",
+                {
+                  attrs: {
+                    fullscreen: "",
+                    "hide-overlay": "",
+                    transition: "dialog-bottom-transition"
+                  },
+                  model: {
+                    value: _vm.detailDialog,
+                    callback: function($$v) {
+                      _vm.detailDialog = $$v
+                    },
+                    expression: "detailDialog"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-toolbar",
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { icon: "", dark: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.detailDialog = !_vm.detailDialog
+                                }
+                              }
+                            },
+                            [_c("v-icon", [_vm._v("close")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-toolbar-title",
+                            { staticClass: "white--text" },
+                            [_vm._v("Detail Project")]
+                          ),
+                          _vm._v(" "),
+                          _c("v-spacer")
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-container",
+                        { attrs: { fluid: "" } },
+                        [
+                          _c(
+                            "v-layout",
+                            { attrs: { row: "", wrap: "" } },
+                            [
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md6: "" } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    {
+                                      staticStyle: { margin: "4px" },
+                                      attrs: {
+                                        color: "grey darken-2",
+                                        height: "100%"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "v-card-title",
+                                        { staticClass: "justify-center" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "headline" },
+                                            [_vm._v("Project Progress")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-card-text",
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                slot: "activator",
+                                                small: ""
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.expandDetail = !_vm.expandDetail
+                                                }
+                                              },
+                                              slot: "activator"
+                                            },
+                                            [
+                                              _c(
+                                                "v-icon",
+                                                {
+                                                  attrs: { small: "", left: "" }
+                                                },
+                                                [_vm._v("filter_list")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                { staticClass: "caption " },
+                                                [_vm._v("Expand")]
+                                              )
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list",
+                                            {
+                                              staticStyle: {
+                                                height: "300px",
+                                                "overflow-y": "auto"
+                                              },
+                                              attrs: { expand: "" }
+                                            },
+                                            [
+                                              _c(
+                                                "v-list-group",
+                                                {
+                                                  attrs: { value: "true" },
+                                                  scopedSlots: _vm._u([
+                                                    {
+                                                      key: "activator",
+                                                      fn: function() {
+                                                        return [
+                                                          _c(
+                                                            "v-list-tile",
+                                                            [
+                                                              _c(
+                                                                "v-list-tile-content",
+                                                                [
+                                                                  _c(
+                                                                    "v-list-tile-title",
+                                                                    [
+                                                                      _c(
+                                                                        "span",
+                                                                        [
+                                                                          _vm._v(
+                                                                            " Rumah Sakit Arsitektur"
+                                                                          )
+                                                                        ]
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "span",
+                                                                        {
+                                                                          staticClass:
+                                                                            "pl-5"
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            " 2 days remaining"
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    ]
+                                                                  )
+                                                                ],
+                                                                1
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "v-list-tile-action",
+                                                                {
+                                                                  staticStyle: {
+                                                                    "min-width":
+                                                                      "150px"
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "v-progress-linear",
+                                                                    {
+                                                                      attrs: {
+                                                                        color:
+                                                                          "red",
+                                                                        height:
+                                                                          "20",
+                                                                        value:
+                                                                          "70"
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "p",
+                                                                        {
+                                                                          staticClass:
+                                                                            "text-xs-center"
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            "70%"
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    ]
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ]
+                                                      },
+                                                      proxy: true
+                                                    }
+                                                  ])
+                                                },
+                                                [
+                                                  _vm._v(" "),
+                                                  _vm._l(
+                                                    _vm.d_division,
+                                                    function(div) {
+                                                      return _c(
+                                                        "v-list-group",
+                                                        {
+                                                          key: div.id,
+                                                          staticClass:
+                                                            "pl-2 pr-2",
+                                                          attrs: {
+                                                            value:
+                                                              _vm.expandDetail
+                                                          },
+                                                          scopedSlots: _vm._u(
+                                                            [
+                                                              {
+                                                                key:
+                                                                  "activator",
+                                                                fn: function() {
+                                                                  return [
+                                                                    _c(
+                                                                      "v-list-tile",
+                                                                      {
+                                                                        staticClass:
+                                                                          "d_div"
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "v-list-tile-content",
+                                                                          [
+                                                                            _c(
+                                                                              "v-list-tile-title",
+                                                                              [
+                                                                                _vm._v(
+                                                                                  _vm._s(
+                                                                                    div.name
+                                                                                  ) +
+                                                                                    "\n                                                                "
+                                                                                ),
+                                                                                _c(
+                                                                                  "span",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "pl-5"
+                                                                                  },
+                                                                                  [
+                                                                                    _vm._v(
+                                                                                      " 2 days remaining"
+                                                                                    )
+                                                                                  ]
+                                                                                )
+                                                                              ]
+                                                                            )
+                                                                          ],
+                                                                          1
+                                                                        ),
+                                                                        _vm._v(
+                                                                          " "
+                                                                        ),
+                                                                        _c(
+                                                                          "v-list-tile-action",
+                                                                          {
+                                                                            staticStyle: {
+                                                                              "min-width":
+                                                                                "150px"
+                                                                            }
+                                                                          },
+                                                                          [
+                                                                            _c(
+                                                                              "v-progress-linear",
+                                                                              {
+                                                                                attrs: {
+                                                                                  color:
+                                                                                    "red",
+                                                                                  height:
+                                                                                    "20",
+                                                                                  value:
+                                                                                    div.progress
+                                                                                }
+                                                                              },
+                                                                              [
+                                                                                _c(
+                                                                                  "p",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-center"
+                                                                                  },
+                                                                                  [
+                                                                                    _vm._v(
+                                                                                      _vm._s(
+                                                                                        div.progress
+                                                                                      ) +
+                                                                                        "%"
+                                                                                    )
+                                                                                  ]
+                                                                                )
+                                                                              ]
+                                                                            )
+                                                                          ],
+                                                                          1
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    )
+                                                                  ]
+                                                                },
+                                                                proxy: true
+                                                              }
+                                                            ],
+                                                            null,
+                                                            true
+                                                          )
+                                                        },
+                                                        [
+                                                          _vm._v(" "),
+                                                          _vm._l(
+                                                            _vm.d_sub_division,
+                                                            function(subdiv) {
+                                                              return _c(
+                                                                "v-list-group",
+                                                                {
+                                                                  key:
+                                                                    subdiv.id,
+                                                                  staticClass:
+                                                                    "pl-2 pr-2",
+                                                                  attrs: {
+                                                                    value:
+                                                                      _vm.expandDetail
+                                                                  },
+                                                                  scopedSlots: _vm._u(
+                                                                    [
+                                                                      {
+                                                                        key:
+                                                                          "activator",
+                                                                        fn: function() {
+                                                                          return [
+                                                                            _c(
+                                                                              "v-list-tile",
+                                                                              {
+                                                                                staticClass:
+                                                                                  "d_sub_div"
+                                                                              },
+                                                                              [
+                                                                                _c(
+                                                                                  "v-list-tile-content",
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-list-tile-title",
+                                                                                      [
+                                                                                        _vm._v(
+                                                                                          _vm._s(
+                                                                                            subdiv.name
+                                                                                          ) +
+                                                                                            "\n                                                                    "
+                                                                                        ),
+                                                                                        _c(
+                                                                                          "span",
+                                                                                          {
+                                                                                            staticClass:
+                                                                                              "pl-5"
+                                                                                          },
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              " 2 days remaining"
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "v-list-tile-action",
+                                                                                  {
+                                                                                    staticStyle: {
+                                                                                      "min-width":
+                                                                                        "150px"
+                                                                                    }
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-progress-linear",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          color:
+                                                                                            "red",
+                                                                                          height:
+                                                                                            "20",
+                                                                                          value:
+                                                                                            subdiv.progress
+                                                                                        }
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "p",
+                                                                                          {
+                                                                                            staticClass:
+                                                                                              "text-xs-center"
+                                                                                          },
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                subdiv.progress
+                                                                                              ) +
+                                                                                                "%"
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                )
+                                                                              ],
+                                                                              1
+                                                                            )
+                                                                          ]
+                                                                        },
+                                                                        proxy: true
+                                                                      }
+                                                                    ],
+                                                                    null,
+                                                                    true
+                                                                  )
+                                                                },
+                                                                [
+                                                                  _vm._v(" "),
+                                                                  _vm._l(
+                                                                    _vm.d_task,
+                                                                    function(
+                                                                      task
+                                                                    ) {
+                                                                      return _c(
+                                                                        "v-list-group",
+                                                                        {
+                                                                          key:
+                                                                            task.id,
+                                                                          staticClass:
+                                                                            "pl-2 pr-2",
+                                                                          attrs: {
+                                                                            value:
+                                                                              _vm.expandDetail
+                                                                          },
+                                                                          scopedSlots: _vm._u(
+                                                                            [
+                                                                              {
+                                                                                key:
+                                                                                  "activator",
+                                                                                fn: function() {
+                                                                                  return [
+                                                                                    _c(
+                                                                                      "v-list-tile",
+                                                                                      {
+                                                                                        staticClass:
+                                                                                          "d_task"
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "v-list-tile-content",
+                                                                                          [
+                                                                                            _c(
+                                                                                              "v-list-tile-title",
+                                                                                              [
+                                                                                                _vm._v(
+                                                                                                  _vm._s(
+                                                                                                    task.name
+                                                                                                  ) +
+                                                                                                    "\n                                                                        "
+                                                                                                ),
+                                                                                                _c(
+                                                                                                  "span",
+                                                                                                  {
+                                                                                                    staticClass:
+                                                                                                      "pl-5"
+                                                                                                  },
+                                                                                                  [
+                                                                                                    _vm._v(
+                                                                                                      " 2 days remaining"
+                                                                                                    )
+                                                                                                  ]
+                                                                                                )
+                                                                                              ]
+                                                                                            )
+                                                                                          ],
+                                                                                          1
+                                                                                        ),
+                                                                                        _vm._v(
+                                                                                          " "
+                                                                                        ),
+                                                                                        _c(
+                                                                                          "v-list-tile-action",
+                                                                                          {
+                                                                                            staticStyle: {
+                                                                                              "min-width":
+                                                                                                "150px"
+                                                                                            }
+                                                                                          },
+                                                                                          [
+                                                                                            _c(
+                                                                                              "v-progress-linear",
+                                                                                              {
+                                                                                                attrs: {
+                                                                                                  color:
+                                                                                                    "red",
+                                                                                                  height:
+                                                                                                    "20",
+                                                                                                  value:
+                                                                                                    task.progress
+                                                                                                }
+                                                                                              },
+                                                                                              [
+                                                                                                _c(
+                                                                                                  "p",
+                                                                                                  {
+                                                                                                    staticClass:
+                                                                                                      "text-xs-center"
+                                                                                                  },
+                                                                                                  [
+                                                                                                    _vm._v(
+                                                                                                      _vm._s(
+                                                                                                        task.progress
+                                                                                                      ) +
+                                                                                                        "%"
+                                                                                                    )
+                                                                                                  ]
+                                                                                                )
+                                                                                              ]
+                                                                                            )
+                                                                                          ],
+                                                                                          1
+                                                                                        )
+                                                                                      ],
+                                                                                      1
+                                                                                    )
+                                                                                  ]
+                                                                                },
+                                                                                proxy: true
+                                                                              }
+                                                                            ],
+                                                                            null,
+                                                                            true
+                                                                          )
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _vm._l(
+                                                                            _vm.d_sub_task,
+                                                                            function(
+                                                                              subtask
+                                                                            ) {
+                                                                              return _c(
+                                                                                "v-list-tile",
+                                                                                {
+                                                                                  key:
+                                                                                    subtask.id,
+                                                                                  staticClass:
+                                                                                    "d_sub_task pl-2 pr-5 mr-3 "
+                                                                                },
+                                                                                [
+                                                                                  _c(
+                                                                                    "v-list-tile-content",
+                                                                                    [
+                                                                                      _c(
+                                                                                        "v-list-tile-title",
+                                                                                        [
+                                                                                          _vm._v(
+                                                                                            _vm._s(
+                                                                                              subtask.name
+                                                                                            ) +
+                                                                                              "\n                                                                    "
+                                                                                          ),
+                                                                                          _c(
+                                                                                            "span",
+                                                                                            {
+                                                                                              staticClass:
+                                                                                                "pl-5"
+                                                                                            },
+                                                                                            [
+                                                                                              _vm._v(
+                                                                                                " 2 days remaining"
+                                                                                              )
+                                                                                            ]
+                                                                                          )
+                                                                                        ]
+                                                                                      )
+                                                                                    ],
+                                                                                    1
+                                                                                  ),
+                                                                                  _vm._v(
+                                                                                    " "
+                                                                                  ),
+                                                                                  _c(
+                                                                                    "v-list-tile-action",
+                                                                                    {
+                                                                                      staticStyle: {
+                                                                                        "min-width":
+                                                                                          "150px"
+                                                                                      }
+                                                                                    },
+                                                                                    [
+                                                                                      _c(
+                                                                                        "v-progress-linear",
+                                                                                        {
+                                                                                          attrs: {
+                                                                                            color:
+                                                                                              "red",
+                                                                                            height:
+                                                                                              "20",
+                                                                                            value:
+                                                                                              subtask.progress
+                                                                                          }
+                                                                                        },
+                                                                                        [
+                                                                                          _c(
+                                                                                            "p",
+                                                                                            {
+                                                                                              staticClass:
+                                                                                                "text-xs-center"
+                                                                                            },
+                                                                                            [
+                                                                                              _vm._v(
+                                                                                                _vm._s(
+                                                                                                  subtask.progress
+                                                                                                ) +
+                                                                                                  "%"
+                                                                                              )
+                                                                                            ]
+                                                                                          )
+                                                                                        ]
+                                                                                      )
+                                                                                    ],
+                                                                                    1
+                                                                                  )
+                                                                                ],
+                                                                                1
+                                                                              )
+                                                                            }
+                                                                          )
+                                                                        ],
+                                                                        2
+                                                                      )
+                                                                    }
+                                                                  )
+                                                                ],
+                                                                2
+                                                              )
+                                                            }
+                                                          )
+                                                        ],
+                                                        2
+                                                      )
+                                                    }
+                                                  )
+                                                ],
+                                                2
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md6: "" } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    {
+                                      staticStyle: { margin: "4px" },
+                                      attrs: {
+                                        color: "grey darken-2",
+                                        height: "100%"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "v-card-title",
+                                        { staticClass: "justify-center" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "headline" },
+                                            [_vm._v("Project Contributor")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-card-text",
+                                        [
+                                          _c("v-spacer"),
+                                          _vm._v(" "),
+                                          _c("v-text-field", {
+                                            staticStyle: {
+                                              width: "30%",
+                                              padding: "5px"
+                                            },
+                                            attrs: {
+                                              "append-icon": "search",
+                                              label: "Search",
+                                              "single-line": "",
+                                              "hide-details": ""
+                                            },
+                                            model: {
+                                              value: _vm.search,
+                                              callback: function($$v) {
+                                                _vm.search = $$v
+                                              },
+                                              expression: "search"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("v-data-table", {
+                                            attrs: {
+                                              headers: _vm.headers,
+                                              items: _vm.d_user,
+                                              search: _vm.search,
+                                              "item-key": "name"
+                                            },
+                                            scopedSlots: _vm._u([
+                                              {
+                                                key: "items",
+                                                fn: function(props) {
+                                                  return [
+                                                    _c(
+                                                      "tr",
+                                                      {
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            props.expanded = !props.expanded
+                                                          }
+                                                        }
+                                                      },
+                                                      [
+                                                        _c("td", [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              props.item.name
+                                                            )
+                                                          )
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "td",
+                                                          {
+                                                            staticClass:
+                                                              "text-sm-center"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                props.item
+                                                                  .division
+                                                              )
+                                                            )
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "td",
+                                                          {
+                                                            staticClass:
+                                                              "text-sm-center"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                props.item
+                                                                  .contribute
+                                                              )
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                key: "expand",
+                                                fn: function(props) {
+                                                  return _vm._l(
+                                                    props.item.task_list,
+                                                    function(task) {
+                                                      return _c(
+                                                        "v-card",
+                                                        {
+                                                          key: task.name,
+                                                          attrs: { flat: "" }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-card-text",
+                                                            [
+                                                              _c(
+                                                                "v-layout",
+                                                                {
+                                                                  attrs: {
+                                                                    row: "",
+                                                                    wrap: ""
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "\n                                                    " +
+                                                                      _vm._s(
+                                                                        task.sub_div
+                                                                      ) +
+                                                                      " > " +
+                                                                      _vm._s(
+                                                                        task.task
+                                                                      ) +
+                                                                      " > " +
+                                                                      _vm._s(
+                                                                        task.name
+                                                                      ) +
+                                                                      "\n                                                    "
+                                                                  ),
+                                                                  _c(
+                                                                    "v-spacer"
+                                                                  ),
+                                                                  _vm._v(
+                                                                    "\n                                                    " +
+                                                                      _vm._s(
+                                                                        task.contribute
+                                                                      ) +
+                                                                      "\n                                                    "
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    }
+                                                  )
+                                                }
+                                              }
+                                            ])
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               )
@@ -49301,6 +57133,180 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/JobDeskV2.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/JobDeskV2.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _JobDeskV2_vue_vue_type_template_id_041b9e37___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./JobDeskV2.vue?vue&type=template&id=041b9e37& */ "./resources/js/components/JobDeskV2.vue?vue&type=template&id=041b9e37&");
+/* harmony import */ var _JobDeskV2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./JobDeskV2.vue?vue&type=script&lang=js& */ "./resources/js/components/JobDeskV2.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _JobDeskV2_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./JobDeskV2.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/JobDeskV2.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _JobDeskV2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _JobDeskV2_vue_vue_type_template_id_041b9e37___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _JobDeskV2_vue_vue_type_template_id_041b9e37___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/JobDeskV2.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/JobDeskV2.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/JobDeskV2.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDeskV2.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV2.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/JobDeskV2.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/JobDeskV2.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV2_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDeskV2.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV2.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV2_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV2_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV2_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV2_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV2_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/JobDeskV2.vue?vue&type=template&id=041b9e37&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/JobDeskV2.vue?vue&type=template&id=041b9e37& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV2_vue_vue_type_template_id_041b9e37___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDeskV2.vue?vue&type=template&id=041b9e37& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV2.vue?vue&type=template&id=041b9e37&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV2_vue_vue_type_template_id_041b9e37___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV2_vue_vue_type_template_id_041b9e37___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/JobDeskV3.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/JobDeskV3.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _JobDeskV3_vue_vue_type_template_id_0429b5b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./JobDeskV3.vue?vue&type=template&id=0429b5b8& */ "./resources/js/components/JobDeskV3.vue?vue&type=template&id=0429b5b8&");
+/* harmony import */ var _JobDeskV3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./JobDeskV3.vue?vue&type=script&lang=js& */ "./resources/js/components/JobDeskV3.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _JobDeskV3_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./JobDeskV3.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/JobDeskV3.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _JobDeskV3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _JobDeskV3_vue_vue_type_template_id_0429b5b8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _JobDeskV3_vue_vue_type_template_id_0429b5b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/JobDeskV3.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/JobDeskV3.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/JobDeskV3.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDeskV3.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV3.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/JobDeskV3.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/JobDeskV3.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV3_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDeskV3.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV3.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV3_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV3_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV3_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV3_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV3_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/JobDeskV3.vue?vue&type=template&id=0429b5b8&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/JobDeskV3.vue?vue&type=template&id=0429b5b8& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV3_vue_vue_type_template_id_0429b5b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDeskV3.vue?vue&type=template&id=0429b5b8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV3.vue?vue&type=template&id=0429b5b8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV3_vue_vue_type_template_id_0429b5b8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_JobDeskV3_vue_vue_type_template_id_0429b5b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/LoginForm.vue":
 /*!***********************************************!*\
   !*** ./resources/js/components/LoginForm.vue ***!
@@ -49508,6 +57514,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Dashboard */ "./resources/js/components/Dashboard.vue");
 /* harmony import */ var _components_Profile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Profile */ "./resources/js/components/Profile.vue");
 /* harmony import */ var _components_JobDesk__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/JobDesk */ "./resources/js/components/JobDesk.vue");
+/* harmony import */ var _components_JobDeskV2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/JobDeskV2 */ "./resources/js/components/JobDeskV2.vue");
+/* harmony import */ var _components_JobDeskV3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/JobDeskV3 */ "./resources/js/components/JobDeskV3.vue");
+
+
 
 
 
@@ -49574,6 +57584,20 @@ var routes = [// {
 
     },
     component: _components_JobDesk__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }, {
+    path: 'job-desk2',
+    meta: {
+      name: 'Job Desk V2' // requiresAuth: true
+
+    },
+    component: _components_JobDeskV2__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }, {
+    path: 'job-desk3',
+    meta: {
+      name: 'Job Desk V3' // requiresAuth: true
+
+    },
+    component: _components_JobDeskV3__WEBPACK_IMPORTED_MODULE_7__["default"]
   }]
 }];
 

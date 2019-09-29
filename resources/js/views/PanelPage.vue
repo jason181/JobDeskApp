@@ -183,6 +183,16 @@ export default {
             icon: 'assignment_turned_in',
             text: 'Job Desk'
         },
+        {
+            to: '/panel/job-desk2',
+            icon: 'assignment_turned_in',
+            text: 'Job Desk V2'
+        },
+        {
+            to: '/panel/job-desk3',
+            icon: 'assignment_turned_in',
+            text: 'Job Desk V3'
+        },
         ],
         color: 'general',
         image :'',
