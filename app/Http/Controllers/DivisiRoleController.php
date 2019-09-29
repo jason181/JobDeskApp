@@ -14,7 +14,7 @@ class DivisiRoleController extends RestController
     {
         $divisi=Divisi_Role::get();
         $response=$this->generateCollection($divisi);
-        return $this->sendResponse($divisi,201);
+        return $this->sendResponse($response,201);
     }
 
     public function store(Request $request)
