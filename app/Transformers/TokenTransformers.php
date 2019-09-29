@@ -5,7 +5,7 @@ namespace App\Transformers;
 use League\Fractal\TransformerAbstract;
 use App\Token;
 
-class SubItemPekerjaanTransformers extends TransformerAbstract
+class TokenTransformers extends TransformerAbstract
 {
     /**
      * Transform Branch.

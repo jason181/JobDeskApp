@@ -18,11 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Divisi
-Route::get('/divisi', 'DivisiController@index');
-Route::post('/divisi/store', 'DivisiController@store');
-Route::get('/divisi/{id}', 'DivisiController@showbyID');
-Route::patch('/divisi/update/{id}', 'DivisiController@update'); 
-Route::delete('/divisi/delete/{id}', 'DivisiController@destroy');
+Route::get('/divisi', 'DivisiRoleController@index');
+Route::post('/divisi/store', 'DivisiRoleController@store');
+Route::get('/divisi/{id}', 'DivisiRoleController@showbyID');
+Route::patch('/divisi/update/{id}', 'DivisiRoleController@update'); 
+Route::delete('/divisi/delete/{id}', 'DivisiRoleController@destroy');
 
 //Jabatan
 Route::get('/jabatan', 'JabatanController@index');

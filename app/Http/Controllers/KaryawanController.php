@@ -21,7 +21,7 @@ class KaryawanController extends RestController
     {
         
         $karyawan = Karyawan::create([
-            'Id_Divisi'     => $request->Id_Divisi,
+            'Id_Divisi_Role'=> $request->Id_Divisi_Role,
             'Id_Jabatan'    => $request->Id_Jabatan,
             'Kode'          => $request->Kode,
             'Nama'          => $request->Nama,
@@ -45,8 +45,8 @@ class KaryawanController extends RestController
     {   
         $karyawan = Karyawan::find($id);
 
-        if(!is_null($request->Id_Divisi)){
-            $karyawan->Id_Divisi = $request->Id_Divisi;
+        if(!is_null($request->Id_Divisi_Role)){
+            $karyawan->Id_Divisi_Role = $request->Id_Divisi_Role;
         }
         if(!is_null($request->Id_Jabatan)){
             $karyawan->Id_Jabatan = $request->Id_Jabatan;

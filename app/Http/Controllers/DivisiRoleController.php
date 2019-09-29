@@ -3,23 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Transformers\DivisiTransformers;
-use App\Divisi;
+use App\Transformers\DivisiRoleTransformers;
+use App\Divisi_Role;
 
-class DivisiController extends RestController
+class DivisiRoleController extends RestController
 {
-    protected $transformer=DivisiTransformers::Class;
+    protected $transformer=DivisiRoleTransformers::Class;
 
     public function index()
     {
-        $divisi=Divisi::get();
+        $divisi=Divisi_Role::get();
         $response=$this->generateCollection($divisi);
         return $this->sendResponse($divisi,201);
     }
 
     public function store(Request $request)
     {
-        $divisi = Divisi::create([
+        $divisi = Divisi_Role::create([
             'Kode'      => $request->Kode,
             'Keterangan'=> $request->Keterangan
         ]);
@@ -33,7 +33,7 @@ class DivisiController extends RestController
 
     public function update(Request $request, $id)
     {   
-        $divisi = Divisi::find($id);
+        $divisi = Divisi_Role::find($id);
 
         if(!is_null($request->Kode)){
             $divisi->Kode = $request->Kode;
@@ -51,13 +51,13 @@ class DivisiController extends RestController
 
     public function showbyID($id)
     {
-        $divisi = Divisi::find($id);
+        $divisi = Divisi_Role::find($id);
         return response()->json($divisi,200);
     }
 
     public function destroy($id)
     {
-        $divisi = Divisi::find($id);
+        $divisi = Divisi_Role::find($id);
         $status = $divisi->delete();
         return response()->json([
             'status' => $status,
