@@ -13,14 +13,13 @@ class Akun extends Model
     protected $primaryKey = 'Id_Akun';
     public $timestamp = true;
     protected $fillable = [
-        'Id_Karyawan',
         'Username',
         'Password'
     ];
 
     public function karyawans()
     {
-        return $this->belongsTo('App\Karyawan','Id_Karyawan');
+        return $this->hasOne('App\Karyawan','Id_Akun');
     }
 
     public function log_sesis()

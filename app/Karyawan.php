@@ -14,6 +14,7 @@ class Karyawan extends Model
     protected $fillable = [
         'Id_Divisi_Role',
         'Id_Jabatan',
+        'Id_Akun',
         'Kode',
         'Nama',
         'Alamat',
@@ -37,7 +38,6 @@ class Karyawan extends Model
 
     public function akuns()
     {
-        return $this->hasOne('App\Akun','Id_Karyawan');
+        return $this->belongsTo('App\Akun','Id_Akun');
     }
-
 }

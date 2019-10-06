@@ -17,7 +17,7 @@ class DivisiRoleTransformers extends TransformerAbstract
         return [
             'Id_Divisi_Role'=> $divisi->Id_Divisi_Role,
             'Kode'          => $divisi->Kode,
-            'Keterangan'    => $divisi->Keterangan
+            'Deskripsi'     => $divisi->Deskripsi
         ];
     }
 }

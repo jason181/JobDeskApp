@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Transformers\KaryawanTransformers;
 use App\Karyawan;
 
+use App\Transformers\AkunTransformers;
+use App\Akun;
+
 class KaryawanController extends RestController
 {
     protected $transformer=KaryawanTransformers::Class;
@@ -19,10 +22,15 @@ class KaryawanController extends RestController
 
     public function store(Request $request)
     {
-        
+        $akun = Akun::create([
+            'Username'  => $request->Username,
+            'Password'  => $request->Password,
+        ]);
+
         $karyawan = Karyawan::create([
             'Id_Divisi_Role'=> $request->Id_Divisi_Role,
             'Id_Jabatan'    => $request->Id_Jabatan,
+            'Id_Akun'       => $akun->Id_Akun,
             'Kode'          => $request->Kode,
             'Nama'          => $request->Nama,
             'Alamat'        => $request->Alamat,
@@ -50,6 +58,9 @@ class KaryawanController extends RestController
         }
         if(!is_null($request->Id_Jabatan)){
             $karyawan->Id_Jabatan = $request->Id_Jabatan;
+        }
+        if(!is_null($request->Id_Akun)){
+            $karyawan->Id_Akun = $request->Id_Akun;
         }
         if(!is_null($request->Kode)){
             $karyawan->Kode = $request->Kode;
