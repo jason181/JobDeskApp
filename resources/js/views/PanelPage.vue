@@ -178,20 +178,30 @@ export default {
         //     icon: 'mdi-account',
         //     text: 'User Profile'
         // },
+        // {
+        //     to: '/panel/job-desk',
+        //     icon: 'assignment_turned_in',
+        //     text: 'Job Desk'
+        // },
+        // {
+        //     to: '/panel/job-desk2',
+        //     icon: 'assignment_turned_in',
+        //     text: 'Job Desk V2'
+        // },
         {
-            to: '/panel/job-desk',
+            to: '/panel/job-desk3',
             icon: 'assignment_turned_in',
             text: 'Job Desk'
         },
         {
-            to: '/panel/job-desk2',
-            icon: 'assignment_turned_in',
-            text: 'Job Desk V2'
+            to: '/panel/employee',
+            icon: 'supervised_user_circle',
+            text: 'Management Employee'
         },
         {
-            to: '/panel/job-desk3',
-            icon: 'assignment_turned_in',
-            text: 'Job Desk V3'
+            to: '/panel/role',
+            icon: 'assignment_ind',
+            text: 'Management Role'
         },
         ],
         color: 'general',

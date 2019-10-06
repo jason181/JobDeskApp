@@ -7,6 +7,9 @@ import Profile from './components/Profile'
 import JobDesk from './components/JobDesk'
 import JobDeskV2 from './components/JobDeskV2'
 import JobDeskV3 from './components/JobDeskV3'
+import Employee from './components/ManagementEmployee'
+
+import Role from './components/ManagementRole'
 
 
 
@@ -101,6 +104,22 @@ export const routes = [
             // requiresAuth: true
           },
           component : JobDeskV3
+        },
+        {
+          path: 'employee',
+          meta: {
+            name: 'Management Employee',
+            // requiresAuth: true
+          },
+          component : Employee
+        },
+        {
+          path: 'role',
+          meta: {
+            name: 'Management Role',
+            // requiresAuth: true
+          },
+          component : Role
         },
       ]
     }

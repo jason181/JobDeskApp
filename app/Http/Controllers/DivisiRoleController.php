@@ -21,7 +21,7 @@ class DivisiRoleController extends RestController
     {
         $divisi = Divisi_Role::create([
             'Kode'      => $request->Kode,
-            'Keterangan'=> $request->Keterangan
+            'Deskripsi' => $request->Deskripsi
         ]);
 
         return response()->json([
@@ -33,20 +33,17 @@ class DivisiRoleController extends RestController
 
     public function update(Request $request, $id)
     {   
-        $divisi = Divisi_Role::find($id);
+        try{
 
-        if(!is_null($request->Kode)){
-            $divisi->Kode = $request->Kode;
-        }
-        if(!is_null($request->Keterangan)){
-            $divisi->Keterangan = $request->Keterangan;
-        }
+            $events = Divisi_Role::find($id)->update($request->All());
+            $data = Divisi_Role::find($id);
+            $response = $this->generateItem($data);
+            return $this->sendResponse($response, 201);
 
-        $success = $divisi->save();
-        if(!$success){
-            return response()->json('Error Update',500);
-        }else   
-            return response()->json('Success',200);
+
+        }catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
 
     public function showbyID($id)

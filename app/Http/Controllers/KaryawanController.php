@@ -17,7 +17,7 @@ class KaryawanController extends RestController
     {
         $karyawan=Karyawan::get();
         $response=$this->generateCollection($karyawan);
-        return $this->sendResponse($karyawan,201);
+        return $this->sendResponse($response,201);
     }
 
     public function store(Request $request)
@@ -95,6 +95,20 @@ class KaryawanController extends RestController
             return response()->json('Error Update',500);
         }else   
             return response()->json('Success',200);
+    }
+
+    public function updateSimple(Request $request,$id)  {
+        try{
+
+            $events = Karyawan::find($id)->update($request->All());
+            $data = Karyawan::find($id);
+            $response = $this->generateItem($data);
+            return $this->sendResponse($response, 201);
+
+
+        }catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
 
     public function showbyID($id)

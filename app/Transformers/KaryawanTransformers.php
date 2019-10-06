@@ -17,8 +17,9 @@ class KaryawanTransformers extends TransformerAbstract
         return [
             'Id_Karyawan'   => $karyawan->Id_Karyawan,
             'Id_Divisi_Role'=> $karyawan->Id_Divisi_Role,
+            'Divisi'        => $karyawan->divisi_roles->Deskripsi,
             'Id_Jabatan'    => $karyawan->Id_Jabatan,
-            'Id_Akun'       => $karyawan->Id_Akun,
+            'Jabatan'       => $karyawan->jabatans->Deskripsi,
             'Kode'          => $karyawan->Kode,
             'Nama'          => $karyawan->Nama,
             'Alamat'        => $karyawan->Alamat,

@@ -17,7 +17,7 @@ class JabatanTransformers extends TransformerAbstract
         return [
             'Id_Jabatan'    => $jabatan->Id_Jabatan,
             'Kode'          => $jabatan->Kode,
-            'Keterangan'    => $jabatan->Keterangan
+            'Deskripsi'     => $jabatan->Deskripsi
         ];
     }
 }
