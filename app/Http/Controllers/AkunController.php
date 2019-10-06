@@ -28,7 +28,7 @@ class AkunController extends Controller
         $success = $akun->save();
         if(!$success){
             return response()->json('Error Update',500);
-        }else   
+        }else
             return response()->json('Success',200);
     }
 

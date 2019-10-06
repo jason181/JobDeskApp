@@ -40,4 +40,9 @@ class Karyawan extends Model
     {
         return $this->belongsTo('App\Akun','Id_Akun');
     }
+
+    public function akses()
+    {
+        return $this->hasMany('App\Akses','Id_Karyawan');
+    }
 }

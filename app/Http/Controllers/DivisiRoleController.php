@@ -40,7 +40,6 @@ class DivisiRoleController extends RestController
             $response = $this->generateItem($data);
             return $this->sendResponse($response, 201);
 
-
         }catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }

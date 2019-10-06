@@ -25,7 +25,6 @@ Route::patch('/divisi/update/{id}', 'DivisiRoleController@update');
 Route::delete('/divisi/delete/{id}', 'DivisiRoleController@destroy');
 Route::resource ('divisi','DivisiRoleController');
 
-
 //Jabatan
 Route::get('/jabatan', 'JabatanController@index');
 Route::post('/jabatan/store', 'JabatanController@store');
@@ -48,4 +47,6 @@ Route::get('/session', 'TokenController@validateToken');
 
 //Karyawan
 Route::resource ('karyawan','KaryawanController');
-Route::patch('/karyawan/update/{id}', 'KaryawanController@updateSimple');
+
+//Akses
+Route::resource('akses','AksesController');
