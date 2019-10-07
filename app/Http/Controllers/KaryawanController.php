@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Transformers\KaryawanTransformers;
+use Illuminate\Support\Facades\DB;
+
 use App\Karyawan;
 
 use App\Transformers\AkunTransformers;
@@ -23,9 +25,11 @@ class KaryawanController extends RestController
 
     public function store(Request $request)
     {
+        $Akses = $request->get('Akses');
+
         $akun = Akun::create([
             'Username'  => $request->Username,
-            'Password'  => $request->Password,
+            'Password'  => bcrypt($request->Username),
         ]);
 
         $karyawan = Karyawan::create([
@@ -42,6 +46,13 @@ class KaryawanController extends RestController
             'Nomor_Asosiasi'=> $request->Nomor_Asosiasi,
             'Nomor_SKA'     => $request->Nomor_SKA
         ]);
+        if($request->has('Akses'))
+        {
+            $karyawan = DB::transaction(function () use ($karyawan,$Akses) {
+                $karyawan->akses()->createMany($Akses);
+                return $karyawan;
+            });
+        }
 
         return response()->json([
             'status' => (bool) $karyawan,

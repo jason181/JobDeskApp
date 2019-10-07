@@ -15,18 +15,18 @@ class CreateAkunsTable extends Migration
     {
         Schema::create('akuns', function (Blueprint $table) {
             $table->increments('Id_Akun');
-            $table->unsignedInteger('Id_Karyawan');
+            // $table->unsignedInteger('Id_Karyawan');
             $table->string('Username',50);
             $table->string('Password',255);
 
             $table->softDeletes();
             $table->timestamps();
 
-            $table  ->foreign('Id_Karyawan')
-                    ->references('Id_Karyawan')
-                    ->on('karyawans')
-                    ->onChange('cascade')
-                    ->onDelete('cascade');
+            // $table  ->foreign('Id_Karyawan')
+            //         ->references('Id_Karyawan')
+            //         ->on('karyawans')
+            //         ->onChange('cascade')
+            //         ->onDelete('cascade');
         });
     }
 

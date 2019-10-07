@@ -8,6 +8,7 @@ use App\Transformers\AksesTransformers;
 
 class AksesController extends RestController
 {
+    protected $transformer=AksesTransformers::Class;
     /**
      * Display a listing of the resource.
      *

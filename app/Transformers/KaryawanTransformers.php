@@ -3,8 +3,9 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
+use App\Transformers\AksesTransformers;
 use App\Karyawan;
-
+use App\Akses;
 class KaryawanTransformers extends TransformerAbstract
 {
     /**
@@ -12,6 +13,9 @@ class KaryawanTransformers extends TransformerAbstract
      *
      * @param Branch $branch
      */
+    protected $defaultIncludes = [
+        'Akses'
+    ];
     public function transform(Karyawan $karyawan)
     {
         return [
@@ -20,6 +24,7 @@ class KaryawanTransformers extends TransformerAbstract
             'Divisi'        => $karyawan->divisi_roles->Deskripsi,
             'Id_Jabatan'    => $karyawan->Id_Jabatan,
             'Id_Akun'       => $karyawan->Id_Akun,
+            'Username'      => $karyawan->akuns->Username,
             'Jabatan'       => $karyawan->jabatans->Deskripsi,
             'Kode'          => $karyawan->Kode,
             'Nama'          => $karyawan->Nama,
@@ -31,5 +36,10 @@ class KaryawanTransformers extends TransformerAbstract
             'Nomor_Asosiasi'=> $karyawan->Nomor_Asosiasi,
             'Nomor_SKA'     => $karyawan->Nomor_SKA
         ];
+    }
+    public function includeAkses(Karyawan $karyawan)
+    {
+        $akses = $karyawan->akses;
+        return $this->collection($akses, new AksesTransformers);
     }
 }

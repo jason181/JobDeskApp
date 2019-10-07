@@ -13,7 +13,8 @@ class Akses extends Model
     public $timestamp = true;
     protected $fillable = [
         'Id_Karyawan',
-        'Fitur'
+        'Fitur',
+        'Deskripsi'
     ];
 
     public function karyawans()

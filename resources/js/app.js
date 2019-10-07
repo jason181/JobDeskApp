@@ -9,7 +9,7 @@ import theme from './plugins/theme'
 import { routes } from './routes'
 // import { setupComponents } from './setup-components';
 // import Controller from './httpController'
-// import store from './store'
+import store from './store'
 
 import 'vuetify/dist/vuetify.min.css';
 // import 'font-awesome/css/font-awesome.css';  
@@ -49,7 +49,7 @@ new Vue({
     el: '#app',
     router,
     // vuetify : new Vuetify(),
-    // store,
+    store,
     // data: {
     //     themeColor: '#1E88E5',
     // },
