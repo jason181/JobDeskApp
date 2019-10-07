@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\Akses;
 use App\Transformers\AksesTransformers;
 
-class AksesController extends Controller
+class AksesController extends RestController
 {
+    protected $transformer=AksesTransformers::Class;
     /**
      * Display a listing of the resource.
      *

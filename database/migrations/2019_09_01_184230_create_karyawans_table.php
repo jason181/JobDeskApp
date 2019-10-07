@@ -17,6 +17,7 @@ class CreateKaryawansTable extends Migration
             $table->increments('Id_Karyawan');
             $table->unsignedInteger('Id_Divisi_Role');
             $table->unsignedInteger('Id_Jabatan');
+            $table->unsignedInteger('Id_Akun');
             $table->string('Kode',50);
             $table->string('Nama',50);
             $table->string('Alamat',255);
@@ -41,6 +42,12 @@ class CreateKaryawansTable extends Migration
                     ->on('jabatans')
                     ->onChange('cascade')
                     ->onDelete('cascade');
+
+            $table  ->foreign('Id_Akun')
+                    ->references('Id_Akun')
+                    ->on('akuns')
+                    ->onChange('cascade')
+                    ->onDelete('cascade');        
         });
     }
 

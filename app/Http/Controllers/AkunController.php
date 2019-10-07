@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Transformers\AkunTransformers;
 use App\Akun;
 
-class AkunController extends Controller
+class AkunController extends RestController
 {
     protected $transformer=AkunTransformers::Class;
 
@@ -14,7 +14,7 @@ class AkunController extends Controller
     {
         $akun=Akun::get();
         $response=$this->generateCollection($akun);
-        return $this->sendResponse($akun,201);
+        return $this->sendResponse($response,201);
     }
 
     public function update(Request $request, $username)

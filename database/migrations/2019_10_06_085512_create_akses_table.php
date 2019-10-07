@@ -17,6 +17,8 @@ class CreateAksesTable extends Migration
             $table->bigIncrements('Id_Akses');
             $table->unsignedInteger('Id_Karyawan');
             $table->string('Fitur',255);
+            $table->string('Deskripsi',255);
+
             
             $table->softDeletes();
             $table->timestamps();

@@ -5038,6 +5038,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _service_Auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../service/Auth */ "./resources/js/service/Auth.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -5112,10 +5121,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5124,21 +5130,83 @@ __webpack_require__.r(__webpack_exports__);
       errorMessages: 'Incorrect login info',
       snackbar: false,
       color: 'general',
-      showPassword: false
+      showPassword: false,
+      showResult: false,
+      result: '',
+      alert: {
+        type: null,
+        message: null,
+        icon: null
+      }
     };
   },
   // Sends action to Vuex that will log you in and redirect to the dash otherwise, error
   methods: {
-    login: function login() {
-      var username = this.username;
-      var password = this.password;
-      this.$router.push('/panel/dashboard'); //   this.$store.dispatch('login', { username, password })
-      //     .then(() => this.$router.push('/dashboard'))
-      //     .catch(err => {
-      //         console.log(err)
-      //         this.snackbar= true
-      //     }
-      //     )
+    login: function () {
+      var _login = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                data = {
+                  username: this.username,
+                  password: this.password
+                };
+                _context.next = 4;
+                return _service_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].authenticate(data);
+
+              case 4:
+                this.$router.push({
+                  name: 'Dashboard'
+                });
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                this.showAlert('error', 'Gagal Login, Username atau Password salah!');
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 7]]);
+      }));
+
+      function login() {
+        return _login.apply(this, arguments);
+      }
+
+      return login;
+    }(),
+    showAlert: function showAlert(type, alert_message) {
+      var _this = this;
+
+      if (type == 'success') {
+        this.alert.icon = 'fas fa-check-circle';
+      } else if (type == 'error') {
+        this.alert.icon = 'fas fa-exclamation-circle';
+      }
+
+      this.alert.type = type;
+      this.alert.message = alert_message;
+      var timer = this.showAlert.timer;
+
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      this.showAlert.timer = setTimeout(function () {
+        _this.alert.type = null;
+        _this.alert.icon = null;
+        _this.alert.message = null;
+      }, 3000);
     }
   },
   metaInfo: function metaInfo() {
@@ -5164,10 +5232,57 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../httpController */ "./resources/js/httpController.js");
 
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5468,8 +5583,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         text: 'Nama Pegawai',
         align: 'left',
         value: 'Nama'
-      }, // { text: 'Username', align: 'center', value: 'username', sortable: false },
-      {
+      }, {
+        text: 'Username',
+        align: 'center',
+        value: 'Username',
+        sortable: false
+      }, {
         text: 'Divisi',
         align: 'center',
         value: 'Divisi'
@@ -5509,7 +5628,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         Id_Jabatan: '',
         Grade: '',
         Nomor_Asosiasi: '',
-        Nomor_SKA: ''
+        Nomor_SKA: '',
+        Akses: []
       },
       editedFormDefault: {
         Id_Karyawan: '',
@@ -5522,8 +5642,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         Id_Jabatan: '',
         Grade: '',
         Nomor_Asosiasi: '',
-        Nomor_SKA: ''
-      }
+        Nomor_SKA: '',
+        Akses: []
+      },
+      PreviledgeAccess: [],
+      FeatureAccess: [{
+        Deskripsi: "Management Employee (Create)",
+        Fitur: "M-Employee-C"
+      }, {
+        Deskripsi: "Management Employee (Read)",
+        Fitur: "M-Employee-R"
+      }, {
+        Deskripsi: "Management Employee (Update)",
+        Fitur: "M-Employee-U"
+      }, {
+        Deskripsi: "Management Employee (Delete)",
+        Fitur: "M-Employee-D"
+      }, {
+        Deskripsi: "Management Role (Create)",
+        Fitur: "M-Role-C"
+      }, {
+        Deskripsi: "Management Role (Read)",
+        Fitur: "M-Role-R"
+      }, {
+        Deskripsi: "Management Role (Update)",
+        Fitur: "M-Role-U"
+      }, {
+        Deskripsi: "Management Role (Delete)",
+        Fitur: "M-Role-D"
+      }]
     };
   },
   computed: {
@@ -5662,34 +5809,40 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
-                _context3.next = 3;
+                // const data ={
+                //   name_branch: this.editedItem.name,
+                //   address_branch : this.editedItem.address,
+                // }
+                this.editedForm["Username"] = this.createUsername(this.editedForm.Nama);
+                console.log(this.editedForm);
+                _context3.next = 5;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addemployee(this.editedForm);
 
-              case 3:
+              case 5:
                 response = _context3.sent;
                 console.log(response);
                 this.employeeData.push(this.editedForm);
-                _context3.next = 8;
+                _context3.next = 10;
                 return this.getEmployee();
 
-              case 8:
+              case 10:
                 this.close();
                 this.showAlert('success', 'Sukses Menambahkan Pegawai');
-                _context3.next = 16;
+                _context3.next = 18;
                 break;
 
-              case 12:
-                _context3.prev = 12;
+              case 14:
+                _context3.prev = 14;
                 _context3.t0 = _context3["catch"](0);
                 console.log(_context3.t0);
                 this.showAlert('error', 'Gagal Menambahkan Pegawai');
 
-              case 16:
+              case 18:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, this, [[0, 12]]);
+        }, _callee3, this, [[0, 14]]);
       }));
 
       function addEmployee() {
@@ -5790,6 +5943,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return updateEmployee;
     }(),
+    createUsername: function createUsername(fullname) {
+      var username = fullname; // username = username.replace(/\s/g,''); //remove space
+
+      username = username.replace(/ .*/, ''); // console.log(username);
+
+      username = username.toLowerCase(); //to lowercase
+      // console.log(username);
+
+      username = username + Math.floor(Math.random() * 100);
+      console.log(username);
+      return username;
+    },
+    remove: function remove(item) {
+      this.editedForm.Akses.splice(this.editedForm.Akses.indexOf(item), 1);
+      this.editedForm.Akses = _toConsumableArray(this.editedForm.Akses);
+    },
     //   closeFormDialog(){
     //     this.formDialog= false
     //     this.editedForm = Object.assign({}, this.defaultItem)
@@ -5802,6 +5971,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     editItem: function editItem(item) {
       this.editedIndex = this.employeeData.indexOf(item);
       this.editedForm = Object.assign({}, item);
+      this.editedForm.Akses = this.editedForm.Akses.data;
       this.formDialog = true;
     },
     deleteItem: function deleteItem(item) {
@@ -6781,6 +6951,23 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../httpController */ "./resources/js/httpController.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _service_Auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/Auth */ "./resources/js/service/Auth.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -6926,7 +7113,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import { mapMutations, mapGetters } from "vuex";
+//
+//
+
+
+ // import { mapMutations, mapGetters } from "vuex";
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   //   name: 'DashboardView',
   //   metaInfo () {
@@ -6944,7 +7136,8 @@ __webpack_require__.r(__webpack_exports__);
       links: [{
         to: '/panel/dashboard',
         icon: 'mdi-view-dashboard',
-        text: 'Dashboard'
+        text: 'Dashboard',
+        access: ['Panel']
       }, // {
       //     to: '/panel/user-profile',
       //     icon: 'mdi-account',
@@ -6963,15 +7156,18 @@ __webpack_require__.r(__webpack_exports__);
       {
         to: '/panel/job-desk3',
         icon: 'assignment_turned_in',
-        text: 'Job Desk'
+        text: 'Job Desk',
+        access: ['Panel']
       }, {
         to: '/panel/employee',
         icon: 'supervised_user_circle',
-        text: 'Management Employee'
+        text: 'Management Employee',
+        access: ['M-Employee-C', 'M-Employee-R', 'M-Employee-U', 'M-Employee-D']
       }, {
         to: '/panel/role',
         icon: 'assignment_ind',
-        text: 'Management Role'
+        text: 'Management Role',
+        access: ['M-Role-C', 'M-Role-R', 'M-Role-U', 'M-Role-D']
       }],
       color: 'general',
       image: '',
@@ -6982,12 +7178,19 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  computed: {
-    // ...mapGetters(["authorized"])
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
+    // id: 'LoggedUser/id',
+    nama: 'LoggedUser/Name',
+    jabatan: 'LoggedUser/Jabatan',
+    divisi: 'LoggedUser/Divisi',
+    akses: 'LoggedUser/Akses' // username: 'LoggedUser/username',
+    // role: 'LoggedUser/role'
+
+  }), {
     items: function items() {
       return this.$t('Layout.View.items');
     }
-  },
+  }),
   watch: {
     $route: function $route(val) {
       this.title = val.meta.name;
@@ -7016,9 +7219,53 @@ __webpack_require__.r(__webpack_exports__);
         this.responsiveInput = true;
       }
     },
-    logout: function logout() {
-      // this.$store.dispatch("logout").then(() => {
-      this.$router.push("/login"); // });
+    logout: function () {
+      var _logout = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.$router.push({
+                  name: 'Login'
+                });
+                _context.next = 3;
+                return _service_Auth__WEBPACK_IMPORTED_MODULE_3__["default"].logout();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function logout() {
+        return _logout.apply(this, arguments);
+      }
+
+      return logout;
+    }(),
+    Access: function Access(codeAccess) {
+      // console.log(this.akses)
+      // console.log(Akses)
+      var x;
+
+      if (codeAccess.includes("Panel")) {
+        // console.log("TRUE Panel")
+        return true;
+      } else {
+        for (x in this.akses.data) {
+          if (codeAccess.includes(this.akses.data[x].Fitur)) {
+            // console.log("TRUE AKSES")
+            return true;
+          }
+        } // console.log("FALSE")
+
+
+        return false;
+      }
     }
   }
 });
@@ -7056,7 +7303,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#core-toolbar a {\n  text-decoration: none;\n}\n#app-drawer .v-list__tile {\n  border-radius: 4px;\n}\n#app-drawer .v-list__tile--buy {\n  margin-top: auto;\n  margin-bottom: 17px;\n}\n#app-drawer .v-image__image--contain {\n  top: 9px;\n  height: 60%;\n}\n#app-drawer .search-input {\n  margin-bottom: 30px !important;\n  padding-left: 15px;\n  padding-right: 15px;\n}", ""]);
+exports.push([module.i, "#core-toolbar a {\n  text-decoration: none;\n}\n#app-drawer .v-list__tile {\n  border-radius: 4px;\n}\n#app-drawer .v-list__tile--buy {\n  margin-top: auto;\n  margin-bottom: 17px;\n}\n#app-drawer .v-image__image--contain {\n  top: 9px;\n  height: 60%;\n}\n#app-drawer .search-input {\n  margin-bottom: 30px !important;\n  padding-left: 15px;\n  padding-right: 15px;\n}\n#app-drawer .visible {\n  display: none;\n}", ""]);
 
 // exports
 
@@ -7330,6 +7577,184 @@ module.exports = function isBuffer (obj) {
   return obj != null && obj.constructor != null &&
     typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/js-cookie/src/js.cookie.js":
+/*!*************************************************!*\
+  !*** ./node_modules/js-cookie/src/js.cookie.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * JavaScript Cookie v2.2.1
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+	var registeredInModuleLoader;
+	if (true) {
+		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		registeredInModuleLoader = true;
+	}
+	if (true) {
+		module.exports = factory();
+		registeredInModuleLoader = true;
+	}
+	if (!registeredInModuleLoader) {
+		var OldCookies = window.Cookies;
+		var api = window.Cookies = factory();
+		api.noConflict = function () {
+			window.Cookies = OldCookies;
+			return api;
+		};
+	}
+}(function () {
+	function extend () {
+		var i = 0;
+		var result = {};
+		for (; i < arguments.length; i++) {
+			var attributes = arguments[ i ];
+			for (var key in attributes) {
+				result[key] = attributes[key];
+			}
+		}
+		return result;
+	}
+
+	function decode (s) {
+		return s.replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
+	}
+
+	function init (converter) {
+		function api() {}
+
+		function set (key, value, attributes) {
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			attributes = extend({
+				path: '/'
+			}, api.defaults, attributes);
+
+			if (typeof attributes.expires === 'number') {
+				attributes.expires = new Date(new Date() * 1 + attributes.expires * 864e+5);
+			}
+
+			// We're using "expires" because "max-age" is not supported by IE
+			attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
+
+			try {
+				var result = JSON.stringify(value);
+				if (/^[\{\[]/.test(result)) {
+					value = result;
+				}
+			} catch (e) {}
+
+			value = converter.write ?
+				converter.write(value, key) :
+				encodeURIComponent(String(value))
+					.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+
+			key = encodeURIComponent(String(key))
+				.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
+				.replace(/[\(\)]/g, escape);
+
+			var stringifiedAttributes = '';
+			for (var attributeName in attributes) {
+				if (!attributes[attributeName]) {
+					continue;
+				}
+				stringifiedAttributes += '; ' + attributeName;
+				if (attributes[attributeName] === true) {
+					continue;
+				}
+
+				// Considers RFC 6265 section 5.2:
+				// ...
+				// 3.  If the remaining unparsed-attributes contains a %x3B (";")
+				//     character:
+				// Consume the characters of the unparsed-attributes up to,
+				// not including, the first %x3B (";") character.
+				// ...
+				stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
+			}
+
+			return (document.cookie = key + '=' + value + stringifiedAttributes);
+		}
+
+		function get (key, json) {
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			var jar = {};
+			// To prevent the for loop in the first place assign an empty array
+			// in case there are no cookies at all.
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			var i = 0;
+
+			for (; i < cookies.length; i++) {
+				var parts = cookies[i].split('=');
+				var cookie = parts.slice(1).join('=');
+
+				if (!json && cookie.charAt(0) === '"') {
+					cookie = cookie.slice(1, -1);
+				}
+
+				try {
+					var name = decode(parts[0]);
+					cookie = (converter.read || converter)(cookie, name) ||
+						decode(cookie);
+
+					if (json) {
+						try {
+							cookie = JSON.parse(cookie);
+						} catch (e) {}
+					}
+
+					jar[name] = cookie;
+
+					if (key === name) {
+						break;
+					}
+				} catch (e) {}
+			}
+
+			return key ? jar[key] : jar;
+		}
+
+		api.set = set;
+		api.get = function (key) {
+			return get(key, false /* read as raw */);
+		};
+		api.getJSON = function (key) {
+			return get(key, true /* read as json */);
+		};
+		api.remove = function (key, attributes) {
+			set(key, '', extend(attributes, {
+				expires: -1
+			}));
+		};
+
+		api.defaults = {};
+
+		api.withConverter = init;
+
+		return api;
+	}
+
+	return init(function () {});
+}));
 
 
 /***/ }),
@@ -17706,36 +18131,40 @@ var render = function() {
                       _c(
                         "v-snackbar",
                         {
-                          attrs: { color: _vm.color, top: true },
+                          attrs: { timeout: 2000, top: "" },
                           model: {
-                            value: _vm.snackbar,
+                            value: _vm.showResult,
                             callback: function($$v) {
-                              _vm.snackbar = $$v
+                              _vm.showResult = $$v
                             },
-                            expression: "snackbar"
+                            expression: "showResult"
                           }
                         },
                         [
                           _vm._v(
-                            "\n            " +
-                              _vm._s(_vm.errorMessages) +
-                              "\n            "
-                          ),
-                          _c(
-                            "v-btn",
+                            "\n          " + _vm._s(_vm.result) + "\n        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.alert.type
+                        ? _c(
+                            "v-snackbar",
                             {
-                              attrs: { dark: "", flat: "" },
-                              on: {
-                                click: function($event) {
-                                  _vm.snackbar = false
-                                }
+                              attrs: {
+                                right: "",
+                                bottom: "",
+                                color: _vm.alert.type,
+                                value: "true"
                               }
                             },
-                            [_vm._v("\n              Close\n            ")]
+                            [
+                              _c("v-icon", [_vm._v(_vm._s(_vm.alert.icon))]),
+                              _vm._v(_vm._s(_vm.alert.message) + "\n        ")
+                            ],
+                            1
                           )
-                        ],
-                        1
-                      )
+                        : _vm._e()
                     ],
                     1
                   )
@@ -18434,6 +18863,132 @@ var render = function() {
                               )
                             ],
                             1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { xs12: "", sm4: "" } },
+                            [
+                              _c(
+                                "v-card",
+                                {
+                                  staticStyle: { margin: "4px" },
+                                  attrs: {
+                                    color: "grey darken-2",
+                                    height: "100%"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "v-card-title",
+                                    { staticClass: "justify-center" },
+                                    [
+                                      _c("span", { staticClass: "headline" }, [
+                                        _vm._v("Previledge Access")
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-card-text",
+                                    [
+                                      _c(
+                                        "v-container",
+                                        { staticClass: "grey darken-3" },
+                                        [
+                                          _c(
+                                            "v-layout",
+                                            { attrs: { row: "", wrap: "" } },
+                                            [
+                                              _c(
+                                                "v-flex",
+                                                { attrs: { xs12: "" } },
+                                                [
+                                                  _c("v-combobox", {
+                                                    attrs: {
+                                                      items: _vm.FeatureAccess,
+                                                      "item-text": "Deskripsi",
+                                                      "item-value": "Fitur",
+                                                      label: "Feature Access",
+                                                      chips: "",
+                                                      clearable: "",
+                                                      "prepend-icon":
+                                                        "filter_list",
+                                                      solo: "",
+                                                      multiple: ""
+                                                    },
+                                                    scopedSlots: _vm._u([
+                                                      {
+                                                        key: "selection",
+                                                        fn: function(data) {
+                                                          return [
+                                                            _c(
+                                                              "v-chip",
+                                                              {
+                                                                attrs: {
+                                                                  selected:
+                                                                    data.selected,
+                                                                  close: ""
+                                                                },
+                                                                on: {
+                                                                  input: function(
+                                                                    $event
+                                                                  ) {
+                                                                    return _vm.remove(
+                                                                      data.item
+                                                                    )
+                                                                  }
+                                                                }
+                                                              },
+                                                              [
+                                                                _c("strong", [
+                                                                  _vm._v(
+                                                                    _vm._s(
+                                                                      data.item
+                                                                        .Deskripsi
+                                                                    )
+                                                                  )
+                                                                ]),
+                                                                _vm._v(
+                                                                  " \n                                                "
+                                                                )
+                                                              ]
+                                                            )
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]),
+                                                    model: {
+                                                      value:
+                                                        _vm.editedForm.Akses,
+                                                      callback: function($$v) {
+                                                        _vm.$set(
+                                                          _vm.editedForm,
+                                                          "Akses",
+                                                          $$v
+                                                        )
+                                                      },
+                                                      expression:
+                                                        "editedForm.Akses"
+                                                    }
+                                                  })
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
                           )
                         ],
                         1
@@ -18559,6 +19114,10 @@ var render = function() {
                   _c("td", [_vm._v(_vm._s(props.index + 1))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(props.item.Nama))]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-xs-center" }, [
+                    _vm._v(_vm._s(props.item.Username))
+                  ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "text-xs-left" }, [
                     _vm._v(_vm._s(props.item.Divisi))
@@ -19761,7 +20320,11 @@ var render = function() {
                         {
                           staticClass: "toolbar-items",
                           attrs: { color: "" },
-                          on: { click: _vm.logout }
+                          on: {
+                            click: function($event) {
+                              return _vm.logout()
+                            }
+                          }
                         },
                         [_vm._v("mdi-power")]
                       )
@@ -19843,7 +20406,7 @@ var render = function() {
                           { staticClass: "white--text subheading mt-1" },
                           [
                             _c("v-icon", [_vm._v("person")]),
-                            _vm._v(" Nama Lengkap")
+                            _vm._v(" " + _vm._s(_vm.nama))
                           ],
                           1
                         )
@@ -19853,7 +20416,10 @@ var render = function() {
                         _c(
                           "span",
                           { staticClass: "white--text subheading mt-1" },
-                          [_c("v-icon", [_vm._v("work")]), _vm._v(" Divisi")],
+                          [
+                            _c("v-icon", [_vm._v("work")]),
+                            _vm._v(" " + _vm._s(_vm.divisi))
+                          ],
                           1
                         )
                       ]),
@@ -19862,7 +20428,10 @@ var render = function() {
                         _c(
                           "span",
                           { staticClass: "white--text subheading mt-1" },
-                          [_c("v-icon", [_vm._v("spa")]), _vm._v(" Jabatan")],
+                          [
+                            _c("v-icon", [_vm._v("spa")]),
+                            _vm._v(" " + _vm._s(_vm.jabatan))
+                          ],
                           1
                         )
                       ]),
@@ -19888,6 +20457,9 @@ var render = function() {
                           {
                             key: i,
                             staticClass: "v-list-item",
+                            class: {
+                              visible: _vm.Access(link.access) == false
+                            },
                             attrs: {
                               to: link.to,
                               "active-class": _vm.color,
@@ -60885,6 +61457,1037 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/vuex/dist/vuex.esm.js":
+/*!********************************************!*\
+  !*** ./node_modules/vuex/dist/vuex.esm.js ***!
+  \********************************************/
+/*! exports provided: default, Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
+/**
+ * vuex v3.1.1
+ * (c) 2019 Evan You
+ * @license MIT
+ */
+function applyMixin (Vue) {
+  var version = Number(Vue.version.split('.')[0]);
+
+  if (version >= 2) {
+    Vue.mixin({ beforeCreate: vuexInit });
+  } else {
+    // override init and inject vuex init procedure
+    // for 1.x backwards compatibility.
+    var _init = Vue.prototype._init;
+    Vue.prototype._init = function (options) {
+      if ( options === void 0 ) options = {};
+
+      options.init = options.init
+        ? [vuexInit].concat(options.init)
+        : vuexInit;
+      _init.call(this, options);
+    };
+  }
+
+  /**
+   * Vuex init hook, injected into each instances init hooks list.
+   */
+
+  function vuexInit () {
+    var options = this.$options;
+    // store injection
+    if (options.store) {
+      this.$store = typeof options.store === 'function'
+        ? options.store()
+        : options.store;
+    } else if (options.parent && options.parent.$store) {
+      this.$store = options.parent.$store;
+    }
+  }
+}
+
+var target = typeof window !== 'undefined'
+  ? window
+  : typeof global !== 'undefined'
+    ? global
+    : {};
+var devtoolHook = target.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
+function devtoolPlugin (store) {
+  if (!devtoolHook) { return }
+
+  store._devtoolHook = devtoolHook;
+
+  devtoolHook.emit('vuex:init', store);
+
+  devtoolHook.on('vuex:travel-to-state', function (targetState) {
+    store.replaceState(targetState);
+  });
+
+  store.subscribe(function (mutation, state) {
+    devtoolHook.emit('vuex:mutation', mutation, state);
+  });
+}
+
+/**
+ * Get the first item that pass the test
+ * by second argument function
+ *
+ * @param {Array} list
+ * @param {Function} f
+ * @return {*}
+ */
+
+/**
+ * forEach for object
+ */
+function forEachValue (obj, fn) {
+  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
+}
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
+function isPromise (val) {
+  return val && typeof val.then === 'function'
+}
+
+function assert (condition, msg) {
+  if (!condition) { throw new Error(("[vuex] " + msg)) }
+}
+
+function partial (fn, arg) {
+  return function () {
+    return fn(arg)
+  }
+}
+
+// Base data struct for store's module, package with some attribute and method
+var Module = function Module (rawModule, runtime) {
+  this.runtime = runtime;
+  // Store some children item
+  this._children = Object.create(null);
+  // Store the origin module object which passed by programmer
+  this._rawModule = rawModule;
+  var rawState = rawModule.state;
+
+  // Store the origin module's state
+  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
+};
+
+var prototypeAccessors = { namespaced: { configurable: true } };
+
+prototypeAccessors.namespaced.get = function () {
+  return !!this._rawModule.namespaced
+};
+
+Module.prototype.addChild = function addChild (key, module) {
+  this._children[key] = module;
+};
+
+Module.prototype.removeChild = function removeChild (key) {
+  delete this._children[key];
+};
+
+Module.prototype.getChild = function getChild (key) {
+  return this._children[key]
+};
+
+Module.prototype.update = function update (rawModule) {
+  this._rawModule.namespaced = rawModule.namespaced;
+  if (rawModule.actions) {
+    this._rawModule.actions = rawModule.actions;
+  }
+  if (rawModule.mutations) {
+    this._rawModule.mutations = rawModule.mutations;
+  }
+  if (rawModule.getters) {
+    this._rawModule.getters = rawModule.getters;
+  }
+};
+
+Module.prototype.forEachChild = function forEachChild (fn) {
+  forEachValue(this._children, fn);
+};
+
+Module.prototype.forEachGetter = function forEachGetter (fn) {
+  if (this._rawModule.getters) {
+    forEachValue(this._rawModule.getters, fn);
+  }
+};
+
+Module.prototype.forEachAction = function forEachAction (fn) {
+  if (this._rawModule.actions) {
+    forEachValue(this._rawModule.actions, fn);
+  }
+};
+
+Module.prototype.forEachMutation = function forEachMutation (fn) {
+  if (this._rawModule.mutations) {
+    forEachValue(this._rawModule.mutations, fn);
+  }
+};
+
+Object.defineProperties( Module.prototype, prototypeAccessors );
+
+var ModuleCollection = function ModuleCollection (rawRootModule) {
+  // register root module (Vuex.Store options)
+  this.register([], rawRootModule, false);
+};
+
+ModuleCollection.prototype.get = function get (path) {
+  return path.reduce(function (module, key) {
+    return module.getChild(key)
+  }, this.root)
+};
+
+ModuleCollection.prototype.getNamespace = function getNamespace (path) {
+  var module = this.root;
+  return path.reduce(function (namespace, key) {
+    module = module.getChild(key);
+    return namespace + (module.namespaced ? key + '/' : '')
+  }, '')
+};
+
+ModuleCollection.prototype.update = function update$1 (rawRootModule) {
+  update([], this.root, rawRootModule);
+};
+
+ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
+    var this$1 = this;
+    if ( runtime === void 0 ) runtime = true;
+
+  if (true) {
+    assertRawModule(path, rawModule);
+  }
+
+  var newModule = new Module(rawModule, runtime);
+  if (path.length === 0) {
+    this.root = newModule;
+  } else {
+    var parent = this.get(path.slice(0, -1));
+    parent.addChild(path[path.length - 1], newModule);
+  }
+
+  // register nested modules
+  if (rawModule.modules) {
+    forEachValue(rawModule.modules, function (rawChildModule, key) {
+      this$1.register(path.concat(key), rawChildModule, runtime);
+    });
+  }
+};
+
+ModuleCollection.prototype.unregister = function unregister (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+  if (!parent.getChild(key).runtime) { return }
+
+  parent.removeChild(key);
+};
+
+function update (path, targetModule, newModule) {
+  if (true) {
+    assertRawModule(path, newModule);
+  }
+
+  // update target module
+  targetModule.update(newModule);
+
+  // update nested modules
+  if (newModule.modules) {
+    for (var key in newModule.modules) {
+      if (!targetModule.getChild(key)) {
+        if (true) {
+          console.warn(
+            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
+            'manual reload is needed'
+          );
+        }
+        return
+      }
+      update(
+        path.concat(key),
+        targetModule.getChild(key),
+        newModule.modules[key]
+      );
+    }
+  }
+}
+
+var functionAssert = {
+  assert: function (value) { return typeof value === 'function'; },
+  expected: 'function'
+};
+
+var objectAssert = {
+  assert: function (value) { return typeof value === 'function' ||
+    (typeof value === 'object' && typeof value.handler === 'function'); },
+  expected: 'function or object with "handler" function'
+};
+
+var assertTypes = {
+  getters: functionAssert,
+  mutations: functionAssert,
+  actions: objectAssert
+};
+
+function assertRawModule (path, rawModule) {
+  Object.keys(assertTypes).forEach(function (key) {
+    if (!rawModule[key]) { return }
+
+    var assertOptions = assertTypes[key];
+
+    forEachValue(rawModule[key], function (value, type) {
+      assert(
+        assertOptions.assert(value),
+        makeAssertionMessage(path, key, type, value, assertOptions.expected)
+      );
+    });
+  });
+}
+
+function makeAssertionMessage (path, key, type, value, expected) {
+  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
+  if (path.length > 0) {
+    buf += " in module \"" + (path.join('.')) + "\"";
+  }
+  buf += " is " + (JSON.stringify(value)) + ".";
+  return buf
+}
+
+var Vue; // bind on install
+
+var Store = function Store (options) {
+  var this$1 = this;
+  if ( options === void 0 ) options = {};
+
+  // Auto install if it is not done yet and `window` has `Vue`.
+  // To allow users to avoid auto-installation in some cases,
+  // this code should be placed here. See #731
+  if (!Vue && typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
+  }
+
+  if (true) {
+    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
+    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
+    assert(this instanceof Store, "store must be called with the new operator.");
+  }
+
+  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
+  var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+  // store internal state
+  this._committing = false;
+  this._actions = Object.create(null);
+  this._actionSubscribers = [];
+  this._mutations = Object.create(null);
+  this._wrappedGetters = Object.create(null);
+  this._modules = new ModuleCollection(options);
+  this._modulesNamespaceMap = Object.create(null);
+  this._subscribers = [];
+  this._watcherVM = new Vue();
+
+  // bind commit and dispatch to self
+  var store = this;
+  var ref = this;
+  var dispatch = ref.dispatch;
+  var commit = ref.commit;
+  this.dispatch = function boundDispatch (type, payload) {
+    return dispatch.call(store, type, payload)
+  };
+  this.commit = function boundCommit (type, payload, options) {
+    return commit.call(store, type, payload, options)
+  };
+
+  // strict mode
+  this.strict = strict;
+
+  var state = this._modules.root.state;
+
+  // init root module.
+  // this also recursively registers all sub-modules
+  // and collects all module getters inside this._wrappedGetters
+  installModule(this, state, [], this._modules.root);
+
+  // initialize the store vm, which is responsible for the reactivity
+  // (also registers _wrappedGetters as computed properties)
+  resetStoreVM(this, state);
+
+  // apply plugins
+  plugins.forEach(function (plugin) { return plugin(this$1); });
+
+  var useDevtools = options.devtools !== undefined ? options.devtools : Vue.config.devtools;
+  if (useDevtools) {
+    devtoolPlugin(this);
+  }
+};
+
+var prototypeAccessors$1 = { state: { configurable: true } };
+
+prototypeAccessors$1.state.get = function () {
+  return this._vm._data.$$state
+};
+
+prototypeAccessors$1.state.set = function (v) {
+  if (true) {
+    assert(false, "use store.replaceState() to explicit replace store state.");
+  }
+};
+
+Store.prototype.commit = function commit (_type, _payload, _options) {
+    var this$1 = this;
+
+  // check object-style commit
+  var ref = unifyObjectStyle(_type, _payload, _options);
+    var type = ref.type;
+    var payload = ref.payload;
+    var options = ref.options;
+
+  var mutation = { type: type, payload: payload };
+  var entry = this._mutations[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown mutation type: " + type));
+    }
+    return
+  }
+  this._withCommit(function () {
+    entry.forEach(function commitIterator (handler) {
+      handler(payload);
+    });
+  });
+  this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); });
+
+  if (
+     true &&
+    options && options.silent
+  ) {
+    console.warn(
+      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
+      'Use the filter functionality in the vue-devtools'
+    );
+  }
+};
+
+Store.prototype.dispatch = function dispatch (_type, _payload) {
+    var this$1 = this;
+
+  // check object-style dispatch
+  var ref = unifyObjectStyle(_type, _payload);
+    var type = ref.type;
+    var payload = ref.payload;
+
+  var action = { type: type, payload: payload };
+  var entry = this._actions[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown action type: " + type));
+    }
+    return
+  }
+
+  try {
+    this._actionSubscribers
+      .filter(function (sub) { return sub.before; })
+      .forEach(function (sub) { return sub.before(action, this$1.state); });
+  } catch (e) {
+    if (true) {
+      console.warn("[vuex] error in before action subscribers: ");
+      console.error(e);
+    }
+  }
+
+  var result = entry.length > 1
+    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
+    : entry[0](payload);
+
+  return result.then(function (res) {
+    try {
+      this$1._actionSubscribers
+        .filter(function (sub) { return sub.after; })
+        .forEach(function (sub) { return sub.after(action, this$1.state); });
+    } catch (e) {
+      if (true) {
+        console.warn("[vuex] error in after action subscribers: ");
+        console.error(e);
+      }
+    }
+    return res
+  })
+};
+
+Store.prototype.subscribe = function subscribe (fn) {
+  return genericSubscribe(fn, this._subscribers)
+};
+
+Store.prototype.subscribeAction = function subscribeAction (fn) {
+  var subs = typeof fn === 'function' ? { before: fn } : fn;
+  return genericSubscribe(subs, this._actionSubscribers)
+};
+
+Store.prototype.watch = function watch (getter, cb, options) {
+    var this$1 = this;
+
+  if (true) {
+    assert(typeof getter === 'function', "store.watch only accepts a function.");
+  }
+  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
+};
+
+Store.prototype.replaceState = function replaceState (state) {
+    var this$1 = this;
+
+  this._withCommit(function () {
+    this$1._vm._data.$$state = state;
+  });
+};
+
+Store.prototype.registerModule = function registerModule (path, rawModule, options) {
+    if ( options === void 0 ) options = {};
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+    assert(path.length > 0, 'cannot register the root module by using registerModule.');
+  }
+
+  this._modules.register(path, rawModule);
+  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
+  // reset store to update getters...
+  resetStoreVM(this, this.state);
+};
+
+Store.prototype.unregisterModule = function unregisterModule (path) {
+    var this$1 = this;
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+  }
+
+  this._modules.unregister(path);
+  this._withCommit(function () {
+    var parentState = getNestedState(this$1.state, path.slice(0, -1));
+    Vue.delete(parentState, path[path.length - 1]);
+  });
+  resetStore(this);
+};
+
+Store.prototype.hotUpdate = function hotUpdate (newOptions) {
+  this._modules.update(newOptions);
+  resetStore(this, true);
+};
+
+Store.prototype._withCommit = function _withCommit (fn) {
+  var committing = this._committing;
+  this._committing = true;
+  fn();
+  this._committing = committing;
+};
+
+Object.defineProperties( Store.prototype, prototypeAccessors$1 );
+
+function genericSubscribe (fn, subs) {
+  if (subs.indexOf(fn) < 0) {
+    subs.push(fn);
+  }
+  return function () {
+    var i = subs.indexOf(fn);
+    if (i > -1) {
+      subs.splice(i, 1);
+    }
+  }
+}
+
+function resetStore (store, hot) {
+  store._actions = Object.create(null);
+  store._mutations = Object.create(null);
+  store._wrappedGetters = Object.create(null);
+  store._modulesNamespaceMap = Object.create(null);
+  var state = store.state;
+  // init all modules
+  installModule(store, state, [], store._modules.root, true);
+  // reset vm
+  resetStoreVM(store, state, hot);
+}
+
+function resetStoreVM (store, state, hot) {
+  var oldVm = store._vm;
+
+  // bind store public getters
+  store.getters = {};
+  var wrappedGetters = store._wrappedGetters;
+  var computed = {};
+  forEachValue(wrappedGetters, function (fn, key) {
+    // use computed to leverage its lazy-caching mechanism
+    // direct inline function use will lead to closure preserving oldVm.
+    // using partial to return function with only arguments preserved in closure enviroment.
+    computed[key] = partial(fn, store);
+    Object.defineProperty(store.getters, key, {
+      get: function () { return store._vm[key]; },
+      enumerable: true // for local getters
+    });
+  });
+
+  // use a Vue instance to store the state tree
+  // suppress warnings just in case the user has added
+  // some funky global mixins
+  var silent = Vue.config.silent;
+  Vue.config.silent = true;
+  store._vm = new Vue({
+    data: {
+      $$state: state
+    },
+    computed: computed
+  });
+  Vue.config.silent = silent;
+
+  // enable strict mode for new vm
+  if (store.strict) {
+    enableStrictMode(store);
+  }
+
+  if (oldVm) {
+    if (hot) {
+      // dispatch changes in all subscribed watchers
+      // to force getter re-evaluation for hot reloading.
+      store._withCommit(function () {
+        oldVm._data.$$state = null;
+      });
+    }
+    Vue.nextTick(function () { return oldVm.$destroy(); });
+  }
+}
+
+function installModule (store, rootState, path, module, hot) {
+  var isRoot = !path.length;
+  var namespace = store._modules.getNamespace(path);
+
+  // register in namespace map
+  if (module.namespaced) {
+    store._modulesNamespaceMap[namespace] = module;
+  }
+
+  // set state
+  if (!isRoot && !hot) {
+    var parentState = getNestedState(rootState, path.slice(0, -1));
+    var moduleName = path[path.length - 1];
+    store._withCommit(function () {
+      Vue.set(parentState, moduleName, module.state);
+    });
+  }
+
+  var local = module.context = makeLocalContext(store, namespace, path);
+
+  module.forEachMutation(function (mutation, key) {
+    var namespacedType = namespace + key;
+    registerMutation(store, namespacedType, mutation, local);
+  });
+
+  module.forEachAction(function (action, key) {
+    var type = action.root ? key : namespace + key;
+    var handler = action.handler || action;
+    registerAction(store, type, handler, local);
+  });
+
+  module.forEachGetter(function (getter, key) {
+    var namespacedType = namespace + key;
+    registerGetter(store, namespacedType, getter, local);
+  });
+
+  module.forEachChild(function (child, key) {
+    installModule(store, rootState, path.concat(key), child, hot);
+  });
+}
+
+/**
+ * make localized dispatch, commit, getters and state
+ * if there is no namespace, just use root ones
+ */
+function makeLocalContext (store, namespace, path) {
+  var noNamespace = namespace === '';
+
+  var local = {
+    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._actions[type]) {
+          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      return store.dispatch(type, payload)
+    },
+
+    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._mutations[type]) {
+          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      store.commit(type, payload, options);
+    }
+  };
+
+  // getters and state object must be gotten lazily
+  // because they will be changed by vm update
+  Object.defineProperties(local, {
+    getters: {
+      get: noNamespace
+        ? function () { return store.getters; }
+        : function () { return makeLocalGetters(store, namespace); }
+    },
+    state: {
+      get: function () { return getNestedState(store.state, path); }
+    }
+  });
+
+  return local
+}
+
+function makeLocalGetters (store, namespace) {
+  var gettersProxy = {};
+
+  var splitPos = namespace.length;
+  Object.keys(store.getters).forEach(function (type) {
+    // skip if the target getter is not match this namespace
+    if (type.slice(0, splitPos) !== namespace) { return }
+
+    // extract local getter type
+    var localType = type.slice(splitPos);
+
+    // Add a port to the getters proxy.
+    // Define as getter property because
+    // we do not want to evaluate the getters in this time.
+    Object.defineProperty(gettersProxy, localType, {
+      get: function () { return store.getters[type]; },
+      enumerable: true
+    });
+  });
+
+  return gettersProxy
+}
+
+function registerMutation (store, type, handler, local) {
+  var entry = store._mutations[type] || (store._mutations[type] = []);
+  entry.push(function wrappedMutationHandler (payload) {
+    handler.call(store, local.state, payload);
+  });
+}
+
+function registerAction (store, type, handler, local) {
+  var entry = store._actions[type] || (store._actions[type] = []);
+  entry.push(function wrappedActionHandler (payload, cb) {
+    var res = handler.call(store, {
+      dispatch: local.dispatch,
+      commit: local.commit,
+      getters: local.getters,
+      state: local.state,
+      rootGetters: store.getters,
+      rootState: store.state
+    }, payload, cb);
+    if (!isPromise(res)) {
+      res = Promise.resolve(res);
+    }
+    if (store._devtoolHook) {
+      return res.catch(function (err) {
+        store._devtoolHook.emit('vuex:error', err);
+        throw err
+      })
+    } else {
+      return res
+    }
+  });
+}
+
+function registerGetter (store, type, rawGetter, local) {
+  if (store._wrappedGetters[type]) {
+    if (true) {
+      console.error(("[vuex] duplicate getter key: " + type));
+    }
+    return
+  }
+  store._wrappedGetters[type] = function wrappedGetter (store) {
+    return rawGetter(
+      local.state, // local state
+      local.getters, // local getters
+      store.state, // root state
+      store.getters // root getters
+    )
+  };
+}
+
+function enableStrictMode (store) {
+  store._vm.$watch(function () { return this._data.$$state }, function () {
+    if (true) {
+      assert(store._committing, "do not mutate vuex store state outside mutation handlers.");
+    }
+  }, { deep: true, sync: true });
+}
+
+function getNestedState (state, path) {
+  return path.length
+    ? path.reduce(function (state, key) { return state[key]; }, state)
+    : state
+}
+
+function unifyObjectStyle (type, payload, options) {
+  if (isObject(type) && type.type) {
+    options = payload;
+    payload = type;
+    type = type.type;
+  }
+
+  if (true) {
+    assert(typeof type === 'string', ("expects string as the type, but found " + (typeof type) + "."));
+  }
+
+  return { type: type, payload: payload, options: options }
+}
+
+function install (_Vue) {
+  if (Vue && _Vue === Vue) {
+    if (true) {
+      console.error(
+        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+      );
+    }
+    return
+  }
+  Vue = _Vue;
+  applyMixin(Vue);
+}
+
+/**
+ * Reduce the code which written in Vue.js for getting the state.
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} states # Object's item can be a function which accept state and getters for param, you can do something for state and getters in it.
+ * @param {Object}
+ */
+var mapState = normalizeNamespace(function (namespace, states) {
+  var res = {};
+  normalizeMap(states).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedState () {
+      var state = this.$store.state;
+      var getters = this.$store.getters;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
+        if (!module) {
+          return
+        }
+        state = module.context.state;
+        getters = module.context.getters;
+      }
+      return typeof val === 'function'
+        ? val.call(this, state, getters)
+        : state[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for committing the mutation
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} mutations # Object's item can be a function which accept `commit` function as the first param, it can accept anthor params. You can commit mutation and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapMutations = normalizeNamespace(function (namespace, mutations) {
+  var res = {};
+  normalizeMap(mutations).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedMutation () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // Get the commit method from store
+      var commit = this.$store.commit;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
+        if (!module) {
+          return
+        }
+        commit = module.context.commit;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [commit].concat(args))
+        : commit.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for getting the getters
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} getters
+ * @return {Object}
+ */
+var mapGetters = normalizeNamespace(function (namespace, getters) {
+  var res = {};
+  normalizeMap(getters).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    // The namespace has been mutated by normalizeNamespace
+    val = namespace + val;
+    res[key] = function mappedGetter () {
+      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
+        return
+      }
+      if ( true && !(val in this.$store.getters)) {
+        console.error(("[vuex] unknown getter: " + val));
+        return
+      }
+      return this.$store.getters[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for dispatch the action
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} actions # Object's item can be a function which accept `dispatch` function as the first param, it can accept anthor params. You can dispatch action and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapActions = normalizeNamespace(function (namespace, actions) {
+  var res = {};
+  normalizeMap(actions).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedAction () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // get dispatch function from store
+      var dispatch = this.$store.dispatch;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
+        if (!module) {
+          return
+        }
+        dispatch = module.context.dispatch;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [dispatch].concat(args))
+        : dispatch.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Rebinding namespace param for mapXXX function in special scoped, and return them by simple object
+ * @param {String} namespace
+ * @return {Object}
+ */
+var createNamespacedHelpers = function (namespace) { return ({
+  mapState: mapState.bind(null, namespace),
+  mapGetters: mapGetters.bind(null, namespace),
+  mapMutations: mapMutations.bind(null, namespace),
+  mapActions: mapActions.bind(null, namespace)
+}); };
+
+/**
+ * Normalize the map
+ * normalizeMap([1, 2, 3]) => [ { key: 1, val: 1 }, { key: 2, val: 2 }, { key: 3, val: 3 } ]
+ * normalizeMap({a: 1, b: 2, c: 3}) => [ { key: 'a', val: 1 }, { key: 'b', val: 2 }, { key: 'c', val: 3 } ]
+ * @param {Array|Object} map
+ * @return {Object}
+ */
+function normalizeMap (map) {
+  return Array.isArray(map)
+    ? map.map(function (key) { return ({ key: key, val: key }); })
+    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
+}
+
+/**
+ * Return a function expect two param contains namespace and map. it will normalize the namespace and then the param's function will handle the new namespace and the map.
+ * @param {Function} fn
+ * @return {Function}
+ */
+function normalizeNamespace (fn) {
+  return function (namespace, map) {
+    if (typeof namespace !== 'string') {
+      map = namespace;
+      namespace = '';
+    } else if (namespace.charAt(namespace.length - 1) !== '/') {
+      namespace += '/';
+    }
+    return fn(namespace, map)
+  }
+}
+
+/**
+ * Search a special module from store by namespace. if module not exist, print error message.
+ * @param {Object} store
+ * @param {String} helper
+ * @param {String} namespace
+ * @return {Object}
+ */
+function getModuleByNamespace (store, helper, namespace) {
+  var module = store._modulesNamespaceMap[namespace];
+  if ( true && !module) {
+    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
+  }
+  return module
+}
+
+var index_esm = {
+  Store: Store,
+  install: install,
+  version: '3.1.1',
+  mapState: mapState,
+  mapMutations: mapMutations,
+  mapGetters: mapGetters,
+  mapActions: mapActions,
+  createNamespacedHelpers: createNamespacedHelpers
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (index_esm);
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -60936,14 +62539,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _plugins_theme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./plugins/theme */ "./resources/js/plugins/theme.js");
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
-/* harmony import */ var vuetify_dist_vuetify_min_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/dist/vuetify.min.css */ "./node_modules/vuetify/dist/vuetify.min.css");
-/* harmony import */ var vuetify_dist_vuetify_min_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vuetify_dist_vuetify_min_css__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _mdi_font_css_materialdesignicons_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mdi/font/css/materialdesignicons.css */ "./node_modules/@mdi/font/css/materialdesignicons.css");
-/* harmony import */ var _mdi_font_css_materialdesignicons_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_mdi_font_css_materialdesignicons_css__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var material_design_icons_iconfont_dist_material_design_icons_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! material-design-icons-iconfont/dist/material-design-icons.css */ "./node_modules/material-design-icons-iconfont/dist/material-design-icons.css");
-/* harmony import */ var material_design_icons_iconfont_dist_material_design_icons_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(material_design_icons_iconfont_dist_material_design_icons_css__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue");
-/* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./http */ "./resources/js/http.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var vuetify_dist_vuetify_min_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/dist/vuetify.min.css */ "./node_modules/vuetify/dist/vuetify.min.css");
+/* harmony import */ var vuetify_dist_vuetify_min_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vuetify_dist_vuetify_min_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _mdi_font_css_materialdesignicons_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mdi/font/css/materialdesignicons.css */ "./node_modules/@mdi/font/css/materialdesignicons.css");
+/* harmony import */ var _mdi_font_css_materialdesignicons_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_mdi_font_css_materialdesignicons_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var material_design_icons_iconfont_dist_material_design_icons_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! material-design-icons-iconfont/dist/material-design-icons.css */ "./node_modules/material-design-icons-iconfont/dist/material-design-icons.css");
+/* harmony import */ var material_design_icons_iconfont_dist_material_design_icons_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(material_design_icons_iconfont_dist_material_design_icons_css__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue");
+/* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./http */ "./resources/js/http.js");
 
  // import i18n from 'i18n'
 
@@ -60954,7 +62558,7 @@ __webpack_require__.r(__webpack_exports__);
 
  // import { setupComponents } from './setup-components';
 // import Controller from './httpController'
-// import store from './store'
+
 
  // import 'font-awesome/css/font-awesome.css';  
 
@@ -60984,12 +62588,12 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   router: router,
   // vuetify : new Vuetify(),
-  // store,
+  store: _store__WEBPACK_IMPORTED_MODULE_7__["default"],
   // data: {
   //     themeColor: '#1E88E5',
   // },
   render: function render(h) {
-    return h(_components_App__WEBPACK_IMPORTED_MODULE_10__["default"]);
+    return h(_components_App__WEBPACK_IMPORTED_MODULE_11__["default"]);
   }
 }).$mount('#app');
 
@@ -61907,6 +63511,142 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/middleware.js":
+/*!************************************!*\
+  !*** ./resources/js/middleware.js ***!
+  \************************************/
+/*! exports provided: auth, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "auth", function() { return auth; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return middleware; });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _service_Auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./service/Auth */ "./resources/js/service/Auth.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+function auth(_x, _x2, _x3) {
+  return _auth.apply(this, arguments);
+}
+
+function _auth() {
+  _auth = _asyncToGenerator(
+  /*#__PURE__*/
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(to, from, next) {
+    var Akses, x, aquired;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            if (_service_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken()) {
+              _context2.next = 4;
+              break;
+            }
+
+            // console.log("GA DPET TOKEN")
+            next({
+              name: 'Login'
+            });
+            _context2.next = 17;
+            break;
+
+          case 4:
+            _context2.prev = 4;
+            _context2.next = 7;
+            return _service_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].refresh();
+
+          case 7:
+            console.log(_store__WEBPACK_IMPORTED_MODULE_2__["default"].getters['LoggedUser/Akses']);
+            Akses = _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters['LoggedUser/Akses']; // console.log(Akses)
+
+            aquired = false;
+
+            if (to.meta.Akses.includes("Panel")) {
+              aquired = true;
+              next();
+            } else {
+              for (x in Akses.data) {
+                if (to.meta.Akses.includes(Akses.data[x].Fitur)) {
+                  aquired = true; // console.log("DPET AKSES")
+
+                  next();
+                }
+              }
+            }
+
+            if (aquired == false) {
+              // console.log("GA DPET AKSES")
+              next({
+                name: 'Dashboard'
+              }); // Fallback if the role doesn't have any permission to access page
+            } // if (to.meta.role.includes(role)) {
+            //   next()
+            // } else {
+            //   next({ name: 'Dashboard' }) // Fallback if the role doesn't have any permission to access page
+            // }
+
+
+            _context2.next = 17;
+            break;
+
+          case 14:
+            _context2.prev = 14;
+            _context2.t0 = _context2["catch"](4);
+            next({
+              name: 'Login'
+            });
+
+          case 17:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[4, 14]]);
+  }));
+  return _auth.apply(this, arguments);
+}
+
+function middleware(guards) {
+  return function (to, from, next) {
+    guards.forEach(
+    /*#__PURE__*/
+    function () {
+      var _ref = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(guard) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return guard(to, from, next);
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x4) {
+        return _ref.apply(this, arguments);
+      };
+    }());
+  };
+}
+
+/***/ }),
+
 /***/ "./resources/js/plugins/theme.js":
 /*!***************************************!*\
   !*** ./resources/js/plugins/theme.js ***!
@@ -61940,16 +63680,18 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
-/* harmony import */ var _views_LoginPage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/LoginPage */ "./resources/js/views/LoginPage.vue");
-/* harmony import */ var _components_LoginForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/LoginForm */ "./resources/js/components/LoginForm.vue");
-/* harmony import */ var _views_PanelPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/PanelPage */ "./resources/js/views/PanelPage.vue");
-/* harmony import */ var _components_Dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Dashboard */ "./resources/js/components/Dashboard.vue");
-/* harmony import */ var _components_Profile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Profile */ "./resources/js/components/Profile.vue");
-/* harmony import */ var _components_JobDesk__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/JobDesk */ "./resources/js/components/JobDesk.vue");
-/* harmony import */ var _components_JobDeskV2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/JobDeskV2 */ "./resources/js/components/JobDeskV2.vue");
-/* harmony import */ var _components_JobDeskV3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/JobDeskV3 */ "./resources/js/components/JobDeskV3.vue");
-/* harmony import */ var _components_ManagementEmployee__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/ManagementEmployee */ "./resources/js/components/ManagementEmployee.vue");
-/* harmony import */ var _components_ManagementRole__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/ManagementRole */ "./resources/js/components/ManagementRole.vue");
+/* harmony import */ var _middleware__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./middleware */ "./resources/js/middleware.js");
+/* harmony import */ var _views_LoginPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/LoginPage */ "./resources/js/views/LoginPage.vue");
+/* harmony import */ var _components_LoginForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/LoginForm */ "./resources/js/components/LoginForm.vue");
+/* harmony import */ var _views_PanelPage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/PanelPage */ "./resources/js/views/PanelPage.vue");
+/* harmony import */ var _components_Dashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Dashboard */ "./resources/js/components/Dashboard.vue");
+/* harmony import */ var _components_Profile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Profile */ "./resources/js/components/Profile.vue");
+/* harmony import */ var _components_JobDesk__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/JobDesk */ "./resources/js/components/JobDesk.vue");
+/* harmony import */ var _components_JobDeskV2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/JobDeskV2 */ "./resources/js/components/JobDeskV2.vue");
+/* harmony import */ var _components_JobDeskV3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/JobDeskV3 */ "./resources/js/components/JobDeskV3.vue");
+/* harmony import */ var _components_ManagementEmployee__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/ManagementEmployee */ "./resources/js/components/ManagementEmployee.vue");
+/* harmony import */ var _components_ManagementRole__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/ManagementRole */ "./resources/js/components/ManagementRole.vue");
+
 
 
 
@@ -61986,10 +63728,12 @@ var routes = [// {
     name: '' // requiresAuth: false
 
   },
-  component: _views_LoginPage__WEBPACK_IMPORTED_MODULE_0__["default"],
+  component: _views_LoginPage__WEBPACK_IMPORTED_MODULE_1__["default"],
   children: [{
     path: 'login',
-    component: _components_LoginForm__WEBPACK_IMPORTED_MODULE_1__["default"]
+    component: _components_LoginForm__WEBPACK_IMPORTED_MODULE_2__["default"],
+    name: 'Login',
+    meta: {}
   }]
 }, {
   path: '/panel',
@@ -61997,59 +63741,897 @@ var routes = [// {
     name: 'Panel View' // requiresAuth: true
 
   },
-  component: _views_PanelPage__WEBPACK_IMPORTED_MODULE_2__["default"],
+  component: _views_PanelPage__WEBPACK_IMPORTED_MODULE_3__["default"],
   children: [{
     path: 'dashboard',
+    name: 'Dashboard',
     meta: {
-      name: 'Dashboard' // requiresAuth: true
-
+      name: 'Dashboard',
+      Akses: ['Panel']
     },
-    // name: 'Dashboard',
-    component: _components_Dashboard__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _components_Dashboard__WEBPACK_IMPORTED_MODULE_4__["default"],
+    beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
   }, {
     path: 'user-profile',
     meta: {
-      name: 'User Profile' // requiresAuth: true
-
+      name: 'User Profile',
+      Akses: ['Panel']
     },
-    component: _components_Profile__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _components_Profile__WEBPACK_IMPORTED_MODULE_5__["default"],
+    beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
   }, {
     path: 'job-desk',
     meta: {
       name: 'Job Desk' // requiresAuth: true
 
     },
-    component: _components_JobDesk__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _components_JobDesk__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     path: 'job-desk2',
     meta: {
       name: 'Job Desk V2' // requiresAuth: true
 
     },
-    component: _components_JobDeskV2__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _components_JobDeskV2__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {
     path: 'job-desk3',
+    name: 'Job Desk V3',
     meta: {
-      name: 'Job Desk V3' // requiresAuth: true
-
+      name: 'Job Desk V3',
+      Akses: ['Panel']
     },
-    component: _components_JobDeskV3__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _components_JobDeskV3__WEBPACK_IMPORTED_MODULE_8__["default"],
+    beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
   }, {
     path: 'employee',
     meta: {
-      name: 'Management Employee' // requiresAuth: true
-
+      name: 'Management Employee',
+      Akses: ['M-Employee-C', 'M-Employee-R', 'M-Employee-U', 'M-Employee-D']
     },
-    component: _components_ManagementEmployee__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _components_ManagementEmployee__WEBPACK_IMPORTED_MODULE_9__["default"],
+    beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
   }, {
     path: 'role',
     meta: {
-      name: 'Management Role' // requiresAuth: true
-
+      name: 'Management Role',
+      Akses: ['M-Role-C', 'M-Role-R', 'M-Role-U', 'M-Role-D']
     },
-    component: _components_ManagementRole__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _components_ManagementRole__WEBPACK_IMPORTED_MODULE_10__["default"],
+    beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
   }]
 }];
+
+/***/ }),
+
+/***/ "./resources/js/service/Auth.js":
+/*!**************************************!*\
+  !*** ./resources/js/service/Auth.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Http */ "./resources/js/service/Http.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../routes */ "./resources/js/routes.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  authenticate: function () {
+    var _authenticate = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
+      var username, password, res, accessToken;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              username = _ref.username, password = _ref.password;
+              _context.prev = 1;
+              _context.next = 4;
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].post('/api/authenticate', {
+                username: username,
+                password: password
+              });
+
+            case 4:
+              res = _context.sent;
+              accessToken = {
+                username: res.data.data.Username,
+                password: res.data.data.Password // console.log(accessToken)
+
+              };
+              _Http__WEBPACK_IMPORTED_MODULE_1__["default"].setHeader(accessToken); // console.log("2")
+
+              js_cookie__WEBPACK_IMPORTED_MODULE_3___default.a.set('accessToken', accessToken); // console.log("3")
+
+              _context.t0 = _store__WEBPACK_IMPORTED_MODULE_2__["default"];
+              _context.next = 11;
+              return this.token();
+
+            case 11:
+              _context.t1 = _context.sent;
+
+              _context.t0.commit.call(_context.t0, 'LoggedUser/setLoggedUser', _context.t1);
+
+              _context.next = 18;
+              break;
+
+            case 15:
+              _context.prev = 15;
+              _context.t2 = _context["catch"](1);
+              throw new Error('username / password salah');
+
+            case 18:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this, [[1, 15]]);
+    }));
+
+    function authenticate(_x) {
+      return _authenticate.apply(this, arguments);
+    }
+
+    return authenticate;
+  }(),
+  token: function () {
+    var _token = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].get('/api/token');
+
+            case 3:
+              res = _context2.sent;
+              return _context2.abrupt("return", res.data.data);
+
+            case 7:
+              _context2.prev = 7;
+              _context2.t0 = _context2["catch"](0);
+
+              if (!(_context2.t0.response.status === 401)) {
+                _context2.next = 13;
+                break;
+              }
+
+              _routes__WEBPACK_IMPORTED_MODULE_4__["routes"].push({
+                name: 'Login'
+              });
+              _context2.next = 14;
+              break;
+
+            case 13:
+              throw new Error('Failed fetch authenticated user');
+
+            case 14:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[0, 7]]);
+    }));
+
+    function token() {
+      return _token.apply(this, arguments);
+    }
+
+    return token;
+  }(),
+  refresh: function () {
+    var _refresh = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      var accessToken;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              accessToken = js_cookie__WEBPACK_IMPORTED_MODULE_3___default.a.get('accessToken');
+
+              if (!(typeof accessToken === 'undefined')) {
+                _context3.next = 3;
+                break;
+              }
+
+              throw new Error('Access token not exist');
+
+            case 3:
+              _Http__WEBPACK_IMPORTED_MODULE_1__["default"].setHeader(JSON.parse(accessToken));
+              _context3.t0 = _store__WEBPACK_IMPORTED_MODULE_2__["default"];
+              _context3.next = 7;
+              return this.token();
+
+            case 7:
+              _context3.t1 = _context3.sent;
+
+              _context3.t0.commit.call(_context3.t0, 'LoggedUser/setLoggedUser', _context3.t1);
+
+              console.log("refresh?");
+
+            case 10:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, this);
+    }));
+
+    function refresh() {
+      return _refresh.apply(this, arguments);
+    }
+
+    return refresh;
+  }(),
+  logout: function logout() {
+    _store__WEBPACK_IMPORTED_MODULE_2__["default"].commit('LoggedUser/setLoggedUser', {});
+    _store__WEBPACK_IMPORTED_MODULE_2__["default"].commit('LoggedUser/loggedOut');
+    js_cookie__WEBPACK_IMPORTED_MODULE_3___default.a.remove('accessToken');
+  },
+  getToken: function getToken() {
+    console.log("getToken?");
+    return typeof js_cookie__WEBPACK_IMPORTED_MODULE_3___default.a.get('accessToken') !== 'undefined';
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/service/Http.js":
+/*!**************************************!*\
+  !*** ./resources/js/service/Http.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  init: function init() {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = 'http://127.0.0.1/';
+  },
+  setHeader: function setHeader(token) {
+    // console.log(token)
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Basic ' + btoa(token.username + ':' + token.password);
+  },
+  getHeader: function getHeader() {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'];
+  },
+  get: function get(url) {
+    try {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.request({
+        url: url,
+        method: 'get'
+      });
+    } catch (err) {
+      throw err;
+    }
+  },
+  post: function post(url, data) {
+    try {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.request({
+        url: url,
+        data: data,
+        method: 'post'
+      });
+    } catch (err) {
+      throw err;
+    }
+  },
+  patch: function patch(url, data) {
+    try {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.request({
+        url: url,
+        data: data,
+        method: 'patch'
+      });
+    } catch (err) {
+      throw err;
+    }
+  },
+  "delete": function _delete(url) {
+    try {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.request({
+        url: url,
+        method: 'delete'
+      });
+    } catch (err) {
+      throw err;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/service/User.js":
+/*!**************************************!*\
+  !*** ./resources/js/service/User.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Http */ "./resources/js/service/Http.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  get: function () {
+    var _get = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].get('/api/user');
+
+            case 3:
+              res = _context.sent;
+              return _context.abrupt("return", res.data.data);
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+              throw new Error(_context.t0);
+
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 7]]);
+    }));
+
+    function get() {
+      return _get.apply(this, arguments);
+    }
+
+    return get;
+  }(),
+  store: function () {
+    var _store = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(payload) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].post('/api/user', payload);
+
+            case 3:
+              _context2.next = 8;
+              break;
+
+            case 5:
+              _context2.prev = 5;
+              _context2.t0 = _context2["catch"](0);
+              throw new Error(_context2.t0);
+
+            case 8:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[0, 5]]);
+    }));
+
+    function store(_x) {
+      return _store.apply(this, arguments);
+    }
+
+    return store;
+  }(),
+  find: function () {
+    var _find = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.prev = 0;
+              _context3.next = 3;
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/user/".concat(id));
+
+            case 3:
+              res = _context3.sent;
+              return _context3.abrupt("return", res.data.data);
+
+            case 7:
+              _context3.prev = 7;
+              _context3.t0 = _context3["catch"](0);
+              throw new Error(_context3.t0);
+
+            case 10:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[0, 7]]);
+    }));
+
+    function find(_x2) {
+      return _find.apply(this, arguments);
+    }
+
+    return find;
+  }(),
+  update: function () {
+    var _update = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id, payload) {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.prev = 0;
+              _context4.next = 3;
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].patch("/api/user/".concat(id), payload);
+
+            case 3:
+              res = _context4.sent;
+              return _context4.abrupt("return", res.data.data);
+
+            case 7:
+              _context4.prev = 7;
+              _context4.t0 = _context4["catch"](0);
+              throw new Error(_context4.t0);
+
+            case 10:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[0, 7]]);
+    }));
+
+    function update(_x3, _x4) {
+      return _update.apply(this, arguments);
+    }
+
+    return update;
+  }(),
+  "delete": function () {
+    var _delete2 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.prev = 0;
+              _context5.next = 3;
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"]("/api/user/".concat(id));
+
+            case 3:
+              _context5.next = 8;
+              break;
+
+            case 5:
+              _context5.prev = 5;
+              _context5.t0 = _context5["catch"](0);
+              throw new Error(_context5.t0);
+
+            case 8:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, null, [[0, 5]]);
+    }));
+
+    function _delete(_x5) {
+      return _delete2.apply(this, arguments);
+    }
+
+    return _delete;
+  }()
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/index.js":
+/*!*************************************!*\
+  !*** ./resources/js/store/index.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _modules__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules */ "./resources/js/store/modules/index.js");
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+  modules: _modules__WEBPACK_IMPORTED_MODULE_2__["default"]
+}));
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/LoggedUser.js":
+/*!**************************************************!*\
+  !*** ./resources/js/store/modules/LoggedUser.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var state = {
+  Akun: {
+    Id_Akun: null,
+    Id_Karyawan: null,
+    Username: null,
+    Name: null,
+    Divisi: null,
+    Jabatan: null,
+    Akses: null
+  },
+  isLoggedIn: false
+};
+var mutations = {
+  setLoggedUser: function setLoggedUser(state, source) {
+    state.Akun.Id_Akun = source.Id_Akun;
+    state.Akun.Id_Karyawan = source.Id_Karyawan;
+    state.Akun.Name = source.Name;
+    state.Akun.Username = source.Username;
+    state.Akun.Divisi = source.Divisi;
+    state.Akun.Jabatan = source.Jabatan;
+    state.Akun.Akses = source.Akses;
+    state.isLoggedIn = true;
+  },
+  loggedOut: function loggedOut(state) {
+    state.isLoggedIn = false;
+  }
+};
+var getters = {
+  Id_Akun: function Id_Akun(state) {
+    return state.Akun.Id_Akun;
+  },
+  Id_Karyawan: function Id_Karyawan(state) {
+    return state.Akun.Id_Karyawan;
+  },
+  Name: function Name(state) {
+    return state.Akun.Name;
+  },
+  Username: function Username(state) {
+    return state.Akun.Username;
+  },
+  Divisi: function Divisi(state) {
+    return state.Akun.Divisi;
+  },
+  Jabatan: function Jabatan(state) {
+    return state.Akun.Jabatan;
+  },
+  Akses: function Akses(state) {
+    return state.Akun.Akses;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: state,
+  mutations: mutations,
+  getters: getters
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/User.js":
+/*!********************************************!*\
+  !*** ./resources/js/store/modules/User.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _service_User__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/User */ "./resources/js/service/User.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var state = {
+  users: [],
+  user: {
+    username: '',
+    role: '',
+    name: ''
+  },
+  loading: true,
+  error: null
+};
+var mutations = {
+  setSource: function setSource(state, payload) {
+    state.users = payload;
+    state.loading = false;
+    state.error = null;
+  },
+  setFailedAction: function setFailedAction(state, payload) {
+    state.loading = false;
+    state.error = payload.error;
+  },
+  setUserForm: function setUserForm(state, payload) {
+    state.user.username = payload.username;
+  }
+};
+var getters = {
+  error: function error(state) {
+    return state.error;
+  },
+  loading: function loading(state) {
+    return state.loading;
+  },
+  user: function user(state) {
+    return state.user;
+  }
+};
+var actions = {
+  get: function () {
+    var _get = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(context) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.t0 = context;
+              _context.next = 4;
+              return _service_User__WEBPACK_IMPORTED_MODULE_1__["default"].get();
+
+            case 4:
+              _context.t1 = _context.sent;
+
+              _context.t0.commit.call(_context.t0, 'setSource', _context.t1);
+
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t2 = _context["catch"](0);
+              context.commit('setFailedAction', _context.t2);
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 8]]);
+    }));
+
+    function get(_x) {
+      return _get.apply(this, arguments);
+    }
+
+    return get;
+  }(),
+  store: function () {
+    var _store = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(context, payload) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return _service_User__WEBPACK_IMPORTED_MODULE_1__["default"].store(payload);
+
+            case 3:
+              _context2.next = 8;
+              break;
+
+            case 5:
+              _context2.prev = 5;
+              _context2.t0 = _context2["catch"](0);
+              context.commit('setFailedStore', _context2.t0);
+
+            case 8:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[0, 5]]);
+    }));
+
+    function store(_x2, _x3) {
+      return _store.apply(this, arguments);
+    }
+
+    return store;
+  }(),
+  edit: function () {
+    var _edit = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(context, id) {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.prev = 0;
+              _context3.next = 3;
+              return _service_User__WEBPACK_IMPORTED_MODULE_1__["default"].find(id);
+
+            case 3:
+              res = _context3.sent;
+              context.commit('setUserForm', res);
+              _context3.next = 10;
+              break;
+
+            case 7:
+              _context3.prev = 7;
+              _context3.t0 = _context3["catch"](0);
+              context.commit('setFailedAction', _context3.t0);
+
+            case 10:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[0, 7]]);
+    }));
+
+    function edit(_x4, _x5) {
+      return _edit.apply(this, arguments);
+    }
+
+    return edit;
+  }(),
+  update: function () {
+    var _update = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(context, payload) {
+      var data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.prev = 0;
+              data = {
+                username: payload.username,
+                password: payload.password
+              };
+              _context4.next = 4;
+              return _service_User__WEBPACK_IMPORTED_MODULE_1__["default"].update(payload.id_user, data);
+
+            case 4:
+              _context4.next = 9;
+              break;
+
+            case 6:
+              _context4.prev = 6;
+              _context4.t0 = _context4["catch"](0);
+              context.commit('setFailedAction', _context4.t0);
+
+            case 9:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[0, 6]]);
+    }));
+
+    function update(_x6, _x7) {
+      return _update.apply(this, arguments);
+    }
+
+    return update;
+  }(),
+  "delete": function () {
+    var _delete2 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(context, id) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.prev = 0;
+              _context5.next = 3;
+              return _service_User__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"](id);
+
+            case 3:
+              _context5.next = 8;
+              break;
+
+            case 5:
+              _context5.prev = 5;
+              _context5.t0 = _context5["catch"](0);
+              context.commit('setFailedAction', _context5.t0);
+
+            case 8:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, null, [[0, 5]]);
+    }));
+
+    function _delete(_x8, _x9) {
+      return _delete2.apply(this, arguments);
+    }
+
+    return _delete;
+  }(),
+  resetForm: function resetForm(context) {
+    context.commit('setUserForm', {});
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/index.js":
+/*!*********************************************!*\
+  !*** ./resources/js/store/modules/index.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./User */ "./resources/js/store/modules/User.js");
+/* harmony import */ var _LoggedUser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoggedUser */ "./resources/js/store/modules/LoggedUser.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  User: _User__WEBPACK_IMPORTED_MODULE_2__["default"],
+  LoggedUser: _LoggedUser__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
 
 /***/ }),
 

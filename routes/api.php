@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 //Divisi
 Route::get('/divisi', 'DivisiRoleController@index');
@@ -50,3 +50,9 @@ Route::resource ('karyawan','KaryawanController');
 
 //Akses
 Route::resource('akses','AksesController');
+
+//Akun  
+Route::resource('akun','AkunController');
+
+Route::post('/authenticate', 'TokenController@authenticate');
+Route::get('/token', 'TokenController@validateToken');

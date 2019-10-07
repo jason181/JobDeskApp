@@ -1,3 +1,5 @@
+import middleware, { auth } from './middleware'
+
 import LoginPage from './views/LoginPage'
 import LoginForm from './components/LoginForm'
 
@@ -52,6 +54,10 @@ export const routes = [
           {
             path: 'login',
             component: LoginForm,
+            name: 'Login',
+            meta: {
+            
+            },
           }
         ]
     },
@@ -66,25 +72,36 @@ export const routes = [
       children: [
         {
           path: 'dashboard',
+          name: 'Dashboard',
           meta: {
             name: 'Dashboard',
-            // requiresAuth: true
+            Akses:[
+              'Panel'
+            ]
           },
-          // name: 'Dashboard',
-          component : Dashboard
+          component : Dashboard,
+          beforeEnter: middleware([
+            auth
+          ]) 
         },
         {
           path: 'user-profile',
           meta: {
             name: 'User Profile',
-            // requiresAuth: true
+            Akses:[
+              'Panel'
+            ]
           },
-          component : Profile
+          component : Profile,
+          beforeEnter: middleware([
+            auth
+          ])
         },
         {
           path: 'job-desk',
           meta: {
             name: 'Job Desk',
+           
             // requiresAuth: true
           },
           component : JobDesk
@@ -99,27 +116,49 @@ export const routes = [
         },
         {
           path: 'job-desk3',
+          name: 'Job Desk V3',
           meta: {
             name: 'Job Desk V3',
-            // requiresAuth: true
+            Akses:[
+              'Panel'
+            ]
           },
-          component : JobDeskV3
+          component : JobDeskV3,
+          beforeEnter: middleware([
+            auth
+          ])
         },
         {
           path: 'employee',
           meta: {
             name: 'Management Employee',
-            // requiresAuth: true
+            Akses:[
+              'M-Employee-C',
+              'M-Employee-R',
+              'M-Employee-U',
+              'M-Employee-D',
+            ]
           },
-          component : Employee
+          component : Employee,
+          beforeEnter: middleware([
+            auth
+          ])
         },
         {
           path: 'role',
           meta: {
             name: 'Management Role',
-            // requiresAuth: true
+            Akses:[
+              'M-Role-C',
+              'M-Role-R',
+              'M-Role-U',
+              'M-Role-D',
+            ]
           },
-          component : Role
+          component : Role,
+          beforeEnter: middleware([
+            auth
+          ])
         },
       ]
     }

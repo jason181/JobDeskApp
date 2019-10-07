@@ -15,18 +15,19 @@ class AkunTransformers extends TransformerAbstract
      * @param Branch $branch
      */
     protected $defaultIncludes = [
-        'akses'
+        'Akses'
     ];
 
     public function transform(Akun $akun)
     {
         return [
             'Id_Akun'       => $akun->Id_Akun,
+            'Id_Karyawan'   => optional($akun->karyawans)->Id_Karyawan,
             'Username'      => $akun->Username,
             'Password'      => $akun->Password,
             'Name'          => optional($akun->karyawans)->Nama,
-            'Divisi'        => optional($akun->divisi_roles)->Deskripsi,
-            'Jabatan'       => optional($akun->jabatans)->Deskripsi,
+            'Divisi'        => optional($akun->karyawans->divisi_roles)->Deskripsi,
+            'Jabatan'       => optional($akun->karyawans->jabatans)->Deskripsi,
         ];
     }
 

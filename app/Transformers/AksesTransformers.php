@@ -5,7 +5,7 @@ namespace App\Transformers;
 use League\Fractal\TransformerAbstract;
 use App\Akses;
 
-class AksesPekerjaanTransformers extends TransformerAbstract
+class AksesTransformers extends TransformerAbstract
 {
     /**
      * Transform Branch.
@@ -18,6 +18,8 @@ class AksesPekerjaanTransformers extends TransformerAbstract
             'Id_Akses'    => $akses->Id_Akses,
             'Id_Karyawan' => $akses->Id_Karyawan,
             'Fitur'       => $akses->Fitur,
+            'Deskripsi'   => $akses->Deskripsi,
+
         ];
     }
 }

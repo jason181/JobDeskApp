@@ -51,7 +51,7 @@
                         <v-icon color>mdi-account</v-icon>
                     </router-link>
 
-                    <v-icon class="toolbar-items" color @click="logout">mdi-power</v-icon>
+                    <v-icon class="toolbar-items" color @click="logout()">mdi-power</v-icon>
                 </v-flex>
             </v-toolbar-items>
         </v-toolbar>
@@ -93,13 +93,13 @@
                 </v-list-tile>
                 <v-divider/>
                 <v-list-tile>
-                 <span class="white--text subheading mt-1"> <v-icon>person</v-icon> Nama Lengkap</span>
+                 <span class="white--text subheading mt-1"> <v-icon>person</v-icon> {{nama}}</span>
                 </v-list-tile>
                 <v-list-tile>
-                 <span class="white--text subheading mt-1"> <v-icon>work</v-icon> Divisi</span>
+                 <span class="white--text subheading mt-1"> <v-icon>work</v-icon> {{divisi}}</span>
                 </v-list-tile>
                 <v-list-tile>
-                 <span class="white--text subheading mt-1"> <v-icon>spa</v-icon> Jabatan</span>
+                 <span class="white--text subheading mt-1"> <v-icon>spa</v-icon> {{jabatan}}</span>
                 </v-list-tile>
                 
                 <v-divider/>
@@ -120,8 +120,10 @@
                 :active-class="color"
                 avatar
                 class="v-list-item"
+                v-bind:class="{'visible':Access(link.access)==false}"
                 >
-                <v-list-tile-action>
+                
+                <v-list-tile-action >
                     <v-icon>{{ link.icon }}</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-title
@@ -144,6 +146,9 @@
 </template>
 
 <script>
+import Controller from '../httpController'
+import { mapGetters } from 'vuex'
+import Auth from '../service/Auth'
 // import { mapMutations, mapGetters } from "vuex";
 export default {
 //   name: 'DashboardView',
@@ -171,7 +176,10 @@ export default {
         {
             to: '/panel/dashboard',
             icon: 'mdi-view-dashboard',
-            text: 'Dashboard'
+            text: 'Dashboard',
+            access:[
+                'Panel'
+            ]
         },
         // {
         //     to: '/panel/user-profile',
@@ -191,17 +199,33 @@ export default {
         {
             to: '/panel/job-desk3',
             icon: 'assignment_turned_in',
-            text: 'Job Desk'
+            text: 'Job Desk',
+            access:[
+                'Panel'
+            ]
+            
         },
         {
             to: '/panel/employee',
             icon: 'supervised_user_circle',
-            text: 'Management Employee'
+            text: 'Management Employee',
+            access:[
+                'M-Employee-C',
+                'M-Employee-R',
+                'M-Employee-U',
+                'M-Employee-D',
+            ]
         },
         {
             to: '/panel/role',
             icon: 'assignment_ind',
-            text: 'Management Role'
+            text: 'Management Role',
+            access:[
+                'M-Role-C',
+                'M-Role-R',
+                'M-Role-U',
+                'M-Role-D',
+            ]
         },
         ],
         color: 'general',
@@ -216,7 +240,16 @@ export default {
 
     computed: {
         // ...mapGetters(["authorized"])
+        ...mapGetters({
+            // id: 'LoggedUser/id',
+            nama: 'LoggedUser/Name',
+            jabatan: 'LoggedUser/Jabatan',
+            divisi: 'LoggedUser/Divisi',
+            akses:'LoggedUser/Akses',
 
+            // username: 'LoggedUser/username',
+            // role: 'LoggedUser/role'
+        }),
         items () {
             return this.$t('Layout.View.items')
         }
@@ -253,10 +286,31 @@ export default {
                 this.responsiveInput = true;
             }
         },
-        logout: function() {
-            // this.$store.dispatch("logout").then(() => {
-                this.$router.push("/login");
-            // });
+        async logout() {
+            this.$router.push({ name: 'Login' })
+            await Auth.logout()
+        },
+        Access(codeAccess){
+            // console.log(this.akses)
+            // console.log(Akses)
+
+            var x;
+            if(codeAccess.includes("Panel")){
+                // console.log("TRUE Panel")
+                return true
+            }
+            else{
+                for(x in this.akses.data){
+                    if (codeAccess.includes(this.akses.data[x].Fitur)) {
+                        // console.log("TRUE AKSES")
+
+                        return true
+                    } 
+                }
+                // console.log("FALSE")
+
+                return false
+            }
         }
     }
 };
@@ -286,6 +340,9 @@ export default {
         margin-bottom: 30px !important;
         padding-left: 15px;
         padding-right: 15px;
+        }
+        .visible{
+            display: none;
         }
     }
 </style>

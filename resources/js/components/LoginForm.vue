@@ -55,19 +55,15 @@
               </v-btn>
             </v-card-actions>
             <v-snackbar
-              v-model="snackbar"
-              :color="color"
-              :top='true'
-            >
-              {{ errorMessages }}
-              <v-btn
-                dark
-                flat
-                @click="snackbar = false"
-              >
-                Close
-              </v-btn>
-            </v-snackbar>
+            v-model="showResult"
+            :timeout="2000"
+            top>
+            {{ result }}
+          </v-snackbar>
+          <!-- Alert -->
+          <v-snackbar right bottom :color="alert.type"  value="true" v-if="alert.type">
+            <v-icon>{{alert.icon}}</v-icon>{{alert.message}}
+          </v-snackbar>
           </v-card>
         </v-flex>
       </v-layout>
@@ -77,6 +73,7 @@
 </template>
 
 <script>
+import auth from '../service/Auth'
 export default {
   data: function () {
     return {
@@ -85,24 +82,56 @@ export default {
       errorMessages: 'Incorrect login info',
       snackbar: false,
       color: 'general',
-      showPassword: false
+      showPassword: false,
+      showResult: false,
+      result: '',
+      alert:{
+        type: null,
+        message: null,
+        icon: null,
+      },
     }
   },
 
   // Sends action to Vuex that will log you in and redirect to the dash otherwise, error
   methods: {
-    login: function () {
-      let username = this.username
-      let password = this.password
-      this.$router.push('/panel/dashboard')
-    //   this.$store.dispatch('login', { username, password })
-    //     .then(() => this.$router.push('/dashboard'))
-    //     .catch(err => {
-    //         console.log(err)
-    //         this.snackbar= true
-    //     }
-    //     )
-    }
+    async login() {
+        try {
+          const data= {
+            username : this.username,
+            password : this.password,
+          }
+
+
+          await auth.authenticate(data)
+          this.$router.push({ name: 'Dashboard' })
+        } catch (err) {
+           this.showAlert('error','Gagal Login, Username atau Password salah!')
+        }
+    },
+    showAlert (type,alert_message) {
+
+        if(type == 'success'){
+          this.alert.icon = 'fas fa-check-circle'
+        }
+        else if(type == 'error'){
+          this.alert.icon = 'fas fa-exclamation-circle'
+        }
+
+        this.alert.type = type
+        this.alert.message = alert_message
+        
+        let timer = this.showAlert.timer
+        if (timer) {
+          clearTimeout(timer)
+        }
+        this.showAlert.timer = setTimeout(() => {
+            this.alert.type = null
+            this.alert.icon = null
+            this.alert.message = null
+        }, 3000)
+        
+      }
   },
   metaInfo () {
     return {

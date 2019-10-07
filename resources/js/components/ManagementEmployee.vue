@@ -176,6 +176,45 @@
                                 </v-card-text>
                             </v-card>
                       </v-flex>
+                      <v-flex xs12 sm4>
+                           <v-card color="grey darken-2" height="100%" style="margin:4px;">
+                                <v-card-title class="justify-center">
+                                    <span class="headline">Previledge Access</span>
+                                </v-card-title>
+                                <v-card-text > 
+                                    <v-container class="grey darken-3">
+                                        <v-layout row wrap>
+                                            <v-flex xs12>
+                                              <v-combobox
+                                                v-model="editedForm.Akses"
+                                                :items="FeatureAccess"
+                                                item-text="Deskripsi"
+                                                item-value="Fitur"
+                                                label="Feature Access"
+                                                chips
+                                                clearable
+                                                prepend-icon="filter_list"
+                                                solo
+                                                multiple
+                                              >
+                                                <template v-slot:selection="data">
+                                                  <v-chip
+                                                    :selected="data.selected"
+                                                    close
+                                                    @input="remove(data.item)"
+                                                  >
+                                                    <strong>{{ data.item.Deskripsi }}</strong>&nbsp;
+                                                    <!-- <span>({{ data.item.Akses }})</span> -->
+                                                  </v-chip>
+                                                </template>
+                                              </v-combobox>
+                                            </v-flex>                                  
+                                        </v-layout>
+                                        
+                                    </v-container>
+                                </v-card-text>
+                            </v-card>
+                      </v-flex>
                   </v-layout>
                   </v-container>
              
@@ -243,7 +282,7 @@
           <template v-slot:items="props">
               <td>{{ props.index+1 }}</td>
               <td>{{ props.item.Nama }}</td>
-              <!-- <td class="text-xs-center">{{ props.item.username }}</td> -->
+              <td class="text-xs-center">{{ props.item.Username }}</td>
               <td class="text-xs-left">{{ props.item.Divisi }}</td>              
               <td class="text-xs-left">{{ props.item.Jabatan }}</td>
               <td class="text-xs-center">{{ props.item.Telepon }}</td>
@@ -294,7 +333,7 @@
       headers: [
         { text: 'No', align: 'left', sortable: false },
         { text: 'Nama Pegawai', align: 'left', value: 'Nama' },
-        // { text: 'Username', align: 'center', value: 'username', sortable: false },
+        { text: 'Username', align: 'center', value: 'Username', sortable: false },
         { text: 'Divisi', align: 'center', value: 'Divisi' },
         { text: 'Jabatan', align: 'center',value: 'Jabatan' },
         { text: 'Telepon', align: 'center',value: 'Telepon' },
@@ -323,6 +362,8 @@
         Grade:'',
         Nomor_Asosiasi:'',
         Nomor_SKA:'',
+        Akses:[]
+
       },
       editedFormDefault:{
         Id_Karyawan:'',
@@ -336,7 +377,19 @@
         Grade:'',
         Nomor_Asosiasi:'',
         Nomor_SKA:'',
+        Akses:[]
       },
+      PreviledgeAccess:[],
+      FeatureAccess:[
+        {Deskripsi:"Management Employee (Create)",Fitur:"M-Employee-C"},
+        {Deskripsi:"Management Employee (Read)",Fitur:"M-Employee-R"},
+        {Deskripsi:"Management Employee (Update)",Fitur:"M-Employee-U"},
+        {Deskripsi:"Management Employee (Delete)",Fitur:"M-Employee-D"},
+        {Deskripsi:"Management Role (Create)",Fitur:"M-Role-C"},
+        {Deskripsi:"Management Role (Read)",Fitur:"M-Role-R"},
+        {Deskripsi:"Management Role (Update)",Fitur:"M-Role-U"},
+        {Deskripsi:"Management Role (Delete)",Fitur:"M-Role-D"},
+      ]
     }),
 
     computed: {
@@ -354,6 +407,7 @@
         this.employeeData = this.employee.filter(obj => obj.role != "Admin");
         return this.employeeData
       },
+
 
     },
 
@@ -409,7 +463,9 @@
             // const data ={
             //   name_branch: this.editedItem.name,
             //   address_branch : this.editedItem.address,
-            // }        
+            // }
+            this.editedForm["Username"]= this.createUsername(this.editedForm.Nama)
+            console.log(this.editedForm)        
             const response= await Controller.addemployee(this.editedForm)
             console.log(response)
             this.employeeData.push(this.editedForm)
@@ -452,6 +508,24 @@
             this.showAlert('error','Gagal Edit Pegawai')
         }
       },
+      createUsername(fullname){
+        var username = fullname
+        
+        // username = username.replace(/\s/g,''); //remove space
+        username = username.replace(/ .*/,'');
+        // console.log(username);
+        username = username.toLowerCase(); //to lowercase
+        // console.log(username);
+        username = username+Math.floor(Math.random()*100)
+        console.log(username);
+
+        return username;
+
+      },
+      remove (item) {
+        this.editedForm.Akses.splice(this.editedForm.Akses.indexOf(item), 1)
+        this.editedForm.Akses = [...this.editedForm.Akses]
+      },
     //   closeFormDialog(){
     //     this.formDialog= false
     //     this.editedForm = Object.assign({}, this.defaultItem)
@@ -464,6 +538,7 @@
       editItem (item) {
         this.editedIndex = this.employeeData.indexOf(item)
         this.editedForm = Object.assign({}, item)
+        this.editedForm.Akses = this.editedForm.Akses.data
         this.formDialog = true
       },
 
