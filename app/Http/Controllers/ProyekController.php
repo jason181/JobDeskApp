@@ -14,20 +14,21 @@ class ProyekController extends RestController
     {
         $proyek=Proyek::get();
         $response=$this->generateCollection($proyek);
-        return $this->sendResponse($proyek,201);
+        return $this->sendResponse($response,201);
     }
 
     public function store(Request $request)
     {
+        date_default_timezone_set('Asia/Jakarta');
         $proyek = Proyek::create([
             'Kode'          => $request->Kode,
             'Nama'          => $request->Nama,
             'Pemilik'       => $request->Pemilik,
             'Alamat'        => $request->Alamat,
             'Nilai'         => $request->Nilai,
-            'Target_Outcome'=> $request->Target_Outcome,
-            'Tanggal_Mulai' => $request->Tanggal_Mulai,
-            'Tanggal_Selesai'=>$request->Tanggal_Selesai,
+            'Target_Outcome'=> date('Y-m-d', strtotime($request->Target_Outcome)),
+            'Tanggal_Mulai' => date('Y-m-d', strtotime($request->Tanggal_Mulai)),
+            'Tanggal_Selesai'=>date('Y-m-d', strtotime($request->Tanggal_Selesai)),
             'Catatan'       => $request->Catatan
         ]);
 
@@ -40,42 +41,16 @@ class ProyekController extends RestController
 
     public function update(Request $request, $id)
     {   
-        $proyek = Proyek::find($id);
+        try{
 
-        if(!is_null($request->Kode)){
-            $proyek->Kode = $request->Kode;
-        }
-        if(!is_null($request->Nama)){
-            $proyek->Nama = $request->Nama;
-        }
-        if(!is_null($request->Pemilik)){
-            $proyek->Pemilik = $request->Pemilik;
-        }
-        if(!is_null($request->Alamat)){
-            $proyek->Alamat = $request->Alamat;
-        }
-        if(!is_null($request->Nilai)){
-            $proyek->Nilai = $request->Nilai;
-        }
-        if(!is_null($request->Target_Outcome)){
-            $proyek->Target_Outcome = $request->Target_Outcome;
-        }
-        if(!is_null($request->Tanggal_Mulai)){
-            $proyek->Tanggal_Mulai = $request->Tanggal_Mulai;
-        }
-        if(!is_null($request->Tanggal_Selesai)){
-            $proyek->Tanggal_Selesai = $request->Tanggal_Selesai;
-        }
-        if(!is_null($request->Catatan)){
-            $proyek->Catatan = $request->Catatan;
-        }
-        
+            $events = Proyek::find($id)->update($request->All());
+            $data = Proyek::find($id);
+            $response = $this->generateItem($data);
+            return $this->sendResponse($response, 201);
 
-        $success = $proyek->save();
-        if(!$success){
-            return response()->json('Error Update',500);
-        }else   
-            return response()->json('Success',200);
+        }catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
 
     public function showbyID($id)
