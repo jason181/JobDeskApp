@@ -41,6 +41,7 @@ class ProyekController extends RestController
 
     public function update(Request $request, $id)
     {   
+        // return $request;
         try{
 
             $events = Proyek::find($id)->update($request->All());
@@ -53,7 +54,7 @@ class ProyekController extends RestController
         }
     }
 
-    public function showbyID($id)
+    public function show($id)
     {
         $proyek = Proyek::find($id);
         return response()->json($proyek,200);

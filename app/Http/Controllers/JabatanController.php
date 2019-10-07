@@ -34,20 +34,6 @@ class JabatanController extends RestController
 
     public function update(Request $request, $id)
     {   
-        // $jabatan = Jabatan::find($id);
-
-        // if(!is_null($request->Kode)){
-        //     $jabatan->Kode = $request->Kode;
-        // }
-        // if(!is_null($request->Keterangan)){
-        //     $jabatan->Keterangan = $request->Keterangan;
-        // }
-
-        // $success = $jabatan->save();
-        // if(!$success){
-        //     return response()->json('Error Update',500);
-        // }else   
-        //     return response()->json('Success',200);
         try{
 
             $events = Jabatan::find($id)->update($request->All());
@@ -61,7 +47,7 @@ class JabatanController extends RestController
         }
     }
 
-    public function showbyID($id)
+    public function show($id)
     {
         $jabatan = Jabatan::find($id);
         return response()->json($jabatan,200);

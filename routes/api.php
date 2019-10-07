@@ -18,28 +18,13 @@ use Illuminate\Http\Request;
 // });
 
 //Divisi
-// Route::get('/divisi', 'DivisiRoleController@index');
-// Route::post('/divisi/store', 'DivisiRoleController@store');
-// Route::get('/divisi/{id}', 'DivisiRoleController@showbyID');
-// Route::patch('/divisi/update/{id}', 'DivisiRoleController@update'); 
-// Route::delete('/divisi/delete/{id}', 'DivisiRoleController@destroy');
 Route::resource('divisi','DivisiRoleController');
 
 //Jabatan
-Route::get('/jabatan', 'JabatanController@index');
-Route::post('/jabatan/store', 'JabatanController@store');
-Route::get('/jabatan/{id}', 'JabatanController@showbyID');
-Route::patch('/jabatan/update/{id}', 'JabatanController@update'); 
-Route::delete('/jabatan/delete/{id}', 'JabatanController@destroy');
+Route::resource('jabatan','JabatanController');
 
-
-// //Proyek
-Route::get('/proyek', 'ProyekController@index');
-Route::post('/proyek/store', 'ProyekController@store');
-Route::get('/proyek/{id}', 'ProyekController@showbyID');
-Route::patch('/proyek/update/{id}', 'ProyekController@update');
-Route::delete('/proyek/delete/{id}', 'ProyekController@destroy');
-// Route::resource ('proyek','ProyekController');
+//Proyek
+Route::resource ('proyek','ProyekController');
 //Token
 Route::post('/authenticate', 'TokenController@authenticate');
 Route::get('/session', 'TokenController@validateToken');
