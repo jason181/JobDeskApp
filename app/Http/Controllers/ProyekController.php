@@ -19,29 +19,32 @@ class ProyekController extends RestController
 
     public function store(Request $request)
     {
-        date_default_timezone_set('Asia/Jakarta');
-        $proyek = Proyek::create([
-            'Kode'          => $request->Kode,
-            'Nama'          => $request->Nama,
-            'Pemilik'       => $request->Pemilik,
-            'Alamat'        => $request->Alamat,
-            'Nilai'         => $request->Nilai,
-            'Target_Outcome'=> date('Y-m-d', strtotime($request->Target_Outcome)),
-            'Tanggal_Mulai' => date('Y-m-d', strtotime($request->Tanggal_Mulai)),
-            'Tanggal_Selesai'=>date('Y-m-d', strtotime($request->Tanggal_Selesai)),
-            'Catatan'       => $request->Catatan
-        ]);
-
-        return response()->json([
-            'status' => (bool) $proyek,
-            'data' => $proyek,
-            'message' => $proyek ? 'Success' : 'Error Proyek'
-        ]);
+        try {
+            date_default_timezone_set('Asia/Jakarta');
+            $proyek = Proyek::create([
+                'Kode'          => $request->Kode,
+                'Nama'          => $request->Nama,
+                'Pemilik'       => $request->Pemilik,
+                'Alamat'        => $request->Alamat,
+                'Nilai'         => $request->Nilai,
+                'Target_Outcome'=> date('Y-m-d', strtotime($request->Target_Outcome)),
+                'Tanggal_Mulai' => date('Y-m-d', strtotime($request->Tanggal_Mulai)),
+                'Tanggal_Selesai'=>date('Y-m-d', strtotime($request->Tanggal_Selesai)),
+                'Catatan'       => $request->Catatan
+            ]);
+            
+            return response()->json([
+                'status' => (bool) $proyek,
+                'data' => $proyek,
+                'message' => $proyek ? 'Success' : 'Error Proyek'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
 
     public function update(Request $request, $id)
     {   
-        // return $request;
         try{
 
             $events = Proyek::find($id)->update($request->All());

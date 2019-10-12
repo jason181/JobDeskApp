@@ -54,5 +54,5 @@ class AkunController extends RestController
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }
-    }    
+    }
 }

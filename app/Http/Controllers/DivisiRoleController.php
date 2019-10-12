@@ -40,16 +40,21 @@ class DivisiRoleController extends RestController
      */
     public function store(Request $request)
     {
-        $divisi = Divisi_Role::create([
-            'Kode'      => $request->Kode,
-            'Deskripsi' => $request->Deskripsi
-        ]);
-
-        return response()->json([
-            'status' => (bool) $divisi,
-            'data' => $divisi,
-            'message' => $divisi ? 'Success' : 'Error Divisi'
-        ]);
+        try {
+            $divisi = Divisi_Role::create([
+                'Kode'      => $request->Kode,
+                'Deskripsi' => $request->Deskripsi
+            ]);
+    
+            return response()->json([
+                'status' => (bool) $divisi,
+                'data' => $divisi,
+                'message' => $divisi ? 'Success' : 'Error Divisi'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+        
     }
 
     /**
@@ -60,8 +65,12 @@ class DivisiRoleController extends RestController
      */
     public function show($id)
     {
-        $divisi = Divisi_Role::find($id);
-        return response()->json($divisi,200);
+        try {
+            $divisi = Divisi_Role::find($id);
+            return response()->json($divisi,200);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
 
     /**
@@ -104,11 +113,15 @@ class DivisiRoleController extends RestController
      */
     public function destroy($id)
     {
-        $divisi = Divisi_Role::find($id);
-        $status = $divisi->delete();
-        return response()->json([
-            'status' => $status,
-            'message' => $status ? 'Deleted' : 'Error Delete'
-        ]);
+        try {
+            $divisi = Divisi_Role::find($id);
+            $status = $divisi->delete();
+            return response()->json([
+                'status' => $status,
+                'message' => $status ? 'Deleted' : 'Error Delete'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
 }

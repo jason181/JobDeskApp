@@ -19,57 +19,59 @@ class DivisiProyekController extends RestController
 
     public function store(Request $request)
     {
-        $divisi = Divisi_Proyek::create([
-            'Id_Divisi_Role'    => $request->Id_Divisi_Role,
-            'Id_Proyek'         => $request->Id_Proyek,
-            'Tanggal_Selesai'   => $request->Tanggal_Selesai,
-            'Persentase'        => $request->Persentase
-        ]);
-
-        return response()->json([
-            'status' => (bool) $divisi,
-            'data' => $divisi,
-            'message' => $divisi ? 'Success' : 'Error Divisi'
-        ]);
+        try{
+            $divisi = Divisi_Proyek::create([
+                'Id_Divisi_Role'    => $request->Id_Divisi_Role,
+                'Id_Proyek'         => $request->Id_Proyek,
+                'Tanggal_Selesai'   => $request->Tanggal_Selesai,
+                'Persentase'        => $request->Persentase
+            ]);
+    
+            return response()->json([
+                'status' => (bool) $divisi,
+                'data' => $divisi,
+                'message' => $divisi ? 'Success' : 'Error Divisi'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
 
     public function update(Request $request, $id)
     {   
-        $divisi = Divisi_Proyek::find($id);
+        try{
 
-        if(!is_null($request->Id_Divisi_Role)){
-            $divisi->Id_Divisi_Role = $request->Id_Divisi_Role;
-        }
-        if(!is_null($request->Id_Proyek)){
-            $divisi->Id_Proyek = $request->Id_Proyek;
-        }
-        if(!is_null($request->Tanggal_Selesai)){
-            $divisi->Tanggal_Selesai = $request->Tanggal_Selesai;
-        }
-        if(!is_null($request->Persentase)){
-            $divisi->Persentase = $request->Persentase;
-        }
+            $events = Divisi_Proyek::find($id)->update($request->All());
+            $data = Divisi_Proyek::find($id);
+            $response = $this->generateItem($data);
+            return $this->sendResponse($response, 201);
 
-        $success = $divisi->save();
-        if(!$success){
-            return response()->json('Error Update',500);
-        }else   
-            return response()->json('Success',200);
+        }catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
 
-    public function showbyID($id)
+    public function show($id)
     {
-        $divisi = Divisi_Proyek::find($id);
-        return response()->json($divisi,200);
+        try{
+            $divisi = Divisi_Proyek::find($id);
+            return response()->json($divisi,200);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
 
     public function destroy($id)
     {
-        $divisi = Divisi_Proyek::find($id);
-        $status = $divisi->delete();
-        return response()->json([
-            'status' => $status,
-            'message' => $status ? 'Deleted' : 'Error Delete'
-        ]);
+        try {
+            $divisi = Divisi_Proyek::find($id);
+            $status = $divisi->delete();
+            return response()->json([
+                'status' => $status,
+                'message' => $status ? 'Deleted' : 'Error Delete'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }    
 }

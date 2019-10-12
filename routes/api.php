@@ -17,26 +17,40 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
+//Akses
+Route::resource('akses','AksesController'); //Ready
+Route::resource('akses_pekerjaan','AksesPekerjaanController'); 
+
+//Akun
+Route::resource('akun','AkunController'); //Ready
+
 //Divisi
-Route::resource('divisi','DivisiRoleController');
+Route::resource('divisi','DivisiRoleController'); //Ready & Checked
+Route::resource('divisi_proyek','DivisiProyekController');
+
+//Item Pekerjaan
+Route::resource('item_pekerjaan','ItemPekerjaanController'); //Ready
 
 //Jabatan
-Route::resource('jabatan','JabatanController');
-
-//Proyek
-Route::resource ('proyek','ProyekController');
-//Token
-Route::post('/authenticate', 'TokenController@authenticate');
-Route::get('/session', 'TokenController@validateToken');
+Route::resource('jabatan','JabatanController'); //Ready & Checked
 
 //Karyawan
-Route::resource ('karyawan','KaryawanController');
+Route::resource ('karyawan','KaryawanController'); //Ready
 
-//Akses
-Route::resource('akses','AksesController');
+//Log
+Route::resource('log_pengerjaan','LogPengerjaanController');
+Route::resource('log_sesi','LogSesiController');
 
-//Akun  
-Route::resource('akun','AkunController');
+//Proyek
+Route::resource ('proyek','ProyekController'); //Ready & Checked
 
-Route::post('/authenticate', 'TokenController@authenticate');
-Route::get('/token', 'TokenController@validateToken');
+//Sub Divisi
+Route::resource('sub_divisi_proyek','SubDivisiProyekController');
+
+//Sub Item Pekerjaan
+Route::resource('sub_item_pekerjaan','SubItemPekerjaanController');
+
+//Token
+Route::get('/session', 'TokenController@validateToken');
+Route::post('/authenticate', 'TokenController@authenticate'); //Ready
+Route::get('/token', 'TokenController@validateToken'); //Ready

@@ -25,40 +25,44 @@ class KaryawanController extends RestController
 
     public function store(Request $request)
     {
-        $Akses = $request->get('Akses');
+        try {
+            $Akses = $request->get('Akses');
 
-        $akun = Akun::create([
-            'Username'  => $request->Username,
-            'Password'  => bcrypt($request->Username),
-        ]);
+            $akun = Akun::create([
+                'Username'  => $request->Username,
+                'Password'  => bcrypt($request->Username),
+            ]);
 
-        $karyawan = Karyawan::create([
-            'Id_Divisi_Role'=> $request->Id_Divisi_Role,
-            'Id_Jabatan'    => $request->Id_Jabatan,
-            'Id_Akun'       => $akun->Id_Akun,
-            'Kode'          => $request->Kode,
-            'Nama'          => $request->Nama,
-            'Alamat'        => $request->Alamat,
-            'Telepon'       => $request->Telepon,
-            'Tanggal_Masuk' => $request->Tanggal_Masuk,
-            'Grade'         => $request->Grade,
-            'KTP'           => $request->KTP,
-            'Nomor_Asosiasi'=> $request->Nomor_Asosiasi,
-            'Nomor_SKA'     => $request->Nomor_SKA
-        ]);
-        if($request->has('Akses'))
-        {
-            $karyawan = DB::transaction(function () use ($karyawan,$Akses) {
-                $karyawan->akses()->createMany($Akses);
-                return $karyawan;
-            });
+            $karyawan = Karyawan::create([
+                'Id_Divisi_Role'=> $request->Id_Divisi_Role,
+                'Id_Jabatan'    => $request->Id_Jabatan,
+                'Id_Akun'       => $akun->Id_Akun,
+                'Kode'          => $request->Kode,
+                'Nama'          => $request->Nama,
+                'Alamat'        => $request->Alamat,
+                'Telepon'       => $request->Telepon,
+                'Tanggal_Masuk' => $request->Tanggal_Masuk,
+                'Grade'         => $request->Grade,
+                'KTP'           => $request->KTP,
+                'Nomor_Asosiasi'=> $request->Nomor_Asosiasi,
+                'Nomor_SKA'     => $request->Nomor_SKA
+            ]);
+            if($request->has('Akses'))
+            {
+                $karyawan = DB::transaction(function () use ($karyawan,$Akses) {
+                    $karyawan->akses()->createMany($Akses);
+                    return $karyawan;
+                });
+            }
+
+            return response()->json([
+                'status' => (bool) $karyawan,
+                'data' => $karyawan,
+                'message' => $karyawan ? 'Success' : 'Error Karyawan'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
         }
-
-        return response()->json([
-            'status' => (bool) $karyawan,
-            'data' => $karyawan,
-            'message' => $karyawan ? 'Success' : 'Error Karyawan'
-        ]);
     }
     
     public function update(Request $request,$id)  {
@@ -73,19 +77,27 @@ class KaryawanController extends RestController
         }
     }
 
-    public function showbyID($id)
+    public function show($id)
     {
-        $karyawan = Karyawan::find($id);
-        return response()->json($karyawan,200);
+        try {
+            $karyawan = Karyawan::find($id);
+            return response()->json($karyawan,200);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
 
     public function destroy($id)
     {
-        $karyawan = Karyawan::find($id);
-        $status = $karyawan->delete();
-        return response()->json([
-            'status' => $status,
-            'message' => $status ? 'Deleted' : 'Error Delete'
-        ]);
-    }    
+        try {
+            $karyawan = Karyawan::find($id);
+            $status = $karyawan->delete();
+            return response()->json([
+                'status' => $status,
+                'message' => $status ? 'Deleted' : 'Error Delete'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
 }
