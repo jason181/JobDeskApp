@@ -63,8 +63,20 @@ class KaryawanController extends RestController
     
     public function update(Request $request,$id)  {
         try{
+            $Akses = $request->get('Akses');
             $events = Karyawan::find($id)->update($request->All());
             $data = Karyawan::find($id);
+            if($request->has('Akses'))
+            {
+                $data->akses()->delete();
+            }
+            if($request->has('Akses'))
+            {
+                $data = DB::transaction(function () use ($data,$Akses) {
+                    $data->akses()->createMany($Akses);
+                    return $data;
+                });
+            }
             $response = $this->generateItem($data);
             return $this->sendResponse($response, 201);
 
@@ -82,6 +94,7 @@ class KaryawanController extends RestController
     public function destroy($id)
     {
         $karyawan = Karyawan::find($id);
+        $karyawan->akses()->delete();
         $status = $karyawan->delete();
         return response()->json([
             'status' => $status,

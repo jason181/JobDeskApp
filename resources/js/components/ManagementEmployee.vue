@@ -11,7 +11,7 @@
           <!-- dialog box add/edit -->
           <v-dialog v-model="formDialog" fullscreen hide-overlay transition="dialog-bottom-transition">
               <template v-slot:activator="{ on }">
-              <v-btn color="success"  dark class="mb-2" v-on="on">Tambah</v-btn>
+              <v-btn v-if="Access('M-Employee-C')==true" color="success"  dark class="mb-2" v-on="on">Tambah</v-btn>
               </template>
               <v-card>
                     <v-toolbar>
@@ -288,6 +288,7 @@
               <td class="text-xs-center">{{ props.item.Telepon }}</td>
               <td class="justify-center layout px-0">
                 <v-icon
+                  v-if="Access('M-Employee-U')==true"
                   small
                   class="mr-2"
                   @click="editItem(props.item)"
@@ -295,6 +296,7 @@
                   edit
               </v-icon>
               <v-icon
+                  v-if="Access('M-Employee-D')==true"
                   small
                   @click="deleteItem(props.item)"
               >
@@ -320,6 +322,7 @@
 
 <script>
   import Controller from '../httpController'
+  import { mapGetters } from 'vuex'
 //   import { mapState, mapActions } from 'vuex'
 //   import userService from '../../service/User'
 
@@ -393,6 +396,12 @@
     }),
 
     computed: {
+      ...mapGetters({
+            nama: 'LoggedUser/Name',
+            jabatan: 'LoggedUser/Jabatan',
+            divisi: 'LoggedUser/Divisi',
+            akses:'LoggedUser/Akses',
+        }),
       formTitle () {
         return this.editedIndex === -1 ? 'Add Employee' : 'Edit Employee'
       },
@@ -525,6 +534,17 @@
       remove (item) {
         this.editedForm.Akses.splice(this.editedForm.Akses.indexOf(item), 1)
         this.editedForm.Akses = [...this.editedForm.Akses]
+      },
+      Access(codeAccess){
+
+        var x;
+        for(x in this.akses.data){
+            if (codeAccess.includes(this.akses.data[x].Fitur)) {
+                return true
+            } 
+        }
+        return false
+            
       },
     //   closeFormDialog(){
     //     this.formDialog= false

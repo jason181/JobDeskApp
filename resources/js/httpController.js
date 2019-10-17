@@ -49,7 +49,7 @@ export default {
 
             }
 
-            Http.patch('/api/karyawan/update/'+id, payload, successCallback, errorCallback)
+            Http.patch('/api/karyawan/'+id, payload, successCallback, errorCallback)
         })
     },
     deleteemployee(id){

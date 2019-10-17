@@ -55,7 +55,7 @@ export default {
 
     Http.setHeader(JSON.parse(accessToken))
     Store.commit('LoggedUser/setLoggedUser', await this.token())
-    console.log("refresh?")
+    // console.log("refresh?")
 
   },
 
@@ -66,7 +66,7 @@ export default {
   },
 
   getToken () {
-    console.log("getToken?")
+    // console.log("getToken?")
     return typeof Cookie.get('accessToken') !== 'undefined'
   }
 }

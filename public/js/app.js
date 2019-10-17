@@ -5230,6 +5230,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../httpController */ "./resources/js/httpController.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -5244,6 +5245,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -5564,6 +5571,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+
  //   import { mapState, mapActions } from 'vuex'
 //   import userService from '../../service/User'
 
@@ -5673,7 +5683,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }]
     };
   },
-  computed: {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
+    nama: 'LoggedUser/Name',
+    jabatan: 'LoggedUser/Jabatan',
+    divisi: 'LoggedUser/Divisi',
+    akses: 'LoggedUser/Akses'
+  }), {
     formTitle: function formTitle() {
       return this.editedIndex === -1 ? 'Add Employee' : 'Edit Employee';
     },
@@ -5690,7 +5705,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
       return this.employeeData;
     }
-  },
+  }),
   watch: {
     dialog: function dialog(val) {
       val || this.close();
@@ -5959,6 +5974,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.editedForm.Akses.splice(this.editedForm.Akses.indexOf(item), 1);
       this.editedForm.Akses = _toConsumableArray(this.editedForm.Akses);
     },
+    Access: function Access(codeAccess) {
+      var x;
+
+      for (x in this.akses.data) {
+        if (codeAccess.includes(this.akses.data[x].Fitur)) {
+          return true;
+        }
+      }
+
+      return false;
+    },
     //   closeFormDialog(){
     //     this.formDialog= false
     //     this.editedForm = Object.assign({}, this.defaultItem)
@@ -6031,12 +6057,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../httpController */ "./resources/js/httpController.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -6346,6 +6379,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+
  //   import { mapState, mapActions } from 'vuex'
 //   import userService from '../../service/User'
 
@@ -6419,7 +6457,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
-  computed: {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
+    nama: 'LoggedUser/Name',
+    akses: 'LoggedUser/Akses'
+  }), {
     divFormTitle: function divFormTitle() {
       return this.editedIndex === -1 ? 'Tambah Dvivisi' : 'Edit Divisi';
     },
@@ -6439,7 +6480,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.jabatanData = this.jabatan;
       return this.jabatanData;
     }
-  },
+  }),
   watch: {
     dialog: function dialog(val) {
       val || this.close();
@@ -6855,6 +6896,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     //     this.userDataFiltered = this.userData.filter(item => console.log(item));
     //     // console.log(this.userDataFiltered);
     //   },
+    Access: function Access(codeAccess) {
+      var x;
+
+      for (x in this.akses.data) {
+        if (codeAccess.includes(this.akses.data[x].Fitur)) {
+          return true;
+        }
+      }
+
+      return false;
+    },
     editItem: function editItem(item, tabel) {
       if (tabel == 'Divisi') {
         this.editedIndex = this.divisiData.indexOf(item);
@@ -18233,17 +18285,19 @@ var render = function() {
                   fn: function(ref) {
                     var on = ref.on
                     return [
-                      _c(
-                        "v-btn",
-                        _vm._g(
-                          {
-                            staticClass: "mb-2",
-                            attrs: { color: "success", dark: "" }
-                          },
-                          on
-                        ),
-                        [_vm._v("Tambah")]
-                      )
+                      _vm.Access("M-Employee-C") == true
+                        ? _c(
+                            "v-btn",
+                            _vm._g(
+                              {
+                                staticClass: "mb-2",
+                                attrs: { color: "success", dark: "" }
+                              },
+                              on
+                            ),
+                            [_vm._v("Tambah")]
+                          )
+                        : _vm._e()
                     ]
                   }
                 }
@@ -19135,32 +19189,36 @@ var render = function() {
                     "td",
                     { staticClass: "justify-center layout px-0" },
                     [
-                      _c(
-                        "v-icon",
-                        {
-                          staticClass: "mr-2",
-                          attrs: { small: "" },
-                          on: {
-                            click: function($event) {
-                              return _vm.editItem(props.item)
-                            }
-                          }
-                        },
-                        [_vm._v("\n              edit\n          ")]
-                      ),
+                      _vm.Access("M-Employee-U") == true
+                        ? _c(
+                            "v-icon",
+                            {
+                              staticClass: "mr-2",
+                              attrs: { small: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.editItem(props.item)
+                                }
+                              }
+                            },
+                            [_vm._v("\n              edit\n          ")]
+                          )
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c(
-                        "v-icon",
-                        {
-                          attrs: { small: "" },
-                          on: {
-                            click: function($event) {
-                              return _vm.deleteItem(props.item)
-                            }
-                          }
-                        },
-                        [_vm._v("\n              delete\n          ")]
-                      )
+                      _vm.Access("M-Employee-D") == true
+                        ? _c(
+                            "v-icon",
+                            {
+                              attrs: { small: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteItem(props.item)
+                                }
+                              }
+                            },
+                            [_vm._v("\n              delete\n          ")]
+                          )
+                        : _vm._e()
                     ],
                     1
                   )
@@ -19337,17 +19395,19 @@ var render = function() {
                           fn: function(ref) {
                             var on = ref.on
                             return [
-                              _c(
-                                "v-btn",
-                                _vm._g(
-                                  {
-                                    staticClass: "mb-2",
-                                    attrs: { color: "success", dark: "" }
-                                  },
-                                  on
-                                ),
-                                [_vm._v("Tambah")]
-                              )
+                              _vm.Access("M-Role-C") == true
+                                ? _c(
+                                    "v-btn",
+                                    _vm._g(
+                                      {
+                                        staticClass: "mb-2",
+                                        attrs: { color: "success", dark: "" }
+                                      },
+                                      on
+                                    ),
+                                    [_vm._v("Tambah")]
+                                  )
+                                : _vm._e()
                             ]
                           }
                         }
@@ -19456,11 +19516,7 @@ var render = function() {
                                 "v-btn",
                                 {
                                   attrs: { color: "blue darken-1", flat: "" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.divFormDialog = false
-                                    }
-                                  }
+                                  on: { click: _vm.close }
                                 },
                                 [_vm._v("Close")]
                               ),
@@ -19561,39 +19617,50 @@ var render = function() {
                             "td",
                             { staticClass: "justify-center layout px-0" },
                             [
-                              _c(
-                                "v-icon",
-                                {
-                                  staticClass: "mr-2",
-                                  attrs: { small: "" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.editItem(props.item, "Divisi")
-                                    }
-                                  }
-                                },
-                                [_vm._v("\n                edit\n            ")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-icon",
-                                {
-                                  attrs: { small: "" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.deleteItem(
-                                        props.item,
-                                        "Divisi"
+                              _vm.Access("M-Role-U") == true
+                                ? _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "mr-2",
+                                      attrs: { small: "" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.editItem(
+                                            props.item,
+                                            "Divisi"
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                edit\n            "
                                       )
-                                    }
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                delete\n            "
+                                    ]
                                   )
-                                ]
-                              )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.Access("M-Role-D") == true
+                                ? _c(
+                                    "v-icon",
+                                    {
+                                      attrs: { small: "" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deleteItem(
+                                            props.item,
+                                            "Divisi"
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                delete\n            "
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
                             ],
                             1
                           )
@@ -19747,17 +19814,19 @@ var render = function() {
                           fn: function(ref) {
                             var on = ref.on
                             return [
-                              _c(
-                                "v-btn",
-                                _vm._g(
-                                  {
-                                    staticClass: "mb-2",
-                                    attrs: { color: "success", dark: "" }
-                                  },
-                                  on
-                                ),
-                                [_vm._v("Tambah")]
-                              )
+                              _vm.Access("M-Role-C") == true
+                                ? _c(
+                                    "v-btn",
+                                    _vm._g(
+                                      {
+                                        staticClass: "mb-2",
+                                        attrs: { color: "success", dark: "" }
+                                      },
+                                      on
+                                    ),
+                                    [_vm._v("Tambah")]
+                                  )
+                                : _vm._e()
                             ]
                           }
                         }
@@ -19866,11 +19935,7 @@ var render = function() {
                                 "v-btn",
                                 {
                                   attrs: { color: "blue darken-1", flat: "" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.divFormDialog = false
-                                    }
-                                  }
+                                  on: { click: _vm.close }
                                 },
                                 [_vm._v("Close")]
                               ),
@@ -19971,39 +20036,50 @@ var render = function() {
                             "td",
                             { staticClass: "justify-center layout px-0" },
                             [
-                              _c(
-                                "v-icon",
-                                {
-                                  staticClass: "mr-2",
-                                  attrs: { small: "" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.editItem(props.item, "Jabatan")
-                                    }
-                                  }
-                                },
-                                [_vm._v("\n                edit\n            ")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-icon",
-                                {
-                                  attrs: { small: "" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.deleteItem(
-                                        props.item,
-                                        "Jabatan"
+                              _vm.Access("M-Role-U") == true
+                                ? _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "mr-2",
+                                      attrs: { small: "" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.editItem(
+                                            props.item,
+                                            "Jabatan"
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                edit\n            "
                                       )
-                                    }
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                delete\n            "
+                                    ]
                                   )
-                                ]
-                              )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.Access("M-Role-D") == true
+                                ? _c(
+                                    "v-icon",
+                                    {
+                                      attrs: { small: "" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deleteItem(
+                                            props.item,
+                                            "Jabatan"
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                delete\n            "
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
                             ],
                             1
                           )
@@ -63376,7 +63452,7 @@ __webpack_require__.r(__webpack_exports__);
         reject(err);
       };
 
-      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/karyawan/update/' + id, payload, successCallback, errorCallback);
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/karyawan/' + id, payload, successCallback, errorCallback);
     });
   },
   deleteemployee: function deleteemployee(id) {
@@ -63967,9 +64043,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               _context3.t0.commit.call(_context3.t0, 'LoggedUser/setLoggedUser', _context3.t1);
 
-              console.log("refresh?");
-
-            case 10:
+            case 9:
             case "end":
               return _context3.stop();
           }
@@ -63989,7 +64063,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     js_cookie__WEBPACK_IMPORTED_MODULE_3___default.a.remove('accessToken');
   },
   getToken: function getToken() {
-    console.log("getToken?");
+    // console.log("getToken?")
     return typeof js_cookie__WEBPACK_IMPORTED_MODULE_3___default.a.get('accessToken') !== 'undefined';
   }
 });
@@ -64624,12 +64698,12 @@ var actions = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./User */ "./resources/js/store/modules/User.js");
+/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./User */ "./resources/js/store/modules/User.js");
 /* harmony import */ var _LoggedUser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoggedUser */ "./resources/js/store/modules/LoggedUser.js");
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  User: _User__WEBPACK_IMPORTED_MODULE_2__["default"],
+  User: _User__WEBPACK_IMPORTED_MODULE_0__["default"],
   LoggedUser: _LoggedUser__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 

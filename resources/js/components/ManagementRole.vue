@@ -34,7 +34,7 @@
            <!-- Div Form Dialog  -->
             <v-dialog v-model="divFormDialog" persistent max-width="600px">
             <template v-slot:activator="{ on }">
-                <v-btn color="success"  dark class="mb-2" v-on="on">Tambah</v-btn>
+                <v-btn v-if="Access('M-Role-C')==true" color="success"  dark class="mb-2" v-on="on">Tambah</v-btn>
             </template>
             <v-card>
                 <v-card-title>
@@ -67,7 +67,7 @@
                 <v-divider></v-divider>
                 <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" flat @click="divFormDialog = false">Close</v-btn>
+                <v-btn color="blue darken-1" flat @click="close">Close</v-btn>
                 <v-btn  flat v-if="editedIndex!=-1" color="blue darken-1"  @click="updateDivisi()">Save</v-btn>
                 <v-btn  flat v-else color="blue darken-1" @click="addDivisi(editedForm);close();">Add</v-btn>
                 </v-card-actions>
@@ -120,6 +120,7 @@
                 <td class="text-xs-center">{{ props.item.Deskripsi }}</td>              
                 <td class="justify-center layout px-0">
                     <v-icon
+                    v-if="Access('M-Role-U')==true"
                     small
                     class="mr-2"
                     @click="editItem(props.item,'Divisi')"
@@ -127,6 +128,7 @@
                     edit
                 </v-icon>
                 <v-icon
+                    v-if="Access('M-Role-D')==true"
                     small
                     @click="deleteItem(props.item,'Divisi')"
                 >
@@ -185,7 +187,7 @@
            <!-- Div Form Dialog  -->
             <v-dialog v-model="jabFormDialog" persistent max-width="600px">
             <template v-slot:activator="{ on }">
-                <v-btn color="success"  dark class="mb-2" v-on="on">Tambah</v-btn>
+                <v-btn v-if="Access('M-Role-C')==true" color="success"  dark class="mb-2" v-on="on">Tambah</v-btn>
             </template>
             <v-card>
                 <v-card-title>
@@ -218,7 +220,7 @@
                 <v-divider></v-divider>
                 <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" flat @click="divFormDialog = false">Close</v-btn>
+                <v-btn color="blue darken-1" flat @click="close">Close</v-btn>
                 <v-btn  flat v-if="editedIndex!=-1" color="blue darken-1"  @click="updateJabatan()">Save</v-btn>
                 <v-btn  flat v-else color="blue darken-1" @click="addJabatan(editedForm);close();">Add</v-btn>
                 </v-card-actions>
@@ -271,6 +273,7 @@
                 <td class="text-xs-center">{{ props.item.Deskripsi }}</td>              
                 <td class="justify-center layout px-0">
                     <v-icon
+                    v-if="Access('M-Role-U')==true"
                     small
                     class="mr-2"
                     @click="editItem(props.item,'Jabatan')"
@@ -278,6 +281,7 @@
                     edit
                 </v-icon>
                 <v-icon
+                    v-if="Access('M-Role-D')==true"
                     small
                     @click="deleteItem(props.item,'Jabatan')"
                 >
@@ -309,6 +313,7 @@
 
 <script>
   import Controller from '../httpController'
+  import { mapGetters } from 'vuex'
 //   import { mapState, mapActions } from 'vuex'
 //   import userService from '../../service/User'
 
@@ -358,6 +363,10 @@
     }),
 
     computed: {
+      ...mapGetters({
+            nama: 'LoggedUser/Name',
+            akses:'LoggedUser/Akses',
+      }),
       divFormTitle () {
         return this.editedIndex === -1 ? 'Tambah Dvivisi' : 'Edit Divisi'
       },
@@ -533,6 +542,17 @@
     //     this.userDataFiltered = this.userData.filter(item => console.log(item));
     //     // console.log(this.userDataFiltered);
     //   },
+     Access(codeAccess){
+
+        var x;
+        for(x in this.akses.data){
+            if (codeAccess.includes(this.akses.data[x].Fitur)) {
+                return true
+            } 
+        }
+        return false
+            
+      },
       editItem (item,tabel) {
         if(tabel=='Divisi')
         {
