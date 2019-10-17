@@ -17,6 +17,25 @@ class AkunController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    public function store(Request $request)
+    {
+        try {
+            $akun = Akun::create([
+                'Username'  => $request->Username,
+                'Password'  => $request->Password
+            ]);
+    
+            return response()->json([
+                'status' => (bool) $akun,
+                'data' => $akun,
+                'message' => $akun ? 'Success' : 'Error Akun'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+        
+    }
+
     public function update(Request $request, $id)
     {   
         try {

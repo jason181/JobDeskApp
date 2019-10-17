@@ -38,7 +38,8 @@ Route::resource('jabatan','JabatanController'); //Ready & Checked
 Route::resource ('karyawan','KaryawanController'); //Ready
 
 //Log
-Route::resource('log_pengerjaan','LogPengerjaanController');
+Route::resource('log_pengerjaan','LogPengerjaanController'); //Ready
+Route::post('log_pengerjaan/storeFile','LogPengerjaanController@storeFile'); //Ready & Checked
 Route::resource('log_sesi','LogSesiController');
 
 //Proyek
