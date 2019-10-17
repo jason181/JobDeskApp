@@ -17,42 +17,41 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
+//Akses
+Route::resource('akses','AksesController'); //Ready
+Route::resource('akses_pekerjaan','AksesPekerjaanController'); 
+
+//Akun
+Route::resource('akun','AkunController'); //Ready
+
 //Divisi
-Route::get('/divisi', 'DivisiRoleController@index');
-Route::post('/divisi/store', 'DivisiRoleController@store');
-Route::get('/divisi/{id}', 'DivisiRoleController@showbyID');
-Route::patch('/divisi/update/{id}', 'DivisiRoleController@update'); 
-Route::delete('/divisi/delete/{id}', 'DivisiRoleController@destroy');
-Route::resource ('divisi','DivisiRoleController');
+Route::resource('divisi','DivisiRoleController'); //Ready & Checked
+Route::resource('divisi_proyek','DivisiProyekController');
+
+//Item Pekerjaan
+Route::resource('item_pekerjaan','ItemPekerjaanController'); //Ready
 
 //Jabatan
-Route::get('/jabatan', 'JabatanController@index');
-Route::post('/jabatan/store', 'JabatanController@store');
-Route::get('/jabatan/{id}', 'JabatanController@showbyID');
-Route::patch('/jabatan/update/{id}', 'JabatanController@update'); 
-Route::delete('/jabatan/delete/{id}', 'JabatanController@destroy');
-Route::resource ('jabatan','JabatanController');
-
-
-//Proyek
-Route::get('/proyek', 'ProyekController@index');
-Route::post('/proyek/store', 'ProyekController@store');
-Route::get('/proyek/{id}', 'ProyekController@showbyID');
-Route::patch('/proyek/update/{id}', 'ProyekController@update');
-Route::delete('/proyek/delete/{id}', 'ProyekController@destroy');
-
-//Token
-Route::post('/authenticate', 'TokenController@authenticate');
-Route::get('/session', 'TokenController@validateToken');
+Route::resource('jabatan','JabatanController'); //Ready & Checked
 
 //Karyawan
-Route::resource ('karyawan','KaryawanController');
+Route::resource ('karyawan','KaryawanController'); //Ready
 
-//Akses
-Route::resource('akses','AksesController');
+//Log
+Route::resource('log_pengerjaan','LogPengerjaanController'); //Ready
+Route::post('log_pengerjaan/storeFile','LogPengerjaanController@storeFile'); //Ready & Checked
+Route::resource('log_sesi','LogSesiController');
 
-//Akun  
-Route::resource('akun','AkunController');
+//Proyek
+Route::resource ('proyek','ProyekController'); //Ready & Checked
 
-Route::post('/authenticate', 'TokenController@authenticate');
-Route::get('/token', 'TokenController@validateToken');
+//Sub Divisi
+Route::resource('sub_divisi_proyek','SubDivisiProyekController');
+
+//Sub Item Pekerjaan
+Route::resource('sub_item_pekerjaan','SubItemPekerjaanController');
+
+//Token
+Route::get('/session', 'TokenController@validateToken');
+Route::post('/authenticate', 'TokenController@authenticate'); //Ready
+Route::get('/token', 'TokenController@validateToken'); //Ready

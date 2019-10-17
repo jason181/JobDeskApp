@@ -39,16 +39,22 @@ class AksesController extends RestController
      */
     public function store(Request $request)
     {
-        $akses = Akses::create([
-            'Id_Karyawan'   => $request->Id_Karyawan,
-            'Fitur'         => $request->Fitur
-        ]);
+        try {
+            $akses = Akses::create([
+                'Id_Karyawan'   => $request->Id_Karyawan,
+                'Fitur'         => $request->Fitur
+            ]);
+    
+            return response()->json([
+                'status' => (bool) $akses,
+                'data' => $akses,
+                'message' => $akses ? 'Success' : 'Error Akses'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
 
-        return response()->json([
-            'status' => (bool) $akses,
-            'data' => $akses,
-            'message' => $akses ? 'Success' : 'Error Akses'
-        ]);
+        
     }
 
     /**
@@ -59,8 +65,14 @@ class AksesController extends RestController
      */
     public function show($id)
     {
-        $akses = Akses::find($id);
-        return response()->json($akses,200);
+        try{
+            $akses = Akses::find($id);
+            $response = $this->generateItem($akses);
+            return $this->sendResponse($response, 201);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+        
     }
 
     /**
@@ -101,11 +113,16 @@ class AksesController extends RestController
      */
     public function destroy($id)
     {
-        $divisi = Divisi_Proyek::find($id);
-        $status = $divisi->delete();
-        return response()->json([
-            'status' => $status,
-            'message' => $status ? 'Deleted' : 'Error Delete'
-        ]);
+        try{
+            $divisi = Divisi_Proyek::find($id);
+            $status = $divisi->delete();
+            return response()->json([
+                'status' => $status,
+                'message' => $status ? 'Deleted' : 'Error Delete'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+        
     }
 }

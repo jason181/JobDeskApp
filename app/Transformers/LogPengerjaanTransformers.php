@@ -22,7 +22,7 @@ class LogPengerjaanTransformers extends TransformerAbstract
             'Waktu_Selesai'         => $log_pengerjaan->Waktu_Selesai,
             'Persentase'            => $log_pengerjaan->Persentase,
             'Berkas'                => $log_pengerjaan->Berkas,
-            'Catatan'               => $log_pengerjaan->Catatan
+            'Catatan'               => $log_pengerjaan->Catatan,
         ];
     }
 }

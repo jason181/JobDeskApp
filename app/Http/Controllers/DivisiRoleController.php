@@ -8,6 +8,11 @@ use App\Divisi_Role;
 
 class DivisiRoleController extends RestController
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     protected $transformer=DivisiRoleTransformers::Class;
 
     public function index()
@@ -17,22 +22,77 @@ class DivisiRoleController extends RestController
         return $this->sendResponse($response,201);
     }
 
-    public function store(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        $divisi = Divisi_Role::create([
-            'Kode'      => $request->Kode,
-            'Deskripsi' => $request->Deskripsi
-        ]);
-
-        return response()->json([
-            'status' => (bool) $divisi,
-            'data' => $divisi,
-            'message' => $divisi ? 'Success' : 'Error Divisi'
-        ]);
+        //
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        try {
+            $divisi = Divisi_Role::create([
+                'Kode'      => $request->Kode,
+                'Deskripsi' => $request->Deskripsi
+            ]);
+    
+            return response()->json([
+                'status' => (bool) $divisi,
+                'data' => $divisi,
+                'message' => $divisi ? 'Success' : 'Error Divisi'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+        
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id 
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        try {
+            $divisi = Divisi_Role::find($id);
+            return response()->json($divisi,200);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
-    {   
+    {
         try{
 
             $events = Divisi_Role::find($id)->update($request->All());
@@ -45,19 +105,23 @@ class DivisiRoleController extends RestController
         }
     }
 
-    public function showbyID($id)
-    {
-        $divisi = Divisi_Role::find($id);
-        return response()->json($divisi,200);
-    }
-
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
-        $divisi = Divisi_Role::find($id);
-        $status = $divisi->delete();
-        return response()->json([
-            'status' => $status,
-            'message' => $status ? 'Deleted' : 'Error Delete'
-        ]);
-    }    
+        try {
+            $divisi = Divisi_Role::find($id);
+            $status = $divisi->delete();
+            return response()->json([
+                'status' => $status,
+                'message' => $status ? 'Deleted' : 'Error Delete'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
 }

@@ -22,7 +22,8 @@ class AkunTransformers extends TransformerAbstract
     {
         return [
             'Id_Akun'       => $akun->Id_Akun,
-            'Id_Karyawan'   => optional($akun->karyawans)->Id_Karyawan,
+            // 'Id_Karyawan'   => optional($akun->karyawans)->Id_Karyawan,
+            // 'Id_Karyawan'   => $akun->Id_Karyawan,
             'Username'      => $akun->Username,
             'Password'      => $akun->Password,
             'Name'          => optional($akun->karyawans)->Nama,

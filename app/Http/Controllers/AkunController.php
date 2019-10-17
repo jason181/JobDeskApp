@@ -17,34 +17,61 @@ class AkunController extends RestController
         return $this->sendResponse($response,201);
     }
 
-    public function update(Request $request, $username)
-    {   
-        $akun = Akun::where('Username',$username)->first();
-
-        if(!is_null($request->Password)){
-            $akun->Password = $request->Password;
+    public function store(Request $request)
+    {
+        try {
+            $akun = Akun::create([
+                'Username'  => $request->Username,
+                'Password'  => $request->Password
+            ]);
+    
+            return response()->json([
+                'status' => (bool) $akun,
+                'data' => $akun,
+                'message' => $akun ? 'Success' : 'Error Akun'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
         }
-
-        $success = $akun->save();
-        if(!$success){
-            return response()->json('Error Update',500);
-        }else
-            return response()->json('Success',200);
+        
     }
 
-    public function showbyID($id)
+    public function update(Request $request, $id)
+    {   
+        try {
+            $events = Akun::find($id)->update($request->All());
+            $data = Akun::find($id);
+            $response = $this->generateItem($data);
+            return $this->sendResponse($response, 201);
+
+        }catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
+
+    public function show($id)
     {
-        $akun = Akun::find($id);
-        return response()->json($akun,200);
+        try {
+
+            $akun = Akun::find($id);
+            $response=$this->generateItem($akun);
+            return $this->sendResponse($response,201);
+        }catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
 
     public function destroy($id)
     {
-        $akun = Akun::find($id);
-        $status = $akun->delete();
-        return response()->json([
-            'status' => $status,
-            'message' => $status ? 'Deleted' : 'Error Delete'
-        ]);
-    }    
+        try {
+            $akun = Akun::find($id);
+            $status = $akun->delete();
+            return response()->json([
+                'status' => $status,
+                'message' => $status ? 'Deleted' : 'Error Delete'
+            ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
 }

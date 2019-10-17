@@ -13,6 +13,7 @@ class Akun extends Model
     protected $primaryKey = 'Id_Akun';
     public $timestamp = true;
     protected $fillable = [
+        // 'Id_Karyawan'
         'Username',
         'Password'
     ];
