@@ -359,286 +359,25 @@
                 </v-layout>
               <!-- Task Dialog -->
 
-              <!-- Add Dialog  -->
-                <v-layout row justify-center>
-                    <v-dialog v-model="addDialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-                    <v-card>
-                        <v-toolbar>
-                            <v-btn icon dark @click="closeAddDialog();">
-                                <v-icon>close</v-icon>
-                            </v-btn>
-                            <v-toolbar-title class="white--text">Add Project</v-toolbar-title>
-                            <v-spacer></v-spacer>
-                            <v-toolbar-items>
-                                <v-btn dark flat @click="addProject(editProject);closeAddDialog();">Save</v-btn>
-                            </v-toolbar-items>
-                        </v-toolbar>
-
-                        <v-container fluid>
-                            <v-layout row wrap>
-                                <v-flex xs12 md4>
-                                    <v-card height="100%">
-                                        <v-card-title class="justify-center">
-                                            <span class="headline">Project Information</span>
-                                        </v-card-title>
-                                        <v-card-text> 
-                                            <v-container>
-                                                <v-layout row wrap>
-                                                    <v-flex xs12>
-                                                        <v-text-field 
-                                                        box
-                                                        v-model="editProject.title" 
-                                                        label="Project Name" 
-                                                        prepend-icon="contact_support"
-                                                        ></v-text-field>
-                                                    </v-flex>          
-                                                    <v-flex xs12 md6 class="pr-2">
-                                                        <v-text-field 
-                                                        box
-                                                        v-model="editProject.value" 
-                                                        label="Value" 
-                                                        prepend-icon="contact_support"
-                                                        ></v-text-field>
-                                                    </v-flex>
-                                                    <v-flex xs12 md6>
-                                                        <v-text-field 
-                                                        box
-                                                        v-model="editProject.target_outcome" 
-                                                        label="Target Outcome" 
-                                                        prepend-icon="contact_support"
-                                                        ></v-text-field>
-                                                    </v-flex>
-
-                                                    <v-flex xs12 md6 class="pr-2">
-                                                        <v-menu
-                                                        v-model="startDate"
-                                                        :close-on-content-click="false"
-                                                        :nudge-right="40"
-                                                        transition="scale-transition"
-                                                        offset-y
-                                                        full-width
-                                                        min-width="290px"
-                                                        
-                                                        >
-                                                        <template v-slot:activator="{ on }">
-                                                            <v-text-field
-                                                            v-model="editProject.start"
-                                                            label="Start Date"
-                                                            prepend-icon="event"
-                                                            box
-                                                            v-on="on"
-                                                            readonly
-                                                            ></v-text-field>
-                                                        </template>
-                                                        <v-date-picker  v-model="editProject.start" @input="startDate = false"></v-date-picker>
-                                                        </v-menu>
-                                                    </v-flex>
-                                                    <v-flex xs12 md6>
-                                                        <v-menu
-                                                        v-model="finishDate"
-                                                        :close-on-content-click="false"
-                                                        :nudge-right="40"
-                                                        transition="scale-transition"
-                                                        offset-y
-                                                        full-width
-                                                        min-width="290px"
-                                                        
-                                                        >
-                                                        <template v-slot:activator="{ on }">
-                                                            <v-text-field
-                                                            v-model="editProject.due"
-                                                            label="Finish Date"
-                                                            prepend-icon="event"
-                                                            box
-                                                            v-on="on"
-                                                            readonly
-                                                            ></v-text-field>
-                                                        </template>
-                                                        <v-date-picker  v-model="editProject.due" @input="finishDate = false"></v-date-picker>
-                                                        </v-menu>
-                                                    </v-flex>
-                                                    <v-flex xs12>
-                                                        <v-textarea    
-                                                        box                                     
-                                                        label="Note"
-                                                        v-model="editProject.note"
-                                                        prepend-icon="contact_support"
-
-                                                        ></v-textarea>
-                                                    </v-flex>                                                    
-                                                </v-layout>
-                                               
-                                            </v-container>
-                                        </v-card-text>
-                                    </v-card>
-                                </v-flex>    
-                                <v-flex xs12 md4>
-                                    <v-card  height="100%">
-                                        <v-card-title class="justify-center">
-                                            <span class="headline">Client Information</span>
-                                        </v-card-title>
-                                        <v-card-text> 
-                                             <v-container>
-                                                <v-layout row wrap>
-                                                    <v-flex xs8 >
-                                                        <v-text-field 
-                                                        box
-                                                        v-model="editProject.client_name" 
-                                                        label="Client Name" 
-                                                        prepend-icon="contact_support"
-                                                        ></v-text-field>
-                                                    </v-flex>
-                                                    <v-flex xs12>
-                                                        <v-textarea    
-                                                        box                                     
-                                                        label="Client Address"
-                                                        v-model="editProject.client_address"
-                                                        prepend-icon="contact_support"
-                                                        ></v-textarea>
-                                                    </v-flex>
-                                                </v-layout>
-                                            </v-container>
-                                        </v-card-text>
-                                    </v-card>
-                                </v-flex>   
-                                <v-flex xs12 md4>
-                                    <v-card  height="100%">
-                                        <v-card-title class="justify-center">
-                                            <span class="headline">Task Desk</span>
-                                        </v-card-title>
-                                        <v-card-text> 
-                                            <v-container>
-                                                <v-layout row wrap>
-                                                    <v-flex xs8 >
-                                                        <v-text-field 
-                                                        box
-                                                        v-model="editTask.title" 
-                                                        label="Task Name" 
-                                                        prepend-icon="contact_support"
-                                                        ></v-text-field>
-                                                    </v-flex>
-                                                    <v-flex xs12 md6 class="pr-2">
-                                                        <v-select
-                                                        :items="division"
-                                                        v-model ="editTask.division"
-                                                        box
-                                                        label="Division"
-                                                        prepend-icon="contact_support"
-                                                        ></v-select>
-                                                    </v-flex>
-                                                    <v-flex xs12 md6 >
-                                                        <v-menu
-                                                        v-model="dateDialog"
-                                                        :close-on-content-click="false"
-                                                        :nudge-right="40"
-                                                        transition="scale-transition"
-                                                        offset-y
-                                                        full-width
-                                                        min-width="290px"
-                                                        
-                                                        >
-                                                        <template v-slot:activator="{ on }">
-                                                            <v-text-field
-                                                            v-model="editTask.due"
-                                                            label="Due Date"
-                                                            prepend-icon="event"
-                                                            box
-                                                            v-on="on"
-                                                            readonly
-                                                            ></v-text-field>
-                                                        </template>
-                                                        <v-date-picker  v-model="editTask.due" @input="dateDialog = false"></v-date-picker>
-                                                        </v-menu>
-                                                    </v-flex>
-                                                    <v-flex xs12>
-                                                        <v-textarea    
-                                                        box                                     
-                                                        label="Description"
-                                                        v-model="editTask.desc"
-                                                        prepend-icon="contact_support"
-                                                        ></v-textarea>
-                                                    </v-flex>
-                                                    <v-flex xs12>
-                                                        <v-btn color="green" @click="addTask(editTask)">Add Task</v-btn>
-                                                    </v-flex>
-                                                </v-layout>
-                                            </v-container>
-                                        </v-card-text>
-                                    </v-card>
-                                </v-flex> 
-                                <v-divider/>
-                                <v-flex xs12>
-                                    
-                                   <v-card>
-                                        <v-card-title class="justify-center">
-                                            <span class="headline">Task List</span>
-                                         </v-card-title>
-                                   </v-card>
-                                   <v-card-text v-if="editProject.tasks.length!=0">
-                                        <v-card hover v-ripple class="scroll-y"  v-for="task in editProject.tasks" :key="task.title" flat style="background: #424242 !important;" @click="openTaskDialog(task)">
-                                        <v-layout row wrap :class="`pa-3  project ${task.status}`">
-                                            <v-flex xs12 md4 >
-                                                <div class="caption grey--text">Division</div>
-                                                <div>{{task.division}}</div>
-                                            </v-flex>
-                                            <v-flex xs6 sm4 md2>
-                                                <div class="caption grey--text">Task</div>
-                                                <div>{{task.title}}</div>
-                                            </v-flex>     
-                                            <v-flex xs6 sm4 md2>
-                                                <div class="caption grey--text">Due Date</div>
-                                                <div>{{task.due}}</div>
-                                            </v-flex>
-                                            <v-flex xs6 sm4 md2> 
-                                                <div class="caption grey--text">Progress</div>
-                                                <div>
-                                                    <v-progress-linear
-                                                    color="red"
-                                                    height="20"
-                                                    :value="task.progress"
-                                                    >
-                                                    <!-- <strong class="text-center">{{project.progress}}%</strong> -->
-                                                    <p class="text-xs-center">{{task.progress}}%</p>
-                                                    </v-progress-linear>
-                                                </div>
-                                            </v-flex>
-                                            <v-flex xs2 sm4 md2>
-                                                <!-- <div class="caption grey--text">Status</div> -->
-                                                <div class="right">
-                                                    <v-chip small :class="` white--text my-2 caption ${task.status}`">{{task.status}}</v-chip>
-                                                </div>
-                                            </v-flex>
-                                        </v-layout>
-                                        <v-divider></v-divider>
-                                        </v-card>
-                                    </v-card-text>
-                                </v-flex>  
-                            </v-layout>
-
-                        </v-container>
-                    </v-card>
-                    </v-dialog>
-                </v-layout>
-              <!-- Add Dialog -->
-
               <!-- Add Dialog 2 -->
                <v-layout row justify-center>
-                    <v-dialog v-model="addDialog2" fullscreen hide-overlay transition="dialog-bottom-transition">
+                    <v-dialog v-model="addDialog2" persistent fullscreen hide-overlay transition="dialog-bottom-transition">
                     <v-card>
                         <v-toolbar>
-                            <v-btn icon dark @click="addDialog2 = !addDialog2">
+                            <v-btn icon dark @click="addDialog2 = false">
                                 <v-icon>close</v-icon>
                             </v-btn>
                             <v-toolbar-title class="white--text">Add Project</v-toolbar-title>
                             <v-spacer></v-spacer>
                             <v-toolbar-items>
-                                <v-btn dark flat @click="addDialog2 = !addDialog2">Save</v-btn>
+                                <v-btn dark flat @click="addDialog2=false">Save</v-btn>
                             </v-toolbar-items>
                         </v-toolbar>
 
                         <v-container fluid>
                             <v-layout row wrap>
-                                <v-flex xs12 md8 >
+                               <!-- Form  -->
+                                <v-flex xs12 sm12 md8 >
                                     <v-card color="grey darken-2" height="100%" style="margin:4px;">
                                         <v-card-title class="justify-center">
                                             <span class="headline">Project Form</span>
@@ -670,7 +409,8 @@
                                                     editable
                                                     step="1"
                                                     >
-                                                    Project Information
+                                                    <!-- Project Information -->
+                                                    PI
                                                     </v-stepper-step>
 
                                                     <v-divider></v-divider>
@@ -680,7 +420,8 @@
                                                     editable
                                                     step="2"
                                                     >
-                                                    Division
+                                                    <!-- Division -->
+                                                    D
                                                     </v-stepper-step>
 
                                                     <v-divider></v-divider>
@@ -690,7 +431,8 @@
                                                     editable
                                                     step="3"
                                                     >
-                                                    Sub Divison
+                                                    <!-- Sub Divison -->
+                                                    SD
                                                     </v-stepper-step>
 
                                                     <v-divider></v-divider>
@@ -700,7 +442,8 @@
                                                     editable
                                                     step="4"
                                                     >
-                                                    Task
+                                                    <!-- Task -->
+                                                    T
                                                     </v-stepper-step>
 
                                                     <v-divider></v-divider>
@@ -710,13 +453,18 @@
                                                     editable
                                                     step="5"
                                                     >
-                                                    Sub Task
+                                                    <!-- Sub Task -->
+                                                    ST
                                                     </v-stepper-step>
                                                 </v-stepper-header>
 
                                                 <v-stepper-items>
+
                                                 <v-stepper-content step="1">
                                                     <v-card height="100%">
+                                                        <v-card-title class="justify-center">
+                                                            <span class="headline">Project Information</span>
+                                                        </v-card-title>
                                                         <v-card-text> 
                                                             <v-container>
                                                                 <v-layout row wrap>
@@ -726,6 +474,7 @@
                                                                         v-model="editProject.title" 
                                                                         label="Project Name" 
                                                                         prepend-icon="contact_support"
+                                                                        height=2
                                                                         ></v-text-field>
                                                                     </v-flex>          
                                                                     <v-flex xs12 md6 class="pr-2">
@@ -822,20 +571,26 @@
                                                     <v-card
                                                     height="100%"
                                                     >
+                                                        <v-card-title class="justify-center">
+                                                            <span class="headline">Division</span>
+                                                        </v-card-title>
                                                         <v-card-text>
                                                             <v-container>
                                                                 <v-toolbar flat  color="grey darken-3">
                                                                     <v-text-field 
+                                                                        v-model="subdivform.name"
                                                                         label="Name"
                                                                         box
                                                                         class="mx-1"
                                                                     ></v-text-field>
                                                                     <v-text-field
+                                                                        v-model="divform.contribute"
                                                                         label="Contribute"
                                                                         box
                                                                         class="mx-1"
                                                                     ></v-text-field>
                                                                     <v-text-field
+                                                                        v-model="divform.due_date"
                                                                         label="Target Date"
                                                                         box
                                                                         class="mx-1"
@@ -846,12 +601,12 @@
                                                                         inset
                                                                         vertical
                                                                     ></v-divider>
-                                                                    <v-btn>Add</v-btn>
+                                                                    <v-btn @click="addDivForm()">Add</v-btn>
                                                                 </v-toolbar>
 
                                                                 <v-data-table
                                                                 :headers="div_headers"
-                                                                :items="ad_division"
+                                                                :items="editProject.ad_division"
                                                                 >
                                                                 <template v-slot:items="props">
                                                                     <td>
@@ -874,13 +629,12 @@
                                                                     </v-edit-dialog>
                                                                     </td>
 
-                                                                    <td class="text-xs-right">
+                                                                    <td class="text-xs-center">
                                                                     <v-edit-dialog
                                                                         :return-value.sync="props.item.contribute"
                                                                         large
                                                                         lazy
                                                                         persistent
-                                                                       
                                                                     >
                                                                         <div>{{ props.item.contribute }}</div>
                                                                         <template v-slot:input>
@@ -898,17 +652,17 @@
                                                                     </v-edit-dialog>
                                                                     </td>
 
-                                                                    <td class="text-xs-right">
+                                                                    <td class="text-xs-center">
                                                                     <v-edit-dialog
                                                                         :return-value.sync="props.item.due_date"
                                                                         large
                                                                         lazy
-                                                                        persistent
-                                                                       
+                                                                        persistent    
+                                                                        
                                                                     >
                                                                         <div>{{ props.item.due_date }}</div>
                                                                         <template v-slot:input>
-                                                                        <div class="mt-3 title">Update Target Date</div>
+                                                                            <div class="mt-3 title">Update Target Date</div>
                                                                         </template>
                                                                         <template v-slot:input>
                                                                         <v-text-field
@@ -921,6 +675,16 @@
                                                                         </template>
                                                                     </v-edit-dialog>
                                                                     </td>
+
+                                                                    <td class="text-xs-center">
+                                                                        <v-icon
+                                                                            small
+                                                                            @click="delDivForm(props.index)"
+                                                                        >
+                                                                            delete
+                                                                        </v-icon>
+                                                                    </td>
+
                                                                     <!-- <td class="text-xs-right">{{ props.item.due_date }}</td> -->
 
                                                                 </template>
@@ -941,10 +705,165 @@
 
                                                 <v-stepper-content step="3">
                                                     <v-card
-                                                    class="mb-5"
-                                                    color="grey lighten-1"
-                                                    height="200px"
-                                                    ></v-card>
+                                                    height="100%"
+                                                    >
+                                                        <v-card-title class="justify-center">
+                                                            <span class="headline">Sub Division</span>
+                                                        </v-card-title>
+                                                        <v-card-text>
+                                                            <v-container>
+                                                                <v-toolbar flat  color="grey darken-3">
+                                                                    <v-select
+                                                                    :items="editProject.ad_division"
+                                                                    v-model ="subdivform.division"
+                                                                    item-text="name"
+                                                                    item-value="name"
+                                                                    box
+                                                                    label="Divisi"
+                                                                    ></v-select>
+                                                                    <v-text-field 
+                                                                        v-model="subdivform.name"
+                                                                        label="Name"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
+                                                                    <v-text-field
+                                                                        v-model="subdivform.contribute"
+                                                                        label="Contribute"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
+                                                                    <v-text-field
+                                                                        v-model="subdivform.due_date"
+                                                                        label="Target Date"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
+                                                                    <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
+                                                                    <v-divider
+                                                                        class="mx-2"
+                                                                        inset
+                                                                        vertical
+                                                                    ></v-divider>
+                                                                    <v-btn @click="addSubDivForm()">Add</v-btn>
+                                                                </v-toolbar>
+
+                                                                <v-data-table
+                                                                :headers="subdiv_headers"
+                                                                :items="editProject.ad_subdivision"
+                                                                >
+                                                                <template v-slot:items="props">
+                                                                    <td>
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.division"
+                                                                        lazy
+                                                                        large
+                                                                        persistent
+                                                                     
+                                                                       
+                                                                    > <div>{{ props.item.division }}</div>
+                                                                        <template v-slot:input>
+                                                                        <!-- <v-text-field
+                                                                            v-model="props.item.name"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                        ></v-text-field> -->
+                                                                        <v-select
+                                                                        :items="editProject.ad_division"
+                                                                        v-model ="props.item.name"
+                                                                        item-text="name"
+                                                                        item-value="name"
+                                                                        box
+                                                                        label="Divisi"
+                                                                        ></v-select>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td>
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.name"
+                                                                        lazy
+                                                                        large
+                                                                        persistent
+                                                                     
+                                                                       
+                                                                    > <div>{{ props.item.name }}</div>
+                                                                        <template v-slot:input>
+                                                                        <v-text-field
+                                                                            v-model="props.item.name"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                        ></v-text-field>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td class="text-xs-center">
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.contribute"
+                                                                        large
+                                                                        lazy
+                                                                        persistent
+                                                                    >
+                                                                        <div>{{ props.item.contribute }}</div>
+                                                                        <template v-slot:input>
+                                                                        <div class="mt-3 title">Update Contribute</div>
+                                                                        </template>
+                                                                        <template v-slot:input>
+                                                                        <v-text-field
+                                                                            v-model="props.item.contribute"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                            autofocus
+                                                                        ></v-text-field>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td class="text-xs-center">
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.due_date"
+                                                                        large
+                                                                        lazy
+                                                                        persistent    
+                                                                        
+                                                                    >
+                                                                        <div>{{ props.item.due_date }}</div>
+                                                                        <template v-slot:input>
+                                                                            <div class="mt-3 title">Update Target Date</div>
+                                                                        </template>
+                                                                        <template v-slot:input>
+                                                                        <v-text-field
+                                                                            v-model="props.item.due_date"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                            autofocus
+                                                                        ></v-text-field>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td class="text-xs-center">
+                                                                        <v-icon
+                                                                            small
+                                                                            @click="delSubDivForm(props.index)"
+                                                                        >
+                                                                            delete
+                                                                        </v-icon>
+                                                                    </td>
+
+                                                                    <!-- <td class="text-xs-right">{{ props.item.due_date }}</td> -->
+
+                                                                </template>
+                                                                </v-data-table>
+                                                            </v-container>
+                                                        </v-card-text>
+                                                    </v-card>
 
                                                     <v-btn
                                                     color="primary"
@@ -955,12 +874,168 @@
 
                                                     <v-btn flat>Cancel</v-btn>
                                                 </v-stepper-content>
+
                                                 <v-stepper-content step="4">
                                                     <v-card
-                                                    class="mb-5"
-                                                    color="grey lighten-1"
-                                                    height="200px"
-                                                    ></v-card>
+                                                    height="100%"
+                                                    >
+                                                        <v-card-title class="justify-center">
+                                                            <span class="headline">Task</span>
+                                                        </v-card-title>
+                                                        <v-card-text>
+                                                            <v-container>
+                                                                <v-toolbar flat  color="grey darken-3">
+                                                                    <v-select
+                                                                    :items="editProject.ad_subdivision"
+                                                                    v-model ="taskform.subdivision"
+                                                                    item-text="name"
+                                                                    item-value="name"
+                                                                    box
+                                                                    label="Sub Divisi"
+                                                                    ></v-select>
+                                                                    <v-text-field 
+                                                                        v-model="taskform.name"
+                                                                        label="Name"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
+                                                                    <v-text-field
+                                                                        v-model="taskform.contribute"
+                                                                        label="Contribute"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
+                                                                    <v-text-field
+                                                                        v-model="taskform.due_date"
+                                                                        label="Target Date"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
+                                                                    <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
+                                                                    <v-divider
+                                                                        class="mx-2"
+                                                                        inset
+                                                                        vertical
+                                                                    ></v-divider>
+                                                                    <v-btn @click="addTaskForm()">Add</v-btn>
+                                                                </v-toolbar>
+
+                                                                <v-data-table
+                                                                :headers="task_headers"
+                                                                :items="editProject.ad_task"
+                                                                >
+                                                                <template v-slot:items="props">
+                                                                    <td>
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.subdivision"
+                                                                        lazy
+                                                                        large
+                                                                        persistent
+                                                                     
+                                                                       
+                                                                    > <div>{{ props.item.subdivision }}</div>
+                                                                        <template v-slot:input>
+                                                                        <!-- <v-text-field
+                                                                            v-model="props.item.name"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                        ></v-text-field> -->
+                                                                        <v-select
+                                                                        :items="editProject.ad_subdivision"
+                                                                        v-model ="props.item.name"
+                                                                        item-text="name"
+                                                                        item-value="name"
+                                                                        box
+                                                                        label="Sub Divisi"
+                                                                        ></v-select>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td>
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.name"
+                                                                        lazy
+                                                                        large
+                                                                        persistent
+                                                                     
+                                                                       
+                                                                    > <div>{{ props.item.name }}</div>
+                                                                        <template v-slot:input>
+                                                                        <v-text-field
+                                                                            v-model="props.item.name"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                        ></v-text-field>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td class="text-xs-center">
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.contribute"
+                                                                        large
+                                                                        lazy
+                                                                        persistent
+                                                                    >
+                                                                        <div>{{ props.item.contribute }}</div>
+                                                                        <template v-slot:input>
+                                                                        <div class="mt-3 title">Update Contribute</div>
+                                                                        </template>
+                                                                        <template v-slot:input>
+                                                                        <v-text-field
+                                                                            v-model="props.item.contribute"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                            autofocus
+                                                                        ></v-text-field>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td class="text-xs-center">
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.due_date"
+                                                                        large
+                                                                        lazy
+                                                                        persistent    
+                                                                        
+                                                                    >
+                                                                        <div>{{ props.item.due_date }}</div>
+                                                                        <template v-slot:input>
+                                                                            <div class="mt-3 title">Update Target Date</div>
+                                                                        </template>
+                                                                        <template v-slot:input>
+                                                                        <v-text-field
+                                                                            v-model="props.item.due_date"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                            autofocus
+                                                                        ></v-text-field>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td class="text-xs-center">
+                                                                        <v-icon
+                                                                            small
+                                                                            @click="delTaskForm(props.index)"
+                                                                        >
+                                                                            delete
+                                                                        </v-icon>
+                                                                    </td>
+
+                                                                    <!-- <td class="text-xs-right">{{ props.item.due_date }}</td> -->
+
+                                                                </template>
+                                                                </v-data-table>
+                                                            </v-container>
+                                                        </v-card-text>
+                                                    </v-card>
 
                                                     <v-btn
                                                     color="primary"
@@ -971,12 +1046,187 @@
 
                                                     <v-btn flat>Cancel</v-btn>
                                                 </v-stepper-content>
+
+                                                <v-stepper-content step="5">
+                                                    <v-card
+                                                    height="100%"
+                                                    >
+                                                        <v-card-title class="justify-center">
+                                                            <span class="headline">Sub Task</span>
+                                                        </v-card-title>
+                                                        <v-card-text>
+                                                            <v-container>
+                                                                <v-toolbar flat  color="grey darken-3">
+                                                                    <v-select
+                                                                    :items="editProject.ad_task"
+                                                                    v-model ="subtaskform.task"
+                                                                    item-text="name"
+                                                                    item-value="name"
+                                                                    box
+                                                                    label="Task"
+                                                                    ></v-select>
+                                                                    <v-text-field 
+                                                                        v-model="subtaskform.name"
+                                                                        label="Name"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
+                                                                    <v-text-field
+                                                                        v-model="subtaskform.contribute"
+                                                                        label="Contribute"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
+                                                                    <v-text-field
+                                                                        v-model="subtaskform.due_date"
+                                                                        label="Target Date"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
+                                                                    <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
+                                                                    <v-divider
+                                                                        class="mx-2"
+                                                                        inset
+                                                                        vertical
+                                                                    ></v-divider>
+                                                                    <v-btn @click="addSubTaskForm()">Add</v-btn>
+                                                                </v-toolbar>
+
+                                                                <v-data-table
+                                                                :headers="subtask_headers"
+                                                                :items="editProject.ad_subtask"
+                                                                >
+                                                                <template v-slot:items="props">
+                                                                    <td>
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.task"
+                                                                        lazy
+                                                                        large
+                                                                        persistent
+                                                                     
+                                                                       
+                                                                    > <div>{{ props.item.task }}</div>
+                                                                        <template v-slot:input>
+                                                                        <!-- <v-text-field
+                                                                            v-model="props.item.name"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                        ></v-text-field> -->
+                                                                        <v-select
+                                                                        :items="editProject.ad_task"
+                                                                        v-model ="props.item.name"
+                                                                        item-text="name"
+                                                                        item-value="name"
+                                                                        box
+                                                                        label="Task"
+                                                                        ></v-select>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td>
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.name"
+                                                                        lazy
+                                                                        large
+                                                                        persistent
+                                                                     
+                                                                       
+                                                                    > <div>{{ props.item.name }}</div>
+                                                                        <template v-slot:input>
+                                                                        <v-text-field
+                                                                            v-model="props.item.name"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                        ></v-text-field>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td class="text-xs-center">
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.contribute"
+                                                                        large
+                                                                        lazy
+                                                                        persistent
+                                                                    >
+                                                                        <div>{{ props.item.contribute }}</div>
+                                                                        <template v-slot:input>
+                                                                        <div class="mt-3 title">Update Contribute</div>
+                                                                        </template>
+                                                                        <template v-slot:input>
+                                                                        <v-text-field
+                                                                            v-model="props.item.contribute"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                            autofocus
+                                                                        ></v-text-field>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td class="text-xs-center">
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.due_date"
+                                                                        large
+                                                                        lazy
+                                                                        persistent    
+                                                                        
+                                                                    >
+                                                                        <div>{{ props.item.due_date }}</div>
+                                                                        <template v-slot:input>
+                                                                            <div class="mt-3 title">Update Target Date</div>
+                                                                        </template>
+                                                                        <template v-slot:input>
+                                                                        <v-text-field
+                                                                            v-model="props.item.due_date"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                            autofocus
+                                                                        ></v-text-field>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td class="text-xs-center">
+                                                                        <v-icon
+                                                                            small
+                                                                            @click="delSubTaskForm(props.index)"
+                                                                        >
+                                                                            delete
+                                                                        </v-icon>
+                                                                    </td>
+
+                                                                    <!-- <td class="text-xs-right">{{ props.item.due_date }}</td> -->
+
+                                                                </template>
+                                                                </v-data-table>
+                                                            </v-container>
+                                                        </v-card-text>
+                                                    </v-card>
+                                                    <v-btn
+                                                    color="primary"
+                                                    @click="e1 = 5"
+                                                    >
+                                                    Continue
+                                                    </v-btn>
+
+                                                    <v-btn flat>Cancel</v-btn>
+                                                </v-stepper-content>
+                                                
                                                 </v-stepper-items>
                                             </v-stepper>
                                         </v-card-text>
                                     </v-card>
                                 </v-flex>
-                                <v-flex xs12 md4  >
+                               <!-- Form  -->
+
+                               <!-- Struct  -->
+                                <v-flex xs12 sm12 md4  >
                                     <v-card color="grey darken-2" height="100%" style="margin:4px;">
                                         <v-card-title class="justify-center">
                                             <span class="headline">Project Structure</span>
@@ -994,7 +1244,7 @@
                                                     <v-list-tile>
                                                     <v-list-tile-content>
                                                         <v-list-tile-title>
-                                                        <span> Project Title</span>
+                                                        <span>{{editProject.title}}</span>
                                                        
                                                         <!-- <v-btn small color="info">Detail</v-btn> -->
                                                         </v-list-tile-title>
@@ -1004,8 +1254,8 @@
                                                 </template>
                                     
                                                     <v-list-group
-                                                        v-for="div in d_division"
-                                                        :key="div.id"
+                                                        v-for="(div,index) in editProject.ad_division"
+                                                        :key="index"
                                                         class="pl-2 pr-2"
                                                         :value="expandDetail"
                                                         
@@ -1022,8 +1272,8 @@
                                                         </template>
 
                                                         <v-list-group
-                                                        v-for="subdiv in d_sub_division"
-                                                        :key="subdiv.id"
+                                                        v-for="(subdiv,index) in editProject.ad_subdivision.filter(obj => obj.division == div.name)"
+                                                        :key="index"
                                                         class="pl-2 pr-2" 
                                                         :value="expandDetail"
                                                         >
@@ -1039,8 +1289,8 @@
                                                             </template>
 
                                                             <v-list-group
-                                                            v-for="task in d_task"
-                                                            :key="task.id"
+                                                            v-for="(task,index) in editProject.ad_task.filter(obj => obj.subdivision == subdiv.name)"
+                                                            :key="index"
                                                             class="pl-2 pr-2"
                                                             :value="expandDetail"
                                                             >
@@ -1055,8 +1305,8 @@
                                                                     </v-list-tile>
                                                                 </template>
                                                                 <v-list-tile
-                                                                v-for="subtask in d_sub_task"
-                                                                :key="subtask.id"
+                                                                v-for="(subtask,index) in editProject.ad_subtask.filter(obj => obj.task == task.name)"
+                                                                :key="index"
                                                                 class="d_sub_task pl-2 pr-5 mr-3 ">
                                                                 <v-list-tile-content>
                                                                     <v-list-tile-title>{{ subtask.name }}
@@ -1084,6 +1334,8 @@
                                         </v-card-text>
                                     </v-card>
                                 </v-flex>
+                               <!-- Struct  -->
+
                             </v-layout>
                         </v-container>
                     </v-card>
@@ -1335,6 +1587,7 @@
 export default {
   data() {
     return {
+       //Base
         log_pengerjaan:[
             {
                 id:'1',
@@ -1389,18 +1642,7 @@ export default {
         
 
         ],
-        editProject:
-        {
-            tasks:[],
-            title: '', 
-            start: '',
-            due: '', 
-            value:'',
-            target_outcome:'',
-            note:'',
-            client_name:'',
-            client_address:'',
-        },
+        
         initProject:
         {
             tasks:[],
@@ -1481,35 +1723,145 @@ export default {
         fileName : '',
         fileUrl: '',
         file:'',
+       //Base
 
-        // Add Dialog 2
+       // Add Dialog 2
         e1: 0,
-        addDialog2:false,
-        ad_division:[
-            {
-                name:'Desain Arsi',
-                contribute:'50%',
-                due_date:'',
-            },
-            {
-                name:'Admin',
-                contribute:'2%',
-                due_date:'',
-            }
+        addDialog2:true,
+        editProject:
+        {
+            ad_division:[
+                {
+                    name:'Desain Arsi',
+                    contribute:'50',
+                    due_date:'',
+                },
+                {
+                    name:'Admin',
+                    contribute:'2',
+                    due_date:'',
+                }
+            ],
+            ad_subdivision:[
+                {
+                    name:'Desain',
+                    division:'Desain Arsi',
+                    contribute:'50',
+                    due_date:'',
+                },
+                {
+                    name:'QS',
+                    division:'Desain Arsi',
+                    contribute:'2',
+                    due_date:'',
+                }
+            ],
+            ad_task:[
+                {
+                    name:'Konsep',
+                    subdivision:'Desain',
+                    contribute:'50',
+                    due_date:'',
+                },
+            ],
+            ad_subtask:[
+                {
+                    name:'Denah Depan',
+                    task:'Konsep',
+                    contribute:'50',
+                    due_date:'',
+                },
+            ],
 
-        ],
+            title: '', 
+            start: '',
+            due: '', 
+            value:'',
+            target_outcome:'',
+            note:'',
+            client_name:'',
+            client_address:'',
+        },
+    
         div_headers: [
-          {
-            text: 'Name',
-            align: 'left',
-            sortable: false,
-            value: 'name'
-          },
-          { text: 'Contribute', value: 'contribute',align: 'center' },
+          { text: 'Name',align: 'left',sortable: false,value: 'name'},
+          { text: 'Contribute (%)', value: 'contribute',align: 'center' },
           { text: 'Target Date', value: 'due',align: 'center' },
-        ],
+          { text: 'Action', value:'index' ,align: 'center' },
 
-        //Data Dummy
+        ],
+        subdiv_headers: [
+          { text: 'Division',align: 'left',sortable: false,value: 'division'},
+          { text: 'Name',align: 'left',sortable: false,value: 'name'},
+          { text: 'Contribute (%)', value: 'contribute',align: 'center' },
+          { text: 'Target Date', value: 'due',align: 'center' },
+          { text: 'Action', value:'index' ,align: 'center' },
+        ],
+        task_headers: [
+          { text: 'Sub Division',align: 'left',sortable: false,value: 'subdivision'},
+          { text: 'Name',align: 'left',sortable: false,value: 'name'},
+          { text: 'Contribute (%)', value: 'contribute',align: 'center' },
+          { text: 'Target Date', value: 'due',align: 'center' },
+          { text: 'Action', value:'index' ,align: 'center' },
+
+        ],
+        subtask_headers: [
+          { text: 'Task',align: 'left',sortable: false,value: 'subdivision'},
+          { text: 'Name',align: 'left',sortable: false,value: 'name'},
+          { text: 'Contribute (%)', value: 'contribute',align: 'center' },
+          { text: 'Target Date', value: 'due',align: 'center' },
+          { text: 'Action', value:'index' ,align: 'center' },
+
+        ],
+        divform:{
+            name:'',
+            contribute:'',
+            due_date:'',
+        },
+        defaultdivform:{
+            name:'',
+            contribute:'',
+            due_date:'',
+        },
+        subdivform:{
+            name:'',
+            division:'',
+            contribute:'',
+            due_date:'',
+        },
+        defaultsubdivform:{
+            name:'',
+            division:'',
+            contribute:'',
+            due_date:'',
+        },
+        taskform:{
+            name:'',
+            subdivision:'',
+            contribute:'',
+            due_date:'',
+        },
+        defaulttaskform:{
+            name:'',
+            subdivision:'',
+            contribute:'',
+            due_date:'',
+        },
+        subtaskform:{
+            name:'',
+            task:'',
+            contribute:'',
+            due_date:'',
+        },
+        defaultsubtaskform:{
+            name:'',
+            task:'',
+            contribute:'',
+            due_date:'',
+        },
+       //Add Dialog 2
+
+       //Data Dummy
         detailDialog:false,
         expandDetail:false,
         d_division:[
@@ -1583,6 +1935,8 @@ export default {
                 ]
             }
         ],
+       //Data Dummy
+
 
     }
   },
@@ -1602,6 +1956,50 @@ export default {
     // sortBy(prop) {
     //   this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
     // },
+
+    addDivForm(){
+        this.editProject.ad_division.push(this.divform)
+        this.divform = Object.assign({}, this.defaultdivform)
+
+    },
+    delDivForm(index){
+        this.editProject.ad_division.splice(this.editProject.ad_division.indexOf(index), 1)
+        this.editProject.ad_division = [...this.editProject.ad_division]
+       
+    },
+
+    addSubDivForm(){
+        this.editProject.ad_subdivision.push(this.subdivform)
+        this.subdivform = Object.assign({}, this.defaultsubdivform)
+
+    },
+    delSubDivForm(index){
+        this.editProject.ad_subdivision.splice(this.editProject.ad_subdivision.indexOf(index), 1)
+        this.editProject.ad_subdivision = [...this.editProject.ad_subdivision]
+       
+    },
+
+    addTaskForm(){
+        this.editProject.ad_task.push(this.taskform)
+        this.taskform = Object.assign({}, this.defaulttaskform)
+
+    },
+    delTaskForm(index){
+        this.editProject.ad_task.splice(this.editProject.ad_task.indexOf(index), 1)
+        this.editProject.ad_task = [...this.editProject.ad_task]
+       
+    },
+    addSubTaskForm(){
+        this.editProject.ad_subtask.push(this.subtaskform)
+        this.subtaskform = Object.assign({}, this.defaultsubtaskform)
+
+    },
+    delSubTaskForm(index){
+        this.editProject.ad_subtask.splice(this.editProject.ad_subtask.indexOf(index), 1)
+        this.editProject.ad_subtask = [...this.editProject.ad_subtask]
+       
+    },
+
     addProject(data){
         this.projects.push(data);
     },

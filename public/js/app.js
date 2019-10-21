@@ -2332,10 +2332,7 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    } // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
-
+    }
   }
 });
 
@@ -2997,10 +2994,7 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    } // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
-
+    }
   }
 });
 
@@ -3338,10 +3332,7 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    } // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
-
+    }
   }
 });
 
@@ -3356,6 +3347,266 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4692,6 +4943,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      //Base
       log_pengerjaan: [{
         id: '1',
         fileName: 'Denah.zip',
@@ -4734,17 +4986,6 @@ __webpack_require__.r(__webpack_exports__);
         title: 'Rumah Sakit Arsitektur',
         due: '2019-09-08'
       }],
-      editProject: {
-        tasks: [],
-        title: '',
-        start: '',
-        due: '',
-        value: '',
-        target_outcome: '',
-        note: '',
-        client_name: '',
-        client_address: ''
-      },
       initProject: {
         tasks: [],
         title: '',
@@ -4814,32 +5055,186 @@ __webpack_require__.r(__webpack_exports__);
       fileName: '',
       fileUrl: '',
       file: '',
+      //Base
       // Add Dialog 2
       e1: 0,
-      addDialog2: false,
-      ad_division: [{
-        name: 'Desain Arsi',
-        contribute: '50%',
-        due_date: ''
-      }, {
-        name: 'Admin',
-        contribute: '2%',
-        due_date: ''
-      }],
+      addDialog2: true,
+      editProject: {
+        ad_division: [{
+          name: 'Desain Arsi',
+          contribute: '50',
+          due_date: ''
+        }, {
+          name: 'Admin',
+          contribute: '2',
+          due_date: ''
+        }],
+        ad_subdivision: [{
+          name: 'Desain',
+          division: 'Desain Arsi',
+          contribute: '50',
+          due_date: ''
+        }, {
+          name: 'QS',
+          division: 'Desain Arsi',
+          contribute: '2',
+          due_date: ''
+        }],
+        ad_task: [{
+          name: 'Konsep',
+          subdivision: 'Desain',
+          contribute: '50',
+          due_date: ''
+        }],
+        ad_subtask: [{
+          name: 'Denah Depan',
+          task: 'Konsep',
+          contribute: '50',
+          due_date: ''
+        }],
+        title: '',
+        start: '',
+        due: '',
+        value: '',
+        target_outcome: '',
+        note: '',
+        client_name: '',
+        client_address: ''
+      },
       div_headers: [{
         text: 'Name',
         align: 'left',
         sortable: false,
         value: 'name'
       }, {
-        text: 'Contribute',
+        text: 'Contribute (%)',
         value: 'contribute',
         align: 'center'
       }, {
         text: 'Target Date',
         value: 'due',
         align: 'center'
+      }, {
+        text: 'Action',
+        value: 'index',
+        align: 'center'
       }],
+      subdiv_headers: [{
+        text: 'Division',
+        align: 'left',
+        sortable: false,
+        value: 'division'
+      }, {
+        text: 'Name',
+        align: 'left',
+        sortable: false,
+        value: 'name'
+      }, {
+        text: 'Contribute (%)',
+        value: 'contribute',
+        align: 'center'
+      }, {
+        text: 'Target Date',
+        value: 'due',
+        align: 'center'
+      }, {
+        text: 'Action',
+        value: 'index',
+        align: 'center'
+      }],
+      task_headers: [{
+        text: 'Sub Division',
+        align: 'left',
+        sortable: false,
+        value: 'subdivision'
+      }, {
+        text: 'Name',
+        align: 'left',
+        sortable: false,
+        value: 'name'
+      }, {
+        text: 'Contribute (%)',
+        value: 'contribute',
+        align: 'center'
+      }, {
+        text: 'Target Date',
+        value: 'due',
+        align: 'center'
+      }, {
+        text: 'Action',
+        value: 'index',
+        align: 'center'
+      }],
+      subtask_headers: [{
+        text: 'Task',
+        align: 'left',
+        sortable: false,
+        value: 'subdivision'
+      }, {
+        text: 'Name',
+        align: 'left',
+        sortable: false,
+        value: 'name'
+      }, {
+        text: 'Contribute (%)',
+        value: 'contribute',
+        align: 'center'
+      }, {
+        text: 'Target Date',
+        value: 'due',
+        align: 'center'
+      }, {
+        text: 'Action',
+        value: 'index',
+        align: 'center'
+      }],
+      divform: {
+        name: '',
+        contribute: '',
+        due_date: ''
+      },
+      defaultdivform: {
+        name: '',
+        contribute: '',
+        due_date: ''
+      },
+      subdivform: {
+        name: '',
+        division: '',
+        contribute: '',
+        due_date: ''
+      },
+      defaultsubdivform: {
+        name: '',
+        division: '',
+        contribute: '',
+        due_date: ''
+      },
+      taskform: {
+        name: '',
+        subdivision: '',
+        contribute: '',
+        due_date: ''
+      },
+      defaulttaskform: {
+        name: '',
+        subdivision: '',
+        contribute: '',
+        due_date: ''
+      },
+      subtaskform: {
+        name: '',
+        task: '',
+        contribute: '',
+        due_date: ''
+      },
+      defaultsubtaskform: {
+        name: '',
+        task: '',
+        contribute: '',
+        due_date: ''
+      },
+      //Add Dialog 2
       //Data Dummy
       detailDialog: false,
       expandDetail: false,
@@ -4900,7 +5295,8 @@ __webpack_require__.r(__webpack_exports__);
           sub_div: 'Desain',
           contribute: '50%'
         }]
-      }]
+      }] //Data Dummy
+
     };
   },
   computed: {// filteredTask(data){
@@ -4918,6 +5314,38 @@ __webpack_require__.r(__webpack_exports__);
     // sortBy(prop) {
     //   this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
     // },
+    addDivForm: function addDivForm() {
+      this.editProject.ad_division.push(this.divform);
+      this.divform = Object.assign({}, this.defaultdivform);
+    },
+    delDivForm: function delDivForm(index) {
+      this.editProject.ad_division.splice(this.editProject.ad_division.indexOf(index), 1);
+      this.editProject.ad_division = _toConsumableArray(this.editProject.ad_division);
+    },
+    addSubDivForm: function addSubDivForm() {
+      this.editProject.ad_subdivision.push(this.subdivform);
+      this.subdivform = Object.assign({}, this.defaultsubdivform);
+    },
+    delSubDivForm: function delSubDivForm(index) {
+      this.editProject.ad_subdivision.splice(this.editProject.ad_subdivision.indexOf(index), 1);
+      this.editProject.ad_subdivision = _toConsumableArray(this.editProject.ad_subdivision);
+    },
+    addTaskForm: function addTaskForm() {
+      this.editProject.ad_task.push(this.taskform);
+      this.taskform = Object.assign({}, this.defaulttaskform);
+    },
+    delTaskForm: function delTaskForm(index) {
+      this.editProject.ad_task.splice(this.editProject.ad_task.indexOf(index), 1);
+      this.editProject.ad_task = _toConsumableArray(this.editProject.ad_task);
+    },
+    addSubTaskForm: function addSubTaskForm() {
+      this.editProject.ad_subtask.push(this.subtaskform);
+      this.subtaskform = Object.assign({}, this.defaultsubtaskform);
+    },
+    delSubTaskForm: function delSubTaskForm(index) {
+      this.editProject.ad_subtask.splice(this.editProject.ad_subtask.indexOf(index), 1);
+      this.editProject.ad_subtask = _toConsumableArray(this.editProject.ad_subtask);
+    },
     addProject: function addProject(data) {
       this.projects.push(data);
     },
@@ -5032,10 +5460,7 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function () {
         return console.log('error occured');
       });
-    } // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
-
+    }
   }
 });
 
@@ -14223,1168 +14648,7 @@ var render = function() {
                 "v-dialog",
                 {
                   attrs: {
-                    fullscreen: "",
-                    "hide-overlay": "",
-                    transition: "dialog-bottom-transition"
-                  },
-                  model: {
-                    value: _vm.addDialog,
-                    callback: function($$v) {
-                      _vm.addDialog = $$v
-                    },
-                    expression: "addDialog"
-                  }
-                },
-                [
-                  _c(
-                    "v-card",
-                    [
-                      _c(
-                        "v-toolbar",
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { icon: "", dark: "" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.closeAddDialog()
-                                }
-                              }
-                            },
-                            [_c("v-icon", [_vm._v("close")])],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-toolbar-title",
-                            { staticClass: "white--text" },
-                            [_vm._v("Add Project")]
-                          ),
-                          _vm._v(" "),
-                          _c("v-spacer"),
-                          _vm._v(" "),
-                          _c(
-                            "v-toolbar-items",
-                            [
-                              _c(
-                                "v-btn",
-                                {
-                                  attrs: { dark: "", flat: "" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.addProject(_vm.editProject)
-                                      _vm.closeAddDialog()
-                                    }
-                                  }
-                                },
-                                [_vm._v("Save")]
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-container",
-                        { attrs: { fluid: "" } },
-                        [
-                          _c(
-                            "v-layout",
-                            { attrs: { row: "", wrap: "" } },
-                            [
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", md4: "" } },
-                                [
-                                  _c(
-                                    "v-card",
-                                    { attrs: { height: "100%" } },
-                                    [
-                                      _c(
-                                        "v-card-title",
-                                        { staticClass: "justify-center" },
-                                        [
-                                          _c(
-                                            "span",
-                                            { staticClass: "headline" },
-                                            [_vm._v("Project Information")]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-card-text",
-                                        [
-                                          _c(
-                                            "v-container",
-                                            [
-                                              _c(
-                                                "v-layout",
-                                                {
-                                                  attrs: { row: "", wrap: "" }
-                                                },
-                                                [
-                                                  _c(
-                                                    "v-flex",
-                                                    { attrs: { xs12: "" } },
-                                                    [
-                                                      _c("v-text-field", {
-                                                        attrs: {
-                                                          box: "",
-                                                          label: "Project Name",
-                                                          "prepend-icon":
-                                                            "contact_support"
-                                                        },
-                                                        model: {
-                                                          value:
-                                                            _vm.editProject
-                                                              .title,
-                                                          callback: function(
-                                                            $$v
-                                                          ) {
-                                                            _vm.$set(
-                                                              _vm.editProject,
-                                                              "title",
-                                                              $$v
-                                                            )
-                                                          },
-                                                          expression:
-                                                            "editProject.title"
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    {
-                                                      staticClass: "pr-2",
-                                                      attrs: {
-                                                        xs12: "",
-                                                        md6: ""
-                                                      }
-                                                    },
-                                                    [
-                                                      _c("v-text-field", {
-                                                        attrs: {
-                                                          box: "",
-                                                          label: "Value",
-                                                          "prepend-icon":
-                                                            "contact_support"
-                                                        },
-                                                        model: {
-                                                          value:
-                                                            _vm.editProject
-                                                              .value,
-                                                          callback: function(
-                                                            $$v
-                                                          ) {
-                                                            _vm.$set(
-                                                              _vm.editProject,
-                                                              "value",
-                                                              $$v
-                                                            )
-                                                          },
-                                                          expression:
-                                                            "editProject.value"
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    {
-                                                      attrs: {
-                                                        xs12: "",
-                                                        md6: ""
-                                                      }
-                                                    },
-                                                    [
-                                                      _c("v-text-field", {
-                                                        attrs: {
-                                                          box: "",
-                                                          label:
-                                                            "Target Outcome",
-                                                          "prepend-icon":
-                                                            "contact_support"
-                                                        },
-                                                        model: {
-                                                          value:
-                                                            _vm.editProject
-                                                              .target_outcome,
-                                                          callback: function(
-                                                            $$v
-                                                          ) {
-                                                            _vm.$set(
-                                                              _vm.editProject,
-                                                              "target_outcome",
-                                                              $$v
-                                                            )
-                                                          },
-                                                          expression:
-                                                            "editProject.target_outcome"
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    {
-                                                      staticClass: "pr-2",
-                                                      attrs: {
-                                                        xs12: "",
-                                                        md6: ""
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "v-menu",
-                                                        {
-                                                          attrs: {
-                                                            "close-on-content-click": false,
-                                                            "nudge-right": 40,
-                                                            transition:
-                                                              "scale-transition",
-                                                            "offset-y": "",
-                                                            "full-width": "",
-                                                            "min-width": "290px"
-                                                          },
-                                                          scopedSlots: _vm._u([
-                                                            {
-                                                              key: "activator",
-                                                              fn: function(
-                                                                ref
-                                                              ) {
-                                                                var on = ref.on
-                                                                return [
-                                                                  _c(
-                                                                    "v-text-field",
-                                                                    _vm._g(
-                                                                      {
-                                                                        attrs: {
-                                                                          label:
-                                                                            "Start Date",
-                                                                          "prepend-icon":
-                                                                            "event",
-                                                                          box:
-                                                                            "",
-                                                                          readonly:
-                                                                            ""
-                                                                        },
-                                                                        model: {
-                                                                          value:
-                                                                            _vm
-                                                                              .editProject
-                                                                              .start,
-                                                                          callback: function(
-                                                                            $$v
-                                                                          ) {
-                                                                            _vm.$set(
-                                                                              _vm.editProject,
-                                                                              "start",
-                                                                              $$v
-                                                                            )
-                                                                          },
-                                                                          expression:
-                                                                            "editProject.start"
-                                                                        }
-                                                                      },
-                                                                      on
-                                                                    )
-                                                                  )
-                                                                ]
-                                                              }
-                                                            }
-                                                          ]),
-                                                          model: {
-                                                            value:
-                                                              _vm.startDate,
-                                                            callback: function(
-                                                              $$v
-                                                            ) {
-                                                              _vm.startDate = $$v
-                                                            },
-                                                            expression:
-                                                              "startDate"
-                                                          }
-                                                        },
-                                                        [
-                                                          _vm._v(" "),
-                                                          _c("v-date-picker", {
-                                                            on: {
-                                                              input: function(
-                                                                $event
-                                                              ) {
-                                                                _vm.startDate = false
-                                                              }
-                                                            },
-                                                            model: {
-                                                              value:
-                                                                _vm.editProject
-                                                                  .start,
-                                                              callback: function(
-                                                                $$v
-                                                              ) {
-                                                                _vm.$set(
-                                                                  _vm.editProject,
-                                                                  "start",
-                                                                  $$v
-                                                                )
-                                                              },
-                                                              expression:
-                                                                "editProject.start"
-                                                            }
-                                                          })
-                                                        ],
-                                                        1
-                                                      )
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    {
-                                                      attrs: {
-                                                        xs12: "",
-                                                        md6: ""
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "v-menu",
-                                                        {
-                                                          attrs: {
-                                                            "close-on-content-click": false,
-                                                            "nudge-right": 40,
-                                                            transition:
-                                                              "scale-transition",
-                                                            "offset-y": "",
-                                                            "full-width": "",
-                                                            "min-width": "290px"
-                                                          },
-                                                          scopedSlots: _vm._u([
-                                                            {
-                                                              key: "activator",
-                                                              fn: function(
-                                                                ref
-                                                              ) {
-                                                                var on = ref.on
-                                                                return [
-                                                                  _c(
-                                                                    "v-text-field",
-                                                                    _vm._g(
-                                                                      {
-                                                                        attrs: {
-                                                                          label:
-                                                                            "Finish Date",
-                                                                          "prepend-icon":
-                                                                            "event",
-                                                                          box:
-                                                                            "",
-                                                                          readonly:
-                                                                            ""
-                                                                        },
-                                                                        model: {
-                                                                          value:
-                                                                            _vm
-                                                                              .editProject
-                                                                              .due,
-                                                                          callback: function(
-                                                                            $$v
-                                                                          ) {
-                                                                            _vm.$set(
-                                                                              _vm.editProject,
-                                                                              "due",
-                                                                              $$v
-                                                                            )
-                                                                          },
-                                                                          expression:
-                                                                            "editProject.due"
-                                                                        }
-                                                                      },
-                                                                      on
-                                                                    )
-                                                                  )
-                                                                ]
-                                                              }
-                                                            }
-                                                          ]),
-                                                          model: {
-                                                            value:
-                                                              _vm.finishDate,
-                                                            callback: function(
-                                                              $$v
-                                                            ) {
-                                                              _vm.finishDate = $$v
-                                                            },
-                                                            expression:
-                                                              "finishDate"
-                                                          }
-                                                        },
-                                                        [
-                                                          _vm._v(" "),
-                                                          _c("v-date-picker", {
-                                                            on: {
-                                                              input: function(
-                                                                $event
-                                                              ) {
-                                                                _vm.finishDate = false
-                                                              }
-                                                            },
-                                                            model: {
-                                                              value:
-                                                                _vm.editProject
-                                                                  .due,
-                                                              callback: function(
-                                                                $$v
-                                                              ) {
-                                                                _vm.$set(
-                                                                  _vm.editProject,
-                                                                  "due",
-                                                                  $$v
-                                                                )
-                                                              },
-                                                              expression:
-                                                                "editProject.due"
-                                                            }
-                                                          })
-                                                        ],
-                                                        1
-                                                      )
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    { attrs: { xs12: "" } },
-                                                    [
-                                                      _c("v-textarea", {
-                                                        attrs: {
-                                                          box: "",
-                                                          label: "Note",
-                                                          "prepend-icon":
-                                                            "contact_support"
-                                                        },
-                                                        model: {
-                                                          value:
-                                                            _vm.editProject
-                                                              .note,
-                                                          callback: function(
-                                                            $$v
-                                                          ) {
-                                                            _vm.$set(
-                                                              _vm.editProject,
-                                                              "note",
-                                                              $$v
-                                                            )
-                                                          },
-                                                          expression:
-                                                            "editProject.note"
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  )
-                                                ],
-                                                1
-                                              )
-                                            ],
-                                            1
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", md4: "" } },
-                                [
-                                  _c(
-                                    "v-card",
-                                    { attrs: { height: "100%" } },
-                                    [
-                                      _c(
-                                        "v-card-title",
-                                        { staticClass: "justify-center" },
-                                        [
-                                          _c(
-                                            "span",
-                                            { staticClass: "headline" },
-                                            [_vm._v("Client Information")]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-card-text",
-                                        [
-                                          _c(
-                                            "v-container",
-                                            [
-                                              _c(
-                                                "v-layout",
-                                                {
-                                                  attrs: { row: "", wrap: "" }
-                                                },
-                                                [
-                                                  _c(
-                                                    "v-flex",
-                                                    { attrs: { xs8: "" } },
-                                                    [
-                                                      _c("v-text-field", {
-                                                        attrs: {
-                                                          box: "",
-                                                          label: "Client Name",
-                                                          "prepend-icon":
-                                                            "contact_support"
-                                                        },
-                                                        model: {
-                                                          value:
-                                                            _vm.editProject
-                                                              .client_name,
-                                                          callback: function(
-                                                            $$v
-                                                          ) {
-                                                            _vm.$set(
-                                                              _vm.editProject,
-                                                              "client_name",
-                                                              $$v
-                                                            )
-                                                          },
-                                                          expression:
-                                                            "editProject.client_name"
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    { attrs: { xs12: "" } },
-                                                    [
-                                                      _c("v-textarea", {
-                                                        attrs: {
-                                                          box: "",
-                                                          label:
-                                                            "Client Address",
-                                                          "prepend-icon":
-                                                            "contact_support"
-                                                        },
-                                                        model: {
-                                                          value:
-                                                            _vm.editProject
-                                                              .client_address,
-                                                          callback: function(
-                                                            $$v
-                                                          ) {
-                                                            _vm.$set(
-                                                              _vm.editProject,
-                                                              "client_address",
-                                                              $$v
-                                                            )
-                                                          },
-                                                          expression:
-                                                            "editProject.client_address"
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  )
-                                                ],
-                                                1
-                                              )
-                                            ],
-                                            1
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", md4: "" } },
-                                [
-                                  _c(
-                                    "v-card",
-                                    { attrs: { height: "100%" } },
-                                    [
-                                      _c(
-                                        "v-card-title",
-                                        { staticClass: "justify-center" },
-                                        [
-                                          _c(
-                                            "span",
-                                            { staticClass: "headline" },
-                                            [_vm._v("Task Desk")]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-card-text",
-                                        [
-                                          _c(
-                                            "v-container",
-                                            [
-                                              _c(
-                                                "v-layout",
-                                                {
-                                                  attrs: { row: "", wrap: "" }
-                                                },
-                                                [
-                                                  _c(
-                                                    "v-flex",
-                                                    { attrs: { xs8: "" } },
-                                                    [
-                                                      _c("v-text-field", {
-                                                        attrs: {
-                                                          box: "",
-                                                          label: "Task Name",
-                                                          "prepend-icon":
-                                                            "contact_support"
-                                                        },
-                                                        model: {
-                                                          value:
-                                                            _vm.editTask.title,
-                                                          callback: function(
-                                                            $$v
-                                                          ) {
-                                                            _vm.$set(
-                                                              _vm.editTask,
-                                                              "title",
-                                                              $$v
-                                                            )
-                                                          },
-                                                          expression:
-                                                            "editTask.title"
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    {
-                                                      staticClass: "pr-2",
-                                                      attrs: {
-                                                        xs12: "",
-                                                        md6: ""
-                                                      }
-                                                    },
-                                                    [
-                                                      _c("v-select", {
-                                                        attrs: {
-                                                          items: _vm.division,
-                                                          box: "",
-                                                          label: "Division",
-                                                          "prepend-icon":
-                                                            "contact_support"
-                                                        },
-                                                        model: {
-                                                          value:
-                                                            _vm.editTask
-                                                              .division,
-                                                          callback: function(
-                                                            $$v
-                                                          ) {
-                                                            _vm.$set(
-                                                              _vm.editTask,
-                                                              "division",
-                                                              $$v
-                                                            )
-                                                          },
-                                                          expression:
-                                                            "editTask.division"
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    {
-                                                      attrs: {
-                                                        xs12: "",
-                                                        md6: ""
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "v-menu",
-                                                        {
-                                                          attrs: {
-                                                            "close-on-content-click": false,
-                                                            "nudge-right": 40,
-                                                            transition:
-                                                              "scale-transition",
-                                                            "offset-y": "",
-                                                            "full-width": "",
-                                                            "min-width": "290px"
-                                                          },
-                                                          scopedSlots: _vm._u([
-                                                            {
-                                                              key: "activator",
-                                                              fn: function(
-                                                                ref
-                                                              ) {
-                                                                var on = ref.on
-                                                                return [
-                                                                  _c(
-                                                                    "v-text-field",
-                                                                    _vm._g(
-                                                                      {
-                                                                        attrs: {
-                                                                          label:
-                                                                            "Due Date",
-                                                                          "prepend-icon":
-                                                                            "event",
-                                                                          box:
-                                                                            "",
-                                                                          readonly:
-                                                                            ""
-                                                                        },
-                                                                        model: {
-                                                                          value:
-                                                                            _vm
-                                                                              .editTask
-                                                                              .due,
-                                                                          callback: function(
-                                                                            $$v
-                                                                          ) {
-                                                                            _vm.$set(
-                                                                              _vm.editTask,
-                                                                              "due",
-                                                                              $$v
-                                                                            )
-                                                                          },
-                                                                          expression:
-                                                                            "editTask.due"
-                                                                        }
-                                                                      },
-                                                                      on
-                                                                    )
-                                                                  )
-                                                                ]
-                                                              }
-                                                            }
-                                                          ]),
-                                                          model: {
-                                                            value:
-                                                              _vm.dateDialog,
-                                                            callback: function(
-                                                              $$v
-                                                            ) {
-                                                              _vm.dateDialog = $$v
-                                                            },
-                                                            expression:
-                                                              "dateDialog"
-                                                          }
-                                                        },
-                                                        [
-                                                          _vm._v(" "),
-                                                          _c("v-date-picker", {
-                                                            on: {
-                                                              input: function(
-                                                                $event
-                                                              ) {
-                                                                _vm.dateDialog = false
-                                                              }
-                                                            },
-                                                            model: {
-                                                              value:
-                                                                _vm.editTask
-                                                                  .due,
-                                                              callback: function(
-                                                                $$v
-                                                              ) {
-                                                                _vm.$set(
-                                                                  _vm.editTask,
-                                                                  "due",
-                                                                  $$v
-                                                                )
-                                                              },
-                                                              expression:
-                                                                "editTask.due"
-                                                            }
-                                                          })
-                                                        ],
-                                                        1
-                                                      )
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    { attrs: { xs12: "" } },
-                                                    [
-                                                      _c("v-textarea", {
-                                                        attrs: {
-                                                          box: "",
-                                                          label: "Description",
-                                                          "prepend-icon":
-                                                            "contact_support"
-                                                        },
-                                                        model: {
-                                                          value:
-                                                            _vm.editTask.desc,
-                                                          callback: function(
-                                                            $$v
-                                                          ) {
-                                                            _vm.$set(
-                                                              _vm.editTask,
-                                                              "desc",
-                                                              $$v
-                                                            )
-                                                          },
-                                                          expression:
-                                                            "editTask.desc"
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    { attrs: { xs12: "" } },
-                                                    [
-                                                      _c(
-                                                        "v-btn",
-                                                        {
-                                                          attrs: {
-                                                            color: "green"
-                                                          },
-                                                          on: {
-                                                            click: function(
-                                                              $event
-                                                            ) {
-                                                              return _vm.addTask(
-                                                                _vm.editTask
-                                                              )
-                                                            }
-                                                          }
-                                                        },
-                                                        [_vm._v("Add Task")]
-                                                      )
-                                                    ],
-                                                    1
-                                                  )
-                                                ],
-                                                1
-                                              )
-                                            ],
-                                            1
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c("v-divider"),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c(
-                                    "v-card",
-                                    [
-                                      _c(
-                                        "v-card-title",
-                                        { staticClass: "justify-center" },
-                                        [
-                                          _c(
-                                            "span",
-                                            { staticClass: "headline" },
-                                            [_vm._v("Task List")]
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _vm.editProject.tasks.length != 0
-                                    ? _c(
-                                        "v-card-text",
-                                        _vm._l(_vm.editProject.tasks, function(
-                                          task
-                                        ) {
-                                          return _c(
-                                            "v-card",
-                                            {
-                                              directives: [
-                                                {
-                                                  name: "ripple",
-                                                  rawName: "v-ripple"
-                                                }
-                                              ],
-                                              key: task.title,
-                                              staticClass: "scroll-y",
-                                              staticStyle: {
-                                                background: "#424242 !important"
-                                              },
-                                              attrs: { hover: "", flat: "" },
-                                              on: {
-                                                click: function($event) {
-                                                  return _vm.openTaskDialog(
-                                                    task
-                                                  )
-                                                }
-                                              }
-                                            },
-                                            [
-                                              _c(
-                                                "v-layout",
-                                                {
-                                                  class:
-                                                    "pa-3  project " +
-                                                    task.status,
-                                                  attrs: { row: "", wrap: "" }
-                                                },
-                                                [
-                                                  _c(
-                                                    "v-flex",
-                                                    {
-                                                      attrs: {
-                                                        xs12: "",
-                                                        md4: ""
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "div",
-                                                        {
-                                                          staticClass:
-                                                            "caption grey--text"
-                                                        },
-                                                        [_vm._v("Division")]
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c("div", [
-                                                        _vm._v(
-                                                          _vm._s(task.division)
-                                                        )
-                                                      ])
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    {
-                                                      attrs: {
-                                                        xs6: "",
-                                                        sm4: "",
-                                                        md2: ""
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "div",
-                                                        {
-                                                          staticClass:
-                                                            "caption grey--text"
-                                                        },
-                                                        [_vm._v("Task")]
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c("div", [
-                                                        _vm._v(
-                                                          _vm._s(task.title)
-                                                        )
-                                                      ])
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    {
-                                                      attrs: {
-                                                        xs6: "",
-                                                        sm4: "",
-                                                        md2: ""
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "div",
-                                                        {
-                                                          staticClass:
-                                                            "caption grey--text"
-                                                        },
-                                                        [_vm._v("Due Date")]
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c("div", [
-                                                        _vm._v(_vm._s(task.due))
-                                                      ])
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    {
-                                                      attrs: {
-                                                        xs6: "",
-                                                        sm4: "",
-                                                        md2: ""
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "div",
-                                                        {
-                                                          staticClass:
-                                                            "caption grey--text"
-                                                        },
-                                                        [_vm._v("Progress")]
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c(
-                                                        "div",
-                                                        [
-                                                          _c(
-                                                            "v-progress-linear",
-                                                            {
-                                                              attrs: {
-                                                                color: "red",
-                                                                height: "20",
-                                                                value:
-                                                                  task.progress
-                                                              }
-                                                            },
-                                                            [
-                                                              _c(
-                                                                "p",
-                                                                {
-                                                                  staticClass:
-                                                                    "text-xs-center"
-                                                                },
-                                                                [
-                                                                  _vm._v(
-                                                                    _vm._s(
-                                                                      task.progress
-                                                                    ) + "%"
-                                                                  )
-                                                                ]
-                                                              )
-                                                            ]
-                                                          )
-                                                        ],
-                                                        1
-                                                      )
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "v-flex",
-                                                    {
-                                                      attrs: {
-                                                        xs2: "",
-                                                        sm4: "",
-                                                        md2: ""
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "div",
-                                                        {
-                                                          staticClass: "right"
-                                                        },
-                                                        [
-                                                          _c(
-                                                            "v-chip",
-                                                            {
-                                                              class:
-                                                                " white--text my-2 caption " +
-                                                                task.status,
-                                                              attrs: {
-                                                                small: ""
-                                                              }
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                _vm._s(
-                                                                  task.status
-                                                                )
-                                                              )
-                                                            ]
-                                                          )
-                                                        ],
-                                                        1
-                                                      )
-                                                    ]
-                                                  )
-                                                ],
-                                                1
-                                              ),
-                                              _vm._v(" "),
-                                              _c("v-divider")
-                                            ],
-                                            1
-                                          )
-                                        }),
-                                        1
-                                      )
-                                    : _vm._e()
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-layout",
-            { attrs: { row: "", "justify-center": "" } },
-            [
-              _c(
-                "v-dialog",
-                {
-                  attrs: {
+                    persistent: "",
                     fullscreen: "",
                     "hide-overlay": "",
                     transition: "dialog-bottom-transition"
@@ -15410,7 +14674,7 @@ var render = function() {
                               attrs: { icon: "", dark: "" },
                               on: {
                                 click: function($event) {
-                                  _vm.addDialog2 = !_vm.addDialog2
+                                  _vm.addDialog2 = false
                                 }
                               }
                             },
@@ -15435,7 +14699,7 @@ var render = function() {
                                   attrs: { dark: "", flat: "" },
                                   on: {
                                     click: function($event) {
-                                      _vm.addDialog2 = !_vm.addDialog2
+                                      _vm.addDialog2 = false
                                     }
                                   }
                                 },
@@ -15458,7 +14722,7 @@ var render = function() {
                             [
                               _c(
                                 "v-flex",
-                                { attrs: { xs12: "", md8: "" } },
+                                { attrs: { xs12: "", sm12: "", md8: "" } },
                                 [
                                   _c(
                                     "v-card",
@@ -15511,7 +14775,7 @@ var render = function() {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "\n                                                Project Information\n                                                "
+                                                        "\n                                                PI\n                                                "
                                                       )
                                                     ]
                                                   ),
@@ -15529,7 +14793,7 @@ var render = function() {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "\n                                                Division\n                                                "
+                                                        "\n                                                D\n                                                "
                                                       )
                                                     ]
                                                   ),
@@ -15547,7 +14811,7 @@ var render = function() {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "\n                                                Sub Divison\n                                                "
+                                                        "\n                                                SD\n                                                "
                                                       )
                                                     ]
                                                   ),
@@ -15565,7 +14829,7 @@ var render = function() {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "\n                                                Task\n                                                "
+                                                        "\n                                                T\n                                                "
                                                       )
                                                     ]
                                                   ),
@@ -15583,7 +14847,7 @@ var render = function() {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "\n                                                Sub Task\n                                                "
+                                                        "\n                                                ST\n                                                "
                                                       )
                                                     ]
                                                   )
@@ -15606,6 +14870,28 @@ var render = function() {
                                                           }
                                                         },
                                                         [
+                                                          _c(
+                                                            "v-card-title",
+                                                            {
+                                                              staticClass:
+                                                                "justify-center"
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "headline"
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Project Information"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
                                                           _c(
                                                             "v-card-text",
                                                             [
@@ -15639,7 +14925,9 @@ var render = function() {
                                                                                 label:
                                                                                   "Project Name",
                                                                                 "prepend-icon":
-                                                                                  "contact_support"
+                                                                                  "contact_support",
+                                                                                height:
+                                                                                  "2"
                                                                               },
                                                                               model: {
                                                                                 value:
@@ -16124,6 +15412,28 @@ var render = function() {
                                                         },
                                                         [
                                                           _c(
+                                                            "v-card-title",
+                                                            {
+                                                              staticClass:
+                                                                "justify-center"
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "headline"
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Division"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
                                                             "v-card-text",
                                                             [
                                                               _c(
@@ -16150,6 +15460,23 @@ var render = function() {
                                                                               "Name",
                                                                             box:
                                                                               ""
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .subdivform
+                                                                                .name,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.subdivform,
+                                                                                "name",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "subdivform.name"
                                                                           }
                                                                         }
                                                                       ),
@@ -16166,6 +15493,23 @@ var render = function() {
                                                                               "Contribute",
                                                                             box:
                                                                               ""
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .divform
+                                                                                .contribute,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.divform,
+                                                                                "contribute",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "divform.contribute"
                                                                           }
                                                                         }
                                                                       ),
@@ -16182,6 +15526,23 @@ var render = function() {
                                                                               "Target Date",
                                                                             box:
                                                                               ""
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .divform
+                                                                                .due_date,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.divform,
+                                                                                "due_date",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "divform.due_date"
                                                                           }
                                                                         }
                                                                       ),
@@ -16206,6 +15567,15 @@ var render = function() {
                                                                       ),
                                                                       _c(
                                                                         "v-btn",
+                                                                        {
+                                                                          on: {
+                                                                            click: function(
+                                                                              $event
+                                                                            ) {
+                                                                              return _vm.addDivForm()
+                                                                            }
+                                                                          }
+                                                                        },
                                                                         [
                                                                           _vm._v(
                                                                             "Add"
@@ -16223,7 +15593,9 @@ var render = function() {
                                                                         headers:
                                                                           _vm.div_headers,
                                                                         items:
-                                                                          _vm.ad_division
+                                                                          _vm
+                                                                            .editProject
+                                                                            .ad_division
                                                                       },
                                                                       scopedSlots: _vm._u(
                                                                         [
@@ -16340,7 +15712,7 @@ var render = function() {
                                                                                   "td",
                                                                                   {
                                                                                     staticClass:
-                                                                                      "text-xs-right"
+                                                                                      "text-xs-center"
                                                                                   },
                                                                                   [
                                                                                     _c(
@@ -16451,7 +15823,7 @@ var render = function() {
                                                                                   "td",
                                                                                   {
                                                                                     staticClass:
-                                                                                      "text-xs-right"
+                                                                                      "text-xs-center"
                                                                                   },
                                                                                   [
                                                                                     _c(
@@ -16554,6 +15926,42 @@ var render = function() {
                                                                                     )
                                                                                   ],
                                                                                   1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-center"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-icon",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          small:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          click: function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.delDivForm(
+                                                                                              props.index
+                                                                                            )
+                                                                                          }
+                                                                                        }
+                                                                                      },
+                                                                                      [
+                                                                                        _vm._v(
+                                                                                          "\n                                                                        delete\n                                                                    "
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
                                                                                 )
                                                                               ]
                                                                             }
@@ -16606,14 +16014,735 @@ var render = function() {
                                                     "v-stepper-content",
                                                     { attrs: { step: "3" } },
                                                     [
-                                                      _c("v-card", {
-                                                        staticClass: "mb-5",
-                                                        attrs: {
-                                                          color:
-                                                            "grey lighten-1",
-                                                          height: "200px"
-                                                        }
-                                                      }),
+                                                      _c(
+                                                        "v-card",
+                                                        {
+                                                          attrs: {
+                                                            height: "100%"
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-card-title",
+                                                            {
+                                                              staticClass:
+                                                                "justify-center"
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "headline"
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Sub Division"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-card-text",
+                                                            [
+                                                              _c(
+                                                                "v-container",
+                                                                [
+                                                                  _c(
+                                                                    "v-toolbar",
+                                                                    {
+                                                                      attrs: {
+                                                                        flat:
+                                                                          "",
+                                                                        color:
+                                                                          "grey darken-3"
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "v-select",
+                                                                        {
+                                                                          attrs: {
+                                                                            items:
+                                                                              _vm
+                                                                                .editProject
+                                                                                .ad_division,
+                                                                            "item-text":
+                                                                              "name",
+                                                                            "item-value":
+                                                                              "name",
+                                                                            box:
+                                                                              "",
+                                                                            label:
+                                                                              "Divisi"
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .subdivform
+                                                                                .division,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.subdivform,
+                                                                                "division",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "subdivform.division"
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-text-field",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-1",
+                                                                          attrs: {
+                                                                            label:
+                                                                              "Name",
+                                                                            box:
+                                                                              ""
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .subdivform
+                                                                                .name,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.subdivform,
+                                                                                "name",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "subdivform.name"
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-text-field",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-1",
+                                                                          attrs: {
+                                                                            label:
+                                                                              "Contribute",
+                                                                            box:
+                                                                              ""
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .subdivform
+                                                                                .contribute,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.subdivform,
+                                                                                "contribute",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "subdivform.contribute"
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-text-field",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-1",
+                                                                          attrs: {
+                                                                            label:
+                                                                              "Target Date",
+                                                                            box:
+                                                                              ""
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .subdivform
+                                                                                .due_date,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.subdivform,
+                                                                                "due_date",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "subdivform.due_date"
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-divider",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-2",
+                                                                          attrs: {
+                                                                            inset:
+                                                                              "",
+                                                                            vertical:
+                                                                              ""
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-btn",
+                                                                        {
+                                                                          on: {
+                                                                            click: function(
+                                                                              $event
+                                                                            ) {
+                                                                              return _vm.addSubDivForm()
+                                                                            }
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            "Add"
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    ],
+                                                                    1
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "v-data-table",
+                                                                    {
+                                                                      attrs: {
+                                                                        headers:
+                                                                          _vm.subdiv_headers,
+                                                                        items:
+                                                                          _vm
+                                                                            .editProject
+                                                                            .ad_subdivision
+                                                                      },
+                                                                      scopedSlots: _vm._u(
+                                                                        [
+                                                                          {
+                                                                            key:
+                                                                              "items",
+                                                                            fn: function(
+                                                                              props
+                                                                            ) {
+                                                                              return [
+                                                                                _c(
+                                                                                  "td",
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .division,
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          large:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "division",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "division",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-select",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        items:
+                                                                                                          _vm
+                                                                                                            .editProject
+                                                                                                            .ad_division,
+                                                                                                        "item-text":
+                                                                                                          "name",
+                                                                                                        "item-value":
+                                                                                                          "name",
+                                                                                                        box:
+                                                                                                          "",
+                                                                                                        label:
+                                                                                                          "Divisi"
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .name,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "name",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.name"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .division
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .name,
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          large:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "name",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "name",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-text-field",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        label:
+                                                                                                          "Edit",
+                                                                                                        "single-line":
+                                                                                                          "",
+                                                                                                        counter:
+                                                                                                          ""
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .name,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "name",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.name"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .name
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-center"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .contribute,
+                                                                                          large:
+                                                                                            "",
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "contribute",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "contribute",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-text-field",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        label:
+                                                                                                          "Edit",
+                                                                                                        "single-line":
+                                                                                                          "",
+                                                                                                        counter:
+                                                                                                          "",
+                                                                                                        autofocus:
+                                                                                                          ""
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .contribute,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "contribute",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.contribute"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .contribute
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-center"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .due_date,
+                                                                                          large:
+                                                                                            "",
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "due_date",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "due_date",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-text-field",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        label:
+                                                                                                          "Edit",
+                                                                                                        "single-line":
+                                                                                                          "",
+                                                                                                        counter:
+                                                                                                          "",
+                                                                                                        autofocus:
+                                                                                                          ""
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .due_date,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "due_date",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.due_date"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .due_date
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-center"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-icon",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          small:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          click: function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.delSubDivForm(
+                                                                                              props.index
+                                                                                            )
+                                                                                          }
+                                                                                        }
+                                                                                      },
+                                                                                      [
+                                                                                        _vm._v(
+                                                                                          "\n                                                                        delete\n                                                                    "
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                )
+                                                                              ]
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      )
+                                                                    }
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      ),
                                                       _vm._v(" "),
                                                       _c(
                                                         "v-btn",
@@ -16649,14 +16778,1495 @@ var render = function() {
                                                     "v-stepper-content",
                                                     { attrs: { step: "4" } },
                                                     [
-                                                      _c("v-card", {
-                                                        staticClass: "mb-5",
-                                                        attrs: {
-                                                          color:
-                                                            "grey lighten-1",
-                                                          height: "200px"
-                                                        }
-                                                      }),
+                                                      _c(
+                                                        "v-card",
+                                                        {
+                                                          attrs: {
+                                                            height: "100%"
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-card-title",
+                                                            {
+                                                              staticClass:
+                                                                "justify-center"
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "headline"
+                                                                },
+                                                                [_vm._v("Task")]
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-card-text",
+                                                            [
+                                                              _c(
+                                                                "v-container",
+                                                                [
+                                                                  _c(
+                                                                    "v-toolbar",
+                                                                    {
+                                                                      attrs: {
+                                                                        flat:
+                                                                          "",
+                                                                        color:
+                                                                          "grey darken-3"
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "v-select",
+                                                                        {
+                                                                          attrs: {
+                                                                            items:
+                                                                              _vm
+                                                                                .editProject
+                                                                                .ad_subdivision,
+                                                                            "item-text":
+                                                                              "name",
+                                                                            "item-value":
+                                                                              "name",
+                                                                            box:
+                                                                              "",
+                                                                            label:
+                                                                              "Sub Divisi"
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .taskform
+                                                                                .subdivision,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.taskform,
+                                                                                "subdivision",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "taskform.subdivision"
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-text-field",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-1",
+                                                                          attrs: {
+                                                                            label:
+                                                                              "Name",
+                                                                            box:
+                                                                              ""
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .taskform
+                                                                                .name,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.taskform,
+                                                                                "name",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "taskform.name"
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-text-field",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-1",
+                                                                          attrs: {
+                                                                            label:
+                                                                              "Contribute",
+                                                                            box:
+                                                                              ""
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .taskform
+                                                                                .contribute,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.taskform,
+                                                                                "contribute",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "taskform.contribute"
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-text-field",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-1",
+                                                                          attrs: {
+                                                                            label:
+                                                                              "Target Date",
+                                                                            box:
+                                                                              ""
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .taskform
+                                                                                .due_date,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.taskform,
+                                                                                "due_date",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "taskform.due_date"
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-divider",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-2",
+                                                                          attrs: {
+                                                                            inset:
+                                                                              "",
+                                                                            vertical:
+                                                                              ""
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-btn",
+                                                                        {
+                                                                          on: {
+                                                                            click: function(
+                                                                              $event
+                                                                            ) {
+                                                                              return _vm.addTaskForm()
+                                                                            }
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            "Add"
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    ],
+                                                                    1
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "v-data-table",
+                                                                    {
+                                                                      attrs: {
+                                                                        headers:
+                                                                          _vm.task_headers,
+                                                                        items:
+                                                                          _vm
+                                                                            .editProject
+                                                                            .ad_task
+                                                                      },
+                                                                      scopedSlots: _vm._u(
+                                                                        [
+                                                                          {
+                                                                            key:
+                                                                              "items",
+                                                                            fn: function(
+                                                                              props
+                                                                            ) {
+                                                                              return [
+                                                                                _c(
+                                                                                  "td",
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .subdivision,
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          large:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "subdivision",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "subdivision",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-select",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        items:
+                                                                                                          _vm
+                                                                                                            .editProject
+                                                                                                            .ad_subdivision,
+                                                                                                        "item-text":
+                                                                                                          "name",
+                                                                                                        "item-value":
+                                                                                                          "name",
+                                                                                                        box:
+                                                                                                          "",
+                                                                                                        label:
+                                                                                                          "Sub Divisi"
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .name,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "name",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.name"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .subdivision
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .name,
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          large:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "name",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "name",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-text-field",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        label:
+                                                                                                          "Edit",
+                                                                                                        "single-line":
+                                                                                                          "",
+                                                                                                        counter:
+                                                                                                          ""
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .name,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "name",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.name"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .name
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-center"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .contribute,
+                                                                                          large:
+                                                                                            "",
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "contribute",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "contribute",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-text-field",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        label:
+                                                                                                          "Edit",
+                                                                                                        "single-line":
+                                                                                                          "",
+                                                                                                        counter:
+                                                                                                          "",
+                                                                                                        autofocus:
+                                                                                                          ""
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .contribute,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "contribute",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.contribute"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .contribute
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-center"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .due_date,
+                                                                                          large:
+                                                                                            "",
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "due_date",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "due_date",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-text-field",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        label:
+                                                                                                          "Edit",
+                                                                                                        "single-line":
+                                                                                                          "",
+                                                                                                        counter:
+                                                                                                          "",
+                                                                                                        autofocus:
+                                                                                                          ""
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .due_date,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "due_date",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.due_date"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .due_date
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-center"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-icon",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          small:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          click: function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.delTaskForm(
+                                                                                              props.index
+                                                                                            )
+                                                                                          }
+                                                                                        }
+                                                                                      },
+                                                                                      [
+                                                                                        _vm._v(
+                                                                                          "\n                                                                        delete\n                                                                    "
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                )
+                                                                              ]
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      )
+                                                                    }
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        {
+                                                          attrs: {
+                                                            color: "primary"
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              _vm.e1 = 5
+                                                            }
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                Continue\n                                                "
+                                                          )
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        { attrs: { flat: "" } },
+                                                        [_vm._v("Cancel")]
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-stepper-content",
+                                                    { attrs: { step: "5" } },
+                                                    [
+                                                      _c(
+                                                        "v-card",
+                                                        {
+                                                          attrs: {
+                                                            height: "100%"
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-card-title",
+                                                            {
+                                                              staticClass:
+                                                                "justify-center"
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "headline"
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Sub Task"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-card-text",
+                                                            [
+                                                              _c(
+                                                                "v-container",
+                                                                [
+                                                                  _c(
+                                                                    "v-toolbar",
+                                                                    {
+                                                                      attrs: {
+                                                                        flat:
+                                                                          "",
+                                                                        color:
+                                                                          "grey darken-3"
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "v-select",
+                                                                        {
+                                                                          attrs: {
+                                                                            items:
+                                                                              _vm
+                                                                                .editProject
+                                                                                .ad_task,
+                                                                            "item-text":
+                                                                              "name",
+                                                                            "item-value":
+                                                                              "name",
+                                                                            box:
+                                                                              "",
+                                                                            label:
+                                                                              "Task"
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .subtaskform
+                                                                                .task,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.subtaskform,
+                                                                                "task",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "subtaskform.task"
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-text-field",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-1",
+                                                                          attrs: {
+                                                                            label:
+                                                                              "Name",
+                                                                            box:
+                                                                              ""
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .subtaskform
+                                                                                .name,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.subtaskform,
+                                                                                "name",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "subtaskform.name"
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-text-field",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-1",
+                                                                          attrs: {
+                                                                            label:
+                                                                              "Contribute",
+                                                                            box:
+                                                                              ""
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .subtaskform
+                                                                                .contribute,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.subtaskform,
+                                                                                "contribute",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "subtaskform.contribute"
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-text-field",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-1",
+                                                                          attrs: {
+                                                                            label:
+                                                                              "Target Date",
+                                                                            box:
+                                                                              ""
+                                                                          },
+                                                                          model: {
+                                                                            value:
+                                                                              _vm
+                                                                                .subtaskform
+                                                                                .due_date,
+                                                                            callback: function(
+                                                                              $$v
+                                                                            ) {
+                                                                              _vm.$set(
+                                                                                _vm.subtaskform,
+                                                                                "due_date",
+                                                                                $$v
+                                                                              )
+                                                                            },
+                                                                            expression:
+                                                                              "subtaskform.due_date"
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-divider",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mx-2",
+                                                                          attrs: {
+                                                                            inset:
+                                                                              "",
+                                                                            vertical:
+                                                                              ""
+                                                                          }
+                                                                        }
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-btn",
+                                                                        {
+                                                                          on: {
+                                                                            click: function(
+                                                                              $event
+                                                                            ) {
+                                                                              return _vm.addSubTaskForm()
+                                                                            }
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            "Add"
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    ],
+                                                                    1
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "v-data-table",
+                                                                    {
+                                                                      attrs: {
+                                                                        headers:
+                                                                          _vm.subtask_headers,
+                                                                        items:
+                                                                          _vm
+                                                                            .editProject
+                                                                            .ad_subtask
+                                                                      },
+                                                                      scopedSlots: _vm._u(
+                                                                        [
+                                                                          {
+                                                                            key:
+                                                                              "items",
+                                                                            fn: function(
+                                                                              props
+                                                                            ) {
+                                                                              return [
+                                                                                _c(
+                                                                                  "td",
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .task,
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          large:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "task",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "task",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-select",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        items:
+                                                                                                          _vm
+                                                                                                            .editProject
+                                                                                                            .ad_task,
+                                                                                                        "item-text":
+                                                                                                          "name",
+                                                                                                        "item-value":
+                                                                                                          "name",
+                                                                                                        box:
+                                                                                                          "",
+                                                                                                        label:
+                                                                                                          "Task"
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .name,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "name",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.name"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .task
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .name,
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          large:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "name",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "name",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-text-field",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        label:
+                                                                                                          "Edit",
+                                                                                                        "single-line":
+                                                                                                          "",
+                                                                                                        counter:
+                                                                                                          ""
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .name,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "name",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.name"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .name
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-center"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .contribute,
+                                                                                          large:
+                                                                                            "",
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "contribute",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "contribute",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-text-field",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        label:
+                                                                                                          "Edit",
+                                                                                                        "single-line":
+                                                                                                          "",
+                                                                                                        counter:
+                                                                                                          "",
+                                                                                                        autofocus:
+                                                                                                          ""
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .contribute,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "contribute",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.contribute"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .contribute
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-center"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-edit-dialog",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          "return-value":
+                                                                                            props
+                                                                                              .item
+                                                                                              .due_date,
+                                                                                          large:
+                                                                                            "",
+                                                                                          lazy:
+                                                                                            "",
+                                                                                          persistent:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          "update:returnValue": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "due_date",
+                                                                                              $event
+                                                                                            )
+                                                                                          },
+                                                                                          "update:return-value": function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.$set(
+                                                                                              props.item,
+                                                                                              "due_date",
+                                                                                              $event
+                                                                                            )
+                                                                                          }
+                                                                                        },
+                                                                                        scopedSlots: _vm._u(
+                                                                                          [
+                                                                                            {
+                                                                                              key:
+                                                                                                "input",
+                                                                                              fn: function() {
+                                                                                                return [
+                                                                                                  _c(
+                                                                                                    "v-text-field",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        label:
+                                                                                                          "Edit",
+                                                                                                        "single-line":
+                                                                                                          "",
+                                                                                                        counter:
+                                                                                                          "",
+                                                                                                        autofocus:
+                                                                                                          ""
+                                                                                                      },
+                                                                                                      model: {
+                                                                                                        value:
+                                                                                                          props
+                                                                                                            .item
+                                                                                                            .due_date,
+                                                                                                        callback: function(
+                                                                                                          $$v
+                                                                                                        ) {
+                                                                                                          _vm.$set(
+                                                                                                            props.item,
+                                                                                                            "due_date",
+                                                                                                            $$v
+                                                                                                          )
+                                                                                                        },
+                                                                                                        expression:
+                                                                                                          "props.item.due_date"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  )
+                                                                                                ]
+                                                                                              },
+                                                                                              proxy: true
+                                                                                            }
+                                                                                          ],
+                                                                                          null,
+                                                                                          true
+                                                                                        )
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "div",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                props
+                                                                                                  .item
+                                                                                                  .due_date
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "td",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "text-xs-center"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-icon",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          small:
+                                                                                            ""
+                                                                                        },
+                                                                                        on: {
+                                                                                          click: function(
+                                                                                            $event
+                                                                                          ) {
+                                                                                            return _vm.delSubTaskForm(
+                                                                                              props.index
+                                                                                            )
+                                                                                          }
+                                                                                        }
+                                                                                      },
+                                                                                      [
+                                                                                        _vm._v(
+                                                                                          "\n                                                                        delete\n                                                                    "
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                )
+                                                                              ]
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      )
+                                                                    }
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      ),
                                                       _vm._v(" "),
                                                       _c(
                                                         "v-btn",
@@ -16705,7 +18315,7 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "v-flex",
-                                { attrs: { xs12: "", md4: "" } },
+                                { attrs: { xs12: "", sm12: "", md4: "" } },
                                 [
                                   _c(
                                     "v-card",
@@ -16796,7 +18406,11 @@ var render = function() {
                                                                         "span",
                                                                         [
                                                                           _vm._v(
-                                                                            " Project Title"
+                                                                            _vm._s(
+                                                                              _vm
+                                                                                .editProject
+                                                                                .title
+                                                                            )
                                                                           )
                                                                         ]
                                                                       )
@@ -16817,12 +18431,12 @@ var render = function() {
                                                 [
                                                   _vm._v(" "),
                                                   _vm._l(
-                                                    _vm.d_division,
-                                                    function(div) {
+                                                    _vm.editProject.ad_division,
+                                                    function(div, index) {
                                                       return _c(
                                                         "v-list-group",
                                                         {
-                                                          key: div.id,
+                                                          key: index,
                                                           staticClass:
                                                             "pl-2 pr-2",
                                                           attrs: {
@@ -16875,13 +18489,22 @@ var render = function() {
                                                         [
                                                           _vm._v(" "),
                                                           _vm._l(
-                                                            _vm.d_sub_division,
-                                                            function(subdiv) {
+                                                            _vm.editProject.ad_subdivision.filter(
+                                                              function(obj) {
+                                                                return (
+                                                                  obj.division ==
+                                                                  div.name
+                                                                )
+                                                              }
+                                                            ),
+                                                            function(
+                                                              subdiv,
+                                                              index
+                                                            ) {
                                                               return _c(
                                                                 "v-list-group",
                                                                 {
-                                                                  key:
-                                                                    subdiv.id,
+                                                                  key: index,
                                                                   staticClass:
                                                                     "pl-2 pr-2",
                                                                   attrs: {
@@ -16934,15 +18557,24 @@ var render = function() {
                                                                 [
                                                                   _vm._v(" "),
                                                                   _vm._l(
-                                                                    _vm.d_task,
+                                                                    _vm.editProject.ad_task.filter(
+                                                                      function(
+                                                                        obj
+                                                                      ) {
+                                                                        return (
+                                                                          obj.subdivision ==
+                                                                          subdiv.name
+                                                                        )
+                                                                      }
+                                                                    ),
                                                                     function(
-                                                                      task
+                                                                      task,
+                                                                      index
                                                                     ) {
                                                                       return _c(
                                                                         "v-list-group",
                                                                         {
-                                                                          key:
-                                                                            task.id,
+                                                                          key: index,
                                                                           staticClass:
                                                                             "pl-2 pr-2",
                                                                           attrs: {
@@ -16997,15 +18629,24 @@ var render = function() {
                                                                             " "
                                                                           ),
                                                                           _vm._l(
-                                                                            _vm.d_sub_task,
+                                                                            _vm.editProject.ad_subtask.filter(
+                                                                              function(
+                                                                                obj
+                                                                              ) {
+                                                                                return (
+                                                                                  obj.task ==
+                                                                                  task.name
+                                                                                )
+                                                                              }
+                                                                            ),
                                                                             function(
-                                                                              subtask
+                                                                              subtask,
+                                                                              index
                                                                             ) {
                                                                               return _c(
                                                                                 "v-list-tile",
                                                                                 {
-                                                                                  key:
-                                                                                    subtask.id,
+                                                                                  key: index,
                                                                                   staticClass:
                                                                                     "d_sub_task pl-2 pr-5 mr-3 "
                                                                                 },
@@ -63939,9 +65580,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               res = _context.sent;
               accessToken = {
                 username: res.data.data.Username,
-                password: res.data.data.Password
-              }; // console.log(accessToken)
+                password: res.data.data.Password // console.log(accessToken)
 
+              };
               _Http__WEBPACK_IMPORTED_MODULE_1__["default"].setHeader(accessToken); // console.log("2")
 
               js_cookie__WEBPACK_IMPORTED_MODULE_3___default.a.set('accessToken', accessToken); // console.log("3")
@@ -64895,8 +66536,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Project\APP DEV\JobDeskAPP\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Project\APP DEV\JobDeskAPP\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\DEV APP PROJECT\GITHUB\JobDeskAPP\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\DEV APP PROJECT\GITHUB\JobDeskAPP\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
