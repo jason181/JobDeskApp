@@ -30,7 +30,7 @@ class DivisiProyekController extends RestController
             return response()->json([
                 'status' => (bool) $divisi,
                 'data' => $divisi,
-                'message' => $divisi ? 'Success' : 'Error Divisi'
+                'message' => $divisi ? 'Success' : 'Error Divisi Proyek'
             ]);
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());

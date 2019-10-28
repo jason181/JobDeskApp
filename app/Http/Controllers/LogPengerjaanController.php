@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Log_Pengerjaan;
 use App\Karyawan;
+use App\Akun;
 
 use App\Transformers\LogPengerjaanTransformers;
 use App\Transformers\KaryawanTransformers;
+use App\Transformers\AkunTransformers;
 use Carbon\Carbon;
 
 class LogPengerjaanController extends RestController
@@ -69,11 +71,9 @@ class LogPengerjaanController extends RestController
             $ukuran_file = $file->getSize();
             $akun = Akun::find($request->Id_Akun);
             $karyawan = Karyawan::find($akun->Id_Karyawan);
-            $destinationPath = $karyawan->nama."/".Carbon::now('Asia/Jakarta')->isoFormat('DD-MM-YYYY');
-            // return $destinationPath;
+            $destinationPath =$karyawan->Nama."/".Carbon::now('Asia/Jakarta')->isoFormat('DD-MM-YYYY');
             $file->move($destinationPath,$file->getClientOriginalName());
             $path=$destinationPath."/".$nama_file;
-            //return $path;
             return response()->json([
                 'status' => (bool) $path,
                 'data' => $path,

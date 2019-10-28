@@ -2332,7 +2332,10 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    }
+    } // sortByDate(prop){
+    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
+    // }
+
   }
 });
 
@@ -2994,7 +2997,10 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    }
+    } // sortByDate(prop){
+    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
+    // }
+
   }
 });
 
@@ -3332,7 +3338,10 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    }
+    } // sortByDate(prop){
+    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
+    // }
+
   }
 });
 
@@ -5460,7 +5469,10 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       })["catch"](function () {
         return console.log('error occured');
       });
-    }
+    } // sortByDate(prop){
+    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
+    // }
+
   }
 });
 
@@ -65580,9 +65592,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               res = _context.sent;
               accessToken = {
                 username: res.data.data.Username,
-                password: res.data.data.Password // console.log(accessToken)
+                password: res.data.data.Password
+              }; // console.log(accessToken)
 
-              };
               _Http__WEBPACK_IMPORTED_MODULE_1__["default"].setHeader(accessToken); // console.log("2")
 
               js_cookie__WEBPACK_IMPORTED_MODULE_3___default.a.set('accessToken', accessToken); // console.log("3")
@@ -66536,8 +66548,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\DEV APP PROJECT\GITHUB\JobDeskAPP\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\DEV APP PROJECT\GITHUB\JobDeskAPP\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Project\APP DEV\JobDeskAPP\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Project\APP DEV\JobDeskAPP\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

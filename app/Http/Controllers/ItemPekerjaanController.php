@@ -31,7 +31,7 @@ class ItemPekerjaanController extends Controller
             return response()->json([
                 'status' => (bool) $item,
                 'data' => $item,
-                'message' => $item ? 'Success' : 'Error Divisi'
+                'message' => $item ? 'Success' : 'Error Item Pekerjaan'
             ]);
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());

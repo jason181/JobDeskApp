@@ -49,7 +49,7 @@ class DivisiRoleController extends RestController
             return response()->json([
                 'status' => (bool) $divisi,
                 'data' => $divisi,
-                'message' => $divisi ? 'Success' : 'Error Divisi'
+                'message' => $divisi ? 'Success' : 'Error Divisi Role'
             ]);
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
