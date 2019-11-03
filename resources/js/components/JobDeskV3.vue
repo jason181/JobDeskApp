@@ -578,7 +578,7 @@
                                                             <v-container>
                                                                 <v-toolbar flat  color="grey darken-3">
                                                                     <v-text-field 
-                                                                        v-model="subdivform.name"
+                                                                        v-model="divform.name"
                                                                         label="Name"
                                                                         box
                                                                         class="mx-1"
@@ -679,7 +679,7 @@
                                                                     <td class="text-xs-center">
                                                                         <v-icon
                                                                             small
-                                                                            @click="delDivForm(props.index)"
+                                                                            @click="delDivForm(props.item)"
                                                                         >
                                                                             delete
                                                                         </v-icon>
@@ -771,7 +771,7 @@
                                                                         ></v-text-field> -->
                                                                         <v-select
                                                                         :items="editProject.ad_division"
-                                                                        v-model ="props.item.name"
+                                                                        v-model ="props.item.division"
                                                                         item-text="name"
                                                                         item-value="name"
                                                                         box
@@ -851,7 +851,7 @@
                                                                     <td class="text-xs-center">
                                                                         <v-icon
                                                                             small
-                                                                            @click="delSubDivForm(props.index)"
+                                                                            @click="delSubDivForm(props.item)"
                                                                         >
                                                                             delete
                                                                         </v-icon>
@@ -943,7 +943,7 @@
                                                                         ></v-text-field> -->
                                                                         <v-select
                                                                         :items="editProject.ad_subdivision"
-                                                                        v-model ="props.item.name"
+                                                                        v-model ="props.item.subdivision"
                                                                         item-text="name"
                                                                         item-value="name"
                                                                         box
@@ -1023,7 +1023,7 @@
                                                                     <td class="text-xs-center">
                                                                         <v-icon
                                                                             small
-                                                                            @click="delTaskForm(props.index)"
+                                                                            @click="delTaskForm(props.item)"
                                                                         >
                                                                             delete
                                                                         </v-icon>
@@ -1115,7 +1115,7 @@
                                                                         ></v-text-field> -->
                                                                         <v-select
                                                                         :items="editProject.ad_task"
-                                                                        v-model ="props.item.name"
+                                                                        v-model ="props.item.task"
                                                                         item-text="name"
                                                                         item-value="name"
                                                                         box
@@ -1195,7 +1195,7 @@
                                                                     <td class="text-xs-center">
                                                                         <v-icon
                                                                             small
-                                                                            @click="delSubTaskForm(props.index)"
+                                                                            @click="delSubTaskForm(props.item)"
                                                                         >
                                                                             delete
                                                                         </v-icon>

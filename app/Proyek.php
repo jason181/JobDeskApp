@@ -24,8 +24,9 @@ class Proyek extends Model
         'Catatan'
     ];
 
-    public function item_pekerjaans()
+    public function divisi_proyeks()
     {
-        return $this->hasMany('App\Item_Pekerjaan','Id_Proyek');
+        return $this->hasMany('App\Divisi_Proyek','Id_Proyek');
     }
 }
+

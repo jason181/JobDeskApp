@@ -2332,10 +2332,7 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    } // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
-
+    }
   }
 });
 
@@ -2997,10 +2994,7 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    } // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
-
+    }
   }
 });
 
@@ -3338,10 +3332,7 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    } // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
-
+    }
   }
 });
 
@@ -5469,10 +5460,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       })["catch"](function () {
         return console.log('error occured');
       });
-    } // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
-
+    }
   }
 });
 
@@ -15476,19 +15464,19 @@ var render = function() {
                                                                           model: {
                                                                             value:
                                                                               _vm
-                                                                                .subdivform
+                                                                                .divform
                                                                                 .name,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
-                                                                                _vm.subdivform,
+                                                                                _vm.divform,
                                                                                 "name",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "subdivform.name"
+                                                                              "divform.name"
                                                                           }
                                                                         }
                                                                       ),
@@ -15961,7 +15949,7 @@ var render = function() {
                                                                                             $event
                                                                                           ) {
                                                                                             return _vm.delDivForm(
-                                                                                              props.index
+                                                                                              props.item
                                                                                             )
                                                                                           }
                                                                                         }
@@ -16334,18 +16322,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .name,
+                                                                                                            .division,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "name",
+                                                                                                            "division",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.name"
+                                                                                                          "props.item.division"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -16725,7 +16713,7 @@ var render = function() {
                                                                                             $event
                                                                                           ) {
                                                                                             return _vm.delSubDivForm(
-                                                                                              props.index
+                                                                                              props.item
                                                                                             )
                                                                                           }
                                                                                         }
@@ -17094,18 +17082,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .name,
+                                                                                                            .subdivision,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "name",
+                                                                                                            "subdivision",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.name"
+                                                                                                          "props.item.subdivision"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -17485,7 +17473,7 @@ var render = function() {
                                                                                             $event
                                                                                           ) {
                                                                                             return _vm.delTaskForm(
-                                                                                              props.index
+                                                                                              props.item
                                                                                             )
                                                                                           }
                                                                                         }
@@ -17858,18 +17846,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .name,
+                                                                                                            .task,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "name",
+                                                                                                            "task",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.name"
+                                                                                                          "props.item.task"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -18249,7 +18237,7 @@ var render = function() {
                                                                                             $event
                                                                                           ) {
                                                                                             return _vm.delSubTaskForm(
-                                                                                              props.index
+                                                                                              props.item
                                                                                             )
                                                                                           }
                                                                                         }
@@ -65592,9 +65580,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               res = _context.sent;
               accessToken = {
                 username: res.data.data.Username,
-                password: res.data.data.Password
-              }; // console.log(accessToken)
+                password: res.data.data.Password // console.log(accessToken)
 
+              };
               _Http__WEBPACK_IMPORTED_MODULE_1__["default"].setHeader(accessToken); // console.log("2")
 
               js_cookie__WEBPACK_IMPORTED_MODULE_3___default.a.set('accessToken', accessToken); // console.log("3")
@@ -66548,8 +66536,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Project\APP DEV\JobDeskAPP\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Project\APP DEV\JobDeskAPP\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\DEV APP PROJECT\GITHUB\JobDeskAPP\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\DEV APP PROJECT\GITHUB\JobDeskAPP\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
