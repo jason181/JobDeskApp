@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Transformers\ProyekTransformers;
 use App\Proyek;
+use App\Transformers\DivisiProyekTransformers;
+use App\Divisi_Proyek;
 
 class ProyekController extends RestController
 {
@@ -71,5 +73,21 @@ class ProyekController extends RestController
             'status' => $status,
             'message' => $status ? 'Deleted' : 'Error Delete'
         ]);
-    }    
+    }
+
+    public function hitungPersentaseProyek($id)
+    {
+        try {
+            $divisis=Divisi_Proyek::where('Id_Proyek',$id)->get();
+            $counter=0;
+            foreach($divisis as $divisi)
+            {
+                $counter+=app('App\Http\Controllers\DivisiProyekController')->hitungPersentaseDivisi($divisi->Id_Divisi_Proyek)*$divisi->Persentase/100;
+            }
+            return $counter;
+            
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
 }

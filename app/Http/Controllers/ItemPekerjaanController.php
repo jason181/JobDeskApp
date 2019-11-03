@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ItemPekerjaanController extends Controller
+use App\Transformers\SubItemPekerjaanTransformers;
+use App\Sub_Item_Pekerjaan;
+use App\Transformers\ItemPekerjaanTransformers;
+use App\Item_Pekerjaan;
+
+
+class ItemPekerjaanController extends RestController
 {
     protected $transformer=ItemPekerjaanTransformers::Class;
 
@@ -74,5 +80,21 @@ class ItemPekerjaanController extends Controller
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }
-    }    
+    }
+
+    public function hitungPersentaseItem($id)
+    {
+        try {
+            $sub_items=Sub_Item_Pekerjaan::where('Id_Item_Pekerjaan',$id)->get();
+            $counter=0;
+            foreach($sub_items as $sub_item)
+            {
+                $counter+=app('App\Http\Controllers\SubItemPekerjaanController')->hitungPersentaseSubItem($sub_item->Id_Sub_Item_Pekerjaan)*$sub_item->Persentase/100;
+            }
+            return $counter;
+            
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
 }

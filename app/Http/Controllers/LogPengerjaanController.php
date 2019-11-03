@@ -71,7 +71,7 @@ class LogPengerjaanController extends RestController
             $ukuran_file = $file->getSize();
             $akun = Akun::find($request->Id_Akun);
             $karyawan = Karyawan::find($akun->Id_Karyawan);
-            $destinationPath =$karyawan->Nama."/".Carbon::now('Asia/Jakarta')->isoFormat('DD-MM-YYYY');
+            $destinationPath ="uploads/".$karyawan->Nama."/".Carbon::now('Asia/Jakarta')->isoFormat('DD-MM-YYYY');
             $file->move($destinationPath,$file->getClientOriginalName());
             $path=$destinationPath."/".$nama_file;
             return response()->json([

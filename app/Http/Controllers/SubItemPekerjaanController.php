@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Transformers\SubItemPekerjaanTransformers;
 use App\Sub_Item_Pekerjaan;
+use App\Transformers\LogPengerjaanTransformers;
+use App\Log_Pengerjaan;
 
 class SubItemPekerjaanController extends RestController
 {
@@ -119,6 +121,16 @@ class SubItemPekerjaanController extends RestController
                 'status' => $status,
                 'message' => $status ? 'Deleted' : 'Error Delete'
             ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
+    
+    public function hitungPersentaseSubItem($id)
+    {
+        try {
+            $log_pengerjaan = Log_Pengerjaan::where('Id_Sub_Item_Pekerjaan',$id)->orderBy('Id_Pengerjaan','desc')->first();
+            return $log_pengerjaan->Progress;
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Transformers\SubDivisiProyekTransformers;
 use App\Sub_Divisi_Proyek;
+use App\Transformers\ItemPekerjaanTransformers;
+use App\Item_Pekerjaan;
+
 
 class SubDivisiProyekController extends RestController
 {
@@ -117,6 +120,22 @@ class SubDivisiProyekController extends RestController
                 'status' => $status,
                 'message' => $status ? 'Deleted' : 'Error Delete'
             ]);
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
+
+    public function hitungPersentaseSubDivisi($id)
+    {
+        try {
+            $items=Item_Pekerjaan::where('Id_Sub_Divisi_Proyek',$id)->get();
+            $counter=0;
+            foreach($items as $item)
+            {
+                $counter+=app('App\Http\Controllers\ItemPekerjaanController')->hitungPersentaseItem($item->Id_Item_Pekerjaan)*$item->Persentase/100;
+            }
+            return $counter;
+            
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }
