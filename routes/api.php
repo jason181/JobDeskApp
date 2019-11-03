@@ -55,3 +55,10 @@ Route::resource('sub_item_pekerjaan','SubItemPekerjaanController'); //Ready
 Route::get('/session', 'TokenController@validateToken');
 Route::post('/authenticate', 'TokenController@authenticate'); //Ready
 Route::get('/token', 'TokenController@validateToken'); //Ready
+
+// Persentase
+Route::get('/hitungSubItem/{id}','SubItemPekerjaanController@hitungPersentaseSubItem'); //Ready & Checked
+Route::get('/hitungItem/{id}','ItemPekerjaanController@hitungPersentaseItem'); //Ready & Checked
+Route::get('/hitungSubDivisi/{id}','SubDivisiProyekController@hitungPersentaseSubDIvisi'); //Ready & Checked
+Route::get('/hitungDivisi/{id}','DivisiProyekController@hitungPersentaseDivisi'); //Ready & Checked
+Route::get('/hitungProyek/{id}','ProyekController@hitungPersentaseProyek'); //Ready & Checked
