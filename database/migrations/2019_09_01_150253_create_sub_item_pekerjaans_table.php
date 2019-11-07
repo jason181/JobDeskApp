@@ -16,8 +16,9 @@ class CreateSubItemPekerjaansTable extends Migration
         Schema::create('sub_item_pekerjaans', function (Blueprint $table) {
             $table->increments('Id_Sub_Item_Pekerjaan');
             $table->unsignedInteger('Id_Item_Pekerjaan');
+            $table->string('Nama',50);
             $table->string('Kode',50);
-            $table->date('Tanggal_Selesai');
+            $table->dateTime('Tanggal_Selesai');
             $table->integer('Persentase');
             // $table->string('Berkas',255);
             $table->softDeletes();
