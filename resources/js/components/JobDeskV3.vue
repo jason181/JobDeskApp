@@ -2144,10 +2144,10 @@ export default {
   border-color:#0091EA !Important;
 }
 
-.d_sub_task{
-  /* border-left: 4px solid #004D40 !Important;
-  border-color:#004D40 !Important; */
-}
+/* .d_sub_task{
+  border-left: 4px solid #004D40 !Important;
+  border-color:#004D40 !Important;
+} */
 
 
 .project.complete{

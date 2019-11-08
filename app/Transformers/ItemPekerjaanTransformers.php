@@ -3,6 +3,8 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
+use App\Transformers\SubItemPekerjaanTransformers;
+use App\Sub_Item_Pekerjaan;
 use App\Item_Pekerjaan;
 
 class ItemPekerjaanTransformers extends TransformerAbstract
@@ -12,6 +14,9 @@ class ItemPekerjaanTransformers extends TransformerAbstract
      *
      * @param Branch $branch
      */
+    protected $defaultIncludes = [
+        'Sub_Task'
+    ];
     public function transform(Item_Pekerjaan $item)
     {
         return [
@@ -24,5 +29,10 @@ class ItemPekerjaanTransformers extends TransformerAbstract
             'Tanggal_Selesai'   => $item->Tanggal_Selesai,
             'Persentase'        => $item->Durasi,
         ];
+    }
+    public function includeSubTask(Item_Pekerjaan $item)
+    {
+        $task = $item->sub_item_pekerjaans;
+        return $this->collection($task, new SubItemPekerjaanTransformers);
     }
 }

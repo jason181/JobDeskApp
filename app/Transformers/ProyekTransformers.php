@@ -3,7 +3,9 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
+use App\Transformers\DivisiProyekTransformers;
 use App\Proyek;
+Use App\Divisi_Proyek;
 
 class ProyekTransformers extends TransformerAbstract
 {
@@ -12,6 +14,9 @@ class ProyekTransformers extends TransformerAbstract
      *
      * @param Branch $branch
      */
+    protected $defaultIncludes = [
+        'Divisi'
+    ];
     public function transform(Proyek $proyek)
     {
         return [
@@ -25,10 +30,15 @@ class ProyekTransformers extends TransformerAbstract
             'Tanggal_Mulai'     => $proyek->Tanggal_Mulai,
             'Tanggal_Selesai'   => $proyek->Tanggal_Selesai,
             'Catatan'           => $proyek->Catatan,
-            'Divisi'            => $proyek->divisi_proyeks,
+            // 'Divisi'            => $proyek->divisi_proyeks,
             // 'Sub_Divisi'        => $proyek->divisi_proyeks->sub_divisi_proyeks,
             // 'Task'              => $proyek->divisi_proyeks->sub_divisi_proyeks->item_pekerjaans,
             // 'Sub_Task'          => $proyek->divisi_proyeks->sub_divisi_proyeks->item_pekerjaans->sub_item_pekerjaans,
         ];
+    }
+    public function includeDivisi(Proyek $proyek)
+    {
+        $divisi = $proyek->divisi_proyeks;
+        return $this->collection($divisi, new DivisiProyekTransformers);
     }
 }
