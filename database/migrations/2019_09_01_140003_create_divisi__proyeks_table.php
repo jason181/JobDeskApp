@@ -17,7 +17,8 @@ class CreateDivisiProyeksTable extends Migration
             $table->increments('Id_Divisi_Proyek');
             $table->unsignedInteger('Id_Divisi_Role');
             $table->unsignedInteger('Id_Proyek');
-            $table->date('Tanggal_Selesai');
+            $table->string('Nama',50);
+            $table->dateTime('Tanggal_Selesai');
             $table->integer('Persentase');
             
             $table->softDeletes();

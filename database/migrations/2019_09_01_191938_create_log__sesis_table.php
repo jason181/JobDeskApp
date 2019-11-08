@@ -16,7 +16,7 @@ class CreateLogSesisTable extends Migration
         Schema::create('log_sesis', function (Blueprint $table) {
             $table->increments('Id_Log_Sesi');
             $table->unsignedInteger('Id_Akun');
-            $table->time('Waktu');
+            $table->dateTime('Waktu');
             $table->string('Keterangan',255);
             
             $table->softDeletes();
