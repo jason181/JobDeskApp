@@ -15,8 +15,8 @@
            <!-- Expand Panel -->
             <v-expansion-panel>
                 <v-expansion-panel-content
-                v-for="project in projects" 
-                :key="project.title"
+                v-for="project in tempProjects" 
+                :key="project.Nama"
                 expand-icon="mdi-menu-down"
                 >
                 <template v-slot:header>
@@ -24,11 +24,11 @@
                     <v-layout row wrap :class="`pa-3`">
                         <v-flex xs12 md4 >
                             <div class="caption grey--text">Project Title</div>
-                            <div>{{project.title}}</div>
+                            <div>{{project.Nama}}</div>
                         </v-flex>
                         <v-flex xs6 sm4 md2>
                             <div class="caption grey--text">Due Date</div>
-                            <div>{{project.due}}</div>
+                            <div>{{project.Tanggal_Selesai}}</div>
                         </v-flex>   
                         <v-spacer/>
                         <v-flex>
@@ -84,19 +84,19 @@
                         </v-layout> 
                     </v-card>   
 
-                    <v-card hover v-ripple class="scroll-y" v-for="task in filteredTask(project.tasks)" :key="task.title" flat style="background: #424242 !important;" @click="openTaskDialog(task)">
-                    <v-layout row wrap :class="`pa-3  project ${task.status}`">
+                    <v-card hover v-ripple class="scroll-y" v-for="subtask in filteredTask(project.All_SubTask)" :key="subtask.Nama" flat style="background: #424242 !important;" @click="openTaskDialog(subtask)">
+                    <v-layout row wrap :class="`pa-3  project ${subtask.Status}`">
                         <v-flex xs12 md4 >
-                            <div class="caption grey--text">{{task.division}}</div>
-                            <div>{{task.sub_division}}</div>
+                            <div class="caption grey--text">{{subtask.Division}}</div>
+                            <div>{{subtask.Sub_Division}}</div>
                         </v-flex>
                         <v-flex xs6 sm4 md2>
-                            <div class="caption grey--text">{{task.task}}</div>
-                            <div>{{task.sub_task}}</div>
+                            <div class="caption grey--text">{{subtask.Task}}</div>
+                            <div>{{subtask.Nama}}</div>
                         </v-flex>     
                         <v-flex xs6 sm4 md2>
                             <div class="caption grey--text">Due Date</div>
-                            <div>{{task.due}}</div>
+                            <div>{{subtask.Tanggal_Selesai}}</div>
                         </v-flex>
                         <v-flex xs6 sm4 md2> 
                             <div class="caption grey--text">Progress</div>
@@ -104,17 +104,17 @@
                                 <v-progress-linear
                                 color="red"
                                 height="20"
-                                :value="task.progress"
+                                :value="subtask.Progress"
                                 >
                                 <!-- <strong class="text-center">{{project.progress}}%</strong> -->
-                                <p class="text-xs-center">{{task.progress}}%</p>
+                                <p class="text-xs-center">{{subtask.Progress}}%</p>
                                 </v-progress-linear>
                             </div>
                         </v-flex>
                         <v-flex xs2 sm4 md2>
                             <!-- <div class="caption grey--text">Status</div> -->
                             <div class="right">
-                                <v-chip small :class="` white--text my-2 caption ${task.status}`">{{task.status}}</v-chip>
+                                <v-chip small :class="` white--text my-2 caption ${subtask.Status}`">{{subtask.Status}}</v-chip>
                             </div>
                         </v-flex>
                     </v-layout>
@@ -134,9 +134,9 @@
                     <v-dialog v-model="taskDialog" scrollable persistent max-width="600px">
                     <v-card>
                         <v-card-title>
-                            <span class="headline">{{editTask.project}}</span>
+                            <span class="headline">{{editTask.Projek}}</span>
                             <v-spacer/>
-                            <span v-if="editTask.status!='untake'">Taken By : {{editTask.user}}</span>
+                            <span v-if="editTask.Status!='untake'">Taken By : {{editTask.User}}</span>
                         </v-card-title>
                         <v-divider/>
                         <span class="ml-4">Desain Arsi > Desain > Konsep</span>
@@ -148,8 +148,8 @@
                             <!-- Task -->
                             <v-flex xs12>
                                 <v-text-field 
-                                v-model="editTask.sub_task" 
-                                label="Task" readonly
+                                v-model="editTask.Nama" 
+                                label="Sub Task" readonly
                                 prepend-icon="description"
                                 ></v-text-field>
                             </v-flex>
@@ -162,7 +162,7 @@
                                 outline
                                 readonly
                                 label="Description"
-                                v-model="editTask.desc"
+                                v-model="editTask.Deskripsi"
                                 
                                 ></v-textarea>
                 
@@ -183,14 +183,14 @@
                                 >
                                 <template v-slot:activator="{ on }">
                                     <v-text-field
-                                    v-model="editTask.due"
+                                    v-model="editTask.Tanggal_Selesai"
                                     label="Due Date"
                                     prepend-icon="event"
                                     readonly
                                     v-on="on"
                                     ></v-text-field>
                                 </template>
-                                <v-date-picker readonly v-model="editTask.due" @input="dateDialog = false"></v-date-picker>
+                                <v-date-picker readonly v-model="editTask.Tanggal_Selesai" @input="dateDialog = false"></v-date-picker>
                                 </v-menu>
                             </v-flex>
 
@@ -199,7 +199,7 @@
                                     
                                     label="Time Remaining"
                                     prepend-icon="timer"
-                                    v-model="editTask.remaining"
+                                    v-model="editTask.Remaining"
                                     readonly
                                     
                                 ></v-text-field>
@@ -209,7 +209,7 @@
                             <!-- Progress -->
                             <v-flex xs12 md4>
                                 <v-text-field
-                                    v-model="editTask.progress"
+                                    v-model="editTask.Progress"
                                     label="Progress"
                                     prepend-icon="timeline"
                                     counter='3'
@@ -223,10 +223,10 @@
                                 <v-progress-linear
                                 color="red"
                                 height="20"
-                                :value="editTask.progress"
+                                :value="editTask.Progress"
                                 >
                                 <!-- <strong class="text-center">{{project.progress}}%</strong> -->
-                                <p class="text-xs-center">{{editTask.progress}}%</p>
+                                <p class="text-xs-center">{{editTask.Progress}}%</p>
                                 </v-progress-linear>
                             </v-flex>
                             <!-- Progress -->
@@ -243,7 +243,7 @@
                                 prepend-icon="mdi-paperclip"
                                 outlined
                                 :show-size="1000"
-                                :disabled="editTask.status=='untake'"
+                                :disabled="editTask.Status=='untake'"
                                 @click="pickFile"
                                 >
                                 <template v-slot:selection="{ index, text }">
@@ -1584,6 +1584,7 @@
     </div>
 </template>
 <script>
+ import Controller from '../httpController'
 export default {
   data() {
     return {
@@ -1604,6 +1605,7 @@ export default {
                 note:''
             }
         ],
+        tempProjects:[],
         projects: [
 
         { 
@@ -1657,24 +1659,36 @@ export default {
         },
         files:[],
         editTask:{
-            project:'',
-            division:'', 
-            title:'',
-            due:'',
-            status:'untake',
-            progress:'0',
-            desc:'',
-            user:'',
+            Id_Sub_Item_Pekerjaan   : '',
+            Id_Item_Pekerjaan       : '',
+            Projek                  : '',
+            Division                : '', 
+            Sub_Division            : '',                     
+            Task                    : '',                     
+            Nama                    : '',
+            Kode                    : '',
+            Tanggal_Selesai         : '',
+            Persentase              : '',
+            User                    : '',
+            Remaining               : '',
+            Progress                : '0',
+            Status                  : 'untake',
         },
         initEditTask:{
-            project:'',
-            division:'', 
-            title:'',
-            due:'',
-            status:'untake',
-            progress:'0',
-            desc:'',
-            user:'',
+           Id_Sub_Item_Pekerjaan   : '',
+            Id_Item_Pekerjaan       : '',
+            Projek                  : '',
+            Division                : '', 
+            Sub_Division            : '',                     
+            Task                    : '',                     
+            Nama                    : '',
+            Kode                    : '',
+            Tanggal_Selesai         : '',
+            Persentase              : '',
+            User                    : '',
+            Remaining               : '',
+            Progress                : '0',
+            Status                  : 'untake',
         },
         division: ['Desain Arsi', 'Admin'],
         sub_division:[],
@@ -1940,6 +1954,9 @@ export default {
 
     }
   },
+   mounted(){
+       this.getProject();
+   },
    computed:{
         // filteredTask(data){
         //     if(this.filterDiv!="")
@@ -1956,7 +1973,104 @@ export default {
     // sortBy(prop) {
     //   this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
     // },
+    async getProject () {
+        try {
+            let data = (await Controller.getallproject()).data
+            // this.employeeData = data.filter(obj => obj.Divisi != "Admin");
+            // console.log(data)
 
+            for(let item of data){
+                this.getDataFormat(item)
+            }
+            this.tempProjects=data
+            // console.log(data)
+            // console.log(this.tempProjects)
+            // console.log(JSON.stringify( this.tempProjects, null, 2))
+
+
+        } catch (err) {
+            console.log(err)
+        }
+    },
+    getDataFormat(data){
+        let alldivisi =[]
+        let allsubdivisi=[]
+        let alltask=[]
+        let allsubtask=[]
+
+        for(let div of data.Divisi.data){
+        // let eachDiv = div.map()
+            let eachdiv ={
+                Id_Divisi_Proyek    :div.Id_Divisi_Proyek,
+                Id_Divisi_Role      : div.Id_Divisi_Role,
+                Id_Proyek           : div.Id_Proyek,
+                Nama                : div.Nama,
+                Tanggal_Selesai     : div.Tanggal_Selesai,
+                Persentase          : div.Persentase
+            }
+            // console.log(JSON.stringify(eachdiv, null, 2))
+            alldivisi.push(eachdiv)
+            
+            for(let subdiv of div.Sub_Divisi.data){
+                let eachsubdiv ={
+                    Id_Sub_Divisi_Proyek    :subdiv.Id_Sub_Divisi_Proyek,
+                    Id_Divisi_Proyek        : subdiv.Id_Divisi_Proyek,
+                    Nama                    : subdiv.Nama,
+                    Tanggal_Selesai         : subdiv.Tanggal_Selesai,
+                    Persentase              : subdiv.Persentase
+                }
+                // console.log(JSON.stringify(eachsubdiv, null, 2))
+                allsubdivisi.push(eachsubdiv)
+
+                for(let task of subdiv.Task.data){
+                    let eachtask ={
+                        Id_Item_Pekerjaan   : task.Id_Item_Pekerjaan,
+                        Id_Proyek           : task.Id_Proyek,
+                        Id_Divisi_Role      : task.Id_Divisi_Role,                        
+                        Nama                : task.Nama,
+                        Kode                : task.Kode,
+                        Satuan              : task.Satuan,
+                        Tanggal_Selesai     : task.Tanggal_Selesai,
+                        Persentase          : task.Persentase
+                    }
+                    // console.log(JSON.stringify(eachsubdiv, null, 2))
+                    alltask.push(eachtask)
+                    for(let subtask of task.Sub_Task.data){
+                        let eachsubtask ={
+                            Id_Sub_Item_Pekerjaan   : subtask.Id_Sub_Item_Pekerjaan,
+                            Id_Item_Pekerjaan       : subtask.Id_Item_Pekerjaan,
+                            Projek                  : data.Nama,
+                            Division                : div.Nama, 
+                            Sub_Division            : subdiv.Nama,                     
+                            Task                    : task.Nama,                     
+                            Nama                    : subtask.Nama,
+                            Kode                    : subtask.Kode,
+                            Deskripsi               : subtask.Deskripsi,
+                            Tanggal_Selesai         : subtask.Tanggal_Selesai,
+                            Persentase              : subtask.Persentase,
+                            User                    : '',
+                            Remaining               : '',
+                            Progress                : '0',
+                            Status                  : 'untake',
+
+                        }
+                        // console.log(JSON.stringify(eachsubdiv, null, 2))
+                        allsubtask.push(eachsubtask)
+                    }
+                }
+            }
+
+        }
+            data.All_Divisi     = alldivisi
+            data.All_SubDivisi  = allsubdivisi
+            data.All_Task       = alltask
+            data.All_SubTask    = allsubtask
+            // console.log(JSON.stringify(alldivision, null, 2))
+            // console.log(JSON.stringify(allsubdivision, null, 2))
+
+            // console.log(JSON.stringify(this.data, null, 2))
+    
+    },
     addDivForm(){
         this.editProject.ad_division.push(this.divform)
         this.divform = Object.assign({}, this.defaultdivform)
@@ -2040,17 +2154,17 @@ export default {
             {
                 if(this.filterTask!="")
                 {
-                    return data.filter(obj=>obj.division==this.filterDiv && obj.sub_division==this.filterSubDiv && obj.task==this.filterTask )
+                    return data.filter(obj=>obj.Division==this.filterDiv && obj.Sub_Division==this.filterSubDiv && obj.Task==this.filterTask )
 
                 }
                 else{
-                    return data.filter(obj=>obj.division==this.filterDiv && obj.sub_division==this.filterSubDiv)
+                    return data.filter(obj=>obj.Division==this.filterDiv && obj.Sub_Division==this.filterSubDiv)
                     
                 }
 
             }
             else{
-                return data.filter(obj=>obj.division==this.filterDiv)
+                return data.filter(obj=>obj.Division==this.filterDiv)
             }
         }
         else 

@@ -2332,10 +2332,7 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    } // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
-
+    }
   }
 });
 
@@ -2997,10 +2994,7 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    } // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
-
+    }
   }
 });
 
@@ -3338,10 +3332,7 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    } // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
-
+    }
   }
 });
 
@@ -3356,6 +3347,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../httpController */ "./resources/js/httpController.js");
+
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -3364,6 +3360,10 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -4949,6 +4949,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4966,6 +4967,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         date: '2019-09-08',
         note: ''
       }],
+      tempProjects: [],
       projects: [{
         tasks: [{
           project: 'Rumah Sakit Arsitektur',
@@ -5008,24 +5010,36 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       },
       files: [],
       editTask: {
-        project: '',
-        division: '',
-        title: '',
-        due: '',
-        status: 'untake',
-        progress: '0',
-        desc: '',
-        user: ''
+        Id_Sub_Item_Pekerjaan: '',
+        Id_Item_Pekerjaan: '',
+        Projek: '',
+        Division: '',
+        Sub_Division: '',
+        Task: '',
+        Nama: '',
+        Kode: '',
+        Tanggal_Selesai: '',
+        Persentase: '',
+        User: '',
+        Remaining: '',
+        Progress: '0',
+        Status: 'untake'
       },
       initEditTask: {
-        project: '',
-        division: '',
-        title: '',
-        due: '',
-        status: 'untake',
-        progress: '0',
-        desc: '',
-        user: ''
+        Id_Sub_Item_Pekerjaan: '',
+        Id_Item_Pekerjaan: '',
+        Projek: '',
+        Division: '',
+        Sub_Division: '',
+        Task: '',
+        Nama: '',
+        Kode: '',
+        Tanggal_Selesai: '',
+        Persentase: '',
+        User: '',
+        Remaining: '',
+        Progress: '0',
+        Status: 'untake'
       },
       division: ['Desain Arsi', 'Admin'],
       sub_division: [],
@@ -5308,6 +5322,9 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
     };
   },
+  mounted: function mounted() {
+    this.getProject();
+  },
   computed: {// filteredTask(data){
     //     if(this.filterDiv!="")
     //     {
@@ -5323,6 +5340,246 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     // sortBy(prop) {
     //   this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
     // },
+    getProject: function () {
+      var _getProject = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var data, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, item;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallproject();
+
+              case 3:
+                data = _context.sent.data;
+                // this.employeeData = data.filter(obj => obj.Divisi != "Admin");
+                // console.log(data)
+                _iteratorNormalCompletion = true;
+                _didIteratorError = false;
+                _iteratorError = undefined;
+                _context.prev = 7;
+
+                for (_iterator = data[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                  item = _step.value;
+                  this.getDataFormat(item);
+                }
+
+                _context.next = 15;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](7);
+                _didIteratorError = true;
+                _iteratorError = _context.t0;
+
+              case 15:
+                _context.prev = 15;
+                _context.prev = 16;
+
+                if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+                  _iterator["return"]();
+                }
+
+              case 18:
+                _context.prev = 18;
+
+                if (!_didIteratorError) {
+                  _context.next = 21;
+                  break;
+                }
+
+                throw _iteratorError;
+
+              case 21:
+                return _context.finish(18);
+
+              case 22:
+                return _context.finish(15);
+
+              case 23:
+                this.tempProjects = data; // console.log(data)
+                // console.log(this.tempProjects)
+                // console.log(JSON.stringify( this.tempProjects, null, 2))
+
+                _context.next = 29;
+                break;
+
+              case 26:
+                _context.prev = 26;
+                _context.t1 = _context["catch"](0);
+                console.log(_context.t1);
+
+              case 29:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 26], [7, 11, 15, 23], [16,, 18, 22]]);
+      }));
+
+      function getProject() {
+        return _getProject.apply(this, arguments);
+      }
+
+      return getProject;
+    }(),
+    getDataFormat: function getDataFormat(data) {
+      var alldivisi = [];
+      var allsubdivisi = [];
+      var alltask = [];
+      var allsubtask = [];
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = data.Divisi.data[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var div = _step2.value;
+          // let eachDiv = div.map()
+          var eachdiv = {
+            Id_Divisi_Proyek: div.Id_Divisi_Proyek,
+            Id_Divisi_Role: div.Id_Divisi_Role,
+            Id_Proyek: div.Id_Proyek,
+            Nama: div.Nama,
+            Tanggal_Selesai: div.Tanggal_Selesai,
+            Persentase: div.Persentase // console.log(JSON.stringify(eachdiv, null, 2))
+
+          };
+          alldivisi.push(eachdiv);
+          var _iteratorNormalCompletion3 = true;
+          var _didIteratorError3 = false;
+          var _iteratorError3 = undefined;
+
+          try {
+            for (var _iterator3 = div.Sub_Divisi.data[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+              var subdiv = _step3.value;
+              var eachsubdiv = {
+                Id_Sub_Divisi_Proyek: subdiv.Id_Sub_Divisi_Proyek,
+                Id_Divisi_Proyek: subdiv.Id_Divisi_Proyek,
+                Nama: subdiv.Nama,
+                Tanggal_Selesai: subdiv.Tanggal_Selesai,
+                Persentase: subdiv.Persentase // console.log(JSON.stringify(eachsubdiv, null, 2))
+
+              };
+              allsubdivisi.push(eachsubdiv);
+              var _iteratorNormalCompletion4 = true;
+              var _didIteratorError4 = false;
+              var _iteratorError4 = undefined;
+
+              try {
+                for (var _iterator4 = subdiv.Task.data[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                  var task = _step4.value;
+                  var eachtask = {
+                    Id_Item_Pekerjaan: task.Id_Item_Pekerjaan,
+                    Id_Proyek: task.Id_Proyek,
+                    Id_Divisi_Role: task.Id_Divisi_Role,
+                    Nama: task.Nama,
+                    Kode: task.Kode,
+                    Satuan: task.Satuan,
+                    Tanggal_Selesai: task.Tanggal_Selesai,
+                    Persentase: task.Persentase // console.log(JSON.stringify(eachsubdiv, null, 2))
+
+                  };
+                  alltask.push(eachtask);
+                  var _iteratorNormalCompletion5 = true;
+                  var _didIteratorError5 = false;
+                  var _iteratorError5 = undefined;
+
+                  try {
+                    for (var _iterator5 = task.Sub_Task.data[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                      var subtask = _step5.value;
+                      var eachsubtask = {
+                        Id_Sub_Item_Pekerjaan: subtask.Id_Sub_Item_Pekerjaan,
+                        Id_Item_Pekerjaan: subtask.Id_Item_Pekerjaan,
+                        Projek: data.Nama,
+                        Division: div.Nama,
+                        Sub_Division: subdiv.Nama,
+                        Task: task.Nama,
+                        Nama: subtask.Nama,
+                        Kode: subtask.Kode,
+                        Deskripsi: subtask.Deskripsi,
+                        Tanggal_Selesai: subtask.Tanggal_Selesai,
+                        Persentase: subtask.Persentase,
+                        User: '',
+                        Remaining: '',
+                        Progress: '0',
+                        Status: 'untake' // console.log(JSON.stringify(eachsubdiv, null, 2))
+
+                      };
+                      allsubtask.push(eachsubtask);
+                    }
+                  } catch (err) {
+                    _didIteratorError5 = true;
+                    _iteratorError5 = err;
+                  } finally {
+                    try {
+                      if (!_iteratorNormalCompletion5 && _iterator5["return"] != null) {
+                        _iterator5["return"]();
+                      }
+                    } finally {
+                      if (_didIteratorError5) {
+                        throw _iteratorError5;
+                      }
+                    }
+                  }
+                }
+              } catch (err) {
+                _didIteratorError4 = true;
+                _iteratorError4 = err;
+              } finally {
+                try {
+                  if (!_iteratorNormalCompletion4 && _iterator4["return"] != null) {
+                    _iterator4["return"]();
+                  }
+                } finally {
+                  if (_didIteratorError4) {
+                    throw _iteratorError4;
+                  }
+                }
+              }
+            }
+          } catch (err) {
+            _didIteratorError3 = true;
+            _iteratorError3 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+                _iterator3["return"]();
+              }
+            } finally {
+              if (_didIteratorError3) {
+                throw _iteratorError3;
+              }
+            }
+          }
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+            _iterator2["return"]();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+
+      data.All_Divisi = alldivisi;
+      data.All_SubDivisi = allsubdivisi;
+      data.All_Task = alltask;
+      data.All_SubTask = allsubtask; // console.log(JSON.stringify(alldivision, null, 2))
+      // console.log(JSON.stringify(allsubdivision, null, 2))
+      // console.log(JSON.stringify(this.data, null, 2))
+    },
     addDivForm: function addDivForm() {
       this.editProject.ad_division.push(this.divform);
       this.divform = Object.assign({}, this.defaultdivform);
@@ -5397,16 +5654,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         if (this.filterSubDiv != "") {
           if (this.filterTask != "") {
             return data.filter(function (obj) {
-              return obj.division == _this3.filterDiv && obj.sub_division == _this3.filterSubDiv && obj.task == _this3.filterTask;
+              return obj.Division == _this3.filterDiv && obj.Sub_Division == _this3.filterSubDiv && obj.Task == _this3.filterTask;
             });
           } else {
             return data.filter(function (obj) {
-              return obj.division == _this3.filterDiv && obj.sub_division == _this3.filterSubDiv;
+              return obj.Division == _this3.filterDiv && obj.Sub_Division == _this3.filterSubDiv;
             });
           }
         } else {
           return data.filter(function (obj) {
-            return obj.division == _this3.filterDiv;
+            return obj.Division == _this3.filterDiv;
           });
         }
       } else {
@@ -5469,10 +5726,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       })["catch"](function () {
         return console.log('error occured');
       });
-    } // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
-
+    }
   }
 });
 
@@ -13618,11 +13872,11 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-expansion-panel",
-            _vm._l(_vm.projects, function(project) {
+            _vm._l(_vm.tempProjects, function(project) {
               return _c(
                 "v-expansion-panel-content",
                 {
-                  key: project.title,
+                  key: project.Nama,
                   attrs: { "expand-icon": "mdi-menu-down" },
                   scopedSlots: _vm._u(
                     [
@@ -13641,7 +13895,7 @@ var render = function() {
                                     [_vm._v("Project Title")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", [_vm._v(_vm._s(project.title))])
+                                  _c("div", [_vm._v(_vm._s(project.Nama))])
                                 ]),
                                 _vm._v(" "),
                                 _c(
@@ -13654,7 +13908,9 @@ var render = function() {
                                       [_vm._v("Due Date")]
                                     ),
                                     _vm._v(" "),
-                                    _c("div", [_vm._v(_vm._s(project.due))])
+                                    _c("div", [
+                                      _vm._v(_vm._s(project.Tanggal_Selesai))
+                                    ])
                                   ]
                                 ),
                                 _vm._v(" "),
@@ -13829,157 +14085,179 @@ var render = function() {
                             1
                           ),
                           _vm._v(" "),
-                          _vm._l(_vm.filteredTask(project.tasks), function(
-                            task
-                          ) {
-                            return _c(
-                              "v-card",
-                              {
-                                directives: [
-                                  { name: "ripple", rawName: "v-ripple" }
-                                ],
-                                key: task.title,
-                                staticClass: "scroll-y",
-                                staticStyle: {
-                                  background: "#424242 !important"
-                                },
-                                attrs: { hover: "", flat: "" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.openTaskDialog(task)
-                                  }
-                                }
-                              },
-                              [
-                                _c(
-                                  "v-layout",
-                                  {
-                                    class: "pa-3  project " + task.status,
-                                    attrs: { row: "", wrap: "" }
-                                  },
-                                  [
-                                    _c(
-                                      "v-flex",
-                                      { attrs: { xs12: "", md4: "" } },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "caption grey--text" },
-                                          [_vm._v(_vm._s(task.division))]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("div", [
-                                          _vm._v(_vm._s(task.sub_division))
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-flex",
-                                      { attrs: { xs6: "", sm4: "", md2: "" } },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "caption grey--text" },
-                                          [_vm._v(_vm._s(task.task))]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("div", [
-                                          _vm._v(_vm._s(task.sub_task))
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-flex",
-                                      { attrs: { xs6: "", sm4: "", md2: "" } },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "caption grey--text" },
-                                          [_vm._v("Due Date")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("div", [_vm._v(_vm._s(task.due))])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-flex",
-                                      { attrs: { xs6: "", sm4: "", md2: "" } },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "caption grey--text" },
-                                          [_vm._v("Progress")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          [
-                                            _c(
-                                              "v-progress-linear",
-                                              {
-                                                attrs: {
-                                                  color: "red",
-                                                  height: "20",
-                                                  value: task.progress
-                                                }
-                                              },
-                                              [
-                                                _c(
-                                                  "p",
-                                                  {
-                                                    staticClass:
-                                                      "text-xs-center"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(task.progress) +
-                                                        "%"
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-flex",
-                                      { attrs: { xs2: "", sm4: "", md2: "" } },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "right" },
-                                          [
-                                            _c(
-                                              "v-chip",
-                                              {
-                                                class:
-                                                  " white--text my-2 caption " +
-                                                  task.status,
-                                                attrs: { small: "" }
-                                              },
-                                              [_vm._v(_vm._s(task.status))]
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      ]
-                                    )
+                          _vm._l(
+                            _vm.filteredTask(project.All_SubTask),
+                            function(subtask) {
+                              return _c(
+                                "v-card",
+                                {
+                                  directives: [
+                                    { name: "ripple", rawName: "v-ripple" }
                                   ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c("v-divider")
-                              ],
-                              1
-                            )
-                          })
+                                  key: subtask.Nama,
+                                  staticClass: "scroll-y",
+                                  staticStyle: {
+                                    background: "#424242 !important"
+                                  },
+                                  attrs: { hover: "", flat: "" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.openTaskDialog(subtask)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "v-layout",
+                                    {
+                                      class: "pa-3  project " + subtask.Status,
+                                      attrs: { row: "", wrap: "" }
+                                    },
+                                    [
+                                      _c(
+                                        "v-flex",
+                                        { attrs: { xs12: "", md4: "" } },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "caption grey--text"
+                                            },
+                                            [_vm._v(_vm._s(subtask.Division))]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("div", [
+                                            _vm._v(_vm._s(subtask.Sub_Division))
+                                          ])
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-flex",
+                                        {
+                                          attrs: { xs6: "", sm4: "", md2: "" }
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "caption grey--text"
+                                            },
+                                            [_vm._v(_vm._s(subtask.Task))]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("div", [
+                                            _vm._v(_vm._s(subtask.Nama))
+                                          ])
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-flex",
+                                        {
+                                          attrs: { xs6: "", sm4: "", md2: "" }
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "caption grey--text"
+                                            },
+                                            [_vm._v("Due Date")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("div", [
+                                            _vm._v(
+                                              _vm._s(subtask.Tanggal_Selesai)
+                                            )
+                                          ])
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-flex",
+                                        {
+                                          attrs: { xs6: "", sm4: "", md2: "" }
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "caption grey--text"
+                                            },
+                                            [_vm._v("Progress")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            [
+                                              _c(
+                                                "v-progress-linear",
+                                                {
+                                                  attrs: {
+                                                    color: "red",
+                                                    height: "20",
+                                                    value: subtask.Progress
+                                                  }
+                                                },
+                                                [
+                                                  _c(
+                                                    "p",
+                                                    {
+                                                      staticClass:
+                                                        "text-xs-center"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          subtask.Progress
+                                                        ) + "%"
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-flex",
+                                        {
+                                          attrs: { xs2: "", sm4: "", md2: "" }
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            { staticClass: "right" },
+                                            [
+                                              _c(
+                                                "v-chip",
+                                                {
+                                                  class:
+                                                    " white--text my-2 caption " +
+                                                    subtask.Status,
+                                                  attrs: { small: "" }
+                                                },
+                                                [_vm._v(_vm._s(subtask.Status))]
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-divider")
+                                ],
+                                1
+                              )
+                            }
+                          )
                         ],
                         2
                       )
@@ -14021,15 +14299,15 @@ var render = function() {
                         "v-card-title",
                         [
                           _c("span", { staticClass: "headline" }, [
-                            _vm._v(_vm._s(_vm.editTask.project))
+                            _vm._v(_vm._s(_vm.editTask.Projek))
                           ]),
                           _vm._v(" "),
                           _c("v-spacer"),
                           _vm._v(" "),
-                          _vm.editTask.status != "untake"
+                          _vm.editTask.Status != "untake"
                             ? _c("span", [
                                 _vm._v(
-                                  "Taken By : " + _vm._s(_vm.editTask.user)
+                                  "Taken By : " + _vm._s(_vm.editTask.User)
                                 )
                               ])
                             : _vm._e()
@@ -14060,20 +14338,16 @@ var render = function() {
                                     [
                                       _c("v-text-field", {
                                         attrs: {
-                                          label: "Task",
+                                          label: "Sub Task",
                                           readonly: "",
                                           "prepend-icon": "description"
                                         },
                                         model: {
-                                          value: _vm.editTask.sub_task,
+                                          value: _vm.editTask.Nama,
                                           callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.editTask,
-                                              "sub_task",
-                                              $$v
-                                            )
+                                            _vm.$set(_vm.editTask, "Nama", $$v)
                                           },
-                                          expression: "editTask.sub_task"
+                                          expression: "editTask.Nama"
                                         }
                                       })
                                     ],
@@ -14091,11 +14365,15 @@ var render = function() {
                                           label: "Description"
                                         },
                                         model: {
-                                          value: _vm.editTask.desc,
+                                          value: _vm.editTask.Deskripsi,
                                           callback: function($$v) {
-                                            _vm.$set(_vm.editTask, "desc", $$v)
+                                            _vm.$set(
+                                              _vm.editTask,
+                                              "Deskripsi",
+                                              $$v
+                                            )
                                           },
-                                          expression: "editTask.desc"
+                                          expression: "editTask.Deskripsi"
                                         }
                                       })
                                     ],
@@ -14136,18 +14414,19 @@ var render = function() {
                                                         },
                                                         model: {
                                                           value:
-                                                            _vm.editTask.due,
+                                                            _vm.editTask
+                                                              .Tanggal_Selesai,
                                                           callback: function(
                                                             $$v
                                                           ) {
                                                             _vm.$set(
                                                               _vm.editTask,
-                                                              "due",
+                                                              "Tanggal_Selesai",
                                                               $$v
                                                             )
                                                           },
                                                           expression:
-                                                            "editTask.due"
+                                                            "editTask.Tanggal_Selesai"
                                                         }
                                                       },
                                                       on
@@ -14175,15 +14454,17 @@ var render = function() {
                                               }
                                             },
                                             model: {
-                                              value: _vm.editTask.due,
+                                              value:
+                                                _vm.editTask.Tanggal_Selesai,
                                               callback: function($$v) {
                                                 _vm.$set(
                                                   _vm.editTask,
-                                                  "due",
+                                                  "Tanggal_Selesai",
                                                   $$v
                                                 )
                                               },
-                                              expression: "editTask.due"
+                                              expression:
+                                                "editTask.Tanggal_Selesai"
                                             }
                                           })
                                         ],
@@ -14204,15 +14485,15 @@ var render = function() {
                                           readonly: ""
                                         },
                                         model: {
-                                          value: _vm.editTask.remaining,
+                                          value: _vm.editTask.Remaining,
                                           callback: function($$v) {
                                             _vm.$set(
                                               _vm.editTask,
-                                              "remaining",
+                                              "Remaining",
                                               $$v
                                             )
                                           },
-                                          expression: "editTask.remaining"
+                                          expression: "editTask.Remaining"
                                         }
                                       })
                                     ],
@@ -14233,15 +14514,15 @@ var render = function() {
                                             _vm.editTask.status == "untake"
                                         },
                                         model: {
-                                          value: _vm.editTask.progress,
+                                          value: _vm.editTask.Progress,
                                           callback: function($$v) {
                                             _vm.$set(
                                               _vm.editTask,
-                                              "progress",
+                                              "Progress",
                                               $$v
                                             )
                                           },
-                                          expression: "editTask.progress"
+                                          expression: "editTask.Progress"
                                         }
                                       })
                                     ],
@@ -14258,7 +14539,7 @@ var render = function() {
                                           attrs: {
                                             color: "red",
                                             height: "20",
-                                            value: _vm.editTask.progress
+                                            value: _vm.editTask.Progress
                                           }
                                         },
                                         [
@@ -14267,7 +14548,7 @@ var render = function() {
                                             { staticClass: "text-xs-center" },
                                             [
                                               _vm._v(
-                                                _vm._s(_vm.editTask.progress) +
+                                                _vm._s(_vm.editTask.Progress) +
                                                   "%"
                                               )
                                             ]
@@ -14292,7 +14573,7 @@ var render = function() {
                                           outlined: "",
                                           "show-size": 1000,
                                           disabled:
-                                            _vm.editTask.status == "untake"
+                                            _vm.editTask.Status == "untake"
                                         },
                                         on: { click: _vm.pickFile },
                                         scopedSlots: _vm._u([
@@ -65247,6 +65528,21 @@ __webpack_require__.r(__webpack_exports__);
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/api/jabatan/' + id, successCallback, errorCallback);
     });
+  },
+  //PROJECT AREA
+  getallproject: function getallproject() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var user = res.data;
+        resolve(res.data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/proyek', successCallback, errorCallback);
+    });
   }
 });
 
@@ -65592,9 +65888,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               res = _context.sent;
               accessToken = {
                 username: res.data.data.Username,
-                password: res.data.data.Password
-              }; // console.log(accessToken)
+                password: res.data.data.Password // console.log(accessToken)
 
+              };
               _Http__WEBPACK_IMPORTED_MODULE_1__["default"].setHeader(accessToken); // console.log("2")
 
               js_cookie__WEBPACK_IMPORTED_MODULE_3___default.a.set('accessToken', accessToken); // console.log("3")
@@ -66548,8 +66844,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Project\APP DEV\JobDeskAPP\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Project\APP DEV\JobDeskAPP\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\DEV APP PROJECT\GITHUB\JobDeskAPP\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\DEV APP PROJECT\GITHUB\JobDeskAPP\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

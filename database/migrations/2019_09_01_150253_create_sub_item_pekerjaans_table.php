@@ -17,7 +17,8 @@ class CreateSubItemPekerjaansTable extends Migration
             $table->increments('Id_Sub_Item_Pekerjaan');
             $table->unsignedInteger('Id_Item_Pekerjaan');
             $table->string('Nama',50);
-            $table->string('Kode',50);
+            $table->string('Kode',50);            
+            $table->string('Deskripsi',255);
             $table->dateTime('Tanggal_Selesai');
             $table->integer('Persentase');
             // $table->string('Berkas',255);

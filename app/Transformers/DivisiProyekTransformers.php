@@ -23,6 +23,7 @@ class DivisiProyekTransformers extends TransformerAbstract
             'Id_Divisi_Proyek'  => $divisi_proyek->Id_Divisi_Proyek,
             'Id_Divisi_Role'    => $divisi_proyek->Id_Divisi_Role,
             'Id_Proyek'         => $divisi_proyek->Id_Proyek,
+            'Nama'              => $divisi_proyek->Nama,
             'Tanggal_Selesai'   => $divisi_proyek->Tanggal_Selesai,
             'Persentase'        => $divisi_proyek->Persentase,
         ];

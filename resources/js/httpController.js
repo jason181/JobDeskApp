@@ -205,6 +205,24 @@ export default {
         })
     },
 
+    //PROJECT AREA
+    getallproject(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.get('/api/proyek', successCallback, errorCallback)
+        })
+    },
+
    
 
 

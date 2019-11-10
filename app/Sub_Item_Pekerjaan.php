@@ -16,6 +16,7 @@ class Sub_Item_Pekerjaan extends Model
         'Id_Item_Pekerjaan',
         'Nama',
         'Kode',
+        'Deskripsi',
         'Tanggal_Selesai',
         'Persentase',
     ];
