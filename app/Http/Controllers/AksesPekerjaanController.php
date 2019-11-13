@@ -8,6 +8,7 @@ use App\Akses_Pekerjaan;
 
 class AksesPekerjaanController extends RestController
 {
+    protected $transformer = AksesPekerjaanTransformers::Class;
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +16,7 @@ class AksesPekerjaanController extends RestController
      */
     public function index()
     {
+        // $akses_pekerjaan=Akses_Pekerjaan::orderBy('Id_Akses_Pekerjaan', 'DESC')->get();
         $akses_pekerjaan=Akses_Pekerjaan::get();
         $response=$this->generateCollection($akses_pekerjaan);
         return $this->sendResponse($response,201);
@@ -43,7 +45,7 @@ class AksesPekerjaanController extends RestController
                 'Id_Sub_Item_Pekerjaan' => $request->Id_Sub_Item_Pekerjaan,
                 'Id_Akun'               => $request->Id_Akun,
                 'Status'                => $request->Status,
-                'Verifikasi'            => $request->Veriikasi
+                'Verifikasi'            => $request->Verifikasi
             ]);
     
             return response()->json([

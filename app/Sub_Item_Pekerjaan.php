@@ -33,6 +33,6 @@ class Sub_Item_Pekerjaan extends Model
 
     public function item_pekerjaans()
     {
-        return $this->belongsTo('App\Sub_Item_Pekerjaan','Id_Item_Pekerjaan');
+        return $this->belongsTo('App\Item_Pekerjaan','Id_Item_Pekerjaan');
     }
 }

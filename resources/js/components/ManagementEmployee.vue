@@ -392,6 +392,10 @@
         {Deskripsi:"Management Role (Read)",Fitur:"M-Role-R"},
         {Deskripsi:"Management Role (Update)",Fitur:"M-Role-U"},
         {Deskripsi:"Management Role (Delete)",Fitur:"M-Role-D"},
+        {Deskripsi:"Job Access (Create)",Fitur:"M-JobAccess-C"},
+        {Deskripsi:"Job Access (Read)",Fitur:"M-JobAccess-R"},
+        {Deskripsi:"Job Access (Update)",Fitur:"M-JobAccess-U"},
+        {Deskripsi:"Job Access (Delete)",Fitur:"M-JobAccess-D"},
       ]
     }),
 

@@ -14,6 +14,8 @@ use Carbon\Carbon;
 
 class LogPengerjaanController extends RestController
 {
+    protected $transformer=LogPengerjaanTransformers::Class;
+
     /**
      * Display a listing of the resource.
      *
@@ -70,7 +72,7 @@ class LogPengerjaanController extends RestController
             $nama_file = $file->getClientOriginalName();
             $ukuran_file = $file->getSize();
             $akun = Akun::find($request->Id_Akun);
-            $karyawan = Karyawan::find($akun->Id_Karyawan);
+            $karyawan = $akun->karyawans;
             $destinationPath ="uploads/".$karyawan->Nama."/".Carbon::now('Asia/Jakarta')->isoFormat('DD-MM-YYYY');
             $file->move($destinationPath,$file->getClientOriginalName());
             $path=$destinationPath."/".$nama_file;

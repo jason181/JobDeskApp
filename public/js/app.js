@@ -2338,6 +2338,550 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobAccessRequest.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobAccessRequest.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../httpController */ "./resources/js/httpController.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+ //   import { mapState, mapActions } from 'vuex'
+//   import userService from '../../service/User'
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      formDialog: false,
+      delDialog: false,
+      DateIn: false,
+      search: '',
+      i: 0,
+      headers: [{
+        text: 'Nama Pegawai',
+        align: 'left',
+        value: 'Nama'
+      }, {
+        text: 'Job (Project > Div > Sub Div > Task > Sub Task)',
+        align: 'center',
+        value: 'Divisi'
+      }, {
+        text: 'Date Time Request',
+        align: 'center',
+        value: 'Datetime_Request'
+      }, {
+        text: 'Status',
+        align: 'center',
+        value: 'Status'
+      }, {
+        text: 'Verification',
+        align: 'center',
+        value: 'Verifikasi'
+      }, {
+        text: 'Actions',
+        align: 'center',
+        value: 'name',
+        sortable: false
+      }],
+      jobAccess: [],
+      jobAccessData: [],
+      jobAccessDataFiltered: [],
+      divisiData: [],
+      jabatanData: [],
+      editedIndex: -1,
+      alert: {
+        type: null,
+        message: null,
+        icon: null
+      },
+      editedForm: {
+        Id_Akses_Pekerjaan: '',
+        Id_Sub_Item_Pekerjaan: '',
+        Project: '',
+        Divisi: '',
+        Sub_Divisi: '',
+        Task: '',
+        Sub_Task: '',
+        Id_Akun: '',
+        Username: '',
+        Nama_Pegawai: '',
+        Status: '',
+        Verifikasi: []
+      },
+      editedFormDefault: {
+        Id_Akses_Pekerjaan: '',
+        Id_Sub_Item_Pekerjaan: '',
+        Project: '',
+        Divisi: '',
+        Sub_Divisi: '',
+        Task: '',
+        Sub_Task: '',
+        Id_Akun: '',
+        Username: '',
+        Nama_Pegawai: '',
+        Status: '',
+        Verifikasi: []
+      },
+      PreviledgeAccess: [],
+      FeatureAccess: [{
+        Deskripsi: "Management Employee (Create)",
+        Fitur: "M-Employee-C"
+      }, {
+        Deskripsi: "Management Employee (Read)",
+        Fitur: "M-Employee-R"
+      }, {
+        Deskripsi: "Management Employee (Update)",
+        Fitur: "M-Employee-U"
+      }, {
+        Deskripsi: "Management Employee (Delete)",
+        Fitur: "M-Employee-D"
+      }, {
+        Deskripsi: "Management Role (Create)",
+        Fitur: "M-Role-C"
+      }, {
+        Deskripsi: "Management Role (Read)",
+        Fitur: "M-Role-R"
+      }, {
+        Deskripsi: "Management Role (Update)",
+        Fitur: "M-Role-U"
+      }, {
+        Deskripsi: "Management Role (Delete)",
+        Fitur: "M-Role-D"
+      }]
+    };
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
+    nama: 'LoggedUser/Name',
+    jabatan: 'LoggedUser/Jabatan',
+    divisi: 'LoggedUser/Divisi',
+    akses: 'LoggedUser/Akses'
+  }), {
+    formTitle: function formTitle() {
+      return this.editedIndex === -1 ? 'Add Employee' : 'Edit Employee';
+    },
+    //   ...mapState({
+    //     loading: state => state.User.loading,
+    //     error: state => state.User.error,
+    //     users: state => state.User.users,
+    //   }),
+    initialize: function initialize() {
+      // this.employeeData = this.employee.filter(obj => obj.role != "Admin");
+      // return this.userData
+      this.jobAccessData = this.jobAccess.slice().reverse();
+      return this.jobAccessData;
+    }
+  }),
+  watch: {
+    dialog: function dialog(val) {
+      val || this.close();
+    },
+    delDialog: function delDialog(val) {
+      val || this.close();
+    }
+  },
+  mounted: function mounted() {
+    this.loaddata(); //   this.getEmployee()
+    // this.userfiltered()
+  },
+  methods: {
+    //   ...mapActions({
+    //       getEmployee: 'Employee/get',
+    //       deleteEmployee: 'Employee/delete',
+    //   }),
+    loaddata: function () {
+      var _loaddata = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalljobakses();
+
+              case 3:
+                data = _context.sent.data;
+                // this.employeeData = data.filter(obj => obj.Divisi != "Admin");
+                this.jobAccess = data;
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 7]]);
+      }));
+
+      function loaddata() {
+        return _loaddata.apply(this, arguments);
+      }
+
+      return loaddata;
+    }(),
+    deleteJobAkses: function () {
+      var _deleteJobAkses = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var id, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                id = this.jobAccessData[this.editedIndex].Id_Akses_Pekerjaan; // var id = data.Id_Akses_Pekerjaan
+
+                _context2.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletejobakses(id);
+
+              case 4:
+                response = _context2.sent;
+                console.log(response);
+                _context2.next = 8;
+                return this.loaddata();
+
+              case 8:
+                this.close();
+                this.showAlert('success', 'Sukses Hapus Data');
+                _context2.next = 16;
+                break;
+
+              case 12:
+                _context2.prev = 12;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+                this.showAlert('success', 'Gagal Hapus Data');
+
+              case 16:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 12]]);
+      }));
+
+      function deleteJobAkses() {
+        return _deleteJobAkses.apply(this, arguments);
+      }
+
+      return deleteJobAkses;
+    }(),
+    Verified: function () {
+      var _Verified = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(data) {
+        var payload, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                payload = {
+                  Verifikasi: 'Verified'
+                };
+                _context3.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatejobakses(payload, data.Id_Akses_Pekerjaan);
+
+              case 4:
+                response = _context3.sent;
+                console.log(response); // Object.assign(this.employeeData[this.editedIndex], this.editedForm)
+
+                _context3.next = 8;
+                return this.loaddata();
+
+              case 8:
+                this.close();
+                this.showAlert('success', 'Sukses Verifikasi');
+                _context3.next = 16;
+                break;
+
+              case 12:
+                _context3.prev = 12;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+                this.showAlert('error', 'Gagal Verifikasi');
+
+              case 16:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 12]]);
+      }));
+
+      function Verified(_x) {
+        return _Verified.apply(this, arguments);
+      }
+
+      return Verified;
+    }(),
+    Unverified: function () {
+      var _Unverified = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(data) {
+        var payload, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                payload = {
+                  Verifikasi: 'Unverified'
+                };
+                _context4.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatejobakses(payload, data.Id_Akses_Pekerjaan);
+
+              case 4:
+                response = _context4.sent;
+                console.log(response); // Object.assign(this.employeeData[this.editedIndex], this.editedForm)
+
+                _context4.next = 8;
+                return this.loaddata();
+
+              case 8:
+                this.close();
+                this.showAlert('success', 'Sukses Un-Verifikasi');
+                _context4.next = 16;
+                break;
+
+              case 12:
+                _context4.prev = 12;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+                this.showAlert('error', 'Gagal Un-Verifikasi');
+
+              case 16:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 12]]);
+      }));
+
+      function Unverified(_x2) {
+        return _Unverified.apply(this, arguments);
+      }
+
+      return Unverified;
+    }(),
+    createUsername: function createUsername(fullname) {
+      var username = fullname; // username = username.replace(/\s/g,''); //remove space
+
+      username = username.replace(/ .*/, ''); // console.log(username);
+
+      username = username.toLowerCase(); //to lowercase
+      // console.log(username);
+
+      username = username + Math.floor(Math.random() * 100);
+      console.log(username);
+      return username;
+    },
+    remove: function remove(item) {
+      this.editedForm.Akses.splice(this.editedForm.Akses.indexOf(item), 1);
+      this.editedForm.Akses = _toConsumableArray(this.editedForm.Akses);
+    },
+    Access: function Access(codeAccess) {
+      var x;
+
+      for (x in this.akses.data) {
+        if (codeAccess.includes(this.akses.data[x].Fitur)) {
+          return true;
+        }
+      }
+
+      return false;
+    },
+    //   closeFormDialog(){
+    //     this.formDialog= false
+    //     this.editedForm = Object.assign({}, this.defaultItem)
+    //   },
+    //   userfiltered(){
+    //     // console.log(this.userData)
+    //     this.userDataFiltered = this.userData.filter(item => console.log(item));
+    //     // console.log(this.userDataFiltered);
+    //   },
+    editItem: function editItem(item) {
+      this.editedIndex = this.employeeData.indexOf(item);
+      this.editedForm = Object.assign({}, item);
+      this.editedForm.Akses = this.editedForm.Akses.data;
+      this.formDialog = true;
+    },
+    deleteItem: function deleteItem(item) {
+      this.editedIndex = this.jobAccessData.indexOf(item);
+      var id = this.jobAccessData[this.editedIndex].Id_Akses_Pekerjaan;
+      console.log(id);
+      this.delDialog = true; // confirm('Are you sure you want to delete this item?') && this.userData.splice(this.editedIndex, 1)
+      // confirm('Are you sure you want to delete this item?') && this.deleteuser()
+    },
+    close: function close() {
+      var _this = this;
+
+      this.formDialog = false;
+      this.delDialog = false;
+      setTimeout(function () {
+        _this.editedForm = Object.assign({}, _this.editedFormDefault);
+        _this.editedIndex = -1;
+      }, 300);
+    },
+    showAlert: function showAlert(type, alert_message) {
+      var _this2 = this;
+
+      if (type == 'success') {
+        this.alert.icon = 'fas fa-check-circle';
+      } else if (type == 'error') {
+        this.alert.icon = 'fas fa-exclamation-circle';
+      }
+
+      this.alert.type = type;
+      this.alert.message = alert_message;
+      var timer = this.showAlert.timer;
+
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      this.showAlert.timer = setTimeout(function () {
+        _this2.alert.type = null;
+        _this2.alert.icon = null;
+        _this2.alert.message = null;
+      }, 3000);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDesk.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDesk.vue?vue&type=script&lang=js& ***!
@@ -3350,6 +3894,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../httpController */ "./resources/js/httpController.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -3364,6 +3909,214 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4950,10 +5703,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       //Base
+      alert: {
+        type: null,
+        message: null,
+        icon: null
+      },
       log_pengerjaan: [{
         id: '1',
         fileName: 'Denah.zip',
@@ -4967,6 +5726,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         date: '2019-09-08',
         note: ''
       }],
+      logPengerjaanData: [],
       tempProjects: [],
       projects: [{
         tasks: [{
@@ -5023,7 +5783,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         User: '',
         Remaining: '',
         Progress: '0',
-        Status: 'untake'
+        Status: 'untake',
+        Status_Akses: 'Locked'
       },
       initEditTask: {
         Id_Sub_Item_Pekerjaan: '',
@@ -5039,11 +5800,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         User: '',
         Remaining: '',
         Progress: '0',
-        Status: 'untake'
+        Status: 'untake',
+        Status_Akses: 'Locked'
       },
       division: ['Desain Arsi', 'Admin'],
       sub_division: [],
       task: [],
+      jobAksesData: [],
+      requestAccessForm: '',
+      requestAccess: [{
+        Nama: 'Request Access'
+      }, {
+        Nama: 'Request Download'
+      }, {
+        Nama: 'Request Overtime'
+      }],
       data_sub_division: [{
         division: 'Desain Arsi',
         name: 'Desain'
@@ -5071,6 +5842,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       noteText: '',
       addDialog: false,
       taskDialog: false,
+      requestDialog: false,
       date: new Date().toISOString().substr(0, 10),
       dateDialog: false,
       startDate: false,
@@ -5081,54 +5853,104 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       //Base
       // Add Dialog 2
       e1: 0,
-      addDialog2: true,
+      addDialog2: false,
+      dateDiv1: false,
+      dateDiv2: false,
+      dateSubDiv1: false,
+      dateSubDiv2: false,
+      dateTask1: false,
+      dateTask2: false,
+      dateSubTask1: false,
+      dateSubtask2: false,
       editProject: {
-        ad_division: [{
-          name: 'Desain Arsi',
-          contribute: '50',
-          due_date: ''
+        All_Divisi: [{
+          Nama: 'Desain Arsi',
+          Persentase: '50',
+          Tanggal_Selesai: ''
         }, {
-          name: 'Admin',
-          contribute: '2',
-          due_date: ''
+          Nama: 'Admin',
+          Persentase: '2',
+          Tanggal_Selesai: ''
         }],
-        ad_subdivision: [{
-          name: 'Desain',
-          division: 'Desain Arsi',
-          contribute: '50',
-          due_date: ''
+        All_SubDivisi: [{
+          Nama: 'Desain',
+          Divisi: 'Desain Arsi',
+          Persentase: '50',
+          Tanggal_Selesai: ''
         }, {
-          name: 'QS',
-          division: 'Desain Arsi',
-          contribute: '2',
-          due_date: ''
+          Nama: 'QS',
+          Divisi: 'Desain Arsi',
+          Persentase: '2',
+          Tanggal_Selesai: ''
         }],
-        ad_task: [{
-          name: 'Konsep',
-          subdivision: 'Desain',
-          contribute: '50',
-          due_date: ''
+        All_Task: [{
+          Nama: 'Konsep',
+          Sub_Divisi: 'Desain',
+          Persentase: '50',
+          Tanggal_Selesai: ''
         }],
-        ad_subtask: [{
-          name: 'Denah Depan',
-          task: 'Konsep',
-          contribute: '50',
-          due_date: ''
+        All_SubTask: [{
+          Nama: 'Denah Depan',
+          Task: 'Konsep',
+          Persentase: '50',
+          Tanggal_Selesai: ''
         }],
-        title: '',
-        start: '',
-        due: '',
-        value: '',
-        target_outcome: '',
-        note: '',
-        client_name: '',
-        client_address: ''
+        Nama: '',
+        Tanggal_Mulai: '',
+        Tanggal_Selesai: '',
+        Nilai: '',
+        Target_Outcome: '',
+        Catatan: '',
+        Pemilik: '',
+        Alamat: ''
+      },
+      initEditProject: {
+        All_Divisi: [{
+          Nama: 'Desain Arsi',
+          Persentase: '50',
+          Tanggal_Selesai: ''
+        }, {
+          Nama: 'Admin',
+          Persentase: '2',
+          Tanggal_Selesai: ''
+        }],
+        All_SubDivisi: [{
+          Nama: 'Desain',
+          Divisi: 'Desain Arsi',
+          Persentase: '50',
+          Tanggal_Selesai: ''
+        }, {
+          Nama: 'QS',
+          Divisi: 'Desain Arsi',
+          Persentase: '2',
+          Tanggal_Selesai: ''
+        }],
+        All_Task: [{
+          Nama: 'Konsep',
+          Sub_Divisi: 'Desain',
+          Persentase: '50',
+          Tanggal_Selesai: ''
+        }],
+        All_SubTask: [{
+          Nama: 'Denah Depan',
+          Task: 'Konsep',
+          Persentase: '50',
+          Tanggal_Selesai: ''
+        }],
+        Nama: '',
+        Tanggal_Mulai: '',
+        Tanggal_Selesai: '',
+        Nilai: '',
+        Target_Outcome: '',
+        Catatan: '',
+        Pemilik: '',
+        Alamat: ''
       },
       div_headers: [{
         text: 'Name',
         align: 'left',
         sortable: false,
-        value: 'name'
+        value: 'Nama'
       }, {
         text: 'Contribute (%)',
         value: 'contribute',
@@ -5146,12 +5968,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         text: 'Division',
         align: 'left',
         sortable: false,
-        value: 'division'
+        value: 'Divisi'
       }, {
         text: 'Name',
         align: 'left',
         sortable: false,
-        value: 'name'
+        value: 'Nama'
       }, {
         text: 'Contribute (%)',
         value: 'contribute',
@@ -5169,12 +5991,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         text: 'Sub Division',
         align: 'left',
         sortable: false,
-        value: 'subdivision'
+        value: 'Sub_Divisi'
       }, {
         text: 'Name',
         align: 'left',
         sortable: false,
-        value: 'name'
+        value: 'Nama'
       }, {
         text: 'Contribute (%)',
         value: 'contribute',
@@ -5192,12 +6014,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         text: 'Task',
         align: 'left',
         sortable: false,
-        value: 'subdivision'
+        value: 'Task'
       }, {
         text: 'Name',
         align: 'left',
         sortable: false,
-        value: 'name'
+        value: 'Nama'
       }, {
         text: 'Contribute (%)',
         value: 'contribute',
@@ -5212,50 +6034,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         align: 'center'
       }],
       divform: {
-        name: '',
-        contribute: '',
-        due_date: ''
+        Nama: '',
+        Persentase: '',
+        Tanggal_Selesai: ''
       },
       defaultdivform: {
-        name: '',
-        contribute: '',
-        due_date: ''
+        Nama: '',
+        Persentase: '',
+        Tanggal_Selesai: ''
       },
       subdivform: {
-        name: '',
-        division: '',
-        contribute: '',
-        due_date: ''
+        Nama: '',
+        Divisi: '',
+        Persentase: '',
+        Tanggal_Selesai: ''
       },
       defaultsubdivform: {
-        name: '',
-        division: '',
-        contribute: '',
-        due_date: ''
+        Nama: '',
+        Divisi: '',
+        Persentase: '',
+        Tanggal_Selesai: ''
       },
       taskform: {
-        name: '',
-        subdivision: '',
-        contribute: '',
-        due_date: ''
+        Nama: '',
+        Sub_Divisi: '',
+        Persentase: '',
+        Tanggal_Selesai: ''
       },
       defaulttaskform: {
-        name: '',
-        subdivision: '',
-        contribute: '',
-        due_date: ''
+        Nama: '',
+        Sub_Divisi: '',
+        Persentase: '',
+        Tanggal_Selesai: ''
       },
       subtaskform: {
-        name: '',
-        task: '',
-        contribute: '',
-        due_date: ''
+        Nama: '',
+        Task: '',
+        Persentase: '',
+        Tanggal_Selesai: ''
       },
       defaultsubtaskform: {
-        name: '',
-        task: '',
-        contribute: '',
-        due_date: ''
+        Nama: '',
+        Task: '',
+        Persentase: '',
+        Tanggal_Selesai: ''
       },
       //Add Dialog 2
       //Data Dummy
@@ -5325,17 +6147,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     this.getProject();
   },
-  computed: {// filteredTask(data){
-    //     if(this.filterDiv!="")
-    //     {
-    //         return data.filter(obj=>obj.division==this.filterDiv)
-    //     }
-    //     else 
-    //     {
-    //         return data.tasks
-    //     }
-    // }
-  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
+    // id: 'LoggedUser/id',
+    Id_Akun: 'LoggedUser/Id_Akun',
+    Nama: 'LoggedUser/Name',
+    Jabatan: 'LoggedUser/Jabatan',
+    Divisi: 'LoggedUser/Divisi' // username: 'LoggedUser/username',
+    // role: 'LoggedUser/role'
+
+  })),
   methods: {
     // sortBy(prop) {
     //   this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
@@ -5344,6 +6164,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _getProject = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _this = this;
+
         var data, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, item;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -5356,70 +6178,85 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 data = _context.sent.data;
-                // this.employeeData = data.filter(obj => obj.Divisi != "Admin");
+                _context.next = 6;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalllogpengerjaan();
+
+              case 6:
+                this.logPengerjaanData = _context.sent.data;
+                _context.next = 9;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalljobakses();
+
+              case 9:
+                _context.t0 = function (obj) {
+                  return obj.Id_Akun == _this.Id_Akun;
+                };
+
+                this.jobAksesData = _context.sent.data.filter(_context.t0);
+                console.log(this.jobAksesData); // this.employeeData = data.filter(obj => obj.Divisi != "Admin");
                 // console.log(data)
+
                 _iteratorNormalCompletion = true;
                 _didIteratorError = false;
                 _iteratorError = undefined;
-                _context.prev = 7;
+                _context.prev = 15;
 
                 for (_iterator = data[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                   item = _step.value;
                   this.getDataFormat(item);
                 }
 
-                _context.next = 15;
+                _context.next = 23;
                 break;
 
-              case 11:
-                _context.prev = 11;
-                _context.t0 = _context["catch"](7);
+              case 19:
+                _context.prev = 19;
+                _context.t1 = _context["catch"](15);
                 _didIteratorError = true;
-                _iteratorError = _context.t0;
+                _iteratorError = _context.t1;
 
-              case 15:
-                _context.prev = 15;
-                _context.prev = 16;
+              case 23:
+                _context.prev = 23;
+                _context.prev = 24;
 
                 if (!_iteratorNormalCompletion && _iterator["return"] != null) {
                   _iterator["return"]();
                 }
 
-              case 18:
-                _context.prev = 18;
+              case 26:
+                _context.prev = 26;
 
                 if (!_didIteratorError) {
-                  _context.next = 21;
+                  _context.next = 29;
                   break;
                 }
 
                 throw _iteratorError;
 
-              case 21:
-                return _context.finish(18);
+              case 29:
+                return _context.finish(26);
 
-              case 22:
-                return _context.finish(15);
+              case 30:
+                return _context.finish(23);
 
-              case 23:
+              case 31:
                 this.tempProjects = data; // console.log(data)
                 // console.log(this.tempProjects)
                 // console.log(JSON.stringify( this.tempProjects, null, 2))
 
-                _context.next = 29;
+                _context.next = 37;
                 break;
 
-              case 26:
-                _context.prev = 26;
-                _context.t1 = _context["catch"](0);
-                console.log(_context.t1);
+              case 34:
+                _context.prev = 34;
+                _context.t2 = _context["catch"](0);
+                console.log(_context.t2);
 
-              case 29:
+              case 37:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 26], [7, 11, 15, 23], [16,, 18, 22]]);
+        }, _callee, this, [[0, 34], [15, 19, 23, 31], [24,, 26, 30]]);
       }));
 
       function getProject() {
@@ -5446,7 +6283,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             Id_Divisi_Role: div.Id_Divisi_Role,
             Id_Proyek: div.Id_Proyek,
             Nama: div.Nama,
-            Tanggal_Selesai: div.Tanggal_Selesai,
+            Tanggal_Selesai: div.Tanggal_Selesai.split(' ')[0],
             Persentase: div.Persentase // console.log(JSON.stringify(eachdiv, null, 2))
 
           };
@@ -5461,8 +6298,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               var eachsubdiv = {
                 Id_Sub_Divisi_Proyek: subdiv.Id_Sub_Divisi_Proyek,
                 Id_Divisi_Proyek: subdiv.Id_Divisi_Proyek,
+                Divisi: subdiv.Divisi,
                 Nama: subdiv.Nama,
-                Tanggal_Selesai: subdiv.Tanggal_Selesai,
+                Tanggal_Selesai: subdiv.Tanggal_Selesai.split(' ')[0],
                 Persentase: subdiv.Persentase // console.log(JSON.stringify(eachsubdiv, null, 2))
 
               };
@@ -5478,10 +6316,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     Id_Item_Pekerjaan: task.Id_Item_Pekerjaan,
                     Id_Proyek: task.Id_Proyek,
                     Id_Divisi_Role: task.Id_Divisi_Role,
+                    Id_Sub_Divisi_Proyek: task.Id_Sub_Divisi_Proyek,
+                    Sub_Divisi: task.Sub_Divisi,
                     Nama: task.Nama,
                     Kode: task.Kode,
                     Satuan: task.Satuan,
-                    Tanggal_Selesai: task.Tanggal_Selesai,
+                    Tanggal_Selesai: task.Tanggal_Selesai.split(' ')[0],
                     Persentase: task.Persentase // console.log(JSON.stringify(eachsubdiv, null, 2))
 
                   };
@@ -5497,20 +6337,69 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                         Id_Sub_Item_Pekerjaan: subtask.Id_Sub_Item_Pekerjaan,
                         Id_Item_Pekerjaan: subtask.Id_Item_Pekerjaan,
                         Projek: data.Nama,
-                        Division: div.Nama,
-                        Sub_Division: subdiv.Nama,
+                        Divisi: div.Nama,
+                        Sub_Divisi: subdiv.Nama,
                         Task: task.Nama,
                         Nama: subtask.Nama,
                         Kode: subtask.Kode,
                         Deskripsi: subtask.Deskripsi,
-                        Tanggal_Selesai: subtask.Tanggal_Selesai,
+                        Tanggal_Selesai: subtask.Tanggal_Selesai.split(' ')[0],
                         Persentase: subtask.Persentase,
                         User: '',
                         Remaining: '',
                         Progress: '0',
-                        Status: 'untake' // console.log(JSON.stringify(eachsubdiv, null, 2))
+                        Status: 'untake',
+                        Log_Pengerjaan: [] // console.log(JSON.stringify(eachsubdiv, null, 2))
 
                       };
+                      var _iteratorNormalCompletion6 = true;
+                      var _didIteratorError6 = false;
+                      var _iteratorError6 = undefined;
+
+                      try {
+                        for (var _iterator6 = this.logPengerjaanData[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                          var log = _step6.value;
+
+                          if (log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan) {
+                            eachsubtask.Log_Pengerjaan.push(log);
+                          }
+                        }
+                      } catch (err) {
+                        _didIteratorError6 = true;
+                        _iteratorError6 = err;
+                      } finally {
+                        try {
+                          if (!_iteratorNormalCompletion6 && _iterator6["return"] != null) {
+                            _iterator6["return"]();
+                          }
+                        } finally {
+                          if (_didIteratorError6) {
+                            throw _iteratorError6;
+                          }
+                        }
+                      }
+
+                      var today = new Date().getTime();
+                      var target = new Date(eachsubtask.Tanggal_Selesai).getTime();
+                      var remaining = parseInt((target - today) / (24 * 3600 * 1000));
+                      eachsubtask.Remaining = remaining + ' days left'; // console.log(target)
+                      // console.log(remaining)
+
+                      if (eachsubtask.Log_Pengerjaan.length > 0) {
+                        eachsubtask.Log_Pengerjaan = eachsubtask.Log_Pengerjaan.slice().reverse();
+                        eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress;
+                        eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username;
+                      }
+
+                      if (remaining < 0 && eachsubtask.Progress != '100') {
+                        eachsubtask.Status = 'overdue';
+                        eachsubtask.Remaining = remaining + ' days overdue';
+                      } else if (eachsubtask.Progress != '100') {
+                        eachsubtask.Status = 'ongoing';
+                      } else {
+                        eachsubtask.Status = 'complete';
+                      }
+
                       allsubtask.push(eachsubtask);
                     }
                   } catch (err) {
@@ -5580,40 +6469,92 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // console.log(JSON.stringify(allsubdivision, null, 2))
       // console.log(JSON.stringify(this.data, null, 2))
     },
+    sendAccessRequest: function () {
+      var _sendAccessRequest = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var payload, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                payload = {
+                  Id_Akun: this.Id_Akun,
+                  Id_Sub_Item_Pekerjaan: this.editTask.Id_Sub_Item_Pekerjaan,
+                  Status: this.requestAccessForm,
+                  Verifikasi: 'Unverified' // console.log(payload)
+
+                };
+                _context2.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addjobakses(payload);
+
+              case 4:
+                response = _context2.sent.data;
+                // console.log(response)
+                this.requestDialog = false;
+                this.showAlert('success', 'Sukses Mengirim Request');
+                _context2.next = 13;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+                this.showAlert('error', 'Gagal Mengirim Request');
+
+              case 13:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 9]]);
+      }));
+
+      function sendAccessRequest() {
+        return _sendAccessRequest.apply(this, arguments);
+      }
+
+      return sendAccessRequest;
+    }(),
     addDivForm: function addDivForm() {
-      this.editProject.ad_division.push(this.divform);
+      this.editProject.All_Divisi.push(this.divform);
       this.divform = Object.assign({}, this.defaultdivform);
     },
     delDivForm: function delDivForm(index) {
-      this.editProject.ad_division.splice(this.editProject.ad_division.indexOf(index), 1);
-      this.editProject.ad_division = _toConsumableArray(this.editProject.ad_division);
+      this.editProject.All_Divisi.splice(this.editProject.All_Divisi.indexOf(index), 1);
+      this.editProject.All_Divisi = _toConsumableArray(this.editProject.All_Divisi);
     },
     addSubDivForm: function addSubDivForm() {
-      this.editProject.ad_subdivision.push(this.subdivform);
+      this.editProject.All_SubDivisi.push(this.subdivform);
       this.subdivform = Object.assign({}, this.defaultsubdivform);
     },
     delSubDivForm: function delSubDivForm(index) {
-      this.editProject.ad_subdivision.splice(this.editProject.ad_subdivision.indexOf(index), 1);
-      this.editProject.ad_subdivision = _toConsumableArray(this.editProject.ad_subdivision);
+      this.editProject.All_SubDivisi.splice(this.editProject.All_SubDivisi.indexOf(index), 1);
+      this.editProject.All_SubDivisi = _toConsumableArray(this.editProject.All_SubDivisi);
     },
     addTaskForm: function addTaskForm() {
-      this.editProject.ad_task.push(this.taskform);
+      this.editProject.All_Task.push(this.taskform);
       this.taskform = Object.assign({}, this.defaulttaskform);
     },
     delTaskForm: function delTaskForm(index) {
-      this.editProject.ad_task.splice(this.editProject.ad_task.indexOf(index), 1);
-      this.editProject.ad_task = _toConsumableArray(this.editProject.ad_task);
+      this.editProject.All_Task.splice(this.editProject.All_Task.indexOf(index), 1);
+      this.editProject.All_Task = _toConsumableArray(this.editProject.All_Task);
     },
     addSubTaskForm: function addSubTaskForm() {
-      this.editProject.ad_subtask.push(this.subtaskform);
+      this.editProject.All_SubTask.push(this.subtaskform);
       this.subtaskform = Object.assign({}, this.defaultsubtaskform);
     },
     delSubTaskForm: function delSubTaskForm(index) {
-      this.editProject.ad_subtask.splice(this.editProject.ad_subtask.indexOf(index), 1);
-      this.editProject.ad_subtask = _toConsumableArray(this.editProject.ad_subtask);
+      this.editProject.All_SubTask.splice(this.editProject.All_SubTask.indexOf(index), 1);
+      this.editProject.All_SubTask = _toConsumableArray(this.editProject.All_SubTask);
     },
     addProject: function addProject(data) {
       this.projects.push(data);
+    },
+    editProjectDialog: function editProjectDialog(project) {
+      this.editProject = Object.assign({}, project);
+      this.addDialog2 = true;
     },
     addTask: function addTask(data) {
       console.log(data); // Object.assign(this.editProject.tasks[0],data)
@@ -5621,49 +6562,76 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.editProject.tasks.push(this.editTask); // this.editProject.tasks.push(Object.assign({}, data));
     },
     closeAddDialog: function closeAddDialog() {
-      this.addDialog = false;
-      this.editProject = Object.assign({}, this.initProject);
-      this.editProject.tasks = [];
-      this.editTask = Object.assign({}, this.initEditTask);
+      this.addDialog2 = false;
+      this.editProject = Object.assign({}, this.initEditProject); // this.editProject.tasks=[]
+      // this.editTask = Object.assign({},this.initEditTask)
     },
     openTaskDialog: function openTaskDialog(data) {
       this.taskDialog = true;
       this.editTask = data;
+      this.editTask.Status_Akses = 'Locked'; //<==================================NEED EDIT
+
+      var _iteratorNormalCompletion7 = true;
+      var _didIteratorError7 = false;
+      var _iteratorError7 = undefined;
+
+      try {
+        for (var _iterator7 = this.jobAksesData[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+          var akses = _step7.value;
+
+          if (akses.Id_Sub_Item_Pekerjaan == data.Id_Sub_Item_Pekerjaan && akses.Verifikasi == "Verified") {
+            this.editTask.Status_Akses = akses.Status;
+          }
+        }
+      } catch (err) {
+        _didIteratorError7 = true;
+        _iteratorError7 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion7 && _iterator7["return"] != null) {
+            _iterator7["return"]();
+          }
+        } finally {
+          if (_didIteratorError7) {
+            throw _iteratorError7;
+          }
+        }
+      }
     },
     getSubDivision: function getSubDivision() {
-      var _this = this;
+      var _this2 = this;
 
       this.sub_division = this.data_sub_division.filter(function (obj) {
-        return obj.division == _this.filterDiv;
+        return obj.division == _this2.filterDiv;
       });
       this.filterSubDiv = '';
     },
     getTask: function getTask() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.task = this.data_task.filter(function (obj) {
-        return obj.sub_division == _this2.filterSubDiv;
+        return obj.sub_division == _this3.filterSubDiv;
       });
       this.filterTask = '';
     },
     filteredTask: function filteredTask(data) {
-      var _this3 = this;
+      var _this4 = this;
 
       if (this.filterDiv != "") {
         // console.log("in")
         if (this.filterSubDiv != "") {
           if (this.filterTask != "") {
             return data.filter(function (obj) {
-              return obj.Division == _this3.filterDiv && obj.Sub_Division == _this3.filterSubDiv && obj.Task == _this3.filterTask;
+              return obj.Division == _this4.filterDiv && obj.Sub_Division == _this4.filterSubDiv && obj.Task == _this4.filterTask;
             });
           } else {
             return data.filter(function (obj) {
-              return obj.Division == _this3.filterDiv && obj.Sub_Division == _this3.filterSubDiv;
+              return obj.Division == _this4.filterDiv && obj.Sub_Division == _this4.filterSubDiv;
             });
           }
         } else {
           return data.filter(function (obj) {
-            return obj.Division == _this3.filterDiv;
+            return obj.Division == _this4.filterDiv;
           });
         }
       } else {
@@ -5679,7 +6647,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$refs.file.click();
     },
     onFilePicked: function onFilePicked(e) {
-      var _this4 = this;
+      var _this5 = this;
 
       var files = e.target.files;
 
@@ -5696,8 +6664,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         fr.addEventListener('load', function () {
           // console.log(fr.result)
           //  console.log("Masuk FR")
-          _this4.fileUrl = fr.result;
-          _this4.file = files[0];
+          _this5.fileUrl = fr.result;
+          _this5.file = files[0];
         });
       } else {
         // console.log("else")
@@ -5705,28 +6673,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.fileUrl = ''; // this.editedItem.image =''
       }
     },
-    forceFileDownload: function forceFileDownload(response) {
+    forceFileDownload: function forceFileDownload(response, data) {
       var url = window.URL.createObjectURL(new Blob([response.data]));
+      console.log(url);
       var link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', 'file.png'); //or any other extension
+      link.setAttribute('download', data.Berkas.split('/')[3]); //or any other extension
 
       document.body.appendChild(link);
       link.click();
     },
-    downloadWithVueResource: function downloadWithVueResource(data) {
-      var _this5 = this;
+    downloadIt: function downloadIt(data) {
+      var _this6 = this;
 
+      //   console.log('http://localhost:8000/'+data.Berkas)
       this.$http({
         method: 'get',
-        url: data.fileUrl,
+        url: 'http://localhost:8000/uploads/Admin/13-11-2019/Doc.docx',
         responseType: 'arraybuffer'
       }).then(function (response) {
-        _this5.forceFileDownload(response);
+        _this6.forceFileDownload(response, data);
       })["catch"](function () {
         return console.log('error occured');
       });
-    }
+    },
+    showAlert: function showAlert(type, alert_message) {
+      var _this7 = this;
+
+      if (type == 'success') {
+        this.alert.icon = 'fas fa-check-circle';
+      } else if (type == 'error') {
+        this.alert.icon = 'fas fa-exclamation-circle';
+      }
+
+      this.alert.type = type;
+      this.alert.message = alert_message;
+      var timer = this.showAlert.timer;
+
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      this.showAlert.timer = setTimeout(function () {
+        _this7.alert.type = null;
+        _this7.alert.icon = null;
+        _this7.alert.message = null;
+      }, 3000);
+    } // sortByDate(prop){
+    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
+    // }
+
   }
 });
 
@@ -6383,6 +7379,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, {
         Deskripsi: "Management Role (Delete)",
         Fitur: "M-Role-D"
+      }, {
+        Deskripsi: "Job Access (Create)",
+        Fitur: "M-JobAccess-C"
+      }, {
+        Deskripsi: "Job Access (Read)",
+        Fitur: "M-JobAccess-R"
+      }, {
+        Deskripsi: "Job Access (Update)",
+        Fitur: "M-JobAccess-U"
+      }, {
+        Deskripsi: "Job Access (Delete)",
+        Fitur: "M-JobAccess-D"
       }]
     };
   },
@@ -7923,6 +8931,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         icon: 'assignment_ind',
         text: 'Management Role',
         access: ['M-Role-C', 'M-Role-R', 'M-Role-U', 'M-Role-D']
+      }, {
+        to: '/panel/job-access',
+        icon: 'assignment_late',
+        text: 'Job Access Request',
+        access: ['M-JobAccess-C', 'M-JobAccess-R', 'M-JobAccess-U', 'M-JobAccess-D']
       }],
       color: 'general',
       image: '',
@@ -11145,6 +12158,309 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobAccessRequest.vue?vue&type=template&id=6b550739&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobAccessRequest.vue?vue&type=template&id=6b550739& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-container",
+    [
+      _c(
+        "v-toolbar",
+        { attrs: { flat: "" } },
+        [
+          _c("v-toolbar-title", { staticClass: "white--text" }, [
+            _vm._v("Job Access Request")
+          ]),
+          _vm._v(" "),
+          _c("v-divider", {
+            staticClass: "mx-2 white",
+            attrs: { inset: "", vertical: "" }
+          }),
+          _vm._v(" "),
+          _c(
+            "v-dialog",
+            {
+              attrs: { "max-width": "500px" },
+              model: {
+                value: _vm.delDialog,
+                callback: function($$v) {
+                  _vm.delDialog = $$v
+                },
+                expression: "delDialog"
+              }
+            },
+            [
+              _c(
+                "v-card",
+                [
+                  _c("v-card-title", [
+                    _c("span", { staticClass: "headline" }, [
+                      _vm._v("Delete Item")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("v-card-text", [
+                    _c("h3", { staticClass: "text-sm-center" }, [
+                      _vm._v("Are you sure want to delete this ?")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "blue darken-1", flat: "" },
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteJobAkses()
+                            }
+                          }
+                        },
+                        [_vm._v("Yes")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "blue darken-1", flat: "" },
+                          on: { click: _vm.close }
+                        },
+                        [_vm._v("No")]
+                      ),
+                      _vm._v(" "),
+                      _c("v-spacer")
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-spacer"),
+          _vm._v(" "),
+          _c(
+            "v-flex",
+            { attrs: { xs4: "", sm4: "", md4: "" } },
+            [
+              _c("v-text-field", {
+                attrs: {
+                  "append-icon": "search",
+                  label: "Cari",
+                  "single-line": "",
+                  "hide-details": ""
+                },
+                model: {
+                  value: _vm.search,
+                  callback: function($$v) {
+                    _vm.search = $$v
+                  },
+                  expression: "search"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-data-table",
+        {
+          staticClass: "elevation-1",
+          attrs: {
+            headers: _vm.headers,
+            items: _vm.initialize,
+            search: _vm.search
+          },
+          scopedSlots: _vm._u([
+            {
+              key: "items",
+              fn: function(props) {
+                return [
+                  _c("td", [_vm._v(_vm._s(props.item.Nama_Pegawai))]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-xs-left" }, [
+                    _vm._v(
+                      "\n              " +
+                        _vm._s(props.item.Project) +
+                        " > " +
+                        _vm._s(props.item.Divisi) +
+                        " > " +
+                        _vm._s(props.item.Sub_Divisi) +
+                        " > " +
+                        _vm._s(props.item.Task) +
+                        " > " +
+                        _vm._s(props.item.Sub_Task) +
+                        "\n          "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-xs-center" }, [
+                    _vm._v(_vm._s(props.item.Datetime_Request))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-xs-center" }, [
+                    _vm._v(_vm._s(props.item.Status))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "text-xs-center" },
+                    [
+                      props.item.Verifikasi == "Verified"
+                        ? _c(
+                            "v-btn",
+                            {
+                              staticStyle: {
+                                "text-transform": "none !important"
+                              },
+                              attrs: {
+                                depressed: "",
+                                small: "",
+                                color: "success",
+                                dark: "",
+                                disabled: _vm.Access("M-JobAccess-U") != true
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.Unverified(props.item)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                Verified\n              "
+                              )
+                            ]
+                          )
+                        : _c(
+                            "v-btn",
+                            {
+                              staticStyle: {
+                                "text-transform": "none !important"
+                              },
+                              attrs: {
+                                depressed: "",
+                                small: "",
+                                color: "error",
+                                dark: "",
+                                disabled: _vm.Access("M-JobAccess-U") != true
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.Verified(props.item)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                Unverified\n              "
+                              )
+                            ]
+                          )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "justify-center layout px-0" },
+                    [
+                      _vm.Access("M-JobAccess-D") == true
+                        ? _c(
+                            "v-icon",
+                            {
+                              attrs: { small: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteItem(props.item)
+                                }
+                              }
+                            },
+                            [_vm._v("\n              delete\n          ")]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ]
+              }
+            }
+          ])
+        },
+        [
+          _vm._v(" "),
+          _c("v-alert", {
+            attrs: { value: true, color: "error", icon: "warning" },
+            scopedSlots: _vm._u([
+              {
+                key: "no-results",
+                fn: function() {
+                  return [
+                    _vm._v(
+                      '\n          Your search for "' +
+                        _vm._s(_vm.search) +
+                        '" found no results.\n      '
+                    )
+                  ]
+                },
+                proxy: true
+              }
+            ])
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm.alert.type
+        ? _c(
+            "v-snackbar",
+            {
+              attrs: {
+                right: "",
+                bottom: "",
+                color: _vm.alert.type,
+                value: "true"
+              }
+            },
+            [
+              _c("v-icon", [_vm._v(_vm._s(_vm.alert.icon))]),
+              _vm._v(_vm._s(_vm.alert.message) + "\n    ")
+            ],
+            1
+          )
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDesk.vue?vue&type=template&id=6d28265b&":
 /*!**********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/JobDesk.vue?vue&type=template&id=6d28265b& ***!
@@ -13930,6 +15246,21 @@ var render = function() {
                                         }
                                       },
                                       [_vm._v("Detail")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: { small: "" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.editProjectDialog(
+                                              project
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Edit")]
                                     )
                                   ],
                                   1
@@ -14123,11 +15454,11 @@ var render = function() {
                                             {
                                               staticClass: "caption grey--text"
                                             },
-                                            [_vm._v(_vm._s(subtask.Division))]
+                                            [_vm._v(_vm._s(subtask.Divisi))]
                                           ),
                                           _vm._v(" "),
                                           _c("div", [
-                                            _vm._v(_vm._s(subtask.Sub_Division))
+                                            _vm._v(_vm._s(subtask.Sub_Divisi))
                                           ])
                                         ]
                                       ),
@@ -14304,10 +15635,10 @@ var render = function() {
                           _vm._v(" "),
                           _c("v-spacer"),
                           _vm._v(" "),
-                          _vm.editTask.Status != "untake"
+                          _vm.editTask.User != ""
                             ? _c("span", [
                                 _vm._v(
-                                  "Taken By : " + _vm._s(_vm.editTask.User)
+                                  "Last Taken By : " + _vm._s(_vm.editTask.User)
                                 )
                               ])
                             : _vm._e()
@@ -14318,7 +15649,13 @@ var render = function() {
                       _c("v-divider"),
                       _vm._v(" "),
                       _c("span", { staticClass: "ml-4" }, [
-                        _vm._v("Desain Arsi > Desain > Konsep")
+                        _vm._v(
+                          _vm._s(_vm.editTask.Divisi) +
+                            " > " +
+                            _vm._s(_vm.editTask.Sub_Divisi) +
+                            " > " +
+                            _vm._s(_vm.editTask.Task)
+                        )
                       ]),
                       _vm._v(" "),
                       _c(
@@ -14573,7 +15910,10 @@ var render = function() {
                                           outlined: "",
                                           "show-size": 1000,
                                           disabled:
-                                            _vm.editTask.Status == "untake"
+                                            _vm.editTask.Status_Akses ==
+                                              "Locked" ||
+                                            _vm.editTask.Status_Akses ==
+                                              "Request Download"
                                         },
                                         on: { click: _vm.pickFile },
                                         scopedSlots: _vm._u([
@@ -14659,204 +15999,215 @@ var render = function() {
                                           _vm._v(" "),
                                           _c("v-divider"),
                                           _vm._v(" "),
-                                          _vm._l(_vm.log_pengerjaan, function(
-                                            item
-                                          ) {
-                                            return _c(
-                                              "v-list-tile",
-                                              {
-                                                key: item.id,
-                                                attrs: { avatar: "" }
-                                              },
-                                              [
-                                                _c(
-                                                  "v-list-tile-avatar",
-                                                  [
-                                                    _c("v-icon", [
-                                                      _vm._v("folder")
-                                                    ])
-                                                  ],
-                                                  1
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "v-list-tile-content",
-                                                  [
-                                                    _c(
-                                                      "v-layout",
-                                                      {
-                                                        staticStyle: {
-                                                          width: "100%"
+                                          _vm._l(
+                                            _vm.editTask.Log_Pengerjaan,
+                                            function(item) {
+                                              return _c(
+                                                "v-list-tile",
+                                                {
+                                                  key: item.Id_Log_Pengerjaan,
+                                                  attrs: { avatar: "" }
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-list-tile-avatar",
+                                                    [
+                                                      _c("v-icon", [
+                                                        _vm._v("folder")
+                                                      ])
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-list-tile-content",
+                                                    [
+                                                      _c(
+                                                        "v-layout",
+                                                        {
+                                                          staticStyle: {
+                                                            width: "100%"
+                                                          },
+                                                          attrs: { row: "" }
                                                         },
-                                                        attrs: { row: "" }
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "v-flex",
-                                                          {
-                                                            attrs: { xs6: "" }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "caption grey--text"
-                                                              },
-                                                              [
+                                                        [
+                                                          _c(
+                                                            "v-flex",
+                                                            {
+                                                              attrs: { xs6: "" }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "caption grey--text"
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "File Name"
+                                                                  )
+                                                                ]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c("div", [
                                                                 _vm._v(
-                                                                  "File Name"
+                                                                  _vm._s(
+                                                                    item.Berkas.split(
+                                                                      "/"
+                                                                    )[3]
+                                                                  )
                                                                 )
-                                                              ]
-                                                            ),
-                                                            _vm._v(" "),
-                                                            _c("div", [
-                                                              _vm._v(
-                                                                _vm._s(
-                                                                  item.fileName
-                                                                )
-                                                              )
-                                                            ])
-                                                          ]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "v-flex",
-                                                          {
-                                                            attrs: { xs6: "" }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "caption grey--text"
-                                                              },
-                                                              [_vm._v("Date")]
-                                                            ),
-                                                            _vm._v(" "),
-                                                            _c("div", [
-                                                              _vm._v(
-                                                                _vm._s(
-                                                                  item.date
-                                                                )
-                                                              )
-                                                            ])
-                                                          ]
-                                                        )
-                                                      ],
-                                                      1
-                                                    )
-                                                  ],
-                                                  1
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "v-list-tile-action",
-                                                  [
-                                                    _c(
-                                                      "v-layout",
-                                                      { attrs: { row: "" } },
-                                                      [
-                                                        _c(
-                                                          "v-flex",
-                                                          {
-                                                            attrs: { xs6: "" }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "v-btn",
-                                                              {
-                                                                attrs: {
-                                                                  icon: "",
-                                                                  ripple: ""
+                                                              ])
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-flex",
+                                                            {
+                                                              attrs: { xs6: "" }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "caption grey--text"
                                                                 },
-                                                                on: {
-                                                                  click: function(
-                                                                    $event
-                                                                  ) {
-                                                                    return _vm.downloadWithVueResource(
-                                                                      item
-                                                                    )
-                                                                  }
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "v-icon",
-                                                                  {
-                                                                    attrs: {
-                                                                      color:
-                                                                        "grey lighten-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _vm._v(
-                                                                      "cloud_download"
-                                                                    )
-                                                                  ]
+                                                                [_vm._v("Date")]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c("div", [
+                                                                _vm._v(
+                                                                  _vm._s(
+                                                                    item.Waktu_Selesai.split(
+                                                                      " "
+                                                                    )[0]
+                                                                  )
                                                                 )
-                                                              ],
-                                                              1
-                                                            )
-                                                          ],
-                                                          1
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "v-flex",
-                                                          {
-                                                            attrs: { xs6: "" }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "v-btn",
-                                                              {
-                                                                attrs: {
-                                                                  icon: "",
-                                                                  ripple: ""
+                                                              ])
+                                                            ]
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-list-tile-action",
+                                                    [
+                                                      _c(
+                                                        "v-layout",
+                                                        { attrs: { row: "" } },
+                                                        [
+                                                          _c(
+                                                            "v-flex",
+                                                            {
+                                                              attrs: { xs6: "" }
+                                                            },
+                                                            [
+                                                              _vm.editTask
+                                                                .Status_Akses !=
+                                                              "Locked"
+                                                                ? _c(
+                                                                    "v-btn",
+                                                                    {
+                                                                      attrs: {
+                                                                        icon:
+                                                                          "",
+                                                                        ripple:
+                                                                          ""
+                                                                      },
+                                                                      on: {
+                                                                        click: function(
+                                                                          $event
+                                                                        ) {
+                                                                          return _vm.downloadIt(
+                                                                            item
+                                                                          )
+                                                                        }
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "v-icon",
+                                                                        {
+                                                                          attrs: {
+                                                                            color:
+                                                                              "grey lighten-1"
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            "cloud_download"
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    ],
+                                                                    1
+                                                                  )
+                                                                : _vm._e()
+                                                            ],
+                                                            1
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-flex",
+                                                            {
+                                                              attrs: { xs6: "" }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "v-btn",
+                                                                {
+                                                                  attrs: {
+                                                                    icon: "",
+                                                                    ripple: ""
+                                                                  },
+                                                                  on: {
+                                                                    click: function(
+                                                                      $event
+                                                                    ) {
+                                                                      _vm.noteDialog = !_vm.noteDialog
+                                                                      _vm.noteText =
+                                                                        item.Catatan
+                                                                    }
+                                                                  }
                                                                 },
-                                                                on: {
-                                                                  click: function(
-                                                                    $event
-                                                                  ) {
-                                                                    _vm.noteDialog = !_vm.noteDialog
-                                                                    _vm.noteText =
-                                                                      item.note
-                                                                  }
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "v-icon",
-                                                                  {
-                                                                    attrs: {
-                                                                      color:
-                                                                        "grey lighten-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _vm._v(
-                                                                      "message"
-                                                                    )
-                                                                  ]
-                                                                )
-                                                              ],
-                                                              1
-                                                            )
-                                                          ],
-                                                          1
-                                                        )
-                                                      ],
-                                                      1
-                                                    )
-                                                  ],
-                                                  1
-                                                )
-                                              ],
-                                              1
-                                            )
-                                          })
+                                                                [
+                                                                  _c(
+                                                                    "v-icon",
+                                                                    {
+                                                                      attrs: {
+                                                                        color:
+                                                                          "grey lighten-1"
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _vm._v(
+                                                                        "message"
+                                                                      )
+                                                                    ]
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            }
+                                          )
                                         ],
                                         2
                                       )
@@ -14880,6 +16231,12 @@ var render = function() {
                       _c(
                         "v-card-actions",
                         [
+                          _c("span", [
+                            _vm._v(
+                              " Status : " + _vm._s(_vm.editTask.Status_Akses)
+                            )
+                          ]),
+                          _vm._v(" "),
                           _c("v-spacer"),
                           _vm._v(" "),
                           _c(
@@ -14895,18 +16252,19 @@ var render = function() {
                             [_vm._v("Close")]
                           ),
                           _vm._v(" "),
-                          _vm.editTask.status == "untake"
+                          _vm.editTask.Status_Akses == "Locked" ||
+                          _vm.editTask.Status_Akses == "Request Download"
                             ? _c(
                                 "v-btn",
                                 {
                                   attrs: { color: "blue darken-1", flat: "" },
                                   on: {
                                     click: function($event) {
-                                      _vm.taskDialog = false
+                                      _vm.requestDialog = true
                                     }
                                   }
                                 },
-                                [_vm._v("Take")]
+                                [_vm._v("Request")]
                               )
                             : _c(
                                 "v-btn",
@@ -14920,6 +16278,98 @@ var render = function() {
                                 },
                                 [_vm._v("Save")]
                               )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { row: "", "justify-center": "" } },
+            [
+              _c(
+                "v-dialog",
+                {
+                  attrs: { persistent: "", "max-width": "300px" },
+                  model: {
+                    value: _vm.requestDialog,
+                    callback: function($$v) {
+                      _vm.requestDialog = $$v
+                    },
+                    expression: "requestDialog"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c("v-card-title", [
+                        _c("span", { staticClass: "headline" }, [
+                          _vm._v("Request Access")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-text",
+                        [
+                          _c("v-select", {
+                            attrs: {
+                              items: _vm.requestAccess,
+                              "item-text": "Nama",
+                              "item-value": "Nama",
+                              box: "",
+                              label: "List Access"
+                            },
+                            model: {
+                              value: _vm.requestAccessForm,
+                              callback: function($$v) {
+                                _vm.requestAccessForm = $$v
+                              },
+                              expression: "requestAccessForm"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "blue darken-1", flat: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.requestDialog = false
+                                }
+                              }
+                            },
+                            [_vm._v("Close")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "blue darken-1", flat: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.sendAccessRequest()
+                                }
+                              }
+                            },
+                            [_vm._v("Send")]
+                          )
                         ],
                         1
                       )
@@ -14967,7 +16417,7 @@ var render = function() {
                               attrs: { icon: "", dark: "" },
                               on: {
                                 click: function($event) {
-                                  _vm.addDialog2 = false
+                                  return _vm.closeAddDialog()
                                 }
                               }
                             },
@@ -15226,18 +16676,18 @@ var render = function() {
                                                                                 value:
                                                                                   _vm
                                                                                     .editProject
-                                                                                    .title,
+                                                                                    .Nama,
                                                                                 callback: function(
                                                                                   $$v
                                                                                 ) {
                                                                                   _vm.$set(
                                                                                     _vm.editProject,
-                                                                                    "title",
+                                                                                    "Nama",
                                                                                     $$v
                                                                                   )
                                                                                 },
                                                                                 expression:
-                                                                                  "editProject.title"
+                                                                                  "editProject.Nama"
                                                                               }
                                                                             }
                                                                           )
@@ -15275,18 +16725,18 @@ var render = function() {
                                                                                 value:
                                                                                   _vm
                                                                                     .editProject
-                                                                                    .value,
+                                                                                    .Nilai,
                                                                                 callback: function(
                                                                                   $$v
                                                                                 ) {
                                                                                   _vm.$set(
                                                                                     _vm.editProject,
-                                                                                    "value",
+                                                                                    "Nilai",
                                                                                     $$v
                                                                                   )
                                                                                 },
                                                                                 expression:
-                                                                                  "editProject.value"
+                                                                                  "editProject.Nilai"
                                                                               }
                                                                             }
                                                                           )
@@ -15322,18 +16772,18 @@ var render = function() {
                                                                                 value:
                                                                                   _vm
                                                                                     .editProject
-                                                                                    .target_outcome,
+                                                                                    .Target_Outcome,
                                                                                 callback: function(
                                                                                   $$v
                                                                                 ) {
                                                                                   _vm.$set(
                                                                                     _vm.editProject,
-                                                                                    "target_outcome",
+                                                                                    "Target_Outcome",
                                                                                     $$v
                                                                                   )
                                                                                 },
                                                                                 expression:
-                                                                                  "editProject.target_outcome"
+                                                                                  "editProject.Target_Outcome"
                                                                               }
                                                                             }
                                                                           )
@@ -15400,18 +16850,18 @@ var render = function() {
                                                                                                 value:
                                                                                                   _vm
                                                                                                     .editProject
-                                                                                                    .start,
+                                                                                                    .Tanggal_Mulai,
                                                                                                 callback: function(
                                                                                                   $$v
                                                                                                 ) {
                                                                                                   _vm.$set(
                                                                                                     _vm.editProject,
-                                                                                                    "start",
+                                                                                                    "Tanggal_Mulai",
                                                                                                     $$v
                                                                                                   )
                                                                                                 },
                                                                                                 expression:
-                                                                                                  "editProject.start"
+                                                                                                  "editProject.Tanggal_Mulai"
                                                                                               }
                                                                                             },
                                                                                             on
@@ -15452,18 +16902,18 @@ var render = function() {
                                                                                     value:
                                                                                       _vm
                                                                                         .editProject
-                                                                                        .start,
+                                                                                        .Tanggal_Mulai,
                                                                                     callback: function(
                                                                                       $$v
                                                                                     ) {
                                                                                       _vm.$set(
                                                                                         _vm.editProject,
-                                                                                        "start",
+                                                                                        "Tanggal_Mulai",
                                                                                         $$v
                                                                                       )
                                                                                     },
                                                                                     expression:
-                                                                                      "editProject.start"
+                                                                                      "editProject.Tanggal_Mulai"
                                                                                   }
                                                                                 }
                                                                               )
@@ -15531,18 +16981,18 @@ var render = function() {
                                                                                                 value:
                                                                                                   _vm
                                                                                                     .editProject
-                                                                                                    .due,
+                                                                                                    .Tanggal_Selesai,
                                                                                                 callback: function(
                                                                                                   $$v
                                                                                                 ) {
                                                                                                   _vm.$set(
                                                                                                     _vm.editProject,
-                                                                                                    "due",
+                                                                                                    "Tanggal_Selesai",
                                                                                                     $$v
                                                                                                   )
                                                                                                 },
                                                                                                 expression:
-                                                                                                  "editProject.due"
+                                                                                                  "editProject.Tanggal_Selesai"
                                                                                               }
                                                                                             },
                                                                                             on
@@ -15583,18 +17033,18 @@ var render = function() {
                                                                                     value:
                                                                                       _vm
                                                                                         .editProject
-                                                                                        .due,
+                                                                                        .Tanggal_Selesai,
                                                                                     callback: function(
                                                                                       $$v
                                                                                     ) {
                                                                                       _vm.$set(
                                                                                         _vm.editProject,
-                                                                                        "due",
+                                                                                        "Tanggal_Selesai",
                                                                                         $$v
                                                                                       )
                                                                                     },
                                                                                     expression:
-                                                                                      "editProject.due"
+                                                                                      "editProject.Tanggal_Selesai"
                                                                                   }
                                                                                 }
                                                                               )
@@ -15631,18 +17081,18 @@ var render = function() {
                                                                                 value:
                                                                                   _vm
                                                                                     .editProject
-                                                                                    .note,
+                                                                                    .Catatan,
                                                                                 callback: function(
                                                                                   $$v
                                                                                 ) {
                                                                                   _vm.$set(
                                                                                     _vm.editProject,
-                                                                                    "note",
+                                                                                    "Catatan",
                                                                                     $$v
                                                                                   )
                                                                                 },
                                                                                 expression:
-                                                                                  "editProject.note"
+                                                                                  "editProject.Catatan"
                                                                               }
                                                                             }
                                                                           )
@@ -15758,18 +17208,18 @@ var render = function() {
                                                                             value:
                                                                               _vm
                                                                                 .divform
-                                                                                .name,
+                                                                                .Nama,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.divform,
-                                                                                "name",
+                                                                                "Nama",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "divform.name"
+                                                                              "divform.Nama"
                                                                           }
                                                                         }
                                                                       ),
@@ -15791,18 +17241,18 @@ var render = function() {
                                                                             value:
                                                                               _vm
                                                                                 .divform
-                                                                                .contribute,
+                                                                                .Persentase,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.divform,
-                                                                                "contribute",
+                                                                                "Persentase",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "divform.contribute"
+                                                                              "divform.Persentase"
                                                                           }
                                                                         }
                                                                       ),
@@ -15810,34 +17260,120 @@ var render = function() {
                                                                         " "
                                                                       ),
                                                                       _c(
-                                                                        "v-text-field",
+                                                                        "v-menu",
                                                                         {
-                                                                          staticClass:
-                                                                            "mx-1",
                                                                           attrs: {
-                                                                            label:
-                                                                              "Target Date",
-                                                                            box:
+                                                                            "close-on-content-click": false,
+                                                                            "nudge-right": 40,
+                                                                            transition:
+                                                                              "scale-transition",
+                                                                            "offset-y":
+                                                                              "",
+                                                                            "full-width":
+                                                                              "",
+                                                                            "min-width":
+                                                                              "290px",
+                                                                            readonly:
                                                                               ""
                                                                           },
+                                                                          scopedSlots: _vm._u(
+                                                                            [
+                                                                              {
+                                                                                key:
+                                                                                  "activator",
+                                                                                fn: function(
+                                                                                  ref
+                                                                                ) {
+                                                                                  var on =
+                                                                                    ref.on
+                                                                                  return [
+                                                                                    _c(
+                                                                                      "v-text-field",
+                                                                                      _vm._g(
+                                                                                        {
+                                                                                          staticClass:
+                                                                                            "mx-1",
+                                                                                          attrs: {
+                                                                                            label:
+                                                                                              "Target Date",
+                                                                                            box:
+                                                                                              "",
+                                                                                            readonly:
+                                                                                              ""
+                                                                                          },
+                                                                                          model: {
+                                                                                            value:
+                                                                                              _vm
+                                                                                                .divform
+                                                                                                .Tanggal_Selesai,
+                                                                                            callback: function(
+                                                                                              $$v
+                                                                                            ) {
+                                                                                              _vm.$set(
+                                                                                                _vm.divform,
+                                                                                                "Tanggal_Selesai",
+                                                                                                $$v
+                                                                                              )
+                                                                                            },
+                                                                                            expression:
+                                                                                              "divform.Tanggal_Selesai"
+                                                                                          }
+                                                                                        },
+                                                                                        on
+                                                                                      )
+                                                                                    )
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            ]
+                                                                          ),
                                                                           model: {
                                                                             value:
-                                                                              _vm
-                                                                                .divform
-                                                                                .due_date,
+                                                                              _vm.dateDiv1,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
-                                                                              _vm.$set(
-                                                                                _vm.divform,
-                                                                                "due_date",
-                                                                                $$v
-                                                                              )
+                                                                              _vm.dateDiv1 = $$v
                                                                             },
                                                                             expression:
-                                                                              "divform.due_date"
+                                                                              "dateDiv1"
                                                                           }
-                                                                        }
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "v-date-picker",
+                                                                            {
+                                                                              on: {
+                                                                                input: function(
+                                                                                  $event
+                                                                                ) {
+                                                                                  _vm.dateDiv1 = false
+                                                                                }
+                                                                              },
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm
+                                                                                    .divform
+                                                                                    .Tanggal_Selesai,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.$set(
+                                                                                    _vm.divform,
+                                                                                    "Tanggal_Selesai",
+                                                                                    $$v
+                                                                                  )
+                                                                                },
+                                                                                expression:
+                                                                                  "divform.Tanggal_Selesai"
+                                                                              }
+                                                                            }
+                                                                          )
+                                                                        ],
+                                                                        1
                                                                       ),
                                                                       _vm._v(
                                                                         " "
@@ -15888,7 +17424,7 @@ var render = function() {
                                                                         items:
                                                                           _vm
                                                                             .editProject
-                                                                            .ad_division
+                                                                            .All_Divisi
                                                                       },
                                                                       scopedSlots: _vm._u(
                                                                         [
@@ -15909,7 +17445,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .name,
+                                                                                              .Nama,
                                                                                           lazy:
                                                                                             "",
                                                                                           large:
@@ -15923,7 +17459,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "name",
+                                                                                              "Nama",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -15932,7 +17468,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "name",
+                                                                                              "Nama",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -15959,18 +17495,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .name,
+                                                                                                            .Nama,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "name",
+                                                                                                            "Nama",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.name"
+                                                                                                          "props.item.Nama"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -15989,7 +17525,7 @@ var render = function() {
                                                                                             _vm._s(
                                                                                               props
                                                                                                 .item
-                                                                                                .name
+                                                                                                .Nama
                                                                                             ) +
                                                                                             "\n                                                                    "
                                                                                         )
@@ -16015,7 +17551,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .contribute,
+                                                                                              .Persentase,
                                                                                           large:
                                                                                             "",
                                                                                           lazy:
@@ -16029,7 +17565,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "contribute",
+                                                                                              "Persentase",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -16038,7 +17574,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "contribute",
+                                                                                              "Persentase",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -16067,18 +17603,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .contribute,
+                                                                                                            .Persentase,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "contribute",
+                                                                                                            "Persentase",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.contribute"
+                                                                                                          "props.item.Persentase"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -16099,7 +17635,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .contribute
+                                                                                                  .Persentase
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -16126,7 +17662,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .due_date,
+                                                                                              .Tanggal_Selesai,
                                                                                           large:
                                                                                             "",
                                                                                           lazy:
@@ -16140,7 +17676,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "due_date",
+                                                                                              "Tanggal_Selesai",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -16149,7 +17685,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "due_date",
+                                                                                              "Tanggal_Selesai",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -16162,36 +17698,122 @@ var render = function() {
                                                                                               fn: function() {
                                                                                                 return [
                                                                                                   _c(
-                                                                                                    "v-text-field",
+                                                                                                    "v-menu",
                                                                                                     {
                                                                                                       attrs: {
-                                                                                                        label:
-                                                                                                          "Edit",
-                                                                                                        "single-line":
+                                                                                                        "close-on-content-click": false,
+                                                                                                        "nudge-right": 40,
+                                                                                                        transition:
+                                                                                                          "scale-transition",
+                                                                                                        "offset-y":
                                                                                                           "",
-                                                                                                        counter:
+                                                                                                        "full-width":
                                                                                                           "",
-                                                                                                        autofocus:
+                                                                                                        "min-width":
+                                                                                                          "290px",
+                                                                                                        readonly:
                                                                                                           ""
                                                                                                       },
+                                                                                                      scopedSlots: _vm._u(
+                                                                                                        [
+                                                                                                          {
+                                                                                                            key:
+                                                                                                              "activator",
+                                                                                                            fn: function(
+                                                                                                              ref
+                                                                                                            ) {
+                                                                                                              var on =
+                                                                                                                ref.on
+                                                                                                              return [
+                                                                                                                _c(
+                                                                                                                  "v-text-field",
+                                                                                                                  _vm._g(
+                                                                                                                    {
+                                                                                                                      staticClass:
+                                                                                                                        "mx-1",
+                                                                                                                      attrs: {
+                                                                                                                        label:
+                                                                                                                          "Target Date",
+                                                                                                                        box:
+                                                                                                                          "",
+                                                                                                                        readonly:
+                                                                                                                          ""
+                                                                                                                      },
+                                                                                                                      model: {
+                                                                                                                        value:
+                                                                                                                          props
+                                                                                                                            .item
+                                                                                                                            .Tanggal_Selesai,
+                                                                                                                        callback: function(
+                                                                                                                          $$v
+                                                                                                                        ) {
+                                                                                                                          _vm.$set(
+                                                                                                                            props.item,
+                                                                                                                            "Tanggal_Selesai",
+                                                                                                                            $$v
+                                                                                                                          )
+                                                                                                                        },
+                                                                                                                        expression:
+                                                                                                                          "props.item.Tanggal_Selesai"
+                                                                                                                      }
+                                                                                                                    },
+                                                                                                                    on
+                                                                                                                  )
+                                                                                                                )
+                                                                                                              ]
+                                                                                                            }
+                                                                                                          }
+                                                                                                        ],
+                                                                                                        null,
+                                                                                                        true
+                                                                                                      ),
                                                                                                       model: {
                                                                                                         value:
-                                                                                                          props
-                                                                                                            .item
-                                                                                                            .due_date,
+                                                                                                          _vm.dateDiv2,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
-                                                                                                          _vm.$set(
-                                                                                                            props.item,
-                                                                                                            "due_date",
-                                                                                                            $$v
-                                                                                                          )
+                                                                                                          _vm.dateDiv2 = $$v
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.due_date"
+                                                                                                          "dateDiv2"
                                                                                                       }
-                                                                                                    }
+                                                                                                    },
+                                                                                                    [
+                                                                                                      _vm._v(
+                                                                                                        " "
+                                                                                                      ),
+                                                                                                      _c(
+                                                                                                        "v-date-picker",
+                                                                                                        {
+                                                                                                          on: {
+                                                                                                            input: function(
+                                                                                                              $event
+                                                                                                            ) {
+                                                                                                              _vm.dateDiv2 = false
+                                                                                                            }
+                                                                                                          },
+                                                                                                          model: {
+                                                                                                            value:
+                                                                                                              props
+                                                                                                                .item
+                                                                                                                .Tanggal_Selesai,
+                                                                                                            callback: function(
+                                                                                                              $$v
+                                                                                                            ) {
+                                                                                                              _vm.$set(
+                                                                                                                props.item,
+                                                                                                                "Tanggal_Selesai",
+                                                                                                                $$v
+                                                                                                              )
+                                                                                                            },
+                                                                                                            expression:
+                                                                                                              "props.item.Tanggal_Selesai"
+                                                                                                          }
+                                                                                                        }
+                                                                                                      )
+                                                                                                    ],
+                                                                                                    1
                                                                                                   )
                                                                                                 ]
                                                                                               },
@@ -16210,7 +17832,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .due_date
+                                                                                                  .Tanggal_Selesai
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -16361,11 +17983,11 @@ var render = function() {
                                                                             items:
                                                                               _vm
                                                                                 .editProject
-                                                                                .ad_division,
+                                                                                .All_Divisi,
                                                                             "item-text":
-                                                                              "name",
+                                                                              "Nama",
                                                                             "item-value":
-                                                                              "name",
+                                                                              "Nama",
                                                                             box:
                                                                               "",
                                                                             label:
@@ -16375,18 +17997,18 @@ var render = function() {
                                                                             value:
                                                                               _vm
                                                                                 .subdivform
-                                                                                .division,
+                                                                                .Divisi,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.subdivform,
-                                                                                "division",
+                                                                                "Divisi",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "subdivform.division"
+                                                                              "subdivform.Divisi"
                                                                           }
                                                                         }
                                                                       ),
@@ -16408,18 +18030,18 @@ var render = function() {
                                                                             value:
                                                                               _vm
                                                                                 .subdivform
-                                                                                .name,
+                                                                                .Nama,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.subdivform,
-                                                                                "name",
+                                                                                "Nama",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "subdivform.name"
+                                                                              "subdivform.Nama"
                                                                           }
                                                                         }
                                                                       ),
@@ -16441,18 +18063,18 @@ var render = function() {
                                                                             value:
                                                                               _vm
                                                                                 .subdivform
-                                                                                .contribute,
+                                                                                .Persentase,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.subdivform,
-                                                                                "contribute",
+                                                                                "Persentase",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "subdivform.contribute"
+                                                                              "subdivform.Persentase"
                                                                           }
                                                                         }
                                                                       ),
@@ -16460,34 +18082,120 @@ var render = function() {
                                                                         " "
                                                                       ),
                                                                       _c(
-                                                                        "v-text-field",
+                                                                        "v-menu",
                                                                         {
-                                                                          staticClass:
-                                                                            "mx-1",
                                                                           attrs: {
-                                                                            label:
-                                                                              "Target Date",
-                                                                            box:
+                                                                            "close-on-content-click": false,
+                                                                            "nudge-right": 40,
+                                                                            transition:
+                                                                              "scale-transition",
+                                                                            "offset-y":
+                                                                              "",
+                                                                            "full-width":
+                                                                              "",
+                                                                            "min-width":
+                                                                              "290px",
+                                                                            readonly:
                                                                               ""
                                                                           },
+                                                                          scopedSlots: _vm._u(
+                                                                            [
+                                                                              {
+                                                                                key:
+                                                                                  "activator",
+                                                                                fn: function(
+                                                                                  ref
+                                                                                ) {
+                                                                                  var on =
+                                                                                    ref.on
+                                                                                  return [
+                                                                                    _c(
+                                                                                      "v-text-field",
+                                                                                      _vm._g(
+                                                                                        {
+                                                                                          staticClass:
+                                                                                            "mx-1",
+                                                                                          attrs: {
+                                                                                            label:
+                                                                                              "Target Date",
+                                                                                            box:
+                                                                                              "",
+                                                                                            readonly:
+                                                                                              ""
+                                                                                          },
+                                                                                          model: {
+                                                                                            value:
+                                                                                              _vm
+                                                                                                .subdivform
+                                                                                                .Tanggal_Selesai,
+                                                                                            callback: function(
+                                                                                              $$v
+                                                                                            ) {
+                                                                                              _vm.$set(
+                                                                                                _vm.subdivform,
+                                                                                                "Tanggal_Selesai",
+                                                                                                $$v
+                                                                                              )
+                                                                                            },
+                                                                                            expression:
+                                                                                              "subdivform.Tanggal_Selesai"
+                                                                                          }
+                                                                                        },
+                                                                                        on
+                                                                                      )
+                                                                                    )
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            ]
+                                                                          ),
                                                                           model: {
                                                                             value:
-                                                                              _vm
-                                                                                .subdivform
-                                                                                .due_date,
+                                                                              _vm.dateSubDiv1,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
-                                                                              _vm.$set(
-                                                                                _vm.subdivform,
-                                                                                "due_date",
-                                                                                $$v
-                                                                              )
+                                                                              _vm.dateSubDiv1 = $$v
                                                                             },
                                                                             expression:
-                                                                              "subdivform.due_date"
+                                                                              "dateSubDiv1"
                                                                           }
-                                                                        }
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "v-date-picker",
+                                                                            {
+                                                                              on: {
+                                                                                input: function(
+                                                                                  $event
+                                                                                ) {
+                                                                                  _vm.dateSubDiv1 = false
+                                                                                }
+                                                                              },
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm
+                                                                                    .subdivform
+                                                                                    .Tanggal_Selesai,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.$set(
+                                                                                    _vm.subdivform,
+                                                                                    "Tanggal_Selesai",
+                                                                                    $$v
+                                                                                  )
+                                                                                },
+                                                                                expression:
+                                                                                  "subdivform.Tanggal_Selesai"
+                                                                              }
+                                                                            }
+                                                                          )
+                                                                        ],
+                                                                        1
                                                                       ),
                                                                       _vm._v(
                                                                         " "
@@ -16538,7 +18246,7 @@ var render = function() {
                                                                         items:
                                                                           _vm
                                                                             .editProject
-                                                                            .ad_subdivision
+                                                                            .All_SubDivisi
                                                                       },
                                                                       scopedSlots: _vm._u(
                                                                         [
@@ -16559,7 +18267,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .division,
+                                                                                              .Divisi,
                                                                                           lazy:
                                                                                             "",
                                                                                           large:
@@ -16573,7 +18281,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "division",
+                                                                                              "Divisi",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -16582,7 +18290,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "division",
+                                                                                              "Divisi",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -16601,11 +18309,11 @@ var render = function() {
                                                                                                         items:
                                                                                                           _vm
                                                                                                             .editProject
-                                                                                                            .ad_division,
+                                                                                                            .All_Divisi,
                                                                                                         "item-text":
-                                                                                                          "name",
+                                                                                                          "Nama",
                                                                                                         "item-value":
-                                                                                                          "name",
+                                                                                                          "Nama",
                                                                                                         box:
                                                                                                           "",
                                                                                                         label:
@@ -16615,18 +18323,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .division,
+                                                                                                            .Divisi,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "division",
+                                                                                                            "Divisi",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.division"
+                                                                                                          "props.item.Divisi"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -16647,7 +18355,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .division
+                                                                                                  .Divisi
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -16670,7 +18378,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .name,
+                                                                                              .Nama,
                                                                                           lazy:
                                                                                             "",
                                                                                           large:
@@ -16684,7 +18392,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "name",
+                                                                                              "Nama",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -16693,7 +18401,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "name",
+                                                                                              "Nama",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -16720,18 +18428,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .name,
+                                                                                                            .Nama,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "name",
+                                                                                                            "Nama",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.name"
+                                                                                                          "props.item.Nama"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -16752,7 +18460,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .name
+                                                                                                  .Nama
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -16779,7 +18487,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .contribute,
+                                                                                              .Persentase,
                                                                                           large:
                                                                                             "",
                                                                                           lazy:
@@ -16793,7 +18501,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "contribute",
+                                                                                              "Persentase",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -16802,7 +18510,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "contribute",
+                                                                                              "Persentase",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -16831,18 +18539,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .contribute,
+                                                                                                            .Persentase,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "contribute",
+                                                                                                            "Persentase",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.contribute"
+                                                                                                          "props.item.Persentase"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -16863,7 +18571,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .contribute
+                                                                                                  .Persentase
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -16890,7 +18598,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .due_date,
+                                                                                              .Tanggal_Selesai,
                                                                                           large:
                                                                                             "",
                                                                                           lazy:
@@ -16904,7 +18612,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "due_date",
+                                                                                              "Tanggal_Selesai",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -16913,7 +18621,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "due_date",
+                                                                                              "Tanggal_Selesai",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -16926,36 +18634,122 @@ var render = function() {
                                                                                               fn: function() {
                                                                                                 return [
                                                                                                   _c(
-                                                                                                    "v-text-field",
+                                                                                                    "v-menu",
                                                                                                     {
                                                                                                       attrs: {
-                                                                                                        label:
-                                                                                                          "Edit",
-                                                                                                        "single-line":
+                                                                                                        "close-on-content-click": false,
+                                                                                                        "nudge-right": 40,
+                                                                                                        transition:
+                                                                                                          "scale-transition",
+                                                                                                        "offset-y":
                                                                                                           "",
-                                                                                                        counter:
+                                                                                                        "full-width":
                                                                                                           "",
-                                                                                                        autofocus:
+                                                                                                        "min-width":
+                                                                                                          "290px",
+                                                                                                        readonly:
                                                                                                           ""
                                                                                                       },
+                                                                                                      scopedSlots: _vm._u(
+                                                                                                        [
+                                                                                                          {
+                                                                                                            key:
+                                                                                                              "activator",
+                                                                                                            fn: function(
+                                                                                                              ref
+                                                                                                            ) {
+                                                                                                              var on =
+                                                                                                                ref.on
+                                                                                                              return [
+                                                                                                                _c(
+                                                                                                                  "v-text-field",
+                                                                                                                  _vm._g(
+                                                                                                                    {
+                                                                                                                      staticClass:
+                                                                                                                        "mx-1",
+                                                                                                                      attrs: {
+                                                                                                                        label:
+                                                                                                                          "Target Date",
+                                                                                                                        box:
+                                                                                                                          "",
+                                                                                                                        readonly:
+                                                                                                                          ""
+                                                                                                                      },
+                                                                                                                      model: {
+                                                                                                                        value:
+                                                                                                                          props
+                                                                                                                            .item
+                                                                                                                            .Tanggal_Selesai,
+                                                                                                                        callback: function(
+                                                                                                                          $$v
+                                                                                                                        ) {
+                                                                                                                          _vm.$set(
+                                                                                                                            props.item,
+                                                                                                                            "Tanggal_Selesai",
+                                                                                                                            $$v
+                                                                                                                          )
+                                                                                                                        },
+                                                                                                                        expression:
+                                                                                                                          "props.item.Tanggal_Selesai"
+                                                                                                                      }
+                                                                                                                    },
+                                                                                                                    on
+                                                                                                                  )
+                                                                                                                )
+                                                                                                              ]
+                                                                                                            }
+                                                                                                          }
+                                                                                                        ],
+                                                                                                        null,
+                                                                                                        true
+                                                                                                      ),
                                                                                                       model: {
                                                                                                         value:
-                                                                                                          props
-                                                                                                            .item
-                                                                                                            .due_date,
+                                                                                                          _vm.dateSubDiv2,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
-                                                                                                          _vm.$set(
-                                                                                                            props.item,
-                                                                                                            "due_date",
-                                                                                                            $$v
-                                                                                                          )
+                                                                                                          _vm.dateSubDiv2 = $$v
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.due_date"
+                                                                                                          "dateSubDiv2"
                                                                                                       }
-                                                                                                    }
+                                                                                                    },
+                                                                                                    [
+                                                                                                      _vm._v(
+                                                                                                        " "
+                                                                                                      ),
+                                                                                                      _c(
+                                                                                                        "v-date-picker",
+                                                                                                        {
+                                                                                                          on: {
+                                                                                                            input: function(
+                                                                                                              $event
+                                                                                                            ) {
+                                                                                                              _vm.dateSubDiv2 = false
+                                                                                                            }
+                                                                                                          },
+                                                                                                          model: {
+                                                                                                            value:
+                                                                                                              props
+                                                                                                                .item
+                                                                                                                .Tanggal_Selesai,
+                                                                                                            callback: function(
+                                                                                                              $$v
+                                                                                                            ) {
+                                                                                                              _vm.$set(
+                                                                                                                props.item,
+                                                                                                                "Tanggal_Selesai",
+                                                                                                                $$v
+                                                                                                              )
+                                                                                                            },
+                                                                                                            expression:
+                                                                                                              "props.item.Tanggal_Selesai"
+                                                                                                          }
+                                                                                                        }
+                                                                                                      )
+                                                                                                    ],
+                                                                                                    1
                                                                                                   )
                                                                                                 ]
                                                                                               },
@@ -16974,7 +18768,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .due_date
+                                                                                                  .Tanggal_Selesai
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -17121,11 +18915,11 @@ var render = function() {
                                                                             items:
                                                                               _vm
                                                                                 .editProject
-                                                                                .ad_subdivision,
+                                                                                .All_SubDivisi,
                                                                             "item-text":
-                                                                              "name",
+                                                                              "Nama",
                                                                             "item-value":
-                                                                              "name",
+                                                                              "Nama",
                                                                             box:
                                                                               "",
                                                                             label:
@@ -17135,18 +18929,18 @@ var render = function() {
                                                                             value:
                                                                               _vm
                                                                                 .taskform
-                                                                                .subdivision,
+                                                                                .Sub_Divisi,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.taskform,
-                                                                                "subdivision",
+                                                                                "Sub_Divisi",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "taskform.subdivision"
+                                                                              "taskform.Sub_Divisi"
                                                                           }
                                                                         }
                                                                       ),
@@ -17168,18 +18962,18 @@ var render = function() {
                                                                             value:
                                                                               _vm
                                                                                 .taskform
-                                                                                .name,
+                                                                                .Nama,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.taskform,
-                                                                                "name",
+                                                                                "Nama",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "taskform.name"
+                                                                              "taskform.Nama"
                                                                           }
                                                                         }
                                                                       ),
@@ -17201,18 +18995,18 @@ var render = function() {
                                                                             value:
                                                                               _vm
                                                                                 .taskform
-                                                                                .contribute,
+                                                                                .Persentase,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.taskform,
-                                                                                "contribute",
+                                                                                "Persentase",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "taskform.contribute"
+                                                                              "taskform.Persentase"
                                                                           }
                                                                         }
                                                                       ),
@@ -17220,34 +19014,120 @@ var render = function() {
                                                                         " "
                                                                       ),
                                                                       _c(
-                                                                        "v-text-field",
+                                                                        "v-menu",
                                                                         {
-                                                                          staticClass:
-                                                                            "mx-1",
                                                                           attrs: {
-                                                                            label:
-                                                                              "Target Date",
-                                                                            box:
+                                                                            "close-on-content-click": false,
+                                                                            "nudge-right": 40,
+                                                                            transition:
+                                                                              "scale-transition",
+                                                                            "offset-y":
+                                                                              "",
+                                                                            "full-width":
+                                                                              "",
+                                                                            "min-width":
+                                                                              "290px",
+                                                                            readonly:
                                                                               ""
                                                                           },
+                                                                          scopedSlots: _vm._u(
+                                                                            [
+                                                                              {
+                                                                                key:
+                                                                                  "activator",
+                                                                                fn: function(
+                                                                                  ref
+                                                                                ) {
+                                                                                  var on =
+                                                                                    ref.on
+                                                                                  return [
+                                                                                    _c(
+                                                                                      "v-text-field",
+                                                                                      _vm._g(
+                                                                                        {
+                                                                                          staticClass:
+                                                                                            "mx-1",
+                                                                                          attrs: {
+                                                                                            label:
+                                                                                              "Target Date",
+                                                                                            box:
+                                                                                              "",
+                                                                                            readonly:
+                                                                                              ""
+                                                                                          },
+                                                                                          model: {
+                                                                                            value:
+                                                                                              _vm
+                                                                                                .taskform
+                                                                                                .Tanggal_Selesai,
+                                                                                            callback: function(
+                                                                                              $$v
+                                                                                            ) {
+                                                                                              _vm.$set(
+                                                                                                _vm.taskform,
+                                                                                                "Tanggal_Selesai",
+                                                                                                $$v
+                                                                                              )
+                                                                                            },
+                                                                                            expression:
+                                                                                              "taskform.Tanggal_Selesai"
+                                                                                          }
+                                                                                        },
+                                                                                        on
+                                                                                      )
+                                                                                    )
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            ]
+                                                                          ),
                                                                           model: {
                                                                             value:
-                                                                              _vm
-                                                                                .taskform
-                                                                                .due_date,
+                                                                              _vm.dateTask1,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
-                                                                              _vm.$set(
-                                                                                _vm.taskform,
-                                                                                "due_date",
-                                                                                $$v
-                                                                              )
+                                                                              _vm.dateTask1 = $$v
                                                                             },
                                                                             expression:
-                                                                              "taskform.due_date"
+                                                                              "dateTask1"
                                                                           }
-                                                                        }
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "v-date-picker",
+                                                                            {
+                                                                              on: {
+                                                                                input: function(
+                                                                                  $event
+                                                                                ) {
+                                                                                  _vm.dateTask1 = false
+                                                                                }
+                                                                              },
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm
+                                                                                    .taskform
+                                                                                    .Tanggal_Selesai,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.$set(
+                                                                                    _vm.taskform,
+                                                                                    "Tanggal_Selesai",
+                                                                                    $$v
+                                                                                  )
+                                                                                },
+                                                                                expression:
+                                                                                  "taskform.Tanggal_Selesai"
+                                                                              }
+                                                                            }
+                                                                          )
+                                                                        ],
+                                                                        1
                                                                       ),
                                                                       _vm._v(
                                                                         " "
@@ -17298,7 +19178,7 @@ var render = function() {
                                                                         items:
                                                                           _vm
                                                                             .editProject
-                                                                            .ad_task
+                                                                            .All_Task
                                                                       },
                                                                       scopedSlots: _vm._u(
                                                                         [
@@ -17319,7 +19199,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .subdivision,
+                                                                                              .Sub_Divisi,
                                                                                           lazy:
                                                                                             "",
                                                                                           large:
@@ -17333,7 +19213,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "subdivision",
+                                                                                              "Sub_Divisi",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -17342,7 +19222,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "subdivision",
+                                                                                              "Sub_Divisi",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -17361,11 +19241,11 @@ var render = function() {
                                                                                                         items:
                                                                                                           _vm
                                                                                                             .editProject
-                                                                                                            .ad_subdivision,
+                                                                                                            .ad_Sub_Divisi,
                                                                                                         "item-text":
-                                                                                                          "name",
+                                                                                                          "Nama",
                                                                                                         "item-value":
-                                                                                                          "name",
+                                                                                                          "Nama",
                                                                                                         box:
                                                                                                           "",
                                                                                                         label:
@@ -17375,18 +19255,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .subdivision,
+                                                                                                            .Sub_Divisi,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "subdivision",
+                                                                                                            "Sub_Divisi",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.subdivision"
+                                                                                                          "props.item.Sub_Divisi"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -17407,7 +19287,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .subdivision
+                                                                                                  .Sub_Divisi
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -17430,7 +19310,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .name,
+                                                                                              .Nama,
                                                                                           lazy:
                                                                                             "",
                                                                                           large:
@@ -17444,7 +19324,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "name",
+                                                                                              "Nama",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -17453,7 +19333,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "name",
+                                                                                              "Nama",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -17480,18 +19360,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .name,
+                                                                                                            .Nama,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "name",
+                                                                                                            "Nama",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.name"
+                                                                                                          "props.item.Nama"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -17512,7 +19392,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .name
+                                                                                                  .Nama
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -17539,7 +19419,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .contribute,
+                                                                                              .Persentase,
                                                                                           large:
                                                                                             "",
                                                                                           lazy:
@@ -17553,7 +19433,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "contribute",
+                                                                                              "Persentase",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -17562,7 +19442,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "contribute",
+                                                                                              "Persentase",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -17591,18 +19471,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .contribute,
+                                                                                                            .Persentase,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "contribute",
+                                                                                                            "Persentase",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.contribute"
+                                                                                                          "props.item.Persentase"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -17623,7 +19503,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .contribute
+                                                                                                  .Persentase
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -17650,7 +19530,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .due_date,
+                                                                                              .Tanggal_Selesai,
                                                                                           large:
                                                                                             "",
                                                                                           lazy:
@@ -17664,7 +19544,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "due_date",
+                                                                                              "Tanggal_Selesai",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -17673,7 +19553,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "due_date",
+                                                                                              "Tanggal_Selesai",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -17686,36 +19566,122 @@ var render = function() {
                                                                                               fn: function() {
                                                                                                 return [
                                                                                                   _c(
-                                                                                                    "v-text-field",
+                                                                                                    "v-menu",
                                                                                                     {
                                                                                                       attrs: {
-                                                                                                        label:
-                                                                                                          "Edit",
-                                                                                                        "single-line":
+                                                                                                        "close-on-content-click": false,
+                                                                                                        "nudge-right": 40,
+                                                                                                        transition:
+                                                                                                          "scale-transition",
+                                                                                                        "offset-y":
                                                                                                           "",
-                                                                                                        counter:
+                                                                                                        "full-width":
                                                                                                           "",
-                                                                                                        autofocus:
+                                                                                                        "min-width":
+                                                                                                          "290px",
+                                                                                                        readonly:
                                                                                                           ""
                                                                                                       },
+                                                                                                      scopedSlots: _vm._u(
+                                                                                                        [
+                                                                                                          {
+                                                                                                            key:
+                                                                                                              "activator",
+                                                                                                            fn: function(
+                                                                                                              ref
+                                                                                                            ) {
+                                                                                                              var on =
+                                                                                                                ref.on
+                                                                                                              return [
+                                                                                                                _c(
+                                                                                                                  "v-text-field",
+                                                                                                                  _vm._g(
+                                                                                                                    {
+                                                                                                                      staticClass:
+                                                                                                                        "mx-1",
+                                                                                                                      attrs: {
+                                                                                                                        label:
+                                                                                                                          "Target Date",
+                                                                                                                        box:
+                                                                                                                          "",
+                                                                                                                        readonly:
+                                                                                                                          ""
+                                                                                                                      },
+                                                                                                                      model: {
+                                                                                                                        value:
+                                                                                                                          props
+                                                                                                                            .item
+                                                                                                                            .Tanggal_Selesai,
+                                                                                                                        callback: function(
+                                                                                                                          $$v
+                                                                                                                        ) {
+                                                                                                                          _vm.$set(
+                                                                                                                            props.item,
+                                                                                                                            "Tanggal_Selesai",
+                                                                                                                            $$v
+                                                                                                                          )
+                                                                                                                        },
+                                                                                                                        expression:
+                                                                                                                          "props.item.Tanggal_Selesai"
+                                                                                                                      }
+                                                                                                                    },
+                                                                                                                    on
+                                                                                                                  )
+                                                                                                                )
+                                                                                                              ]
+                                                                                                            }
+                                                                                                          }
+                                                                                                        ],
+                                                                                                        null,
+                                                                                                        true
+                                                                                                      ),
                                                                                                       model: {
                                                                                                         value:
-                                                                                                          props
-                                                                                                            .item
-                                                                                                            .due_date,
+                                                                                                          _vm.dateTask2,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
-                                                                                                          _vm.$set(
-                                                                                                            props.item,
-                                                                                                            "due_date",
-                                                                                                            $$v
-                                                                                                          )
+                                                                                                          _vm.dateTask2 = $$v
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.due_date"
+                                                                                                          "dateTask2"
                                                                                                       }
-                                                                                                    }
+                                                                                                    },
+                                                                                                    [
+                                                                                                      _vm._v(
+                                                                                                        " "
+                                                                                                      ),
+                                                                                                      _c(
+                                                                                                        "v-date-picker",
+                                                                                                        {
+                                                                                                          on: {
+                                                                                                            input: function(
+                                                                                                              $event
+                                                                                                            ) {
+                                                                                                              _vm.dateTask2 = false
+                                                                                                            }
+                                                                                                          },
+                                                                                                          model: {
+                                                                                                            value:
+                                                                                                              props
+                                                                                                                .item
+                                                                                                                .Tanggal_Selesai,
+                                                                                                            callback: function(
+                                                                                                              $$v
+                                                                                                            ) {
+                                                                                                              _vm.$set(
+                                                                                                                props.item,
+                                                                                                                "Tanggal_Selesai",
+                                                                                                                $$v
+                                                                                                              )
+                                                                                                            },
+                                                                                                            expression:
+                                                                                                              "props.item.Tanggal_Selesai"
+                                                                                                          }
+                                                                                                        }
+                                                                                                      )
+                                                                                                    ],
+                                                                                                    1
                                                                                                   )
                                                                                                 ]
                                                                                               },
@@ -17734,7 +19700,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .due_date
+                                                                                                  .Tanggal_Selesai
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -17885,11 +19851,11 @@ var render = function() {
                                                                             items:
                                                                               _vm
                                                                                 .editProject
-                                                                                .ad_task,
+                                                                                .All_Task,
                                                                             "item-text":
-                                                                              "name",
+                                                                              "Nama",
                                                                             "item-value":
-                                                                              "name",
+                                                                              "Nama",
                                                                             box:
                                                                               "",
                                                                             label:
@@ -17899,18 +19865,18 @@ var render = function() {
                                                                             value:
                                                                               _vm
                                                                                 .subtaskform
-                                                                                .task,
+                                                                                .Task,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.subtaskform,
-                                                                                "task",
+                                                                                "Task",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "subtaskform.task"
+                                                                              "subtaskform.Task"
                                                                           }
                                                                         }
                                                                       ),
@@ -17932,18 +19898,18 @@ var render = function() {
                                                                             value:
                                                                               _vm
                                                                                 .subtaskform
-                                                                                .name,
+                                                                                .Nama,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.subtaskform,
-                                                                                "name",
+                                                                                "Nama",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "subtaskform.name"
+                                                                              "subtaskform.Nama"
                                                                           }
                                                                         }
                                                                       ),
@@ -17965,18 +19931,18 @@ var render = function() {
                                                                             value:
                                                                               _vm
                                                                                 .subtaskform
-                                                                                .contribute,
+                                                                                .Persentase,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.subtaskform,
-                                                                                "contribute",
+                                                                                "Persentase",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "subtaskform.contribute"
+                                                                              "subtaskform.Persentase"
                                                                           }
                                                                         }
                                                                       ),
@@ -17984,34 +19950,120 @@ var render = function() {
                                                                         " "
                                                                       ),
                                                                       _c(
-                                                                        "v-text-field",
+                                                                        "v-menu",
                                                                         {
-                                                                          staticClass:
-                                                                            "mx-1",
                                                                           attrs: {
-                                                                            label:
-                                                                              "Target Date",
-                                                                            box:
+                                                                            "close-on-content-click": false,
+                                                                            "nudge-right": 40,
+                                                                            transition:
+                                                                              "scale-transition",
+                                                                            "offset-y":
+                                                                              "",
+                                                                            "full-width":
+                                                                              "",
+                                                                            "min-width":
+                                                                              "290px",
+                                                                            readonly:
                                                                               ""
                                                                           },
+                                                                          scopedSlots: _vm._u(
+                                                                            [
+                                                                              {
+                                                                                key:
+                                                                                  "activator",
+                                                                                fn: function(
+                                                                                  ref
+                                                                                ) {
+                                                                                  var on =
+                                                                                    ref.on
+                                                                                  return [
+                                                                                    _c(
+                                                                                      "v-text-field",
+                                                                                      _vm._g(
+                                                                                        {
+                                                                                          staticClass:
+                                                                                            "mx-1",
+                                                                                          attrs: {
+                                                                                            label:
+                                                                                              "Target Date",
+                                                                                            box:
+                                                                                              "",
+                                                                                            readonly:
+                                                                                              ""
+                                                                                          },
+                                                                                          model: {
+                                                                                            value:
+                                                                                              _vm
+                                                                                                .subtaskform
+                                                                                                .Tanggal_Selesai,
+                                                                                            callback: function(
+                                                                                              $$v
+                                                                                            ) {
+                                                                                              _vm.$set(
+                                                                                                _vm.subtaskform,
+                                                                                                "Tanggal_Selesai",
+                                                                                                $$v
+                                                                                              )
+                                                                                            },
+                                                                                            expression:
+                                                                                              "subtaskform.Tanggal_Selesai"
+                                                                                          }
+                                                                                        },
+                                                                                        on
+                                                                                      )
+                                                                                    )
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            ]
+                                                                          ),
                                                                           model: {
                                                                             value:
-                                                                              _vm
-                                                                                .subtaskform
-                                                                                .due_date,
+                                                                              _vm.dateSubTask1,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
-                                                                              _vm.$set(
-                                                                                _vm.subtaskform,
-                                                                                "due_date",
-                                                                                $$v
-                                                                              )
+                                                                              _vm.dateSubTask1 = $$v
                                                                             },
                                                                             expression:
-                                                                              "subtaskform.due_date"
+                                                                              "dateSubTask1"
                                                                           }
-                                                                        }
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "v-date-picker",
+                                                                            {
+                                                                              on: {
+                                                                                input: function(
+                                                                                  $event
+                                                                                ) {
+                                                                                  _vm.dateSubTask1 = false
+                                                                                }
+                                                                              },
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm
+                                                                                    .subtaskform
+                                                                                    .Tanggal_Selesai,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.$set(
+                                                                                    _vm.subtaskform,
+                                                                                    "Tanggal_Selesai",
+                                                                                    $$v
+                                                                                  )
+                                                                                },
+                                                                                expression:
+                                                                                  "subtaskform.Tanggal_Selesai"
+                                                                              }
+                                                                            }
+                                                                          )
+                                                                        ],
+                                                                        1
                                                                       ),
                                                                       _vm._v(
                                                                         " "
@@ -18062,7 +20114,7 @@ var render = function() {
                                                                         items:
                                                                           _vm
                                                                             .editProject
-                                                                            .ad_subtask
+                                                                            .All_SubTask
                                                                       },
                                                                       scopedSlots: _vm._u(
                                                                         [
@@ -18083,7 +20135,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .task,
+                                                                                              .Task,
                                                                                           lazy:
                                                                                             "",
                                                                                           large:
@@ -18097,7 +20149,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "task",
+                                                                                              "Task",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -18106,7 +20158,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "task",
+                                                                                              "Task",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -18125,11 +20177,11 @@ var render = function() {
                                                                                                         items:
                                                                                                           _vm
                                                                                                             .editProject
-                                                                                                            .ad_task,
+                                                                                                            .All_Task,
                                                                                                         "item-text":
-                                                                                                          "name",
+                                                                                                          "nama",
                                                                                                         "item-value":
-                                                                                                          "name",
+                                                                                                          "nama",
                                                                                                         box:
                                                                                                           "",
                                                                                                         label:
@@ -18139,18 +20191,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .task,
+                                                                                                            .Task,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "task",
+                                                                                                            "Task",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.task"
+                                                                                                          "props.item.Task"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -18171,7 +20223,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .task
+                                                                                                  .Task
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -18194,7 +20246,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .name,
+                                                                                              .nama,
                                                                                           lazy:
                                                                                             "",
                                                                                           large:
@@ -18208,7 +20260,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "name",
+                                                                                              "nama",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -18217,7 +20269,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "name",
+                                                                                              "nama",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -18244,18 +20296,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .name,
+                                                                                                            .nama,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "name",
+                                                                                                            "nama",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.name"
+                                                                                                          "props.item.nama"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -18276,7 +20328,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .name
+                                                                                                  .nama
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -18303,7 +20355,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .contribute,
+                                                                                              .Persentase,
                                                                                           large:
                                                                                             "",
                                                                                           lazy:
@@ -18317,7 +20369,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "contribute",
+                                                                                              "Persentase",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -18326,7 +20378,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "contribute",
+                                                                                              "Persentase",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -18355,18 +20407,18 @@ var render = function() {
                                                                                                         value:
                                                                                                           props
                                                                                                             .item
-                                                                                                            .contribute,
+                                                                                                            .Persentase,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
                                                                                                           _vm.$set(
                                                                                                             props.item,
-                                                                                                            "contribute",
+                                                                                                            "Persentase",
                                                                                                             $$v
                                                                                                           )
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.contribute"
+                                                                                                          "props.item.Persentase"
                                                                                                       }
                                                                                                     }
                                                                                                   )
@@ -18387,7 +20439,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .contribute
+                                                                                                  .Persentase
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -18414,7 +20466,7 @@ var render = function() {
                                                                                           "return-value":
                                                                                             props
                                                                                               .item
-                                                                                              .due_date,
+                                                                                              .Tanggal_Selesai,
                                                                                           large:
                                                                                             "",
                                                                                           lazy:
@@ -18428,7 +20480,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "due_date",
+                                                                                              "Tanggal_Selesai",
                                                                                               $event
                                                                                             )
                                                                                           },
@@ -18437,7 +20489,7 @@ var render = function() {
                                                                                           ) {
                                                                                             return _vm.$set(
                                                                                               props.item,
-                                                                                              "due_date",
+                                                                                              "Tanggal_Selesai",
                                                                                               $event
                                                                                             )
                                                                                           }
@@ -18450,36 +20502,122 @@ var render = function() {
                                                                                               fn: function() {
                                                                                                 return [
                                                                                                   _c(
-                                                                                                    "v-text-field",
+                                                                                                    "v-menu",
                                                                                                     {
                                                                                                       attrs: {
-                                                                                                        label:
-                                                                                                          "Edit",
-                                                                                                        "single-line":
+                                                                                                        "close-on-content-click": false,
+                                                                                                        "nudge-right": 40,
+                                                                                                        transition:
+                                                                                                          "scale-transition",
+                                                                                                        "offset-y":
                                                                                                           "",
-                                                                                                        counter:
+                                                                                                        "full-width":
                                                                                                           "",
-                                                                                                        autofocus:
+                                                                                                        "min-width":
+                                                                                                          "290px",
+                                                                                                        readonly:
                                                                                                           ""
                                                                                                       },
+                                                                                                      scopedSlots: _vm._u(
+                                                                                                        [
+                                                                                                          {
+                                                                                                            key:
+                                                                                                              "activator",
+                                                                                                            fn: function(
+                                                                                                              ref
+                                                                                                            ) {
+                                                                                                              var on =
+                                                                                                                ref.on
+                                                                                                              return [
+                                                                                                                _c(
+                                                                                                                  "v-text-field",
+                                                                                                                  _vm._g(
+                                                                                                                    {
+                                                                                                                      staticClass:
+                                                                                                                        "mx-1",
+                                                                                                                      attrs: {
+                                                                                                                        label:
+                                                                                                                          "Target Date",
+                                                                                                                        box:
+                                                                                                                          "",
+                                                                                                                        readonly:
+                                                                                                                          ""
+                                                                                                                      },
+                                                                                                                      model: {
+                                                                                                                        value:
+                                                                                                                          props
+                                                                                                                            .item
+                                                                                                                            .Tanggal_Selesai,
+                                                                                                                        callback: function(
+                                                                                                                          $$v
+                                                                                                                        ) {
+                                                                                                                          _vm.$set(
+                                                                                                                            props.item,
+                                                                                                                            "Tanggal_Selesai",
+                                                                                                                            $$v
+                                                                                                                          )
+                                                                                                                        },
+                                                                                                                        expression:
+                                                                                                                          "props.item.Tanggal_Selesai"
+                                                                                                                      }
+                                                                                                                    },
+                                                                                                                    on
+                                                                                                                  )
+                                                                                                                )
+                                                                                                              ]
+                                                                                                            }
+                                                                                                          }
+                                                                                                        ],
+                                                                                                        null,
+                                                                                                        true
+                                                                                                      ),
                                                                                                       model: {
                                                                                                         value:
-                                                                                                          props
-                                                                                                            .item
-                                                                                                            .due_date,
+                                                                                                          _vm.dateSubtask2,
                                                                                                         callback: function(
                                                                                                           $$v
                                                                                                         ) {
-                                                                                                          _vm.$set(
-                                                                                                            props.item,
-                                                                                                            "due_date",
-                                                                                                            $$v
-                                                                                                          )
+                                                                                                          _vm.dateSubtask2 = $$v
                                                                                                         },
                                                                                                         expression:
-                                                                                                          "props.item.due_date"
+                                                                                                          "dateSubtask2"
                                                                                                       }
-                                                                                                    }
+                                                                                                    },
+                                                                                                    [
+                                                                                                      _vm._v(
+                                                                                                        " "
+                                                                                                      ),
+                                                                                                      _c(
+                                                                                                        "v-date-picker",
+                                                                                                        {
+                                                                                                          on: {
+                                                                                                            input: function(
+                                                                                                              $event
+                                                                                                            ) {
+                                                                                                              _vm.dateSubtask2 = false
+                                                                                                            }
+                                                                                                          },
+                                                                                                          model: {
+                                                                                                            value:
+                                                                                                              props
+                                                                                                                .item
+                                                                                                                .Tanggal_Selesai,
+                                                                                                            callback: function(
+                                                                                                              $$v
+                                                                                                            ) {
+                                                                                                              _vm.$set(
+                                                                                                                props.item,
+                                                                                                                "Tanggal_Selesai",
+                                                                                                                $$v
+                                                                                                              )
+                                                                                                            },
+                                                                                                            expression:
+                                                                                                              "props.item.Tanggal_Selesai"
+                                                                                                          }
+                                                                                                        }
+                                                                                                      )
+                                                                                                    ],
+                                                                                                    1
                                                                                                   )
                                                                                                 ]
                                                                                               },
@@ -18498,7 +20636,7 @@ var render = function() {
                                                                                               _vm._s(
                                                                                                 props
                                                                                                   .item
-                                                                                                  .due_date
+                                                                                                  .Tanggal_Selesai
                                                                                               )
                                                                                             )
                                                                                           ]
@@ -18702,7 +20840,7 @@ var render = function() {
                                                                             _vm._s(
                                                                               _vm
                                                                                 .editProject
-                                                                                .title
+                                                                                .Nama
                                                                             )
                                                                           )
                                                                         ]
@@ -18724,7 +20862,7 @@ var render = function() {
                                                 [
                                                   _vm._v(" "),
                                                   _vm._l(
-                                                    _vm.editProject.ad_division,
+                                                    _vm.editProject.All_Divisi,
                                                     function(div, index) {
                                                       return _c(
                                                         "v-list-group",
@@ -18758,7 +20896,7 @@ var render = function() {
                                                                               [
                                                                                 _vm._v(
                                                                                   _vm._s(
-                                                                                    div.name
+                                                                                    div.Nama
                                                                                   ) +
                                                                                     "\n                                                                "
                                                                                 )
@@ -18782,11 +20920,11 @@ var render = function() {
                                                         [
                                                           _vm._v(" "),
                                                           _vm._l(
-                                                            _vm.editProject.ad_subdivision.filter(
+                                                            _vm.editProject.All_SubDivisi.filter(
                                                               function(obj) {
                                                                 return (
-                                                                  obj.division ==
-                                                                  div.name
+                                                                  obj.Divisi ==
+                                                                  div.Nama
                                                                 )
                                                               }
                                                             ),
@@ -18826,7 +20964,7 @@ var render = function() {
                                                                                       [
                                                                                         _vm._v(
                                                                                           _vm._s(
-                                                                                            subdiv.name
+                                                                                            subdiv.Nama
                                                                                           ) +
                                                                                             "\n                                                                    "
                                                                                         )
@@ -18850,13 +20988,13 @@ var render = function() {
                                                                 [
                                                                   _vm._v(" "),
                                                                   _vm._l(
-                                                                    _vm.editProject.ad_task.filter(
+                                                                    _vm.editProject.All_Task.filter(
                                                                       function(
                                                                         obj
                                                                       ) {
                                                                         return (
-                                                                          obj.subdivision ==
-                                                                          subdiv.name
+                                                                          obj.Sub_Divisi ==
+                                                                          subdiv.Nama
                                                                         )
                                                                       }
                                                                     ),
@@ -18896,7 +21034,7 @@ var render = function() {
                                                                                               [
                                                                                                 _vm._v(
                                                                                                   _vm._s(
-                                                                                                    task.name
+                                                                                                    task.Nama
                                                                                                   ) +
                                                                                                     "\n                                                                        "
                                                                                                 )
@@ -18922,13 +21060,13 @@ var render = function() {
                                                                             " "
                                                                           ),
                                                                           _vm._l(
-                                                                            _vm.editProject.ad_subtask.filter(
+                                                                            _vm.editProject.All_SubTask.filter(
                                                                               function(
                                                                                 obj
                                                                               ) {
                                                                                 return (
-                                                                                  obj.task ==
-                                                                                  task.name
+                                                                                  obj.Task ==
+                                                                                  task.Nama
                                                                                 )
                                                                               }
                                                                             ),
@@ -18952,7 +21090,7 @@ var render = function() {
                                                                                         [
                                                                                           _vm._v(
                                                                                             _vm._s(
-                                                                                              subtask.name
+                                                                                              subtask.Nama
                                                                                             ) +
                                                                                               "\n                                                                    "
                                                                                           )
@@ -19956,7 +22094,26 @@ var render = function() {
               )
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _vm.alert.type
+            ? _c(
+                "v-snackbar",
+                {
+                  attrs: {
+                    right: "",
+                    bottom: "",
+                    color: _vm.alert.type,
+                    value: "true"
+                  }
+                },
+                [
+                  _c("v-icon", [_vm._v(_vm._s(_vm.alert.icon))]),
+                  _vm._v(_vm._s(_vm.alert.message) + "\n            ")
+                ],
+                1
+              )
+            : _vm._e()
         ],
         1
       )
@@ -64779,6 +66936,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/JobAccessRequest.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/JobAccessRequest.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _JobAccessRequest_vue_vue_type_template_id_6b550739___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./JobAccessRequest.vue?vue&type=template&id=6b550739& */ "./resources/js/components/JobAccessRequest.vue?vue&type=template&id=6b550739&");
+/* harmony import */ var _JobAccessRequest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./JobAccessRequest.vue?vue&type=script&lang=js& */ "./resources/js/components/JobAccessRequest.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _JobAccessRequest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _JobAccessRequest_vue_vue_type_template_id_6b550739___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _JobAccessRequest_vue_vue_type_template_id_6b550739___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/JobAccessRequest.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/JobAccessRequest.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/JobAccessRequest.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_JobAccessRequest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./JobAccessRequest.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobAccessRequest.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_JobAccessRequest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/JobAccessRequest.vue?vue&type=template&id=6b550739&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/JobAccessRequest.vue?vue&type=template&id=6b550739& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_JobAccessRequest_vue_vue_type_template_id_6b550739___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./JobAccessRequest.vue?vue&type=template&id=6b550739& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobAccessRequest.vue?vue&type=template&id=6b550739&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_JobAccessRequest_vue_vue_type_template_id_6b550739___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_JobAccessRequest_vue_vue_type_template_id_6b550739___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/JobDesk.vue":
 /*!*********************************************!*\
   !*** ./resources/js/components/JobDesk.vue ***!
@@ -65543,6 +67769,78 @@ __webpack_require__.r(__webpack_exports__);
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/proyek', successCallback, errorCallback);
     });
+  },
+  //LOG PENGERJAAN
+  getalllogpengerjaan: function getalllogpengerjaan() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var user = res.data;
+        resolve(res.data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/log_pengerjaan', successCallback, errorCallback);
+    });
+  },
+  //AKSES
+  getalljobakses: function getalljobakses() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var user = res.data;
+        resolve(res.data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/akses_pekerjaan', successCallback, errorCallback);
+    });
+  },
+  addjobakses: function addjobakses(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/akses_pekerjaan', payload, successCallback, errorCallback);
+    });
+  },
+  updatejobakses: function updatejobakses(payload, id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/akses_pekerjaan/' + id, payload, successCallback, errorCallback);
+    });
+  },
+  deletejobakses: function deletejobakses(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/api/akses_pekerjaan/' + id, successCallback, errorCallback);
+    });
   }
 });
 
@@ -65728,6 +68026,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_JobDeskV3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/JobDeskV3 */ "./resources/js/components/JobDeskV3.vue");
 /* harmony import */ var _components_ManagementEmployee__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/ManagementEmployee */ "./resources/js/components/ManagementEmployee.vue");
 /* harmony import */ var _components_ManagementRole__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/ManagementRole */ "./resources/js/components/ManagementRole.vue");
+/* harmony import */ var _components_JobAccessRequest__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/JobAccessRequest */ "./resources/js/components/JobAccessRequest.vue");
+
 
 
 
@@ -65834,6 +68134,14 @@ var routes = [// {
       Akses: ['M-Role-C', 'M-Role-R', 'M-Role-U', 'M-Role-D']
     },
     component: _components_ManagementRole__WEBPACK_IMPORTED_MODULE_10__["default"],
+    beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
+  }, {
+    path: 'job-access',
+    meta: {
+      name: 'Job Access Request',
+      Akses: ['M-JobAccess-C', 'M-JobAccess-R', 'M-JobAccess-U', 'M-JobAccess-D']
+    },
+    component: _components_JobAccessRequest__WEBPACK_IMPORTED_MODULE_11__["default"],
     beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
   }]
 }];

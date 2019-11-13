@@ -12,6 +12,8 @@ import JobDeskV3 from './components/JobDeskV3'
 import Employee from './components/ManagementEmployee'
 
 import Role from './components/ManagementRole'
+import JobAccess from './components/JobAccessRequest'
+
 
 
 
@@ -156,6 +158,22 @@ export const routes = [
             ]
           },
           component : Role,
+          beforeEnter: middleware([
+            auth
+          ])
+        },
+        {
+          path: 'job-access',
+          meta: {
+            name: 'Job Access Request',
+            Akses:[
+              'M-JobAccess-C',
+              'M-JobAccess-R',
+              'M-JobAccess-U',
+              'M-JobAccess-D',
+            ]
+          },
+          component : JobAccess,
           beforeEnter: middleware([
             auth
           ])

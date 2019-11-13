@@ -227,6 +227,17 @@ export default {
                 'M-Role-D',
             ]
         },
+        {
+            to: '/panel/job-access',
+            icon: 'assignment_late',
+            text: 'Job Access Request',
+            access:[
+                'M-JobAccess-C',
+                'M-JobAccess-R',
+                'M-JobAccess-U',
+                'M-JobAccess-D',
+            ]
+        },
         ],
         color: 'general',
         image :'',

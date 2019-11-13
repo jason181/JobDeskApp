@@ -15,6 +15,7 @@ class Item_Pekerjaan extends Model
     protected $fillable = [
         'Id_Proyek',
         'Id_Divisi_Role',
+        'Id_Sub_Divisi_Proyek',
         'Nama',
         'Kode',
         'Satuan',
@@ -29,6 +30,10 @@ class Item_Pekerjaan extends Model
     public function divisi_roles()
     {
         return $this->belongsTo('App\Divisi_Role','Id_Divisi_Role');
+    }
+    public function sub_divisi_proyeks()
+    {
+        return $this->belongsTo('App\Sub_Divisi_Proyek','Id_Sub_Divisi_Proyek');
     }
 
     public function sub_item_pekerjaans()

@@ -17,6 +17,7 @@ class SubItemPekerjaanTransformers extends TransformerAbstract
         return [
             'Id_Sub_Item_Pekerjaan' => $sub_item->Id_Sub_Item_Pekerjaan,
             'Id_Item_Pekerjaan'     => $sub_item->Id_Item_Pekerjaan,
+            'Task'                  => $sub_item->item_pekerjaans->Nama,
             'Nama'                  => $sub_item->Nama,
             'Kode'                  => $sub_item->Kode,
             'Deskripsi'             => $sub_item->Deskripsi,

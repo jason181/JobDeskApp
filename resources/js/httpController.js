@@ -223,6 +223,96 @@ export default {
         })
     },
 
+    //LOG PENGERJAAN
+    getalllogpengerjaan(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.get('/api/log_pengerjaan', successCallback, errorCallback)
+        })
+    },
+    
+
+    //AKSES
+    getalljobakses(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.get('/api/akses_pekerjaan', successCallback, errorCallback)
+        })
+    },
+
+    addjobakses(payload) {
+        return new Promise((resolve, reject) => {
+
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.post('/api/akses_pekerjaan', payload, successCallback, errorCallback)
+        })
+    },
+
+    updatejobakses(payload,id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+
+            }
+
+            Http.patch('/api/akses_pekerjaan/'+id, payload, successCallback, errorCallback)
+        })
+    },
+
+    deletejobakses(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+
+            }
+
+            Http.delete('/api/akses_pekerjaan/'+id, successCallback, errorCallback)
+        })
+    },
+
+
    
 
 

@@ -23,6 +23,8 @@ class ItemPekerjaanTransformers extends TransformerAbstract
             'Id_Item_Pekerjaan' => $item->Id_Item_Pekerjaan,
             'Id_Proyek'         => $item->Id_Proyek,
             'Id_Divisi_Role'    => $item->Id_Divisi_Role,
+            'Id_Sub_Divisi_Proyek'=> $item->Id_Sub_Divisi_Proyek,
+            'Sub_Divisi'        => $item->sub_divisi_proyeks->Nama,
             'Nama'              => $item->Nama,
             'Kode'              => $item->Kode,
             'Satuan'            => $item->Satuan,
