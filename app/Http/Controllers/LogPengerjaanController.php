@@ -48,11 +48,19 @@ class LogPengerjaanController extends RestController
     public function store(Request $request)
     {        
         try {
-            $now=Carbon::now('Asia/Jakarta')->isoFormat('h:mm');
+            // $now=Carbon::now('Asia/Jakarta')->isoFormat('h:mm');
+            $now=Carbon::now('Asia/Jakarta');
+
             $log = Log_Pengerjaan::create([
                 'Id_Sub_Item_Pekerjaan' => $request->Id_Sub_Item_Pekerjaan,
                 'Id_Akun'               => $request->Id_Akun,
                 'Waktu_Mulai'           => $now,
+                'Waktu_Selesai'         => $now,
+                'Progress'              => 0,
+                'Berkas'                => '',
+                'Catatan'               => '',
+
+
             ]);
             return response()->json([
                 'status' => (bool) $log,
@@ -67,8 +75,10 @@ class LogPengerjaanController extends RestController
     public function storeFile(Request $request)
     {
         try {
-            $file = $request->file('Berkas');
             
+
+            $file = $request->file('Berkas');
+      
             $nama_file = $file->getClientOriginalName();
             $ukuran_file = $file->getSize();
             $akun = Akun::find($request->Id_Akun);
@@ -118,23 +128,24 @@ class LogPengerjaanController extends RestController
     public function update(Request $request, $id)
     {
         try {
-            if($request->Progress==100)
-                $waktu_selesai = Carbon::now('Asia/Jakarta')->isoFormat('h:mm');
-            else
-                $waktu_selesai = NULL;
-            $log = Log_Pengerjaan::find($id);
-            $log = Log_Pengerjaan::update([
+            // return $request;
+            // if($request->Progress==100)
+                // $waktu_selesai = Carbon::now('Asia/Jakarta')->isoFormat('h:mm');
+                $waktu_selesai = Carbon::now('Asia/Jakarta');
+                
+            // else
+            //     $waktu_selesai = NULL;
+            // $log = Log_Pengerjaan::find($id);
+            $log = Log_Pengerjaan::find($id)->update([
                 'Waktu_Selesai'         => $waktu_selesai,
                 'Progress'              => $request->Progress,
-                'Berkas'                => $request->Path,
+                'Berkas'                => $request->Berkas,
                 'Catatan'               => $request->Catatan,
             ]);
-    
-            return response()->json([
-                'status' => (bool) $log,
-                'data' => $log,
-                'message' => $log ? 'Success' : 'Error Log'
-            ]);
+            $data = Log_Pengerjaan::find($id);
+
+            $response = $this->generateItem($data);
+            return $this->sendResponse($response, 201);
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }

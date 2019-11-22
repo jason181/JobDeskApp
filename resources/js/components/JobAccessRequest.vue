@@ -52,7 +52,17 @@
                   {{ props.item.Project }} > {{ props.item.Divisi }} > {{ props.item.Sub_Divisi }} > {{ props.item.Task }} > {{ props.item.Sub_Task }}
               </td>              
               <td class="text-xs-center">{{ props.item.Datetime_Request }}</td>
-              <td class="text-xs-center">{{ props.item.Status }}</td>
+              <td class="text-xs-center">
+                {{ props.item.Status }} | 
+                <v-icon color="grey lighten-1"
+                @click="noteDialog = !noteDialog; noteText=props.item.Deskripsi"
+                  small
+                >
+                message
+
+                </v-icon>
+
+              </td>
               <td class="text-xs-center"> 
                    <v-btn v-if="props.item.Verifikasi=='Verified'"
                     depressed small color="success" dark 
@@ -61,15 +71,30 @@
                     @click="Unverified(props.item)">
                     Verified
                   </v-btn>
-                  <v-btn v-else
+                  <v-btn v-else-if="props.item.Verifikasi=='Unverified'"
                     depressed small color="error" dark 
                     style="text-transform:none !important;"
                     :disabled="Access('M-JobAccess-U')!=true"
                     @click="Verified(props.item)">
                     Unverified
                   </v-btn>
+                  <v-btn v-else
+                    depressed small color="error" dark 
+                    style="text-transform:none !important;"
+                    disabled>
+                    Done
+                  </v-btn>
               </td>
               <td class="justify-center layout px-0">
+
+              <!-- <v-icon color="grey lighten-1"
+               @click="noteDialog = !noteDialog; noteText=props.item.Deskripsi"
+                small
+              >
+                message
+
+              </v-icon> -->
+              
               <v-icon
                   v-if="Access('M-JobAccess-D')==true"
                   small
@@ -77,6 +102,7 @@
               >
                   delete
               </v-icon>
+
               </td>
           </template>
           <v-alert v-slot:no-results :value="true" color="error" icon="warning">
@@ -86,6 +112,21 @@
               <v-btn color="primary" @click="initialize">Reset</v-btn>
           </template> -->
         </v-data-table>
+
+        <!-- Note Dialog -->
+            <v-dialog
+            v-model="noteDialog"
+            max-width="290"
+            >
+            <v-card>
+                <v-card-title class="headline">Message</v-card-title>
+
+                <v-card-text>
+                    {{noteText}}
+                </v-card-text>
+            </v-card>
+            </v-dialog>
+        <!-- Note Dialog -->
 
         <!-- Alert -->
         <v-snackbar right bottom :color="alert.type"  value="true" v-if="alert.type">
@@ -122,6 +163,8 @@
       divisiData:[],
       jabatanData:[],
       editedIndex: -1,
+      noteDialog:false,
+      noteText:'',
       alert:{
         type: null,
         message: null,
@@ -250,8 +293,18 @@
             let payload ={
                 Verifikasi:'Verified'
             } 
+            let payloadLog ={
+                Id_Sub_Item_Pekerjaan: data.Id_Sub_Item_Pekerjaan,
+                Id_Akun: data.Id_Akun
+            } 
             const response = await Controller.updatejobakses(payload,data.Id_Akses_Pekerjaan)
-            console.log(response)
+            if(data.Status!='Request Download')
+            {
+              const response2 = await Controller.addlogpengerjaan(payloadLog)
+            console.log(response2)
+
+            }
+
             // Object.assign(this.employeeData[this.editedIndex], this.editedForm)
             await this.loaddata()
             this.close()

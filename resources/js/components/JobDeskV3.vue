@@ -140,7 +140,7 @@
                         <v-card-title>
                             <span class="headline">{{editTask.Projek}}</span>
                             <v-spacer/>
-                            <span v-if="editTask.User!=''">Last Taken By : {{editTask.User}}</span>
+                            <span v-if="editTask.User!=''">Last Progress By : {{editTask.User}}</span>
                         </v-card-title>
                         <v-divider/>
                         <span class="ml-4">{{editTask.Divisi}} > {{editTask.Sub_Divisi}} > {{editTask.Task}}</span>
@@ -236,12 +236,14 @@
                             <!-- Progress -->
 
                             <!-- Upload File -->
-                            <v-flex xs12>
-                                <v-text-field
-                                v-model="file"
+                            <v-flex xs6>
+                                <v-combobox
+                                v-model="namefile"
                             
                                 counter
                                 label="Upload File"
+                                chips
+                                readonly
                                 multiple
                                 placeholder="Select your files"
                                 prepend-icon="mdi-paperclip"
@@ -250,27 +252,30 @@
                                 :disabled="editTask.Status_Akses=='Locked' || editTask.Status_Akses=='Request Download'"
                                 @click="pickFile"
                                 >
-                                <template v-slot:selection="{ index, text }">
+                                
+                                <template v-slot:selection="data">
 
                                     <v-chip
-                                    v-if="index < 2"
-                                    color="deep-purple accent-4"
+                                   
+                                    color="grey darken-2 accent-4"
                                     dark
                                     label
                                     small
+                                    close
+                                    @input="removefile()"
                                     >
-                                    {{ text }}
+                                    {{ data.item }}
                                     </v-chip>
 
-                                    <span
+                                    <!-- <span
                                     v-else-if="index === 2"
                                     class="overline grey--text text--darken-3 mx-2"
                                     >
                                     +{{ file.length - 2 }} File(s)
-                                    </span>
+                                    </span> -->
 
                                 </template>
-                                </v-text-field>
+                                </v-combobox>
                                 <input
                                     type="file"
                                     style="display: none"
@@ -282,13 +287,25 @@
                             </v-flex>
                             <!-- Upload File -->
 
+                            <!-- Note -->
+                            <v-flex xs6>
+                                <v-textarea
+                                    outline
+                                    :disabled="editTask.Status_Akses=='Locked' || editTask.Status_Akses=='Request Download'"
+                                    label="Note Progress"
+                                    v-model="editTask.Note"
+                                    
+                                ></v-textarea>
+                            </v-flex>
+                            <!-- Note -->
+
                             <!-- Log Progress -->
                             <v-flex xs12>
                             <v-list subheader>
                                 <v-subheader>Log Progress</v-subheader>
                                 <v-divider/>
                                 <v-list-tile
-                                    v-for="(item) in editTask.Log_Pengerjaan"
+                                    v-for="item in editTask.Log_Pengerjaan.filter(obj=>obj.Berkas!='')"
                                     :key="item.Id_Log_Pengerjaan"
                                     avatar
                                 >
@@ -316,13 +333,13 @@
                                     <v-list-tile-action>
                                         <v-layout row>
                                             <v-flex xs6>
-                                            <v-btn @click="downloadIt(item)" icon ripple v-if="editTask.Status_Akses!='Locked'">
+                                            <v-btn @click="downloadIt(item)" icon ripple v-if="editTask.Status_Akses!='Locked' && item.Berkas!=''">
                                                 <v-icon color="grey lighten-1">cloud_download</v-icon>
                                             </v-btn>
                                             </v-flex>
                                             <v-flex xs6>
 
-                                            <v-btn @click="noteDialog = !noteDialog; noteText=item.Catatan"  icon ripple>
+                                            <v-btn @click="noteDialog = !noteDialog; noteText=item.Catatan;noteUser=item.Username"  icon ripple>
                                                 <v-icon color="grey lighten-1">message</v-icon>
                                             </v-btn>
                                             
@@ -356,7 +373,7 @@
 
                         <v-btn color="blue darken-1" flat @click="taskDialog = false">Close</v-btn>
                         <v-btn color="blue darken-1" v-if="editTask.Status_Akses=='Locked' || editTask.Status_Akses=='Request Download'" flat @click="requestDialog = true">Request</v-btn>
-                        <v-btn color="blue darken-1" v-else flat @click="taskDialog = false">Save</v-btn>
+                        <v-btn color="blue darken-1" v-else flat @click="uploadProgress()">Save</v-btn>
                         <!-- <v-btn color="blue darken-1" v-if="editTask.status=='untake'" flat @click="taskDialog = false">Request</v-btn>
                         <v-btn color="blue darken-1" v-else flat @click="taskDialog = false">Save</v-btn> -->
 
@@ -376,12 +393,18 @@
                         <v-card-text>
                             <v-select
                             :items="requestAccess"
-                            v-model ="requestAccessForm"
+                            v-model ="reqForm.Status"
                             item-text="Nama"
                             item-value="Nama"
                             box
                             label="List Access"
                             ></v-select>
+
+                            <v-textarea
+                            outline
+                            label="Description"
+                            v-model="reqForm.Deskripsi"
+                            ></v-textarea>
                         </v-card-text>
                         <v-card-actions>
                         <v-spacer/>
@@ -1545,7 +1568,7 @@
                 max-width="290"
                 >
                 <v-card>
-                    <v-card-title class="headline">Note</v-card-title>
+                    <v-card-title class="headline">Note by : {{noteUser}}</v-card-title>
 
                     <v-card-text>
                         {{noteText}}
@@ -1867,6 +1890,7 @@ export default {
             client_address:'',
         },
         files:[],
+        namefile:[],
         editTask:{
             Id_Sub_Item_Pekerjaan   : '',
             Id_Item_Pekerjaan       : '',
@@ -1882,7 +1906,10 @@ export default {
             Remaining               : '',
             Progress                : '0',
             Status                  : 'untake',
-            Status_Akses            : 'Locked'
+            Status_Akses            : 'Locked',
+            Log_Pengerjaan          :[],
+            Note                    :'',
+            Id_Akses                :''
         },
         initEditTask:{
             Id_Sub_Item_Pekerjaan   : '',
@@ -1899,14 +1926,22 @@ export default {
             Remaining               : '',
             Progress                : '0',
             Status                  : 'untake',
-            Status_Akses            : 'Locked'
+            Status_Akses            : 'Locked',
+            Log_Pengerjaan          :[],
+            Note                    :'',
+            Id_Akses                :''
+
+
 
         },
         division: ['Desain Arsi', 'Admin'],
         sub_division:[],
         task:[],
         jobAksesData:[],
-        requestAccessForm:'',
+        reqForm:{
+            Status:'',
+            Deskripsi:'',
+        },
         requestAccess:[
             {Nama: 'Request Access'},
             {Nama: 'Request Download'},
@@ -1948,6 +1983,8 @@ export default {
 
         noteDialog:false,
         noteText:'',
+        noteUser:'',
+        
         addDialog :false,
         taskDialog:false,
         requestDialog:false,
@@ -2274,7 +2311,7 @@ export default {
             let data = (await Controller.getallproject()).data
             this.logPengerjaanData = (await Controller.getalllogpengerjaan()).data
             this.jobAksesData = (await Controller.getalljobakses()).data.filter(obj=>obj.Id_Akun == this.Id_Akun)
-            console.log(this.jobAksesData)
+            // console.log(this.jobAksesData)
             // this.employeeData = data.filter(obj => obj.Divisi != "Admin");
             // console.log(data)
 
@@ -2374,8 +2411,11 @@ export default {
                         // console.log(remaining)
                         if(eachsubtask.Log_Pengerjaan.length > 0){
                             eachsubtask.Log_Pengerjaan = eachsubtask.Log_Pengerjaan.slice().reverse()
-                            eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress 
-                            eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username 
+                            let data = eachsubtask.Log_Pengerjaan.find(obj=>obj.Berkas!='')
+                            eachsubtask.Progress = data.Progress 
+                            eachsubtask.User = data.Username 
+                            // eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress 
+                            // eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username 
                             
                         }
                         
@@ -2406,12 +2446,14 @@ export default {
             // console.log(JSON.stringify(this.data, null, 2))
     
     },
+
     async sendAccessRequest(){
         try {
             let payload={
                 Id_Akun : this.Id_Akun,
                 Id_Sub_Item_Pekerjaan : this.editTask.Id_Sub_Item_Pekerjaan,
-                Status : this.requestAccessForm,
+                Status : this.reqForm.Status,
+                Deskripsi :this.reqForm.Deskripsi,
                 Verifikasi :'Unverified'
             }
             // console.log(payload)
@@ -2427,6 +2469,70 @@ export default {
 
         }
     },
+
+    async uploadProgress(){
+        try {
+            // let payloadFile={
+            //     Berkas  : this.file,
+            //     Id_Akun : this.Id_Akun
+            // }
+            let payloadFile = new FormData();
+            payloadFile.append('Berkas',this.file);
+            payloadFile.append('Id_Akun',this.Id_Akun);
+
+
+            // console.log(payloadFile)
+
+            const pathfile= (await Controller.uploadfile(payloadFile)).data
+            // console.log(pathfile)
+            let Id_Pengerjaan = (this.editTask.Log_Pengerjaan.find(obj => obj.Id_Akun == this.Id_Akun && obj.Berkas == '')).Id_Log_Pengerjaan
+            // console.log(Id_Pengerjaan)
+
+            let payload={
+                Progress: this.editTask.Progress,
+                Catatan : this.editTask.Note,
+                Berkas  : pathfile,
+            }
+            const response= (await Controller.updatelogpengerjaan(payload,Id_Pengerjaan)).data
+            await this.accessDone()
+            this.removefile()
+            let index = this.editTask.Log_Pengerjaan.findIndex(obj=>obj.Id_Log_Pengerjaan==response.Id_Log_Pengerjaan)
+            Object.assign(this.editTask.Log_Pengerjaan[index], response)
+            this.close()
+            // console.log(index)
+
+            // this.requestDialog=false
+            this.showAlert('success','Sukses Mengirim Request')
+
+
+        } catch (err) {
+            console.log(err)
+            this.showAlert('error','Gagal Mengirim Request')
+
+        }
+    },
+
+    async accessDone () {
+        try {
+  
+            let payload ={
+                Verifikasi:'Done'
+            } 
+            const response = await Controller.updatejobakses(payload,this.editTask.Id_Akses)
+
+            console.log(response)
+            await this.getProject()
+            // Object.assign(this.employeeData[this.editedIndex], this.editedForm)
+            // await this.loaddata()
+            // this.close()
+            // this.showAlert('success','Sukses Verifikasi')
+
+        } catch (err) {
+            // console.log(err)
+            // this.showAlert('error','Gagal Verifikasi')
+        }
+    },
+
     addDivForm(){
         this.editProject.All_Divisi.push(this.divform)
         this.divform = Object.assign({}, this.defaultdivform)
@@ -2491,6 +2597,14 @@ export default {
         // this.editTask = Object.assign({},this.initEditTask)
 
     },
+    close () {
+        
+        setTimeout(() => {
+            this.taskDialog=false
+            // this.editedForm = Object.assign({}, this.editedFormDefault)
+            // this.editedIndex = -1
+        }, 300)
+    },
     openTaskDialog(data){
       this.taskDialog=true
       this.editTask=data
@@ -2498,11 +2612,15 @@ export default {
 
       for(let akses of this.jobAksesData)
       {
-          if(akses.Id_Sub_Item_Pekerjaan == data.Id_Sub_Item_Pekerjaan && akses.Verifikasi=="Verified")
+          if(akses.Id_Sub_Item_Pekerjaan == data.Id_Sub_Item_Pekerjaan && akses.Verifikasi=="Verified" && akses.Id_Akun == this.Id_Akun)
           {
               this.editTask.Status_Akses = akses.Status
+              this.editTask.Id_Akses = akses.Id_Akses_Pekerjaan
+              
           }
       }
+
+    //   console.log(this.editTask.Log_Pengerjaan.filter(obj=>obj.Berkas!=''))
 
     },
 
@@ -2551,13 +2669,17 @@ export default {
     },
 
     pickFile () {
-        this.$refs.file.click ()
+        if(this.file=='')
+        {
+            this.$refs.file.click ()
+        }
     },
 
     onFilePicked (e) {
       const files = e.target.files
       if(files[0] !== undefined) {
         this.fileName = files[0].name
+        // console.log(this.fileName)
         if(this.fileName.lastIndexOf('.') <= 0) {
           // console.log("Masuk return")
           return
@@ -2568,38 +2690,63 @@ export default {
         // console.log(fr.result)
         //  console.log("Masuk FR")
 
-
+        
           this.fileUrl = fr.result
 
           this.file = files[0]
+          this.namefile.push(this.file.name)
+        //   this.namefile[0].size = this.file.size
+
+        //   console.log(this.file)
+        //   console.log(files)
+        //   console.log("Name : "+this.file.name)
+        //   console.log("Size : "+this.file.size)
+        //   console.log("Size : "+files.length)
+        //   console.log("Text : "+files.text)
+        //   console.log("Index : "+files.index)
+
+
+        //   this.file = files
+
         })
       } else {
         // console.log("else")
         this.fileName = ''
         this.fileUrl = ''
+        
+
         // this.editedItem.image =''
       }
     },
+    removefile(){
+        this.namefile=[]
+        this.file=''
+        this.fileUrl = ''
+    },
 
-    forceFileDownload(response,data){
+    async forceFileDownload(response,data){
       const url = window.URL.createObjectURL(new Blob([response.data]))
-      console.log(url)
+    //   console.log(url)
       const link = document.createElement('a')
       link.href = url
       link.setAttribute('download',data.Berkas.split('/')[3]) //or any other extension
       document.body.appendChild(link)
       link.click()
+      await this.accessDone()
+      this.editTask.Status_Akses ='Locked'
+   
+
     },
 
     downloadIt(data) {
     //   console.log('http://localhost:8000/'+data.Berkas)
       this.$http({
         method: 'get',
-        url: 'http://localhost:8000/uploads/Admin/13-11-2019/Doc.docx',
+        url: 'http://localhost:8000/'+data.Berkas,
         responseType: 'arraybuffer'
       })
       .then(response => {
-        this.forceFileDownload(response,data)  
+       this.forceFileDownload(response,data)  
       })
       .catch(() => console.log('error occured'))
       

@@ -15,7 +15,8 @@ class Akses_Pekerjaan extends Model
         'Id_Sub_Item_Pekerjaan',
         'Id_Akun',
         'Status',
-        'Verifikasi'
+        'Verifikasi',
+        'Deskripsi'
     ];
     
     public function sub_item_pekerjaans()

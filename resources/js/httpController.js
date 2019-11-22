@@ -240,7 +240,59 @@ export default {
             Http.get('/api/log_pengerjaan', successCallback, errorCallback)
         })
     },
+
+    addlogpengerjaan(payload) {
+        return new Promise((resolve, reject) => {
+
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
     
+            }
+
+            Http.post('/api/log_pengerjaan', payload, successCallback, errorCallback)
+        })
+    },
+
+    updatelogpengerjaan(payload,id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+
+            }
+
+            Http.patch('/api/log_pengerjaan/'+id, payload, successCallback, errorCallback)
+        })
+    },
+
+    uploadfile(payload){
+        return new Promise((resolve, reject) => {
+
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.post('/api/log_pengerjaan/storeFile', payload, successCallback, errorCallback)
+        })
+    },
 
     //AKSES
     getalljobakses(){

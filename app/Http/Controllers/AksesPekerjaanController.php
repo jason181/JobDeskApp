@@ -45,6 +45,7 @@ class AksesPekerjaanController extends RestController
                 'Id_Sub_Item_Pekerjaan' => $request->Id_Sub_Item_Pekerjaan,
                 'Id_Akun'               => $request->Id_Akun,
                 'Status'                => $request->Status,
+                'Deskripsi'             => $request->Deskripsi,
                 'Verifikasi'            => $request->Verifikasi
             ]);
     

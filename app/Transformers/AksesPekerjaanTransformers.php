@@ -26,6 +26,7 @@ class AksesPekerjaanTransformers extends TransformerAbstract
             'Username'              => $akses_pekerjaan->akuns->Username,
             'Nama_Pegawai'          => $akses_pekerjaan->akuns->karyawans->Nama,
             'Status'                => $akses_pekerjaan->Status,
+            'Deskripsi'             => $akses_pekerjaan->Deskripsi,
             'Verifikasi'            => $akses_pekerjaan->Verifikasi,
             'Datetime_Request'       => date('m-d-Y H:i:s', strtotime($akses_pekerjaan->created_at)),
         ];

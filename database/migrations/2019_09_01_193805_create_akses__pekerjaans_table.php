@@ -19,6 +19,8 @@ class CreateAksesPekerjaansTable extends Migration
             $table->unsignedInteger('Id_Akun');
             $table->string('Status');
             $table->string('Verifikasi',50);
+            $table->string('Deskripsi',255);
+
 
             $table->softDeletes();
             $table->timestamps();

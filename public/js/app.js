@@ -2468,6 +2468,47 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
  //   import { mapState, mapActions } from 'vuex'
 //   import userService from '../../service/User'
@@ -2512,6 +2553,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       divisiData: [],
       jabatanData: [],
       editedIndex: -1,
+      noteDialog: false,
+      noteText: '',
       alert: {
         type: null,
         message: null,
@@ -2701,7 +2744,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _Verified = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(data) {
-        var payload, response;
+        var payload, payloadLog, response, response2;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
@@ -2710,34 +2753,50 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 payload = {
                   Verifikasi: 'Verified'
                 };
-                _context3.next = 4;
+                payloadLog = {
+                  Id_Sub_Item_Pekerjaan: data.Id_Sub_Item_Pekerjaan,
+                  Id_Akun: data.Id_Akun
+                };
+                _context3.next = 5;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatejobakses(payload, data.Id_Akses_Pekerjaan);
 
-              case 4:
+              case 5:
                 response = _context3.sent;
-                console.log(response); // Object.assign(this.employeeData[this.editedIndex], this.editedForm)
 
-                _context3.next = 8;
+                if (!(data.Status != 'Request Download')) {
+                  _context3.next = 11;
+                  break;
+                }
+
+                _context3.next = 9;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addlogpengerjaan(payloadLog);
+
+              case 9:
+                response2 = _context3.sent;
+                console.log(response2);
+
+              case 11:
+                _context3.next = 13;
                 return this.loaddata();
 
-              case 8:
+              case 13:
                 this.close();
                 this.showAlert('success', 'Sukses Verifikasi');
-                _context3.next = 16;
+                _context3.next = 21;
                 break;
 
-              case 12:
-                _context3.prev = 12;
+              case 17:
+                _context3.prev = 17;
                 _context3.t0 = _context3["catch"](0);
                 console.log(_context3.t0);
                 this.showAlert('error', 'Gagal Verifikasi');
 
-              case 16:
+              case 21:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, this, [[0, 12]]);
+        }, _callee3, this, [[0, 17]]);
       }));
 
       function Verified(_x) {
@@ -5702,6 +5761,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5769,6 +5851,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         client_address: ''
       },
       files: [],
+      namefile: [],
       editTask: {
         Id_Sub_Item_Pekerjaan: '',
         Id_Item_Pekerjaan: '',
@@ -5784,7 +5867,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         Remaining: '',
         Progress: '0',
         Status: 'untake',
-        Status_Akses: 'Locked'
+        Status_Akses: 'Locked',
+        Log_Pengerjaan: [],
+        Note: '',
+        Id_Akses: ''
       },
       initEditTask: {
         Id_Sub_Item_Pekerjaan: '',
@@ -5801,13 +5887,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         Remaining: '',
         Progress: '0',
         Status: 'untake',
-        Status_Akses: 'Locked'
+        Status_Akses: 'Locked',
+        Log_Pengerjaan: [],
+        Note: '',
+        Id_Akses: ''
       },
       division: ['Desain Arsi', 'Admin'],
       sub_division: [],
       task: [],
       jobAksesData: [],
-      requestAccessForm: '',
+      reqForm: {
+        Status: '',
+        Deskripsi: ''
+      },
       requestAccess: [{
         Nama: 'Request Access'
       }, {
@@ -5840,6 +5932,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       filterTask: '',
       noteDialog: false,
       noteText: '',
+      noteUser: '',
       addDialog: false,
       taskDialog: false,
       requestDialog: false,
@@ -6192,71 +6285,71 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 };
 
                 this.jobAksesData = _context.sent.data.filter(_context.t0);
-                console.log(this.jobAksesData); // this.employeeData = data.filter(obj => obj.Divisi != "Admin");
+                // console.log(this.jobAksesData)
+                // this.employeeData = data.filter(obj => obj.Divisi != "Admin");
                 // console.log(data)
-
                 _iteratorNormalCompletion = true;
                 _didIteratorError = false;
                 _iteratorError = undefined;
-                _context.prev = 15;
+                _context.prev = 14;
 
                 for (_iterator = data[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                   item = _step.value;
                   this.getDataFormat(item);
                 }
 
-                _context.next = 23;
+                _context.next = 22;
                 break;
 
-              case 19:
-                _context.prev = 19;
-                _context.t1 = _context["catch"](15);
+              case 18:
+                _context.prev = 18;
+                _context.t1 = _context["catch"](14);
                 _didIteratorError = true;
                 _iteratorError = _context.t1;
 
-              case 23:
+              case 22:
+                _context.prev = 22;
                 _context.prev = 23;
-                _context.prev = 24;
 
                 if (!_iteratorNormalCompletion && _iterator["return"] != null) {
                   _iterator["return"]();
                 }
 
-              case 26:
-                _context.prev = 26;
+              case 25:
+                _context.prev = 25;
 
                 if (!_didIteratorError) {
-                  _context.next = 29;
+                  _context.next = 28;
                   break;
                 }
 
                 throw _iteratorError;
 
+              case 28:
+                return _context.finish(25);
+
               case 29:
-                return _context.finish(26);
+                return _context.finish(22);
 
               case 30:
-                return _context.finish(23);
-
-              case 31:
                 this.tempProjects = data; // console.log(data)
                 // console.log(this.tempProjects)
                 // console.log(JSON.stringify( this.tempProjects, null, 2))
 
-                _context.next = 37;
+                _context.next = 36;
                 break;
 
-              case 34:
-                _context.prev = 34;
+              case 33:
+                _context.prev = 33;
                 _context.t2 = _context["catch"](0);
                 console.log(_context.t2);
 
-              case 37:
+              case 36:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 34], [15, 19, 23, 31], [24,, 26, 30]]);
+        }, _callee, this, [[0, 33], [14, 18, 22, 30], [23,, 25, 29]]);
       }));
 
       function getProject() {
@@ -6387,8 +6480,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                       if (eachsubtask.Log_Pengerjaan.length > 0) {
                         eachsubtask.Log_Pengerjaan = eachsubtask.Log_Pengerjaan.slice().reverse();
-                        eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress;
-                        eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username;
+
+                        var _data = eachsubtask.Log_Pengerjaan.find(function (obj) {
+                          return obj.Berkas != '';
+                        });
+
+                        eachsubtask.Progress = _data.Progress;
+                        eachsubtask.User = _data.Username; // eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress 
+                        // eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username 
                       }
 
                       if (remaining < 0 && eachsubtask.Progress != '100') {
@@ -6482,7 +6581,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 payload = {
                   Id_Akun: this.Id_Akun,
                   Id_Sub_Item_Pekerjaan: this.editTask.Id_Sub_Item_Pekerjaan,
-                  Status: this.requestAccessForm,
+                  Status: this.reqForm.Status,
+                  Deskripsi: this.reqForm.Deskripsi,
                   Verifikasi: 'Unverified' // console.log(payload)
 
                 };
@@ -6516,6 +6616,126 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       return sendAccessRequest;
+    }(),
+    uploadProgress: function () {
+      var _uploadProgress = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this2 = this;
+
+        var payloadFile, pathfile, Id_Pengerjaan, payload, response, index;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                // let payloadFile={
+                //     Berkas  : this.file,
+                //     Id_Akun : this.Id_Akun
+                // }
+                payloadFile = new FormData();
+                payloadFile.append('Berkas', this.file);
+                payloadFile.append('Id_Akun', this.Id_Akun); // console.log(payloadFile)
+
+                _context3.next = 6;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].uploadfile(payloadFile);
+
+              case 6:
+                pathfile = _context3.sent.data;
+                // console.log(pathfile)
+                Id_Pengerjaan = this.editTask.Log_Pengerjaan.find(function (obj) {
+                  return obj.Id_Akun == _this2.Id_Akun && obj.Berkas == '';
+                }).Id_Log_Pengerjaan; // console.log(Id_Pengerjaan)
+
+                payload = {
+                  Progress: this.editTask.Progress,
+                  Catatan: this.editTask.Note,
+                  Berkas: pathfile
+                };
+                _context3.next = 11;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatelogpengerjaan(payload, Id_Pengerjaan);
+
+              case 11:
+                response = _context3.sent.data;
+                _context3.next = 14;
+                return this.accessDone();
+
+              case 14:
+                this.removefile();
+                index = this.editTask.Log_Pengerjaan.findIndex(function (obj) {
+                  return obj.Id_Log_Pengerjaan == response.Id_Log_Pengerjaan;
+                });
+                Object.assign(this.editTask.Log_Pengerjaan[index], response);
+                this.close(); // console.log(index)
+                // this.requestDialog=false
+
+                this.showAlert('success', 'Sukses Mengirim Request');
+                _context3.next = 25;
+                break;
+
+              case 21:
+                _context3.prev = 21;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+                this.showAlert('error', 'Gagal Mengirim Request');
+
+              case 25:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 21]]);
+      }));
+
+      function uploadProgress() {
+        return _uploadProgress.apply(this, arguments);
+      }
+
+      return uploadProgress;
+    }(),
+    accessDone: function () {
+      var _accessDone = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var payload, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                payload = {
+                  Verifikasi: 'Done'
+                };
+                _context4.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatejobakses(payload, this.editTask.Id_Akses);
+
+              case 4:
+                response = _context4.sent;
+                console.log(response);
+                _context4.next = 8;
+                return this.getProject();
+
+              case 8:
+                _context4.next = 12;
+                break;
+
+              case 10:
+                _context4.prev = 10;
+                _context4.t0 = _context4["catch"](0);
+
+              case 12:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 10]]);
+      }));
+
+      function accessDone() {
+        return _accessDone.apply(this, arguments);
+      }
+
+      return accessDone;
     }(),
     addDivForm: function addDivForm() {
       this.editProject.All_Divisi.push(this.divform);
@@ -6566,6 +6786,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.editProject = Object.assign({}, this.initEditProject); // this.editProject.tasks=[]
       // this.editTask = Object.assign({},this.initEditTask)
     },
+    close: function close() {
+      var _this3 = this;
+
+      setTimeout(function () {
+        _this3.taskDialog = false; // this.editedForm = Object.assign({}, this.editedFormDefault)
+        // this.editedIndex = -1
+      }, 300);
+    },
     openTaskDialog: function openTaskDialog(data) {
       this.taskDialog = true;
       this.editTask = data;
@@ -6579,10 +6807,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         for (var _iterator7 = this.jobAksesData[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
           var akses = _step7.value;
 
-          if (akses.Id_Sub_Item_Pekerjaan == data.Id_Sub_Item_Pekerjaan && akses.Verifikasi == "Verified") {
+          if (akses.Id_Sub_Item_Pekerjaan == data.Id_Sub_Item_Pekerjaan && akses.Verifikasi == "Verified" && akses.Id_Akun == this.Id_Akun) {
             this.editTask.Status_Akses = akses.Status;
+            this.editTask.Id_Akses = akses.Id_Akses_Pekerjaan;
           }
-        }
+        } //   console.log(this.editTask.Log_Pengerjaan.filter(obj=>obj.Berkas!=''))
+
       } catch (err) {
         _didIteratorError7 = true;
         _iteratorError7 = err;
@@ -6599,39 +6829,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     getSubDivision: function getSubDivision() {
-      var _this2 = this;
+      var _this4 = this;
 
       this.sub_division = this.data_sub_division.filter(function (obj) {
-        return obj.division == _this2.filterDiv;
+        return obj.division == _this4.filterDiv;
       });
       this.filterSubDiv = '';
     },
     getTask: function getTask() {
-      var _this3 = this;
+      var _this5 = this;
 
       this.task = this.data_task.filter(function (obj) {
-        return obj.sub_division == _this3.filterSubDiv;
+        return obj.sub_division == _this5.filterSubDiv;
       });
       this.filterTask = '';
     },
     filteredTask: function filteredTask(data) {
-      var _this4 = this;
+      var _this6 = this;
 
       if (this.filterDiv != "") {
         // console.log("in")
         if (this.filterSubDiv != "") {
           if (this.filterTask != "") {
             return data.filter(function (obj) {
-              return obj.Division == _this4.filterDiv && obj.Sub_Division == _this4.filterSubDiv && obj.Task == _this4.filterTask;
+              return obj.Division == _this6.filterDiv && obj.Sub_Division == _this6.filterSubDiv && obj.Task == _this6.filterTask;
             });
           } else {
             return data.filter(function (obj) {
-              return obj.Division == _this4.filterDiv && obj.Sub_Division == _this4.filterSubDiv;
+              return obj.Division == _this6.filterDiv && obj.Sub_Division == _this6.filterSubDiv;
             });
           }
         } else {
           return data.filter(function (obj) {
-            return obj.Division == _this4.filterDiv;
+            return obj.Division == _this6.filterDiv;
           });
         }
       } else {
@@ -6644,15 +6874,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.filterTask = '';
     },
     pickFile: function pickFile() {
-      this.$refs.file.click();
+      if (this.file == '') {
+        this.$refs.file.click();
+      }
     },
     onFilePicked: function onFilePicked(e) {
-      var _this5 = this;
+      var _this7 = this;
 
       var files = e.target.files;
 
       if (files[0] !== undefined) {
-        this.fileName = files[0].name;
+        this.fileName = files[0].name; // console.log(this.fileName)
 
         if (this.fileName.lastIndexOf('.') <= 0) {
           // console.log("Masuk return")
@@ -6664,8 +6896,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         fr.addEventListener('load', function () {
           // console.log(fr.result)
           //  console.log("Masuk FR")
-          _this5.fileUrl = fr.result;
-          _this5.file = files[0];
+          _this7.fileUrl = fr.result;
+          _this7.file = files[0];
+
+          _this7.namefile.push(_this7.file.name); //   this.namefile[0].size = this.file.size
+          //   console.log(this.file)
+          //   console.log(files)
+          //   console.log("Name : "+this.file.name)
+          //   console.log("Size : "+this.file.size)
+          //   console.log("Size : "+files.length)
+          //   console.log("Text : "+files.text)
+          //   console.log("Index : "+files.index)
+          //   this.file = files
+
         });
       } else {
         // console.log("else")
@@ -6673,32 +6916,64 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.fileUrl = ''; // this.editedItem.image =''
       }
     },
-    forceFileDownload: function forceFileDownload(response, data) {
-      var url = window.URL.createObjectURL(new Blob([response.data]));
-      console.log(url);
-      var link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', data.Berkas.split('/')[3]); //or any other extension
-
-      document.body.appendChild(link);
-      link.click();
+    removefile: function removefile() {
+      this.namefile = [];
+      this.file = '';
+      this.fileUrl = '';
     },
+    forceFileDownload: function () {
+      var _forceFileDownload = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(response, data) {
+        var url, link;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                url = window.URL.createObjectURL(new Blob([response.data])); //   console.log(url)
+
+                link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', data.Berkas.split('/')[3]); //or any other extension
+
+                document.body.appendChild(link);
+                link.click();
+                _context5.next = 8;
+                return this.accessDone();
+
+              case 8:
+                this.editTask.Status_Akses = 'Locked';
+
+              case 9:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function forceFileDownload(_x, _x2) {
+        return _forceFileDownload.apply(this, arguments);
+      }
+
+      return forceFileDownload;
+    }(),
     downloadIt: function downloadIt(data) {
-      var _this6 = this;
+      var _this8 = this;
 
       //   console.log('http://localhost:8000/'+data.Berkas)
       this.$http({
         method: 'get',
-        url: 'http://localhost:8000/uploads/Admin/13-11-2019/Doc.docx',
+        url: 'http://localhost:8000/' + data.Berkas,
         responseType: 'arraybuffer'
       }).then(function (response) {
-        _this6.forceFileDownload(response, data);
+        _this8.forceFileDownload(response, data);
       })["catch"](function () {
         return console.log('error occured');
       });
     },
     showAlert: function showAlert(type, alert_message) {
-      var _this7 = this;
+      var _this9 = this;
 
       if (type == 'success') {
         this.alert.icon = 'fas fa-check-circle';
@@ -6715,9 +6990,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.showAlert.timer = setTimeout(function () {
-        _this7.alert.type = null;
-        _this7.alert.icon = null;
-        _this7.alert.message = null;
+        _this9.alert.type = null;
+        _this9.alert.icon = null;
+        _this9.alert.message = null;
       }, 3000);
     } // sortByDate(prop){
     //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
@@ -12319,9 +12594,31 @@ var render = function() {
                     _vm._v(_vm._s(props.item.Datetime_Request))
                   ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "text-xs-center" }, [
-                    _vm._v(_vm._s(props.item.Status))
-                  ]),
+                  _c(
+                    "td",
+                    { staticClass: "text-xs-center" },
+                    [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(props.item.Status) +
+                          " | \n            "
+                      ),
+                      _c(
+                        "v-icon",
+                        {
+                          attrs: { color: "grey lighten-1", small: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.noteDialog = !_vm.noteDialog
+                              _vm.noteText = props.item.Deskripsi
+                            }
+                          }
+                        },
+                        [_vm._v("\n            message\n\n            ")]
+                      )
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c(
                     "td",
@@ -12353,7 +12650,8 @@ var render = function() {
                               )
                             ]
                           )
-                        : _c(
+                        : props.item.Verifikasi == "Unverified"
+                        ? _c(
                             "v-btn",
                             {
                               staticStyle: {
@@ -12377,6 +12675,22 @@ var render = function() {
                                 "\n                Unverified\n              "
                               )
                             ]
+                          )
+                        : _c(
+                            "v-btn",
+                            {
+                              staticStyle: {
+                                "text-transform": "none !important"
+                              },
+                              attrs: {
+                                depressed: "",
+                                small: "",
+                                color: "error",
+                                dark: "",
+                                disabled: ""
+                              }
+                            },
+                            [_vm._v("\n                Done\n              ")]
                           )
                     ],
                     1
@@ -12428,6 +12742,38 @@ var render = function() {
               }
             ])
           })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { "max-width": "290" },
+          model: {
+            value: _vm.noteDialog,
+            callback: function($$v) {
+              _vm.noteDialog = $$v
+            },
+            expression: "noteDialog"
+          }
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "headline" }, [
+                _vm._v("Message")
+              ]),
+              _vm._v(" "),
+              _c("v-card-text", [
+                _vm._v(
+                  "\n                " + _vm._s(_vm.noteText) + "\n            "
+                )
+              ])
+            ],
+            1
+          )
         ],
         1
       ),
@@ -15638,7 +15984,8 @@ var render = function() {
                           _vm.editTask.User != ""
                             ? _c("span", [
                                 _vm._v(
-                                  "Last Taken By : " + _vm._s(_vm.editTask.User)
+                                  "Last Progress By : " +
+                                    _vm._s(_vm.editTask.User)
                                 )
                               ])
                             : _vm._e()
@@ -15898,12 +16245,14 @@ var render = function() {
                                   _vm._v(" "),
                                   _c(
                                     "v-flex",
-                                    { attrs: { xs12: "" } },
+                                    { attrs: { xs6: "" } },
                                     [
-                                      _c("v-text-field", {
+                                      _c("v-combobox", {
                                         attrs: {
                                           counter: "",
                                           label: "Upload File",
+                                          chips: "",
+                                          readonly: "",
                                           multiple: "",
                                           placeholder: "Select your files",
                                           "prepend-icon": "mdi-paperclip",
@@ -15919,59 +16268,43 @@ var render = function() {
                                         scopedSlots: _vm._u([
                                           {
                                             key: "selection",
-                                            fn: function(ref) {
-                                              var index = ref.index
-                                              var text = ref.text
+                                            fn: function(data) {
                                               return [
-                                                index < 2
-                                                  ? _c(
-                                                      "v-chip",
-                                                      {
-                                                        attrs: {
-                                                          color:
-                                                            "deep-purple accent-4",
-                                                          dark: "",
-                                                          label: "",
-                                                          small: ""
-                                                        }
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                                " +
-                                                            _vm._s(text) +
-                                                            "\n                                "
-                                                        )
-                                                      ]
+                                                _c(
+                                                  "v-chip",
+                                                  {
+                                                    attrs: {
+                                                      color:
+                                                        "grey darken-2 accent-4",
+                                                      dark: "",
+                                                      label: "",
+                                                      small: "",
+                                                      close: ""
+                                                    },
+                                                    on: {
+                                                      input: function($event) {
+                                                        return _vm.removefile()
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                " +
+                                                        _vm._s(data.item) +
+                                                        "\n                                "
                                                     )
-                                                  : index === 2
-                                                  ? _c(
-                                                      "span",
-                                                      {
-                                                        staticClass:
-                                                          "overline grey--text text--darken-3 mx-2"
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                                +" +
-                                                            _vm._s(
-                                                              _vm.file.length -
-                                                                2
-                                                            ) +
-                                                            " File(s)\n                                "
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e()
+                                                  ]
+                                                )
                                               ]
                                             }
                                           }
                                         ]),
                                         model: {
-                                          value: _vm.file,
+                                          value: _vm.namefile,
                                           callback: function($$v) {
-                                            _vm.file = $$v
+                                            _vm.namefile = $$v
                                           },
-                                          expression: "file"
+                                          expression: "namefile"
                                         }
                                       }),
                                       _vm._v(" "),
@@ -15980,6 +16313,32 @@ var render = function() {
                                         staticStyle: { display: "none" },
                                         attrs: { type: "file", accept: "*" },
                                         on: { change: _vm.onFilePicked }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs6: "" } },
+                                    [
+                                      _c("v-textarea", {
+                                        attrs: {
+                                          outline: "",
+                                          disabled:
+                                            _vm.editTask.Status_Akses ==
+                                              "Locked" ||
+                                            _vm.editTask.Status_Akses ==
+                                              "Request Download",
+                                          label: "Note Progress"
+                                        },
+                                        model: {
+                                          value: _vm.editTask.Note,
+                                          callback: function($$v) {
+                                            _vm.$set(_vm.editTask, "Note", $$v)
+                                          },
+                                          expression: "editTask.Note"
+                                        }
                                       })
                                     ],
                                     1
@@ -16000,7 +16359,11 @@ var render = function() {
                                           _c("v-divider"),
                                           _vm._v(" "),
                                           _vm._l(
-                                            _vm.editTask.Log_Pengerjaan,
+                                            _vm.editTask.Log_Pengerjaan.filter(
+                                              function(obj) {
+                                                return obj.Berkas != ""
+                                              }
+                                            ),
                                             function(item) {
                                               return _c(
                                                 "v-list-tile",
@@ -16110,7 +16473,8 @@ var render = function() {
                                                             [
                                                               _vm.editTask
                                                                 .Status_Akses !=
-                                                              "Locked"
+                                                                "Locked" &&
+                                                              item.Berkas != ""
                                                                 ? _c(
                                                                     "v-btn",
                                                                     {
@@ -16173,6 +16537,8 @@ var render = function() {
                                                                       _vm.noteDialog = !_vm.noteDialog
                                                                       _vm.noteText =
                                                                         item.Catatan
+                                                                      _vm.noteUser =
+                                                                        item.Username
                                                                     }
                                                                   }
                                                                 },
@@ -16272,7 +16638,7 @@ var render = function() {
                                   attrs: { color: "blue darken-1", flat: "" },
                                   on: {
                                     click: function($event) {
-                                      _vm.taskDialog = false
+                                      return _vm.uploadProgress()
                                     }
                                   }
                                 },
@@ -16329,11 +16695,22 @@ var render = function() {
                               label: "List Access"
                             },
                             model: {
-                              value: _vm.requestAccessForm,
+                              value: _vm.reqForm.Status,
                               callback: function($$v) {
-                                _vm.requestAccessForm = $$v
+                                _vm.$set(_vm.reqForm, "Status", $$v)
                               },
-                              expression: "requestAccessForm"
+                              expression: "reqForm.Status"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-textarea", {
+                            attrs: { outline: "", label: "Description" },
+                            model: {
+                              value: _vm.reqForm.Deskripsi,
+                              callback: function($$v) {
+                                _vm.$set(_vm.reqForm, "Deskripsi", $$v)
+                              },
+                              expression: "reqForm.Deskripsi"
                             }
                           })
                         ],
@@ -21167,7 +21544,7 @@ var render = function() {
                 "v-card",
                 [
                   _c("v-card-title", { staticClass: "headline" }, [
-                    _vm._v("Note")
+                    _vm._v("Note by : " + _vm._s(_vm.noteUser))
                   ]),
                   _vm._v(" "),
                   _c("v-card-text", [
@@ -67783,6 +68160,48 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/log_pengerjaan', successCallback, errorCallback);
+    });
+  },
+  addlogpengerjaan: function addlogpengerjaan(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/log_pengerjaan', payload, successCallback, errorCallback);
+    });
+  },
+  updatelogpengerjaan: function updatelogpengerjaan(payload, id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/log_pengerjaan/' + id, payload, successCallback, errorCallback);
+    });
+  },
+  uploadfile: function uploadfile(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/log_pengerjaan/storeFile', payload, successCallback, errorCallback);
     });
   },
   //AKSES

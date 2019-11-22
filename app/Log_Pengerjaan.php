@@ -9,7 +9,7 @@ class Log_Pengerjaan extends Model
 {
     use SoftDeletes;
     protected $table = 'log_pengerjaans';
-    protected $primaryKey = 'Id_Log_Pengerjaan';
+    protected $primaryKey = 'Id_Pengerjaan';
     public $timestamp = true;
     protected $fillable = [
         'Id_Sub_Item_Pekerjaan',
