@@ -21,7 +21,6 @@ class ItemPekerjaanTransformers extends TransformerAbstract
     {
         return [
             'Id_Item_Pekerjaan' => $item->Id_Item_Pekerjaan,
-            'Id_Proyek'         => $item->Id_Proyek,
             'Id_Divisi_Role'    => $item->Id_Divisi_Role,
             'Id_Sub_Divisi_Proyek'=> $item->Id_Sub_Divisi_Proyek,
             'Sub_Divisi'        => $item->sub_divisi_proyeks->Nama,
@@ -29,7 +28,7 @@ class ItemPekerjaanTransformers extends TransformerAbstract
             'Kode'              => $item->Kode,
             'Satuan'            => $item->Satuan,
             'Tanggal_Selesai'   => $item->Tanggal_Selesai,
-            'Persentase'        => $item->Durasi,
+            'Persentase'        => $item->Persentase,
         ];
     }
     public function includeSubTask(Item_Pekerjaan $item)

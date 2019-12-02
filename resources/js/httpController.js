@@ -222,6 +222,39 @@ export default {
             Http.get('/api/proyek', successCallback, errorCallback)
         })
     },
+    addproject(payload){
+        return new Promise((resolve, reject) => {
+
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.post('/api/proyek/add', payload, successCallback, errorCallback)
+        })
+    },
+    updateproject(payload,id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+
+            }
+
+            Http.patch('/api/proyek/update/'+id, payload, successCallback, errorCallback)
+        })
+    },
 
     //LOG PENGERJAAN
     getalllogpengerjaan(){

@@ -14,6 +14,7 @@ class Sub_Divisi_Proyek extends Model
     public $timestamp = true;
     protected $fillable = [
         'Id_Divisi_Proyek',
+        'Nama',
         'Tanggal_Selesai',
         'Persentase'
     ];

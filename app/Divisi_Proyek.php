@@ -15,6 +15,7 @@ class Divisi_Proyek extends Model
     protected $fillable = [
         'Id_Divisi_Role',
         'Id_Proyek',
+        'Nama',
         'Tanggal_Selesai',
         'Persentase',
     ];

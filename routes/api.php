@@ -44,6 +44,10 @@ Route::resource('log_sesi','LogSesiController'); //Half-Ready
 
 //Proyek
 Route::resource ('proyek','ProyekController'); //Ready & Checked
+Route::post ('proyek/add','ProyekController@storeAll'); //Ready & Checked
+Route::patch ('proyek/update/{id}','ProyekController@updateAll'); //Ready & Checked
+
+
 
 //Sub Divisi
 Route::resource('sub_divisi_proyek','SubDivisiProyekController'); //Ready
