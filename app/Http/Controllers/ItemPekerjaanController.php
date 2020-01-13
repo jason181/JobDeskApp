@@ -87,12 +87,15 @@ class ItemPekerjaanController extends RestController
         try {
             $sub_items=Sub_Item_Pekerjaan::where('Id_Item_Pekerjaan',$id)->get();
             $counter=0;
-            foreach($sub_items as $sub_item)
-            {
-                $counter+=app('App\Http\Controllers\SubItemPekerjaanController')->hitungPersentaseSubItem($sub_item->Id_Sub_Item_Pekerjaan)*$sub_item->Persentase/100;
+            if($sub_items==NULL)
+                return 0;
+            else{
+                foreach($sub_items as $sub_item)
+                {
+                    $counter+=app('App\Http\Controllers\SubItemPekerjaanController')->hitungPersentaseSubItem($sub_item->Id_Sub_Item_Pekerjaan)*$sub_item->Persentase/100;
+                }
+                return $counter;
             }
-            return $counter;
-            
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }

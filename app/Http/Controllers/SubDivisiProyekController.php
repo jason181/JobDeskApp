@@ -130,12 +130,15 @@ class SubDivisiProyekController extends RestController
         try {
             $items=Item_Pekerjaan::where('Id_Sub_Divisi_Proyek',$id)->get();
             $counter=0;
-            foreach($items as $item)
-            {
-                $counter+=app('App\Http\Controllers\ItemPekerjaanController')->hitungPersentaseItem($item->Id_Item_Pekerjaan)*$item->Persentase/100;
+            if($items==NULL)
+                return 0;
+            else{
+                foreach($items as $item)
+                {
+                    $counter+=app('App\Http\Controllers\ItemPekerjaanController')->hitungPersentaseItem($item->Id_Item_Pekerjaan)*$item->Persentase/100;
+                }
+                return $counter;
             }
-            return $counter;
-            
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }

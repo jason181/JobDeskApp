@@ -252,11 +252,15 @@ class ProyekController extends RestController
         try {
             $divisis=Divisi_Proyek::where('Id_Proyek',$id)->get();
             $counter=0;
-            foreach($divisis as $divisi)
-            {
-                $counter+=app('App\Http\Controllers\DivisiProyekController')->hitungPersentaseDivisi($divisi->Id_Divisi_Proyek)*$divisi->Persentase/100;
+            if($divisis==NULL)
+                return 0;
+            else{
+                foreach($divisis as $divisi)
+                {
+                    $counter+=app('App\Http\Controllers\DivisiProyekController')->hitungPersentaseDivisi($divisi->Id_Divisi_Proyek)*$divisi->Persentase/100;
+                }
+                return $counter;
             }
-            return $counter;
             
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
