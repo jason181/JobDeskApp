@@ -17,6 +17,7 @@ class LogPengerjaanTransformers extends TransformerAbstract
         return [
             'Id_Log_Pengerjaan'     => $log_pengerjaan->Id_Pengerjaan,
             'Id_Sub_Item_Pekerjaan' => $log_pengerjaan->Id_Sub_Item_Pekerjaan,
+            'Id_Proyek'             => $log_pengerjaan->sub_item_pekerjaans->item_pekerjaans->sub_divisi_proyeks->divisi_proyeks->proyeks->Id_Proyek,
             'Id_Akun'               => $log_pengerjaan->Id_Akun,
             'Username'              => $log_pengerjaan->akuns->Username,
             'Waktu_Mulai'           => $log_pengerjaan->Waktu_Mulai,
@@ -24,6 +25,7 @@ class LogPengerjaanTransformers extends TransformerAbstract
             'Progress'              => $log_pengerjaan->Progress,
             'Berkas'                => $log_pengerjaan->Berkas,
             'Catatan'               => $log_pengerjaan->Catatan,
+
         ];
     }
 }

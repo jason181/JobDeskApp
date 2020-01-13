@@ -397,6 +397,90 @@ export default {
         })
     },
 
+    //Persentase
+    getProgressProyek(id){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.get('/api/hitungProyek/'+id, successCallback, errorCallback)
+        })
+    },
+    getProgressDivisi(id){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.get('/api/hitungDivisi/'+id, successCallback, errorCallback)
+        })
+    },
+    getProgressSubDivisi(id){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.get('/api/hitungSubDivisi/'+id, successCallback, errorCallback)
+        })
+    },
+    getProgressItem(id){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.get('/api/hitungItem/'+id, successCallback, errorCallback)
+        })
+    },
+    getProgressSubItem(id){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.get('/api/hitungSubItem/'+id, successCallback, errorCallback)
+        })
+    },
+
+
+
 
    
 

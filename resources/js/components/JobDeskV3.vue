@@ -32,7 +32,7 @@
                             </v-flex>   
                             <v-spacer/>
                             <v-flex>
-                                <v-btn small @click="detailDialog = !detailDialog">Detail</v-btn>
+                                <v-btn small @click="detailProjectDialog(project)">Detail</v-btn>
                                 <v-btn small @click="editProjectDialog(project)">Edit</v-btn>
                             </v-flex>  
                             <!-- <v-flex>
@@ -1749,9 +1749,9 @@
                                                     <v-list-tile>
                                                     <v-list-tile-content>
                                                         <v-list-tile-title>
-                                                        <span> Rumah Sakit Arsitektur</span>
+                                                        <span>{{detailProject.Nama}}</span>
                                                         
-                                                        <span class="pl-5"> 2 days remaining</span>
+                                                        <span class="pl-5"> {{detailProject.Remaining}}</span>
 
                                                         <!-- <v-btn small color="info">Detail</v-btn> -->
                                                         </v-list-tile-title>
@@ -1760,18 +1760,18 @@
                                                             <v-progress-linear
                                                         color="red"
                                                         height="20"
-                                                        :value="'70'"
+                                                        :value="detailProject.Progress"
                                                         >
                                                         <!-- <strong class="text-center">{{project.progress}}%</strong> -->
-                                                        <p class="text-xs-center">70%</p>
+                                                        <p class="text-xs-center">{{detailProject.Progress}}%</p>
                                                         </v-progress-linear>
                                                     </v-list-tile-action>
                                                     </v-list-tile>
                                                 </template>
                                     
                                                     <v-list-group
-                                                        v-for="div in d_division"
-                                                        :key="div.id"
+                                                        v-for="div in detailProject.All_Divisi"
+                                                        :key="div.Id_Divisi_Proyek"
                                                         class="pl-2 pr-2"
                                                         :value="expandDetail"
                                                         
@@ -1779,88 +1779,89 @@
                                                         <template v-slot:activator>
                                                             <v-list-tile class="d_div">
                                                             <v-list-tile-content>
-                                                                <v-list-tile-title>{{ div.name }}
-                                                                    <span class="pl-5"> 2 days remaining</span>
+                                                                <v-list-tile-title>{{ div.Nama }}
+                                                                    <span class="pl-5"> {{div.Remaining}}</span>
                                                                 </v-list-tile-title>
                                                             </v-list-tile-content>
                                                             <v-list-tile-action style="min-width:150px; !important">
                                                                 <v-progress-linear
                                                                 color="red"
                                                                 height="20"
-                                                                :value="div.progress"
+                                                                :value="div.Progress"
                                                                 >
                                                                 <!-- <strong class="text-center">{{project.progress}}%</strong> -->
-                                                                <p class="text-xs-center">{{div.progress}}%</p>
+                                                                <p class="text-xs-center">{{div.Progress}}%</p>
                                                                 </v-progress-linear>
                                                             </v-list-tile-action>
                                                             </v-list-tile>
                                                         </template>
 
                                                         <v-list-group
-                                                        v-for="subdiv in d_sub_division"
-                                                        :key="subdiv.id"
+                                                        v-for="subdiv in detailProject.All_SubDivisi.filter(obj=>obj.Divisi == div.Nama)"
+                                                        :key="subdiv.Id_Sub_Divisi_Proyek"
                                                         class="pl-2 pr-2" 
                                                         :value="expandDetail"
                                                         >
                                                             <template v-slot:activator>
                                                                 <v-list-tile  class="d_sub_div">
                                                                 <v-list-tile-content >
-                                                                    <v-list-tile-title>{{ subdiv.name }}
-                                                                        <span class="pl-5"> 2 days remaining</span>
+                                                                    <v-list-tile-title>{{ subdiv.Nama }}
+                                                                        <span class="pl-5"> {{subdiv.Remaining}}</span>
                                                                     </v-list-tile-title>
                                                                 </v-list-tile-content>
                                                                 <v-list-tile-action style="min-width:150px; !important">
                                                                     <v-progress-linear
                                                                     color="red"
                                                                     height="20"
-                                                                    :value="subdiv.progress"
+                                                                    :value="subdiv.Progress"
                                                                     >
-                                                                    <p class="text-xs-center">{{subdiv.progress}}%</p>
+                                                                    <p class="text-xs-center">{{subdiv.Progress}}%</p>
                                                                     </v-progress-linear>
                                                                 </v-list-tile-action>
                                                                 </v-list-tile>
                                                             </template>
 
                                                             <v-list-group
-                                                            v-for="task in d_task"
-                                                            :key="task.id"
+                                                            v-for="task in detailProject.All_Task.filter(obj=>obj.Sub_Divisi == subdiv.Nama)"
+                                                            :key="task.Id_Item_Pekerjaan"
                                                             class="pl-2 pr-2"
                                                             :value="expandDetail"
                                                             >
                                                                 <template v-slot:activator>
                                                                     <v-list-tile  class="d_task">
                                                                     <v-list-tile-content>
-                                                                        <v-list-tile-title>{{ task.name }}
-                                                                            <span class="pl-5"> 2 days remaining</span>
+                                                                        <v-list-tile-title>{{ task.Nama }}
+                                                                            <span class="pl-5"> {{task.Remaining}}</span>
                                                                         </v-list-tile-title>
                                                                     </v-list-tile-content>
                                                                     <v-list-tile-action style="min-width:150px; !important">
                                                                         <v-progress-linear
                                                                         color="red"
                                                                         height="20"
-                                                                        :value="task.progress"
+                                                                        :value="task.Progress"
                                                                         >
-                                                                        <p class="text-xs-center">{{task.progress}}%</p>
+                                                                        <p class="text-xs-center">{{task.Progress}}%</p>
                                                                         </v-progress-linear>
                                                                     </v-list-tile-action>
                                                                     </v-list-tile>
                                                                 </template>
+
                                                                 <v-list-tile
-                                                                v-for="subtask in d_sub_task"
-                                                                :key="subtask.id"
+                                                                v-for="subtask in  detailProject.All_SubTask.filter(obj=>obj.Task == task.Nama)"
+                                                                :key="subtask.Id_Sub_Item_Pekerjaan"
                                                                 class="d_sub_task pl-2 pr-5 mr-3 ">
                                                                 <v-list-tile-content>
-                                                                    <v-list-tile-title>{{ subtask.name }}
-                                                                        <span class="pl-5"> 2 days remaining</span>
+                                                                    <v-list-tile-title>{{ subtask.Nama }}
+                                                                        <span class="pl-5"> {{subtask.Remaining}}</span>
                                                                     </v-list-tile-title>
                                                                 </v-list-tile-content>
                                                                 <v-list-tile-action style="min-width:150px; !important">
                                                                     <v-progress-linear
                                                                     color="red"
                                                                     height="20"
-                                                                    :value="subtask.progress"
+                                                                    :value="subtask.Progress"
                                                                     >
-                                                                    <p class="text-xs-center">{{subtask.progress}}%</p>
+                                                                    <p class="text-xs-center">{{subtask.Progress}}%</p>
                                                                     </v-progress-linear>
                                                                 </v-list-tile-action>
                                                                 </v-list-tile>
@@ -2366,6 +2367,16 @@ export default {
        //Data Dummy
         detailDialog:false,
         expandDetail:false,
+        detailProject:{
+            Nama:'',
+            Remaining:'',
+            Progress:'',
+
+            All_Divisi:[],
+            All_SubDivisi:[],
+            All_Task:[],
+            All_SubTask:[],
+        },
         d_division:[
             {
                 id :'2',
@@ -2804,6 +2815,63 @@ export default {
         this.editProject = Object.assign({},project)
         this.editmode=true
         this.addDialog2=true
+    },
+    async detailProjectDialog(project){
+        this.detailProject = Object.assign({},project)
+        this.detailProject.Remaining = parseInt((new Date(this.detailProject.Target_Outcome).getTime()-new Date().getTime())/(24*3600*1000)) +' days left'
+        // this.detailProject.Progress = await Controller.getProgressProyek(this.detailProject.Id_Proyek)
+        this.detailProject.Progress = 0
+
+
+        for(let subtask of this.detailProject.All_SubTask){
+
+            subtask.Remaining = parseInt((new Date(subtask.Tanggal_Selesai).getTime()-new Date().getTime())/(24*3600*1000)) +' days left'
+        }
+
+        for(let task of this.detailProject.All_Task){
+
+            task.Remaining = parseInt((new Date(task.Tanggal_Selesai).getTime()-new Date().getTime())/(24*3600*1000)) +' days left'
+            task.Progress =0
+            for(let subtask of this.detailProject.All_SubTask.filter(obj=>obj.Task == task.Nama)){
+                    
+                  task.Progress +=  subtask.Progress * subtask.Persentase/100
+            }
+
+            // task.Progress= await Controller.getProgressItem(task.Id_Item_Pekerjaan)
+        }
+
+        for(let subdiv of this.detailProject.All_SubDivisi){
+
+            subdiv.Remaining = parseInt((new Date(subdiv.Tanggal_Selesai).getTime()-new Date().getTime())/(24*3600*1000)) +' days left'
+            // subdiv.Progress= await Controller.getProgressSubDivisi(subdiv.Id_Sub_Divisi_Proyek)
+            subdiv.Progress =0
+            for(let task of this.detailProject.All_Task.filter(obj=>obj.Sub_Divisi == subdiv.Nama)){
+                   
+                  subdiv.Progress +=  task.Progress * task.Persentase/100
+            }
+
+        }
+
+        for(let div of this.detailProject.All_Divisi){
+
+            div.Remaining = parseInt((new Date(div.Tanggal_Selesai).getTime()-new Date().getTime())/(24*3600*1000)) +' days left'
+            // div.Progress= await Controller.getProgressDivisi(div.Id_Divisi_Proyek)
+            div.Progress =0
+            for(let subdiv of this.detailProject.All_SubDivisi.filter(obj=>obj.Divisi == div.Nama)){
+                    
+                  div.Progress +=  subdiv.Progress * subdiv.Persentase/100
+            }
+            this.detailProject.Progress += div.Progress * div.Persentase/100
+        }
+
+        
+
+        
+
+
+        this.detailDialog = true
+
+
     },
     addTask(data){
         console.log(data)

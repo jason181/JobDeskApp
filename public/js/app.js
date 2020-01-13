@@ -5921,6 +5921,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6337,6 +6338,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       //Data Dummy
       detailDialog: false,
       expandDetail: false,
+      detailProject: {
+        Nama: '',
+        Remaining: '',
+        Progress: '',
+        All_Divisi: [],
+        All_SubDivisi: [],
+        All_Task: [],
+        All_SubTask: []
+      },
       d_division: [{
         id: '2',
         progress: '70',
@@ -7056,6 +7066,309 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.editmode = true;
       this.addDialog2 = true;
     },
+    detailProjectDialog: function () {
+      var _detailProjectDialog = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(project) {
+        var _this4 = this;
+
+        var _iteratorNormalCompletion7, _didIteratorError7, _iteratorError7, _iterator7, _step7, subtask, _iteratorNormalCompletion8, _didIteratorError8, _iteratorError8, _loop, _iterator8, _step8, _iteratorNormalCompletion9, _didIteratorError9, _iteratorError9, _loop2, _iterator9, _step9, _iteratorNormalCompletion10, _didIteratorError10, _iteratorError10, _loop3, _iterator10, _step10;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                this.detailProject = Object.assign({}, project);
+                this.detailProject.Remaining = parseInt((new Date(this.detailProject.Target_Outcome).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // this.detailProject.Progress = await Controller.getProgressProyek(this.detailProject.Id_Proyek)
+
+                this.detailProject.Progress = 0;
+                _iteratorNormalCompletion7 = true;
+                _didIteratorError7 = false;
+                _iteratorError7 = undefined;
+                _context7.prev = 6;
+
+                for (_iterator7 = this.detailProject.All_SubTask[Symbol.iterator](); !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+                  subtask = _step7.value;
+                  subtask.Remaining = parseInt((new Date(subtask.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left';
+                }
+
+                _context7.next = 14;
+                break;
+
+              case 10:
+                _context7.prev = 10;
+                _context7.t0 = _context7["catch"](6);
+                _didIteratorError7 = true;
+                _iteratorError7 = _context7.t0;
+
+              case 14:
+                _context7.prev = 14;
+                _context7.prev = 15;
+
+                if (!_iteratorNormalCompletion7 && _iterator7["return"] != null) {
+                  _iterator7["return"]();
+                }
+
+              case 17:
+                _context7.prev = 17;
+
+                if (!_didIteratorError7) {
+                  _context7.next = 20;
+                  break;
+                }
+
+                throw _iteratorError7;
+
+              case 20:
+                return _context7.finish(17);
+
+              case 21:
+                return _context7.finish(14);
+
+              case 22:
+                _iteratorNormalCompletion8 = true;
+                _didIteratorError8 = false;
+                _iteratorError8 = undefined;
+                _context7.prev = 25;
+
+                _loop = function _loop() {
+                  var task = _step8.value;
+                  task.Remaining = parseInt((new Date(task.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left';
+                  task.Progress = 0;
+                  var _iteratorNormalCompletion11 = true;
+                  var _didIteratorError11 = false;
+                  var _iteratorError11 = undefined;
+
+                  try {
+                    for (var _iterator11 = _this4.detailProject.All_SubTask.filter(function (obj) {
+                      return obj.Task == task.Nama;
+                    })[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
+                      var _subtask = _step11.value;
+                      task.Progress += _subtask.Progress * _subtask.Persentase / 100;
+                    } // task.Progress= await Controller.getProgressItem(task.Id_Item_Pekerjaan)
+
+                  } catch (err) {
+                    _didIteratorError11 = true;
+                    _iteratorError11 = err;
+                  } finally {
+                    try {
+                      if (!_iteratorNormalCompletion11 && _iterator11["return"] != null) {
+                        _iterator11["return"]();
+                      }
+                    } finally {
+                      if (_didIteratorError11) {
+                        throw _iteratorError11;
+                      }
+                    }
+                  }
+                };
+
+                for (_iterator8 = this.detailProject.All_Task[Symbol.iterator](); !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+                  _loop();
+                }
+
+                _context7.next = 34;
+                break;
+
+              case 30:
+                _context7.prev = 30;
+                _context7.t1 = _context7["catch"](25);
+                _didIteratorError8 = true;
+                _iteratorError8 = _context7.t1;
+
+              case 34:
+                _context7.prev = 34;
+                _context7.prev = 35;
+
+                if (!_iteratorNormalCompletion8 && _iterator8["return"] != null) {
+                  _iterator8["return"]();
+                }
+
+              case 37:
+                _context7.prev = 37;
+
+                if (!_didIteratorError8) {
+                  _context7.next = 40;
+                  break;
+                }
+
+                throw _iteratorError8;
+
+              case 40:
+                return _context7.finish(37);
+
+              case 41:
+                return _context7.finish(34);
+
+              case 42:
+                _iteratorNormalCompletion9 = true;
+                _didIteratorError9 = false;
+                _iteratorError9 = undefined;
+                _context7.prev = 45;
+
+                _loop2 = function _loop2() {
+                  var subdiv = _step9.value;
+                  subdiv.Remaining = parseInt((new Date(subdiv.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // subdiv.Progress= await Controller.getProgressSubDivisi(subdiv.Id_Sub_Divisi_Proyek)
+
+                  subdiv.Progress = 0;
+                  var _iteratorNormalCompletion12 = true;
+                  var _didIteratorError12 = false;
+                  var _iteratorError12 = undefined;
+
+                  try {
+                    for (var _iterator12 = _this4.detailProject.All_Task.filter(function (obj) {
+                      return obj.Sub_Divisi == subdiv.Nama;
+                    })[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+                      var task = _step12.value;
+                      subdiv.Progress += task.Progress * task.Persentase / 100;
+                    }
+                  } catch (err) {
+                    _didIteratorError12 = true;
+                    _iteratorError12 = err;
+                  } finally {
+                    try {
+                      if (!_iteratorNormalCompletion12 && _iterator12["return"] != null) {
+                        _iterator12["return"]();
+                      }
+                    } finally {
+                      if (_didIteratorError12) {
+                        throw _iteratorError12;
+                      }
+                    }
+                  }
+                };
+
+                for (_iterator9 = this.detailProject.All_SubDivisi[Symbol.iterator](); !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+                  _loop2();
+                }
+
+                _context7.next = 54;
+                break;
+
+              case 50:
+                _context7.prev = 50;
+                _context7.t2 = _context7["catch"](45);
+                _didIteratorError9 = true;
+                _iteratorError9 = _context7.t2;
+
+              case 54:
+                _context7.prev = 54;
+                _context7.prev = 55;
+
+                if (!_iteratorNormalCompletion9 && _iterator9["return"] != null) {
+                  _iterator9["return"]();
+                }
+
+              case 57:
+                _context7.prev = 57;
+
+                if (!_didIteratorError9) {
+                  _context7.next = 60;
+                  break;
+                }
+
+                throw _iteratorError9;
+
+              case 60:
+                return _context7.finish(57);
+
+              case 61:
+                return _context7.finish(54);
+
+              case 62:
+                _iteratorNormalCompletion10 = true;
+                _didIteratorError10 = false;
+                _iteratorError10 = undefined;
+                _context7.prev = 65;
+
+                _loop3 = function _loop3() {
+                  var div = _step10.value;
+                  div.Remaining = parseInt((new Date(div.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // div.Progress= await Controller.getProgressDivisi(div.Id_Divisi_Proyek)
+
+                  div.Progress = 0;
+                  var _iteratorNormalCompletion13 = true;
+                  var _didIteratorError13 = false;
+                  var _iteratorError13 = undefined;
+
+                  try {
+                    for (var _iterator13 = _this4.detailProject.All_SubDivisi.filter(function (obj) {
+                      return obj.Divisi == div.Nama;
+                    })[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
+                      var subdiv = _step13.value;
+                      div.Progress += subdiv.Progress * subdiv.Persentase / 100;
+                    }
+                  } catch (err) {
+                    _didIteratorError13 = true;
+                    _iteratorError13 = err;
+                  } finally {
+                    try {
+                      if (!_iteratorNormalCompletion13 && _iterator13["return"] != null) {
+                        _iterator13["return"]();
+                      }
+                    } finally {
+                      if (_didIteratorError13) {
+                        throw _iteratorError13;
+                      }
+                    }
+                  }
+
+                  _this4.detailProject.Progress += div.Progress * div.Persentase / 100;
+                };
+
+                for (_iterator10 = this.detailProject.All_Divisi[Symbol.iterator](); !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+                  _loop3();
+                }
+
+                _context7.next = 74;
+                break;
+
+              case 70:
+                _context7.prev = 70;
+                _context7.t3 = _context7["catch"](65);
+                _didIteratorError10 = true;
+                _iteratorError10 = _context7.t3;
+
+              case 74:
+                _context7.prev = 74;
+                _context7.prev = 75;
+
+                if (!_iteratorNormalCompletion10 && _iterator10["return"] != null) {
+                  _iterator10["return"]();
+                }
+
+              case 77:
+                _context7.prev = 77;
+
+                if (!_didIteratorError10) {
+                  _context7.next = 80;
+                  break;
+                }
+
+                throw _iteratorError10;
+
+              case 80:
+                return _context7.finish(77);
+
+              case 81:
+                return _context7.finish(74);
+
+              case 82:
+                this.detailDialog = true;
+
+              case 83:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, this, [[6, 10, 14, 22], [15,, 17, 21], [25, 30, 34, 42], [35,, 37, 41], [45, 50, 54, 62], [55,, 57, 61], [65, 70, 74, 82], [75,, 77, 81]]);
+      }));
+
+      function detailProjectDialog(_x) {
+        return _detailProjectDialog.apply(this, arguments);
+      }
+
+      return detailProjectDialog;
+    }(),
     addTask: function addTask(data) {
       console.log(data); // Object.assign(this.editProject.tasks[0],data)
 
@@ -7068,14 +7381,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // this.editTask = Object.assign({},this.initEditTask)
     },
     close: function close() {
-      var _this4 = this;
+      var _this5 = this;
 
       setTimeout(function () {
-        _this4.taskDialog = false;
-        _this4.addDialog2 = false;
-        _this4.editmode = false;
-        _this4.editProject = Object.assign({}, _this4.initEditProject);
-        _this4.templateProject = ''; // this.editedForm = Object.assign({}, this.editedFormDefault)
+        _this5.taskDialog = false;
+        _this5.addDialog2 = false;
+        _this5.editmode = false;
+        _this5.editProject = Object.assign({}, _this5.initEditProject);
+        _this5.templateProject = ''; // this.editedForm = Object.assign({}, this.editedFormDefault)
         // this.editedIndex = -1
       }, 300);
     },
@@ -7084,13 +7397,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.editTask = data;
       this.editTask.Status_Akses = 'Locked'; //<==================================NEED EDIT
 
-      var _iteratorNormalCompletion7 = true;
-      var _didIteratorError7 = false;
-      var _iteratorError7 = undefined;
+      var _iteratorNormalCompletion14 = true;
+      var _didIteratorError14 = false;
+      var _iteratorError14 = undefined;
 
       try {
-        for (var _iterator7 = this.jobAksesData[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-          var akses = _step7.value;
+        for (var _iterator14 = this.jobAksesData[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
+          var akses = _step14.value;
 
           if (akses.Id_Sub_Item_Pekerjaan == data.Id_Sub_Item_Pekerjaan && akses.Verifikasi == "Verified" && akses.Id_Akun == this.Id_Akun) {
             this.editTask.Status_Akses = akses.Status;
@@ -7099,54 +7412,54 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         } //   console.log(this.editTask.Log_Pengerjaan.filter(obj=>obj.Berkas!=''))
 
       } catch (err) {
-        _didIteratorError7 = true;
-        _iteratorError7 = err;
+        _didIteratorError14 = true;
+        _iteratorError14 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion7 && _iterator7["return"] != null) {
-            _iterator7["return"]();
+          if (!_iteratorNormalCompletion14 && _iterator14["return"] != null) {
+            _iterator14["return"]();
           }
         } finally {
-          if (_didIteratorError7) {
-            throw _iteratorError7;
+          if (_didIteratorError14) {
+            throw _iteratorError14;
           }
         }
       }
     },
     getSubDivision: function getSubDivision() {
-      var _this5 = this;
+      var _this6 = this;
 
       this.sub_division = this.data_sub_division.filter(function (obj) {
-        return obj.division == _this5.filterDiv;
+        return obj.division == _this6.filterDiv;
       });
       this.filterSubDiv = '';
     },
     getTask: function getTask() {
-      var _this6 = this;
+      var _this7 = this;
 
       this.task = this.data_task.filter(function (obj) {
-        return obj.sub_division == _this6.filterSubDiv;
+        return obj.sub_division == _this7.filterSubDiv;
       });
       this.filterTask = '';
     },
     filteredTask: function filteredTask(data) {
-      var _this7 = this;
+      var _this8 = this;
 
       if (this.filterDiv != "") {
         // console.log("in")
         if (this.filterSubDiv != "") {
           if (this.filterTask != "") {
             return data.filter(function (obj) {
-              return obj.Division == _this7.filterDiv && obj.Sub_Division == _this7.filterSubDiv && obj.Task == _this7.filterTask;
+              return obj.Division == _this8.filterDiv && obj.Sub_Division == _this8.filterSubDiv && obj.Task == _this8.filterTask;
             });
           } else {
             return data.filter(function (obj) {
-              return obj.Division == _this7.filterDiv && obj.Sub_Division == _this7.filterSubDiv;
+              return obj.Division == _this8.filterDiv && obj.Sub_Division == _this8.filterSubDiv;
             });
           }
         } else {
           return data.filter(function (obj) {
-            return obj.Division == _this7.filterDiv;
+            return obj.Division == _this8.filterDiv;
           });
         }
       } else {
@@ -7164,7 +7477,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     onFilePicked: function onFilePicked(e) {
-      var _this8 = this;
+      var _this9 = this;
 
       var files = e.target.files;
 
@@ -7181,10 +7494,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         fr.addEventListener('load', function () {
           // console.log(fr.result)
           //  console.log("Masuk FR")
-          _this8.fileUrl = fr.result;
-          _this8.file = files[0];
+          _this9.fileUrl = fr.result;
+          _this9.file = files[0];
 
-          _this8.namefile.push(_this8.file.name); //   this.namefile[0].size = this.file.size
+          _this9.namefile.push(_this9.file.name); //   this.namefile[0].size = this.file.size
           //   console.log(this.file)
           //   console.log(files)
           //   console.log("Name : "+this.file.name)
@@ -7209,11 +7522,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     forceFileDownload: function () {
       var _forceFileDownload = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(response, data) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(response, data) {
         var url, link;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
           while (1) {
-            switch (_context7.prev = _context7.next) {
+            switch (_context8.prev = _context8.next) {
               case 0:
                 url = window.URL.createObjectURL(new Blob([response.data])); //   console.log(url)
 
@@ -7223,7 +7536,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                 document.body.appendChild(link);
                 link.click();
-                _context7.next = 8;
+                _context8.next = 8;
                 return this.accessDone();
 
               case 8:
@@ -7231,20 +7544,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 9:
               case "end":
-                return _context7.stop();
+                return _context8.stop();
             }
           }
-        }, _callee7, this);
+        }, _callee8, this);
       }));
 
-      function forceFileDownload(_x, _x2) {
+      function forceFileDownload(_x2, _x3) {
         return _forceFileDownload.apply(this, arguments);
       }
 
       return forceFileDownload;
     }(),
     downloadIt: function downloadIt(data) {
-      var _this9 = this;
+      var _this10 = this;
 
       //   console.log('http://localhost:8000/'+data.Berkas)
       this.$http({
@@ -7252,13 +7565,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         url: 'http://localhost:8000/' + data.Berkas,
         responseType: 'arraybuffer'
       }).then(function (response) {
-        _this9.forceFileDownload(response, data);
+        _this10.forceFileDownload(response, data);
       })["catch"](function () {
         return console.log('error occured');
       });
     },
     showAlert: function showAlert(type, alert_message) {
-      var _this10 = this;
+      var _this11 = this;
 
       if (type == 'success') {
         this.alert.icon = 'fas fa-check-circle';
@@ -7275,9 +7588,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.showAlert.timer = setTimeout(function () {
-        _this10.alert.type = null;
-        _this10.alert.icon = null;
-        _this10.alert.message = null;
+        _this11.alert.type = null;
+        _this11.alert.icon = null;
+        _this11.alert.message = null;
       }, 3000);
     } // sortByDate(prop){
     //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
@@ -15872,7 +16185,9 @@ var render = function() {
                                         attrs: { small: "" },
                                         on: {
                                           click: function($event) {
-                                            _vm.detailDialog = !_vm.detailDialog
+                                            return _vm.detailProjectDialog(
+                                              project
+                                            )
                                           }
                                         }
                                       },
@@ -22599,7 +22914,11 @@ var render = function() {
                                                                         "span",
                                                                         [
                                                                           _vm._v(
-                                                                            " Rumah Sakit Arsitektur"
+                                                                            _vm._s(
+                                                                              _vm
+                                                                                .detailProject
+                                                                                .Nama
+                                                                            )
                                                                           )
                                                                         ]
                                                                       ),
@@ -22614,7 +22933,12 @@ var render = function() {
                                                                         },
                                                                         [
                                                                           _vm._v(
-                                                                            " 2 days remaining"
+                                                                            " " +
+                                                                              _vm._s(
+                                                                                _vm
+                                                                                  .detailProject
+                                                                                  .Remaining
+                                                                              )
                                                                           )
                                                                         ]
                                                                       )
@@ -22642,7 +22966,9 @@ var render = function() {
                                                                         height:
                                                                           "20",
                                                                         value:
-                                                                          "70"
+                                                                          _vm
+                                                                            .detailProject
+                                                                            .Progress
                                                                       }
                                                                     },
                                                                     [
@@ -22654,7 +22980,12 @@ var render = function() {
                                                                         },
                                                                         [
                                                                           _vm._v(
-                                                                            "70%"
+                                                                            _vm._s(
+                                                                              _vm
+                                                                                .detailProject
+                                                                                .Progress
+                                                                            ) +
+                                                                              "%"
                                                                           )
                                                                         ]
                                                                       )
@@ -22675,12 +23006,14 @@ var render = function() {
                                                 [
                                                   _vm._v(" "),
                                                   _vm._l(
-                                                    _vm.d_division,
+                                                    _vm.detailProject
+                                                      .All_Divisi,
                                                     function(div) {
                                                       return _c(
                                                         "v-list-group",
                                                         {
-                                                          key: div.id,
+                                                          key:
+                                                            div.Id_Divisi_Proyek,
                                                           staticClass:
                                                             "pl-2 pr-2",
                                                           attrs: {
@@ -22709,7 +23042,7 @@ var render = function() {
                                                                               [
                                                                                 _vm._v(
                                                                                   _vm._s(
-                                                                                    div.name
+                                                                                    div.Nama
                                                                                   ) +
                                                                                     "\n                                                                "
                                                                                 ),
@@ -22721,7 +23054,10 @@ var render = function() {
                                                                                   },
                                                                                   [
                                                                                     _vm._v(
-                                                                                      " 2 days remaining"
+                                                                                      " " +
+                                                                                        _vm._s(
+                                                                                          div.Remaining
+                                                                                        )
                                                                                     )
                                                                                   ]
                                                                                 )
@@ -22751,7 +23087,7 @@ var render = function() {
                                                                                   height:
                                                                                     "20",
                                                                                   value:
-                                                                                    div.progress
+                                                                                    div.Progress
                                                                                 }
                                                                               },
                                                                               [
@@ -22764,7 +23100,7 @@ var render = function() {
                                                                                   [
                                                                                     _vm._v(
                                                                                       _vm._s(
-                                                                                        div.progress
+                                                                                        div.Progress
                                                                                       ) +
                                                                                         "%"
                                                                                     )
@@ -22790,13 +23126,20 @@ var render = function() {
                                                         [
                                                           _vm._v(" "),
                                                           _vm._l(
-                                                            _vm.d_sub_division,
+                                                            _vm.detailProject.All_SubDivisi.filter(
+                                                              function(obj) {
+                                                                return (
+                                                                  obj.Divisi ==
+                                                                  div.Nama
+                                                                )
+                                                              }
+                                                            ),
                                                             function(subdiv) {
                                                               return _c(
                                                                 "v-list-group",
                                                                 {
                                                                   key:
-                                                                    subdiv.id,
+                                                                    subdiv.Id_Sub_Divisi_Proyek,
                                                                   staticClass:
                                                                     "pl-2 pr-2",
                                                                   attrs: {
@@ -22825,7 +23168,7 @@ var render = function() {
                                                                                       [
                                                                                         _vm._v(
                                                                                           _vm._s(
-                                                                                            subdiv.name
+                                                                                            subdiv.Nama
                                                                                           ) +
                                                                                             "\n                                                                    "
                                                                                         ),
@@ -22837,7 +23180,10 @@ var render = function() {
                                                                                           },
                                                                                           [
                                                                                             _vm._v(
-                                                                                              " 2 days remaining"
+                                                                                              " " +
+                                                                                                _vm._s(
+                                                                                                  subdiv.Remaining
+                                                                                                )
                                                                                             )
                                                                                           ]
                                                                                         )
@@ -22867,7 +23213,7 @@ var render = function() {
                                                                                           height:
                                                                                             "20",
                                                                                           value:
-                                                                                            subdiv.progress
+                                                                                            subdiv.Progress
                                                                                         }
                                                                                       },
                                                                                       [
@@ -22880,7 +23226,7 @@ var render = function() {
                                                                                           [
                                                                                             _vm._v(
                                                                                               _vm._s(
-                                                                                                subdiv.progress
+                                                                                                subdiv.Progress
                                                                                               ) +
                                                                                                 "%"
                                                                                             )
@@ -22906,7 +23252,16 @@ var render = function() {
                                                                 [
                                                                   _vm._v(" "),
                                                                   _vm._l(
-                                                                    _vm.d_task,
+                                                                    _vm.detailProject.All_Task.filter(
+                                                                      function(
+                                                                        obj
+                                                                      ) {
+                                                                        return (
+                                                                          obj.Sub_Divisi ==
+                                                                          subdiv.Nama
+                                                                        )
+                                                                      }
+                                                                    ),
                                                                     function(
                                                                       task
                                                                     ) {
@@ -22914,7 +23269,7 @@ var render = function() {
                                                                         "v-list-group",
                                                                         {
                                                                           key:
-                                                                            task.id,
+                                                                            task.Id_Item_Pekerjaan,
                                                                           staticClass:
                                                                             "pl-2 pr-2",
                                                                           attrs: {
@@ -22943,7 +23298,7 @@ var render = function() {
                                                                                               [
                                                                                                 _vm._v(
                                                                                                   _vm._s(
-                                                                                                    task.name
+                                                                                                    task.Nama
                                                                                                   ) +
                                                                                                     "\n                                                                        "
                                                                                                 ),
@@ -22955,7 +23310,10 @@ var render = function() {
                                                                                                   },
                                                                                                   [
                                                                                                     _vm._v(
-                                                                                                      " 2 days remaining"
+                                                                                                      " " +
+                                                                                                        _vm._s(
+                                                                                                          task.Remaining
+                                                                                                        )
                                                                                                     )
                                                                                                   ]
                                                                                                 )
@@ -22985,7 +23343,7 @@ var render = function() {
                                                                                                   height:
                                                                                                     "20",
                                                                                                   value:
-                                                                                                    task.progress
+                                                                                                    task.Progress
                                                                                                 }
                                                                                               },
                                                                                               [
@@ -22998,7 +23356,7 @@ var render = function() {
                                                                                                   [
                                                                                                     _vm._v(
                                                                                                       _vm._s(
-                                                                                                        task.progress
+                                                                                                        task.Progress
                                                                                                       ) +
                                                                                                         "%"
                                                                                                     )
@@ -23026,7 +23384,16 @@ var render = function() {
                                                                             " "
                                                                           ),
                                                                           _vm._l(
-                                                                            _vm.d_sub_task,
+                                                                            _vm.detailProject.All_SubTask.filter(
+                                                                              function(
+                                                                                obj
+                                                                              ) {
+                                                                                return (
+                                                                                  obj.Task ==
+                                                                                  task.Nama
+                                                                                )
+                                                                              }
+                                                                            ),
                                                                             function(
                                                                               subtask
                                                                             ) {
@@ -23034,7 +23401,7 @@ var render = function() {
                                                                                 "v-list-tile",
                                                                                 {
                                                                                   key:
-                                                                                    subtask.id,
+                                                                                    subtask.Id_Sub_Item_Pekerjaan,
                                                                                   staticClass:
                                                                                     "d_sub_task pl-2 pr-5 mr-3 "
                                                                                 },
@@ -23047,7 +23414,7 @@ var render = function() {
                                                                                         [
                                                                                           _vm._v(
                                                                                             _vm._s(
-                                                                                              subtask.name
+                                                                                              subtask.Nama
                                                                                             ) +
                                                                                               "\n                                                                    "
                                                                                           ),
@@ -23059,7 +23426,10 @@ var render = function() {
                                                                                             },
                                                                                             [
                                                                                               _vm._v(
-                                                                                                " 2 days remaining"
+                                                                                                " " +
+                                                                                                  _vm._s(
+                                                                                                    subtask.Remaining
+                                                                                                  )
                                                                                               )
                                                                                             ]
                                                                                           )
@@ -23089,7 +23459,7 @@ var render = function() {
                                                                                             height:
                                                                                               "20",
                                                                                             value:
-                                                                                              subtask.progress
+                                                                                              subtask.Progress
                                                                                           }
                                                                                         },
                                                                                         [
@@ -23102,7 +23472,7 @@ var render = function() {
                                                                                             [
                                                                                               _vm._v(
                                                                                                 _vm._s(
-                                                                                                  subtask.progress
+                                                                                                  subtask.Progress
                                                                                                 ) +
                                                                                                   "%"
                                                                                               )
@@ -69172,6 +69542,77 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/api/akses_pekerjaan/' + id, successCallback, errorCallback);
+    });
+  },
+  //Persentase
+  getProgressProyek: function getProgressProyek(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var user = res.data;
+        resolve(res.data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/hitungProyek/' + id, successCallback, errorCallback);
+    });
+  },
+  getProgressDivisi: function getProgressDivisi(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var user = res.data;
+        resolve(res.data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/hitungDivisi/' + id, successCallback, errorCallback);
+    });
+  },
+  getProgressSubDivisi: function getProgressSubDivisi(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var user = res.data;
+        resolve(res.data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/hitungSubDivisi/' + id, successCallback, errorCallback);
+    });
+  },
+  getProgressItem: function getProgressItem(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var user = res.data;
+        resolve(res.data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/hitungItem/' + id, successCallback, errorCallback);
+    });
+  },
+  getProgressSubItem: function getProgressSubItem(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var user = res.data;
+        resolve(res.data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/hitungSubItem/' + id, successCallback, errorCallback);
     });
   }
 });

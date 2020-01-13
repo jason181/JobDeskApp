@@ -129,7 +129,7 @@ class SubItemPekerjaanController extends RestController
     public function hitungPersentaseSubItem($id)
     {
         try {
-            $log_pengerjaan = Log_Pengerjaan::where('Id_Sub_Item_Pekerjaan',$id)->orderBy('Id_Pengerjaan','desc')->first();
+            $log_pengerjaan = Log_Pengerjaan::where('Id_Sub_Item_Pekerjaan',$id)->where('Berkas','!=','')->orderBy('Id_Pengerjaan','desc')->first();
             return $log_pengerjaan->Progress;
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
