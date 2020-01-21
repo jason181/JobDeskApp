@@ -41,6 +41,13 @@ class AksesPekerjaanController extends RestController
     public function store(Request $request)
     {
         try{
+            $accesses=Akses_Pekerjaan::where('Id_Sub_Item_Pekerjaan',$request->Id_Sub_Item_Pekerjaan)->get();
+            foreach($accesses as $access)
+            {
+                $access->Verifikasi='Done';
+                $access->save();
+            }
+
             $akses_pekerjaan = Akses_Pekerjaan::create([
                 'Id_Sub_Item_Pekerjaan' => $request->Id_Sub_Item_Pekerjaan,
                 'Id_Akun'               => $request->Id_Akun,

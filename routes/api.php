@@ -66,3 +66,6 @@ Route::get('/hitungItem/{id}','ItemPekerjaanController@hitungPersentaseItem'); /
 Route::get('/hitungSubDivisi/{id}','SubDivisiProyekController@hitungPersentaseSubDIvisi'); //Ready & Checked
 Route::get('/hitungDivisi/{id}','DivisiProyekController@hitungPersentaseDivisi'); //Ready & Checked
 Route::get('/hitungProyek/{id}','ProyekController@hitungPersentaseProyek'); //Ready & Checked
+
+// Dashboard
+Route::get('/getProject/{id}','AkunController@getProject');

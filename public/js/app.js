@@ -1935,6 +1935,22 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../httpController */ "./resources/js/httpController.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2168,132 +2184,255 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
+    var _ref;
+
+    return _ref = {
       files: [],
       editProject: {
-        title: '',
-        task: '',
-        due: '',
-        status: '',
-        progress: '',
-        desc: ''
+        Id_Akses_Pekerjaan: '',
+        Id_Sub_Item_Pekerjaan: '',
+        Id_Proyek: '',
+        Nama_Proyek: '',
+        Divisi: '',
+        Sub_Divisi: '',
+        Task: '',
+        Sub_Task: '',
+        Deskripsi_Sub_Task: "",
+        Due: "",
+        Progress: 0,
+        Desc: "",
+        Remaining: "",
+        Status_Progress: "",
+        Tanggal_Selesai: "",
+        Verifikasi: "",
+        Datetime_Request: "",
+        Status_Akses_Pekerjaan: "",
+        Id_Akun: 0,
+        Username: "",
+        Nama_Pegawai: "",
+        Deskripsi: "",
+        User: "",
+        Status: "",
+        Status_Akses: 'Locked',
+        Note: ''
       },
       initEditProject: {
-        title: '',
-        task: '',
-        due: '',
-        status: '',
-        progress: '',
-        desc: ''
+        Id_Akses_Pekerjaan: '',
+        Id_Sub_Item_Pekerjaan: '',
+        Id_Proyek: '',
+        Nama_Proyek: '',
+        Divisi: '',
+        Sub_Divisi: '',
+        Task: '',
+        Sub_Task: '',
+        Deskripsi_Sub_Task: "",
+        Due: "",
+        Progress: 0,
+        Desc: "",
+        Remaining: "",
+        Status_Progress: "",
+        Tanggal_Selesai: "",
+        Verifikasi: "",
+        Datetime_Request: "",
+        Status_Akses_Pekerjaan: "",
+        Id_Akun: 0,
+        Username: "",
+        Nama_Pegawai: "",
+        Deskripsi: "",
+        User: "",
+        Status: "",
+        Status_Akses: 'Locked',
+        Note: ''
       },
-      projects: [{
-        title: 'Rumah Sakit Arsitektur',
-        task: 'Denah Depan',
-        due: '2019-09-08',
-        status: 'ongoing',
-        progress: '75',
-        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-        remaining: '2 day 3 hour'
-      }, {
-        title: 'Rumah Makan Arsitektur',
-        task: 'Denah Lt 2',
-        due: '2019-09-08',
-        status: 'complete',
-        progress: '100',
-        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-        remaining: '2 day 3 hour'
-      }, {
-        title: 'Hotel Arsitektur',
-        task: 'Denah Ruang Tamu',
-        due: '2019-09-08',
-        status: 'complete',
-        progress: '100',
-        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-        remaining: '2 day 3 hour'
-      }, {
-        title: 'Mall Arsitektur',
-        task: 'Denah Halam',
-        due: '2019-09-08',
-        status: 'overdue',
-        progress: '40',
-        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-        remaining: '2 day 3 hour'
-      }, {
-        title: 'Rumah Sakit Arsitektur1',
-        task: 'Denah Depan',
-        due: '2019-09-08',
-        status: 'ongoing',
-        progress: '75',
-        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-        remaining: '2 day 3 hour'
-      }, {
-        title: 'Rumah Makan Arsitektur1',
-        task: 'Denah Lt 2',
-        due: '2019-09-08',
-        status: 'complete',
-        progress: '100',
-        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-        remaining: '2 day 3 hour'
-      }, {
-        title: 'Hotel Arsitektur1',
-        task: 'Denah Ruang Tamu',
-        due: '2019-09-08',
-        status: 'complete',
-        progress: '100',
-        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-        remaining: '2 day 3 hour'
-      }, {
-        title: 'Mall Arsitektur1',
-        task: 'Denah Halam',
-        due: '2019-09-08',
-        status: 'overdue',
-        progress: '40',
-        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-        remaining: '2 day 3 hour'
-      }, {
-        title: 'Rumah Sakit Arsitektur2',
-        task: 'Denah Depan',
-        due: '2019-09-08',
-        status: 'ongoing',
-        progress: '75',
-        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-        remaining: '2 day 3 hour'
-      }, {
-        title: 'Rumah Makan Arsitektur2',
-        task: 'Denah Lt 2',
-        due: '2019-09-08',
-        status: 'complete',
-        progress: '100',
-        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-        remaining: '2 day 3 hour'
-      }, {
-        title: 'Hotel Arsitektur2',
-        task: 'Denah Ruang Tamu',
-        due: '2019-09-08',
-        status: 'complete',
-        progress: '100',
-        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-        remaining: '2 day 3 hour'
-      }, {
-        title: 'Mall Arsitektur2',
-        task: 'Denah Halam',
-        due: '2019-09-08',
-        status: 'overdue',
-        progress: '40',
-        desc: 'TEKS Deskripsi singkat mengenai task yang diberikan',
-        remaining: '2 day 3 hour'
-      }],
+      projects: [// { title: 'Rumah Sakit Arsitektur', task: 'Denah Depan', due: '2019-09-08', status: 'ongoing', progress: '75',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
+        // { title: 'Rumah Makan Arsitektur', task: 'Denah Lt 2',due: '2019-09-08', status: 'complete', progress: '100',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
+        // { title: 'Hotel Arsitektur', task: 'Denah Ruang Tamu', due: '2019-09-08', status: 'complete', progress: '100',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
+        // { title: 'Mall Arsitektur', task: 'Denah Halam', due: '2019-09-08', status: 'overdue', progress: '40',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
+        // { title: 'Rumah Sakit Arsitektur1', task: 'Denah Depan', due: '2019-09-08', status: 'ongoing', progress: '75',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
+        // { title: 'Rumah Makan Arsitektur1', task: 'Denah Lt 2', due: '2019-09-08', status: 'complete', progress: '100',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
+        // { title: 'Hotel Arsitektur1', task: 'Denah Ruang Tamu', due: '2019-09-08', status: 'complete', progress: '100',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
+        // { title: 'Mall Arsitektur1', task: 'Denah Halam', due: '2019-09-08', status: 'overdue', progress: '40',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
+        // { title: 'Rumah Sakit Arsitektur2', task: 'Denah Depan', due: '2019-09-08', status: 'ongoing', progress: '75',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
+        // { title: 'Rumah Makan Arsitektur2', task: 'Denah Lt 2', due: '2019-09-08', status: 'complete', progress: '100',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
+        // { title: 'Hotel Arsitektur2', task: 'Denah Ruang Tamu', due: '2019-09-08', status: 'complete', progress: '100',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
+        // { title: 'Mall Arsitektur2', task: 'Denah Halam', due: '2019-09-08', status: 'overdue', progress: '40',desc:'TEKS Deskripsi singkat mengenai task yang diberikan',remaining:'2 day 3 hour'},
+      ],
       taskDialog: false,
+      noteDialog: false,
+      noteText: '',
+      noteUser: '',
       date: new Date().toISOString().substr(0, 10),
-      dateDialog: false,
-      fileName: '',
-      fileUrl: '',
-      file: ''
-    };
+      dateDialog: false
+    }, _defineProperty(_ref, "files", []), _defineProperty(_ref, "namefile", []), _defineProperty(_ref, "fileName", ''), _defineProperty(_ref, "fileUrl", ''), _defineProperty(_ref, "file", ''), _defineProperty(_ref, "logPengerjaanData", []), _defineProperty(_ref, "logPengerjaan", []), _ref;
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
+    Id_Akun: 'LoggedUser/Id_Akun'
+  }), {
+    formTitle: function formTitle() {
+      return this.editedIndex === -1 ? 'Add Employee' : 'Edit Employee';
+    } //   ...mapState({
+    //     loading: state => state.User.loading,
+    //     error: state => state.User.error,
+    //     users: state => state.User.users,
+    //   }),
+
+  }),
+  mounted: function mounted() {
+    this.loaddata();
   },
   methods: {
+    loaddata: function () {
+      var _loaddata = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getdashboard(this.Id_Akun);
+
+              case 3:
+                this.projects = _context.sent.data;
+                _context.next = 6;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalllogpengerjaan();
+
+              case 6:
+                this.logPengerjaanData = _context.sent.data;
+                _context.next = 12;
+                break;
+
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 9]]);
+      }));
+
+      function loaddata() {
+        return _loaddata.apply(this, arguments);
+      }
+
+      return loaddata;
+    }(),
     sortBy: function sortBy(prop) {
       this.projects.sort(function (a, b) {
         return a[prop] < b[prop] ? -1 : 1;
@@ -2302,17 +2441,168 @@ __webpack_require__.r(__webpack_exports__);
     openTaskDialog: function openTaskDialog(data) {
       this.taskDialog = true;
       this.editProject = data;
+      this.logPengerjaan = this.logPengerjaanData.filter(function (obj) {
+        return obj.Id_Sub_Item_Pekerjaan == data.Id_Sub_Item_Pekerjaan && obj.Berkas != '';
+      });
+      console.log(this.logPengerjaan);
+    },
+    uploadProgress: function () {
+      var _uploadProgress = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this = this;
+
+        var payloadFile, pathfile, Id_Pengerjaan, payload, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                // let payloadFile={
+                //     Berkas  : this.file,
+                //     Id_Akun : this.Id_Akun
+                // }
+                payloadFile = new FormData();
+                payloadFile.append('Berkas', this.file);
+                payloadFile.append('Id_Akun', this.Id_Akun);
+                _context2.next = 6;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].uploadfile(payloadFile);
+
+              case 6:
+                pathfile = _context2.sent.data;
+                // console.log(pathfile)
+                // let Id_Pengerjaan = (this.editProject.Log_Pengerjaan.find(obj => obj.Id_Akun == this.Id_Akun && obj.Berkas == '')).Id_Log_Pengerjaan
+                Id_Pengerjaan = this.logPengerjaanData.find(function (obj) {
+                  return obj.Id_Sub_Item_Pekerjaan == _this.editProject.Id_Sub_Item_Pekerjaan && obj.Id_Akun == _this.Id_Akun && obj.Berkas == '';
+                }).Id_Log_Pengerjaan;
+                payload = {
+                  Progress: this.editProject.Progress,
+                  Catatan: this.editProject.Note,
+                  Berkas: pathfile
+                };
+                _context2.next = 11;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatelogpengerjaan(payload, Id_Pengerjaan);
+
+              case 11:
+                response = _context2.sent.data;
+
+                if (!(this.editProject.Progress == 100)) {
+                  _context2.next = 17;
+                  break;
+                }
+
+                _context2.next = 15;
+                return this.accessDone();
+
+              case 15:
+                _context2.next = 19;
+                break;
+
+              case 17:
+                _context2.next = 19;
+                return this.duplicateEmptyLog();
+
+              case 19:
+                this.removefile(); // let index = this.editProject.Log_Pengerjaan.findIndex(obj=>obj.Id_Log_Pengerjaan==response.Id_Log_Pengerjaan)
+                // Object.assign(this.editProject.Log_Pengerjaan[index], response)
+                //TANYA VIAN
+                // let index = this.logPengerjaanData.findIndex(obj=>obj.Id_Log_Pengerjaan == 1)
+                // Object.assign(this.logPengerjaanData[index], response)
+
+                this.close();
+                this.loaddata(); // console.log(index)
+                // this.requestDialog=false
+
+                this.showAlert('success', 'Sukses Upload Progress');
+                _context2.next = 29;
+                break;
+
+              case 25:
+                _context2.prev = 25;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+                this.showAlert('error', 'Gagal Upload Progress');
+
+              case 29:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 25]]);
+      }));
+
+      function uploadProgress() {
+        return _uploadProgress.apply(this, arguments);
+      }
+
+      return uploadProgress;
+    }(),
+    accessDone: function () {
+      var _accessDone = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var payload, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                payload = {
+                  Verifikasi: 'Done'
+                };
+                _context3.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatejobakses(payload, this.editProject.Id_Akses_Pekerjaan);
+
+              case 4:
+                response = _context3.sent;
+                console.log(response);
+                _context3.next = 8;
+                return this.getProject();
+
+              case 8:
+                _context3.next = 12;
+                break;
+
+              case 10:
+                _context3.prev = 10;
+                _context3.t0 = _context3["catch"](0);
+
+              case 12:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 10]]);
+      }));
+
+      function accessDone() {
+        return _accessDone.apply(this, arguments);
+      }
+
+      return accessDone;
+    }(),
+    close: function close() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.taskDialog = false;
+        _this2.addDialog2 = false;
+        _this2.editmode = false;
+        _this2.editProject = Object.assign({}, _this2.initEditProject);
+        _this2.templateProject = ''; // this.editedForm = Object.assign({}, this.editedFormDefault)
+        // this.editedIndex = -1
+      }, 300);
     },
     pickFile: function pickFile() {
       this.$refs.file.click();
     },
     onFilePicked: function onFilePicked(e) {
-      var _this = this;
+      var _this3 = this;
 
       var files = e.target.files;
 
       if (files[0] !== undefined) {
-        this.fileName = files[0].name;
+        this.fileName = files[0].name; // console.log(this.fileName)
 
         if (this.fileName.lastIndexOf('.') <= 0) {
           // console.log("Masuk return")
@@ -2324,15 +2614,147 @@ __webpack_require__.r(__webpack_exports__);
         fr.addEventListener('load', function () {
           // console.log(fr.result)
           //  console.log("Masuk FR")
-          _this.fileUrl = fr.result;
-          _this.file = files[0];
+          _this3.fileUrl = fr.result;
+          _this3.file = files[0];
+
+          _this3.namefile.push(_this3.file.name); //   this.namefile[0].size = this.file.size
+          //   console.log(this.file)
+          //   console.log(files)
+          //   console.log("Name : "+this.file.name)
+          //   console.log("Size : "+this.file.size)
+          //   console.log("Size : "+files.length)
+          //   console.log("Text : "+files.text)
+          //   console.log("Index : "+files.index)
+          //   this.file = files
+
         });
       } else {
         // console.log("else")
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    }
+    },
+    removefile: function removefile() {
+      this.namefile = [];
+      this.file = '';
+      this.fileUrl = '';
+    },
+    forceFileDownload: function () {
+      var _forceFileDownload = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(response, data) {
+        var url, link;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                url = window.URL.createObjectURL(new Blob([response.data])); //   console.log(url)
+
+                link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', data.Berkas.split('/')[3]); //or any other extension
+
+                document.body.appendChild(link);
+                link.click();
+                _context4.next = 8;
+                return this.accessDone();
+
+              case 8:
+                this.editProject.Status_Akses = 'Locked';
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function forceFileDownload(_x, _x2) {
+        return _forceFileDownload.apply(this, arguments);
+      }
+
+      return forceFileDownload;
+    }(),
+    downloadIt: function downloadIt(data) {
+      var _this4 = this;
+
+      //   console.log('http://localhost:8000/'+data.Berkas)
+      this.$http({
+        method: 'get',
+        url: 'http://localhost:8000/' + data.Berkas,
+        responseType: 'arraybuffer'
+      }).then(function (response) {
+        _this4.forceFileDownload(response, data);
+      })["catch"](function () {
+        return console.log('error occured');
+      });
+    },
+    showAlert: function showAlert(type, alert_message) {
+      var _this5 = this;
+
+      if (type == 'success') {
+        this.alert.icon = 'fas fa-check-circle';
+      } else if (type == 'error') {
+        this.alert.icon = 'fas fa-exclamation-circle';
+      }
+
+      this.alert.type = type;
+      this.alert.message = alert_message;
+      var timer = this.showAlert.timer;
+
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      this.showAlert.timer = setTimeout(function () {
+        _this5.alert.type = null;
+        _this5.alert.icon = null;
+        _this5.alert.message = null;
+      }, 3000);
+    },
+    duplicateEmptyLog: function () {
+      var _duplicateEmptyLog = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var payloadLog, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                payloadLog = {
+                  Id_Sub_Item_Pekerjaan: this.editProject.Id_Sub_Item_Pekerjaan,
+                  Id_Akun: this.Id_Akun
+                };
+                _context5.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addlogpengerjaan(payloadLog);
+
+              case 4:
+                response = _context5.sent;
+                _context5.next = 11;
+                break;
+
+              case 7:
+                _context5.prev = 7;
+                _context5.t0 = _context5["catch"](0);
+                console.log(_context5.t0);
+                this.showAlert('error', 'Gagal Mengirim Request');
+
+              case 11:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this, [[0, 7]]);
+      }));
+
+      function duplicateEmptyLog() {
+        return _duplicateEmptyLog.apply(this, arguments);
+      }
+
+      return duplicateEmptyLog;
+    }()
   }
 });
 
@@ -3597,7 +4019,10 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    }
+    } // sortByDate(prop){
+    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
+    // }
+
   }
 });
 
@@ -3935,7 +4360,10 @@ __webpack_require__.r(__webpack_exports__);
         this.fileName = '';
         this.fileUrl = ''; // this.editedItem.image =''
       }
-    }
+    } // sortByDate(prop){
+    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
+    // }
+
   }
 });
 
@@ -3974,6 +4402,17 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6031,7 +6470,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         Note: '',
         Id_Akses: ''
       },
-      division: ['Desain Arsi', 'Admin'],
+      division: [],
       sub_division: [],
       task: [],
       jobAksesData: [],
@@ -6287,14 +6726,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         align: 'center'
       }],
       divform: {
-        Nama: '',
+        Id_Divisi_Role: '',
+        Id_Proyek: '',
         Persentase: '',
-        Tanggal_Selesai: ''
+        Tanggal_Selesai: '' // New:0,
+
       },
       defaultdivform: {
-        Nama: '',
+        Id_Divisi_Role: '',
+        Id_Proyek: '',
         Persentase: '',
-        Tanggal_Selesai: ''
+        Tanggal_Selesai: '' // New:0,
+
       },
       subdivform: {
         Nama: '',
@@ -6566,73 +7009,81 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 };
 
                 this.jobAksesData = _context3.sent.data.filter(_context3.t0);
-                // console.log(this.jobAksesData)
+                _context3.next = 13;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalldivisirole();
+
+              case 13:
+                this.division = _context3.sent.data;
+                console.log(this.division); // console.log(this.jobAksesData)
                 // this.employeeData = data.filter(obj => obj.Divisi != "Admin");
                 // console.log(data)
                 // console.log(this.logPengerjaanData)
+
+                console.log("DATA");
+                console.log(data);
                 _iteratorNormalCompletion = true;
                 _didIteratorError = false;
                 _iteratorError = undefined;
-                _context3.prev = 14;
+                _context3.prev = 20;
 
                 for (_iterator = data[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                   item = _step.value;
                   this.getDataFormat(item);
                 }
 
-                _context3.next = 22;
+                _context3.next = 28;
                 break;
 
-              case 18:
-                _context3.prev = 18;
-                _context3.t1 = _context3["catch"](14);
+              case 24:
+                _context3.prev = 24;
+                _context3.t1 = _context3["catch"](20);
                 _didIteratorError = true;
                 _iteratorError = _context3.t1;
 
-              case 22:
-                _context3.prev = 22;
-                _context3.prev = 23;
+              case 28:
+                _context3.prev = 28;
+                _context3.prev = 29;
 
                 if (!_iteratorNormalCompletion && _iterator["return"] != null) {
                   _iterator["return"]();
                 }
 
-              case 25:
-                _context3.prev = 25;
+              case 31:
+                _context3.prev = 31;
 
                 if (!_didIteratorError) {
-                  _context3.next = 28;
+                  _context3.next = 34;
                   break;
                 }
 
                 throw _iteratorError;
 
-              case 28:
-                return _context3.finish(25);
+              case 34:
+                return _context3.finish(31);
 
-              case 29:
-                return _context3.finish(22);
+              case 35:
+                return _context3.finish(28);
 
-              case 30:
+              case 36:
                 this.tempProjects = data; // this.tempProjects=Object.assign({},data)
                 // console.log(data)
                 // console.log(this.tempProjects)
                 // console.log(JSON.stringify( this.tempProjects, null, 2))
 
-                _context3.next = 36;
+                _context3.next = 42;
                 break;
 
-              case 33:
-                _context3.prev = 33;
+              case 39:
+                _context3.prev = 39;
                 _context3.t2 = _context3["catch"](0);
                 console.log(_context3.t2);
 
-              case 36:
+              case 42:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, this, [[0, 33], [14, 18, 22, 30], [23,, 25, 29]]);
+        }, _callee3, this, [[0, 39], [20, 24, 28, 36], [29,, 31, 35]]);
       }));
 
       function getProject() {
@@ -6660,9 +7111,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             Id_Proyek: div.Id_Proyek,
             Nama: div.Nama,
             Tanggal_Selesai: div.Tanggal_Selesai.split(' ')[0],
-            Persentase: div.Persentase // console.log(JSON.stringify(eachdiv, null, 2))
+            Persentase: div.Persentase // New                 : 0,
 
-          };
+          }; // console.log(JSON.stringify(eachdiv, null, 2))
+
           alldivisi.push(eachdiv);
           var _iteratorNormalCompletion3 = true;
           var _didIteratorError3 = false;
@@ -6677,9 +7129,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 Divisi: subdiv.Divisi,
                 Nama: subdiv.Nama,
                 Tanggal_Selesai: subdiv.Tanggal_Selesai.split(' ')[0],
-                Persentase: subdiv.Persentase // console.log(JSON.stringify(eachsubdiv, null, 2))
+                Persentase: subdiv.Persentase
+              }; // console.log(JSON.stringify(eachsubdiv, null, 2))
 
-              };
               allsubdivisi.push(eachsubdiv);
               var _iteratorNormalCompletion4 = true;
               var _didIteratorError4 = false;
@@ -6697,9 +7149,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     Kode: task.Kode,
                     Satuan: task.Satuan,
                     Tanggal_Selesai: task.Tanggal_Selesai.split(' ')[0],
-                    Persentase: task.Persentase // console.log(JSON.stringify(eachsubdiv, null, 2))
+                    Persentase: task.Persentase
+                  }; // console.log(JSON.stringify(eachsubdiv, null, 2))
 
-                  };
                   alltask.push(eachtask);
                   var _iteratorNormalCompletion5 = true;
                   var _didIteratorError5 = false;
@@ -6724,9 +7176,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                         Remaining: '',
                         Progress: '0',
                         Status: 'untake',
-                        Log_Pengerjaan: [] // console.log(JSON.stringify(eachsubdiv, null, 2))
+                        Log_Pengerjaan: []
+                      }; // console.log(JSON.stringify(eachsubdiv, null, 2))
 
-                      };
                       var _iteratorNormalCompletion6 = true;
                       var _didIteratorError6 = false;
                       var _iteratorError6 = undefined;
@@ -6872,9 +7324,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Id_Sub_Item_Pekerjaan: this.editTask.Id_Sub_Item_Pekerjaan,
                   Status: this.reqForm.Status,
                   Deskripsi: this.reqForm.Deskripsi,
-                  Verifikasi: 'Unverified' // console.log(payload)
+                  Verifikasi: 'Unverified'
+                }; // console.log(payload)
 
-                };
                 _context4.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addjobakses(payload);
 
@@ -6946,10 +7398,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 11:
                 response = _context5.sent.data;
-                _context5.next = 14;
+
+                if (!(this.editTask.Progress == 100)) {
+                  _context5.next = 15;
+                  break;
+                }
+
+                _context5.next = 15;
                 return this.accessDone();
 
-              case 14:
+              case 15:
                 this.removefile();
                 index = this.editTask.Log_Pengerjaan.findIndex(function (obj) {
                   return obj.Id_Log_Pengerjaan == response.Id_Log_Pengerjaan;
@@ -6959,21 +7417,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 // this.requestDialog=false
 
                 this.showAlert('success', 'Sukses Upload Progress');
-                _context5.next = 25;
+                _context5.next = 26;
                 break;
 
-              case 21:
-                _context5.prev = 21;
+              case 22:
+                _context5.prev = 22;
                 _context5.t0 = _context5["catch"](0);
                 console.log(_context5.t0);
                 this.showAlert('error', 'Gagal Upload Progress');
 
-              case 25:
+              case 26:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, this, [[0, 21]]);
+        }, _callee5, this, [[0, 22]]);
       }));
 
       function uploadProgress() {
@@ -7027,6 +7485,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return accessDone;
     }(),
     addDivForm: function addDivForm() {
+      var _iteratorNormalCompletion7 = true;
+      var _didIteratorError7 = false;
+      var _iteratorError7 = undefined;
+
+      try {
+        for (var _iterator7 = this.division[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+          var div = _step7.value;
+
+          if (div.Id_Divisi_Role == this.divform.Id_Divisi_Role) {
+            this.divform.Nama = div.Deskripsi;
+            break;
+          }
+        }
+      } catch (err) {
+        _didIteratorError7 = true;
+        _iteratorError7 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion7 && _iterator7["return"] != null) {
+            _iterator7["return"]();
+          }
+        } finally {
+          if (_didIteratorError7) {
+            throw _iteratorError7;
+          }
+        }
+      }
+
+      if (this.editmode == true) {
+        this.divform.Id_Proyek = this.editProject.Id_Proyek; // this.divform.New = 1
+      }
+
       this.editProject.All_Divisi.push(this.divform);
       this.divform = Object.assign({}, this.defaultdivform);
     },
@@ -7072,7 +7562,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(project) {
         var _this4 = this;
 
-        var _iteratorNormalCompletion7, _didIteratorError7, _iteratorError7, _iterator7, _step7, subtask, _iteratorNormalCompletion8, _didIteratorError8, _iteratorError8, _loop, _iterator8, _step8, _iteratorNormalCompletion9, _didIteratorError9, _iteratorError9, _loop2, _iterator9, _step9, _iteratorNormalCompletion10, _didIteratorError10, _iteratorError10, _loop3, _iterator10, _step10;
+        var _iteratorNormalCompletion8, _didIteratorError8, _iteratorError8, _iterator8, _step8, subtask, _iteratorNormalCompletion9, _didIteratorError9, _iteratorError9, _loop, _iterator9, _step9, _iteratorNormalCompletion10, _didIteratorError10, _iteratorError10, _loop2, _iterator10, _step10, _iteratorNormalCompletion11, _didIteratorError11, _iteratorError11, _loop3, _iterator11, _step11;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
@@ -7082,13 +7572,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 this.detailProject.Remaining = parseInt((new Date(this.detailProject.Target_Outcome).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // this.detailProject.Progress = await Controller.getProgressProyek(this.detailProject.Id_Proyek)
 
                 this.detailProject.Progress = 0;
-                _iteratorNormalCompletion7 = true;
-                _didIteratorError7 = false;
-                _iteratorError7 = undefined;
+                _iteratorNormalCompletion8 = true;
+                _didIteratorError8 = false;
+                _iteratorError8 = undefined;
                 _context7.prev = 6;
 
-                for (_iterator7 = this.detailProject.All_SubTask[Symbol.iterator](); !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-                  subtask = _step7.value;
+                for (_iterator8 = this.detailProject.All_SubTask[Symbol.iterator](); !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+                  subtask = _step8.value;
                   subtask.Remaining = parseInt((new Date(subtask.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left';
                 }
 
@@ -7098,26 +7588,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 10:
                 _context7.prev = 10;
                 _context7.t0 = _context7["catch"](6);
-                _didIteratorError7 = true;
-                _iteratorError7 = _context7.t0;
+                _didIteratorError8 = true;
+                _iteratorError8 = _context7.t0;
 
               case 14:
                 _context7.prev = 14;
                 _context7.prev = 15;
 
-                if (!_iteratorNormalCompletion7 && _iterator7["return"] != null) {
-                  _iterator7["return"]();
+                if (!_iteratorNormalCompletion8 && _iterator8["return"] != null) {
+                  _iterator8["return"]();
                 }
 
               case 17:
                 _context7.prev = 17;
 
-                if (!_didIteratorError7) {
+                if (!_didIteratorError8) {
                   _context7.next = 20;
                   break;
                 }
 
-                throw _iteratorError7;
+                throw _iteratorError8;
 
               case 20:
                 return _context7.finish(17);
@@ -7126,102 +7616,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return _context7.finish(14);
 
               case 22:
-                _iteratorNormalCompletion8 = true;
-                _didIteratorError8 = false;
-                _iteratorError8 = undefined;
-                _context7.prev = 25;
-
-                _loop = function _loop() {
-                  var task = _step8.value;
-                  task.Remaining = parseInt((new Date(task.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left';
-                  task.Progress = 0;
-                  var _iteratorNormalCompletion11 = true;
-                  var _didIteratorError11 = false;
-                  var _iteratorError11 = undefined;
-
-                  try {
-                    for (var _iterator11 = _this4.detailProject.All_SubTask.filter(function (obj) {
-                      return obj.Task == task.Nama;
-                    })[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
-                      var _subtask = _step11.value;
-                      task.Progress += _subtask.Progress * _subtask.Persentase / 100;
-                    } // task.Progress= await Controller.getProgressItem(task.Id_Item_Pekerjaan)
-
-                  } catch (err) {
-                    _didIteratorError11 = true;
-                    _iteratorError11 = err;
-                  } finally {
-                    try {
-                      if (!_iteratorNormalCompletion11 && _iterator11["return"] != null) {
-                        _iterator11["return"]();
-                      }
-                    } finally {
-                      if (_didIteratorError11) {
-                        throw _iteratorError11;
-                      }
-                    }
-                  }
-                };
-
-                for (_iterator8 = this.detailProject.All_Task[Symbol.iterator](); !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-                  _loop();
-                }
-
-                _context7.next = 34;
-                break;
-
-              case 30:
-                _context7.prev = 30;
-                _context7.t1 = _context7["catch"](25);
-                _didIteratorError8 = true;
-                _iteratorError8 = _context7.t1;
-
-              case 34:
-                _context7.prev = 34;
-                _context7.prev = 35;
-
-                if (!_iteratorNormalCompletion8 && _iterator8["return"] != null) {
-                  _iterator8["return"]();
-                }
-
-              case 37:
-                _context7.prev = 37;
-
-                if (!_didIteratorError8) {
-                  _context7.next = 40;
-                  break;
-                }
-
-                throw _iteratorError8;
-
-              case 40:
-                return _context7.finish(37);
-
-              case 41:
-                return _context7.finish(34);
-
-              case 42:
                 _iteratorNormalCompletion9 = true;
                 _didIteratorError9 = false;
                 _iteratorError9 = undefined;
-                _context7.prev = 45;
+                _context7.prev = 25;
 
-                _loop2 = function _loop2() {
-                  var subdiv = _step9.value;
-                  subdiv.Remaining = parseInt((new Date(subdiv.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // subdiv.Progress= await Controller.getProgressSubDivisi(subdiv.Id_Sub_Divisi_Proyek)
-
-                  subdiv.Progress = 0;
+                _loop = function _loop() {
+                  var task = _step9.value;
+                  task.Remaining = parseInt((new Date(task.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left';
+                  task.Progress = 0;
                   var _iteratorNormalCompletion12 = true;
                   var _didIteratorError12 = false;
                   var _iteratorError12 = undefined;
 
                   try {
-                    for (var _iterator12 = _this4.detailProject.All_Task.filter(function (obj) {
-                      return obj.Sub_Divisi == subdiv.Nama;
+                    for (var _iterator12 = _this4.detailProject.All_SubTask.filter(function (obj) {
+                      return obj.Task == task.Nama;
                     })[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
-                      var task = _step12.value;
-                      subdiv.Progress += task.Progress * task.Persentase / 100;
-                    }
+                      var _subtask = _step12.value;
+                      task.Progress += _subtask.Progress * _subtask.Persentase / 100;
+                    } // task.Progress= await Controller.getProgressItem(task.Id_Item_Pekerjaan)
+
                   } catch (err) {
                     _didIteratorError12 = true;
                     _iteratorError12 = err;
@@ -7238,64 +7653,64 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   }
                 };
 
-                for (_iterator9 = this.detailProject.All_SubDivisi[Symbol.iterator](); !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
-                  _loop2();
+                for (_iterator9 = this.detailProject.All_Task[Symbol.iterator](); !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+                  _loop();
                 }
 
-                _context7.next = 54;
+                _context7.next = 34;
                 break;
 
-              case 50:
-                _context7.prev = 50;
-                _context7.t2 = _context7["catch"](45);
+              case 30:
+                _context7.prev = 30;
+                _context7.t1 = _context7["catch"](25);
                 _didIteratorError9 = true;
-                _iteratorError9 = _context7.t2;
+                _iteratorError9 = _context7.t1;
 
-              case 54:
-                _context7.prev = 54;
-                _context7.prev = 55;
+              case 34:
+                _context7.prev = 34;
+                _context7.prev = 35;
 
                 if (!_iteratorNormalCompletion9 && _iterator9["return"] != null) {
                   _iterator9["return"]();
                 }
 
-              case 57:
-                _context7.prev = 57;
+              case 37:
+                _context7.prev = 37;
 
                 if (!_didIteratorError9) {
-                  _context7.next = 60;
+                  _context7.next = 40;
                   break;
                 }
 
                 throw _iteratorError9;
 
-              case 60:
-                return _context7.finish(57);
+              case 40:
+                return _context7.finish(37);
 
-              case 61:
-                return _context7.finish(54);
+              case 41:
+                return _context7.finish(34);
 
-              case 62:
+              case 42:
                 _iteratorNormalCompletion10 = true;
                 _didIteratorError10 = false;
                 _iteratorError10 = undefined;
-                _context7.prev = 65;
+                _context7.prev = 45;
 
-                _loop3 = function _loop3() {
-                  var div = _step10.value;
-                  div.Remaining = parseInt((new Date(div.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // div.Progress= await Controller.getProgressDivisi(div.Id_Divisi_Proyek)
+                _loop2 = function _loop2() {
+                  var subdiv = _step10.value;
+                  subdiv.Remaining = parseInt((new Date(subdiv.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // subdiv.Progress= await Controller.getProgressSubDivisi(subdiv.Id_Sub_Divisi_Proyek)
 
-                  div.Progress = 0;
+                  subdiv.Progress = 0;
                   var _iteratorNormalCompletion13 = true;
                   var _didIteratorError13 = false;
                   var _iteratorError13 = undefined;
 
                   try {
-                    for (var _iterator13 = _this4.detailProject.All_SubDivisi.filter(function (obj) {
-                      return obj.Divisi == div.Nama;
+                    for (var _iterator13 = _this4.detailProject.All_Task.filter(function (obj) {
+                      return obj.Sub_Divisi == subdiv.Nama;
                     })[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
-                      var subdiv = _step13.value;
-                      div.Progress += subdiv.Progress * subdiv.Persentase / 100;
+                      var task = _step13.value;
+                      subdiv.Progress += task.Progress * task.Persentase / 100;
                     }
                   } catch (err) {
                     _didIteratorError13 = true;
@@ -7311,11 +7726,86 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                       }
                     }
                   }
+                };
+
+                for (_iterator10 = this.detailProject.All_SubDivisi[Symbol.iterator](); !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+                  _loop2();
+                }
+
+                _context7.next = 54;
+                break;
+
+              case 50:
+                _context7.prev = 50;
+                _context7.t2 = _context7["catch"](45);
+                _didIteratorError10 = true;
+                _iteratorError10 = _context7.t2;
+
+              case 54:
+                _context7.prev = 54;
+                _context7.prev = 55;
+
+                if (!_iteratorNormalCompletion10 && _iterator10["return"] != null) {
+                  _iterator10["return"]();
+                }
+
+              case 57:
+                _context7.prev = 57;
+
+                if (!_didIteratorError10) {
+                  _context7.next = 60;
+                  break;
+                }
+
+                throw _iteratorError10;
+
+              case 60:
+                return _context7.finish(57);
+
+              case 61:
+                return _context7.finish(54);
+
+              case 62:
+                _iteratorNormalCompletion11 = true;
+                _didIteratorError11 = false;
+                _iteratorError11 = undefined;
+                _context7.prev = 65;
+
+                _loop3 = function _loop3() {
+                  var div = _step11.value;
+                  div.Remaining = parseInt((new Date(div.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // div.Progress= await Controller.getProgressDivisi(div.Id_Divisi_Proyek)
+
+                  div.Progress = 0;
+                  var _iteratorNormalCompletion14 = true;
+                  var _didIteratorError14 = false;
+                  var _iteratorError14 = undefined;
+
+                  try {
+                    for (var _iterator14 = _this4.detailProject.All_SubDivisi.filter(function (obj) {
+                      return obj.Divisi == div.Nama;
+                    })[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
+                      var subdiv = _step14.value;
+                      div.Progress += subdiv.Progress * subdiv.Persentase / 100;
+                    }
+                  } catch (err) {
+                    _didIteratorError14 = true;
+                    _iteratorError14 = err;
+                  } finally {
+                    try {
+                      if (!_iteratorNormalCompletion14 && _iterator14["return"] != null) {
+                        _iterator14["return"]();
+                      }
+                    } finally {
+                      if (_didIteratorError14) {
+                        throw _iteratorError14;
+                      }
+                    }
+                  }
 
                   _this4.detailProject.Progress += div.Progress * div.Persentase / 100;
                 };
 
-                for (_iterator10 = this.detailProject.All_Divisi[Symbol.iterator](); !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+                for (_iterator11 = this.detailProject.All_Divisi[Symbol.iterator](); !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
                   _loop3();
                 }
 
@@ -7325,26 +7815,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 70:
                 _context7.prev = 70;
                 _context7.t3 = _context7["catch"](65);
-                _didIteratorError10 = true;
-                _iteratorError10 = _context7.t3;
+                _didIteratorError11 = true;
+                _iteratorError11 = _context7.t3;
 
               case 74:
                 _context7.prev = 74;
                 _context7.prev = 75;
 
-                if (!_iteratorNormalCompletion10 && _iterator10["return"] != null) {
-                  _iterator10["return"]();
+                if (!_iteratorNormalCompletion11 && _iterator11["return"] != null) {
+                  _iterator11["return"]();
                 }
 
               case 77:
                 _context7.prev = 77;
 
-                if (!_didIteratorError10) {
+                if (!_didIteratorError11) {
                   _context7.next = 80;
                   break;
                 }
 
-                throw _iteratorError10;
+                throw _iteratorError11;
 
               case 80:
                 return _context7.finish(77);
@@ -7397,13 +7887,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.editTask = data;
       this.editTask.Status_Akses = 'Locked'; //<==================================NEED EDIT
 
-      var _iteratorNormalCompletion14 = true;
-      var _didIteratorError14 = false;
-      var _iteratorError14 = undefined;
+      var _iteratorNormalCompletion15 = true;
+      var _didIteratorError15 = false;
+      var _iteratorError15 = undefined;
 
       try {
-        for (var _iterator14 = this.jobAksesData[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
-          var akses = _step14.value;
+        for (var _iterator15 = this.jobAksesData[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
+          var akses = _step15.value;
 
           if (akses.Id_Sub_Item_Pekerjaan == data.Id_Sub_Item_Pekerjaan && akses.Verifikasi == "Verified" && akses.Id_Akun == this.Id_Akun) {
             this.editTask.Status_Akses = akses.Status;
@@ -7412,33 +7902,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         } //   console.log(this.editTask.Log_Pengerjaan.filter(obj=>obj.Berkas!=''))
 
       } catch (err) {
-        _didIteratorError14 = true;
-        _iteratorError14 = err;
+        _didIteratorError15 = true;
+        _iteratorError15 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion14 && _iterator14["return"] != null) {
-            _iterator14["return"]();
+          if (!_iteratorNormalCompletion15 && _iterator15["return"] != null) {
+            _iterator15["return"]();
           }
         } finally {
-          if (_didIteratorError14) {
-            throw _iteratorError14;
+          if (_didIteratorError15) {
+            throw _iteratorError15;
           }
         }
       }
     },
-    getSubDivision: function getSubDivision() {
+    getSubDivision: function getSubDivision(project) {
       var _this6 = this;
 
-      this.sub_division = this.data_sub_division.filter(function (obj) {
-        return obj.division == _this6.filterDiv;
+      this.sub_division = project.All_SubDivisi.filter(function (obj) {
+        return obj.Divisi == _this6.filterDiv;
       });
       this.filterSubDiv = '';
+      this.filterTask = '';
     },
-    getTask: function getTask() {
+    getTask: function getTask(project) {
       var _this7 = this;
 
-      this.task = this.data_task.filter(function (obj) {
-        return obj.sub_division == _this7.filterSubDiv;
+      this.task = project.All_Task.filter(function (obj) {
+        return obj.Sub_Divisi == _this7.filterSubDiv;
       });
       this.filterTask = '';
     },
@@ -7450,16 +7941,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         if (this.filterSubDiv != "") {
           if (this.filterTask != "") {
             return data.filter(function (obj) {
-              return obj.Division == _this8.filterDiv && obj.Sub_Division == _this8.filterSubDiv && obj.Task == _this8.filterTask;
+              return obj.Divisi == _this8.filterDiv && obj.Sub_Divisi == _this8.filterSubDiv && obj.Task == _this8.filterTask;
             });
           } else {
             return data.filter(function (obj) {
-              return obj.Division == _this8.filterDiv && obj.Sub_Division == _this8.filterSubDiv;
+              return obj.Divisi == _this8.filterDiv && obj.Sub_Divisi == _this8.filterSubDiv;
             });
           }
         } else {
           return data.filter(function (obj) {
-            return obj.Division == _this8.filterDiv;
+            return obj.Divisi == _this8.filterDiv;
           });
         }
       } else {
@@ -9547,6 +10038,165 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, 3000);
     }
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profile.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Profile.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({//
 });
 
 /***/ }),
@@ -12458,7 +13108,7 @@ var render = function() {
                   },
                   on: {
                     click: function($event) {
-                      return _vm.sortBy("title")
+                      return _vm.sortBy("Nama_Proyek")
                     }
                   },
                   slot: "activator"
@@ -12469,7 +13119,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("span", { staticClass: "caption " }, [
-                    _vm._v("By Project Tittle")
+                    _vm._v("By Project Title")
                   ])
                 ],
                 1
@@ -12486,7 +13136,7 @@ var render = function() {
                   },
                   on: {
                     click: function($event) {
-                      return _vm.sortBy("due")
+                      return _vm.sortBy("Due")
                     }
                   },
                   slot: "activator"
@@ -12526,7 +13176,7 @@ var render = function() {
                   _c(
                     "v-layout",
                     {
-                      class: "pa-3 project " + project.status,
+                      class: "pa-3 project " + project.Status,
                       attrs: { row: "", wrap: "" }
                     },
                     [
@@ -12535,7 +13185,7 @@ var render = function() {
                           _vm._v("Project Title")
                         ]),
                         _vm._v(" "),
-                        _c("div", [_vm._v(_vm._s(project.title))])
+                        _c("div", [_vm._v(_vm._s(project.Nama_Proyek))])
                       ]),
                       _vm._v(" "),
                       _c("v-flex", { attrs: { xs6: "", sm4: "", md2: "" } }, [
@@ -12543,7 +13193,7 @@ var render = function() {
                           _vm._v("Task")
                         ]),
                         _vm._v(" "),
-                        _c("div", [_vm._v(_vm._s(project.task))])
+                        _c("div", [_vm._v(_vm._s(project.Task))])
                       ]),
                       _vm._v(" "),
                       _c("v-flex", { attrs: { xs6: "", sm4: "", md2: "" } }, [
@@ -12551,7 +13201,7 @@ var render = function() {
                           _vm._v("Due Date")
                         ]),
                         _vm._v(" "),
-                        _c("div", [_vm._v(_vm._s(project.due))])
+                        _c("div", [_vm._v(_vm._s(project.Due))])
                       ]),
                       _vm._v(" "),
                       _c("v-flex", { attrs: { xs6: "", sm4: "", md2: "" } }, [
@@ -12568,12 +13218,12 @@ var render = function() {
                                 attrs: {
                                   color: "red",
                                   height: "20",
-                                  value: project.progress
+                                  value: project.Progress
                                 }
                               },
                               [
                                 _c("p", { staticClass: "text-xs-center" }, [
-                                  _vm._v(_vm._s(project.progress) + "%")
+                                  _vm._v(_vm._s(project.Progress) + "%")
                                 ])
                               ]
                             )
@@ -12591,10 +13241,10 @@ var render = function() {
                               "v-chip",
                               {
                                 class:
-                                  project.status + " white--text my-2 caption",
+                                  project.Status + " white--text my-2 caption",
                                 attrs: { small: "" }
                               },
-                              [_vm._v(_vm._s(project.status))]
+                              [_vm._v(_vm._s(project.Status))]
                             )
                           ],
                           1
@@ -12619,7 +13269,11 @@ var render = function() {
               _c(
                 "v-dialog",
                 {
-                  attrs: { persistent: "", "max-width": "600px" },
+                  attrs: {
+                    scrollable: "",
+                    persistent: "",
+                    "max-width": "600px"
+                  },
                   model: {
                     value: _vm.taskDialog,
                     callback: function($$v) {
@@ -12632,13 +13286,38 @@ var render = function() {
                   _c(
                     "v-card",
                     [
-                      _c("v-card-title", [
-                        _c("span", { staticClass: "headline" }, [
-                          _vm._v(_vm._s(_vm.editProject.title))
-                        ])
-                      ]),
+                      _c(
+                        "v-card-title",
+                        [
+                          _c("span", { staticClass: "headline" }, [
+                            _vm._v(_vm._s(_vm.editProject.Nama_Proyek))
+                          ]),
+                          _vm._v(" "),
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _vm.editProject.User != ""
+                            ? _c("span", [
+                                _vm._v(
+                                  "Last Progress By : " +
+                                    _vm._s(_vm.editProject.User)
+                                )
+                              ])
+                            : _vm._e()
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
                       _c("v-divider"),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-4" }, [
+                        _vm._v(
+                          _vm._s(_vm.editProject.Divisi) +
+                            " > " +
+                            _vm._s(_vm.editProject.Sub_Divisi) +
+                            " > " +
+                            _vm._s(_vm.editProject.Task)
+                        )
+                      ]),
                       _vm._v(" "),
                       _c(
                         "v-card-text",
@@ -12657,20 +13336,20 @@ var render = function() {
                                     [
                                       _c("v-text-field", {
                                         attrs: {
-                                          label: "Task",
+                                          label: "Sub Task",
                                           readonly: "",
                                           "prepend-icon": "description"
                                         },
                                         model: {
-                                          value: _vm.editProject.task,
+                                          value: _vm.editProject.Sub_Task,
                                           callback: function($$v) {
                                             _vm.$set(
                                               _vm.editProject,
-                                              "task",
+                                              "Sub_Task",
                                               $$v
                                             )
                                           },
-                                          expression: "editProject.task"
+                                          expression: "editProject.Sub_Task"
                                         }
                                       })
                                     ],
@@ -12688,15 +13367,17 @@ var render = function() {
                                           label: "Description"
                                         },
                                         model: {
-                                          value: _vm.editProject.desc,
+                                          value:
+                                            _vm.editProject.Deskripsi_Sub_Task,
                                           callback: function($$v) {
                                             _vm.$set(
                                               _vm.editProject,
-                                              "desc",
+                                              "Deskripsi_Sub_Task",
                                               $$v
                                             )
                                           },
-                                          expression: "editProject.desc"
+                                          expression:
+                                            "editProject.Deskripsi_Sub_Task"
                                         }
                                       })
                                     ],
@@ -12737,18 +13418,18 @@ var render = function() {
                                                         },
                                                         model: {
                                                           value:
-                                                            _vm.editProject.due,
+                                                            _vm.editProject.Due,
                                                           callback: function(
                                                             $$v
                                                           ) {
                                                             _vm.$set(
                                                               _vm.editProject,
-                                                              "due",
+                                                              "Due",
                                                               $$v
                                                             )
                                                           },
                                                           expression:
-                                                            "editProject.due"
+                                                            "editProject.Due"
                                                         }
                                                       },
                                                       on
@@ -12776,15 +13457,17 @@ var render = function() {
                                               }
                                             },
                                             model: {
-                                              value: _vm.editProject.due,
+                                              value:
+                                                _vm.editProject.Tanggal_Selesai,
                                               callback: function($$v) {
                                                 _vm.$set(
                                                   _vm.editProject,
-                                                  "due",
+                                                  "Tanggal_Selesai",
                                                   $$v
                                                 )
                                               },
-                                              expression: "editProject.due"
+                                              expression:
+                                                "editProject.Tanggal_Selesai"
                                             }
                                           })
                                         ],
@@ -12805,15 +13488,15 @@ var render = function() {
                                           readonly: ""
                                         },
                                         model: {
-                                          value: _vm.editProject.remaining,
+                                          value: _vm.editProject.Remaining,
                                           callback: function($$v) {
                                             _vm.$set(
                                               _vm.editProject,
-                                              "remaining",
+                                              "Remaining",
                                               $$v
                                             )
                                           },
-                                          expression: "editProject.remaining"
+                                          expression: "editProject.Remaining"
                                         }
                                       })
                                     ],
@@ -12829,18 +13512,20 @@ var render = function() {
                                           label: "Progress",
                                           "prepend-icon": "timeline",
                                           counter: "3",
-                                          type: "number"
+                                          type: "number",
+                                          readonly:
+                                            _vm.editProject.status == "untake"
                                         },
                                         model: {
-                                          value: _vm.editProject.progress,
+                                          value: _vm.editProject.Progress,
                                           callback: function($$v) {
                                             _vm.$set(
                                               _vm.editProject,
-                                              "progress",
+                                              "Progress",
                                               $$v
                                             )
                                           },
-                                          expression: "editProject.progress"
+                                          expression: "editProject.Progress"
                                         }
                                       })
                                     ],
@@ -12857,7 +13542,7 @@ var render = function() {
                                           attrs: {
                                             color: "red",
                                             height: "20",
-                                            value: _vm.editProject.progress
+                                            value: _vm.editProject.Progress
                                           }
                                         },
                                         [
@@ -12867,7 +13552,7 @@ var render = function() {
                                             [
                                               _vm._v(
                                                 _vm._s(
-                                                  _vm.editProject.progress
+                                                  _vm.editProject.Progress
                                                 ) + "%"
                                               )
                                             ]
@@ -12880,75 +13565,66 @@ var render = function() {
                                   _vm._v(" "),
                                   _c(
                                     "v-flex",
-                                    { attrs: { xs12: "" } },
+                                    { attrs: { xs6: "" } },
                                     [
-                                      _c("v-text-field", {
+                                      _c("v-combobox", {
                                         attrs: {
                                           counter: "",
                                           label: "Upload File",
+                                          chips: "",
+                                          readonly: "",
                                           multiple: "",
                                           placeholder: "Select your files",
                                           "prepend-icon": "mdi-paperclip",
                                           outlined: "",
-                                          "show-size": 1000
+                                          "show-size": 1000,
+                                          disabled:
+                                            _vm.editProject.Status_Akses ==
+                                              "Locked" ||
+                                            _vm.editProject.Status_Akses ==
+                                              "Request Download"
                                         },
                                         on: { click: _vm.pickFile },
                                         scopedSlots: _vm._u([
                                           {
                                             key: "selection",
-                                            fn: function(ref) {
-                                              var index = ref.index
-                                              var text = ref.text
+                                            fn: function(data) {
                                               return [
-                                                index < 2
-                                                  ? _c(
-                                                      "v-chip",
-                                                      {
-                                                        attrs: {
-                                                          color:
-                                                            "deep-purple accent-4",
-                                                          dark: "",
-                                                          label: "",
-                                                          small: ""
-                                                        }
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                        " +
-                                                            _vm._s(text) +
-                                                            "\n                      "
-                                                        )
-                                                      ]
+                                                _c(
+                                                  "v-chip",
+                                                  {
+                                                    attrs: {
+                                                      color:
+                                                        "grey darken-2 accent-4",
+                                                      dark: "",
+                                                      label: "",
+                                                      small: "",
+                                                      close: ""
+                                                    },
+                                                    on: {
+                                                      input: function($event) {
+                                                        return _vm.removefile()
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                      " +
+                                                        _vm._s(data.item) +
+                                                        "\n                      "
                                                     )
-                                                  : index === 2
-                                                  ? _c(
-                                                      "span",
-                                                      {
-                                                        staticClass:
-                                                          "overline grey--text text--darken-3 mx-2"
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                        +" +
-                                                            _vm._s(
-                                                              _vm.file.length -
-                                                                2
-                                                            ) +
-                                                            " File(s)\n                      "
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e()
+                                                  ]
+                                                )
                                               ]
                                             }
                                           }
                                         ]),
                                         model: {
-                                          value: _vm.file,
+                                          value: _vm.namefile,
                                           callback: function($$v) {
-                                            _vm.file = $$v
+                                            _vm.namefile = $$v
                                           },
-                                          expression: "file"
+                                          expression: "namefile"
                                         }
                                       }),
                                       _vm._v(" "),
@@ -12958,6 +13634,266 @@ var render = function() {
                                         attrs: { type: "file", accept: "*" },
                                         on: { change: _vm.onFilePicked }
                                       })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs6: "" } },
+                                    [
+                                      _c("v-textarea", {
+                                        attrs: {
+                                          outline: "",
+                                          disabled:
+                                            _vm.editProject.Status_Akses ==
+                                              "Locked" ||
+                                            _vm.editProject.Status_Akses ==
+                                              "Request Download",
+                                          label: "Note Progress"
+                                        },
+                                        model: {
+                                          value: _vm.editProject.Note,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.editProject,
+                                              "Note",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "editProject.Note"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "" } },
+                                    [
+                                      _c(
+                                        "v-list",
+                                        { attrs: { subheader: "" } },
+                                        [
+                                          _c("v-subheader", [
+                                            _vm._v("Log Progress")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("v-divider"),
+                                          _vm._v(" "),
+                                          _vm._l(_vm.logPengerjaan, function(
+                                            item
+                                          ) {
+                                            return _c(
+                                              "v-list-tile",
+                                              {
+                                                key: item.Id_Log_Pengerjaan,
+                                                attrs: { avatar: "" }
+                                              },
+                                              [
+                                                _c(
+                                                  "v-list-tile-avatar",
+                                                  [
+                                                    _c("v-icon", [
+                                                      _vm._v("folder")
+                                                    ])
+                                                  ],
+                                                  1
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "v-list-tile-content",
+                                                  [
+                                                    _c(
+                                                      "v-layout",
+                                                      {
+                                                        staticStyle: {
+                                                          width: "100%"
+                                                        },
+                                                        attrs: { row: "" }
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "v-flex",
+                                                          {
+                                                            attrs: { xs6: "" }
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "caption grey--text"
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  "File Name"
+                                                                )
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c("div", [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  item.Berkas.split(
+                                                                    "/"
+                                                                  )[3]
+                                                                )
+                                                              )
+                                                            ])
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "v-flex",
+                                                          {
+                                                            attrs: { xs6: "" }
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "caption grey--text"
+                                                              },
+                                                              [_vm._v("Date")]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c("div", [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  item.Waktu_Selesai.split(
+                                                                    " "
+                                                                  )[0]
+                                                                )
+                                                              )
+                                                            ])
+                                                          ]
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ],
+                                                  1
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "v-list-tile-action",
+                                                  [
+                                                    _c(
+                                                      "v-layout",
+                                                      { attrs: { row: "" } },
+                                                      [
+                                                        _c(
+                                                          "v-flex",
+                                                          {
+                                                            attrs: { xs6: "" }
+                                                          },
+                                                          [
+                                                            _vm.editProject
+                                                              .Status_Akses !=
+                                                              "Locked" &&
+                                                            item.Berkas != ""
+                                                              ? _c(
+                                                                  "v-btn",
+                                                                  {
+                                                                    attrs: {
+                                                                      icon: "",
+                                                                      ripple: ""
+                                                                    },
+                                                                    on: {
+                                                                      click: function(
+                                                                        $event
+                                                                      ) {
+                                                                        return _vm.downloadIt(
+                                                                          item
+                                                                        )
+                                                                      }
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "v-icon",
+                                                                      {
+                                                                        attrs: {
+                                                                          color:
+                                                                            "grey lighten-1"
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          "cloud_download"
+                                                                        )
+                                                                      ]
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                )
+                                                              : _vm._e()
+                                                          ],
+                                                          1
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "v-flex",
+                                                          {
+                                                            attrs: { xs6: "" }
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "v-btn",
+                                                              {
+                                                                attrs: {
+                                                                  icon: "",
+                                                                  ripple: ""
+                                                                },
+                                                                on: {
+                                                                  click: function(
+                                                                    $event
+                                                                  ) {
+                                                                    _vm.noteDialog = !_vm.noteDialog
+                                                                    _vm.noteText =
+                                                                      item.Catatan
+                                                                    _vm.noteUser =
+                                                                      item.Username
+                                                                  }
+                                                                }
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "v-icon",
+                                                                  {
+                                                                    attrs: {
+                                                                      color:
+                                                                        "grey lighten-1"
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      "message"
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ],
+                                                              1
+                                                            )
+                                                          ],
+                                                          1
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          })
+                                        ],
+                                        2
+                                      )
                                     ],
                                     1
                                   )
@@ -12978,6 +13914,13 @@ var render = function() {
                       _c(
                         "v-card-actions",
                         [
+                          _c("span", [
+                            _vm._v(
+                              " Status : " +
+                                _vm._s(_vm.editProject.Status_Akses_Pekerjaan)
+                            )
+                          ]),
+                          _vm._v(" "),
                           _c("v-spacer"),
                           _vm._v(" "),
                           _c(
@@ -12993,24 +13936,70 @@ var render = function() {
                             [_vm._v("Close")]
                           ),
                           _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { color: "blue darken-1", flat: "" },
-                              on: {
-                                click: function($event) {
-                                  _vm.taskDialog = false
-                                }
-                              }
-                            },
-                            [_vm._v("Save")]
-                          )
+                          _vm.editProject.Status_Akses == "Locked" ||
+                          _vm.editProject.Status_Akses == "Request Download"
+                            ? _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "blue darken-1", flat: "" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.requestDialog = true
+                                    }
+                                  }
+                                },
+                                [_vm._v("REQUEST")]
+                              )
+                            : _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "blue darken-1", flat: "" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.uploadProgress()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Save")]
+                              )
                         ],
                         1
                       )
                     ],
                     1
                   )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-dialog",
+            {
+              attrs: { "max-width": "290" },
+              model: {
+                value: _vm.noteDialog,
+                callback: function($$v) {
+                  _vm.noteDialog = $$v
+                },
+                expression: "noteDialog"
+              }
+            },
+            [
+              _c(
+                "v-card",
+                [
+                  _c("v-card-title", { staticClass: "headline" }, [
+                    _vm._v("Note by : " + _vm._s(_vm.noteUser))
+                  ]),
+                  _vm._v(" "),
+                  _c("v-card-text", [
+                    _vm._v(
+                      "\n              " + _vm._s(_vm.noteText) + "\n          "
+                    )
+                  ])
                 ],
                 1
               )
@@ -16099,33 +17088,35 @@ var render = function() {
             "v-layout",
             { staticClass: "mb-3", attrs: { row: "" } },
             [
-              _c(
-                "v-btn",
-                {
-                  attrs: {
-                    slot: "activator",
-                    small: "",
-                    flat: "",
-                    color: "grey"
-                  },
-                  on: {
-                    click: function($event) {
-                      _vm.addDialog2 = true
-                    }
-                  },
-                  slot: "activator"
-                },
-                [
-                  _c("v-icon", { attrs: { small: "", left: "" } }, [
-                    _vm._v("create_new_folder")
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "caption " }, [
-                    _vm._v("Add Project")
-                  ])
-                ],
-                1
-              )
+              this.Id_Akun == 1
+                ? _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        slot: "activator",
+                        small: "",
+                        flat: "",
+                        color: "grey"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.addDialog2 = true
+                        }
+                      },
+                      slot: "activator"
+                    },
+                    [
+                      _c("v-icon", { attrs: { small: "", left: "" } }, [
+                        _vm._v("create_new_folder")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "caption " }, [
+                        _vm._v("Add Project")
+                      ])
+                    ],
+                    1
+                  )
+                : _vm._e()
             ],
             1
           ),
@@ -16138,6 +17129,11 @@ var render = function() {
                 {
                   key: project.Nama,
                   attrs: { "expand-icon": "mdi-menu-down" },
+                  on: {
+                    click: function($event) {
+                      return _vm.clearFilter()
+                    }
+                  },
                   scopedSlots: _vm._u(
                     [
                       {
@@ -16252,15 +17248,15 @@ var render = function() {
                                     [
                                       _c("v-select", {
                                         attrs: {
-                                          items: _vm.division,
-                                          "item-text": "name",
-                                          "item-value": "name",
+                                          items: project.All_Divisi,
+                                          "item-text": "Nama",
+                                          "item-value": "Nama",
                                           box: "",
-                                          label: "Divison"
+                                          label: "Division"
                                         },
                                         on: {
                                           change: function($event) {
-                                            return _vm.getSubDivision()
+                                            return _vm.getSubDivision(project)
                                           }
                                         },
                                         model: {
@@ -16285,14 +17281,14 @@ var render = function() {
                                       _c("v-select", {
                                         attrs: {
                                           items: _vm.sub_division,
-                                          "item-text": "name",
-                                          "item-value": "name",
+                                          "item-text": "Nama",
+                                          "item-value": "Nama",
                                           box: "",
                                           label: "Sub Division"
                                         },
                                         on: {
                                           change: function($event) {
-                                            return _vm.getTask()
+                                            return _vm.getTask(project)
                                           }
                                         },
                                         model: {
@@ -16317,8 +17313,8 @@ var render = function() {
                                       _c("v-select", {
                                         attrs: {
                                           items: _vm.task,
-                                          "item-text": "name",
-                                          "item-value": "name",
+                                          "item-text": "Nama",
+                                          "item-value": "Nama",
                                           box: "",
                                           label: "Task"
                                         },
@@ -17230,7 +18226,7 @@ var render = function() {
                                     }
                                   }
                                 },
-                                [_vm._v("Request")]
+                                [_vm._v("REQUEST")]
                               )
                             : _c(
                                 "v-btn",
@@ -17336,16 +18332,30 @@ var render = function() {
                           ),
                           _vm._v(" "),
                           _c(
-                            "v-btn",
+                            "a",
                             {
-                              attrs: { color: "blue darken-1", flat: "" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.sendAccessRequest()
-                                }
+                              attrs: {
+                                href:
+                                  "https://api.whatsapp.com/send?phone=62895342148737&text=Asking%20For%20Permission",
+                                target: "_blank",
+                                rel: "noopener noreferrer"
                               }
                             },
-                            [_vm._v("Send")]
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "blue darken-1", flat: "" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.sendAccessRequest()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Send")]
+                              )
+                            ],
+                            1
                           )
                         ],
                         1
@@ -18335,32 +19345,36 @@ var render = function() {
                                                                     },
                                                                     [
                                                                       _c(
-                                                                        "v-text-field",
+                                                                        "v-select",
                                                                         {
-                                                                          staticClass:
-                                                                            "mx-1",
                                                                           attrs: {
-                                                                            label:
-                                                                              "Name",
+                                                                            items:
+                                                                              _vm.division,
+                                                                            "item-text":
+                                                                              "Deskripsi",
+                                                                            "item-value":
+                                                                              "Id_Divisi_Role",
                                                                             box:
-                                                                              ""
+                                                                              "",
+                                                                            label:
+                                                                              "Divisi"
                                                                           },
                                                                           model: {
                                                                             value:
                                                                               _vm
                                                                                 .divform
-                                                                                .Nama,
+                                                                                .Id_Divisi_Role,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.divform,
-                                                                                "Nama",
+                                                                                "Id_Divisi_Role",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "divform.Nama"
+                                                                              "divform.Id_Divisi_Role"
                                                                           }
                                                                         }
                                                                       ),
@@ -25897,7 +26911,280 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-container", [_vm._v("\n    PROFILE\n")])
+  return _c(
+    "v-container",
+    { attrs: { "fill-height": "", fluid: "", "grid-list-xl": "" } },
+    [
+      _c(
+        "v-layout",
+        { attrs: { "justify-center": "", wrap: "" } },
+        [
+          _c(
+            "v-flex",
+            { attrs: { xs12: "", md8: "" } },
+            [
+              _c(
+                "material-card",
+                {
+                  attrs: {
+                    color: "green",
+                    title: "Edit Profile",
+                    text: "Complete your profile"
+                  }
+                },
+                [
+                  _c(
+                    "v-form",
+                    [
+                      _c(
+                        "v-container",
+                        { attrs: { "py-0": "" } },
+                        [
+                          _c(
+                            "v-layout",
+                            { attrs: { wrap: "" } },
+                            [
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      label: "Company (disabled)",
+                                      disabled: ""
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    staticClass: "purple-input",
+                                    attrs: { label: "User Name" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    staticClass: "purple-input",
+                                    attrs: { label: "Email Address" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md6: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    staticClass: "purple-input",
+                                    attrs: { label: "First Name" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md6: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    staticClass: "purple-input",
+                                    attrs: { label: "Last Name" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md12: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    staticClass: "purple-input",
+                                    attrs: { label: "Adress" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    staticClass: "purple-input",
+                                    attrs: { label: "City" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    staticClass: "purple-input",
+                                    attrs: { label: "Country" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    staticClass: "purple-input",
+                                    attrs: {
+                                      label: "Postal Code",
+                                      type: "number"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "" } },
+                                [
+                                  _c("v-textarea", {
+                                    staticClass: "purple-input",
+                                    attrs: {
+                                      label: "About Me",
+                                      value:
+                                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", "text-xs-right": "" } },
+                                [
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      staticClass: "mx-0 font-weight-light",
+                                      attrs: { color: "success" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  Update Profile\n                "
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-flex",
+            { attrs: { xs12: "", md4: "" } },
+            [
+              _c(
+                "material-card",
+                { staticClass: "v-card-profile" },
+                [
+                  _c(
+                    "v-avatar",
+                    {
+                      staticClass: "mx-auto d-block",
+                      attrs: { slot: "offset", size: "130" },
+                      slot: "offset"
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src:
+                            "https://demos.creative-tim.com/vue-material-dashboard/img/marc.aba54d65.jpg"
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    { staticClass: "text-xs-center" },
+                    [
+                      _c(
+                        "h6",
+                        {
+                          staticClass:
+                            "category text-gray font-weight-thin mb-3"
+                        },
+                        [_vm._v("CEO / CO-FOUNDER")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h4",
+                        { staticClass: "card-title font-weight-light" },
+                        [_vm._v("Alec Thompson")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        { staticClass: "card-description font-weight-light" },
+                        [
+                          _vm._v(
+                            "Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is..."
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "font-weight-light",
+                          attrs: { color: "success", round: "" }
+                        },
+                        [_vm._v("Follow")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -69115,15 +70402,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Profile_vue_vue_type_template_id_3bd692e4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Profile.vue?vue&type=template&id=3bd692e4& */ "./resources/js/components/Profile.vue?vue&type=template&id=3bd692e4&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Profile.vue?vue&type=script&lang=js& */ "./resources/js/components/Profile.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Profile_vue_vue_type_template_id_3bd692e4___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Profile_vue_vue_type_template_id_3bd692e4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -69137,6 +70426,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/Profile.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Profile.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Profile.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Profile.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profile.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -69614,6 +70917,21 @@ __webpack_require__.r(__webpack_exports__);
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/hitungSubItem/' + id, successCallback, errorCallback);
     });
+  },
+  //DASHBOARD AREA
+  getdashboard: function getdashboard(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var user = res.data;
+        resolve(res.data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/getProject/' + id, successCallback, errorCallback);
+    });
   }
 });
 
@@ -69969,9 +71287,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               res = _context.sent;
               accessToken = {
                 username: res.data.data.Username,
-                password: res.data.data.Password // console.log(accessToken)
+                password: res.data.data.Password
+              }; // console.log(accessToken)
 
-              };
               _Http__WEBPACK_IMPORTED_MODULE_1__["default"].setHeader(accessToken); // console.log("2")
 
               js_cookie__WEBPACK_IMPORTED_MODULE_3___default.a.set('accessToken', accessToken); // console.log("3")
@@ -70925,8 +72243,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\DEV APP PROJECT\GITHUB\JobDeskAPP\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\DEV APP PROJECT\GITHUB\JobDeskAPP\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Project\APP DEV\JobDeskAPP\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Project\APP DEV\JobDeskAPP\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -479,7 +479,21 @@ export default {
         })
     },
 
+    //DASHBOARD AREA
+    getdashboard(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
 
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/getProject/'+id, successCallback, errorCallback)
+        })
+    },
 
 
    

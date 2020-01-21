@@ -13,6 +13,7 @@ use App\Divisi_Proyek;
 use App\Sub_Divisi_Proyek;
 use App\Item_Pekerjaan;
 use App\Sub_Item_Pekerjaan;
+use App\Divisi_Role;
 
 class ProyekController extends RestController
 {
@@ -66,7 +67,6 @@ class ProyekController extends RestController
             if($request->has('All_SubDivisi'))
             {
                 $All_SubDivisi = $request->get('All_SubDivisi');
-
             }
             else{
                 return response()->json([
@@ -127,6 +127,8 @@ class ProyekController extends RestController
                 {   
                     if($divisi->Nama == $sub_divisi['Divisi'])
                     {
+                        $sub_divisi['Id_Divisi_Proyek']=$divisi->Id_Divisi_Proyek;
+                        // return $sub_divisi;
                         // $getsub = $divisi->sub_divisi_proyeks()->create($sub_divisi);
                         array_push($sub_divisi_data,$divisi->sub_divisi_proyeks()->create($sub_divisi));
 
@@ -141,6 +143,10 @@ class ProyekController extends RestController
                 {  
                     if($sub_divisi->Nama == $task['Sub_Divisi'])
                     {
+                        $task['Id_Sub_Divisi_Proyek']=$sub_divisi->Id_Sub_Divisi_Proyek;
+                        $divisi_proyek = Divisi_Proyek::where('Id_Divisi_Proyek',$sub_divisi->Id_Divisi_Proyek)->first();
+                        $divisi_role = Divisi_Role::where('Id_Divisi_Role',$divisi_proyek->Id_Divisi_Role)->first();
+                        $task['Id_Divisi_Role'] = $divisi_role->Id_Divisi_Role;
                         // $getsub = $divisi->sub_divisi_proyeks()->create($sub_divisi);
                         array_push($task_data,$sub_divisi->item_pekerjaans()->create($task));
                     }
@@ -152,6 +158,7 @@ class ProyekController extends RestController
                 {  
                     if($task->Nama == $sub_task['Task'])
                     {
+                        $sub_task['Id_Item_Pekerjaan']=$task->Id_Item_Pekerjaan;
                         // $getsub = $divisi->sub_divisi_proyeks()->create($sub_divisi);
                         array_push($sub_task_data,$task->sub_item_pekerjaans()->create($sub_task));
                     }
@@ -168,6 +175,7 @@ class ProyekController extends RestController
 
     public function update(Request $request, $id)
     {   
+        return $request;
         try{
 
             $events = Proyek::find($id)->update($request->All());
@@ -184,16 +192,26 @@ class ProyekController extends RestController
     {   
         try{
             $events = Proyek::find($id)->update($request->All());
-
             if($request->has('All_Divisi'))
             {
                 $All_Divisi = $request->get('All_Divisi');
                 foreach($All_Divisi as $divisi)
                 {
-                    Divisi_Proyek::find($divisi['Id_Divisi_Proyek'])->update($divisi);  
+                    // if($divisi['New']==1)
+                    // {
+                    //     $proyek = Proyek::find($id);
+                    //     $proyek = DB::transaction(function () use ($proyek,$divisi) {
+                    //         $proyek->divisi_proyeks()->createMany($divisi);
+                    //         return $proyek;
+                    //     });
+                    // }
+                    // else
+                    // {
+                        Divisi_Proyek::find($divisi['Id_Divisi_Proyek'])->update($divisi);  
+                    // }
                 }
             }
-
+            return $divisi;
             if($request->has('All_SubDivisi'))
             {
                 $All_SubDivisi = $request->get('All_SubDivisi');

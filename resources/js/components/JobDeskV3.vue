@@ -6,18 +6,19 @@
             </v-layout>
 
             <v-layout row class="mb-3">
-                <v-btn small flat color="grey" @click="addDialog2=true" slot="activator">
+                <v-btn v-if="this.Id_Akun == 1" small flat color="grey" @click="addDialog2=true" slot="activator">
                     <v-icon small left>create_new_folder</v-icon>
                     <span class="caption ">Add Project</span>
                 </v-btn>
             </v-layout>
 
             <!-- Expand Panel -->
-                <v-expansion-panel>
+                <v-expansion-panel >
                     <v-expansion-panel-content
                     v-for="project in tempProjects" 
                     :key="project.Nama"
                     expand-icon="mdi-menu-down"
+                    @click="clearFilter()"
                     >
                     <template v-slot:header>
                     
@@ -52,12 +53,12 @@
                             <v-flex class="pl-2" xs12 sm6 md2 >
                                 <v-select
                                 v-model="filterDiv"
-                                :items="division"
-                                item-text="name"
-                                item-value="name"
+                                :items="project.All_Divisi"
+                                item-text="Nama"
+                                item-value="Nama"
                                 box
-                                label="Divison"
-                                @change="getSubDivision()"
+                                label="Division"
+                                @change="getSubDivision(project)"
 
                                 ></v-select>
                             </v-flex>
@@ -65,19 +66,19 @@
                                 <v-select
                                 v-model="filterSubDiv"
                                 :items="sub_division"
-                                item-text="name"
-                                item-value="name"
+                                item-text="Nama"
+                                item-value="Nama"
                                 box
                                 label="Sub Division"
-                                @change="getTask()"
+                                @change="getTask(project)"
                                 ></v-select>
                             </v-flex>     
                             <v-flex class="pl-2" xs12 sm6 md2 >
                                 <v-select
                                 v-model="filterTask"
                                 :items="task"
-                                item-text="name"
-                                item-value="name"
+                                item-text="Nama"
+                                item-value="Nama"
                                 box
                                 label="Task"
                                 ></v-select>
@@ -372,7 +373,8 @@
                         <v-spacer></v-spacer>
 
                         <v-btn color="blue darken-1" flat @click="taskDialog = false">Close</v-btn>
-                        <v-btn color="blue darken-1" v-if="editTask.Status_Akses=='Locked' || editTask.Status_Akses=='Request Download'" flat @click="requestDialog = true">Request</v-btn>
+                        <v-btn color="blue darken-1" v-if="editTask.Status_Akses=='Locked' || editTask.Status_Akses=='Request Download'" flat @click="requestDialog = true">REQUEST</v-btn>
+                        
                         <v-btn color="blue darken-1" v-else flat @click="uploadProgress()">Save</v-btn>
                         <!-- <v-btn color="blue darken-1" v-if="editTask.status=='untake'" flat @click="taskDialog = false">Request</v-btn>
                         <v-btn color="blue darken-1" v-else flat @click="taskDialog = false">Save</v-btn> -->
@@ -410,7 +412,8 @@
                         <v-spacer/>
 
                         <v-btn color="blue darken-1" flat @click="requestDialog = false">Close</v-btn>
-                        <v-btn color="blue darken-1" flat @click="sendAccessRequest()">Send</v-btn>
+                        <a href="https://api.whatsapp.com/send?phone=62895342148737&text=Asking%20For%20Permission" target="_blank" rel="noopener noreferrer" ><v-btn color="blue darken-1" flat @click="sendAccessRequest()">Send</v-btn></a>
+                        
                         <!-- <v-btn color="blue darken-1" v-if="editTask.status=='untake'" flat @click="taskDialog = false">Request</v-btn>
                         <v-btn color="blue darken-1" v-else flat @click="taskDialog = false">Save</v-btn> -->
 
@@ -649,12 +652,20 @@
                                                         <v-card-text>
                                                             <v-container>
                                                                 <v-toolbar flat  color="grey darken-3">
-                                                                    <v-text-field 
+                                                                    <v-select
+                                                                    :items="division"
+                                                                    v-model ="divform.Id_Divisi_Role"
+                                                                    item-text="Deskripsi"
+                                                                    item-value="Id_Divisi_Role"
+                                                                    box
+                                                                    label="Divisi"
+                                                                    ></v-select>
+                                                                    <!-- <v-text-field 
                                                                         v-model="divform.Nama"
                                                                         label="Name"
                                                                         box
                                                                         class="mx-1"
-                                                                    ></v-text-field>
+                                                                    ></v-text-field> -->
                                                                     <v-text-field
                                                                         v-model="divform.Persentase"
                                                                         label="Contribute"
@@ -2073,7 +2084,7 @@ export default {
 
 
         },
-        division: ['Desain Arsi', 'Admin'],
+        division: [],
         sub_division:[],
         task:[],
         jobAksesData:[],
@@ -2314,14 +2325,18 @@ export default {
 
         ],
         divform:{
-            Nama:'',
+            Id_Divisi_Role:'',
+            Id_Proyek:'',
             Persentase:'',
             Tanggal_Selesai:'',
+            // New:0,
         },
         defaultdivform:{
-            Nama:'',
+            Id_Divisi_Role:'',
+            Id_Proyek:'',
             Persentase:'',
             Tanggal_Selesai:'',
+            // New:0,
         },
         subdivform:{
             Nama:'',
@@ -2533,11 +2548,15 @@ export default {
             let data = (await Controller.getallproject()).data
             this.logPengerjaanData = (await Controller.getalllogpengerjaan()).data
             this.jobAksesData = (await Controller.getalljobakses()).data.filter(obj=>obj.Id_Akun == this.Id_Akun)
-            
+            this.division=(await Controller.getalldivisirole()).data
+            console.log(this.division)
             // console.log(this.jobAksesData)
             // this.employeeData = data.filter(obj => obj.Divisi != "Admin");
             // console.log(data)
             // console.log(this.logPengerjaanData)
+            
+            console.log("DATA")
+            console.log(data)
             for(let item of data){
                 this.getDataFormat(item)
             }
@@ -2562,12 +2581,13 @@ export default {
         for(let div of data.Divisi.data){
         // let eachDiv = div.map()
             let eachdiv ={
-                Id_Divisi_Proyek    :div.Id_Divisi_Proyek,
+                Id_Divisi_Proyek    : div.Id_Divisi_Proyek,
                 Id_Divisi_Role      : div.Id_Divisi_Role,
                 Id_Proyek           : div.Id_Proyek,
                 Nama                : div.Nama,
                 Tanggal_Selesai     : div.Tanggal_Selesai.split(' ')[0],
-                Persentase          : div.Persentase
+                Persentase          : div.Persentase,
+                // New                 : 0,
             }
             // console.log(JSON.stringify(eachdiv, null, 2))
             alldivisi.push(eachdiv)
@@ -2726,7 +2746,10 @@ export default {
                 Berkas  : pathfile,
             }
             const response= (await Controller.updatelogpengerjaan(payload,Id_Pengerjaan)).data
-            await this.accessDone()
+            if(this.editTask.Progress == 100)
+            {
+                await this.accessDone()
+            }
             this.removefile()
             let index = this.editTask.Log_Pengerjaan.findIndex(obj=>obj.Id_Log_Pengerjaan==response.Id_Log_Pengerjaan)
             Object.assign(this.editTask.Log_Pengerjaan[index], response)
@@ -2766,6 +2789,19 @@ export default {
     },
 
     addDivForm(){
+        for(let div of this.division)
+        {
+            if(div.Id_Divisi_Role == this.divform.Id_Divisi_Role)
+            {
+                this.divform.Nama = div.Deskripsi;
+                break;
+            }
+        }
+        if(this.editmode==true)
+        {
+            this.divform.Id_Proyek = this.editProject.Id_Proyek
+            // this.divform.New = 1
+        }
         this.editProject.All_Divisi.push(this.divform)
         this.divform = Object.assign({}, this.defaultdivform)
 
@@ -2864,11 +2900,6 @@ export default {
             this.detailProject.Progress += div.Progress * div.Persentase/100
         }
 
-        
-
-        
-
-
         this.detailDialog = true
 
 
@@ -2920,15 +2951,14 @@ export default {
 
     },
 
-    getSubDivision(){
-        this.sub_division=this.data_sub_division.filter(obj=>obj.division == this.filterDiv)
+    getSubDivision(project){
+        this.sub_division = project.All_SubDivisi.filter(obj=>obj.Divisi == this.filterDiv)
         this.filterSubDiv=''
-       
-    },
-    getTask(){
-        this.task=this.data_task.filter(obj=>obj.sub_division == this.filterSubDiv)
         this.filterTask=''
-
+    },
+    getTask(project){
+        this.task = project.All_Task.filter(obj=>obj.Sub_Divisi == this.filterSubDiv)
+        this.filterTask=''
     },
     filteredTask(data){
         if(this.filterDiv!="")
@@ -2938,17 +2968,17 @@ export default {
             {
                 if(this.filterTask!="")
                 {
-                    return data.filter(obj=>obj.Division==this.filterDiv && obj.Sub_Division==this.filterSubDiv && obj.Task==this.filterTask )
+                    return data.filter(obj=>obj.Divisi==this.filterDiv && obj.Sub_Divisi==this.filterSubDiv && obj.Task==this.filterTask )
 
                 }
                 else{
-                    return data.filter(obj=>obj.Division==this.filterDiv && obj.Sub_Division==this.filterSubDiv)
+                    return data.filter(obj=>obj.Divisi==this.filterDiv && obj.Sub_Divisi==this.filterSubDiv)
                     
                 }
 
             }
             else{
-                return data.filter(obj=>obj.Division==this.filterDiv)
+                return data.filter(obj=>obj.Divisi==this.filterDiv)
             }
         }
         else 
@@ -2958,9 +2988,9 @@ export default {
     },
 
     clearFilter(){
-        this.filterDiv=''
-        this.filterSubDiv=''
-        this.filterTask=''
+        this.filterDiv='';
+        this.filterSubDiv='';
+        this.filterTask='';
 
     },
 
