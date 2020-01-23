@@ -1914,23 +1914,23 @@
                                             :headers="headers"
                                             :items="d_user"
                                             :search="search"
-                                            item-key="name"
+                                            item-key="Nama"
                                             >
                                             <template v-slot:items="props">
                                                 <tr @click="props.expanded = !props.expanded">
-                                                <td>{{ props.item.name }}</td>
-                                                <td class="text-sm-center">{{ props.item.division }}</td>
-                                                <td class="text-sm-center">{{ props.item.contribute }}</td>
+                                                <td>{{ props.item.Nama }}</td>
+                                                <td class="text-sm-center">{{ props.item.Division }}</td>
+                                                <td class="text-sm-center">{{ props.item.Contribute }}</td>
 
                                                 </tr>
                                             </template>
                                             <template v-slot:expand="props">
-                                                <v-card flat v-for="task in props.item.task_list" :key="task.name">
+                                                <v-card flat v-for="task in props.item.Task_List" :key="task.Nama">
                                                     <v-card-text>
                                                         <v-layout row wrap>
-                                                        {{task.sub_div}} > {{task.task}} > {{task.name}}
+                                                        {{task.Div}} > {{task.Sub_Div}} > {{task.Task}} > {{task.Name}}
                                                         <v-spacer/>
-                                                        {{task.contribute}}
+                                                        {{task.Contribute}}%
                                                         </v-layout>
                                                         
                                                     </v-card-text>
@@ -2392,6 +2392,44 @@ export default {
             All_Task:[],
             All_SubTask:[],
         },
+        projectContributors:[],
+        projectContributorData:{
+            Name : '',
+            Division : '',
+            Contribute : 0,
+            Task_List:[],
+        },
+        projectContributorTask:{
+            Name : '',
+            Task : '',
+            Sub_Div : '',
+            Div : '',
+            Contribute : 0,
+        },
+        d_user:[
+            {
+                Name:'Vian Handika',
+                Division:'Desain Arsi',
+                Contribute:'50%',
+                Task_List:[
+                    {
+                        Sub_Task:'Denah Depan',
+                        Task: 'Konsep',
+                        Sub_Div:'Desain',
+                        Div:'Desain Arsi',
+                        contribute:'50%'
+                    },
+                    {
+                        Sub_Task:'Denah Belakang',
+                        Task: 'Konsep',
+                        Sub_Div:'Desain',
+                        Div:'Desain Arsi',
+                        contribute:'50%'
+                    }
+                ]
+            }
+        ],
+        //Data Dummy
         d_division:[
             {
                 id :'2',
@@ -2440,29 +2478,29 @@ export default {
           { text: 'Division', value: 'division',align: 'center' },
           { text: 'Contribute', value: 'contribute',align: 'center' },
         ],
-        d_user:[
-            {
-                name:'Vian Handika',
-                division:'Desain Arsi',
-                contribute:'50%',
-                task_list:[
-                    {
-                        name:'Denah Depan',
-                        task: 'Konsep',
-                        sub_div:'Desain',
-                        contribute:'50%'
+        // d_user:[
+        //     {
+        //         name:'Vian Handika',
+        //         division:'Desain Arsi',
+        //         contribute:'50%',
+        //         task_list:[
+        //             {
+        //                 name:'Denah Depan',
+        //                 task: 'Konsep',
+        //                 sub_div:'Desain',
+        //                 contribute:'50%'
 
-                    },
-                    {
-                        name:'Denah Belakang',
-                        task: 'Konsep',
-                        sub_div:'Desain',
-                        contribute:'50%'
+        //             },
+        //             {
+        //                 name:'Denah Belakang',
+        //                 task: 'Konsep',
+        //                 sub_div:'Desain',
+        //                 contribute:'50%'
 
-                    }
-                ]
-            }
-        ],
+        //             }
+        //         ]
+        //     }
+        // ],
        //Data Dummy
 
 
@@ -2750,6 +2788,10 @@ export default {
             {
                 await this.accessDone()
             }
+            else
+            {
+                await this.duplicateEmptyLog()
+            }
             this.removefile()
             let index = this.editTask.Log_Pengerjaan.findIndex(obj=>obj.Id_Log_Pengerjaan==response.Id_Log_Pengerjaan)
             Object.assign(this.editTask.Log_Pengerjaan[index], response)
@@ -2902,7 +2944,338 @@ export default {
 
         this.detailDialog = true
 
+        // PROJECT CONTRIBUTOR,
 
+        let PCDatas = [];
+        let Names = [];
+        //filter yang id proyeknya sesuai detail dan progress != 0
+        let PCLogPengerjaan = this.logPengerjaanData.filter(obj=>obj.Id_Proyek == project.Id_Proyek && obj.Progress != 0);
+        //sort berdasarkan sub item pekerjaan untuk mempermudah langkah selanjutnya
+        PCLogPengerjaan.sort((a,b) => a['Id_Sub_Item_Pekerjaan'] < b['Id_Sub_Item_Pekerjaan'] ? -1 : 1) 
+        // console.log(PCLogPengerjaan)
+        //mengambil data nama dan divisi dari karyawan yang melakukan kontribusi
+        for(let log of PCLogPengerjaan)
+        {
+            if(Names.indexOf(log.Nama) === -1)
+            {
+                let Data = { Nama:'', Division:'' }
+                Names.push(log.Nama)
+                Data.Nama=log.Nama;
+                Data.Division=log.Divisi;
+                PCDatas.push(Data)
+            }
+            // console.log(PCDatas)
+        }
+        
+        console.log("PCDATA")
+        console.log(PCDatas)
+
+        let subtasks = []
+        let id_subtasks = []
+        let id_subtask = 0
+        let index = 0
+        let isNew = true
+        let logs = []
+        let dataTask = { Name : '', Task : '', Sub_Div : '', Div : '', Contribute : 0, Logs : [] }
+        for(let log of PCLogPengerjaan)
+        {
+            index = id_subtasks.indexOf(log.Id_Sub_Item_Pekerjaan)
+            if(index === -1)
+            {
+                if(isNew==false)
+                {
+                    // console.log("Is new = "+isNew+" Assigning")
+                    dataTask.Logs = logs;
+                    subtasks.push(dataTask);
+                }
+                logs = []
+                dataTask = { Name : '', Task : '', Sub_Div : '', Div : '', Contribute : 0, Logs : [] }
+                id_subtasks.push(log.Id_Sub_Item_Pekerjaan)
+                dataTask.Name   = log.Sub_Task;
+                dataTask.Task   = log.Task;
+                dataTask.Sub_Div= log.Sub_Divisi;
+                dataTask.Div    = log.Divisi;
+                logs.push(log)
+                isNew = false
+            }
+            else
+            {
+                // console.log("pushing log to logs")
+                logs.push(log);
+            }
+        }
+        dataTask.Logs = logs;
+        subtasks.push(dataTask);
+
+        // subtasks.Logs = logs;
+        // subtasks.Logs = logs;
+        console.log("ID SUBTASK")
+        console.log(id_subtasks)
+        console.log("LOG PER SUBTASK")
+        console.log(subtasks)
+
+        let subtasklen  = subtasks.length
+        let Tasks = []
+        let Contribute = 0
+        // console.log("subtasklen")
+        // console.log(subtasklen)
+        for(let PCData of PCDatas)
+        {
+            PCData.Task_List = []
+        }
+        for(let subtask of subtasks)
+        {
+            let loglen      = subtask.Logs.length
+            let logs        = subtask.Logs
+            console.log("LOGS")
+            console.log(logs)
+            
+            let Task = []
+            // let Contribute = 0
+            for(let i = 0 ; i<loglen ; i++)
+            {
+                console.log("LOGLEN : "+loglen)
+                console.log("TASK CONTRIBUTE FOR : "+Contribute)
+                for(let PCData of PCDatas)
+                {
+                    console.log("PCData NAME : "+PCData.Nama)
+                    console.log("Log NAME : "+logs[i].Nama)
+                    if(PCData.Nama == logs[i].Nama)
+                    {
+                        // PCData.Task_List.Name   = logs[i].Sub_Task
+                        // PCData.Task_List.Task   = logs[i].Task
+                        // PCData.Task_List.Sub_Div= logs[i].Sub_Divisi
+                        // PCData.Task_List.Div    = logs[i].Divisi
+                        if(i==0)
+                        {
+                            Contribute = logs[i].Progress
+                            Task.Name = logs[i].Sub_Task
+                            Task.Task = logs[i].Task
+                            Task.Sub_Div = logs[i].Sub_Divisi
+                            Task.Div = logs[i].Divisi
+                            Task.Contribute = Contribute
+                            // Task = {
+                            //     Name    : logs[i].Sub_Task,
+                            //     Task    : logs[i].Task,
+                            //     Sub_Div : logs[i].Sub_Divisi,
+                            //     Div     : logs[i].Divisi,
+                            //     Contribute : Contribute,
+                            // }
+                            console.log("TASK CONTRIBUTE I : "+Task.Contribute)
+                        }
+                        else if(logs[i].Nama == logs[i-1].Nama)
+                        {
+                            console.log("TASK CONTRIBUTE BEFORE : "+Contribute)
+                            Contribute += logs[i].Progress - logs[i-1].Progress
+                            Task.Name = logs[i].Sub_Task
+                            Task.Task = logs[i].Task
+                            Task.Sub_Div = logs[i].Sub_Divisi
+                            Task.Div = logs[i].Divisi
+                            Task.Contribute = Contribute
+                            console.log("LOG PROGRESS - i"+logs[i].Progress)
+                            console.log("LOG PROGRESS - i"+logs[i-1].Progress)
+                            console.log("TASK CONTRIBUTE ELSE IF : "+Contribute)
+                        }
+                        else
+                        {
+                            console.log("TASK CONTRIBUTE BEFORE : "+Contribute)
+                            Contribute = logs[i].Progress - logs[i-1].Progress
+                            Task.Name = logs[i].Sub_Task
+                            Task.Task = logs[i].Task
+                            Task.Sub_Div = logs[i].Sub_Divisi
+                            Task.Div = logs[i].Divisi
+                            Task.Contribute = Contribute
+                            console.log("LOG PROGRESS - i"+logs[i].Progress)
+                            console.log("LOG PROGRESS - i"+logs[i-1].Progress)
+                            console.log("TASK CONTRIBUTE ELSE : "+Contribute)
+                        }
+                        if(i==loglen-1)
+                        {
+                            console.log("IF")
+                            console.log("TASK")
+                            console.log(Task)
+                            // PCData.Task_List=Task
+                            PCData.Task_List.push(Task);
+                            Task = [];
+                            Contribute = 0;
+                            console.log("REFRESH")
+                            // console.log(Task)
+                            // console.log(Contribute)
+                        }
+                        else if(logs[i+1].Nama != logs[i].Nama)
+                        {
+                            console.log("ELSE IF")
+                            console.log("TASK")
+                            console.log(Task)
+                            PCData.Task_List.push(Task);
+                            // PCData.Task_List.push(Task)
+                            Task = [];
+                            Contribute = 0;
+                            // console.log(Task)
+                            // console.log(Contribute)
+                        }
+                    }
+                }
+            }
+        }
+        console.log("PCDatas")
+        console.log(PCDatas)
+        Contribute = 0
+        let TContribute = 0
+        let SDContribute = 0
+        let DContribute = 0
+        let PersentaseTask = 0
+        let PersentaseSubDivisi = 0
+        let PersentaseDivisi = 0
+        let PersentaseProyek = 0
+        for(let PCData of PCDatas)
+        {
+            for(let Task_List of PCData.Task_List)
+            {
+                PersentaseTask      = this.detailProject.All_SubTask.find(obj=>obj.Nama == Task_List.Name).Persentase/100
+                PersentaseSubDivisi = this.detailProject.All_Task.find(obj=>obj.Nama == Task_List.Task).Persentase/100
+                PersentaseDivisi    = this.detailProject.All_SubDivisi.find(obj=>obj.Nama == Task_List.Sub_Div).Persentase/100
+                PersentaseProyek    = this.detailProject.All_Divisi.find(obj=>obj.Nama == Task_List.Div).Persentase/100
+                
+                TContribute     = Task_List.Contribute * PersentaseTask
+                SDContribute    = TContribute * PersentaseSubDivisi
+                DContribute     = SDContribute * PersentaseDivisi
+                Contribute      +=DContribute * PersentaseProyek
+
+                console.log(Contribute)
+                // for(let divisi of this.detailProject.All_Divisi.filter(obj=>obj.Divisi == Task_List.Divisi))
+                // {
+                //     for(let sub_divisi of this.detailProject.All_SubDivisi.filter(obj=>obj.Nama == Task_List.Sub_Div))
+                //     {
+                //         for(let task of this.detailProject.All_Task.filter(obj=>obj.Nama == Task_List.Task))
+                //         {
+                //             for(let sub_task of this.detailProject.All_SubTask.filter(obj=>obj.Nama == Task_List.Name))
+                //             {
+                //                 // Contribute+=((((Task_List.Contribute*sub_task.Persentase/100)*task.Persentase/100)*sub_divisi.Persentase/100)*divisi.Persentase/100);
+                //                 console.log(" .")
+                //                 TContribute = Task_List.Contribute*task.Persentase/100
+                //                 console.log("Task Persentase"+task.Persentase)
+                //                 console.log("TContribute"+TContribute)
+                //                 SDContribute = TContribute*sub_divisi.Persentase/100
+                //                 Contribute += SDContribute*divisi.Persentase/100
+                //                 console.log("CONTRIBUTE DALAM "+Contribute)
+                //                 // console.log("TEST SUB DIVISI");
+                //                 console.log("Nama : "+PCData.Nama)
+                //                 console.log("Sub_Task: "+Task_List.Name)
+                //                 console.log("Id_Proyek : "+divisi.Id_Proyek)
+                //                 console.log("Id_Divisi_Role : "+divisi.Id_Divisi_Role)
+                //                 console.log("Id_Sub_Divisi : "+sub_divisi.Id_Sub_Divisi_Proyek)
+                //                 console.log("Id_Task : "+task.Id_Item_Pekerjaan)
+                //                 console.log("Id_Sub_Task : "+sub_task.Id_Sub_Item_Pekerjaan)
+                //             }
+                //         }
+                //     }
+                // }
+        // Task.Name
+        // Task.Task
+        // Task.Sub_Div 
+        // Task.Div
+        
+                // for(let task of this.detailProject.All_Task)
+                // {
+                //     for(let subtask of this.detailProject.All_SubTask.filter(obj=>obj.Task == task.Nama))
+                //     {
+                //         task.Progress +=  subtask.Progress * subtask.Persentase/100
+                //     }
+
+                //     // task.Progress= await Controller.getProgressItem(task.Id_Item_Pekerjaan)
+                // }
+            }
+            PCData.Contribute = Contribute
+            Contribute = 0
+        }
+
+
+        this.d_user = PCDatas
+        // 1 for perulangan untuk lognya dulu, cari yang proyeknya sesuai
+        // 2 kelompokkan berdasarkan sub tasknya
+        // 3 cek log index skrg dengan index berikutnya apakah namanya sama 
+        // 4 jika sama, maka pembanding di geser
+        // 5 jika beda maka progress index sekarang - index berdasarkan
+        // 6 kemudian hasilnya simpan pada variabel Task_List
+        // 7 jika ketemu sampai index terakhir, maka dikurangi dengan 0
+        // 8 lakukan langkah 6
+
+            
+        // let subtasks = []
+        // let id_subtask = []
+        
+
+            // let Task = []
+
+            // Task.Name   = logs[i].Sub_Task
+            // Task.Task   = logs[i].Task
+            // Task.Sub_Div= logs[i].Sub_Divisi
+            // Task.Div    = logs[i].Divisi
+            // if(i==0)
+            // {
+            //     Task.Contribute = logs[i].Progress
+            // }
+            // else if(logs[i].Nama == logs[i-1].Nama)
+            // {
+            //     Task.Contribute += logs[i].Progress - logs[i-1].Progress
+            // }
+            // if(i==loglen-1)
+            // {
+            //     console.log("IF")
+            //     PCData.Task_List = Task
+            //     // PCData.Task_List.push(Task)
+            // }
+            // else if(logs[i+1].Nama != logs[i].Nama)
+            // {
+            //     console.log("ELSE IF")
+            //     PCData.Task_List = Task
+            //     // PCData.Task_List.push(Task)
+            // }
+            // console.log("TASK")
+            // console.log(Task)
+
+        // for(let log of PCLogPengerjaan)
+        // {
+        //     if(id_subtask.indexOf(log.Id_Sub_Item_Pekerjaan) === -1)
+        //     {
+        //         let dataTask = { Name : '', Task : '', Sub_Div : '', Div : '', Contribute : 0 }
+        //         id_subtask.push(log.Id_Sub_Item_Pekerjaan)
+        //         dataTask.Name   = log.Sub_Task;
+        //         dataTask.Task   = log.Task;
+        //         dataTask.Sub_Div= log.Sub_Divisi;
+        //         dataTask.Div    = log.Divisi;
+        //         subtasks.push(dataTask);
+        //     }
+        // }
+
+        // console.log("LENGTH")
+        // console.log(PCDatas.length)
+        // for(let PCData of PCDatas)
+        // {
+        //     let PCLog = this.logPengerjaanData.filter(obj=>obj.Id_Proyek == project.Id_Proyek && obj.Nama == PCData.Nama)
+        //     console.log("FOR LOG")
+        //     console.log(PCLog)
+        //     console.log("FOR DATA")
+        //     console.log(PCData)
+        // }
+        // console.log("PCDATA")
+        // console.log(PCDatas)
+
+        // projectContributors:[],
+        // projectContributorData:{
+        //     Name : '',
+        //     Division : '',
+        //     Contribute : '',
+        //     Task_List:[],
+        // },
+        // projectContributorTask:{
+        //     Name : '',
+        //     Task : '',
+        //     Sub_Div : '',
+        //     Div : '',
+        //     Contribute : '',
+        // },
     },
     addTask(data){
         console.log(data)
@@ -3099,8 +3472,21 @@ export default {
             this.alert.message = null
         }, 3000)
         
-    }
+    },
+    async duplicateEmptyLog(){
+        try {
+          let payloadLog ={
+              Id_Sub_Item_Pekerjaan : this.editTask.Id_Sub_Item_Pekerjaan,
+              Id_Akun : this.Id_Akun
+          } 
+          const response = await Controller.addlogpengerjaan(payloadLog)
 
+        } catch (err) {
+            console.log(err)
+            this.showAlert('error','Gagal Mengirim Request')
+
+        }
+    },
     // sortByDate(prop){
     //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
     // }

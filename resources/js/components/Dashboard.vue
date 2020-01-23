@@ -459,7 +459,7 @@ export default {
     async loaddata () {
       try {
           this.projects = (await Controller.getdashboard(this.Id_Akun)).data
-          this.logPengerjaanData = (await Controller.getalllogpengerjaan()).data
+          this.logPengerjaanData = (await Controller.getalllogpengerjaan()).data.reverse()
           // console.log(this.logPengerjaanData)
       } catch (err) {
           console.log(err)

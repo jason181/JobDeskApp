@@ -2410,7 +2410,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalllogpengerjaan();
 
               case 6:
-                this.logPengerjaanData = _context.sent.data;
+                this.logPengerjaanData = _context.sent.data.reverse();
                 _context.next = 12;
                 break;
 
@@ -6790,6 +6790,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         All_Task: [],
         All_SubTask: []
       },
+      projectContributors: [],
+      projectContributorData: {
+        Name: '',
+        Division: '',
+        Contribute: 0,
+        Task_List: []
+      },
+      projectContributorTask: {
+        Name: '',
+        Task: '',
+        Sub_Div: '',
+        Div: '',
+        Contribute: 0
+      },
+      d_user: [{
+        Name: 'Vian Handika',
+        Division: 'Desain Arsi',
+        Contribute: '50%',
+        Task_List: [{
+          Sub_Task: 'Denah Depan',
+          Task: 'Konsep',
+          Sub_Div: 'Desain',
+          Div: 'Desain Arsi',
+          contribute: '50%'
+        }, {
+          Sub_Task: 'Denah Belakang',
+          Task: 'Konsep',
+          Sub_Div: 'Desain',
+          Div: 'Desain Arsi',
+          contribute: '50%'
+        }]
+      }],
+      //Data Dummy
       d_division: [{
         id: '2',
         progress: '70',
@@ -6831,23 +6864,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         text: 'Contribute',
         value: 'contribute',
         align: 'center'
-      }],
-      d_user: [{
-        name: 'Vian Handika',
-        division: 'Desain Arsi',
-        contribute: '50%',
-        task_list: [{
-          name: 'Denah Depan',
-          task: 'Konsep',
-          sub_div: 'Desain',
-          contribute: '50%'
-        }, {
-          name: 'Denah Belakang',
-          task: 'Konsep',
-          sub_div: 'Desain',
-          contribute: '50%'
-        }]
-      }] //Data Dummy
+      }] // d_user:[
+      //     {
+      //         name:'Vian Handika',
+      //         division:'Desain Arsi',
+      //         contribute:'50%',
+      //         task_list:[
+      //             {
+      //                 name:'Denah Depan',
+      //                 task: 'Konsep',
+      //                 sub_div:'Desain',
+      //                 contribute:'50%'
+      //             },
+      //             {
+      //                 name:'Denah Belakang',
+      //                 task: 'Konsep',
+      //                 sub_div:'Desain',
+      //                 contribute:'50%'
+      //             }
+      //         ]
+      //     }
+      // ],
+      //Data Dummy
 
     };
   },
@@ -7400,7 +7438,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 response = _context5.sent.data;
 
                 if (!(this.editTask.Progress == 100)) {
-                  _context5.next = 15;
+                  _context5.next = 17;
                   break;
                 }
 
@@ -7408,6 +7446,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return this.accessDone();
 
               case 15:
+                _context5.next = 19;
+                break;
+
+              case 17:
+                _context5.next = 19;
+                return this.duplicateEmptyLog();
+
+              case 19:
                 this.removefile();
                 index = this.editTask.Log_Pengerjaan.findIndex(function (obj) {
                   return obj.Id_Log_Pengerjaan == response.Id_Log_Pengerjaan;
@@ -7417,21 +7463,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 // this.requestDialog=false
 
                 this.showAlert('success', 'Sukses Upload Progress');
-                _context5.next = 26;
+                _context5.next = 30;
                 break;
 
-              case 22:
-                _context5.prev = 22;
+              case 26:
+                _context5.prev = 26;
                 _context5.t0 = _context5["catch"](0);
                 console.log(_context5.t0);
                 this.showAlert('error', 'Gagal Upload Progress');
 
-              case 26:
+              case 30:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, this, [[0, 22]]);
+        }, _callee5, this, [[0, 26]]);
       }));
 
       function uploadProgress() {
@@ -7562,7 +7608,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(project) {
         var _this4 = this;
 
-        var _iteratorNormalCompletion8, _didIteratorError8, _iteratorError8, _iterator8, _step8, subtask, _iteratorNormalCompletion9, _didIteratorError9, _iteratorError9, _loop, _iterator9, _step9, _iteratorNormalCompletion10, _didIteratorError10, _iteratorError10, _loop2, _iterator10, _step10, _iteratorNormalCompletion11, _didIteratorError11, _iteratorError11, _loop3, _iterator11, _step11;
+        var _iteratorNormalCompletion8, _didIteratorError8, _iteratorError8, _iterator8, _step8, subtask, _iteratorNormalCompletion9, _didIteratorError9, _iteratorError9, _loop, _iterator9, _step9, _iteratorNormalCompletion10, _didIteratorError10, _iteratorError10, _loop2, _iterator10, _step10, _iteratorNormalCompletion11, _didIteratorError11, _iteratorError11, _loop3, _iterator11, _step11, PCDatas, Names, PCLogPengerjaan, _iteratorNormalCompletion12, _didIteratorError12, _iteratorError12, _iterator12, _step12, log, Data, subtasks, id_subtasks, id_subtask, index, isNew, logs, dataTask, _iteratorNormalCompletion13, _didIteratorError13, _iteratorError13, _iterator13, _step13, _log, subtasklen, Tasks, Contribute, _i, _PCDatas, PCData, _i2, _subtasks, _subtask2, loglen, _logs, Task, i, _iteratorNormalCompletion17, _didIteratorError17, _iteratorError17, _iterator17, _step17, _PCData, TContribute, SDContribute, DContribute, PersentaseTask, PersentaseSubDivisi, PersentaseDivisi, PersentaseProyek, _i3, _PCDatas2, _PCData2, _iteratorNormalCompletion18, _didIteratorError18, _iteratorError18, _loop4, _iterator18, _step18;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
@@ -7625,29 +7671,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   var task = _step9.value;
                   task.Remaining = parseInt((new Date(task.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left';
                   task.Progress = 0;
-                  var _iteratorNormalCompletion12 = true;
-                  var _didIteratorError12 = false;
-                  var _iteratorError12 = undefined;
+                  var _iteratorNormalCompletion14 = true;
+                  var _didIteratorError14 = false;
+                  var _iteratorError14 = undefined;
 
                   try {
-                    for (var _iterator12 = _this4.detailProject.All_SubTask.filter(function (obj) {
+                    for (var _iterator14 = _this4.detailProject.All_SubTask.filter(function (obj) {
                       return obj.Task == task.Nama;
-                    })[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
-                      var _subtask = _step12.value;
+                    })[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
+                      var _subtask = _step14.value;
                       task.Progress += _subtask.Progress * _subtask.Persentase / 100;
                     } // task.Progress= await Controller.getProgressItem(task.Id_Item_Pekerjaan)
 
                   } catch (err) {
-                    _didIteratorError12 = true;
-                    _iteratorError12 = err;
+                    _didIteratorError14 = true;
+                    _iteratorError14 = err;
                   } finally {
                     try {
-                      if (!_iteratorNormalCompletion12 && _iterator12["return"] != null) {
-                        _iterator12["return"]();
+                      if (!_iteratorNormalCompletion14 && _iterator14["return"] != null) {
+                        _iterator14["return"]();
                       }
                     } finally {
-                      if (_didIteratorError12) {
-                        throw _iteratorError12;
+                      if (_didIteratorError14) {
+                        throw _iteratorError14;
                       }
                     }
                   }
@@ -7701,28 +7747,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   subdiv.Remaining = parseInt((new Date(subdiv.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // subdiv.Progress= await Controller.getProgressSubDivisi(subdiv.Id_Sub_Divisi_Proyek)
 
                   subdiv.Progress = 0;
-                  var _iteratorNormalCompletion13 = true;
-                  var _didIteratorError13 = false;
-                  var _iteratorError13 = undefined;
+                  var _iteratorNormalCompletion15 = true;
+                  var _didIteratorError15 = false;
+                  var _iteratorError15 = undefined;
 
                   try {
-                    for (var _iterator13 = _this4.detailProject.All_Task.filter(function (obj) {
+                    for (var _iterator15 = _this4.detailProject.All_Task.filter(function (obj) {
                       return obj.Sub_Divisi == subdiv.Nama;
-                    })[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
-                      var task = _step13.value;
+                    })[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
+                      var task = _step15.value;
                       subdiv.Progress += task.Progress * task.Persentase / 100;
                     }
                   } catch (err) {
-                    _didIteratorError13 = true;
-                    _iteratorError13 = err;
+                    _didIteratorError15 = true;
+                    _iteratorError15 = err;
                   } finally {
                     try {
-                      if (!_iteratorNormalCompletion13 && _iterator13["return"] != null) {
-                        _iterator13["return"]();
+                      if (!_iteratorNormalCompletion15 && _iterator15["return"] != null) {
+                        _iterator15["return"]();
                       }
                     } finally {
-                      if (_didIteratorError13) {
-                        throw _iteratorError13;
+                      if (_didIteratorError15) {
+                        throw _iteratorError15;
                       }
                     }
                   }
@@ -7776,28 +7822,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   div.Remaining = parseInt((new Date(div.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // div.Progress= await Controller.getProgressDivisi(div.Id_Divisi_Proyek)
 
                   div.Progress = 0;
-                  var _iteratorNormalCompletion14 = true;
-                  var _didIteratorError14 = false;
-                  var _iteratorError14 = undefined;
+                  var _iteratorNormalCompletion16 = true;
+                  var _didIteratorError16 = false;
+                  var _iteratorError16 = undefined;
 
                   try {
-                    for (var _iterator14 = _this4.detailProject.All_SubDivisi.filter(function (obj) {
+                    for (var _iterator16 = _this4.detailProject.All_SubDivisi.filter(function (obj) {
                       return obj.Divisi == div.Nama;
-                    })[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
-                      var subdiv = _step14.value;
+                    })[Symbol.iterator](), _step16; !(_iteratorNormalCompletion16 = (_step16 = _iterator16.next()).done); _iteratorNormalCompletion16 = true) {
+                      var subdiv = _step16.value;
                       div.Progress += subdiv.Progress * subdiv.Persentase / 100;
                     }
                   } catch (err) {
-                    _didIteratorError14 = true;
-                    _iteratorError14 = err;
+                    _didIteratorError16 = true;
+                    _iteratorError16 = err;
                   } finally {
                     try {
-                      if (!_iteratorNormalCompletion14 && _iterator14["return"] != null) {
-                        _iterator14["return"]();
+                      if (!_iteratorNormalCompletion16 && _iterator16["return"] != null) {
+                        _iterator16["return"]();
                       }
                     } finally {
-                      if (_didIteratorError14) {
-                        throw _iteratorError14;
+                      if (_didIteratorError16) {
+                        throw _iteratorError16;
                       }
                     }
                   }
@@ -7843,14 +7889,544 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return _context7.finish(74);
 
               case 82:
-                this.detailDialog = true;
+                this.detailDialog = true; // PROJECT CONTRIBUTOR,
 
-              case 83:
+                PCDatas = [];
+                Names = []; //filter yang id proyeknya sesuai detail dan progress != 0
+
+                PCLogPengerjaan = this.logPengerjaanData.filter(function (obj) {
+                  return obj.Id_Proyek == project.Id_Proyek && obj.Progress != 0;
+                }); //sort berdasarkan sub item pekerjaan untuk mempermudah langkah selanjutnya
+
+                PCLogPengerjaan.sort(function (a, b) {
+                  return a['Id_Sub_Item_Pekerjaan'] < b['Id_Sub_Item_Pekerjaan'] ? -1 : 1;
+                }); // console.log(PCLogPengerjaan)
+                //mengambil data nama dan divisi dari karyawan yang melakukan kontribusi
+
+                _iteratorNormalCompletion12 = true;
+                _didIteratorError12 = false;
+                _iteratorError12 = undefined;
+                _context7.prev = 90;
+
+                for (_iterator12 = PCLogPengerjaan[Symbol.iterator](); !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+                  log = _step12.value;
+
+                  if (Names.indexOf(log.Nama) === -1) {
+                    Data = {
+                      Nama: '',
+                      Division: ''
+                    };
+                    Names.push(log.Nama);
+                    Data.Nama = log.Nama;
+                    Data.Division = log.Divisi;
+                    PCDatas.push(Data);
+                  } // console.log(PCDatas)
+
+                }
+
+                _context7.next = 98;
+                break;
+
+              case 94:
+                _context7.prev = 94;
+                _context7.t4 = _context7["catch"](90);
+                _didIteratorError12 = true;
+                _iteratorError12 = _context7.t4;
+
+              case 98:
+                _context7.prev = 98;
+                _context7.prev = 99;
+
+                if (!_iteratorNormalCompletion12 && _iterator12["return"] != null) {
+                  _iterator12["return"]();
+                }
+
+              case 101:
+                _context7.prev = 101;
+
+                if (!_didIteratorError12) {
+                  _context7.next = 104;
+                  break;
+                }
+
+                throw _iteratorError12;
+
+              case 104:
+                return _context7.finish(101);
+
+              case 105:
+                return _context7.finish(98);
+
+              case 106:
+                console.log("PCDATA");
+                console.log(PCDatas);
+                subtasks = [];
+                id_subtasks = [];
+                id_subtask = 0;
+                index = 0;
+                isNew = true;
+                logs = [];
+                dataTask = {
+                  Name: '',
+                  Task: '',
+                  Sub_Div: '',
+                  Div: '',
+                  Contribute: 0,
+                  Logs: []
+                };
+                _iteratorNormalCompletion13 = true;
+                _didIteratorError13 = false;
+                _iteratorError13 = undefined;
+                _context7.prev = 118;
+
+                for (_iterator13 = PCLogPengerjaan[Symbol.iterator](); !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
+                  _log = _step13.value;
+                  index = id_subtasks.indexOf(_log.Id_Sub_Item_Pekerjaan);
+
+                  if (index === -1) {
+                    if (isNew == false) {
+                      // console.log("Is new = "+isNew+" Assigning")
+                      dataTask.Logs = logs;
+                      subtasks.push(dataTask);
+                    }
+
+                    logs = [];
+                    dataTask = {
+                      Name: '',
+                      Task: '',
+                      Sub_Div: '',
+                      Div: '',
+                      Contribute: 0,
+                      Logs: []
+                    };
+                    id_subtasks.push(_log.Id_Sub_Item_Pekerjaan);
+                    dataTask.Name = _log.Sub_Task;
+                    dataTask.Task = _log.Task;
+                    dataTask.Sub_Div = _log.Sub_Divisi;
+                    dataTask.Div = _log.Divisi;
+                    logs.push(_log);
+                    isNew = false;
+                  } else {
+                    // console.log("pushing log to logs")
+                    logs.push(_log);
+                  }
+                }
+
+                _context7.next = 126;
+                break;
+
+              case 122:
+                _context7.prev = 122;
+                _context7.t5 = _context7["catch"](118);
+                _didIteratorError13 = true;
+                _iteratorError13 = _context7.t5;
+
+              case 126:
+                _context7.prev = 126;
+                _context7.prev = 127;
+
+                if (!_iteratorNormalCompletion13 && _iterator13["return"] != null) {
+                  _iterator13["return"]();
+                }
+
+              case 129:
+                _context7.prev = 129;
+
+                if (!_didIteratorError13) {
+                  _context7.next = 132;
+                  break;
+                }
+
+                throw _iteratorError13;
+
+              case 132:
+                return _context7.finish(129);
+
+              case 133:
+                return _context7.finish(126);
+
+              case 134:
+                dataTask.Logs = logs;
+                subtasks.push(dataTask); // subtasks.Logs = logs;
+                // subtasks.Logs = logs;
+
+                console.log("ID SUBTASK");
+                console.log(id_subtasks);
+                console.log("LOG PER SUBTASK");
+                console.log(subtasks);
+                subtasklen = subtasks.length;
+                Tasks = [];
+                Contribute = 0; // console.log("subtasklen")
+                // console.log(subtasklen)
+
+                for (_i = 0, _PCDatas = PCDatas; _i < _PCDatas.length; _i++) {
+                  PCData = _PCDatas[_i];
+                  PCData.Task_List = [];
+                }
+
+                _i2 = 0, _subtasks = subtasks;
+
+              case 145:
+                if (!(_i2 < _subtasks.length)) {
+                  _context7.next = 181;
+                  break;
+                }
+
+                _subtask2 = _subtasks[_i2];
+                loglen = _subtask2.Logs.length;
+                _logs = _subtask2.Logs;
+                console.log("LOGS");
+                console.log(_logs);
+                Task = []; // let Contribute = 0
+
+                i = 0;
+
+              case 153:
+                if (!(i < loglen)) {
+                  _context7.next = 178;
+                  break;
+                }
+
+                console.log("LOGLEN : " + loglen);
+                console.log("TASK CONTRIBUTE FOR : " + Contribute);
+                _iteratorNormalCompletion17 = true;
+                _didIteratorError17 = false;
+                _iteratorError17 = undefined;
+                _context7.prev = 159;
+
+                for (_iterator17 = PCDatas[Symbol.iterator](); !(_iteratorNormalCompletion17 = (_step17 = _iterator17.next()).done); _iteratorNormalCompletion17 = true) {
+                  _PCData = _step17.value;
+                  console.log("PCData NAME : " + _PCData.Nama);
+                  console.log("Log NAME : " + _logs[i].Nama);
+
+                  if (_PCData.Nama == _logs[i].Nama) {
+                    // PCData.Task_List.Name   = logs[i].Sub_Task
+                    // PCData.Task_List.Task   = logs[i].Task
+                    // PCData.Task_List.Sub_Div= logs[i].Sub_Divisi
+                    // PCData.Task_List.Div    = logs[i].Divisi
+                    if (i == 0) {
+                      Contribute = _logs[i].Progress;
+                      Task.Name = _logs[i].Sub_Task;
+                      Task.Task = _logs[i].Task;
+                      Task.Sub_Div = _logs[i].Sub_Divisi;
+                      Task.Div = _logs[i].Divisi;
+                      Task.Contribute = Contribute; // Task = {
+                      //     Name    : logs[i].Sub_Task,
+                      //     Task    : logs[i].Task,
+                      //     Sub_Div : logs[i].Sub_Divisi,
+                      //     Div     : logs[i].Divisi,
+                      //     Contribute : Contribute,
+                      // }
+
+                      console.log("TASK CONTRIBUTE I : " + Task.Contribute);
+                    } else if (_logs[i].Nama == _logs[i - 1].Nama) {
+                      console.log("TASK CONTRIBUTE BEFORE : " + Contribute);
+                      Contribute += _logs[i].Progress - _logs[i - 1].Progress;
+                      Task.Name = _logs[i].Sub_Task;
+                      Task.Task = _logs[i].Task;
+                      Task.Sub_Div = _logs[i].Sub_Divisi;
+                      Task.Div = _logs[i].Divisi;
+                      Task.Contribute = Contribute;
+                      console.log("LOG PROGRESS - i" + _logs[i].Progress);
+                      console.log("LOG PROGRESS - i" + _logs[i - 1].Progress);
+                      console.log("TASK CONTRIBUTE ELSE IF : " + Contribute);
+                    } else {
+                      console.log("TASK CONTRIBUTE BEFORE : " + Contribute);
+                      Contribute = _logs[i].Progress - _logs[i - 1].Progress;
+                      Task.Name = _logs[i].Sub_Task;
+                      Task.Task = _logs[i].Task;
+                      Task.Sub_Div = _logs[i].Sub_Divisi;
+                      Task.Div = _logs[i].Divisi;
+                      Task.Contribute = Contribute;
+                      console.log("LOG PROGRESS - i" + _logs[i].Progress);
+                      console.log("LOG PROGRESS - i" + _logs[i - 1].Progress);
+                      console.log("TASK CONTRIBUTE ELSE : " + Contribute);
+                    }
+
+                    if (i == loglen - 1) {
+                      console.log("IF");
+                      console.log("TASK");
+                      console.log(Task); // PCData.Task_List=Task
+
+                      _PCData.Task_List.push(Task);
+
+                      Task = [];
+                      Contribute = 0;
+                      console.log("REFRESH"); // console.log(Task)
+                      // console.log(Contribute)
+                    } else if (_logs[i + 1].Nama != _logs[i].Nama) {
+                      console.log("ELSE IF");
+                      console.log("TASK");
+                      console.log(Task);
+
+                      _PCData.Task_List.push(Task); // PCData.Task_List.push(Task)
+
+
+                      Task = [];
+                      Contribute = 0; // console.log(Task)
+                      // console.log(Contribute)
+                    }
+                  }
+                }
+
+                _context7.next = 167;
+                break;
+
+              case 163:
+                _context7.prev = 163;
+                _context7.t6 = _context7["catch"](159);
+                _didIteratorError17 = true;
+                _iteratorError17 = _context7.t6;
+
+              case 167:
+                _context7.prev = 167;
+                _context7.prev = 168;
+
+                if (!_iteratorNormalCompletion17 && _iterator17["return"] != null) {
+                  _iterator17["return"]();
+                }
+
+              case 170:
+                _context7.prev = 170;
+
+                if (!_didIteratorError17) {
+                  _context7.next = 173;
+                  break;
+                }
+
+                throw _iteratorError17;
+
+              case 173:
+                return _context7.finish(170);
+
+              case 174:
+                return _context7.finish(167);
+
+              case 175:
+                i++;
+                _context7.next = 153;
+                break;
+
+              case 178:
+                _i2++;
+                _context7.next = 145;
+                break;
+
+              case 181:
+                console.log("PCDatas");
+                console.log(PCDatas);
+                Contribute = 0;
+                TContribute = 0;
+                SDContribute = 0;
+                DContribute = 0;
+                PersentaseTask = 0;
+                PersentaseSubDivisi = 0;
+                PersentaseDivisi = 0;
+                PersentaseProyek = 0;
+                _i3 = 0, _PCDatas2 = PCDatas;
+
+              case 192:
+                if (!(_i3 < _PCDatas2.length)) {
+                  _context7.next = 219;
+                  break;
+                }
+
+                _PCData2 = _PCDatas2[_i3];
+                _iteratorNormalCompletion18 = true;
+                _didIteratorError18 = false;
+                _iteratorError18 = undefined;
+                _context7.prev = 197;
+
+                _loop4 = function _loop4() {
+                  var Task_List = _step18.value;
+                  PersentaseTask = _this4.detailProject.All_SubTask.find(function (obj) {
+                    return obj.Nama == Task_List.Name;
+                  }).Persentase / 100;
+                  PersentaseSubDivisi = _this4.detailProject.All_Task.find(function (obj) {
+                    return obj.Nama == Task_List.Task;
+                  }).Persentase / 100;
+                  PersentaseDivisi = _this4.detailProject.All_SubDivisi.find(function (obj) {
+                    return obj.Nama == Task_List.Sub_Div;
+                  }).Persentase / 100;
+                  PersentaseProyek = _this4.detailProject.All_Divisi.find(function (obj) {
+                    return obj.Nama == Task_List.Div;
+                  }).Persentase / 100;
+                  TContribute = Task_List.Contribute * PersentaseTask;
+                  SDContribute = TContribute * PersentaseSubDivisi;
+                  DContribute = SDContribute * PersentaseDivisi;
+                  Contribute += DContribute * PersentaseProyek;
+                  console.log(Contribute); // for(let divisi of this.detailProject.All_Divisi.filter(obj=>obj.Divisi == Task_List.Divisi))
+                  // {
+                  //     for(let sub_divisi of this.detailProject.All_SubDivisi.filter(obj=>obj.Nama == Task_List.Sub_Div))
+                  //     {
+                  //         for(let task of this.detailProject.All_Task.filter(obj=>obj.Nama == Task_List.Task))
+                  //         {
+                  //             for(let sub_task of this.detailProject.All_SubTask.filter(obj=>obj.Nama == Task_List.Name))
+                  //             {
+                  //                 // Contribute+=((((Task_List.Contribute*sub_task.Persentase/100)*task.Persentase/100)*sub_divisi.Persentase/100)*divisi.Persentase/100);
+                  //                 console.log(" .")
+                  //                 TContribute = Task_List.Contribute*task.Persentase/100
+                  //                 console.log("Task Persentase"+task.Persentase)
+                  //                 console.log("TContribute"+TContribute)
+                  //                 SDContribute = TContribute*sub_divisi.Persentase/100
+                  //                 Contribute += SDContribute*divisi.Persentase/100
+                  //                 console.log("CONTRIBUTE DALAM "+Contribute)
+                  //                 // console.log("TEST SUB DIVISI");
+                  //                 console.log("Nama : "+PCData.Nama)
+                  //                 console.log("Sub_Task: "+Task_List.Name)
+                  //                 console.log("Id_Proyek : "+divisi.Id_Proyek)
+                  //                 console.log("Id_Divisi_Role : "+divisi.Id_Divisi_Role)
+                  //                 console.log("Id_Sub_Divisi : "+sub_divisi.Id_Sub_Divisi_Proyek)
+                  //                 console.log("Id_Task : "+task.Id_Item_Pekerjaan)
+                  //                 console.log("Id_Sub_Task : "+sub_task.Id_Sub_Item_Pekerjaan)
+                  //             }
+                  //         }
+                  //     }
+                  // }
+                  // Task.Name
+                  // Task.Task
+                  // Task.Sub_Div 
+                  // Task.Div
+                  // for(let task of this.detailProject.All_Task)
+                  // {
+                  //     for(let subtask of this.detailProject.All_SubTask.filter(obj=>obj.Task == task.Nama))
+                  //     {
+                  //         task.Progress +=  subtask.Progress * subtask.Persentase/100
+                  //     }
+                  //     // task.Progress= await Controller.getProgressItem(task.Id_Item_Pekerjaan)
+                  // }
+                };
+
+                for (_iterator18 = _PCData2.Task_List[Symbol.iterator](); !(_iteratorNormalCompletion18 = (_step18 = _iterator18.next()).done); _iteratorNormalCompletion18 = true) {
+                  _loop4();
+                }
+
+                _context7.next = 206;
+                break;
+
+              case 202:
+                _context7.prev = 202;
+                _context7.t7 = _context7["catch"](197);
+                _didIteratorError18 = true;
+                _iteratorError18 = _context7.t7;
+
+              case 206:
+                _context7.prev = 206;
+                _context7.prev = 207;
+
+                if (!_iteratorNormalCompletion18 && _iterator18["return"] != null) {
+                  _iterator18["return"]();
+                }
+
+              case 209:
+                _context7.prev = 209;
+
+                if (!_didIteratorError18) {
+                  _context7.next = 212;
+                  break;
+                }
+
+                throw _iteratorError18;
+
+              case 212:
+                return _context7.finish(209);
+
+              case 213:
+                return _context7.finish(206);
+
+              case 214:
+                _PCData2.Contribute = Contribute;
+                Contribute = 0;
+
+              case 216:
+                _i3++;
+                _context7.next = 192;
+                break;
+
+              case 219:
+                this.d_user = PCDatas; // 1 for perulangan untuk lognya dulu, cari yang proyeknya sesuai
+                // 2 kelompokkan berdasarkan sub tasknya
+                // 3 cek log index skrg dengan index berikutnya apakah namanya sama 
+                // 4 jika sama, maka pembanding di geser
+                // 5 jika beda maka progress index sekarang - index berdasarkan
+                // 6 kemudian hasilnya simpan pada variabel Task_List
+                // 7 jika ketemu sampai index terakhir, maka dikurangi dengan 0
+                // 8 lakukan langkah 6
+                // let subtasks = []
+                // let id_subtask = []
+                // let Task = []
+                // Task.Name   = logs[i].Sub_Task
+                // Task.Task   = logs[i].Task
+                // Task.Sub_Div= logs[i].Sub_Divisi
+                // Task.Div    = logs[i].Divisi
+                // if(i==0)
+                // {
+                //     Task.Contribute = logs[i].Progress
+                // }
+                // else if(logs[i].Nama == logs[i-1].Nama)
+                // {
+                //     Task.Contribute += logs[i].Progress - logs[i-1].Progress
+                // }
+                // if(i==loglen-1)
+                // {
+                //     console.log("IF")
+                //     PCData.Task_List = Task
+                //     // PCData.Task_List.push(Task)
+                // }
+                // else if(logs[i+1].Nama != logs[i].Nama)
+                // {
+                //     console.log("ELSE IF")
+                //     PCData.Task_List = Task
+                //     // PCData.Task_List.push(Task)
+                // }
+                // console.log("TASK")
+                // console.log(Task)
+                // for(let log of PCLogPengerjaan)
+                // {
+                //     if(id_subtask.indexOf(log.Id_Sub_Item_Pekerjaan) === -1)
+                //     {
+                //         let dataTask = { Name : '', Task : '', Sub_Div : '', Div : '', Contribute : 0 }
+                //         id_subtask.push(log.Id_Sub_Item_Pekerjaan)
+                //         dataTask.Name   = log.Sub_Task;
+                //         dataTask.Task   = log.Task;
+                //         dataTask.Sub_Div= log.Sub_Divisi;
+                //         dataTask.Div    = log.Divisi;
+                //         subtasks.push(dataTask);
+                //     }
+                // }
+                // console.log("LENGTH")
+                // console.log(PCDatas.length)
+                // for(let PCData of PCDatas)
+                // {
+                //     let PCLog = this.logPengerjaanData.filter(obj=>obj.Id_Proyek == project.Id_Proyek && obj.Nama == PCData.Nama)
+                //     console.log("FOR LOG")
+                //     console.log(PCLog)
+                //     console.log("FOR DATA")
+                //     console.log(PCData)
+                // }
+                // console.log("PCDATA")
+                // console.log(PCDatas)
+                // projectContributors:[],
+                // projectContributorData:{
+                //     Name : '',
+                //     Division : '',
+                //     Contribute : '',
+                //     Task_List:[],
+                // },
+                // projectContributorTask:{
+                //     Name : '',
+                //     Task : '',
+                //     Sub_Div : '',
+                //     Div : '',
+                //     Contribute : '',
+                // },
+
+              case 220:
               case "end":
                 return _context7.stop();
             }
           }
-        }, _callee7, this, [[6, 10, 14, 22], [15,, 17, 21], [25, 30, 34, 42], [35,, 37, 41], [45, 50, 54, 62], [55,, 57, 61], [65, 70, 74, 82], [75,, 77, 81]]);
+        }, _callee7, this, [[6, 10, 14, 22], [15,, 17, 21], [25, 30, 34, 42], [35,, 37, 41], [45, 50, 54, 62], [55,, 57, 61], [65, 70, 74, 82], [75,, 77, 81], [90, 94, 98, 106], [99,, 101, 105], [118, 122, 126, 134], [127,, 129, 133], [159, 163, 167, 175], [168,, 170, 174], [197, 202, 206, 214], [207,, 209, 213]]);
       }));
 
       function detailProjectDialog(_x) {
@@ -7887,13 +8463,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.editTask = data;
       this.editTask.Status_Akses = 'Locked'; //<==================================NEED EDIT
 
-      var _iteratorNormalCompletion15 = true;
-      var _didIteratorError15 = false;
-      var _iteratorError15 = undefined;
+      var _iteratorNormalCompletion19 = true;
+      var _didIteratorError19 = false;
+      var _iteratorError19 = undefined;
 
       try {
-        for (var _iterator15 = this.jobAksesData[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
-          var akses = _step15.value;
+        for (var _iterator19 = this.jobAksesData[Symbol.iterator](), _step19; !(_iteratorNormalCompletion19 = (_step19 = _iterator19.next()).done); _iteratorNormalCompletion19 = true) {
+          var akses = _step19.value;
 
           if (akses.Id_Sub_Item_Pekerjaan == data.Id_Sub_Item_Pekerjaan && akses.Verifikasi == "Verified" && akses.Id_Akun == this.Id_Akun) {
             this.editTask.Status_Akses = akses.Status;
@@ -7902,16 +8478,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         } //   console.log(this.editTask.Log_Pengerjaan.filter(obj=>obj.Berkas!=''))
 
       } catch (err) {
-        _didIteratorError15 = true;
-        _iteratorError15 = err;
+        _didIteratorError19 = true;
+        _iteratorError19 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion15 && _iterator15["return"] != null) {
-            _iterator15["return"]();
+          if (!_iteratorNormalCompletion19 && _iterator19["return"] != null) {
+            _iterator19["return"]();
           }
         } finally {
-          if (_didIteratorError15) {
-            throw _iteratorError15;
+          if (_didIteratorError19) {
+            throw _iteratorError19;
           }
         }
       }
@@ -8083,7 +8659,49 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this11.alert.icon = null;
         _this11.alert.message = null;
       }, 3000);
-    } // sortByDate(prop){
+    },
+    duplicateEmptyLog: function () {
+      var _duplicateEmptyLog = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+        var payloadLog, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.prev = 0;
+                payloadLog = {
+                  Id_Sub_Item_Pekerjaan: this.editTask.Id_Sub_Item_Pekerjaan,
+                  Id_Akun: this.Id_Akun
+                };
+                _context9.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addlogpengerjaan(payloadLog);
+
+              case 4:
+                response = _context9.sent;
+                _context9.next = 11;
+                break;
+
+              case 7:
+                _context9.prev = 7;
+                _context9.t0 = _context9["catch"](0);
+                console.log(_context9.t0);
+                this.showAlert('error', 'Gagal Mengirim Request');
+
+              case 11:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, this, [[0, 7]]);
+      }));
+
+      function duplicateEmptyLog() {
+        return _duplicateEmptyLog.apply(this, arguments);
+      }
+
+      return duplicateEmptyLog;
+    }() // sortByDate(prop){
     //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
     // }
 
@@ -24589,7 +25207,7 @@ var render = function() {
                                               headers: _vm.headers,
                                               items: _vm.d_user,
                                               search: _vm.search,
-                                              "item-key": "name"
+                                              "item-key": "Nama"
                                             },
                                             scopedSlots: _vm._u([
                                               {
@@ -24611,7 +25229,7 @@ var render = function() {
                                                         _c("td", [
                                                           _vm._v(
                                                             _vm._s(
-                                                              props.item.name
+                                                              props.item.Nama
                                                             )
                                                           )
                                                         ]),
@@ -24626,7 +25244,7 @@ var render = function() {
                                                             _vm._v(
                                                               _vm._s(
                                                                 props.item
-                                                                  .division
+                                                                  .Division
                                                               )
                                                             )
                                                           ]
@@ -24642,7 +25260,7 @@ var render = function() {
                                                             _vm._v(
                                                               _vm._s(
                                                                 props.item
-                                                                  .contribute
+                                                                  .Contribute
                                                               )
                                                             )
                                                           ]
@@ -24656,12 +25274,12 @@ var render = function() {
                                                 key: "expand",
                                                 fn: function(props) {
                                                   return _vm._l(
-                                                    props.item.task_list,
+                                                    props.item.Task_List,
                                                     function(task) {
                                                       return _c(
                                                         "v-card",
                                                         {
-                                                          key: task.name,
+                                                          key: task.Nama,
                                                           attrs: { flat: "" }
                                                         },
                                                         [
@@ -24680,15 +25298,19 @@ var render = function() {
                                                                   _vm._v(
                                                                     "\n                                                    " +
                                                                       _vm._s(
-                                                                        task.sub_div
+                                                                        task.Div
                                                                       ) +
                                                                       " > " +
                                                                       _vm._s(
-                                                                        task.task
+                                                                        task.Sub_Div
                                                                       ) +
                                                                       " > " +
                                                                       _vm._s(
-                                                                        task.name
+                                                                        task.Task
+                                                                      ) +
+                                                                      " > " +
+                                                                      _vm._s(
+                                                                        task.Name
                                                                       ) +
                                                                       "\n                                                    "
                                                                   ),
@@ -24698,9 +25320,9 @@ var render = function() {
                                                                   _vm._v(
                                                                     "\n                                                    " +
                                                                       _vm._s(
-                                                                        task.contribute
+                                                                        task.Contribute
                                                                       ) +
-                                                                      "\n                                                    "
+                                                                      "%\n                                                    "
                                                                   )
                                                                 ],
                                                                 1
