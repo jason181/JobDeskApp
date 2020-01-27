@@ -66,10 +66,23 @@ class AkunController extends RestController
     public function update(Request $request, $id)
     {   
         try {
-            $events = Akun::find($id)->update($request->All());
-            $data = Akun::find($id);
-            $response = $this->generateItem($data);
-            return $this->sendResponse($response, 201);
+            $akun = Akun::find($id);
+            $Password = $akun->Password;
+            $Old_Password = bycrypt($request->Old_Password);
+            $request->Password = bcrypt($request->Password);
+            if($Password == $Old_Password)
+            {
+                $akun->Password = $request->Password;
+                $akun->save();
+                $data = Akun::find($id);
+                $response = $this->generateItem($data);
+                return $this->sendResponse($response, 201);
+            }
+            else
+            {
+                return false;
+            }
+            
 
         }catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());

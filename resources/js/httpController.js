@@ -68,7 +68,39 @@ export default {
             Http.delete('/api/karyawan/'+id, successCallback, errorCallback)
         })
     },
+    //AKUN AREA
+    getallakun(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
 
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.get('/api/akun', successCallback, errorCallback)
+        })
+    },
+    updateakun(payload,id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+
+            }
+
+            Http.patch('/api/akun/'+id, payload, successCallback, errorCallback)
+        })
+    },
     //DIVISI AREA
     getalldivisirole(){
         return new Promise((resolve, reject) => {

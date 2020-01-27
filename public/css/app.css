@@ -240,9 +240,9 @@ h2.title {
   box-shadow: 0 12px 20px -10px rgba(153, 153, 153, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(153, 153, 153, 0.2) !important;
 }
 
-.v-toolbar[class*=bg-] .v-toolbar__title,
-.v-toolbar[class*=bg-] .v-btn__content,
-.v-toolbar[class*=bg-] .v-ripple__container {
+.v-toolbar[class*="bg-"] .v-toolbar__title,
+.v-toolbar[class*="bg-"] .v-btn__content,
+.v-toolbar[class*="bg-"] .v-ripple__container {
   color: #ffffff !important;
 }
 
@@ -1344,7 +1344,7 @@ table thead tr th span {
 .v-menu__content .v-avatar,
 .v-menu__content .v-responsive {
   border: 3px solid #ffffff;
-  transition: all 0.34s;
+  transition: all .34s;
 }
 
 .v-menu__content .v-avatar:not(:last-child),

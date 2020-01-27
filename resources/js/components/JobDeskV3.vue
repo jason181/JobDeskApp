@@ -431,7 +431,8 @@
                             <v-btn icon dark @click="close()">
                                 <v-icon>close</v-icon>
                             </v-btn>
-                            <v-toolbar-title class="white--text">Add Project</v-toolbar-title>
+                            <v-toolbar-title class="white--text" v-if="editmode == false">Add Project</v-toolbar-title>
+                            <v-toolbar-title class="white--text" v-if="editmode == true">Edit Project</v-toolbar-title>
                             <v-spacer></v-spacer>
                             <v-toolbar-items>
                                 <v-btn dark flat v-if="editmode == false" @click="addProjectAll()">Add</v-btn>
@@ -1970,20 +1971,20 @@ export default {
             icon: null,
         },
         log_pengerjaan:[
-            {
-                id:'1',
-                fileName:'Denah.zip',
-                fileUrl:'https://78.media.tumblr.com/tumblr_m39nv7PcCU1r326q7o1_500.png',
-                date:'2019-09-09',
-                note:'Kurang dikit lagi, Terlalu berat'
-            },
-             {
-                id:'2',
-                fileName:'Denah.zip',
-                fileUrl:'https://78.media.tumblr.com/tumblr_m39nv7PcCU1r326q7o1_500.png',
-                date:'2019-09-08',
-                note:''
-            }
+            // {
+            //     id:'1',
+            //     fileName:'Denah.zip',
+            //     fileUrl:'https://78.media.tumblr.com/tumblr_m39nv7PcCU1r326q7o1_500.png',
+            //     date:'2019-09-09',
+            //     note:'Kurang dikit lagi, Terlalu berat'
+            // },
+            //  {
+            //     id:'2',
+            //     fileName:'Denah.zip',
+            //     fileUrl:'https://78.media.tumblr.com/tumblr_m39nv7PcCU1r326q7o1_500.png',
+            //     date:'2019-09-08',
+            //     note:''
+            // }
         ],
         templateProject:'',
         logPengerjaanData:[],
@@ -1992,32 +1993,32 @@ export default {
 
         { 
             tasks:[
-                {
-                    project:'Rumah Sakit Arsitektur',
-                    division: 'Desain Arsi',
-                    sub_division:'Desain', 
-                    task:'Konsep',
-                    sub_task: 'Denah Depan', 
-                    due: '2019-09-08', 
-                    status: 'ongoing', 
-                    progress: '75',
-                    desc:'TEKS Deskripsi singkat mengenai task yang diberikan',
-                    remaining:'2 day 3 hour',
-                    user:'Jason'
-                },
-                {
-                    project:'Rumah Sakit Arsitektur',
-                    division: 'Desain Arsi',
-                    sub_division:'QS', 
-                    task:'Quality Checking',
-                    sub_task: 'Denah Depan', 
-                    due: '2019-09-08', 
-                    status: 'untake', 
-                    progress: '0',
-                    desc:'TEKS Deskripsi singkat mengenai task yang diberikan',
-                    remaining:'2 day 3 hour',
-                    user:''
-                }
+                // {
+                //     project:'Rumah Sakit Arsitektur',
+                //     division: 'Desain Arsi',
+                //     sub_division:'Desain', 
+                //     task:'Konsep',
+                //     sub_task: 'Denah Depan', 
+                //     due: '2019-09-08', 
+                //     status: 'ongoing', 
+                //     progress: '75',
+                //     desc:'TEKS Deskripsi singkat mengenai task yang diberikan',
+                //     remaining:'2 day 3 hour',
+                //     user:'Jason'
+                // },
+                // {
+                //     project:'Rumah Sakit Arsitektur',
+                //     division: 'Desain Arsi',
+                //     sub_division:'QS', 
+                //     task:'Quality Checking',
+                //     sub_task: 'Denah Depan', 
+                //     due: '2019-09-08', 
+                //     status: 'untake', 
+                //     progress: '0',
+                //     desc:'TEKS Deskripsi singkat mengenai task yang diberikan',
+                //     remaining:'2 day 3 hour',
+                //     user:''
+                // }
 
             ],
             title: 'Rumah Sakit Arsitektur', 
@@ -2099,33 +2100,33 @@ export default {
 
         ],
         data_sub_division: [
-            {
-                division:'Desain Arsi',
-                name:'Desain'
-            },
-            {
-                division:'Desain Arsi',
-                name:'Produksi'
-            },
-            {
-                division:'Desain Arsi',
-                name:'QS'
-            }
+            // {
+            //     division:'Desain Arsi',
+            //     name:'Desain'
+            // },
+            // {
+            //     division:'Desain Arsi',
+            //     name:'Produksi'
+            // },
+            // {
+            //     division:'Desain Arsi',
+            //     name:'QS'
+            // }
         ],
 
         data_task: [
-            {
-                sub_division:'Desain',
-                name:'Konsep'
-            },
-            {
-                sub_division:'Desain',
-                name:'D.D'
-            },
-            {
-                division:'Desain',
-                name:'Skema'
-            }
+            // {
+            //     sub_division:'Desain',
+            //     name:'Konsep'
+            // },
+            // {
+            //     sub_division:'Desain',
+            //     name:'D.D'
+            // },
+            // {
+            //     division:'Desain',
+            //     name:'Skema'
+            // }
         ],
         filterDiv:'',
         filterSubDiv:'',
@@ -2165,131 +2166,131 @@ export default {
         editProject:
         {
             All_Divisi:[
-                {
-                    Nama:'Desain Arsi',
-                    Persentase:'50',
-                    Tanggal_Selesai:'2020-10-12',
-                    Id_Divisi_Role:'1'
-                },
-                {
-                    Nama:'Admin',
-                    Persentase:'50',
-                    Tanggal_Selesai:'2020-10-12',
-                    Id_Divisi_Role:'1'
+                // {
+                //     Nama:'Desain Arsi',
+                //     Persentase:'50',
+                //     Tanggal_Selesai:'2020-10-12',
+                //     Id_Divisi_Role:'1'
+                // },
+                // {
+                //     Nama:'Admin',
+                //     Persentase:'50',
+                //     Tanggal_Selesai:'2020-10-12',
+                //     Id_Divisi_Role:'1'
 
-                }
+                // }
             ],
             All_SubDivisi:[
-                {
-                    Nama:'Desain',
-                    Divisi:'Desain Arsi',
-                    Persentase:'50',
-                    Tanggal_Selesai:'2020-10-12',
-                },
-                {
-                    Nama:'QS',
-                    Divisi:'Desain Arsi',
-                    Persentase:'50',
-                    Tanggal_Selesai:'2020-10-12',
-                }
+                // {
+                //     Nama:'Desain',
+                //     Divisi:'Desain Arsi',
+                //     Persentase:'50',
+                //     Tanggal_Selesai:'2020-10-12',
+                // },
+                // {
+                //     Nama:'QS',
+                //     Divisi:'Desain Arsi',
+                //     Persentase:'50',
+                //     Tanggal_Selesai:'2020-10-12',
+                // }
             ],
             All_Task:[
-                {
-                    Nama:'Konsep',
-                    Sub_Divisi:'Desain',
-                    Persentase:'50',
-                    Tanggal_Selesai:'2020-10-12',
-                    Id_Divisi_Role:'1',
-                    Kode:'TSK1',
-                    Satuan:'Item'
+                // {
+                //     Nama:'Konsep',
+                //     Sub_Divisi:'Desain',
+                //     Persentase:'50',
+                //     Tanggal_Selesai:'2020-10-12',
+                //     Id_Divisi_Role:'1',
+                //     Kode:'TSK1',
+                //     Satuan:'Item'
 
-                },
+                // },
             ],
             All_SubTask:[
-                {
-                    Nama:'Denah Depan',
-                    Task:'Konsep',
-                    Persentase:'50',
-                    Tanggal_Selesai:'2020-10-12',
-                    Deskripsi:'A',
-                    Kode:'STSK1'
-                },
+                // {
+                //     Nama:'Denah Depan',
+                //     Task:'Konsep',
+                //     Persentase:'50',
+                //     Tanggal_Selesai:'2020-10-12',
+                //     Deskripsi:'A',
+                //     Kode:'STSK1'
+                // },
             ],
 
-            Nama: 'Test', 
-            Tanggal_Mulai: '2020-10-12',
-            Tanggal_Selesai: '2020-10-12', 
-            Nilai:'2',
-            Target_Outcome:'2020-10-12',
-            Catatan:'Cek',
-            Pemilik:'A',
-            Alamat:'A',
-            Kode:'PR2'
+            // Nama: 'Test', 
+            // Tanggal_Mulai: '2020-10-12',
+            // Tanggal_Selesai: '2020-10-12', 
+            // Nilai:'2',
+            // Target_Outcome:'2020-10-12',
+            // Catatan:'Cek',
+            // Pemilik:'A',
+            // Alamat:'A',
+            // Kode:'PR2'
 
         },
         initEditProject:
         {
              All_Divisi:[
-                {
-                    Nama:'Desain Arsi',
-                    Persentase:'50',
-                    Tanggal_Selesai:'2020-10-12',
-                    Id_Divisi_Role:'1'
-                },
-                {
-                    Nama:'Admin',
-                    Persentase:'50',
-                    Tanggal_Selesai:'2020-10-12',
-                    Id_Divisi_Role:'1'
+                // {
+                //     Nama:'Desain Arsi',
+                //     Persentase:'50',
+                //     Tanggal_Selesai:'2020-10-12',
+                //     Id_Divisi_Role:'1'
+                // },
+                // {
+                //     Nama:'Admin',
+                //     Persentase:'50',
+                //     Tanggal_Selesai:'2020-10-12',
+                //     Id_Divisi_Role:'1'
 
-                }
+                // }
             ],
             All_SubDivisi:[
-                {
-                    Nama:'Desain',
-                    Divisi:'Desain Arsi',
-                    Persentase:'50',
-                    Tanggal_Selesai:'2020-10-12',
-                },
-                {
-                    Nama:'QS',
-                    Divisi:'Desain Arsi',
-                    Persentase:'50',
-                    Tanggal_Selesai:'2020-10-12',
-                }
+                // {
+                //     Nama:'Desain',
+                //     Divisi:'Desain Arsi',
+                //     Persentase:'50',
+                //     Tanggal_Selesai:'2020-10-12',
+                // },
+                // {
+                //     Nama:'QS',
+                //     Divisi:'Desain Arsi',
+                //     Persentase:'50',
+                //     Tanggal_Selesai:'2020-10-12',
+                // }
             ],
             All_Task:[
                 {
-                    Nama:'Konsep',
-                    Sub_Divisi:'Desain',
-                    Persentase:'50',
-                    Tanggal_Selesai:'2020-10-12',
-                    Id_Divisi_Role:'1',
-                    Kode:'TSK1',
-                    Satuan:'Item'
+                    // Nama:'Konsep',
+                    // Sub_Divisi:'Desain',
+                    // Persentase:'50',
+                    // Tanggal_Selesai:'2020-10-12',
+                    // Id_Divisi_Role:'1',
+                    // Kode:'TSK1',
+                    // Satuan:'Item'
 
                 },
             ],
             All_SubTask:[
-                {
-                    Nama:'Denah Depan',
-                    Task:'Konsep',
-                    Persentase:'50',
-                    Tanggal_Selesai:'2020-10-12',
-                    Deskripsi:'A',
-                    Kode:'STSK1'
-                },
+                // {
+                //     Nama:'Denah Depan',
+                //     Task:'Konsep',
+                //     Persentase:'50',
+                //     Tanggal_Selesai:'2020-10-12',
+                //     Deskripsi:'A',
+                //     Kode:'STSK1'
+                // },
             ],
 
-            Nama: 'Test', 
-            Tanggal_Mulai: '2020-10-12',
-            Tanggal_Selesai: '2020-10-12', 
-            Nilai:'2',
-            Target_Outcome:'2020-10-12',
-            Catatan:'Cek',
-            Pemilik:'A',
-            Alamat:'A',
-            Kode:'PR2'
+            // Nama: 'Test', 
+            // Tanggal_Mulai: '2020-10-12',
+            // Tanggal_Selesai: '2020-10-12', 
+            // Nilai:'2',
+            // Target_Outcome:'2020-10-12',
+            // Catatan:'Cek',
+            // Pemilik:'A',
+            // Alamat:'A',
+            // Kode:'PR2'
 
         },
     
@@ -2478,32 +2479,6 @@ export default {
           { text: 'Division', value: 'division',align: 'center' },
           { text: 'Contribute', value: 'contribute',align: 'center' },
         ],
-        // d_user:[
-        //     {
-        //         name:'Vian Handika',
-        //         division:'Desain Arsi',
-        //         contribute:'50%',
-        //         task_list:[
-        //             {
-        //                 name:'Denah Depan',
-        //                 task: 'Konsep',
-        //                 sub_div:'Desain',
-        //                 contribute:'50%'
-
-        //             },
-        //             {
-        //                 name:'Denah Belakang',
-        //                 task: 'Konsep',
-        //                 sub_div:'Desain',
-        //                 contribute:'50%'
-
-        //             }
-        //         ]
-        //     }
-        // ],
-       //Data Dummy
-
-
     }
   },
    mounted(){
@@ -2511,33 +2486,14 @@ export default {
    },
    computed:{
        ...mapGetters({
-            // id: 'LoggedUser/id',
             Id_Akun: 'LoggedUser/Id_Akun',
             Nama: 'LoggedUser/Name',
             Jabatan: 'LoggedUser/Jabatan',
             Divisi: 'LoggedUser/Divisi',
-            
-            // username: 'LoggedUser/username',
-            // role: 'LoggedUser/role'
         }),
-        // filteredTask(data){
-        //     if(this.filterDiv!="")
-        //     {
-        //         return data.filter(obj=>obj.division==this.filterDiv)
-        //     }
-        //     else 
-        //     {
-        //         return data.tasks
-        //     }
-        // }
    },
    methods: {
-    // sortBy(prop) {
-    //   this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
-    // },
     loadTemplate(){
-        // console.log(this.templateProject.toString())
-        // console.log(this.tempProjects.find(obj=>obj.Id_Proyek == this.templateProject.toString()))
            this.editProject = Object.assign({},this.tempProjects.find(obj=>obj.Id_Proyek == this.templateProject))
     },
     async addProjectAll(){
@@ -2546,12 +2502,6 @@ export default {
             await this.getProject()
             this.close()
             this.showAlert('success','Sukses Tambah Proyek')
-
-            // for(let item of data){
-            //     this.getDataFormat(item)
-            // }
-            // let data = (await Controller.getallproject()).data
-            // this.tempProjects=Object.assign({},data)
 
             console.log(response)
         }catch (err) {
@@ -2562,6 +2512,10 @@ export default {
     },
     async updateProjectAll(){
         try{
+            //cari yang tidak ada IDnya
+            let div = this.editProject.All_Divisi.filter(obj=>obj.Id_)
+
+
             let response = (await Controller.updateproject(this.editProject,this.editProject.Id_Proyek))
             console.log(response)
             await this.getProject()
@@ -2587,24 +2541,12 @@ export default {
             this.logPengerjaanData = (await Controller.getalllogpengerjaan()).data
             this.jobAksesData = (await Controller.getalljobakses()).data.filter(obj=>obj.Id_Akun == this.Id_Akun)
             this.division=(await Controller.getalldivisirole()).data
-            console.log(this.division)
-            // console.log(this.jobAksesData)
-            // this.employeeData = data.filter(obj => obj.Divisi != "Admin");
-            // console.log(data)
-            // console.log(this.logPengerjaanData)
-            
-            console.log("DATA")
-            console.log(data)
-            for(let item of data){
+
+            for(let item of data)
+            {
                 this.getDataFormat(item)
             }
             this.tempProjects=data
-            // this.tempProjects=Object.assign({},data)
-            // console.log(data)
-            // console.log(this.tempProjects)
-            // console.log(JSON.stringify( this.tempProjects, null, 2))
-
-
         } catch (err) {
             console.log(err)
         }
@@ -2617,7 +2559,6 @@ export default {
         let allsubtask=[]
 
         for(let div of data.Divisi.data){
-        // let eachDiv = div.map()
             let eachdiv ={
                 Id_Divisi_Proyek    : div.Id_Divisi_Proyek,
                 Id_Divisi_Role      : div.Id_Divisi_Role,
@@ -2625,9 +2566,7 @@ export default {
                 Nama                : div.Nama,
                 Tanggal_Selesai     : div.Tanggal_Selesai.split(' ')[0],
                 Persentase          : div.Persentase,
-                // New                 : 0,
             }
-            // console.log(JSON.stringify(eachdiv, null, 2))
             alldivisi.push(eachdiv)
             
             for(let subdiv of div.Sub_Divisi.data){
@@ -2639,7 +2578,6 @@ export default {
                     Tanggal_Selesai         : subdiv.Tanggal_Selesai.split(' ')[0],
                     Persentase              : subdiv.Persentase
                 }
-                // console.log(JSON.stringify(eachsubdiv, null, 2))
                 allsubdivisi.push(eachsubdiv)
 
                 for(let task of subdiv.Task.data){
@@ -2654,7 +2592,6 @@ export default {
                         Tanggal_Selesai     : task.Tanggal_Selesai.split(' ')[0],
                         Persentase          : task.Persentase
                     }
-                    // console.log(JSON.stringify(eachsubdiv, null, 2))
                     alltask.push(eachtask)
                     for(let subtask of task.Sub_Task.data){
                         let eachsubtask ={
@@ -2676,7 +2613,6 @@ export default {
                             Log_Pengerjaan          :[],
 
                         }
-                        // console.log(JSON.stringify(eachsubdiv, null, 2))
                         for(let log of this.logPengerjaanData){
                             if(log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan){
                                 eachsubtask.Log_Pengerjaan.push(log)
@@ -2687,12 +2623,8 @@ export default {
                         let remaining = parseInt((target-today)/(24*3600*1000));
                         eachsubtask.Remaining = remaining +' days left'
 
-                        // console.log(target)
-                        
-                        // console.log(remaining)
                         if(eachsubtask.Log_Pengerjaan.length > 0){
                             eachsubtask.Log_Pengerjaan = eachsubtask.Log_Pengerjaan.slice().reverse()
-                            console.log(eachsubtask.Log_Pengerjaan)
                             if(eachsubtask.Log_Pengerjaan.length==1)
                             {
                                 eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress 
@@ -2703,10 +2635,6 @@ export default {
                                 eachsubtask.Progress = data.Progress 
                                 eachsubtask.User = data.Username 
                             }
-                           
-                            // eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress 
-                            // eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username 
-                            
                         }
                         
                         if(remaining < 0 && eachsubtask.Progress != '100'){
@@ -2730,11 +2658,6 @@ export default {
             data.All_SubDivisi  = allsubdivisi
             data.All_Task       = alltask
             data.All_SubTask    = allsubtask
-            // console.log(JSON.stringify(alldivision, null, 2))
-            // console.log(JSON.stringify(allsubdivision, null, 2))
-
-            // console.log(JSON.stringify(this.data, null, 2))
-    
     },
 
     async sendAccessRequest(){
@@ -2746,9 +2669,7 @@ export default {
                 Deskripsi :this.reqForm.Deskripsi,
                 Verifikasi :'Unverified'
             }
-            // console.log(payload)
             const response= (await Controller.addjobakses(payload)).data
-            // console.log(response)
             this.requestDialog=false
             this.showAlert('success','Sukses Mengirim Request')
 
@@ -2762,21 +2683,12 @@ export default {
 
     async uploadProgress(){
         try {
-            // let payloadFile={
-            //     Berkas  : this.file,
-            //     Id_Akun : this.Id_Akun
-            // }
             let payloadFile = new FormData();
             payloadFile.append('Berkas',this.file);
             payloadFile.append('Id_Akun',this.Id_Akun);
 
-
-            // console.log(payloadFile)
-
             const pathfile= (await Controller.uploadfile(payloadFile)).data
-            // console.log(pathfile)
             let Id_Pengerjaan = (this.editTask.Log_Pengerjaan.find(obj => obj.Id_Akun == this.Id_Akun && obj.Berkas == '')).Id_Log_Pengerjaan
-            // console.log(Id_Pengerjaan)
 
             let payload={
                 Progress: this.editTask.Progress,
@@ -2796,12 +2708,7 @@ export default {
             let index = this.editTask.Log_Pengerjaan.findIndex(obj=>obj.Id_Log_Pengerjaan==response.Id_Log_Pengerjaan)
             Object.assign(this.editTask.Log_Pengerjaan[index], response)
             this.close()
-            // console.log(index)
-
-            // this.requestDialog=false
             this.showAlert('success','Sukses Upload Progress')
-
-
         } catch (err) {
             console.log(err)
             this.showAlert('error','Gagal Upload Progress')
@@ -2819,14 +2726,9 @@ export default {
 
             console.log(response)
             await this.getProject()
-            // Object.assign(this.employeeData[this.editedIndex], this.editedForm)
-            // await this.loaddata()
-            // this.close()
-            // this.showAlert('success','Sukses Verifikasi')
 
         } catch (err) {
-            // console.log(err)
-            // this.showAlert('error','Gagal Verifikasi')
+            this.showAlert('error','Gagal Verifikasi')
         }
     },
 
@@ -2841,8 +2743,7 @@ export default {
         }
         if(this.editmode==true)
         {
-            this.divform.Id_Proyek = this.editProject.Id_Proyek
-            // this.divform.New = 1
+            this.divform.Id_Proyek = this.editProject.Id_Proyek            
         }
         this.editProject.All_Divisi.push(this.divform)
         this.divform = Object.assign({}, this.defaultdivform)
@@ -2952,7 +2853,6 @@ export default {
         let PCLogPengerjaan = this.logPengerjaanData.filter(obj=>obj.Id_Proyek == project.Id_Proyek && obj.Progress != 0);
         //sort berdasarkan sub item pekerjaan untuk mempermudah langkah selanjutnya
         PCLogPengerjaan.sort((a,b) => a['Id_Sub_Item_Pekerjaan'] < b['Id_Sub_Item_Pekerjaan'] ? -1 : 1) 
-        // console.log(PCLogPengerjaan)
         //mengambil data nama dan divisi dari karyawan yang melakukan kontribusi
         for(let log of PCLogPengerjaan)
         {
@@ -2964,12 +2864,8 @@ export default {
                 Data.Division=log.Divisi;
                 PCDatas.push(Data)
             }
-            // console.log(PCDatas)
         }
         
-        console.log("PCDATA")
-        console.log(PCDatas)
-
         let subtasks = []
         let id_subtasks = []
         let id_subtask = 0
@@ -2984,7 +2880,6 @@ export default {
             {
                 if(isNew==false)
                 {
-                    // console.log("Is new = "+isNew+" Assigning")
                     dataTask.Logs = logs;
                     subtasks.push(dataTask);
                 }
@@ -3000,25 +2895,15 @@ export default {
             }
             else
             {
-                // console.log("pushing log to logs")
                 logs.push(log);
             }
         }
         dataTask.Logs = logs;
         subtasks.push(dataTask);
 
-        // subtasks.Logs = logs;
-        // subtasks.Logs = logs;
-        console.log("ID SUBTASK")
-        console.log(id_subtasks)
-        console.log("LOG PER SUBTASK")
-        console.log(subtasks)
-
         let subtasklen  = subtasks.length
         let Tasks = []
         let Contribute = 0
-        // console.log("subtasklen")
-        // console.log(subtasklen)
         for(let PCData of PCDatas)
         {
             PCData.Task_List = []
@@ -3027,25 +2912,14 @@ export default {
         {
             let loglen      = subtask.Logs.length
             let logs        = subtask.Logs
-            console.log("LOGS")
-            console.log(logs)
             
             let Task = []
-            // let Contribute = 0
             for(let i = 0 ; i<loglen ; i++)
             {
-                console.log("LOGLEN : "+loglen)
-                console.log("TASK CONTRIBUTE FOR : "+Contribute)
                 for(let PCData of PCDatas)
                 {
-                    console.log("PCData NAME : "+PCData.Nama)
-                    console.log("Log NAME : "+logs[i].Nama)
                     if(PCData.Nama == logs[i].Nama)
                     {
-                        // PCData.Task_List.Name   = logs[i].Sub_Task
-                        // PCData.Task_List.Task   = logs[i].Task
-                        // PCData.Task_List.Sub_Div= logs[i].Sub_Divisi
-                        // PCData.Task_List.Div    = logs[i].Divisi
                         if(i==0)
                         {
                             Contribute = logs[i].Progress
@@ -3054,72 +2928,41 @@ export default {
                             Task.Sub_Div = logs[i].Sub_Divisi
                             Task.Div = logs[i].Divisi
                             Task.Contribute = Contribute
-                            // Task = {
-                            //     Name    : logs[i].Sub_Task,
-                            //     Task    : logs[i].Task,
-                            //     Sub_Div : logs[i].Sub_Divisi,
-                            //     Div     : logs[i].Divisi,
-                            //     Contribute : Contribute,
-                            // }
-                            console.log("TASK CONTRIBUTE I : "+Task.Contribute)
                         }
                         else if(logs[i].Nama == logs[i-1].Nama)
                         {
-                            console.log("TASK CONTRIBUTE BEFORE : "+Contribute)
                             Contribute += logs[i].Progress - logs[i-1].Progress
                             Task.Name = logs[i].Sub_Task
                             Task.Task = logs[i].Task
                             Task.Sub_Div = logs[i].Sub_Divisi
                             Task.Div = logs[i].Divisi
                             Task.Contribute = Contribute
-                            console.log("LOG PROGRESS - i"+logs[i].Progress)
-                            console.log("LOG PROGRESS - i"+logs[i-1].Progress)
-                            console.log("TASK CONTRIBUTE ELSE IF : "+Contribute)
                         }
                         else
                         {
-                            console.log("TASK CONTRIBUTE BEFORE : "+Contribute)
                             Contribute = logs[i].Progress - logs[i-1].Progress
                             Task.Name = logs[i].Sub_Task
                             Task.Task = logs[i].Task
                             Task.Sub_Div = logs[i].Sub_Divisi
                             Task.Div = logs[i].Divisi
                             Task.Contribute = Contribute
-                            console.log("LOG PROGRESS - i"+logs[i].Progress)
-                            console.log("LOG PROGRESS - i"+logs[i-1].Progress)
-                            console.log("TASK CONTRIBUTE ELSE : "+Contribute)
                         }
                         if(i==loglen-1)
                         {
-                            console.log("IF")
-                            console.log("TASK")
-                            console.log(Task)
-                            // PCData.Task_List=Task
                             PCData.Task_List.push(Task);
                             Task = [];
                             Contribute = 0;
-                            console.log("REFRESH")
-                            // console.log(Task)
-                            // console.log(Contribute)
                         }
                         else if(logs[i+1].Nama != logs[i].Nama)
                         {
-                            console.log("ELSE IF")
-                            console.log("TASK")
-                            console.log(Task)
                             PCData.Task_List.push(Task);
-                            // PCData.Task_List.push(Task)
                             Task = [];
                             Contribute = 0;
-                            // console.log(Task)
-                            // console.log(Contribute)
                         }
                     }
                 }
             }
         }
-        console.log("PCDatas")
-        console.log(PCDatas)
         Contribute = 0
         let TContribute = 0
         let SDContribute = 0
@@ -3141,50 +2984,6 @@ export default {
                 SDContribute    = TContribute * PersentaseSubDivisi
                 DContribute     = SDContribute * PersentaseDivisi
                 Contribute      +=DContribute * PersentaseProyek
-
-                console.log(Contribute)
-                // for(let divisi of this.detailProject.All_Divisi.filter(obj=>obj.Divisi == Task_List.Divisi))
-                // {
-                //     for(let sub_divisi of this.detailProject.All_SubDivisi.filter(obj=>obj.Nama == Task_List.Sub_Div))
-                //     {
-                //         for(let task of this.detailProject.All_Task.filter(obj=>obj.Nama == Task_List.Task))
-                //         {
-                //             for(let sub_task of this.detailProject.All_SubTask.filter(obj=>obj.Nama == Task_List.Name))
-                //             {
-                //                 // Contribute+=((((Task_List.Contribute*sub_task.Persentase/100)*task.Persentase/100)*sub_divisi.Persentase/100)*divisi.Persentase/100);
-                //                 console.log(" .")
-                //                 TContribute = Task_List.Contribute*task.Persentase/100
-                //                 console.log("Task Persentase"+task.Persentase)
-                //                 console.log("TContribute"+TContribute)
-                //                 SDContribute = TContribute*sub_divisi.Persentase/100
-                //                 Contribute += SDContribute*divisi.Persentase/100
-                //                 console.log("CONTRIBUTE DALAM "+Contribute)
-                //                 // console.log("TEST SUB DIVISI");
-                //                 console.log("Nama : "+PCData.Nama)
-                //                 console.log("Sub_Task: "+Task_List.Name)
-                //                 console.log("Id_Proyek : "+divisi.Id_Proyek)
-                //                 console.log("Id_Divisi_Role : "+divisi.Id_Divisi_Role)
-                //                 console.log("Id_Sub_Divisi : "+sub_divisi.Id_Sub_Divisi_Proyek)
-                //                 console.log("Id_Task : "+task.Id_Item_Pekerjaan)
-                //                 console.log("Id_Sub_Task : "+sub_task.Id_Sub_Item_Pekerjaan)
-                //             }
-                //         }
-                //     }
-                // }
-        // Task.Name
-        // Task.Task
-        // Task.Sub_Div 
-        // Task.Div
-        
-                // for(let task of this.detailProject.All_Task)
-                // {
-                //     for(let subtask of this.detailProject.All_SubTask.filter(obj=>obj.Task == task.Nama))
-                //     {
-                //         task.Progress +=  subtask.Progress * subtask.Persentase/100
-                //     }
-
-                //     // task.Progress= await Controller.getProgressItem(task.Id_Item_Pekerjaan)
-                // }
             }
             PCData.Contribute = Contribute
             Contribute = 0
@@ -3192,106 +2991,14 @@ export default {
 
 
         this.d_user = PCDatas
-        // 1 for perulangan untuk lognya dulu, cari yang proyeknya sesuai
-        // 2 kelompokkan berdasarkan sub tasknya
-        // 3 cek log index skrg dengan index berikutnya apakah namanya sama 
-        // 4 jika sama, maka pembanding di geser
-        // 5 jika beda maka progress index sekarang - index berdasarkan
-        // 6 kemudian hasilnya simpan pada variabel Task_List
-        // 7 jika ketemu sampai index terakhir, maka dikurangi dengan 0
-        // 8 lakukan langkah 6
-
-            
-        // let subtasks = []
-        // let id_subtask = []
-        
-
-            // let Task = []
-
-            // Task.Name   = logs[i].Sub_Task
-            // Task.Task   = logs[i].Task
-            // Task.Sub_Div= logs[i].Sub_Divisi
-            // Task.Div    = logs[i].Divisi
-            // if(i==0)
-            // {
-            //     Task.Contribute = logs[i].Progress
-            // }
-            // else if(logs[i].Nama == logs[i-1].Nama)
-            // {
-            //     Task.Contribute += logs[i].Progress - logs[i-1].Progress
-            // }
-            // if(i==loglen-1)
-            // {
-            //     console.log("IF")
-            //     PCData.Task_List = Task
-            //     // PCData.Task_List.push(Task)
-            // }
-            // else if(logs[i+1].Nama != logs[i].Nama)
-            // {
-            //     console.log("ELSE IF")
-            //     PCData.Task_List = Task
-            //     // PCData.Task_List.push(Task)
-            // }
-            // console.log("TASK")
-            // console.log(Task)
-
-        // for(let log of PCLogPengerjaan)
-        // {
-        //     if(id_subtask.indexOf(log.Id_Sub_Item_Pekerjaan) === -1)
-        //     {
-        //         let dataTask = { Name : '', Task : '', Sub_Div : '', Div : '', Contribute : 0 }
-        //         id_subtask.push(log.Id_Sub_Item_Pekerjaan)
-        //         dataTask.Name   = log.Sub_Task;
-        //         dataTask.Task   = log.Task;
-        //         dataTask.Sub_Div= log.Sub_Divisi;
-        //         dataTask.Div    = log.Divisi;
-        //         subtasks.push(dataTask);
-        //     }
-        // }
-
-        // console.log("LENGTH")
-        // console.log(PCDatas.length)
-        // for(let PCData of PCDatas)
-        // {
-        //     let PCLog = this.logPengerjaanData.filter(obj=>obj.Id_Proyek == project.Id_Proyek && obj.Nama == PCData.Nama)
-        //     console.log("FOR LOG")
-        //     console.log(PCLog)
-        //     console.log("FOR DATA")
-        //     console.log(PCData)
-        // }
-        // console.log("PCDATA")
-        // console.log(PCDatas)
-
-        // projectContributors:[],
-        // projectContributorData:{
-        //     Name : '',
-        //     Division : '',
-        //     Contribute : '',
-        //     Task_List:[],
-        // },
-        // projectContributorTask:{
-        //     Name : '',
-        //     Task : '',
-        //     Sub_Div : '',
-        //     Div : '',
-        //     Contribute : '',
-        // },
     },
     addTask(data){
-        console.log(data)
-        // Object.assign(this.editProject.tasks[0],data)
-
         this.editProject.tasks.push(this.editTask);
-        // this.editProject.tasks.push(Object.assign({}, data));
     },
     closeAddDialog(){
         this.addDialog2=false;
         this.editProject = Object.assign({},this.initEditProject)
         this.templateProject=''
-
-        // this.editProject.tasks=[]
-        // this.editTask = Object.assign({},this.initEditTask)
-
     },
     close () {
         
@@ -3301,8 +3008,6 @@ export default {
             this.editmode=false;
             this.editProject = Object.assign({},this.initEditProject)
             this.templateProject=''
-            // this.editedForm = Object.assign({}, this.editedFormDefault)
-            // this.editedIndex = -1
         }, 300)
     },
     openTaskDialog(data){
@@ -3319,8 +3024,6 @@ export default {
               
           }
       }
-
-    //   console.log(this.editTask.Log_Pengerjaan.filter(obj=>obj.Berkas!=''))
 
     },
 
@@ -3487,9 +3190,6 @@ export default {
 
         }
     },
-    // sortByDate(prop){
-    //   this.projects.sort((a, b) => new Date(a.due) - new Date(b.due))
-    // }
   }
 }
 
