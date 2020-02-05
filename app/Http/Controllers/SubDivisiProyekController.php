@@ -43,8 +43,9 @@ class SubDivisiProyekController extends RestController
     {
         try{
             $sub_divisi = Sub_Divisi_Proyek::create([
-                'Id_Divisi_Proyek'  => $request->Id_Divisi_Role,
+                'Id_Divisi_Proyek'  => $request->Id_Divisi_Proyek,
                 'Tanggal_Selesai'   => $request->Tanggal_Selesai,
+                'Nama'              => $request->Nama,
                 'Persentase'        => $request->Persentase
             ]);
     

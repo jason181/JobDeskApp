@@ -197,21 +197,9 @@ class ProyekController extends RestController
                 $All_Divisi = $request->get('All_Divisi');
                 foreach($All_Divisi as $divisi)
                 {
-                    // if($divisi['New']==1)
-                    // {
-                    //     $proyek = Proyek::find($id);
-                    //     $proyek = DB::transaction(function () use ($proyek,$divisi) {
-                    //         $proyek->divisi_proyeks()->createMany($divisi);
-                    //         return $proyek;
-                    //     });
-                    // }
-                    // else
-                    // {
-                        Divisi_Proyek::find($divisi['Id_Divisi_Proyek'])->update($divisi);  
-                    // }
+                    Divisi_Proyek::find($divisi['Id_Divisi_Proyek'])->update($divisi);  
                 }
             }
-            return $divisi;
             if($request->has('All_SubDivisi'))
             {
                 $All_SubDivisi = $request->get('All_SubDivisi');

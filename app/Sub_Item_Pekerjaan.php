@@ -15,7 +15,7 @@ class Sub_Item_Pekerjaan extends Model
     protected $fillable = [
         'Id_Item_Pekerjaan',
         'Nama',
-        'Kode',
+        // 'Kode',
         'Deskripsi',
         'Tanggal_Selesai',
         'Persentase',

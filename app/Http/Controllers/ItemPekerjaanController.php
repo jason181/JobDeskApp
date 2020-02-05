@@ -9,11 +9,13 @@ use App\Sub_Item_Pekerjaan;
 use App\Transformers\ItemPekerjaanTransformers;
 use App\Item_Pekerjaan;
 
-
 class ItemPekerjaanController extends RestController
 {
-    protected $transformer=ItemPekerjaanTransformers::Class;
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $item=Item_Pekerjaan::get();
@@ -21,15 +23,31 @@ class ItemPekerjaanController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         try {
             $item = Item_Pekerjaan::create([
-                'Id_Proyek'         => $request->Id_Proyek,
+                'Id_Sub_Divisi_Proyek'=> $request->Id_Sub_Divisi_Proyek,
                 'Id_Divisi_Role'    => $request->Id_Divisi_Role,
                 'Nama'              => $request->Nama,
-                'Kode'              => $request->Kode,
-                'Satuan'            => $request->Satuan,
+                // 'Kode'              => $request->Kode,
+                // 'Satuan'            => $request->Satuan,
                 'Tanggal_Selesai'   => $request->Tanggal_Selesai,
                 'Persentase'        => $request->Persentase,
             ]);
@@ -44,20 +62,12 @@ class ItemPekerjaanController extends RestController
         }
     }
 
-    public function update(Request $request, $id)
-    {   
-        try{
-            $events = Item_Pekerjaan::find($id)->update($request->All());
-            $data = Item_Pekerjaan::find($id);
-            $response = $this->generateItem($data);
-            return $this->sendResponse($response,201);
-
-        }catch(\Exception $e) {
-            return $this->sendIseResponse($e->getMessage());
-        }
-        
-    }
-
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         try {
@@ -68,6 +78,43 @@ class ItemPekerjaanController extends RestController
         }
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        try{
+            $events = Item_Pekerjaan::find($id)->update($request->All());
+            $data = Item_Pekerjaan::find($id);
+            $response = $this->generateItem($data);
+            return $this->sendResponse($response,201);
+
+        }catch(\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         try {
@@ -77,25 +124,6 @@ class ItemPekerjaanController extends RestController
                 'status' => $status,
                 'message' => $status ? 'Deleted' : 'Error Delete'
             ]);
-        } catch (\Exception $e) {
-            return $this->sendIseResponse($e->getMessage());
-        }
-    }
-
-    public function hitungPersentaseItem($id)
-    {
-        try {
-            $sub_items=Sub_Item_Pekerjaan::where('Id_Item_Pekerjaan',$id)->get();
-            $counter=0;
-            if($sub_items==NULL)
-                return 0;
-            else{
-                foreach($sub_items as $sub_item)
-                {
-                    $counter+=app('App\Http\Controllers\SubItemPekerjaanController')->hitungPersentaseSubItem($sub_item->Id_Sub_Item_Pekerjaan)*$sub_item->Persentase/100;
-                }
-                return $counter;
-            }
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }

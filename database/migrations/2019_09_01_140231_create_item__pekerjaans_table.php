@@ -18,8 +18,8 @@ class CreateItemPekerjaansTable extends Migration
             $table->unsignedInteger('Id_Sub_Divisi_Proyek');
             $table->unsignedInteger('Id_Divisi_Role');
             $table->string('Nama',50);
-            $table->string('Kode',50);
-            $table->string('Satuan',50);
+            // $table->string('Kode',50);
+            // $table->string('Satuan',50);
             $table->dateTime('Tanggal_Selesai');
             $table->integer('Persentase');
 

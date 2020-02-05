@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 // use Illuminate\Http\Request;
@@ -65,21 +66,31 @@ class AkunController extends RestController
 
     public function update(Request $request, $id)
     {   
+        // return $request;
         try {
             $akun = Akun::find($id);
+            // return $akun;
             $Password = $akun->Password;
-            $Old_Password = bycrypt($request->Old_Password);
+            // return $Password;
+            $Old_Password = bcrypt($request->Old_Password);
+            // return $Old_Password;
             $request->Password = bcrypt($request->Password);
+            
             if($Password == $Old_Password)
             {
                 $akun->Password = $request->Password;
                 $akun->save();
                 $data = Akun::find($id);
+                return $data;
                 $response = $this->generateItem($data);
                 return $this->sendResponse($response, 201);
             }
             else
             {
+                $Pass[0]=$Password;
+                $Pass[1]=$Old_Password;
+                $Pass[2]=$request->Old_Password;
+                return $Pass;
                 return false;
             }
             

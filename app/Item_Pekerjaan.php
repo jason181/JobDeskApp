@@ -17,8 +17,8 @@ class Item_Pekerjaan extends Model
         'Id_Divisi_Role',
         'Id_Sub_Divisi_Proyek',
         'Nama',
-        'Kode',
-        'Satuan',
+        // 'Kode',
+        // 'Satuan',
         'Tanggal_Selesai',
         'Persentase'
     ];

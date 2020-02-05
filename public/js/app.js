@@ -6432,12 +6432,46 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       //Base
+      searchsubtask: '',
       alert: {
         type: null,
         message: null,
@@ -6592,7 +6626,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       noteDialog: false,
       noteText: '',
       noteUser: '',
-      addDialog: false,
+      // addDialog :false,
       taskDialog: false,
       requestDialog: false,
       date: new Date().toISOString().substr(0, 10),
@@ -6868,7 +6902,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         Tanggal_Selesai: '',
         Deskripsi: ''
       },
+      subtaskformfilter: {
+        Divisi: '',
+        SubDivisi: '',
+        All_Divisi: [],
+        All_SubDivisi: [],
+        All_Task: []
+      },
       //Add Dialog 2
+      //DEL PROJECT
+      delProject: {
+        All_Divisi: [],
+        All_SubDivisi: [],
+        All_Task: [],
+        All_SubTask: []
+      },
       //Data Dummy
       detailDialog: false,
       expandDetail: false,
@@ -7024,26 +7072,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _updateProjectAll = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var div, response;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
-                //cari yang tidak ada IDnya
-                div = this.editProject.All_Divisi.filter(function (obj) {
-                  return obj.Id_;
-                });
-                _context2.next = 4;
+                this.addDetails(); //Tambah semua detail yang ditambahkan
+
+                this.deleteDetails(); //Hapus semua detail yang dihapus
+                // //UPDATE sisanya, item yang sudah ada didb tapi datanya diubah
+
+                console.log(this.editProject);
+                _context2.next = 6;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updateproject(this.editProject, this.editProject.Id_Proyek);
 
-              case 4:
+              case 6:
                 response = _context2.sent;
                 console.log(response);
-                _context2.next = 8;
+                _context2.next = 10;
                 return this.getProject();
 
-              case 8:
+              case 10:
                 this.close();
                 this.showAlert('success', 'Sukses Update Proyek'); // for(let item of data){
                 //     this.getDataFormat(item)
@@ -7051,22 +7101,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 // let data = (await Controller.getallproject()).data
                 // this.tempProjects=Object.assign({},data)
 
-                console.log(response);
-                _context2.next = 17;
+                _context2.next = 18;
                 break;
 
-              case 13:
-                _context2.prev = 13;
+              case 14:
+                _context2.prev = 14;
                 _context2.t0 = _context2["catch"](0);
                 console.log(_context2.t0);
                 this.showAlert('error', 'Gagal Update Proyek');
 
-              case 17:
+              case 18:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 13]]);
+        }, _callee2, this, [[0, 14]]);
       }));
 
       function updateProjectAll() {
@@ -7075,102 +7124,1040 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return updateProjectAll;
     }(),
-    getProject: function () {
-      var _getProject = _asyncToGenerator(
+    deleteProjectAll: function () {
+      var _deleteProjectAll = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var _this2 = this;
-
-        var data, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, item;
-
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(data) {
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
-                _context3.next = 3;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallproject();
+                this.editProject = Object.assign({}, data);
+                this.deleteDetails();
+                _context3.next = 5;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deleteproject(data.Id_Proyek);
 
-              case 3:
-                data = _context3.sent.data;
-                _context3.next = 6;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalllogpengerjaan();
+              case 5:
+                response = _context3.sent;
+                _context3.next = 8;
+                return this.getProject();
 
-              case 6:
-                this.logPengerjaanData = _context3.sent.data;
-                _context3.next = 9;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalljobakses();
-
-              case 9:
-                _context3.t0 = function (obj) {
-                  return obj.Id_Akun == _this2.Id_Akun;
-                };
-
-                this.jobAksesData = _context3.sent.data.filter(_context3.t0);
-                _context3.next = 13;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalldivisirole();
+              case 8:
+                this.close();
+                this.showAlert('success', 'Sukses Hapus Proyek');
+                console.log(response);
+                _context3.next = 17;
+                break;
 
               case 13:
-                this.division = _context3.sent.data;
+                _context3.prev = 13;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+                this.showAlert('error', 'Gagal Tambah Proyek');
+
+              case 17:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 13]]);
+      }));
+
+      function deleteProjectAll(_x) {
+        return _deleteProjectAll.apply(this, arguments);
+      }
+
+      return deleteProjectAll;
+    }(),
+    addDetails: function () {
+      var _addDetails = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var _this2 = this;
+
+        var response, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, div, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, subdiv, _iteratorNormalCompletion5, _didIteratorError5, _iteratorError5, _iterator5, _step5, _div, _iteratorNormalCompletion3, _didIteratorError3, _iteratorError3, _iterator3, _step3, task, _iteratorNormalCompletion6, _didIteratorError6, _iteratorError6, _loop, _iterator6, _step6, _iteratorNormalCompletion4, _didIteratorError4, _iteratorError4, _iterator4, _step4, subtask, _iteratorNormalCompletion7, _didIteratorError7, _iteratorError7, _iterator7, _step7, _task;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                //cari divisi yang tidak ada IDnya
                 _iteratorNormalCompletion = true;
                 _didIteratorError = false;
                 _iteratorError = undefined;
-                _context3.prev = 17;
+                _context4.prev = 3;
+                _iterator = this.editProject.All_Divisi[Symbol.iterator]();
 
-                for (_iterator = data[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                  item = _step.value;
-                  this.getDataFormat(item);
+              case 5:
+                if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
+                  _context4.next = 15;
+                  break;
                 }
 
-                _context3.next = 25;
+                div = _step.value;
+
+                if (!(typeof div.Id_Divisi_Proyek === "undefined")) {
+                  _context4.next = 12;
+                  break;
+                }
+
+                _context4.next = 10;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].adddivisiproyek(div);
+
+              case 10:
+                response = _context4.sent;
+                div.Id_Divisi_Project = response.data.Id_Divisi_Proyek; // console.log("DIV")
+                // console.log(div)
+
+              case 12:
+                _iteratorNormalCompletion = true;
+                _context4.next = 5;
                 break;
 
-              case 21:
-                _context3.prev = 21;
-                _context3.t1 = _context3["catch"](17);
-                _didIteratorError = true;
-                _iteratorError = _context3.t1;
+              case 15:
+                _context4.next = 21;
+                break;
 
-              case 25:
-                _context3.prev = 25;
-                _context3.prev = 26;
+              case 17:
+                _context4.prev = 17;
+                _context4.t0 = _context4["catch"](3);
+                _didIteratorError = true;
+                _iteratorError = _context4.t0;
+
+              case 21:
+                _context4.prev = 21;
+                _context4.prev = 22;
 
                 if (!_iteratorNormalCompletion && _iterator["return"] != null) {
                   _iterator["return"]();
                 }
 
-              case 28:
-                _context3.prev = 28;
+              case 24:
+                _context4.prev = 24;
 
                 if (!_didIteratorError) {
-                  _context3.next = 31;
+                  _context4.next = 27;
                   break;
                 }
 
                 throw _iteratorError;
 
+              case 27:
+                return _context4.finish(24);
+
+              case 28:
+                return _context4.finish(21);
+
+              case 29:
+                //cari sub divisi yang tidak ada IDnya
+                _iteratorNormalCompletion2 = true;
+                _didIteratorError2 = false;
+                _iteratorError2 = undefined;
+                _context4.prev = 32;
+                _iterator2 = this.editProject.All_SubDivisi[Symbol.iterator]();
+
+              case 34:
+                if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
+                  _context4.next = 63;
+                  break;
+                }
+
+                subdiv = _step2.value;
+
+                if (!(typeof subdiv.Id_Sub_Divisi_Proyek === "undefined")) {
+                  _context4.next = 60;
+                  break;
+                }
+
+                _iteratorNormalCompletion5 = true;
+                _didIteratorError5 = false;
+                _iteratorError5 = undefined;
+                _context4.prev = 40;
+
+                for (_iterator5 = this.editProject.All_Divisi[Symbol.iterator](); !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                  _div = _step5.value;
+
+                  if (_div.Nama == subdiv.Divisi) {
+                    subdiv.Id_Divisi_Proyek = _div.Id_Divisi_Proyek;
+                  }
+                }
+
+                _context4.next = 48;
+                break;
+
+              case 44:
+                _context4.prev = 44;
+                _context4.t1 = _context4["catch"](40);
+                _didIteratorError5 = true;
+                _iteratorError5 = _context4.t1;
+
+              case 48:
+                _context4.prev = 48;
+                _context4.prev = 49;
+
+                if (!_iteratorNormalCompletion5 && _iterator5["return"] != null) {
+                  _iterator5["return"]();
+                }
+
+              case 51:
+                _context4.prev = 51;
+
+                if (!_didIteratorError5) {
+                  _context4.next = 54;
+                  break;
+                }
+
+                throw _iteratorError5;
+
+              case 54:
+                return _context4.finish(51);
+
+              case 55:
+                return _context4.finish(48);
+
+              case 56:
+                _context4.next = 58;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addsubdivisiproyek(subdiv);
+
+              case 58:
+                response = _context4.sent;
+                subdiv.Id_Sub_Divisi_Proyek = response.data.Id_Sub_Divisi_Proyek; // console.log("SUBDIV")
+                // console.log(subdiv)
+
+              case 60:
+                _iteratorNormalCompletion2 = true;
+                _context4.next = 34;
+                break;
+
+              case 63:
+                _context4.next = 69;
+                break;
+
+              case 65:
+                _context4.prev = 65;
+                _context4.t2 = _context4["catch"](32);
+                _didIteratorError2 = true;
+                _iteratorError2 = _context4.t2;
+
+              case 69:
+                _context4.prev = 69;
+                _context4.prev = 70;
+
+                if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+                  _iterator2["return"]();
+                }
+
+              case 72:
+                _context4.prev = 72;
+
+                if (!_didIteratorError2) {
+                  _context4.next = 75;
+                  break;
+                }
+
+                throw _iteratorError2;
+
+              case 75:
+                return _context4.finish(72);
+
+              case 76:
+                return _context4.finish(69);
+
+              case 77:
+                //cari task yang tidak ada IDnya
+                _iteratorNormalCompletion3 = true;
+                _didIteratorError3 = false;
+                _iteratorError3 = undefined;
+                _context4.prev = 80;
+                _iterator3 = this.editProject.All_Task[Symbol.iterator]();
+
+              case 82:
+                if (_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done) {
+                  _context4.next = 114;
+                  break;
+                }
+
+                task = _step3.value;
+
+                if (!(typeof task.Id_Item_Pekerjaan === "undefined")) {
+                  _context4.next = 111;
+                  break;
+                }
+
+                _iteratorNormalCompletion6 = true;
+                _didIteratorError6 = false;
+                _iteratorError6 = undefined;
+                _context4.prev = 88;
+
+                _loop = function _loop() {
+                  var subdiv = _step6.value;
+
+                  if (task.Sub_Divisi == subdiv.Nama) {
+                    task.Id_Sub_Divisi_Proyek = subdiv.Id_Sub_Divisi_Proyek;
+                    task.Id_Divisi_Role = _this2.editProject.All_Divisi.filter(function (obj) {
+                      return obj.Id_Divisi_Proyek == subdiv.Id_Divisi_Proyek;
+                    })[0].Id_Divisi_Role;
+                  }
+                };
+
+                for (_iterator6 = this.editProject.All_SubDivisi[Symbol.iterator](); !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                  _loop();
+                }
+
+                _context4.next = 97;
+                break;
+
+              case 93:
+                _context4.prev = 93;
+                _context4.t3 = _context4["catch"](88);
+                _didIteratorError6 = true;
+                _iteratorError6 = _context4.t3;
+
+              case 97:
+                _context4.prev = 97;
+                _context4.prev = 98;
+
+                if (!_iteratorNormalCompletion6 && _iterator6["return"] != null) {
+                  _iterator6["return"]();
+                }
+
+              case 100:
+                _context4.prev = 100;
+
+                if (!_didIteratorError6) {
+                  _context4.next = 103;
+                  break;
+                }
+
+                throw _iteratorError6;
+
+              case 103:
+                return _context4.finish(100);
+
+              case 104:
+                return _context4.finish(97);
+
+              case 105:
+                _context4.next = 107;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].additempekerjaan(task);
+
+              case 107:
+                response = _context4.sent;
+                task.Id_Item_Pekerjaan = response.data.Id_Item_Pekerjaan;
+                console.log("TASK");
+                console.log(task);
+
+              case 111:
+                _iteratorNormalCompletion3 = true;
+                _context4.next = 82;
+                break;
+
+              case 114:
+                _context4.next = 120;
+                break;
+
+              case 116:
+                _context4.prev = 116;
+                _context4.t4 = _context4["catch"](80);
+                _didIteratorError3 = true;
+                _iteratorError3 = _context4.t4;
+
+              case 120:
+                _context4.prev = 120;
+                _context4.prev = 121;
+
+                if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+                  _iterator3["return"]();
+                }
+
+              case 123:
+                _context4.prev = 123;
+
+                if (!_didIteratorError3) {
+                  _context4.next = 126;
+                  break;
+                }
+
+                throw _iteratorError3;
+
+              case 126:
+                return _context4.finish(123);
+
+              case 127:
+                return _context4.finish(120);
+
+              case 128:
+                //cari sub task yang tidak ada IDnya
+                _iteratorNormalCompletion4 = true;
+                _didIteratorError4 = false;
+                _iteratorError4 = undefined;
+                _context4.prev = 131;
+                _iterator4 = this.editProject.All_SubTask[Symbol.iterator]();
+
+              case 133:
+                if (_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done) {
+                  _context4.next = 162;
+                  break;
+                }
+
+                subtask = _step4.value;
+
+                if (!(typeof subtask.Id_Sub_Item_Pekerjaan === "undefined")) {
+                  _context4.next = 159;
+                  break;
+                }
+
+                _iteratorNormalCompletion7 = true;
+                _didIteratorError7 = false;
+                _iteratorError7 = undefined;
+                _context4.prev = 139;
+
+                for (_iterator7 = this.editProject.All_Task[Symbol.iterator](); !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+                  _task = _step7.value;
+
+                  if (subtask.Task == _task.Nama) {
+                    subtask.Id_Item_Pekerjaan = _task.Id_Item_Pekerjaan;
+                  }
+                }
+
+                _context4.next = 147;
+                break;
+
+              case 143:
+                _context4.prev = 143;
+                _context4.t5 = _context4["catch"](139);
+                _didIteratorError7 = true;
+                _iteratorError7 = _context4.t5;
+
+              case 147:
+                _context4.prev = 147;
+                _context4.prev = 148;
+
+                if (!_iteratorNormalCompletion7 && _iterator7["return"] != null) {
+                  _iterator7["return"]();
+                }
+
+              case 150:
+                _context4.prev = 150;
+
+                if (!_didIteratorError7) {
+                  _context4.next = 153;
+                  break;
+                }
+
+                throw _iteratorError7;
+
+              case 153:
+                return _context4.finish(150);
+
+              case 154:
+                return _context4.finish(147);
+
+              case 155:
+                _context4.next = 157;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addsubitempekerjaan(subtask);
+
+              case 157:
+                response = _context4.sent;
+                subtask.Id_Sub_Item_Pekerjaan = response.data.Id_Sub_Item_Pekerjaan; // console.log("SUBTASK")
+                // console.log(subtask)
+
+              case 159:
+                _iteratorNormalCompletion4 = true;
+                _context4.next = 133;
+                break;
+
+              case 162:
+                _context4.next = 168;
+                break;
+
+              case 164:
+                _context4.prev = 164;
+                _context4.t6 = _context4["catch"](131);
+                _didIteratorError4 = true;
+                _iteratorError4 = _context4.t6;
+
+              case 168:
+                _context4.prev = 168;
+                _context4.prev = 169;
+
+                if (!_iteratorNormalCompletion4 && _iterator4["return"] != null) {
+                  _iterator4["return"]();
+                }
+
+              case 171:
+                _context4.prev = 171;
+
+                if (!_didIteratorError4) {
+                  _context4.next = 174;
+                  break;
+                }
+
+                throw _iteratorError4;
+
+              case 174:
+                return _context4.finish(171);
+
+              case 175:
+                return _context4.finish(168);
+
+              case 176:
+                return _context4.abrupt("return", this.editProject);
+
+              case 177:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[3, 17, 21, 29], [22,, 24, 28], [32, 65, 69, 77], [40, 44, 48, 56], [49,, 51, 55], [70,, 72, 76], [80, 116, 120, 128], [88, 93, 97, 105], [98,, 100, 104], [121,, 123, 127], [131, 164, 168, 176], [139, 143, 147, 155], [148,, 150, 154], [169,, 171, 175]]);
+      }));
+
+      function addDetails() {
+        return _addDetails.apply(this, arguments);
+      }
+
+      return addDetails;
+    }(),
+    deleteDetails: function () {
+      var _deleteDetails = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var _this3 = this;
+
+        var _iteratorNormalCompletion8, _didIteratorError8, _iteratorError8, _iterator8, _step8, deldiv, response, _iteratorNormalCompletion9, _didIteratorError9, _iteratorError9, _iterator9, _step9, delsubdiv, _response, _iteratorNormalCompletion10, _didIteratorError10, _iteratorError10, _iterator10, _step10, deltask, _response2, _iteratorNormalCompletion11, _didIteratorError11, _iteratorError11, _loop2, _iterator11, _step11;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _iteratorNormalCompletion8 = true;
+                _didIteratorError8 = false;
+                _iteratorError8 = undefined;
+                _context6.prev = 3;
+                _iterator8 = this.delProject.All_Divisi[Symbol.iterator]();
+
+              case 5:
+                if (_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done) {
+                  _context6.next = 16;
+                  break;
+                }
+
+                deldiv = _step8.value;
+
+                if (!(typeof deldiv.Id_Divisi_Proyek !== "undefined")) {
+                  _context6.next = 13;
+                  break;
+                }
+
+                _context6.next = 10;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletedivisiproyek(deldiv.Id_Divisi_Proyek);
+
+              case 10:
+                response = _context6.sent;
+                console.log("DELETE");
+                console.log(response);
+
+              case 13:
+                _iteratorNormalCompletion8 = true;
+                _context6.next = 5;
+                break;
+
+              case 16:
+                _context6.next = 22;
+                break;
+
+              case 18:
+                _context6.prev = 18;
+                _context6.t0 = _context6["catch"](3);
+                _didIteratorError8 = true;
+                _iteratorError8 = _context6.t0;
+
+              case 22:
+                _context6.prev = 22;
+                _context6.prev = 23;
+
+                if (!_iteratorNormalCompletion8 && _iterator8["return"] != null) {
+                  _iterator8["return"]();
+                }
+
+              case 25:
+                _context6.prev = 25;
+
+                if (!_didIteratorError8) {
+                  _context6.next = 28;
+                  break;
+                }
+
+                throw _iteratorError8;
+
+              case 28:
+                return _context6.finish(25);
+
+              case 29:
+                return _context6.finish(22);
+
+              case 30:
+                _iteratorNormalCompletion9 = true;
+                _didIteratorError9 = false;
+                _iteratorError9 = undefined;
+                _context6.prev = 33;
+                _iterator9 = this.delProject.All_SubDivisi[Symbol.iterator]();
+
+              case 35:
+                if (_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done) {
+                  _context6.next = 46;
+                  break;
+                }
+
+                delsubdiv = _step9.value;
+
+                if (!(typeof delsubdiv.Id_Sub_Divisi_Proyek !== "undefined")) {
+                  _context6.next = 43;
+                  break;
+                }
+
+                _context6.next = 40;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletesubdivisiproyek(delsubdiv.Id_Sub_Divisi_Proyek);
+
+              case 40:
+                _response = _context6.sent;
+                console.log("DELETE");
+                console.log(_response);
+
+              case 43:
+                _iteratorNormalCompletion9 = true;
+                _context6.next = 35;
+                break;
+
+              case 46:
+                _context6.next = 52;
+                break;
+
+              case 48:
+                _context6.prev = 48;
+                _context6.t1 = _context6["catch"](33);
+                _didIteratorError9 = true;
+                _iteratorError9 = _context6.t1;
+
+              case 52:
+                _context6.prev = 52;
+                _context6.prev = 53;
+
+                if (!_iteratorNormalCompletion9 && _iterator9["return"] != null) {
+                  _iterator9["return"]();
+                }
+
+              case 55:
+                _context6.prev = 55;
+
+                if (!_didIteratorError9) {
+                  _context6.next = 58;
+                  break;
+                }
+
+                throw _iteratorError9;
+
+              case 58:
+                return _context6.finish(55);
+
+              case 59:
+                return _context6.finish(52);
+
+              case 60:
+                _iteratorNormalCompletion10 = true;
+                _didIteratorError10 = false;
+                _iteratorError10 = undefined;
+                _context6.prev = 63;
+                _iterator10 = this.delProject.All_Task[Symbol.iterator]();
+
+              case 65:
+                if (_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done) {
+                  _context6.next = 76;
+                  break;
+                }
+
+                deltask = _step10.value;
+
+                if (!(typeof deltask.Id_Item_Pekerjaan !== "undefined")) {
+                  _context6.next = 73;
+                  break;
+                }
+
+                _context6.next = 70;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deleteitempekerjaan(deltask.Id_Item_Pekerjaan);
+
+              case 70:
+                _response2 = _context6.sent;
+                console.log("DELETE");
+                console.log(_response2);
+
+              case 73:
+                _iteratorNormalCompletion10 = true;
+                _context6.next = 65;
+                break;
+
+              case 76:
+                _context6.next = 82;
+                break;
+
+              case 78:
+                _context6.prev = 78;
+                _context6.t2 = _context6["catch"](63);
+                _didIteratorError10 = true;
+                _iteratorError10 = _context6.t2;
+
+              case 82:
+                _context6.prev = 82;
+                _context6.prev = 83;
+
+                if (!_iteratorNormalCompletion10 && _iterator10["return"] != null) {
+                  _iterator10["return"]();
+                }
+
+              case 85:
+                _context6.prev = 85;
+
+                if (!_didIteratorError10) {
+                  _context6.next = 88;
+                  break;
+                }
+
+                throw _iteratorError10;
+
+              case 88:
+                return _context6.finish(85);
+
+              case 89:
+                return _context6.finish(82);
+
+              case 90:
+                _iteratorNormalCompletion11 = true;
+                _didIteratorError11 = false;
+                _iteratorError11 = undefined;
+                _context6.prev = 93;
+                _loop2 =
+                /*#__PURE__*/
+                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _loop2() {
+                  var delsubtask, test, _iteratorNormalCompletion12, _didIteratorError12, _iteratorError12, _iterator12, _step12, dellog, logresponse, _iteratorNormalCompletion13, _didIteratorError13, _iteratorError13, _iterator13, _step13, delakses, aksesresponse, _response3;
+
+                  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _loop2$(_context5) {
+                    while (1) {
+                      switch (_context5.prev = _context5.next) {
+                        case 0:
+                          delsubtask = _step11.value;
+
+                          if (!(typeof delsubtask.Id_Sub_Item_Pekerjaan !== "undefined")) {
+                            _context5.next = 69;
+                            break;
+                          }
+
+                          console.log("Log / Subtask");
+                          console.log(delsubtask.Id_Sub_Item_Pekerjaan);
+                          test = _this3.logPengerjaanData.filter(function (obj) {
+                            return obj.Id_Proyek == 1;
+                          });
+                          console.log(test);
+                          _iteratorNormalCompletion12 = true;
+                          _didIteratorError12 = false;
+                          _iteratorError12 = undefined;
+                          _context5.prev = 9;
+                          _iterator12 = _this3.logPengerjaanData.filter(function (obj) {
+                            return obj.Id_Sub_Item_Pekerjaan == delsubtask.Id_Sub_Item_Pekerjaan;
+                          })[Symbol.iterator]();
+
+                        case 11:
+                          if (_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done) {
+                            _context5.next = 21;
+                            break;
+                          }
+
+                          dellog = _step12.value;
+                          _context5.next = 15;
+                          return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletelogpengerjaan(dellog.Id_Log_Pengerjaan);
+
+                        case 15:
+                          logresponse = _context5.sent;
+                          console.log("LOGRESPONSE");
+                          console.log(logresponse);
+
+                        case 18:
+                          _iteratorNormalCompletion12 = true;
+                          _context5.next = 11;
+                          break;
+
+                        case 21:
+                          _context5.next = 27;
+                          break;
+
+                        case 23:
+                          _context5.prev = 23;
+                          _context5.t0 = _context5["catch"](9);
+                          _didIteratorError12 = true;
+                          _iteratorError12 = _context5.t0;
+
+                        case 27:
+                          _context5.prev = 27;
+                          _context5.prev = 28;
+
+                          if (!_iteratorNormalCompletion12 && _iterator12["return"] != null) {
+                            _iterator12["return"]();
+                          }
+
+                        case 30:
+                          _context5.prev = 30;
+
+                          if (!_didIteratorError12) {
+                            _context5.next = 33;
+                            break;
+                          }
+
+                          throw _iteratorError12;
+
+                        case 33:
+                          return _context5.finish(30);
+
+                        case 34:
+                          return _context5.finish(27);
+
+                        case 35:
+                          _iteratorNormalCompletion13 = true;
+                          _didIteratorError13 = false;
+                          _iteratorError13 = undefined;
+                          _context5.prev = 38;
+                          _iterator13 = _this3.allAccessData.filter(function (obj) {
+                            return obj.Id_Sub_Item_Pekerjaan === delsubtask.Id_Sub_Item_Pekerjaan;
+                          })[Symbol.iterator]();
+
+                        case 40:
+                          if (_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done) {
+                            _context5.next = 50;
+                            break;
+                          }
+
+                          delakses = _step13.value;
+                          _context5.next = 44;
+                          return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletejobakses(delakses.Id_Akses_Pekerjaan);
+
+                        case 44:
+                          aksesresponse = _context5.sent;
+                          console.log("LOGAKSES");
+                          console.log(aksesresponse);
+
+                        case 47:
+                          _iteratorNormalCompletion13 = true;
+                          _context5.next = 40;
+                          break;
+
+                        case 50:
+                          _context5.next = 56;
+                          break;
+
+                        case 52:
+                          _context5.prev = 52;
+                          _context5.t1 = _context5["catch"](38);
+                          _didIteratorError13 = true;
+                          _iteratorError13 = _context5.t1;
+
+                        case 56:
+                          _context5.prev = 56;
+                          _context5.prev = 57;
+
+                          if (!_iteratorNormalCompletion13 && _iterator13["return"] != null) {
+                            _iterator13["return"]();
+                          }
+
+                        case 59:
+                          _context5.prev = 59;
+
+                          if (!_didIteratorError13) {
+                            _context5.next = 62;
+                            break;
+                          }
+
+                          throw _iteratorError13;
+
+                        case 62:
+                          return _context5.finish(59);
+
+                        case 63:
+                          return _context5.finish(56);
+
+                        case 64:
+                          _context5.next = 66;
+                          return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletesubitempekerjaan(delsubtask.Id_Sub_Item_Pekerjaan);
+
+                        case 66:
+                          _response3 = _context5.sent;
+                          console.log("DELETE");
+                          console.log(_response3);
+
+                        case 69:
+                        case "end":
+                          return _context5.stop();
+                      }
+                    }
+                  }, _loop2, null, [[9, 23, 27, 35], [28,, 30, 34], [38, 52, 56, 64], [57,, 59, 63]]);
+                });
+                _iterator11 = this.delProject.All_SubTask[Symbol.iterator]();
+
+              case 96:
+                if (_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done) {
+                  _context6.next = 101;
+                  break;
+                }
+
+                return _context6.delegateYield(_loop2(), "t3", 98);
+
+              case 98:
+                _iteratorNormalCompletion11 = true;
+                _context6.next = 96;
+                break;
+
+              case 101:
+                _context6.next = 107;
+                break;
+
+              case 103:
+                _context6.prev = 103;
+                _context6.t4 = _context6["catch"](93);
+                _didIteratorError11 = true;
+                _iteratorError11 = _context6.t4;
+
+              case 107:
+                _context6.prev = 107;
+                _context6.prev = 108;
+
+                if (!_iteratorNormalCompletion11 && _iterator11["return"] != null) {
+                  _iterator11["return"]();
+                }
+
+              case 110:
+                _context6.prev = 110;
+
+                if (!_didIteratorError11) {
+                  _context6.next = 113;
+                  break;
+                }
+
+                throw _iteratorError11;
+
+              case 113:
+                return _context6.finish(110);
+
+              case 114:
+                return _context6.finish(107);
+
+              case 115:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee5, this, [[3, 18, 22, 30], [23,, 25, 29], [33, 48, 52, 60], [53,, 55, 59], [63, 78, 82, 90], [83,, 85, 89], [93, 103, 107, 115], [108,, 110, 114]]);
+      }));
+
+      function deleteDetails() {
+        return _deleteDetails.apply(this, arguments);
+      }
+
+      return deleteDetails;
+    }(),
+    getProject: function () {
+      var _getProject = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        var _this4 = this;
+
+        var data, _iteratorNormalCompletion14, _didIteratorError14, _iteratorError14, _iterator14, _step14, item;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.prev = 0;
+                _context7.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallproject();
+
+              case 3:
+                data = _context7.sent.data;
+                _context7.next = 6;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalllogpengerjaan();
+
+              case 6:
+                this.logPengerjaanData = _context7.sent.data;
+                _context7.next = 9;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalljobakses();
+
+              case 9:
+                this.allAccessData = _context7.sent.data;
+                this.jobAksesData = this.allAccessData.filter(function (obj) {
+                  return obj.Id_Akun == _this4.Id_Akun;
+                });
+                _context7.next = 13;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalldivisirole();
+
+              case 13:
+                this.division = _context7.sent.data;
+                _iteratorNormalCompletion14 = true;
+                _didIteratorError14 = false;
+                _iteratorError14 = undefined;
+                _context7.prev = 17;
+
+                for (_iterator14 = data[Symbol.iterator](); !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
+                  item = _step14.value;
+                  this.getDataFormat(item);
+                }
+
+                _context7.next = 25;
+                break;
+
+              case 21:
+                _context7.prev = 21;
+                _context7.t0 = _context7["catch"](17);
+                _didIteratorError14 = true;
+                _iteratorError14 = _context7.t0;
+
+              case 25:
+                _context7.prev = 25;
+                _context7.prev = 26;
+
+                if (!_iteratorNormalCompletion14 && _iterator14["return"] != null) {
+                  _iterator14["return"]();
+                }
+
+              case 28:
+                _context7.prev = 28;
+
+                if (!_didIteratorError14) {
+                  _context7.next = 31;
+                  break;
+                }
+
+                throw _iteratorError14;
+
               case 31:
-                return _context3.finish(28);
+                return _context7.finish(28);
 
               case 32:
-                return _context3.finish(25);
+                return _context7.finish(25);
 
               case 33:
                 this.tempProjects = data;
-                _context3.next = 39;
+                _context7.next = 39;
                 break;
 
               case 36:
-                _context3.prev = 36;
-                _context3.t2 = _context3["catch"](0);
-                console.log(_context3.t2);
+                _context7.prev = 36;
+                _context7.t1 = _context7["catch"](0);
+                console.log(_context7.t1);
 
               case 39:
               case "end":
-                return _context3.stop();
+                return _context7.stop();
             }
           }
-        }, _callee3, this, [[0, 36], [17, 21, 25, 33], [26,, 28, 32]]);
+        }, _callee6, this, [[0, 36], [17, 21, 25, 33], [26,, 28, 32]]);
       }));
 
       function getProject() {
@@ -7179,76 +8166,153 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return getProject;
     }(),
+    // getDataFormat(data){
+    //     let alldivisi =[]
+    //     let allsubdivisi=[]
+    //     let alltask=[]
+    //     let allsubtask=[]
+    //     let PersentaseProyek
+    //     let PersentaseDivisi
+    //     let PersentaseSubDivisi
+    //     let PersentaseTask
+    //     for(let div of data.Divisi.data){
+    //         let eachdiv ={
+    //             Id_Divisi_Proyek    : div.Id_Divisi_Proyek,
+    //             Id_Divisi_Role      : div.Id_Divisi_Role,
+    //             Id_Proyek           : div.Id_Proyek,
+    //             Nama                : div.Nama,
+    //             Tanggal_Selesai     : div.Tanggal_Selesai.split(' ')[0],
+    //             Persentase          : div.Persentase,
+    //         }
+    //         alldivisi.push(eachdiv)
+    //         for(let subdiv of div.Sub_Divisi.data){
+    //             let eachsubdiv ={
+    //                 Id_Sub_Divisi_Proyek    :subdiv.Id_Sub_Divisi_Proyek,
+    //                 Id_Divisi_Proyek        : subdiv.Id_Divisi_Proyek,
+    //                 Divisi                  : subdiv.Divisi,
+    //                 Nama                    : subdiv.Nama,
+    //                 Tanggal_Selesai         : subdiv.Tanggal_Selesai.split(' ')[0],
+    //                 Persentase              : subdiv.Persentase
+    //             }
+    //             allsubdivisi.push(eachsubdiv)
+    //             for(let task of subdiv.Task.data){
+    //                 let eachtask ={
+    //                     Id_Item_Pekerjaan   : task.Id_Item_Pekerjaan,
+    //                     Id_Divisi_Role      : task.Id_Divisi_Role, 
+    //                     Id_Sub_Divisi_Proyek    :task.Id_Sub_Divisi_Proyek,
+    //                     Sub_Divisi          : task.Sub_Divisi,                        
+    //                     Nama                : task.Nama,
+    //                     Kode                : task.Kode,
+    //                     Satuan              : task.Satuan,
+    //                     Tanggal_Selesai     : task.Tanggal_Selesai.split(' ')[0],
+    //                     Persentase          : task.Persentase
+    //                 }
+    //                 alltask.push(eachtask)
+    //                 for(let subtask of task.Sub_Task.data){
+    //                     let eachsubtask ={
+    //                         Id_Sub_Item_Pekerjaan   : subtask.Id_Sub_Item_Pekerjaan,
+    //                         Id_Item_Pekerjaan       : subtask.Id_Item_Pekerjaan,
+    //                         Projek                  : data.Nama,
+    //                         Divisi                  : div.Nama, 
+    //                         Sub_Divisi              : subdiv.Nama,                     
+    //                         Task                    : task.Nama,                     
+    //                         Nama                    : subtask.Nama,
+    //                         Kode                    : subtask.Kode,
+    //                         Deskripsi               : subtask.Deskripsi,
+    //                         Tanggal_Selesai         : subtask.Tanggal_Selesai.split(' ')[0],
+    //                         Persentase              : subtask.Persentase,
+    //                         User                    : '',
+    //                         Remaining               : '',
+    //                         Progress                : '0',
+    //                         Status                  : 'untake',
+    //                         Log_Pengerjaan          :[],
+    //                     }
+    //                     for(let log of this.logPengerjaanData){
+    //                         if(log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan){
+    //                             eachsubtask.Log_Pengerjaan.push(log)
+    //                         }
+    //                     }
+    //                     let today = new Date().getTime();
+    //                     let target = new Date(eachsubtask.Tanggal_Selesai).getTime();
+    //                     let remaining = parseInt((target-today)/(24*3600*1000));
+    //                     eachsubtask.Remaining = remaining +' days left'
+    //                     if(eachsubtask.Log_Pengerjaan.length > 0){
+    //                         eachsubtask.Log_Pengerjaan = eachsubtask.Log_Pengerjaan.slice().reverse()
+    //                         if(eachsubtask.Log_Pengerjaan.length==1)
+    //                         {
+    //                             eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress 
+    //                             eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username 
+    //                         }
+    //                         else{
+    //                             let data = eachsubtask.Log_Pengerjaan.find(obj=>obj.Berkas!='' )
+    //                             eachsubtask.Progress = data.Progress 
+    //                             eachsubtask.User = data.Username 
+    //                         }
+    //                     }
+    //                     if(remaining < 0 && eachsubtask.Progress != '100'){
+    //                         eachsubtask.Status = 'overdue'
+    //                         eachsubtask.Remaining = remaining +' days overdue'
+    //                     }
+    //                     else if(eachsubtask.Progress!='100'){
+    //                         eachsubtask.Status = 'ongoing'
+    //                     }
+    //                     else{
+    //                         eachsubtask.Status = 'complete'
+    //                     }
+    //                     allsubtask.push(eachsubtask)
+    //                 }
+    //             }
+    //         }
+    //     }
+    //         data.All_Divisi     = alldivisi
+    //         data.All_SubDivisi  = allsubdivisi
+    //         data.All_Task       = alltask
+    //         data.All_SubTask    = allsubtask
+    // },
     getDataFormat: function getDataFormat(data) {
       var alldivisi = [];
       var allsubdivisi = [];
       var alltask = [];
       var allsubtask = [];
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
+      var PersentaseProyek = 0;
+      var PersentaseDivisi = 0;
+      var PersentaseSubDivisi = 0;
+      var PersentaseTask = 0;
+      var _iteratorNormalCompletion15 = true;
+      var _didIteratorError15 = false;
+      var _iteratorError15 = undefined;
 
       try {
-        for (var _iterator2 = data.Divisi.data[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var div = _step2.value;
-          var eachdiv = {
-            Id_Divisi_Proyek: div.Id_Divisi_Proyek,
-            Id_Divisi_Role: div.Id_Divisi_Role,
-            Id_Proyek: div.Id_Proyek,
-            Nama: div.Nama,
-            Tanggal_Selesai: div.Tanggal_Selesai.split(' ')[0],
-            Persentase: div.Persentase
-          };
-          alldivisi.push(eachdiv);
-          var _iteratorNormalCompletion3 = true;
-          var _didIteratorError3 = false;
-          var _iteratorError3 = undefined;
+        for (var _iterator15 = data.Divisi.data[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
+          var div = _step15.value;
+          var _iteratorNormalCompletion16 = true;
+          var _didIteratorError16 = false;
+          var _iteratorError16 = undefined;
 
           try {
-            for (var _iterator3 = div.Sub_Divisi.data[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-              var subdiv = _step3.value;
-              var eachsubdiv = {
-                Id_Sub_Divisi_Proyek: subdiv.Id_Sub_Divisi_Proyek,
-                Id_Divisi_Proyek: subdiv.Id_Divisi_Proyek,
-                Divisi: subdiv.Divisi,
-                Nama: subdiv.Nama,
-                Tanggal_Selesai: subdiv.Tanggal_Selesai.split(' ')[0],
-                Persentase: subdiv.Persentase
-              };
-              allsubdivisi.push(eachsubdiv);
-              var _iteratorNormalCompletion4 = true;
-              var _didIteratorError4 = false;
-              var _iteratorError4 = undefined;
+            for (var _iterator16 = div.Sub_Divisi.data[Symbol.iterator](), _step16; !(_iteratorNormalCompletion16 = (_step16 = _iterator16.next()).done); _iteratorNormalCompletion16 = true) {
+              var subdiv = _step16.value;
+              var _iteratorNormalCompletion17 = true;
+              var _didIteratorError17 = false;
+              var _iteratorError17 = undefined;
 
               try {
-                for (var _iterator4 = subdiv.Task.data[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                  var task = _step4.value;
-                  var eachtask = {
-                    Id_Item_Pekerjaan: task.Id_Item_Pekerjaan,
-                    Id_Divisi_Role: task.Id_Divisi_Role,
-                    Id_Sub_Divisi_Proyek: task.Id_Sub_Divisi_Proyek,
-                    Sub_Divisi: task.Sub_Divisi,
-                    Nama: task.Nama,
-                    Kode: task.Kode,
-                    Satuan: task.Satuan,
-                    Tanggal_Selesai: task.Tanggal_Selesai.split(' ')[0],
-                    Persentase: task.Persentase
-                  };
-                  alltask.push(eachtask);
-                  var _iteratorNormalCompletion5 = true;
-                  var _didIteratorError5 = false;
-                  var _iteratorError5 = undefined;
+                for (var _iterator17 = subdiv.Task.data[Symbol.iterator](), _step17; !(_iteratorNormalCompletion17 = (_step17 = _iterator17.next()).done); _iteratorNormalCompletion17 = true) {
+                  var _task2 = _step17.value;
+                  var _iteratorNormalCompletion18 = true;
+                  var _didIteratorError18 = false;
+                  var _iteratorError18 = undefined;
 
                   try {
-                    for (var _iterator5 = task.Sub_Task.data[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                      var subtask = _step5.value;
+                    for (var _iterator18 = _task2.Sub_Task.data[Symbol.iterator](), _step18; !(_iteratorNormalCompletion18 = (_step18 = _iterator18.next()).done); _iteratorNormalCompletion18 = true) {
+                      var subtask = _step18.value;
                       var eachsubtask = {
                         Id_Sub_Item_Pekerjaan: subtask.Id_Sub_Item_Pekerjaan,
                         Id_Item_Pekerjaan: subtask.Id_Item_Pekerjaan,
                         Projek: data.Nama,
                         Divisi: div.Nama,
                         Sub_Divisi: subdiv.Nama,
-                        Task: task.Nama,
+                        Task: _task2.Nama,
                         Nama: subtask.Nama,
                         Kode: subtask.Kode,
                         Deskripsi: subtask.Deskripsi,
@@ -7260,29 +8324,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                         Status: 'untake',
                         Log_Pengerjaan: []
                       };
-                      var _iteratorNormalCompletion6 = true;
-                      var _didIteratorError6 = false;
-                      var _iteratorError6 = undefined;
+                      var _iteratorNormalCompletion19 = true;
+                      var _didIteratorError19 = false;
+                      var _iteratorError19 = undefined;
 
                       try {
-                        for (var _iterator6 = this.logPengerjaanData[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-                          var log = _step6.value;
+                        for (var _iterator19 = this.logPengerjaanData[Symbol.iterator](), _step19; !(_iteratorNormalCompletion19 = (_step19 = _iterator19.next()).done); _iteratorNormalCompletion19 = true) {
+                          var log = _step19.value;
 
                           if (log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan) {
                             eachsubtask.Log_Pengerjaan.push(log);
                           }
                         }
                       } catch (err) {
-                        _didIteratorError6 = true;
-                        _iteratorError6 = err;
+                        _didIteratorError19 = true;
+                        _iteratorError19 = err;
                       } finally {
                         try {
-                          if (!_iteratorNormalCompletion6 && _iterator6["return"] != null) {
-                            _iterator6["return"]();
+                          if (!_iteratorNormalCompletion19 && _iterator19["return"] != null) {
+                            _iterator19["return"]();
                           }
                         } finally {
-                          if (_didIteratorError6) {
-                            throw _iteratorError6;
+                          if (_didIteratorError19) {
+                            throw _iteratorError19;
                           }
                         }
                       }
@@ -7317,64 +8381,107 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                         eachsubtask.Status = 'complete';
                       }
 
+                      PersentaseTask += subtask.Persentase;
                       allsubtask.push(eachsubtask);
                     }
                   } catch (err) {
-                    _didIteratorError5 = true;
-                    _iteratorError5 = err;
+                    _didIteratorError18 = true;
+                    _iteratorError18 = err;
                   } finally {
                     try {
-                      if (!_iteratorNormalCompletion5 && _iterator5["return"] != null) {
-                        _iterator5["return"]();
+                      if (!_iteratorNormalCompletion18 && _iterator18["return"] != null) {
+                        _iterator18["return"]();
                       }
                     } finally {
-                      if (_didIteratorError5) {
-                        throw _iteratorError5;
+                      if (_didIteratorError18) {
+                        throw _iteratorError18;
                       }
                     }
                   }
+
+                  var eachtask = {
+                    Id_Item_Pekerjaan: _task2.Id_Item_Pekerjaan,
+                    Id_Divisi_Role: _task2.Id_Divisi_Role,
+                    Id_Sub_Divisi_Proyek: _task2.Id_Sub_Divisi_Proyek,
+                    Sub_Divisi: _task2.Sub_Divisi,
+                    Nama: _task2.Nama,
+                    Kode: _task2.Kode,
+                    Satuan: _task2.Satuan,
+                    Tanggal_Selesai: _task2.Tanggal_Selesai.split(' ')[0],
+                    Persentase: _task2.Persentase,
+                    Total_Persentase: PersentaseTask
+                  };
+                  alltask.push(eachtask);
+                  PersentaseTask = 0;
+                  PersentaseSubDivisi += _task2.Persentase;
                 }
               } catch (err) {
-                _didIteratorError4 = true;
-                _iteratorError4 = err;
+                _didIteratorError17 = true;
+                _iteratorError17 = err;
               } finally {
                 try {
-                  if (!_iteratorNormalCompletion4 && _iterator4["return"] != null) {
-                    _iterator4["return"]();
+                  if (!_iteratorNormalCompletion17 && _iterator17["return"] != null) {
+                    _iterator17["return"]();
                   }
                 } finally {
-                  if (_didIteratorError4) {
-                    throw _iteratorError4;
+                  if (_didIteratorError17) {
+                    throw _iteratorError17;
                   }
                 }
               }
+
+              var eachsubdiv = {
+                Id_Sub_Divisi_Proyek: subdiv.Id_Sub_Divisi_Proyek,
+                Id_Divisi_Proyek: subdiv.Id_Divisi_Proyek,
+                Divisi: subdiv.Divisi,
+                Nama: subdiv.Nama,
+                Tanggal_Selesai: subdiv.Tanggal_Selesai.split(' ')[0],
+                Persentase: subdiv.Persentase,
+                Total_Persentase: PersentaseSubDivisi
+              };
+              allsubdivisi.push(eachsubdiv);
+              PersentaseSubDivisi = 0;
+              PersentaseDivisi += subdiv.Persentase;
             }
           } catch (err) {
-            _didIteratorError3 = true;
-            _iteratorError3 = err;
+            _didIteratorError16 = true;
+            _iteratorError16 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
-                _iterator3["return"]();
+              if (!_iteratorNormalCompletion16 && _iterator16["return"] != null) {
+                _iterator16["return"]();
               }
             } finally {
-              if (_didIteratorError3) {
-                throw _iteratorError3;
+              if (_didIteratorError16) {
+                throw _iteratorError16;
               }
             }
           }
+
+          var eachdiv = {
+            Id_Divisi_Proyek: div.Id_Divisi_Proyek,
+            Id_Divisi_Role: div.Id_Divisi_Role,
+            Id_Proyek: div.Id_Proyek,
+            Nama: div.Nama,
+            Tanggal_Selesai: div.Tanggal_Selesai.split(' ')[0],
+            Persentase: div.Persentase,
+            Total_Persentase: PersentaseDivisi
+          };
+          alldivisi.push(eachdiv);
+          PersentaseDivisi = 0;
+          PersentaseProyek += div.Persentase;
         }
       } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
+        _didIteratorError15 = true;
+        _iteratorError15 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
-            _iterator2["return"]();
+          if (!_iteratorNormalCompletion15 && _iterator15["return"] != null) {
+            _iterator15["return"]();
           }
         } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
+          if (_didIteratorError15) {
+            throw _iteratorError15;
           }
         }
       }
@@ -7383,17 +8490,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       data.All_SubDivisi = allsubdivisi;
       data.All_Task = alltask;
       data.All_SubTask = allsubtask;
+      data.Total_Persentase = PersentaseProyek;
     },
     sendAccessRequest: function () {
       var _sendAccessRequest = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
         var payload, response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context8) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context8.prev = _context8.next) {
               case 0:
-                _context4.prev = 0;
+                _context8.prev = 0;
                 payload = {
                   Id_Akun: this.Id_Akun,
                   Id_Sub_Item_Pekerjaan: this.editTask.Id_Sub_Item_Pekerjaan,
@@ -7401,28 +8509,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Deskripsi: this.reqForm.Deskripsi,
                   Verifikasi: 'Unverified'
                 };
-                _context4.next = 4;
+                _context8.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addjobakses(payload);
 
               case 4:
-                response = _context4.sent.data;
+                response = _context8.sent.data;
                 this.requestDialog = false;
                 this.showAlert('success', 'Sukses Mengirim Request');
-                _context4.next = 13;
+                _context8.next = 13;
                 break;
 
               case 9:
-                _context4.prev = 9;
-                _context4.t0 = _context4["catch"](0);
-                console.log(_context4.t0);
+                _context8.prev = 9;
+                _context8.t0 = _context8["catch"](0);
+                console.log(_context8.t0);
                 this.showAlert('error', 'Gagal Mengirim Request');
 
               case 13:
               case "end":
-                return _context4.stop();
+                return _context8.stop();
             }
           }
-        }, _callee4, this, [[0, 9]]);
+        }, _callee7, this, [[0, 9]]);
       }));
 
       function sendAccessRequest() {
@@ -7434,51 +8542,51 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     uploadProgress: function () {
       var _uploadProgress = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var _this3 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        var _this5 = this;
 
         var payloadFile, pathfile, Id_Pengerjaan, payload, response, index;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context9) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context9.prev = _context9.next) {
               case 0:
-                _context5.prev = 0;
+                _context9.prev = 0;
                 payloadFile = new FormData();
                 payloadFile.append('Berkas', this.file);
                 payloadFile.append('Id_Akun', this.Id_Akun);
-                _context5.next = 6;
+                _context9.next = 6;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].uploadfile(payloadFile);
 
               case 6:
-                pathfile = _context5.sent.data;
+                pathfile = _context9.sent.data;
                 Id_Pengerjaan = this.editTask.Log_Pengerjaan.find(function (obj) {
-                  return obj.Id_Akun == _this3.Id_Akun && obj.Berkas == '';
+                  return obj.Id_Akun == _this5.Id_Akun && obj.Berkas == '';
                 }).Id_Log_Pengerjaan;
                 payload = {
                   Progress: this.editTask.Progress,
                   Catatan: this.editTask.Note,
                   Berkas: pathfile
                 };
-                _context5.next = 11;
+                _context9.next = 11;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatelogpengerjaan(payload, Id_Pengerjaan);
 
               case 11:
-                response = _context5.sent.data;
+                response = _context9.sent.data;
 
                 if (!(this.editTask.Progress == 100)) {
-                  _context5.next = 17;
+                  _context9.next = 17;
                   break;
                 }
 
-                _context5.next = 15;
+                _context9.next = 15;
                 return this.accessDone();
 
               case 15:
-                _context5.next = 19;
+                _context9.next = 19;
                 break;
 
               case 17:
-                _context5.next = 19;
+                _context9.next = 19;
                 return this.duplicateEmptyLog();
 
               case 19:
@@ -7489,21 +8597,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 Object.assign(this.editTask.Log_Pengerjaan[index], response);
                 this.close();
                 this.showAlert('success', 'Sukses Upload Progress');
-                _context5.next = 30;
+                _context9.next = 30;
                 break;
 
               case 26:
-                _context5.prev = 26;
-                _context5.t0 = _context5["catch"](0);
-                console.log(_context5.t0);
+                _context9.prev = 26;
+                _context9.t0 = _context9["catch"](0);
+                console.log(_context9.t0);
                 this.showAlert('error', 'Gagal Upload Progress');
 
               case 30:
               case "end":
-                return _context5.stop();
+                return _context9.stop();
             }
           }
-        }, _callee5, this, [[0, 26]]);
+        }, _callee8, this, [[0, 26]]);
       }));
 
       function uploadProgress() {
@@ -7515,40 +8623,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     accessDone: function () {
       var _accessDone = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
         var payload, response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context10) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context10.prev = _context10.next) {
               case 0:
-                _context6.prev = 0;
+                _context10.prev = 0;
                 payload = {
                   Verifikasi: 'Done'
                 };
-                _context6.next = 4;
+                _context10.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatejobakses(payload, this.editTask.Id_Akses);
 
               case 4:
-                response = _context6.sent;
+                response = _context10.sent;
                 console.log(response);
-                _context6.next = 8;
+                _context10.next = 8;
                 return this.getProject();
 
               case 8:
-                _context6.next = 13;
+                _context10.next = 13;
                 break;
 
               case 10:
-                _context6.prev = 10;
-                _context6.t0 = _context6["catch"](0);
+                _context10.prev = 10;
+                _context10.t0 = _context10["catch"](0);
                 this.showAlert('error', 'Gagal Verifikasi');
 
               case 13:
               case "end":
-                return _context6.stop();
+                return _context10.stop();
             }
           }
-        }, _callee6, this, [[0, 10]]);
+        }, _callee9, this, [[0, 10]]);
       }));
 
       function accessDone() {
@@ -7558,13 +8666,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return accessDone;
     }(),
     addDivForm: function addDivForm() {
-      var _iteratorNormalCompletion7 = true;
-      var _didIteratorError7 = false;
-      var _iteratorError7 = undefined;
+      var _iteratorNormalCompletion20 = true;
+      var _didIteratorError20 = false;
+      var _iteratorError20 = undefined;
 
       try {
-        for (var _iterator7 = this.division[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-          var div = _step7.value;
+        for (var _iterator20 = this.division[Symbol.iterator](), _step20; !(_iteratorNormalCompletion20 = (_step20 = _iterator20.next()).done); _iteratorNormalCompletion20 = true) {
+          var div = _step20.value;
 
           if (div.Id_Divisi_Role == this.divform.Id_Divisi_Role) {
             this.divform.Nama = div.Deskripsi;
@@ -7572,16 +8680,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }
       } catch (err) {
-        _didIteratorError7 = true;
-        _iteratorError7 = err;
+        _didIteratorError20 = true;
+        _iteratorError20 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion7 && _iterator7["return"] != null) {
-            _iterator7["return"]();
+          if (!_iteratorNormalCompletion20 && _iterator20["return"] != null) {
+            _iterator20["return"]();
           }
         } finally {
-          if (_didIteratorError7) {
-            throw _iteratorError7;
+          if (_didIteratorError20) {
+            throw _iteratorError20;
           }
         }
       }
@@ -7590,330 +8698,574 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.divform.Id_Proyek = this.editProject.Id_Proyek;
       }
 
+      this.divform.Total_Persentase = 0;
       this.editProject.All_Divisi.push(this.divform);
+      this.editProject.Total_Persentase = parseInt(this.divform.Persentase) + parseInt(this.editProject.Total_Persentase);
       this.divform = Object.assign({}, this.defaultdivform);
     },
     delDivForm: function delDivForm(index) {
-      this.editProject.All_Divisi.splice(this.editProject.All_Divisi.indexOf(index), 1);
+      var _this6 = this;
+
+      this.editProject.Total_Persentase = parseInt(this.editProject.Total_Persentase) - parseInt(index.Persentase);
+      var _iteratorNormalCompletion21 = true;
+      var _didIteratorError21 = false;
+      var _iteratorError21 = undefined;
+
+      try {
+        var _loop3 = function _loop3() {
+          var subdiv = _step21.value;
+          var _iteratorNormalCompletion22 = true;
+          var _didIteratorError22 = false;
+          var _iteratorError22 = undefined;
+
+          try {
+            var _loop4 = function _loop4() {
+              var task = _step22.value;
+              var _iteratorNormalCompletion23 = true;
+              var _didIteratorError23 = false;
+              var _iteratorError23 = undefined;
+
+              try {
+                for (var _iterator23 = _this6.editProject.All_SubTask.filter(function (obj) {
+                  return obj.Task === task.Nama;
+                })[Symbol.iterator](), _step23; !(_iteratorNormalCompletion23 = (_step23 = _iterator23.next()).done); _iteratorNormalCompletion23 = true) {
+                  var subtask = _step23.value;
+
+                  _this6.delProject.All_SubTask.push(subtask);
+
+                  _this6.editProject.All_SubTask.splice(_this6.editProject.All_SubTask.indexOf(subtask));
+                }
+              } catch (err) {
+                _didIteratorError23 = true;
+                _iteratorError23 = err;
+              } finally {
+                try {
+                  if (!_iteratorNormalCompletion23 && _iterator23["return"] != null) {
+                    _iterator23["return"]();
+                  }
+                } finally {
+                  if (_didIteratorError23) {
+                    throw _iteratorError23;
+                  }
+                }
+              }
+
+              _this6.delProject.All_Task.push(task);
+
+              _this6.editProject.All_Task.splice(_this6.editProject.All_Task.indexOf(task));
+            };
+
+            for (var _iterator22 = _this6.editProject.All_Task.filter(function (obj) {
+              return obj.Sub_Divisi === subdiv.Nama;
+            })[Symbol.iterator](), _step22; !(_iteratorNormalCompletion22 = (_step22 = _iterator22.next()).done); _iteratorNormalCompletion22 = true) {
+              _loop4();
+            }
+          } catch (err) {
+            _didIteratorError22 = true;
+            _iteratorError22 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion22 && _iterator22["return"] != null) {
+                _iterator22["return"]();
+              }
+            } finally {
+              if (_didIteratorError22) {
+                throw _iteratorError22;
+              }
+            }
+          }
+
+          _this6.delProject.All_SubDivisi.push(subdiv);
+
+          _this6.editProject.All_SubDivisi.splice(_this6.editProject.All_SubDivisi.indexOf(subdiv));
+        };
+
+        for (var _iterator21 = this.editProject.All_SubDivisi.filter(function (obj) {
+          return obj.Divisi === index.Nama;
+        })[Symbol.iterator](), _step21; !(_iteratorNormalCompletion21 = (_step21 = _iterator21.next()).done); _iteratorNormalCompletion21 = true) {
+          _loop3();
+        }
+      } catch (err) {
+        _didIteratorError21 = true;
+        _iteratorError21 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion21 && _iterator21["return"] != null) {
+            _iterator21["return"]();
+          }
+        } finally {
+          if (_didIteratorError21) {
+            throw _iteratorError21;
+          }
+        }
+      }
+
+      this.delProject.All_Divisi.push(index);
+      this.editProject.All_Divisi.splice(this.editProject.All_Divisi.indexOf(index));
       this.editProject.All_Divisi = _toConsumableArray(this.editProject.All_Divisi);
+      this.editProject.All_SubDivisi = _toConsumableArray(this.editProject.All_SubDivisi);
+      this.editProject.All_Task = _toConsumableArray(this.editProject.All_Task);
+      this.editProject.All_SubTask = _toConsumableArray(this.editProject.All_SubTask);
     },
     addSubDivForm: function addSubDivForm() {
+      var _this7 = this;
+
+      this.subdivform.Total_Persentase = 0;
       this.editProject.All_SubDivisi.push(this.subdivform);
+      var div = this.editProject.All_Divisi.filter(function (obj) {
+        return obj.Nama == _this7.subdivform.Divisi;
+      });
+      div[0].Total_Persentase = parseInt(this.subdivform.Persentase) + parseInt(div[0].Total_Persentase);
       this.subdivform = Object.assign({}, this.defaultsubdivform);
     },
     delSubDivForm: function delSubDivForm(index) {
+      var _this8 = this;
+
+      var div = this.editProject.All_Divisi.filter(function (obj) {
+        return obj.Nama == index.Divisi;
+      });
+      div[0].Total_Persentase = parseInt(div[0].Total_Persentase) - parseInt(index.Persentase);
+      var subdiv = this.editProject.All_SubDivisi.filter(function (obj) {
+        return obj.Nama === index.Nama;
+      });
+      var _iteratorNormalCompletion24 = true;
+      var _didIteratorError24 = false;
+      var _iteratorError24 = undefined;
+
+      try {
+        var _loop5 = function _loop5() {
+          var task = _step24.value;
+          var _iteratorNormalCompletion25 = true;
+          var _didIteratorError25 = false;
+          var _iteratorError25 = undefined;
+
+          try {
+            for (var _iterator25 = _this8.editProject.All_SubTask.filter(function (obj) {
+              return obj.Task === task.Nama;
+            })[Symbol.iterator](), _step25; !(_iteratorNormalCompletion25 = (_step25 = _iterator25.next()).done); _iteratorNormalCompletion25 = true) {
+              var subtask = _step25.value;
+
+              _this8.delProject.All_SubTask.push(subtask);
+
+              _this8.editProject.All_SubTask.splice(_this8.editProject.All_SubTask.indexOf(subtask));
+            }
+          } catch (err) {
+            _didIteratorError25 = true;
+            _iteratorError25 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion25 && _iterator25["return"] != null) {
+                _iterator25["return"]();
+              }
+            } finally {
+              if (_didIteratorError25) {
+                throw _iteratorError25;
+              }
+            }
+          }
+
+          _this8.delProject.All_Task.push(task);
+
+          _this8.editProject.All_Task.splice(_this8.editProject.All_Task.indexOf(task));
+        };
+
+        for (var _iterator24 = this.editProject.All_Task.filter(function (obj) {
+          return obj.Sub_Divisi === subdiv.Nama;
+        })[Symbol.iterator](), _step24; !(_iteratorNormalCompletion24 = (_step24 = _iterator24.next()).done); _iteratorNormalCompletion24 = true) {
+          _loop5();
+        }
+      } catch (err) {
+        _didIteratorError24 = true;
+        _iteratorError24 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion24 && _iterator24["return"] != null) {
+            _iterator24["return"]();
+          }
+        } finally {
+          if (_didIteratorError24) {
+            throw _iteratorError24;
+          }
+        }
+      }
+
+      this.delProject.All_SubDivisi.push(index);
       this.editProject.All_SubDivisi.splice(this.editProject.All_SubDivisi.indexOf(index), 1);
       this.editProject.All_SubDivisi = _toConsumableArray(this.editProject.All_SubDivisi);
     },
     addTaskForm: function addTaskForm() {
+      var _this9 = this;
+
+      this.taskform.Total_Persentase = 0;
       this.editProject.All_Task.push(this.taskform);
+      var subdiv = this.editProject.All_SubDivisi.filter(function (obj) {
+        return obj.Nama == _this9.taskform.Sub_Divisi;
+      });
+      subdiv[0].Total_Persentase = parseInt(this.taskform.Persentase) + parseInt(subdiv[0].Total_Persentase);
       this.taskform = Object.assign({}, this.defaulttaskform);
     },
     delTaskForm: function delTaskForm(index) {
+      var subdiv = this.editProject.All_SubDivisi.filter(function (obj) {
+        return obj.Nama == index.Sub_Divisi;
+      });
+      subdiv[0].Total_Persentase = parseInt(subdiv[0].Total_Persentase) - parseInt(index.Persentase);
+      var task = this.editProject.All_Task.filter(function (obj) {
+        return obj.Nama === index.Nama;
+      });
+      var _iteratorNormalCompletion26 = true;
+      var _didIteratorError26 = false;
+      var _iteratorError26 = undefined;
+
+      try {
+        for (var _iterator26 = this.editProject.All_SubTask.filter(function (obj) {
+          return obj.Task === task.Nama;
+        })[Symbol.iterator](), _step26; !(_iteratorNormalCompletion26 = (_step26 = _iterator26.next()).done); _iteratorNormalCompletion26 = true) {
+          var subtask = _step26.value;
+          this.delProject.All_SubTask.push(subtask);
+          this.editProject.All_SubTask.splice(this.editProject.All_SubTask.indexOf(subtask));
+        }
+      } catch (err) {
+        _didIteratorError26 = true;
+        _iteratorError26 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion26 && _iterator26["return"] != null) {
+            _iterator26["return"]();
+          }
+        } finally {
+          if (_didIteratorError26) {
+            throw _iteratorError26;
+          }
+        }
+      }
+
+      this.delProject.All_Task.push(index);
       this.editProject.All_Task.splice(this.editProject.All_Task.indexOf(index), 1);
       this.editProject.All_Task = _toConsumableArray(this.editProject.All_Task);
     },
     addSubTaskForm: function addSubTaskForm() {
-      this.editProject.All_SubTask.push(this.subtaskform);
+      var _this10 = this;
+
+      this.editProject.All_SubTask.push(this.subtaskform); // console.log(task)
+
+      var task = this.editProject.All_Task.filter(function (obj) {
+        return obj.Nama == _this10.subtaskform.Task;
+      });
+      console.log(task);
+      task[0].Total_Persentase = parseInt(this.subtaskform.Persentase) + parseInt(task[0].Total_Persentase);
       this.subtaskform = Object.assign({}, this.defaultsubtaskform);
     },
     delSubTaskForm: function delSubTaskForm(index) {
+      var task = this.editProject.All_Task.filter(function (obj) {
+        return obj.Nama == index.Task;
+      });
+      task[0].Total_Persentase = parseInt(task[0].Total_Persentase) - parseInt(index.Persentase);
+      this.delProject.All_SubTask.push(index);
       this.editProject.All_SubTask.splice(this.editProject.All_SubTask.indexOf(index), 1);
       this.editProject.All_SubTask = _toConsumableArray(this.editProject.All_SubTask);
     },
     addProject: function addProject(data) {
       this.projects.push(data);
     },
+    addProjectDialog: function addProjectDialog() {
+      this.addDialog2 = true;
+      this.subtaskformfilter.All_Divisi = this.editProject.All_Divisi;
+      this.subtaskformfilter.All_SubDivisi = this.editProject.All_SubDivisi;
+      this.subtaskformfilter.All_Task = this.editProject.All_Task;
+    },
     editProjectDialog: function editProjectDialog(project) {
       this.editProject = Object.assign({}, project);
+      this.subtaskformfilter.All_Divisi = project.All_Divisi;
+      this.subtaskformfilter.All_SubDivisi = project.All_SubDivisi;
+      this.subtaskformfilter.All_Task = project.All_Task;
       this.editmode = true;
       this.addDialog2 = true;
     },
     detailProjectDialog: function () {
       var _detailProjectDialog = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(project) {
-        var _this4 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(project) {
+        var _this11 = this;
 
-        var _iteratorNormalCompletion8, _didIteratorError8, _iteratorError8, _iterator8, _step8, subtask, _iteratorNormalCompletion9, _didIteratorError9, _iteratorError9, _loop, _iterator9, _step9, _iteratorNormalCompletion10, _didIteratorError10, _iteratorError10, _loop2, _iterator10, _step10, _iteratorNormalCompletion11, _didIteratorError11, _iteratorError11, _loop3, _iterator11, _step11, PCDatas, Names, PCLogPengerjaan, _iteratorNormalCompletion12, _didIteratorError12, _iteratorError12, _iterator12, _step12, log, Data, subtasks, id_subtasks, id_subtask, index, isNew, logs, dataTask, _iteratorNormalCompletion13, _didIteratorError13, _iteratorError13, _iterator13, _step13, _log, subtasklen, Tasks, Contribute, _i, _PCDatas, PCData, _i2, _subtasks, _subtask2, loglen, _logs, Task, i, _iteratorNormalCompletion17, _didIteratorError17, _iteratorError17, _iterator17, _step17, _PCData, TContribute, SDContribute, DContribute, PersentaseTask, PersentaseSubDivisi, PersentaseDivisi, PersentaseProyek, _i3, _PCDatas2, _PCData2, _iteratorNormalCompletion18, _didIteratorError18, _iteratorError18, _loop4, _iterator18, _step18;
+        var _iteratorNormalCompletion27, _didIteratorError27, _iteratorError27, _iterator27, _step27, subtask, _iteratorNormalCompletion28, _didIteratorError28, _iteratorError28, _loop6, _iterator28, _step28, _iteratorNormalCompletion29, _didIteratorError29, _iteratorError29, _loop7, _iterator29, _step29, _iteratorNormalCompletion30, _didIteratorError30, _iteratorError30, _loop8, _iterator30, _step30, PCDatas, Names, PCLogPengerjaan, _iteratorNormalCompletion31, _didIteratorError31, _iteratorError31, _iterator31, _step31, log, Data, subtasks, id_subtasks, id_subtask, index, isNew, logs, dataTask, _iteratorNormalCompletion32, _didIteratorError32, _iteratorError32, _iterator32, _step32, _log, subtasklen, Tasks, Contribute, _i, _PCDatas, PCData, _i2, _subtasks, _subtask2, loglen, _logs, Task, i, _iteratorNormalCompletion36, _didIteratorError36, _iteratorError36, _iterator36, _step36, _PCData, TContribute, SDContribute, DContribute, PersentaseTask, PersentaseSubDivisi, PersentaseDivisi, PersentaseProyek, _i3, _PCDatas2, _PCData2, _iteratorNormalCompletion37, _didIteratorError37, _iteratorError37, _loop9, _iterator37, _step37;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context11) {
           while (1) {
-            switch (_context7.prev = _context7.next) {
+            switch (_context11.prev = _context11.next) {
               case 0:
                 this.detailProject = Object.assign({}, project);
                 this.detailProject.Remaining = parseInt((new Date(this.detailProject.Target_Outcome).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // this.detailProject.Progress = await Controller.getProgressProyek(this.detailProject.Id_Proyek)
 
                 this.detailProject.Progress = 0;
-                _iteratorNormalCompletion8 = true;
-                _didIteratorError8 = false;
-                _iteratorError8 = undefined;
-                _context7.prev = 6;
+                _iteratorNormalCompletion27 = true;
+                _didIteratorError27 = false;
+                _iteratorError27 = undefined;
+                _context11.prev = 6;
 
-                for (_iterator8 = this.detailProject.All_SubTask[Symbol.iterator](); !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-                  subtask = _step8.value;
+                for (_iterator27 = this.detailProject.All_SubTask[Symbol.iterator](); !(_iteratorNormalCompletion27 = (_step27 = _iterator27.next()).done); _iteratorNormalCompletion27 = true) {
+                  subtask = _step27.value;
                   subtask.Remaining = parseInt((new Date(subtask.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left';
                 }
 
-                _context7.next = 14;
+                _context11.next = 14;
                 break;
 
               case 10:
-                _context7.prev = 10;
-                _context7.t0 = _context7["catch"](6);
-                _didIteratorError8 = true;
-                _iteratorError8 = _context7.t0;
+                _context11.prev = 10;
+                _context11.t0 = _context11["catch"](6);
+                _didIteratorError27 = true;
+                _iteratorError27 = _context11.t0;
 
               case 14:
-                _context7.prev = 14;
-                _context7.prev = 15;
+                _context11.prev = 14;
+                _context11.prev = 15;
 
-                if (!_iteratorNormalCompletion8 && _iterator8["return"] != null) {
-                  _iterator8["return"]();
+                if (!_iteratorNormalCompletion27 && _iterator27["return"] != null) {
+                  _iterator27["return"]();
                 }
 
               case 17:
-                _context7.prev = 17;
+                _context11.prev = 17;
 
-                if (!_didIteratorError8) {
-                  _context7.next = 20;
+                if (!_didIteratorError27) {
+                  _context11.next = 20;
                   break;
                 }
 
-                throw _iteratorError8;
+                throw _iteratorError27;
 
               case 20:
-                return _context7.finish(17);
+                return _context11.finish(17);
 
               case 21:
-                return _context7.finish(14);
+                return _context11.finish(14);
 
               case 22:
-                _iteratorNormalCompletion9 = true;
-                _didIteratorError9 = false;
-                _iteratorError9 = undefined;
-                _context7.prev = 25;
+                _iteratorNormalCompletion28 = true;
+                _didIteratorError28 = false;
+                _iteratorError28 = undefined;
+                _context11.prev = 25;
 
-                _loop = function _loop() {
-                  var task = _step9.value;
+                _loop6 = function _loop6() {
+                  var task = _step28.value;
                   task.Remaining = parseInt((new Date(task.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left';
                   task.Progress = 0;
-                  var _iteratorNormalCompletion14 = true;
-                  var _didIteratorError14 = false;
-                  var _iteratorError14 = undefined;
+                  var _iteratorNormalCompletion33 = true;
+                  var _didIteratorError33 = false;
+                  var _iteratorError33 = undefined;
 
                   try {
-                    for (var _iterator14 = _this4.detailProject.All_SubTask.filter(function (obj) {
+                    for (var _iterator33 = _this11.detailProject.All_SubTask.filter(function (obj) {
                       return obj.Task == task.Nama;
-                    })[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
-                      var _subtask = _step14.value;
+                    })[Symbol.iterator](), _step33; !(_iteratorNormalCompletion33 = (_step33 = _iterator33.next()).done); _iteratorNormalCompletion33 = true) {
+                      var _subtask = _step33.value;
                       task.Progress += _subtask.Progress * _subtask.Persentase / 100;
                     } // task.Progress= await Controller.getProgressItem(task.Id_Item_Pekerjaan)
 
                   } catch (err) {
-                    _didIteratorError14 = true;
-                    _iteratorError14 = err;
+                    _didIteratorError33 = true;
+                    _iteratorError33 = err;
                   } finally {
                     try {
-                      if (!_iteratorNormalCompletion14 && _iterator14["return"] != null) {
-                        _iterator14["return"]();
+                      if (!_iteratorNormalCompletion33 && _iterator33["return"] != null) {
+                        _iterator33["return"]();
                       }
                     } finally {
-                      if (_didIteratorError14) {
-                        throw _iteratorError14;
+                      if (_didIteratorError33) {
+                        throw _iteratorError33;
                       }
                     }
                   }
                 };
 
-                for (_iterator9 = this.detailProject.All_Task[Symbol.iterator](); !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
-                  _loop();
+                for (_iterator28 = this.detailProject.All_Task[Symbol.iterator](); !(_iteratorNormalCompletion28 = (_step28 = _iterator28.next()).done); _iteratorNormalCompletion28 = true) {
+                  _loop6();
                 }
 
-                _context7.next = 34;
+                _context11.next = 34;
                 break;
 
               case 30:
-                _context7.prev = 30;
-                _context7.t1 = _context7["catch"](25);
-                _didIteratorError9 = true;
-                _iteratorError9 = _context7.t1;
+                _context11.prev = 30;
+                _context11.t1 = _context11["catch"](25);
+                _didIteratorError28 = true;
+                _iteratorError28 = _context11.t1;
 
               case 34:
-                _context7.prev = 34;
-                _context7.prev = 35;
+                _context11.prev = 34;
+                _context11.prev = 35;
 
-                if (!_iteratorNormalCompletion9 && _iterator9["return"] != null) {
-                  _iterator9["return"]();
+                if (!_iteratorNormalCompletion28 && _iterator28["return"] != null) {
+                  _iterator28["return"]();
                 }
 
               case 37:
-                _context7.prev = 37;
+                _context11.prev = 37;
 
-                if (!_didIteratorError9) {
-                  _context7.next = 40;
+                if (!_didIteratorError28) {
+                  _context11.next = 40;
                   break;
                 }
 
-                throw _iteratorError9;
+                throw _iteratorError28;
 
               case 40:
-                return _context7.finish(37);
+                return _context11.finish(37);
 
               case 41:
-                return _context7.finish(34);
+                return _context11.finish(34);
 
               case 42:
-                _iteratorNormalCompletion10 = true;
-                _didIteratorError10 = false;
-                _iteratorError10 = undefined;
-                _context7.prev = 45;
+                _iteratorNormalCompletion29 = true;
+                _didIteratorError29 = false;
+                _iteratorError29 = undefined;
+                _context11.prev = 45;
 
-                _loop2 = function _loop2() {
-                  var subdiv = _step10.value;
+                _loop7 = function _loop7() {
+                  var subdiv = _step29.value;
                   subdiv.Remaining = parseInt((new Date(subdiv.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // subdiv.Progress= await Controller.getProgressSubDivisi(subdiv.Id_Sub_Divisi_Proyek)
 
                   subdiv.Progress = 0;
-                  var _iteratorNormalCompletion15 = true;
-                  var _didIteratorError15 = false;
-                  var _iteratorError15 = undefined;
+                  var _iteratorNormalCompletion34 = true;
+                  var _didIteratorError34 = false;
+                  var _iteratorError34 = undefined;
 
                   try {
-                    for (var _iterator15 = _this4.detailProject.All_Task.filter(function (obj) {
+                    for (var _iterator34 = _this11.detailProject.All_Task.filter(function (obj) {
                       return obj.Sub_Divisi == subdiv.Nama;
-                    })[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
-                      var task = _step15.value;
-                      subdiv.Progress += task.Progress * task.Persentase / 100;
+                    })[Symbol.iterator](), _step34; !(_iteratorNormalCompletion34 = (_step34 = _iterator34.next()).done); _iteratorNormalCompletion34 = true) {
+                      var _task3 = _step34.value;
+                      subdiv.Progress += _task3.Progress * _task3.Persentase / 100;
                     }
                   } catch (err) {
-                    _didIteratorError15 = true;
-                    _iteratorError15 = err;
+                    _didIteratorError34 = true;
+                    _iteratorError34 = err;
                   } finally {
                     try {
-                      if (!_iteratorNormalCompletion15 && _iterator15["return"] != null) {
-                        _iterator15["return"]();
+                      if (!_iteratorNormalCompletion34 && _iterator34["return"] != null) {
+                        _iterator34["return"]();
                       }
                     } finally {
-                      if (_didIteratorError15) {
-                        throw _iteratorError15;
+                      if (_didIteratorError34) {
+                        throw _iteratorError34;
                       }
                     }
                   }
                 };
 
-                for (_iterator10 = this.detailProject.All_SubDivisi[Symbol.iterator](); !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
-                  _loop2();
+                for (_iterator29 = this.detailProject.All_SubDivisi[Symbol.iterator](); !(_iteratorNormalCompletion29 = (_step29 = _iterator29.next()).done); _iteratorNormalCompletion29 = true) {
+                  _loop7();
                 }
 
-                _context7.next = 54;
+                _context11.next = 54;
                 break;
 
               case 50:
-                _context7.prev = 50;
-                _context7.t2 = _context7["catch"](45);
-                _didIteratorError10 = true;
-                _iteratorError10 = _context7.t2;
+                _context11.prev = 50;
+                _context11.t2 = _context11["catch"](45);
+                _didIteratorError29 = true;
+                _iteratorError29 = _context11.t2;
 
               case 54:
-                _context7.prev = 54;
-                _context7.prev = 55;
+                _context11.prev = 54;
+                _context11.prev = 55;
 
-                if (!_iteratorNormalCompletion10 && _iterator10["return"] != null) {
-                  _iterator10["return"]();
+                if (!_iteratorNormalCompletion29 && _iterator29["return"] != null) {
+                  _iterator29["return"]();
                 }
 
               case 57:
-                _context7.prev = 57;
+                _context11.prev = 57;
 
-                if (!_didIteratorError10) {
-                  _context7.next = 60;
+                if (!_didIteratorError29) {
+                  _context11.next = 60;
                   break;
                 }
 
-                throw _iteratorError10;
+                throw _iteratorError29;
 
               case 60:
-                return _context7.finish(57);
+                return _context11.finish(57);
 
               case 61:
-                return _context7.finish(54);
+                return _context11.finish(54);
 
               case 62:
-                _iteratorNormalCompletion11 = true;
-                _didIteratorError11 = false;
-                _iteratorError11 = undefined;
-                _context7.prev = 65;
+                _iteratorNormalCompletion30 = true;
+                _didIteratorError30 = false;
+                _iteratorError30 = undefined;
+                _context11.prev = 65;
 
-                _loop3 = function _loop3() {
-                  var div = _step11.value;
+                _loop8 = function _loop8() {
+                  var div = _step30.value;
                   div.Remaining = parseInt((new Date(div.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // div.Progress= await Controller.getProgressDivisi(div.Id_Divisi_Proyek)
 
                   div.Progress = 0;
-                  var _iteratorNormalCompletion16 = true;
-                  var _didIteratorError16 = false;
-                  var _iteratorError16 = undefined;
+                  var _iteratorNormalCompletion35 = true;
+                  var _didIteratorError35 = false;
+                  var _iteratorError35 = undefined;
 
                   try {
-                    for (var _iterator16 = _this4.detailProject.All_SubDivisi.filter(function (obj) {
+                    for (var _iterator35 = _this11.detailProject.All_SubDivisi.filter(function (obj) {
                       return obj.Divisi == div.Nama;
-                    })[Symbol.iterator](), _step16; !(_iteratorNormalCompletion16 = (_step16 = _iterator16.next()).done); _iteratorNormalCompletion16 = true) {
-                      var subdiv = _step16.value;
+                    })[Symbol.iterator](), _step35; !(_iteratorNormalCompletion35 = (_step35 = _iterator35.next()).done); _iteratorNormalCompletion35 = true) {
+                      var subdiv = _step35.value;
                       div.Progress += subdiv.Progress * subdiv.Persentase / 100;
                     }
                   } catch (err) {
-                    _didIteratorError16 = true;
-                    _iteratorError16 = err;
+                    _didIteratorError35 = true;
+                    _iteratorError35 = err;
                   } finally {
                     try {
-                      if (!_iteratorNormalCompletion16 && _iterator16["return"] != null) {
-                        _iterator16["return"]();
+                      if (!_iteratorNormalCompletion35 && _iterator35["return"] != null) {
+                        _iterator35["return"]();
                       }
                     } finally {
-                      if (_didIteratorError16) {
-                        throw _iteratorError16;
+                      if (_didIteratorError35) {
+                        throw _iteratorError35;
                       }
                     }
                   }
 
-                  _this4.detailProject.Progress += div.Progress * div.Persentase / 100;
+                  _this11.detailProject.Progress += div.Progress * div.Persentase / 100;
                 };
 
-                for (_iterator11 = this.detailProject.All_Divisi[Symbol.iterator](); !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
-                  _loop3();
+                for (_iterator30 = this.detailProject.All_Divisi[Symbol.iterator](); !(_iteratorNormalCompletion30 = (_step30 = _iterator30.next()).done); _iteratorNormalCompletion30 = true) {
+                  _loop8();
                 }
 
-                _context7.next = 74;
+                _context11.next = 74;
                 break;
 
               case 70:
-                _context7.prev = 70;
-                _context7.t3 = _context7["catch"](65);
-                _didIteratorError11 = true;
-                _iteratorError11 = _context7.t3;
+                _context11.prev = 70;
+                _context11.t3 = _context11["catch"](65);
+                _didIteratorError30 = true;
+                _iteratorError30 = _context11.t3;
 
               case 74:
-                _context7.prev = 74;
-                _context7.prev = 75;
+                _context11.prev = 74;
+                _context11.prev = 75;
 
-                if (!_iteratorNormalCompletion11 && _iterator11["return"] != null) {
-                  _iterator11["return"]();
+                if (!_iteratorNormalCompletion30 && _iterator30["return"] != null) {
+                  _iterator30["return"]();
                 }
 
               case 77:
-                _context7.prev = 77;
+                _context11.prev = 77;
 
-                if (!_didIteratorError11) {
-                  _context7.next = 80;
+                if (!_didIteratorError30) {
+                  _context11.next = 80;
                   break;
                 }
 
-                throw _iteratorError11;
+                throw _iteratorError30;
 
               case 80:
-                return _context7.finish(77);
+                return _context11.finish(77);
 
               case 81:
-                return _context7.finish(74);
+                return _context11.finish(74);
 
               case 82:
                 this.detailDialog = true; // PROJECT CONTRIBUTOR,
@@ -7929,13 +9281,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   return a['Id_Sub_Item_Pekerjaan'] < b['Id_Sub_Item_Pekerjaan'] ? -1 : 1;
                 }); //mengambil data nama dan divisi dari karyawan yang melakukan kontribusi
 
-                _iteratorNormalCompletion12 = true;
-                _didIteratorError12 = false;
-                _iteratorError12 = undefined;
-                _context7.prev = 90;
+                _iteratorNormalCompletion31 = true;
+                _didIteratorError31 = false;
+                _iteratorError31 = undefined;
+                _context11.prev = 90;
 
-                for (_iterator12 = PCLogPengerjaan[Symbol.iterator](); !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
-                  log = _step12.value;
+                for (_iterator31 = PCLogPengerjaan[Symbol.iterator](); !(_iteratorNormalCompletion31 = (_step31 = _iterator31.next()).done); _iteratorNormalCompletion31 = true) {
+                  log = _step31.value;
 
                   if (Names.indexOf(log.Nama) === -1) {
                     Data = {
@@ -7949,38 +9301,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   }
                 }
 
-                _context7.next = 98;
+                _context11.next = 98;
                 break;
 
               case 94:
-                _context7.prev = 94;
-                _context7.t4 = _context7["catch"](90);
-                _didIteratorError12 = true;
-                _iteratorError12 = _context7.t4;
+                _context11.prev = 94;
+                _context11.t4 = _context11["catch"](90);
+                _didIteratorError31 = true;
+                _iteratorError31 = _context11.t4;
 
               case 98:
-                _context7.prev = 98;
-                _context7.prev = 99;
+                _context11.prev = 98;
+                _context11.prev = 99;
 
-                if (!_iteratorNormalCompletion12 && _iterator12["return"] != null) {
-                  _iterator12["return"]();
+                if (!_iteratorNormalCompletion31 && _iterator31["return"] != null) {
+                  _iterator31["return"]();
                 }
 
               case 101:
-                _context7.prev = 101;
+                _context11.prev = 101;
 
-                if (!_didIteratorError12) {
-                  _context7.next = 104;
+                if (!_didIteratorError31) {
+                  _context11.next = 104;
                   break;
                 }
 
-                throw _iteratorError12;
+                throw _iteratorError31;
 
               case 104:
-                return _context7.finish(101);
+                return _context11.finish(101);
 
               case 105:
-                return _context7.finish(98);
+                return _context11.finish(98);
 
               case 106:
                 subtasks = [];
@@ -7997,13 +9349,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Contribute: 0,
                   Logs: []
                 };
-                _iteratorNormalCompletion13 = true;
-                _didIteratorError13 = false;
-                _iteratorError13 = undefined;
-                _context7.prev = 116;
+                _iteratorNormalCompletion32 = true;
+                _didIteratorError32 = false;
+                _iteratorError32 = undefined;
+                _context11.prev = 116;
 
-                for (_iterator13 = PCLogPengerjaan[Symbol.iterator](); !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
-                  _log = _step13.value;
+                for (_iterator32 = PCLogPengerjaan[Symbol.iterator](); !(_iteratorNormalCompletion32 = (_step32 = _iterator32.next()).done); _iteratorNormalCompletion32 = true) {
+                  _log = _step32.value;
                   index = id_subtasks.indexOf(_log.Id_Sub_Item_Pekerjaan);
 
                   if (index === -1) {
@@ -8033,38 +9385,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   }
                 }
 
-                _context7.next = 124;
+                _context11.next = 124;
                 break;
 
               case 120:
-                _context7.prev = 120;
-                _context7.t5 = _context7["catch"](116);
-                _didIteratorError13 = true;
-                _iteratorError13 = _context7.t5;
+                _context11.prev = 120;
+                _context11.t5 = _context11["catch"](116);
+                _didIteratorError32 = true;
+                _iteratorError32 = _context11.t5;
 
               case 124:
-                _context7.prev = 124;
-                _context7.prev = 125;
+                _context11.prev = 124;
+                _context11.prev = 125;
 
-                if (!_iteratorNormalCompletion13 && _iterator13["return"] != null) {
-                  _iterator13["return"]();
+                if (!_iteratorNormalCompletion32 && _iterator32["return"] != null) {
+                  _iterator32["return"]();
                 }
 
               case 127:
-                _context7.prev = 127;
+                _context11.prev = 127;
 
-                if (!_didIteratorError13) {
-                  _context7.next = 130;
+                if (!_didIteratorError32) {
+                  _context11.next = 130;
                   break;
                 }
 
-                throw _iteratorError13;
+                throw _iteratorError32;
 
               case 130:
-                return _context7.finish(127);
+                return _context11.finish(127);
 
               case 131:
-                return _context7.finish(124);
+                return _context11.finish(124);
 
               case 132:
                 dataTask.Logs = logs;
@@ -8082,7 +9434,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 139:
                 if (!(_i2 < _subtasks.length)) {
-                  _context7.next = 171;
+                  _context11.next = 171;
                   break;
                 }
 
@@ -8094,17 +9446,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 145:
                 if (!(i < loglen)) {
-                  _context7.next = 168;
+                  _context11.next = 168;
                   break;
                 }
 
-                _iteratorNormalCompletion17 = true;
-                _didIteratorError17 = false;
-                _iteratorError17 = undefined;
-                _context7.prev = 149;
+                _iteratorNormalCompletion36 = true;
+                _didIteratorError36 = false;
+                _iteratorError36 = undefined;
+                _context11.prev = 149;
 
-                for (_iterator17 = PCDatas[Symbol.iterator](); !(_iteratorNormalCompletion17 = (_step17 = _iterator17.next()).done); _iteratorNormalCompletion17 = true) {
-                  _PCData = _step17.value;
+                for (_iterator36 = PCDatas[Symbol.iterator](); !(_iteratorNormalCompletion36 = (_step36 = _iterator36.next()).done); _iteratorNormalCompletion36 = true) {
+                  _PCData = _step36.value;
 
                   if (_PCData.Nama == _logs[i].Nama) {
                     if (i == 0) {
@@ -8144,47 +9496,47 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   }
                 }
 
-                _context7.next = 157;
+                _context11.next = 157;
                 break;
 
               case 153:
-                _context7.prev = 153;
-                _context7.t6 = _context7["catch"](149);
-                _didIteratorError17 = true;
-                _iteratorError17 = _context7.t6;
+                _context11.prev = 153;
+                _context11.t6 = _context11["catch"](149);
+                _didIteratorError36 = true;
+                _iteratorError36 = _context11.t6;
 
               case 157:
-                _context7.prev = 157;
-                _context7.prev = 158;
+                _context11.prev = 157;
+                _context11.prev = 158;
 
-                if (!_iteratorNormalCompletion17 && _iterator17["return"] != null) {
-                  _iterator17["return"]();
+                if (!_iteratorNormalCompletion36 && _iterator36["return"] != null) {
+                  _iterator36["return"]();
                 }
 
               case 160:
-                _context7.prev = 160;
+                _context11.prev = 160;
 
-                if (!_didIteratorError17) {
-                  _context7.next = 163;
+                if (!_didIteratorError36) {
+                  _context11.next = 163;
                   break;
                 }
 
-                throw _iteratorError17;
+                throw _iteratorError36;
 
               case 163:
-                return _context7.finish(160);
+                return _context11.finish(160);
 
               case 164:
-                return _context7.finish(157);
+                return _context11.finish(157);
 
               case 165:
                 i++;
-                _context7.next = 145;
+                _context11.next = 145;
                 break;
 
               case 168:
                 _i2++;
-                _context7.next = 139;
+                _context11.next = 139;
                 break;
 
               case 171:
@@ -8200,28 +9552,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 180:
                 if (!(_i3 < _PCDatas2.length)) {
-                  _context7.next = 207;
+                  _context11.next = 207;
                   break;
                 }
 
                 _PCData2 = _PCDatas2[_i3];
-                _iteratorNormalCompletion18 = true;
-                _didIteratorError18 = false;
-                _iteratorError18 = undefined;
-                _context7.prev = 185;
+                _iteratorNormalCompletion37 = true;
+                _didIteratorError37 = false;
+                _iteratorError37 = undefined;
+                _context11.prev = 185;
 
-                _loop4 = function _loop4() {
-                  var Task_List = _step18.value;
-                  PersentaseTask = _this4.detailProject.All_SubTask.find(function (obj) {
+                _loop9 = function _loop9() {
+                  var Task_List = _step37.value;
+                  PersentaseTask = _this11.detailProject.All_SubTask.find(function (obj) {
                     return obj.Nama == Task_List.Name;
                   }).Persentase / 100;
-                  PersentaseSubDivisi = _this4.detailProject.All_Task.find(function (obj) {
+                  PersentaseSubDivisi = _this11.detailProject.All_Task.find(function (obj) {
                     return obj.Nama == Task_List.Task;
                   }).Persentase / 100;
-                  PersentaseDivisi = _this4.detailProject.All_SubDivisi.find(function (obj) {
+                  PersentaseDivisi = _this11.detailProject.All_SubDivisi.find(function (obj) {
                     return obj.Nama == Task_List.Sub_Div;
                   }).Persentase / 100;
-                  PersentaseProyek = _this4.detailProject.All_Divisi.find(function (obj) {
+                  PersentaseProyek = _this11.detailProject.All_Divisi.find(function (obj) {
                     return obj.Nama == Task_List.Div;
                   }).Persentase / 100;
                   TContribute = Task_List.Contribute * PersentaseTask;
@@ -8230,42 +9582,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Contribute += DContribute * PersentaseProyek;
                 };
 
-                for (_iterator18 = _PCData2.Task_List[Symbol.iterator](); !(_iteratorNormalCompletion18 = (_step18 = _iterator18.next()).done); _iteratorNormalCompletion18 = true) {
-                  _loop4();
+                for (_iterator37 = _PCData2.Task_List[Symbol.iterator](); !(_iteratorNormalCompletion37 = (_step37 = _iterator37.next()).done); _iteratorNormalCompletion37 = true) {
+                  _loop9();
                 }
 
-                _context7.next = 194;
+                _context11.next = 194;
                 break;
 
               case 190:
-                _context7.prev = 190;
-                _context7.t7 = _context7["catch"](185);
-                _didIteratorError18 = true;
-                _iteratorError18 = _context7.t7;
+                _context11.prev = 190;
+                _context11.t7 = _context11["catch"](185);
+                _didIteratorError37 = true;
+                _iteratorError37 = _context11.t7;
 
               case 194:
-                _context7.prev = 194;
-                _context7.prev = 195;
+                _context11.prev = 194;
+                _context11.prev = 195;
 
-                if (!_iteratorNormalCompletion18 && _iterator18["return"] != null) {
-                  _iterator18["return"]();
+                if (!_iteratorNormalCompletion37 && _iterator37["return"] != null) {
+                  _iterator37["return"]();
                 }
 
               case 197:
-                _context7.prev = 197;
+                _context11.prev = 197;
 
-                if (!_didIteratorError18) {
-                  _context7.next = 200;
+                if (!_didIteratorError37) {
+                  _context11.next = 200;
                   break;
                 }
 
-                throw _iteratorError18;
+                throw _iteratorError37;
 
               case 200:
-                return _context7.finish(197);
+                return _context11.finish(197);
 
               case 201:
-                return _context7.finish(194);
+                return _context11.finish(194);
 
               case 202:
                 _PCData2.Contribute = Contribute;
@@ -8273,7 +9625,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 204:
                 _i3++;
-                _context7.next = 180;
+                _context11.next = 180;
                 break;
 
               case 207:
@@ -8281,13 +9633,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 208:
               case "end":
-                return _context7.stop();
+                return _context11.stop();
             }
           }
-        }, _callee7, this, [[6, 10, 14, 22], [15,, 17, 21], [25, 30, 34, 42], [35,, 37, 41], [45, 50, 54, 62], [55,, 57, 61], [65, 70, 74, 82], [75,, 77, 81], [90, 94, 98, 106], [99,, 101, 105], [116, 120, 124, 132], [125,, 127, 131], [149, 153, 157, 165], [158,, 160, 164], [185, 190, 194, 202], [195,, 197, 201]]);
+        }, _callee10, this, [[6, 10, 14, 22], [15,, 17, 21], [25, 30, 34, 42], [35,, 37, 41], [45, 50, 54, 62], [55,, 57, 61], [65, 70, 74, 82], [75,, 77, 81], [90, 94, 98, 106], [99,, 101, 105], [116, 120, 124, 132], [125,, 127, 131], [149, 153, 157, 165], [158,, 160, 164], [185, 190, 194, 202], [195,, 197, 201]]);
       }));
 
-      function detailProjectDialog(_x) {
+      function detailProjectDialog(_x2) {
         return _detailProjectDialog.apply(this, arguments);
       }
 
@@ -8302,14 +9654,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.templateProject = '';
     },
     close: function close() {
-      var _this5 = this;
+      var _this12 = this;
 
       setTimeout(function () {
-        _this5.taskDialog = false;
-        _this5.addDialog2 = false;
-        _this5.editmode = false;
-        _this5.editProject = Object.assign({}, _this5.initEditProject);
-        _this5.templateProject = '';
+        _this12.taskDialog = false;
+        _this12.addDialog2 = false;
+        _this12.editmode = false;
+        _this12.editProject = Object.assign({}, _this12.initEditProject);
+        _this12.delProject = Object.assign({}, _this12.initEditProject);
+        _this12.templateProject = '';
       }, 300);
     },
     openTaskDialog: function openTaskDialog(data) {
@@ -8317,13 +9670,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.editTask = data;
       this.editTask.Status_Akses = 'Locked'; //<==================================NEED EDIT
 
-      var _iteratorNormalCompletion19 = true;
-      var _didIteratorError19 = false;
-      var _iteratorError19 = undefined;
+      var _iteratorNormalCompletion38 = true;
+      var _didIteratorError38 = false;
+      var _iteratorError38 = undefined;
 
       try {
-        for (var _iterator19 = this.jobAksesData[Symbol.iterator](), _step19; !(_iteratorNormalCompletion19 = (_step19 = _iterator19.next()).done); _iteratorNormalCompletion19 = true) {
-          var akses = _step19.value;
+        for (var _iterator38 = this.jobAksesData[Symbol.iterator](), _step38; !(_iteratorNormalCompletion38 = (_step38 = _iterator38.next()).done); _iteratorNormalCompletion38 = true) {
+          var akses = _step38.value;
 
           if (akses.Id_Sub_Item_Pekerjaan == data.Id_Sub_Item_Pekerjaan && akses.Verifikasi == "Verified" && akses.Id_Akun == this.Id_Akun) {
             this.editTask.Status_Akses = akses.Status;
@@ -8331,61 +9684,80 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }
       } catch (err) {
-        _didIteratorError19 = true;
-        _iteratorError19 = err;
+        _didIteratorError38 = true;
+        _iteratorError38 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion19 && _iterator19["return"] != null) {
-            _iterator19["return"]();
+          if (!_iteratorNormalCompletion38 && _iterator38["return"] != null) {
+            _iterator38["return"]();
           }
         } finally {
-          if (_didIteratorError19) {
-            throw _iteratorError19;
+          if (_didIteratorError38) {
+            throw _iteratorError38;
           }
         }
       }
     },
     getSubDivision: function getSubDivision(project) {
-      var _this6 = this;
+      var _this13 = this;
 
       this.sub_division = project.All_SubDivisi.filter(function (obj) {
-        return obj.Divisi == _this6.filterDiv;
+        return obj.Divisi == _this13.filterDiv;
       });
       this.filterSubDiv = '';
       this.filterTask = '';
     },
     getTask: function getTask(project) {
-      var _this7 = this;
+      var _this14 = this;
 
       this.task = project.All_Task.filter(function (obj) {
-        return obj.Sub_Divisi == _this7.filterSubDiv;
+        return obj.Sub_Divisi == _this14.filterSubDiv;
       });
       this.filterTask = '';
     },
     filteredTask: function filteredTask(data) {
-      var _this8 = this;
+      var _this15 = this;
 
       if (this.filterDiv != "") {
         // console.log("in")
         if (this.filterSubDiv != "") {
           if (this.filterTask != "") {
             return data.filter(function (obj) {
-              return obj.Divisi == _this8.filterDiv && obj.Sub_Divisi == _this8.filterSubDiv && obj.Task == _this8.filterTask;
+              return obj.Divisi == _this15.filterDiv && obj.Sub_Divisi == _this15.filterSubDiv && obj.Task == _this15.filterTask;
             });
           } else {
             return data.filter(function (obj) {
-              return obj.Divisi == _this8.filterDiv && obj.Sub_Divisi == _this8.filterSubDiv;
+              return obj.Divisi == _this15.filterDiv && obj.Sub_Divisi == _this15.filterSubDiv;
             });
           }
         } else {
           return data.filter(function (obj) {
-            return obj.Divisi == _this8.filterDiv;
+            return obj.Divisi == _this15.filterDiv;
           });
         }
       } else {
         return data;
       }
     },
+    // WORKSPACE
+    getSubDivisionSubTaskForm: function getSubDivisionSubTaskForm(project) {
+      var _this16 = this;
+
+      this.subtaskformfilter.All_SubDivisi = project.All_SubDivisi.filter(function (obj) {
+        return obj.Divisi == _this16.subtaskformfilter.Divisi;
+      });
+      this.subtaskformfilter.All_Task = [];
+      console.log("SUBTASKFORM");
+      console.log(this.subtaskformfilter);
+    },
+    getTaskSubTaskForm: function getTaskSubTaskForm(project) {
+      var _this17 = this;
+
+      this.subtaskformfilter.All_Task = project.All_Task.filter(function (obj) {
+        return obj.Sub_Divisi == _this17.subtaskformfilter.SubDivisi;
+      });
+    },
+    // WORKSPACE
     clearFilter: function clearFilter() {
       this.filterDiv = '';
       this.filterSubDiv = '';
@@ -8397,7 +9769,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     onFilePicked: function onFilePicked(e) {
-      var _this9 = this;
+      var _this18 = this;
 
       var files = e.target.files;
 
@@ -8414,10 +9786,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         fr.addEventListener('load', function () {
           // console.log(fr.result)
           //  console.log("Masuk FR")
-          _this9.fileUrl = fr.result;
-          _this9.file = files[0];
+          _this18.fileUrl = fr.result;
+          _this18.file = files[0];
 
-          _this9.namefile.push(_this9.file.name); //   this.namefile[0].size = this.file.size
+          _this18.namefile.push(_this18.file.name); //   this.namefile[0].size = this.file.size
           //   console.log(this.file)
           //   console.log(files)
           //   console.log("Name : "+this.file.name)
@@ -8442,11 +9814,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     forceFileDownload: function () {
       var _forceFileDownload = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(response, data) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11(response, data) {
         var url, link;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context12) {
           while (1) {
-            switch (_context8.prev = _context8.next) {
+            switch (_context12.prev = _context12.next) {
               case 0:
                 url = window.URL.createObjectURL(new Blob([response.data])); //   console.log(url)
 
@@ -8456,7 +9828,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                 document.body.appendChild(link);
                 link.click();
-                _context8.next = 8;
+                _context12.next = 8;
                 return this.accessDone();
 
               case 8:
@@ -8464,20 +9836,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 9:
               case "end":
-                return _context8.stop();
+                return _context12.stop();
             }
           }
-        }, _callee8, this);
+        }, _callee11, this);
       }));
 
-      function forceFileDownload(_x2, _x3) {
+      function forceFileDownload(_x3, _x4) {
         return _forceFileDownload.apply(this, arguments);
       }
 
       return forceFileDownload;
     }(),
     downloadIt: function downloadIt(data) {
-      var _this10 = this;
+      var _this19 = this;
 
       //   console.log('http://localhost:8000/'+data.Berkas)
       this.$http({
@@ -8485,13 +9857,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         url: 'http://localhost:8000/' + data.Berkas,
         responseType: 'arraybuffer'
       }).then(function (response) {
-        _this10.forceFileDownload(response, data);
+        _this19.forceFileDownload(response, data);
       })["catch"](function () {
         return console.log('error occured');
       });
     },
     showAlert: function showAlert(type, alert_message) {
-      var _this11 = this;
+      var _this20 = this;
 
       if (type == 'success') {
         this.alert.icon = 'fas fa-check-circle';
@@ -8508,45 +9880,45 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.showAlert.timer = setTimeout(function () {
-        _this11.alert.type = null;
-        _this11.alert.icon = null;
-        _this11.alert.message = null;
+        _this20.alert.type = null;
+        _this20.alert.icon = null;
+        _this20.alert.message = null;
       }, 3000);
     },
     duplicateEmptyLog: function () {
       var _duplicateEmptyLog = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
         var payloadLog, response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context13) {
           while (1) {
-            switch (_context9.prev = _context9.next) {
+            switch (_context13.prev = _context13.next) {
               case 0:
-                _context9.prev = 0;
+                _context13.prev = 0;
                 payloadLog = {
                   Id_Sub_Item_Pekerjaan: this.editTask.Id_Sub_Item_Pekerjaan,
                   Id_Akun: this.Id_Akun
                 };
-                _context9.next = 4;
+                _context13.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addlogpengerjaan(payloadLog);
 
               case 4:
-                response = _context9.sent;
-                _context9.next = 11;
+                response = _context13.sent;
+                _context13.next = 11;
                 break;
 
               case 7:
-                _context9.prev = 7;
-                _context9.t0 = _context9["catch"](0);
-                console.log(_context9.t0);
+                _context13.prev = 7;
+                _context13.t0 = _context13["catch"](0);
+                console.log(_context13.t0);
                 this.showAlert('error', 'Gagal Mengirim Request');
 
               case 11:
               case "end":
-                return _context9.stop();
+                return _context13.stop();
             }
           }
-        }, _callee9, this, [[0, 7]]);
+        }, _callee12, this, [[0, 7]]);
       }));
 
       function duplicateEmptyLog() {
@@ -8554,7 +9926,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       return duplicateEmptyLog;
-    }()
+    }() // async totalPersentase()
+    // {
+    //     let sumProyek = 0
+    //     let sumDivisi = 0
+    //     let sumSubDivisi = 0
+    //     let sumTask = 0
+    //     for(let div of this.editProject.All_Divisi)
+    //     {
+    //         sumProyek = parseInt(div.Persentase) + parseInt(sumProyek)
+    //         for(let subdiv of this.editProject.All_SubDivisi.filter(obj=>obj.Divisi == div.Nama))
+    //         {
+    //             sumDivisi = parseInt(subdiv.Persentase) + parseInt(sumDivisi)
+    //             for(let task of this.editProject.All_Task.filter(obj=>obj.Sub_Divisi == subdiv.Nama))
+    //             {
+    //                 sumSubDivisi = parseInt(task.Persentase) + parseInt(sumSubDivisi)
+    //                 for(let subtask of this.editProject.All_SubTask.filter(obj=>obj.Task == task.Nama))
+    //                 {
+    //                     sumTask = parseInt(subtask.Persentase) + parseInt(sumTask)
+    //                 }
+    //                 task.Total_Persentase = sumTask
+    //                 sumTask = 0
+    //             }
+    //             subdiv.Total_Persentase = sumSubDivisi
+    //             sumSubDivisi = 0
+    //         }
+    //         div.Total_Persentase = sumDivisi
+    //         sumDivisi = 0
+    //     }
+    //     this.editProject.Total_Persentase = sumProyek;
+    //     sumProyek = 0
+    //     console.log("TOTAL")
+    //     console.log(this.editProject)
+    // },
+
   }
 });
 
@@ -10842,6 +12247,126 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -10874,7 +12399,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       Confirm_Password: '',
       showOPassword: false,
       showNPassword: false,
-      showCPassword: false
+      showCPassword: false,
+      //Projects
+      Projects: []
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
@@ -10890,38 +12417,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _loaddata = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _this = this;
-
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallemployee();
+                this.getAllEmployees();
+                this.getAllProjects();
 
-              case 3:
-                _context.t0 = function (obj) {
-                  return obj.Id_Akun == _this.id_akun;
-                };
-
-                this.User = _context.sent.data.filter(_context.t0)[0];
-                this.User.Tanggal_Masuk = this.User.Tanggal_Masuk.toString();
-                console.log(this.User);
-                _context.next = 12;
-                break;
-
-              case 9:
-                _context.prev = 9;
-                _context.t1 = _context["catch"](0);
-                console.log(_context.t1);
-
-              case 12:
+              case 2:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 9]]);
+        }, _callee, this);
       }));
 
       function loaddata() {
@@ -10930,44 +12438,125 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return loaddata;
     }(),
-    updateProfile: function () {
-      var _updateProfile = _asyncToGenerator(
+    getAllProjects: function () {
+      var _getAllProjects = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
+                _context2.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallproject();
+
+              case 3:
+                this.Projects = _context2.sent.data;
+                console.log(this.Projects);
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 7]]);
+      }));
+
+      function getAllProjects() {
+        return _getAllProjects.apply(this, arguments);
+      }
+
+      return getAllProjects;
+    }(),
+    getAllEmployees: function () {
+      var _getAllEmployees = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallemployee();
+
+              case 3:
+                _context3.t0 = function (obj) {
+                  return obj.Id_Akun == _this.id_akun;
+                };
+
+                this.User = _context3.sent.data.filter(_context3.t0)[0];
+                this.User.Tanggal_Masuk = this.User.Tanggal_Masuk.toString();
                 console.log(this.User);
-                _context2.next = 4;
+                _context3.next = 12;
+                break;
+
+              case 9:
+                _context3.prev = 9;
+                _context3.t1 = _context3["catch"](0);
+                console.log(_context3.t1);
+
+              case 12:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 9]]);
+      }));
+
+      function getAllEmployees() {
+        return _getAllEmployees.apply(this, arguments);
+      }
+
+      return getAllEmployees;
+    }(),
+    updateProfile: function () {
+      var _updateProfile = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                console.log(this.User);
+                _context4.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updateemployee(this.User, this.User.Id_Karyawan);
 
               case 4:
-                response = _context2.sent;
+                response = _context4.sent;
                 console.log(response);
-                _context2.next = 8;
+                _context4.next = 8;
                 return this.loaddata();
 
               case 8:
                 this.close();
                 this.showAlert('success', 'Sukses Update Karyawan');
-                _context2.next = 16;
+                _context4.next = 16;
                 break;
 
               case 12:
-                _context2.prev = 12;
-                _context2.t0 = _context2["catch"](0);
-                console.log(_context2.t0);
+                _context4.prev = 12;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
                 this.showAlert('error', 'Gagal Update Karyawan');
 
               case 16:
               case "end":
-                return _context2.stop();
+                return _context4.stop();
             }
           }
-        }, _callee2, this, [[0, 12]]);
+        }, _callee4, this, [[0, 12]]);
       }));
 
       function updateProfile() {
@@ -10979,66 +12568,66 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     changePassword: function () {
       var _changePassword = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
         var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
                 console.log(this.New_Password + this.Confirm_Password);
-                _context3.prev = 1;
+                _context5.prev = 1;
 
                 if (!(this.New_Password === this.Confirm_Password)) {
-                  _context3.next = 19;
+                  _context5.next = 19;
                   break;
                 }
 
                 this.User.Old_Password = this.Old_Password;
                 this.User.Password = this.New_Password;
-                _context3.next = 7;
+                _context5.next = 7;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updateakun(this.User, this.User.Id_Akun);
 
               case 7:
-                response = _context3.sent;
+                response = _context5.sent;
                 console.log(response);
 
                 if (!(response != false)) {
-                  _context3.next = 16;
+                  _context5.next = 16;
                   break;
                 }
 
-                _context3.next = 12;
+                _context5.next = 12;
                 return this.loaddata();
 
               case 12:
                 this.close();
                 this.showAlert('success', 'Sukses Update Password');
-                _context3.next = 17;
+                _context5.next = 17;
                 break;
 
               case 16:
                 this.showAlert('error', 'Password Lama Anda Salah');
 
               case 17:
-                _context3.next = 19;
+                _context5.next = 19;
                 break;
 
               case 19:
-                _context3.next = 25;
+                _context5.next = 25;
                 break;
 
               case 21:
-                _context3.prev = 21;
-                _context3.t0 = _context3["catch"](1);
-                console.log(_context3.t0);
+                _context5.prev = 21;
+                _context5.t0 = _context5["catch"](1);
+                console.log(_context5.t0);
                 this.showAlert('error', 'Konfirmasi Password Anda Tidak Sesuai');
 
               case 25:
               case "end":
-                return _context3.stop();
+                return _context5.stop();
             }
           }
-        }, _callee3, this, [[1, 21]]);
+        }, _callee5, this, [[1, 21]]);
       }));
 
       function changePassword() {
@@ -17949,7 +19538,7 @@ var render = function() {
             "v-layout",
             { staticClass: "mb-3", attrs: { row: "" } },
             [
-              this.Id_Akun == 1
+              this.Divisi == "Admin"
                 ? _c(
                     "v-btn",
                     {
@@ -17961,7 +19550,7 @@ var render = function() {
                       },
                       on: {
                         click: function($event) {
-                          _vm.addDialog2 = true
+                          return _vm.addProjectDialog()
                         }
                       },
                       slot: "activator"
@@ -18064,6 +19653,19 @@ var render = function() {
                                         }
                                       },
                                       [_vm._v("Edit")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: { small: "" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.deleteProjectAll(project)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Delete")]
                                     )
                                   ],
                                   1
@@ -18104,7 +19706,7 @@ var render = function() {
                                     "v-flex",
                                     {
                                       staticClass: "pl-2",
-                                      attrs: { xs12: "", sm6: "", md2: "" }
+                                      attrs: { xs12: "", sm12: "", md2: "" }
                                     },
                                     [
                                       _c("v-select", {
@@ -18136,7 +19738,7 @@ var render = function() {
                                     "v-flex",
                                     {
                                       staticClass: "pl-2",
-                                      attrs: { xs12: "", sm6: "", md2: "" }
+                                      attrs: { xs12: "", sm12: "", md2: "" }
                                     },
                                     [
                                       _c("v-select", {
@@ -18168,7 +19770,7 @@ var render = function() {
                                     "v-flex",
                                     {
                                       staticClass: "pl-2",
-                                      attrs: { xs12: "", sm6: "", md2: "" }
+                                      attrs: { xs12: "", sm12: "", md2: "" }
                                     },
                                     [
                                       _c("v-select", {
@@ -18250,7 +19852,7 @@ var render = function() {
                                     [
                                       _c(
                                         "v-flex",
-                                        { attrs: { xs12: "", md4: "" } },
+                                        { attrs: { xs12: "", md2: "" } },
                                         [
                                           _c(
                                             "div",
@@ -18269,7 +19871,7 @@ var render = function() {
                                       _c(
                                         "v-flex",
                                         {
-                                          attrs: { xs6: "", sm4: "", md2: "" }
+                                          attrs: { xs6: "", sm4: "", md4: "" }
                                         },
                                         [
                                           _c(
@@ -22893,7 +24495,7 @@ var render = function() {
                                                                             "v-flex",
                                                                             {
                                                                               attrs: {
-                                                                                xs3:
+                                                                                xs4:
                                                                                   ""
                                                                               }
                                                                             },
@@ -22901,10 +24503,136 @@ var render = function() {
                                                                               _c(
                                                                                 "v-select",
                                                                                 {
+                                                                                  staticClass:
+                                                                                    "mx-1",
                                                                                   attrs: {
                                                                                     items:
                                                                                       _vm
                                                                                         .editProject
+                                                                                        .All_Divisi,
+                                                                                    "item-text":
+                                                                                      "Nama",
+                                                                                    "item-value":
+                                                                                      "Nama",
+                                                                                    box:
+                                                                                      "",
+                                                                                    label:
+                                                                                      "Divisi"
+                                                                                  },
+                                                                                  on: {
+                                                                                    change: function(
+                                                                                      $event
+                                                                                    ) {
+                                                                                      return _vm.getSubDivisionSubTaskForm(
+                                                                                        _vm.editProject
+                                                                                      )
+                                                                                    }
+                                                                                  },
+                                                                                  model: {
+                                                                                    value:
+                                                                                      _vm
+                                                                                        .subtaskformfilter
+                                                                                        .Divisi,
+                                                                                    callback: function(
+                                                                                      $$v
+                                                                                    ) {
+                                                                                      _vm.$set(
+                                                                                        _vm.subtaskformfilter,
+                                                                                        "Divisi",
+                                                                                        $$v
+                                                                                      )
+                                                                                    },
+                                                                                    expression:
+                                                                                      "subtaskformfilter.Divisi"
+                                                                                  }
+                                                                                }
+                                                                              )
+                                                                            ],
+                                                                            1
+                                                                          ),
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "v-flex",
+                                                                            {
+                                                                              attrs: {
+                                                                                xs4:
+                                                                                  ""
+                                                                              }
+                                                                            },
+                                                                            [
+                                                                              _c(
+                                                                                "v-select",
+                                                                                {
+                                                                                  staticClass:
+                                                                                    "mx-1",
+                                                                                  attrs: {
+                                                                                    items:
+                                                                                      _vm
+                                                                                        .subtaskformfilter
+                                                                                        .All_SubDivisi,
+                                                                                    "item-text":
+                                                                                      "Nama",
+                                                                                    "item-value":
+                                                                                      "Nama",
+                                                                                    box:
+                                                                                      "",
+                                                                                    label:
+                                                                                      "Sub Divisi"
+                                                                                  },
+                                                                                  on: {
+                                                                                    change: function(
+                                                                                      $event
+                                                                                    ) {
+                                                                                      return _vm.getTaskSubTaskForm(
+                                                                                        _vm.editProject
+                                                                                      )
+                                                                                    }
+                                                                                  },
+                                                                                  model: {
+                                                                                    value:
+                                                                                      _vm
+                                                                                        .subtaskformfilter
+                                                                                        .SubDivisi,
+                                                                                    callback: function(
+                                                                                      $$v
+                                                                                    ) {
+                                                                                      _vm.$set(
+                                                                                        _vm.subtaskformfilter,
+                                                                                        "SubDivisi",
+                                                                                        $$v
+                                                                                      )
+                                                                                    },
+                                                                                    expression:
+                                                                                      "subtaskformfilter.SubDivisi"
+                                                                                  }
+                                                                                }
+                                                                              )
+                                                                            ],
+                                                                            1
+                                                                          ),
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "v-flex",
+                                                                            {
+                                                                              attrs: {
+                                                                                xs4:
+                                                                                  ""
+                                                                              }
+                                                                            },
+                                                                            [
+                                                                              _c(
+                                                                                "v-select",
+                                                                                {
+                                                                                  staticClass:
+                                                                                    "mx-1",
+                                                                                  attrs: {
+                                                                                    items:
+                                                                                      _vm
+                                                                                        .subtaskformfilter
                                                                                         .All_Task,
                                                                                     "item-text":
                                                                                       "Nama",
@@ -22936,227 +24664,6 @@ var render = function() {
                                                                               )
                                                                             ],
                                                                             1
-                                                                          ),
-                                                                          _vm._v(
-                                                                            " "
-                                                                          ),
-                                                                          _c(
-                                                                            "v-flex",
-                                                                            {
-                                                                              attrs: {
-                                                                                xs3:
-                                                                                  ""
-                                                                              }
-                                                                            },
-                                                                            [
-                                                                              _c(
-                                                                                "v-text-field",
-                                                                                {
-                                                                                  staticClass:
-                                                                                    "mx-1",
-                                                                                  attrs: {
-                                                                                    label:
-                                                                                      "Name",
-                                                                                    box:
-                                                                                      ""
-                                                                                  },
-                                                                                  model: {
-                                                                                    value:
-                                                                                      _vm
-                                                                                        .subtaskform
-                                                                                        .Nama,
-                                                                                    callback: function(
-                                                                                      $$v
-                                                                                    ) {
-                                                                                      _vm.$set(
-                                                                                        _vm.subtaskform,
-                                                                                        "Nama",
-                                                                                        $$v
-                                                                                      )
-                                                                                    },
-                                                                                    expression:
-                                                                                      "subtaskform.Nama"
-                                                                                  }
-                                                                                }
-                                                                              )
-                                                                            ],
-                                                                            1
-                                                                          ),
-                                                                          _vm._v(
-                                                                            " "
-                                                                          ),
-                                                                          _c(
-                                                                            "v-flex",
-                                                                            {
-                                                                              attrs: {
-                                                                                xs3:
-                                                                                  ""
-                                                                              }
-                                                                            },
-                                                                            [
-                                                                              _c(
-                                                                                "v-text-field",
-                                                                                {
-                                                                                  staticClass:
-                                                                                    "mx-1",
-                                                                                  attrs: {
-                                                                                    label:
-                                                                                      "Contribute",
-                                                                                    box:
-                                                                                      ""
-                                                                                  },
-                                                                                  model: {
-                                                                                    value:
-                                                                                      _vm
-                                                                                        .subtaskform
-                                                                                        .Persentase,
-                                                                                    callback: function(
-                                                                                      $$v
-                                                                                    ) {
-                                                                                      _vm.$set(
-                                                                                        _vm.subtaskform,
-                                                                                        "Persentase",
-                                                                                        $$v
-                                                                                      )
-                                                                                    },
-                                                                                    expression:
-                                                                                      "subtaskform.Persentase"
-                                                                                  }
-                                                                                }
-                                                                              )
-                                                                            ],
-                                                                            1
-                                                                          ),
-                                                                          _vm._v(
-                                                                            " "
-                                                                          ),
-                                                                          _c(
-                                                                            "v-flex",
-                                                                            {
-                                                                              attrs: {
-                                                                                xs3:
-                                                                                  ""
-                                                                              }
-                                                                            },
-                                                                            [
-                                                                              _c(
-                                                                                "v-menu",
-                                                                                {
-                                                                                  attrs: {
-                                                                                    "close-on-content-click": false,
-                                                                                    "nudge-right": 40,
-                                                                                    transition:
-                                                                                      "scale-transition",
-                                                                                    "offset-y":
-                                                                                      "",
-                                                                                    "full-width":
-                                                                                      "",
-                                                                                    "min-width":
-                                                                                      "290px",
-                                                                                    readonly:
-                                                                                      ""
-                                                                                  },
-                                                                                  scopedSlots: _vm._u(
-                                                                                    [
-                                                                                      {
-                                                                                        key:
-                                                                                          "activator",
-                                                                                        fn: function(
-                                                                                          ref
-                                                                                        ) {
-                                                                                          var on =
-                                                                                            ref.on
-                                                                                          return [
-                                                                                            _c(
-                                                                                              "v-text-field",
-                                                                                              _vm._g(
-                                                                                                {
-                                                                                                  staticClass:
-                                                                                                    "mx-1",
-                                                                                                  attrs: {
-                                                                                                    label:
-                                                                                                      "Target Date",
-                                                                                                    box:
-                                                                                                      "",
-                                                                                                    readonly:
-                                                                                                      ""
-                                                                                                  },
-                                                                                                  model: {
-                                                                                                    value:
-                                                                                                      _vm
-                                                                                                        .subtaskform
-                                                                                                        .Tanggal_Selesai,
-                                                                                                    callback: function(
-                                                                                                      $$v
-                                                                                                    ) {
-                                                                                                      _vm.$set(
-                                                                                                        _vm.subtaskform,
-                                                                                                        "Tanggal_Selesai",
-                                                                                                        $$v
-                                                                                                      )
-                                                                                                    },
-                                                                                                    expression:
-                                                                                                      "subtaskform.Tanggal_Selesai"
-                                                                                                  }
-                                                                                                },
-                                                                                                on
-                                                                                              )
-                                                                                            )
-                                                                                          ]
-                                                                                        }
-                                                                                      }
-                                                                                    ]
-                                                                                  ),
-                                                                                  model: {
-                                                                                    value:
-                                                                                      _vm.dateSubTask1,
-                                                                                    callback: function(
-                                                                                      $$v
-                                                                                    ) {
-                                                                                      _vm.dateSubTask1 = $$v
-                                                                                    },
-                                                                                    expression:
-                                                                                      "dateSubTask1"
-                                                                                  }
-                                                                                },
-                                                                                [
-                                                                                  _vm._v(
-                                                                                    " "
-                                                                                  ),
-                                                                                  _c(
-                                                                                    "v-date-picker",
-                                                                                    {
-                                                                                      on: {
-                                                                                        input: function(
-                                                                                          $event
-                                                                                        ) {
-                                                                                          _vm.dateSubTask1 = false
-                                                                                        }
-                                                                                      },
-                                                                                      model: {
-                                                                                        value:
-                                                                                          _vm
-                                                                                            .subtaskform
-                                                                                            .Tanggal_Selesai,
-                                                                                        callback: function(
-                                                                                          $$v
-                                                                                        ) {
-                                                                                          _vm.$set(
-                                                                                            _vm.subtaskform,
-                                                                                            "Tanggal_Selesai",
-                                                                                            $$v
-                                                                                          )
-                                                                                        },
-                                                                                        expression:
-                                                                                          "subtaskform.Tanggal_Selesai"
-                                                                                      }
-                                                                                    }
-                                                                                  )
-                                                                                ],
-                                                                                1
-                                                                              )
-                                                                            ],
-                                                                            1
                                                                           )
                                                                         ],
                                                                         1
@@ -23169,7 +24676,7 @@ var render = function() {
                                                                     "v-container",
                                                                     {
                                                                       staticClass:
-                                                                        "pt-0"
+                                                                        "py-0"
                                                                     },
                                                                     [
                                                                       _c(
@@ -23191,32 +24698,266 @@ var render = function() {
                                                                             },
                                                                             [
                                                                               _c(
-                                                                                "v-textarea",
+                                                                                "v-container",
                                                                                 {
-                                                                                  attrs: {
-                                                                                    outline:
-                                                                                      "",
-                                                                                    label:
-                                                                                      "Description"
-                                                                                  },
-                                                                                  model: {
-                                                                                    value:
-                                                                                      _vm
-                                                                                        .subtaskform
-                                                                                        .Deskripsi,
-                                                                                    callback: function(
-                                                                                      $$v
-                                                                                    ) {
-                                                                                      _vm.$set(
-                                                                                        _vm.subtaskform,
-                                                                                        "Deskripsi",
-                                                                                        $$v
-                                                                                      )
+                                                                                  staticClass:
+                                                                                    "pa-0"
+                                                                                },
+                                                                                [
+                                                                                  _c(
+                                                                                    "v-layout",
+                                                                                    {
+                                                                                      attrs: {
+                                                                                        row:
+                                                                                          ""
+                                                                                      }
                                                                                     },
-                                                                                    expression:
-                                                                                      "subtaskform.Deskripsi"
-                                                                                  }
-                                                                                }
+                                                                                    [
+                                                                                      _c(
+                                                                                        "v-flex",
+                                                                                        {
+                                                                                          attrs: {
+                                                                                            xs12:
+                                                                                              ""
+                                                                                          }
+                                                                                        },
+                                                                                        [
+                                                                                          _c(
+                                                                                            "v-text-field",
+                                                                                            {
+                                                                                              staticClass:
+                                                                                                "mx-1",
+                                                                                              attrs: {
+                                                                                                label:
+                                                                                                  "Name",
+                                                                                                box:
+                                                                                                  ""
+                                                                                              },
+                                                                                              model: {
+                                                                                                value:
+                                                                                                  _vm
+                                                                                                    .subtaskform
+                                                                                                    .Nama,
+                                                                                                callback: function(
+                                                                                                  $$v
+                                                                                                ) {
+                                                                                                  _vm.$set(
+                                                                                                    _vm.subtaskform,
+                                                                                                    "Nama",
+                                                                                                    $$v
+                                                                                                  )
+                                                                                                },
+                                                                                                expression:
+                                                                                                  "subtaskform.Nama"
+                                                                                              }
+                                                                                            }
+                                                                                          )
+                                                                                        ],
+                                                                                        1
+                                                                                      )
+                                                                                    ],
+                                                                                    1
+                                                                                  )
+                                                                                ],
+                                                                                1
+                                                                              ),
+                                                                              _vm._v(
+                                                                                " "
+                                                                              ),
+                                                                              _c(
+                                                                                "v-container",
+                                                                                {
+                                                                                  staticClass:
+                                                                                    "pa-0"
+                                                                                },
+                                                                                [
+                                                                                  _c(
+                                                                                    "v-layout",
+                                                                                    {
+                                                                                      attrs: {
+                                                                                        row:
+                                                                                          ""
+                                                                                      }
+                                                                                    },
+                                                                                    [
+                                                                                      _c(
+                                                                                        "v-flex",
+                                                                                        {
+                                                                                          attrs: {
+                                                                                            xs6:
+                                                                                              ""
+                                                                                          }
+                                                                                        },
+                                                                                        [
+                                                                                          _c(
+                                                                                            "v-text-field",
+                                                                                            {
+                                                                                              staticClass:
+                                                                                                "mx-1",
+                                                                                              attrs: {
+                                                                                                label:
+                                                                                                  "Contribute",
+                                                                                                box:
+                                                                                                  ""
+                                                                                              },
+                                                                                              model: {
+                                                                                                value:
+                                                                                                  _vm
+                                                                                                    .subtaskform
+                                                                                                    .Persentase,
+                                                                                                callback: function(
+                                                                                                  $$v
+                                                                                                ) {
+                                                                                                  _vm.$set(
+                                                                                                    _vm.subtaskform,
+                                                                                                    "Persentase",
+                                                                                                    $$v
+                                                                                                  )
+                                                                                                },
+                                                                                                expression:
+                                                                                                  "subtaskform.Persentase"
+                                                                                              }
+                                                                                            }
+                                                                                          )
+                                                                                        ],
+                                                                                        1
+                                                                                      ),
+                                                                                      _vm._v(
+                                                                                        " "
+                                                                                      ),
+                                                                                      _c(
+                                                                                        "v-flex",
+                                                                                        {
+                                                                                          attrs: {
+                                                                                            xs6:
+                                                                                              ""
+                                                                                          }
+                                                                                        },
+                                                                                        [
+                                                                                          _c(
+                                                                                            "v-menu",
+                                                                                            {
+                                                                                              attrs: {
+                                                                                                "close-on-content-click": false,
+                                                                                                "nudge-right": 40,
+                                                                                                transition:
+                                                                                                  "scale-transition",
+                                                                                                "offset-y":
+                                                                                                  "",
+                                                                                                "full-width":
+                                                                                                  "",
+                                                                                                "min-width":
+                                                                                                  "290px",
+                                                                                                readonly:
+                                                                                                  ""
+                                                                                              },
+                                                                                              scopedSlots: _vm._u(
+                                                                                                [
+                                                                                                  {
+                                                                                                    key:
+                                                                                                      "activator",
+                                                                                                    fn: function(
+                                                                                                      ref
+                                                                                                    ) {
+                                                                                                      var on =
+                                                                                                        ref.on
+                                                                                                      return [
+                                                                                                        _c(
+                                                                                                          "v-text-field",
+                                                                                                          _vm._g(
+                                                                                                            {
+                                                                                                              staticClass:
+                                                                                                                "mx-1",
+                                                                                                              attrs: {
+                                                                                                                label:
+                                                                                                                  "Target Date",
+                                                                                                                box:
+                                                                                                                  "",
+                                                                                                                readonly:
+                                                                                                                  ""
+                                                                                                              },
+                                                                                                              model: {
+                                                                                                                value:
+                                                                                                                  _vm
+                                                                                                                    .subtaskform
+                                                                                                                    .Tanggal_Selesai,
+                                                                                                                callback: function(
+                                                                                                                  $$v
+                                                                                                                ) {
+                                                                                                                  _vm.$set(
+                                                                                                                    _vm.subtaskform,
+                                                                                                                    "Tanggal_Selesai",
+                                                                                                                    $$v
+                                                                                                                  )
+                                                                                                                },
+                                                                                                                expression:
+                                                                                                                  "subtaskform.Tanggal_Selesai"
+                                                                                                              }
+                                                                                                            },
+                                                                                                            on
+                                                                                                          )
+                                                                                                        )
+                                                                                                      ]
+                                                                                                    }
+                                                                                                  }
+                                                                                                ]
+                                                                                              ),
+                                                                                              model: {
+                                                                                                value:
+                                                                                                  _vm.dateSubTask1,
+                                                                                                callback: function(
+                                                                                                  $$v
+                                                                                                ) {
+                                                                                                  _vm.dateSubTask1 = $$v
+                                                                                                },
+                                                                                                expression:
+                                                                                                  "dateSubTask1"
+                                                                                              }
+                                                                                            },
+                                                                                            [
+                                                                                              _vm._v(
+                                                                                                " "
+                                                                                              ),
+                                                                                              _c(
+                                                                                                "v-date-picker",
+                                                                                                {
+                                                                                                  on: {
+                                                                                                    input: function(
+                                                                                                      $event
+                                                                                                    ) {
+                                                                                                      _vm.dateSubTask1 = false
+                                                                                                    }
+                                                                                                  },
+                                                                                                  model: {
+                                                                                                    value:
+                                                                                                      _vm
+                                                                                                        .subtaskform
+                                                                                                        .Tanggal_Selesai,
+                                                                                                    callback: function(
+                                                                                                      $$v
+                                                                                                    ) {
+                                                                                                      _vm.$set(
+                                                                                                        _vm.subtaskform,
+                                                                                                        "Tanggal_Selesai",
+                                                                                                        $$v
+                                                                                                      )
+                                                                                                    },
+                                                                                                    expression:
+                                                                                                      "subtaskform.Tanggal_Selesai"
+                                                                                                  }
+                                                                                                }
+                                                                                              )
+                                                                                            ],
+                                                                                            1
+                                                                                          )
+                                                                                        ],
+                                                                                        1
+                                                                                      )
+                                                                                    ],
+                                                                                    1
+                                                                                  )
+                                                                                ],
+                                                                                1
                                                                               )
                                                                             ],
                                                                             1
@@ -23244,27 +24985,60 @@ var render = function() {
                                                                             "v-flex",
                                                                             {
                                                                               attrs: {
-                                                                                xs2:
+                                                                                xs6:
                                                                                   ""
                                                                               }
                                                                             },
                                                                             [
                                                                               _c(
-                                                                                "v-btn",
+                                                                                "v-container",
                                                                                 {
-                                                                                  on: {
-                                                                                    click: function(
-                                                                                      $event
-                                                                                    ) {
-                                                                                      return _vm.addSubTaskForm()
-                                                                                    }
-                                                                                  }
+                                                                                  staticClass:
+                                                                                    "pt-0"
                                                                                 },
                                                                                 [
-                                                                                  _vm._v(
-                                                                                    "Add"
+                                                                                  _c(
+                                                                                    "v-flex",
+                                                                                    {
+                                                                                      attrs: {
+                                                                                        xs12:
+                                                                                          ""
+                                                                                      }
+                                                                                    },
+                                                                                    [
+                                                                                      _c(
+                                                                                        "v-textarea",
+                                                                                        {
+                                                                                          attrs: {
+                                                                                            outline:
+                                                                                              "",
+                                                                                            label:
+                                                                                              "Description"
+                                                                                          },
+                                                                                          model: {
+                                                                                            value:
+                                                                                              _vm
+                                                                                                .subtaskform
+                                                                                                .Deskripsi,
+                                                                                            callback: function(
+                                                                                              $$v
+                                                                                            ) {
+                                                                                              _vm.$set(
+                                                                                                _vm.subtaskform,
+                                                                                                "Deskripsi",
+                                                                                                $$v
+                                                                                              )
+                                                                                            },
+                                                                                            expression:
+                                                                                              "subtaskform.Deskripsi"
+                                                                                          }
+                                                                                        }
+                                                                                      )
+                                                                                    ],
+                                                                                    1
                                                                                   )
-                                                                                ]
+                                                                                ],
+                                                                                1
                                                                               )
                                                                             ],
                                                                             1
@@ -23277,712 +25051,815 @@ var render = function() {
                                                                   ),
                                                                   _vm._v(" "),
                                                                   _c(
-                                                                    "v-data-table",
+                                                                    "v-container",
                                                                     {
                                                                       attrs: {
-                                                                        headers:
-                                                                          _vm.subtask_headers,
-                                                                        items:
-                                                                          _vm
-                                                                            .editProject
-                                                                            .All_SubTask
-                                                                      },
-                                                                      scopedSlots: _vm._u(
+                                                                        "pt-0":
+                                                                          ""
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "v-flex",
+                                                                        {
+                                                                          attrs: {
+                                                                            xs12:
+                                                                              ""
+                                                                          }
+                                                                        },
                                                                         [
-                                                                          {
-                                                                            key:
-                                                                              "items",
-                                                                            fn: function(
-                                                                              props
-                                                                            ) {
-                                                                              return [
-                                                                                _c(
-                                                                                  "td",
-                                                                                  [
-                                                                                    _c(
-                                                                                      "v-edit-dialog",
-                                                                                      {
-                                                                                        attrs: {
-                                                                                          "return-value":
-                                                                                            props
-                                                                                              .item
-                                                                                              .Task,
-                                                                                          lazy:
-                                                                                            "",
-                                                                                          large:
-                                                                                            "",
-                                                                                          persistent:
-                                                                                            ""
-                                                                                        },
-                                                                                        on: {
-                                                                                          "update:returnValue": function(
-                                                                                            $event
-                                                                                          ) {
-                                                                                            return _vm.$set(
-                                                                                              props.item,
-                                                                                              "Task",
-                                                                                              $event
-                                                                                            )
-                                                                                          },
-                                                                                          "update:return-value": function(
-                                                                                            $event
-                                                                                          ) {
-                                                                                            return _vm.$set(
-                                                                                              props.item,
-                                                                                              "Task",
-                                                                                              $event
-                                                                                            )
-                                                                                          }
-                                                                                        },
-                                                                                        scopedSlots: _vm._u(
-                                                                                          [
-                                                                                            {
-                                                                                              key:
-                                                                                                "input",
-                                                                                              fn: function() {
-                                                                                                return [
-                                                                                                  _c(
-                                                                                                    "v-select",
-                                                                                                    {
-                                                                                                      attrs: {
-                                                                                                        items:
-                                                                                                          _vm
-                                                                                                            .editProject
-                                                                                                            .All_Task,
-                                                                                                        "item-text":
-                                                                                                          "nama",
-                                                                                                        "item-value":
-                                                                                                          "nama",
-                                                                                                        box:
-                                                                                                          "",
-                                                                                                        label:
-                                                                                                          "Task"
-                                                                                                      },
-                                                                                                      model: {
-                                                                                                        value:
-                                                                                                          props
-                                                                                                            .item
-                                                                                                            .Task,
-                                                                                                        callback: function(
-                                                                                                          $$v
-                                                                                                        ) {
-                                                                                                          _vm.$set(
-                                                                                                            props.item,
-                                                                                                            "Task",
-                                                                                                            $$v
-                                                                                                          )
-                                                                                                        },
-                                                                                                        expression:
-                                                                                                          "props.item.Task"
-                                                                                                      }
-                                                                                                    }
-                                                                                                  )
-                                                                                                ]
-                                                                                              },
-                                                                                              proxy: true
-                                                                                            }
-                                                                                          ],
-                                                                                          null,
-                                                                                          true
-                                                                                        )
-                                                                                      },
-                                                                                      [
-                                                                                        _c(
-                                                                                          "div",
-                                                                                          [
-                                                                                            _vm._v(
-                                                                                              _vm._s(
-                                                                                                props
-                                                                                                  .item
-                                                                                                  .Task
-                                                                                              )
-                                                                                            )
-                                                                                          ]
-                                                                                        )
-                                                                                      ]
-                                                                                    )
-                                                                                  ],
-                                                                                  1
-                                                                                ),
-                                                                                _vm._v(
-                                                                                  " "
-                                                                                ),
-                                                                                _c(
-                                                                                  "td",
-                                                                                  [
-                                                                                    _c(
-                                                                                      "v-edit-dialog",
-                                                                                      {
-                                                                                        attrs: {
-                                                                                          "return-value":
-                                                                                            props
-                                                                                              .item
-                                                                                              .Nama,
-                                                                                          lazy:
-                                                                                            "",
-                                                                                          large:
-                                                                                            "",
-                                                                                          persistent:
-                                                                                            ""
-                                                                                        },
-                                                                                        on: {
-                                                                                          "update:returnValue": function(
-                                                                                            $event
-                                                                                          ) {
-                                                                                            return _vm.$set(
-                                                                                              props.item,
-                                                                                              "Nama",
-                                                                                              $event
-                                                                                            )
-                                                                                          },
-                                                                                          "update:return-value": function(
-                                                                                            $event
-                                                                                          ) {
-                                                                                            return _vm.$set(
-                                                                                              props.item,
-                                                                                              "Nama",
-                                                                                              $event
-                                                                                            )
-                                                                                          }
-                                                                                        },
-                                                                                        scopedSlots: _vm._u(
-                                                                                          [
-                                                                                            {
-                                                                                              key:
-                                                                                                "input",
-                                                                                              fn: function() {
-                                                                                                return [
-                                                                                                  _c(
-                                                                                                    "v-text-field",
-                                                                                                    {
-                                                                                                      attrs: {
-                                                                                                        label:
-                                                                                                          "Edit",
-                                                                                                        "single-line":
-                                                                                                          "",
-                                                                                                        counter:
-                                                                                                          ""
-                                                                                                      },
-                                                                                                      model: {
-                                                                                                        value:
-                                                                                                          props
-                                                                                                            .item
-                                                                                                            .Nama,
-                                                                                                        callback: function(
-                                                                                                          $$v
-                                                                                                        ) {
-                                                                                                          _vm.$set(
-                                                                                                            props.item,
-                                                                                                            "Nama",
-                                                                                                            $$v
-                                                                                                          )
-                                                                                                        },
-                                                                                                        expression:
-                                                                                                          "props.item.Nama"
-                                                                                                      }
-                                                                                                    }
-                                                                                                  )
-                                                                                                ]
-                                                                                              },
-                                                                                              proxy: true
-                                                                                            }
-                                                                                          ],
-                                                                                          null,
-                                                                                          true
-                                                                                        )
-                                                                                      },
-                                                                                      [
-                                                                                        _c(
-                                                                                          "div",
-                                                                                          [
-                                                                                            _vm._v(
-                                                                                              _vm._s(
-                                                                                                props
-                                                                                                  .item
-                                                                                                  .Nama
-                                                                                              )
-                                                                                            )
-                                                                                          ]
-                                                                                        )
-                                                                                      ]
-                                                                                    )
-                                                                                  ],
-                                                                                  1
-                                                                                ),
-                                                                                _vm._v(
-                                                                                  " "
-                                                                                ),
-                                                                                _c(
-                                                                                  "td",
+                                                                          _c(
+                                                                            "v-btn",
+                                                                            {
+                                                                              style: {
+                                                                                left:
+                                                                                  "50%",
+                                                                                transform:
+                                                                                  "translateX(-50%)"
+                                                                              },
+                                                                              on: {
+                                                                                click: function(
+                                                                                  $event
+                                                                                ) {
+                                                                                  return _vm.addSubTaskForm()
+                                                                                }
+                                                                              }
+                                                                            },
+                                                                            [
+                                                                              _vm._v(
+                                                                                "Add"
+                                                                              )
+                                                                            ]
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      )
+                                                                    ],
+                                                                    1
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "v-card",
+                                                                    [
+                                                                      _c(
+                                                                        "v-spacer"
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-card-text",
+                                                                        [
+                                                                          _c(
+                                                                            "v-text-field",
+                                                                            {
+                                                                              staticStyle: {
+                                                                                width:
+                                                                                  "30%"
+                                                                              },
+                                                                              attrs: {
+                                                                                "pa-5":
+                                                                                  "",
+                                                                                "append-icon":
+                                                                                  "search",
+                                                                                label:
+                                                                                  "Search",
+                                                                                "single-line":
+                                                                                  "",
+                                                                                "hide-details":
+                                                                                  ""
+                                                                              },
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm.searchsubtask,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.searchsubtask = $$v
+                                                                                },
+                                                                                expression:
+                                                                                  "searchsubtask"
+                                                                              }
+                                                                            }
+                                                                          ),
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "v-data-table",
+                                                                            {
+                                                                              attrs: {
+                                                                                headers:
+                                                                                  _vm.subtask_headers,
+                                                                                items:
+                                                                                  _vm
+                                                                                    .editProject
+                                                                                    .All_SubTask,
+                                                                                search:
+                                                                                  _vm.searchsubtask
+                                                                              },
+                                                                              scopedSlots: _vm._u(
+                                                                                [
                                                                                   {
-                                                                                    staticClass:
-                                                                                      "text-xs-center"
-                                                                                  },
-                                                                                  [
-                                                                                    _c(
-                                                                                      "v-edit-dialog",
-                                                                                      {
-                                                                                        attrs: {
-                                                                                          "return-value":
-                                                                                            props
-                                                                                              .item
-                                                                                              .Persentase,
-                                                                                          large:
-                                                                                            "",
-                                                                                          lazy:
-                                                                                            "",
-                                                                                          persistent:
-                                                                                            ""
-                                                                                        },
-                                                                                        on: {
-                                                                                          "update:returnValue": function(
-                                                                                            $event
-                                                                                          ) {
-                                                                                            return _vm.$set(
-                                                                                              props.item,
-                                                                                              "Persentase",
-                                                                                              $event
-                                                                                            )
-                                                                                          },
-                                                                                          "update:return-value": function(
-                                                                                            $event
-                                                                                          ) {
-                                                                                            return _vm.$set(
-                                                                                              props.item,
-                                                                                              "Persentase",
-                                                                                              $event
-                                                                                            )
-                                                                                          }
-                                                                                        },
-                                                                                        scopedSlots: _vm._u(
-                                                                                          [
-                                                                                            {
-                                                                                              key:
-                                                                                                "input",
-                                                                                              fn: function() {
-                                                                                                return [
-                                                                                                  _c(
-                                                                                                    "v-text-field",
-                                                                                                    {
-                                                                                                      attrs: {
-                                                                                                        label:
-                                                                                                          "Edit",
-                                                                                                        "single-line":
-                                                                                                          "",
-                                                                                                        counter:
-                                                                                                          "",
-                                                                                                        autofocus:
-                                                                                                          ""
-                                                                                                      },
-                                                                                                      model: {
-                                                                                                        value:
-                                                                                                          props
-                                                                                                            .item
-                                                                                                            .Persentase,
-                                                                                                        callback: function(
-                                                                                                          $$v
-                                                                                                        ) {
-                                                                                                          _vm.$set(
-                                                                                                            props.item,
-                                                                                                            "Persentase",
-                                                                                                            $$v
-                                                                                                          )
-                                                                                                        },
-                                                                                                        expression:
-                                                                                                          "props.item.Persentase"
-                                                                                                      }
-                                                                                                    }
-                                                                                                  )
-                                                                                                ]
-                                                                                              },
-                                                                                              proxy: true
-                                                                                            }
-                                                                                          ],
-                                                                                          null,
-                                                                                          true
-                                                                                        )
-                                                                                      },
-                                                                                      [
+                                                                                    key:
+                                                                                      "items",
+                                                                                    fn: function(
+                                                                                      props
+                                                                                    ) {
+                                                                                      return [
                                                                                         _c(
-                                                                                          "div",
+                                                                                          "td",
                                                                                           [
-                                                                                            _vm._v(
-                                                                                              _vm._s(
-                                                                                                props
-                                                                                                  .item
-                                                                                                  .Persentase
-                                                                                              )
-                                                                                            )
-                                                                                          ]
-                                                                                        )
-                                                                                      ]
-                                                                                    )
-                                                                                  ],
-                                                                                  1
-                                                                                ),
-                                                                                _vm._v(
-                                                                                  " "
-                                                                                ),
-                                                                                _c(
-                                                                                  "td",
-                                                                                  {
-                                                                                    staticClass:
-                                                                                      "text-xs-center"
-                                                                                  },
-                                                                                  [
-                                                                                    _c(
-                                                                                      "v-edit-dialog",
-                                                                                      {
-                                                                                        attrs: {
-                                                                                          "return-value":
-                                                                                            props
-                                                                                              .item
-                                                                                              .Tanggal_Selesai,
-                                                                                          large:
-                                                                                            "",
-                                                                                          lazy:
-                                                                                            "",
-                                                                                          persistent:
-                                                                                            ""
-                                                                                        },
-                                                                                        on: {
-                                                                                          "update:returnValue": function(
-                                                                                            $event
-                                                                                          ) {
-                                                                                            return _vm.$set(
-                                                                                              props.item,
-                                                                                              "Tanggal_Selesai",
-                                                                                              $event
-                                                                                            )
-                                                                                          },
-                                                                                          "update:return-value": function(
-                                                                                            $event
-                                                                                          ) {
-                                                                                            return _vm.$set(
-                                                                                              props.item,
-                                                                                              "Tanggal_Selesai",
-                                                                                              $event
-                                                                                            )
-                                                                                          }
-                                                                                        },
-                                                                                        scopedSlots: _vm._u(
-                                                                                          [
-                                                                                            {
-                                                                                              key:
-                                                                                                "input",
-                                                                                              fn: function() {
-                                                                                                return [
-                                                                                                  _c(
-                                                                                                    "v-menu",
+                                                                                            _c(
+                                                                                              "v-edit-dialog",
+                                                                                              {
+                                                                                                attrs: {
+                                                                                                  "return-value":
+                                                                                                    props
+                                                                                                      .item
+                                                                                                      .Task,
+                                                                                                  lazy:
+                                                                                                    "",
+                                                                                                  large:
+                                                                                                    "",
+                                                                                                  persistent:
+                                                                                                    ""
+                                                                                                },
+                                                                                                on: {
+                                                                                                  "update:returnValue": function(
+                                                                                                    $event
+                                                                                                  ) {
+                                                                                                    return _vm.$set(
+                                                                                                      props.item,
+                                                                                                      "Task",
+                                                                                                      $event
+                                                                                                    )
+                                                                                                  },
+                                                                                                  "update:return-value": function(
+                                                                                                    $event
+                                                                                                  ) {
+                                                                                                    return _vm.$set(
+                                                                                                      props.item,
+                                                                                                      "Task",
+                                                                                                      $event
+                                                                                                    )
+                                                                                                  }
+                                                                                                },
+                                                                                                scopedSlots: _vm._u(
+                                                                                                  [
                                                                                                     {
-                                                                                                      attrs: {
-                                                                                                        "close-on-content-click": false,
-                                                                                                        "nudge-right": 40,
-                                                                                                        transition:
-                                                                                                          "scale-transition",
-                                                                                                        "offset-y":
-                                                                                                          "",
-                                                                                                        "full-width":
-                                                                                                          "",
-                                                                                                        "min-width":
-                                                                                                          "290px",
-                                                                                                        readonly:
-                                                                                                          ""
-                                                                                                      },
-                                                                                                      scopedSlots: _vm._u(
-                                                                                                        [
-                                                                                                          {
-                                                                                                            key:
-                                                                                                              "activator",
-                                                                                                            fn: function(
-                                                                                                              ref
-                                                                                                            ) {
-                                                                                                              var on =
-                                                                                                                ref.on
-                                                                                                              return [
-                                                                                                                _c(
-                                                                                                                  "v-text-field",
-                                                                                                                  _vm._g(
-                                                                                                                    {
-                                                                                                                      staticClass:
-                                                                                                                        "mx-1",
-                                                                                                                      attrs: {
-                                                                                                                        label:
-                                                                                                                          "Target Date",
-                                                                                                                        box:
-                                                                                                                          "",
-                                                                                                                        readonly:
-                                                                                                                          ""
-                                                                                                                      },
-                                                                                                                      model: {
-                                                                                                                        value:
-                                                                                                                          props
-                                                                                                                            .item
-                                                                                                                            .Tanggal_Selesai,
-                                                                                                                        callback: function(
-                                                                                                                          $$v
-                                                                                                                        ) {
-                                                                                                                          _vm.$set(
-                                                                                                                            props.item,
-                                                                                                                            "Tanggal_Selesai",
-                                                                                                                            $$v
-                                                                                                                          )
-                                                                                                                        },
-                                                                                                                        expression:
-                                                                                                                          "props.item.Tanggal_Selesai"
-                                                                                                                      }
-                                                                                                                    },
-                                                                                                                    on
+                                                                                                      key:
+                                                                                                        "input",
+                                                                                                      fn: function() {
+                                                                                                        return [
+                                                                                                          _c(
+                                                                                                            "v-select",
+                                                                                                            {
+                                                                                                              attrs: {
+                                                                                                                items:
+                                                                                                                  _vm
+                                                                                                                    .editProject
+                                                                                                                    .All_Task,
+                                                                                                                "item-text":
+                                                                                                                  "Nama",
+                                                                                                                "item-value":
+                                                                                                                  "Nama",
+                                                                                                                box:
+                                                                                                                  "",
+                                                                                                                label:
+                                                                                                                  "Task"
+                                                                                                              },
+                                                                                                              model: {
+                                                                                                                value:
+                                                                                                                  props
+                                                                                                                    .item
+                                                                                                                    .Task,
+                                                                                                                callback: function(
+                                                                                                                  $$v
+                                                                                                                ) {
+                                                                                                                  _vm.$set(
+                                                                                                                    props.item,
+                                                                                                                    "Task",
+                                                                                                                    $$v
                                                                                                                   )
-                                                                                                                )
-                                                                                                              ]
+                                                                                                                },
+                                                                                                                expression:
+                                                                                                                  "props.item.Task"
+                                                                                                              }
                                                                                                             }
-                                                                                                          }
-                                                                                                        ],
-                                                                                                        null,
-                                                                                                        true
-                                                                                                      ),
-                                                                                                      model: {
-                                                                                                        value:
-                                                                                                          _vm.dateSubtask2,
-                                                                                                        callback: function(
-                                                                                                          $$v
-                                                                                                        ) {
-                                                                                                          _vm.dateSubtask2 = $$v
-                                                                                                        },
-                                                                                                        expression:
-                                                                                                          "dateSubtask2"
-                                                                                                      }
-                                                                                                    },
-                                                                                                    [
-                                                                                                      _vm._v(
-                                                                                                        " "
-                                                                                                      ),
-                                                                                                      _c(
-                                                                                                        "v-date-picker",
-                                                                                                        {
-                                                                                                          on: {
-                                                                                                            input: function(
-                                                                                                              $event
-                                                                                                            ) {
-                                                                                                              _vm.dateSubtask2 = false
-                                                                                                            }
-                                                                                                          },
-                                                                                                          model: {
-                                                                                                            value:
-                                                                                                              props
-                                                                                                                .item
-                                                                                                                .Tanggal_Selesai,
-                                                                                                            callback: function(
-                                                                                                              $$v
-                                                                                                            ) {
-                                                                                                              _vm.$set(
-                                                                                                                props.item,
-                                                                                                                "Tanggal_Selesai",
-                                                                                                                $$v
-                                                                                                              )
-                                                                                                            },
-                                                                                                            expression:
-                                                                                                              "props.item.Tanggal_Selesai"
-                                                                                                          }
-                                                                                                        }
-                                                                                                      )
-                                                                                                    ],
-                                                                                                    1
-                                                                                                  )
-                                                                                                ]
-                                                                                              },
-                                                                                              proxy: true
-                                                                                            }
-                                                                                          ],
-                                                                                          null,
-                                                                                          true
-                                                                                        )
-                                                                                      },
-                                                                                      [
-                                                                                        _c(
-                                                                                          "div",
-                                                                                          [
-                                                                                            _vm._v(
-                                                                                              _vm._s(
-                                                                                                props
-                                                                                                  .item
-                                                                                                  .Tanggal_Selesai
-                                                                                              )
-                                                                                            )
-                                                                                          ]
-                                                                                        )
-                                                                                      ]
-                                                                                    )
-                                                                                  ],
-                                                                                  1
-                                                                                ),
-                                                                                _vm._v(
-                                                                                  " "
-                                                                                ),
-                                                                                _c(
-                                                                                  "td",
-                                                                                  {
-                                                                                    staticClass:
-                                                                                      "text-xs-center"
-                                                                                  },
-                                                                                  [
-                                                                                    _c(
-                                                                                      "v-edit-dialog",
-                                                                                      {
-                                                                                        attrs: {
-                                                                                          "return-value":
-                                                                                            props
-                                                                                              .item
-                                                                                              .Deskripsi,
-                                                                                          large:
-                                                                                            "",
-                                                                                          lazy:
-                                                                                            "",
-                                                                                          persistent:
-                                                                                            ""
-                                                                                        },
-                                                                                        on: {
-                                                                                          "update:returnValue": function(
-                                                                                            $event
-                                                                                          ) {
-                                                                                            return _vm.$set(
-                                                                                              props.item,
-                                                                                              "Deskripsi",
-                                                                                              $event
-                                                                                            )
-                                                                                          },
-                                                                                          "update:return-value": function(
-                                                                                            $event
-                                                                                          ) {
-                                                                                            return _vm.$set(
-                                                                                              props.item,
-                                                                                              "Deskripsi",
-                                                                                              $event
-                                                                                            )
-                                                                                          }
-                                                                                        },
-                                                                                        scopedSlots: _vm._u(
-                                                                                          [
-                                                                                            {
-                                                                                              key:
-                                                                                                "input",
-                                                                                              fn: function() {
-                                                                                                return [
-                                                                                                  _c(
-                                                                                                    "v-textarea",
-                                                                                                    {
-                                                                                                      staticStyle: {
-                                                                                                        "min-width":
-                                                                                                          "350px"
-                                                                                                      },
-                                                                                                      attrs: {
-                                                                                                        outline:
-                                                                                                          "",
-                                                                                                        label:
-                                                                                                          "Edit"
-                                                                                                      },
-                                                                                                      model: {
-                                                                                                        value:
-                                                                                                          props
-                                                                                                            .item
-                                                                                                            .Deskripsi,
-                                                                                                        callback: function(
-                                                                                                          $$v
-                                                                                                        ) {
-                                                                                                          _vm.$set(
-                                                                                                            props.item,
-                                                                                                            "Deskripsi",
-                                                                                                            $$v
                                                                                                           )
-                                                                                                        },
-                                                                                                        expression:
-                                                                                                          "props.item.Deskripsi"
-                                                                                                      }
+                                                                                                        ]
+                                                                                                      },
+                                                                                                      proxy: true
                                                                                                     }
-                                                                                                  )
-                                                                                                ]
+                                                                                                  ],
+                                                                                                  null,
+                                                                                                  true
+                                                                                                )
                                                                                               },
-                                                                                              proxy: true
-                                                                                            }
+                                                                                              [
+                                                                                                _c(
+                                                                                                  "div",
+                                                                                                  [
+                                                                                                    _vm._v(
+                                                                                                      _vm._s(
+                                                                                                        props
+                                                                                                          .item
+                                                                                                          .Task
+                                                                                                      )
+                                                                                                    )
+                                                                                                  ]
+                                                                                                )
+                                                                                              ]
+                                                                                            )
                                                                                           ],
-                                                                                          null,
-                                                                                          true
-                                                                                        )
-                                                                                      },
-                                                                                      [
+                                                                                          1
+                                                                                        ),
+                                                                                        _vm._v(
+                                                                                          " "
+                                                                                        ),
                                                                                         _c(
-                                                                                          "div",
+                                                                                          "td",
+                                                                                          [
+                                                                                            _c(
+                                                                                              "v-edit-dialog",
+                                                                                              {
+                                                                                                attrs: {
+                                                                                                  "return-value":
+                                                                                                    props
+                                                                                                      .item
+                                                                                                      .Nama,
+                                                                                                  lazy:
+                                                                                                    "",
+                                                                                                  large:
+                                                                                                    "",
+                                                                                                  persistent:
+                                                                                                    ""
+                                                                                                },
+                                                                                                on: {
+                                                                                                  "update:returnValue": function(
+                                                                                                    $event
+                                                                                                  ) {
+                                                                                                    return _vm.$set(
+                                                                                                      props.item,
+                                                                                                      "Nama",
+                                                                                                      $event
+                                                                                                    )
+                                                                                                  },
+                                                                                                  "update:return-value": function(
+                                                                                                    $event
+                                                                                                  ) {
+                                                                                                    return _vm.$set(
+                                                                                                      props.item,
+                                                                                                      "Nama",
+                                                                                                      $event
+                                                                                                    )
+                                                                                                  }
+                                                                                                },
+                                                                                                scopedSlots: _vm._u(
+                                                                                                  [
+                                                                                                    {
+                                                                                                      key:
+                                                                                                        "input",
+                                                                                                      fn: function() {
+                                                                                                        return [
+                                                                                                          _c(
+                                                                                                            "v-text-field",
+                                                                                                            {
+                                                                                                              attrs: {
+                                                                                                                label:
+                                                                                                                  "Edit",
+                                                                                                                "single-line":
+                                                                                                                  "",
+                                                                                                                counter:
+                                                                                                                  ""
+                                                                                                              },
+                                                                                                              model: {
+                                                                                                                value:
+                                                                                                                  props
+                                                                                                                    .item
+                                                                                                                    .Nama,
+                                                                                                                callback: function(
+                                                                                                                  $$v
+                                                                                                                ) {
+                                                                                                                  _vm.$set(
+                                                                                                                    props.item,
+                                                                                                                    "Nama",
+                                                                                                                    $$v
+                                                                                                                  )
+                                                                                                                },
+                                                                                                                expression:
+                                                                                                                  "props.item.Nama"
+                                                                                                              }
+                                                                                                            }
+                                                                                                          )
+                                                                                                        ]
+                                                                                                      },
+                                                                                                      proxy: true
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  null,
+                                                                                                  true
+                                                                                                )
+                                                                                              },
+                                                                                              [
+                                                                                                _c(
+                                                                                                  "div",
+                                                                                                  [
+                                                                                                    _vm._v(
+                                                                                                      _vm._s(
+                                                                                                        props
+                                                                                                          .item
+                                                                                                          .Nama
+                                                                                                      )
+                                                                                                    )
+                                                                                                  ]
+                                                                                                )
+                                                                                              ]
+                                                                                            )
+                                                                                          ],
+                                                                                          1
+                                                                                        ),
+                                                                                        _vm._v(
+                                                                                          " "
+                                                                                        ),
+                                                                                        _c(
+                                                                                          "td",
+                                                                                          {
+                                                                                            staticClass:
+                                                                                              "text-xs-center"
+                                                                                          },
+                                                                                          [
+                                                                                            _c(
+                                                                                              "v-edit-dialog",
+                                                                                              {
+                                                                                                attrs: {
+                                                                                                  "return-value":
+                                                                                                    props
+                                                                                                      .item
+                                                                                                      .Persentase,
+                                                                                                  large:
+                                                                                                    "",
+                                                                                                  lazy:
+                                                                                                    "",
+                                                                                                  persistent:
+                                                                                                    ""
+                                                                                                },
+                                                                                                on: {
+                                                                                                  "update:returnValue": function(
+                                                                                                    $event
+                                                                                                  ) {
+                                                                                                    return _vm.$set(
+                                                                                                      props.item,
+                                                                                                      "Persentase",
+                                                                                                      $event
+                                                                                                    )
+                                                                                                  },
+                                                                                                  "update:return-value": function(
+                                                                                                    $event
+                                                                                                  ) {
+                                                                                                    return _vm.$set(
+                                                                                                      props.item,
+                                                                                                      "Persentase",
+                                                                                                      $event
+                                                                                                    )
+                                                                                                  }
+                                                                                                },
+                                                                                                scopedSlots: _vm._u(
+                                                                                                  [
+                                                                                                    {
+                                                                                                      key:
+                                                                                                        "input",
+                                                                                                      fn: function() {
+                                                                                                        return [
+                                                                                                          _c(
+                                                                                                            "v-text-field",
+                                                                                                            {
+                                                                                                              attrs: {
+                                                                                                                label:
+                                                                                                                  "Edit",
+                                                                                                                "single-line":
+                                                                                                                  "",
+                                                                                                                counter:
+                                                                                                                  "",
+                                                                                                                autofocus:
+                                                                                                                  ""
+                                                                                                              },
+                                                                                                              model: {
+                                                                                                                value:
+                                                                                                                  props
+                                                                                                                    .item
+                                                                                                                    .Persentase,
+                                                                                                                callback: function(
+                                                                                                                  $$v
+                                                                                                                ) {
+                                                                                                                  _vm.$set(
+                                                                                                                    props.item,
+                                                                                                                    "Persentase",
+                                                                                                                    $$v
+                                                                                                                  )
+                                                                                                                },
+                                                                                                                expression:
+                                                                                                                  "props.item.Persentase"
+                                                                                                              }
+                                                                                                            }
+                                                                                                          )
+                                                                                                        ]
+                                                                                                      },
+                                                                                                      proxy: true
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  null,
+                                                                                                  true
+                                                                                                )
+                                                                                              },
+                                                                                              [
+                                                                                                _c(
+                                                                                                  "div",
+                                                                                                  [
+                                                                                                    _vm._v(
+                                                                                                      _vm._s(
+                                                                                                        props
+                                                                                                          .item
+                                                                                                          .Persentase
+                                                                                                      )
+                                                                                                    )
+                                                                                                  ]
+                                                                                                )
+                                                                                              ]
+                                                                                            )
+                                                                                          ],
+                                                                                          1
+                                                                                        ),
+                                                                                        _vm._v(
+                                                                                          " "
+                                                                                        ),
+                                                                                        _c(
+                                                                                          "td",
+                                                                                          {
+                                                                                            staticClass:
+                                                                                              "text-xs-center"
+                                                                                          },
+                                                                                          [
+                                                                                            _c(
+                                                                                              "v-edit-dialog",
+                                                                                              {
+                                                                                                attrs: {
+                                                                                                  "return-value":
+                                                                                                    props
+                                                                                                      .item
+                                                                                                      .Tanggal_Selesai,
+                                                                                                  large:
+                                                                                                    "",
+                                                                                                  lazy:
+                                                                                                    "",
+                                                                                                  persistent:
+                                                                                                    ""
+                                                                                                },
+                                                                                                on: {
+                                                                                                  "update:returnValue": function(
+                                                                                                    $event
+                                                                                                  ) {
+                                                                                                    return _vm.$set(
+                                                                                                      props.item,
+                                                                                                      "Tanggal_Selesai",
+                                                                                                      $event
+                                                                                                    )
+                                                                                                  },
+                                                                                                  "update:return-value": function(
+                                                                                                    $event
+                                                                                                  ) {
+                                                                                                    return _vm.$set(
+                                                                                                      props.item,
+                                                                                                      "Tanggal_Selesai",
+                                                                                                      $event
+                                                                                                    )
+                                                                                                  }
+                                                                                                },
+                                                                                                scopedSlots: _vm._u(
+                                                                                                  [
+                                                                                                    {
+                                                                                                      key:
+                                                                                                        "input",
+                                                                                                      fn: function() {
+                                                                                                        return [
+                                                                                                          _c(
+                                                                                                            "v-menu",
+                                                                                                            {
+                                                                                                              attrs: {
+                                                                                                                "close-on-content-click": false,
+                                                                                                                "nudge-right": 40,
+                                                                                                                transition:
+                                                                                                                  "scale-transition",
+                                                                                                                "offset-y":
+                                                                                                                  "",
+                                                                                                                "full-width":
+                                                                                                                  "",
+                                                                                                                "min-width":
+                                                                                                                  "290px",
+                                                                                                                readonly:
+                                                                                                                  ""
+                                                                                                              },
+                                                                                                              scopedSlots: _vm._u(
+                                                                                                                [
+                                                                                                                  {
+                                                                                                                    key:
+                                                                                                                      "activator",
+                                                                                                                    fn: function(
+                                                                                                                      ref
+                                                                                                                    ) {
+                                                                                                                      var on =
+                                                                                                                        ref.on
+                                                                                                                      return [
+                                                                                                                        _c(
+                                                                                                                          "v-text-field",
+                                                                                                                          _vm._g(
+                                                                                                                            {
+                                                                                                                              staticClass:
+                                                                                                                                "mx-1",
+                                                                                                                              attrs: {
+                                                                                                                                label:
+                                                                                                                                  "Target Date",
+                                                                                                                                box:
+                                                                                                                                  "",
+                                                                                                                                readonly:
+                                                                                                                                  ""
+                                                                                                                              },
+                                                                                                                              model: {
+                                                                                                                                value:
+                                                                                                                                  props
+                                                                                                                                    .item
+                                                                                                                                    .Tanggal_Selesai,
+                                                                                                                                callback: function(
+                                                                                                                                  $$v
+                                                                                                                                ) {
+                                                                                                                                  _vm.$set(
+                                                                                                                                    props.item,
+                                                                                                                                    "Tanggal_Selesai",
+                                                                                                                                    $$v
+                                                                                                                                  )
+                                                                                                                                },
+                                                                                                                                expression:
+                                                                                                                                  "props.item.Tanggal_Selesai"
+                                                                                                                              }
+                                                                                                                            },
+                                                                                                                            on
+                                                                                                                          )
+                                                                                                                        )
+                                                                                                                      ]
+                                                                                                                    }
+                                                                                                                  }
+                                                                                                                ],
+                                                                                                                null,
+                                                                                                                true
+                                                                                                              ),
+                                                                                                              model: {
+                                                                                                                value:
+                                                                                                                  _vm.dateSubtask2,
+                                                                                                                callback: function(
+                                                                                                                  $$v
+                                                                                                                ) {
+                                                                                                                  _vm.dateSubtask2 = $$v
+                                                                                                                },
+                                                                                                                expression:
+                                                                                                                  "dateSubtask2"
+                                                                                                              }
+                                                                                                            },
+                                                                                                            [
+                                                                                                              _vm._v(
+                                                                                                                " "
+                                                                                                              ),
+                                                                                                              _c(
+                                                                                                                "v-date-picker",
+                                                                                                                {
+                                                                                                                  on: {
+                                                                                                                    input: function(
+                                                                                                                      $event
+                                                                                                                    ) {
+                                                                                                                      _vm.dateSubtask2 = false
+                                                                                                                    }
+                                                                                                                  },
+                                                                                                                  model: {
+                                                                                                                    value:
+                                                                                                                      props
+                                                                                                                        .item
+                                                                                                                        .Tanggal_Selesai,
+                                                                                                                    callback: function(
+                                                                                                                      $$v
+                                                                                                                    ) {
+                                                                                                                      _vm.$set(
+                                                                                                                        props.item,
+                                                                                                                        "Tanggal_Selesai",
+                                                                                                                        $$v
+                                                                                                                      )
+                                                                                                                    },
+                                                                                                                    expression:
+                                                                                                                      "props.item.Tanggal_Selesai"
+                                                                                                                  }
+                                                                                                                }
+                                                                                                              )
+                                                                                                            ],
+                                                                                                            1
+                                                                                                          )
+                                                                                                        ]
+                                                                                                      },
+                                                                                                      proxy: true
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  null,
+                                                                                                  true
+                                                                                                )
+                                                                                              },
+                                                                                              [
+                                                                                                _c(
+                                                                                                  "div",
+                                                                                                  [
+                                                                                                    _vm._v(
+                                                                                                      _vm._s(
+                                                                                                        props
+                                                                                                          .item
+                                                                                                          .Tanggal_Selesai
+                                                                                                      )
+                                                                                                    )
+                                                                                                  ]
+                                                                                                )
+                                                                                              ]
+                                                                                            )
+                                                                                          ],
+                                                                                          1
+                                                                                        ),
+                                                                                        _vm._v(
+                                                                                          " "
+                                                                                        ),
+                                                                                        _c(
+                                                                                          "td",
+                                                                                          {
+                                                                                            staticClass:
+                                                                                              "text-xs-center"
+                                                                                          },
+                                                                                          [
+                                                                                            _c(
+                                                                                              "v-edit-dialog",
+                                                                                              {
+                                                                                                attrs: {
+                                                                                                  "return-value":
+                                                                                                    props
+                                                                                                      .item
+                                                                                                      .Deskripsi,
+                                                                                                  large:
+                                                                                                    "",
+                                                                                                  lazy:
+                                                                                                    "",
+                                                                                                  persistent:
+                                                                                                    ""
+                                                                                                },
+                                                                                                on: {
+                                                                                                  "update:returnValue": function(
+                                                                                                    $event
+                                                                                                  ) {
+                                                                                                    return _vm.$set(
+                                                                                                      props.item,
+                                                                                                      "Deskripsi",
+                                                                                                      $event
+                                                                                                    )
+                                                                                                  },
+                                                                                                  "update:return-value": function(
+                                                                                                    $event
+                                                                                                  ) {
+                                                                                                    return _vm.$set(
+                                                                                                      props.item,
+                                                                                                      "Deskripsi",
+                                                                                                      $event
+                                                                                                    )
+                                                                                                  }
+                                                                                                },
+                                                                                                scopedSlots: _vm._u(
+                                                                                                  [
+                                                                                                    {
+                                                                                                      key:
+                                                                                                        "input",
+                                                                                                      fn: function() {
+                                                                                                        return [
+                                                                                                          _c(
+                                                                                                            "v-textarea",
+                                                                                                            {
+                                                                                                              staticStyle: {
+                                                                                                                "min-width":
+                                                                                                                  "350px"
+                                                                                                              },
+                                                                                                              attrs: {
+                                                                                                                outline:
+                                                                                                                  "",
+                                                                                                                label:
+                                                                                                                  "Edit"
+                                                                                                              },
+                                                                                                              model: {
+                                                                                                                value:
+                                                                                                                  props
+                                                                                                                    .item
+                                                                                                                    .Deskripsi,
+                                                                                                                callback: function(
+                                                                                                                  $$v
+                                                                                                                ) {
+                                                                                                                  _vm.$set(
+                                                                                                                    props.item,
+                                                                                                                    "Deskripsi",
+                                                                                                                    $$v
+                                                                                                                  )
+                                                                                                                },
+                                                                                                                expression:
+                                                                                                                  "props.item.Deskripsi"
+                                                                                                              }
+                                                                                                            }
+                                                                                                          )
+                                                                                                        ]
+                                                                                                      },
+                                                                                                      proxy: true
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  null,
+                                                                                                  true
+                                                                                                )
+                                                                                              },
+                                                                                              [
+                                                                                                _c(
+                                                                                                  "div",
+                                                                                                  [
+                                                                                                    _c(
+                                                                                                      "v-icon",
+                                                                                                      {
+                                                                                                        attrs: {
+                                                                                                          color:
+                                                                                                            "grey lighten-1",
+                                                                                                          small:
+                                                                                                            ""
+                                                                                                        }
+                                                                                                      },
+                                                                                                      [
+                                                                                                        _vm._v(
+                                                                                                          "\n                                                                                    message\n                                                                                    "
+                                                                                                        )
+                                                                                                      ]
+                                                                                                    ),
+                                                                                                    _vm._v(
+                                                                                                      "\n                                                                                    Click to Detail\n                                                                                "
+                                                                                                    )
+                                                                                                  ],
+                                                                                                  1
+                                                                                                )
+                                                                                              ]
+                                                                                            )
+                                                                                          ],
+                                                                                          1
+                                                                                        ),
+                                                                                        _vm._v(
+                                                                                          " "
+                                                                                        ),
+                                                                                        _c(
+                                                                                          "td",
+                                                                                          {
+                                                                                            staticClass:
+                                                                                              "text-xs-center"
+                                                                                          },
                                                                                           [
                                                                                             _c(
                                                                                               "v-icon",
                                                                                               {
                                                                                                 attrs: {
-                                                                                                  color:
-                                                                                                    "grey lighten-1",
                                                                                                   small:
                                                                                                     ""
+                                                                                                },
+                                                                                                on: {
+                                                                                                  click: function(
+                                                                                                    $event
+                                                                                                  ) {
+                                                                                                    return _vm.delSubTaskForm(
+                                                                                                      props.item
+                                                                                                    )
+                                                                                                  }
                                                                                                 }
                                                                                               },
                                                                                               [
                                                                                                 _vm._v(
-                                                                                                  "\n                                                                        message\n\n                                                                        "
+                                                                                                  "\n                                                                                delete\n                                                                            "
                                                                                                 )
                                                                                               ]
-                                                                                            ),
-                                                                                            _vm._v(
-                                                                                              "\n                                                                         Click to Detail\n                                                                    "
                                                                                             )
                                                                                           ],
                                                                                           1
                                                                                         )
                                                                                       ]
-                                                                                    )
-                                                                                  ],
-                                                                                  1
-                                                                                ),
-                                                                                _vm._v(
-                                                                                  " "
-                                                                                ),
-                                                                                _c(
-                                                                                  "td",
-                                                                                  {
-                                                                                    staticClass:
-                                                                                      "text-xs-center"
-                                                                                  },
-                                                                                  [
-                                                                                    _c(
-                                                                                      "v-icon",
-                                                                                      {
-                                                                                        attrs: {
-                                                                                          small:
-                                                                                            ""
-                                                                                        },
-                                                                                        on: {
-                                                                                          click: function(
-                                                                                            $event
-                                                                                          ) {
-                                                                                            return _vm.delSubTaskForm(
-                                                                                              props.item
-                                                                                            )
-                                                                                          }
-                                                                                        }
-                                                                                      },
-                                                                                      [
-                                                                                        _vm._v(
-                                                                                          "\n                                                                        delete\n                                                                    "
-                                                                                        )
-                                                                                      ]
-                                                                                    )
-                                                                                  ],
-                                                                                  1
-                                                                                )
-                                                                              ]
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              )
                                                                             }
-                                                                          }
-                                                                        ]
+                                                                          )
+                                                                        ],
+                                                                        1
                                                                       )
-                                                                    }
+                                                                    ],
+                                                                    1
                                                                   )
                                                                 ],
                                                                 1
@@ -24255,8 +26132,7 @@ var render = function() {
                                                     "v-list",
                                                     {
                                                       staticStyle: {
-                                                        height: "300px",
-                                                        "overflow-y": "auto"
+                                                        height: "100%"
                                                       },
                                                       attrs: { expand: "" }
                                                     },
@@ -24282,18 +26158,68 @@ var render = function() {
                                                                             "v-list-tile-title",
                                                                             [
                                                                               _c(
-                                                                                "span",
+                                                                                "v-layout",
+                                                                                {
+                                                                                  attrs: {
+                                                                                    row:
+                                                                                      "",
+                                                                                    wrap:
+                                                                                      ""
+                                                                                  }
+                                                                                },
                                                                                 [
+                                                                                  _c(
+                                                                                    "v-flex",
+                                                                                    {
+                                                                                      attrs: {
+                                                                                        xs12:
+                                                                                          "",
+                                                                                        md10:
+                                                                                          ""
+                                                                                      }
+                                                                                    },
+                                                                                    [
+                                                                                      _vm._v(
+                                                                                        "\n                                                                        " +
+                                                                                          _vm._s(
+                                                                                            _vm
+                                                                                              .editProject
+                                                                                              .Nama
+                                                                                          ) +
+                                                                                          " \n                                                                    "
+                                                                                      )
+                                                                                    ]
+                                                                                  ),
                                                                                   _vm._v(
-                                                                                    _vm._s(
-                                                                                      _vm
-                                                                                        .editProject
-                                                                                        .Nama
-                                                                                    )
+                                                                                    " "
+                                                                                  ),
+                                                                                  _c(
+                                                                                    "v-flex",
+                                                                                    {
+                                                                                      attrs: {
+                                                                                        xs12:
+                                                                                          "",
+                                                                                        md2:
+                                                                                          ""
+                                                                                      }
+                                                                                    },
+                                                                                    [
+                                                                                      _vm._v(
+                                                                                        "\n                                                                        " +
+                                                                                          _vm._s(
+                                                                                            _vm
+                                                                                              .editProject
+                                                                                              .Total_Persentase
+                                                                                          ) +
+                                                                                          "%\n                                                                    "
+                                                                                      )
+                                                                                    ]
                                                                                   )
-                                                                                ]
+                                                                                ],
+                                                                                1
                                                                               )
-                                                                            ]
+                                                                            ],
+                                                                            1
                                                                           )
                                                                         ],
                                                                         1
@@ -24346,13 +26272,65 @@ var render = function() {
                                                                                     _c(
                                                                                       "v-list-tile-title",
                                                                                       [
-                                                                                        _vm._v(
-                                                                                          _vm._s(
-                                                                                            div.Nama
-                                                                                          ) +
-                                                                                            "\n                                                                        "
+                                                                                        _c(
+                                                                                          "v-layout",
+                                                                                          {
+                                                                                            attrs: {
+                                                                                              row:
+                                                                                                "",
+                                                                                              wrap:
+                                                                                                ""
+                                                                                            }
+                                                                                          },
+                                                                                          [
+                                                                                            _c(
+                                                                                              "v-flex",
+                                                                                              {
+                                                                                                attrs: {
+                                                                                                  xs12:
+                                                                                                    "",
+                                                                                                  md10:
+                                                                                                    ""
+                                                                                                }
+                                                                                              },
+                                                                                              [
+                                                                                                _vm._v(
+                                                                                                  "\n                                                                                " +
+                                                                                                    _vm._s(
+                                                                                                      div.Nama
+                                                                                                    ) +
+                                                                                                    " \n                                                                            "
+                                                                                                )
+                                                                                              ]
+                                                                                            ),
+                                                                                            _vm._v(
+                                                                                              " "
+                                                                                            ),
+                                                                                            _c(
+                                                                                              "v-flex",
+                                                                                              {
+                                                                                                attrs: {
+                                                                                                  xs12:
+                                                                                                    "",
+                                                                                                  md2:
+                                                                                                    ""
+                                                                                                }
+                                                                                              },
+                                                                                              [
+                                                                                                _vm._v(
+                                                                                                  "\n                                                                                " +
+                                                                                                    _vm._s(
+                                                                                                      div.Total_Persentase
+                                                                                                    ) +
+                                                                                                    "%\n                                                                            "
+                                                                                                )
+                                                                                              ]
+                                                                                            )
+                                                                                          ],
+                                                                                          1
                                                                                         )
-                                                                                      ]
+                                                                                      ],
+                                                                                      1
                                                                                     )
                                                                                   ],
                                                                                   1
@@ -24416,13 +26394,65 @@ var render = function() {
                                                                                             _c(
                                                                                               "v-list-tile-title",
                                                                                               [
-                                                                                                _vm._v(
-                                                                                                  _vm._s(
-                                                                                                    subdiv.Nama
-                                                                                                  ) +
-                                                                                                    "\n                                                                            "
+                                                                                                _c(
+                                                                                                  "v-layout",
+                                                                                                  {
+                                                                                                    attrs: {
+                                                                                                      row:
+                                                                                                        "",
+                                                                                                      wrap:
+                                                                                                        ""
+                                                                                                    }
+                                                                                                  },
+                                                                                                  [
+                                                                                                    _c(
+                                                                                                      "v-flex",
+                                                                                                      {
+                                                                                                        attrs: {
+                                                                                                          xs12:
+                                                                                                            "",
+                                                                                                          md10:
+                                                                                                            ""
+                                                                                                        }
+                                                                                                      },
+                                                                                                      [
+                                                                                                        _vm._v(
+                                                                                                          "\n                                                                                    " +
+                                                                                                            _vm._s(
+                                                                                                              subdiv.Nama
+                                                                                                            ) +
+                                                                                                            " \n                                                                                "
+                                                                                                        )
+                                                                                                      ]
+                                                                                                    ),
+                                                                                                    _vm._v(
+                                                                                                      " "
+                                                                                                    ),
+                                                                                                    _c(
+                                                                                                      "v-flex",
+                                                                                                      {
+                                                                                                        attrs: {
+                                                                                                          xs12:
+                                                                                                            "",
+                                                                                                          md2:
+                                                                                                            ""
+                                                                                                        }
+                                                                                                      },
+                                                                                                      [
+                                                                                                        _vm._v(
+                                                                                                          "\n                                                                                    " +
+                                                                                                            _vm._s(
+                                                                                                              subdiv.Total_Persentase
+                                                                                                            ) +
+                                                                                                            "%\n                                                                                "
+                                                                                                        )
+                                                                                                      ]
+                                                                                                    )
+                                                                                                  ],
+                                                                                                  1
                                                                                                 )
-                                                                                              ]
+                                                                                              ],
+                                                                                              1
                                                                                             )
                                                                                           ],
                                                                                           1
@@ -24488,13 +26518,65 @@ var render = function() {
                                                                                                     _c(
                                                                                                       "v-list-tile-title",
                                                                                                       [
-                                                                                                        _vm._v(
-                                                                                                          _vm._s(
-                                                                                                            task.Nama
-                                                                                                          ) +
-                                                                                                            "\n                                                                                "
+                                                                                                        _c(
+                                                                                                          "v-layout",
+                                                                                                          {
+                                                                                                            attrs: {
+                                                                                                              row:
+                                                                                                                "",
+                                                                                                              wrap:
+                                                                                                                ""
+                                                                                                            }
+                                                                                                          },
+                                                                                                          [
+                                                                                                            _c(
+                                                                                                              "v-flex",
+                                                                                                              {
+                                                                                                                attrs: {
+                                                                                                                  xs12:
+                                                                                                                    "",
+                                                                                                                  md10:
+                                                                                                                    ""
+                                                                                                                }
+                                                                                                              },
+                                                                                                              [
+                                                                                                                _vm._v(
+                                                                                                                  "\n                                                                                        " +
+                                                                                                                    _vm._s(
+                                                                                                                      task.Nama
+                                                                                                                    ) +
+                                                                                                                    " \n                                                                                    "
+                                                                                                                )
+                                                                                                              ]
+                                                                                                            ),
+                                                                                                            _vm._v(
+                                                                                                              " "
+                                                                                                            ),
+                                                                                                            _c(
+                                                                                                              "v-flex",
+                                                                                                              {
+                                                                                                                attrs: {
+                                                                                                                  xs12:
+                                                                                                                    "",
+                                                                                                                  md2:
+                                                                                                                    ""
+                                                                                                                }
+                                                                                                              },
+                                                                                                              [
+                                                                                                                _vm._v(
+                                                                                                                  "\n                                                                                        " +
+                                                                                                                    _vm._s(
+                                                                                                                      task.Total_Persentase
+                                                                                                                    ) +
+                                                                                                                    "%\n                                                                                    "
+                                                                                                                )
+                                                                                                              ]
+                                                                                                            )
+                                                                                                          ],
+                                                                                                          1
                                                                                                         )
-                                                                                                      ]
+                                                                                                      ],
+                                                                                                      1
                                                                                                     )
                                                                                                   ],
                                                                                                   1
@@ -24544,13 +26626,42 @@ var render = function() {
                                                                                               _c(
                                                                                                 "v-list-tile-title",
                                                                                                 [
-                                                                                                  _vm._v(
-                                                                                                    _vm._s(
-                                                                                                      subtask.Nama
-                                                                                                    ) +
-                                                                                                      "\n                                                                            "
+                                                                                                  _c(
+                                                                                                    "v-layout",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        row:
+                                                                                                          "",
+                                                                                                        wrap:
+                                                                                                          ""
+                                                                                                      }
+                                                                                                    },
+                                                                                                    [
+                                                                                                      _c(
+                                                                                                        "v-flex",
+                                                                                                        {
+                                                                                                          attrs: {
+                                                                                                            xs12:
+                                                                                                              "",
+                                                                                                            md12:
+                                                                                                              ""
+                                                                                                          }
+                                                                                                        },
+                                                                                                        [
+                                                                                                          _vm._v(
+                                                                                                            "\n                                                                                    " +
+                                                                                                              _vm._s(
+                                                                                                                subtask.Nama
+                                                                                                              ) +
+                                                                                                              " \n                                                                                "
+                                                                                                          )
+                                                                                                        ]
+                                                                                                      )
+                                                                                                    ],
+                                                                                                    1
                                                                                                   )
-                                                                                                ]
+                                                                                                ],
+                                                                                                1
                                                                                               )
                                                                                             ],
                                                                                             1
@@ -27799,215 +29910,397 @@ var render = function() {
             { attrs: { xs12: "", md8: "" } },
             [
               _c(
-                "material-card",
-                {
-                  attrs: {
-                    color: "green",
-                    title: "User Profile",
-                    text: "Complete your profile"
-                  }
-                },
+                "v-form",
                 [
-                  _c(
-                    "v-form",
-                    [
-                      _c("v-container", { attrs: { "py-0": "" } }, [
+                  _c("v-container", { attrs: { "py-0": "" } }, [
+                    _c(
+                      "div",
+                      [
                         _c(
-                          "div",
-                          [
-                            _c(
-                              "v-tabs",
-                              {
-                                staticClass: "elevation-2",
-                                attrs: {
-                                  "background-color": "deep-purple accent-4",
-                                  dark: "",
-                                  centered: _vm.centered,
-                                  grow: _vm.grow,
-                                  vertical: _vm.vertical,
-                                  right: _vm.right,
-                                  "prev-icon": _vm.prevIcon
-                                    ? "mdi-arrow-left-bold-box-outline"
-                                    : undefined,
-                                  "next-icon": _vm.nextIcon
-                                    ? "mdi-arrow-right-bold-box-outline"
-                                    : undefined,
-                                  "icons-and-text": _vm.icons
-                                },
-                                model: {
-                                  value: _vm.tab,
-                                  callback: function($$v) {
-                                    _vm.tab = $$v
-                                  },
-                                  expression: "tab"
-                                }
+                          "v-tabs",
+                          {
+                            staticClass: "elevation-2",
+                            attrs: {
+                              "background-color": "deep-purple accent-4",
+                              dark: "",
+                              centered: _vm.centered,
+                              grow: _vm.grow,
+                              vertical: _vm.vertical,
+                              right: _vm.right,
+                              "prev-icon": _vm.prevIcon
+                                ? "mdi-arrow-left-bold-box-outline"
+                                : undefined,
+                              "next-icon": _vm.nextIcon
+                                ? "mdi-arrow-right-bold-box-outline"
+                                : undefined,
+                              "icons-and-text": _vm.icons
+                            },
+                            model: {
+                              value: _vm.tab,
+                              callback: function($$v) {
+                                _vm.tab = $$v
                               },
+                              expression: "tab"
+                            }
+                          },
+                          [
+                            _c("v-tabs-slider"),
+                            _vm._v(" "),
+                            _c("v-tab", [_vm._v("My Productivity")]),
+                            _vm._v(" "),
+                            _c(
+                              "v-tab-item",
                               [
-                                _c("v-tabs-slider"),
-                                _vm._v(" "),
-                                _c("v-tab", [_vm._v("My Productivity")]),
-                                _vm._v(" "),
                                 _c(
-                                  "v-tab-item",
+                                  "v-card",
+                                  {
+                                    staticClass: "pa-4",
+                                    attrs: { flat: "", tile: "" }
+                                  },
                                   [
                                     _c(
-                                      "v-card",
-                                      {
-                                        staticClass: "pa-4",
-                                        attrs: { flat: "", tile: "" }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
+                                      "v-expansion-panel",
+                                      _vm._l(_vm.Projects, function(project) {
+                                        return _c(
+                                          "v-expansion-panel-content",
+                                          {
+                                            key: project.Nama,
+                                            attrs: {
+                                              "expand-icon": "mdi-menu-down"
+                                            },
+                                            scopedSlots: _vm._u(
+                                              [
+                                                {
+                                                  key: "header",
+                                                  fn: function() {
+                                                    return [
+                                                      _c(
+                                                        "v-layout",
+                                                        {
+                                                          class: "pa-3",
+                                                          attrs: {
+                                                            row: "",
+                                                            wrap: ""
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-flex",
+                                                            {
+                                                              attrs: {
+                                                                xs12: "",
+                                                                md4: ""
+                                                              }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "caption grey--text"
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Project Title"
+                                                                  )
+                                                                ]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c("div", [
+                                                                _vm._v(
+                                                                  _vm._s(
+                                                                    project.Nama
+                                                                  )
+                                                                )
+                                                              ])
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-flex",
+                                                            {
+                                                              attrs: {
+                                                                xs6: "",
+                                                                sm4: "",
+                                                                md2: ""
+                                                              }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "caption grey--text"
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Due Date"
+                                                                  )
+                                                                ]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c("div", [
+                                                                _vm._v(
+                                                                  _vm._s(
+                                                                    project.Tanggal_Selesai
+                                                                  )
+                                                                )
+                                                              ])
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("v-spacer"),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-flex",
+                                                            [
+                                                              _c(
+                                                                "v-btn",
+                                                                {
+                                                                  attrs: {
+                                                                    small: ""
+                                                                  },
+                                                                  on: {
+                                                                    click: function(
+                                                                      $event
+                                                                    ) {
+                                                                      return _vm.detailProjectDialog(
+                                                                        project
+                                                                      )
+                                                                    }
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Detail"
+                                                                  )
+                                                                ]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "v-btn",
+                                                                {
+                                                                  attrs: {
+                                                                    small: ""
+                                                                  },
+                                                                  on: {
+                                                                    click: function(
+                                                                      $event
+                                                                    ) {
+                                                                      return _vm.editProjectDialog(
+                                                                        project
+                                                                      )
+                                                                    }
+                                                                  }
+                                                                },
+                                                                [_vm._v("Edit")]
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ]
+                                                  },
+                                                  proxy: true
+                                                }
+                                              ],
+                                              null,
+                                              true
+                                            )
+                                          },
                                           [
-                                            _c(
-                                              "h1",
-                                              {
-                                                staticClass:
-                                                  "subheading grey--text"
-                                              },
-                                              [_vm._v("Dashboard")]
-                                            ),
                                             _vm._v(" "),
                                             _c(
-                                              "v-container",
+                                              "v-card",
+                                              { staticClass: "grey darken-2" },
                                               [
                                                 _c(
-                                                  "v-layout",
-                                                  {
-                                                    attrs: { row: "", wrap: "" }
-                                                  },
+                                                  "v-container",
                                                   [
                                                     _c(
-                                                      "v-flex",
-                                                      {
-                                                        attrs: {
-                                                          sm: "",
-                                                          "6": "",
-                                                          xs12: "",
-                                                          md6: "",
-                                                          lg3: ""
-                                                        }
-                                                      },
+                                                      "v-card",
                                                       [
+                                                        _c("v-card-title", [
+                                                          _c("span", [
+                                                            _vm._v("Filter")
+                                                          ])
+                                                        ]),
+                                                        _vm._v(" "),
                                                         _c(
-                                                          "v-card",
+                                                          "v-layout",
                                                           {
-                                                            staticClass: "ma-3"
+                                                            attrs: { row: "" }
                                                           },
                                                           [
                                                             _c(
-                                                              "v-list-item",
+                                                              "v-flex",
+                                                              {
+                                                                staticClass:
+                                                                  "pl-2",
+                                                                attrs: {
+                                                                  xs12: "",
+                                                                  sm6: "",
+                                                                  md2: ""
+                                                                }
+                                                              },
                                                               [
-                                                                _c(
-                                                                  "v-list-item-avatar",
-                                                                  {
-                                                                    staticClass:
-                                                                      "mt-n7",
-                                                                    attrs: {
-                                                                      tile: ""
+                                                                _c("v-select", {
+                                                                  attrs: {
+                                                                    items:
+                                                                      project.All_Divisi,
+                                                                    "item-text":
+                                                                      "Nama",
+                                                                    "item-value":
+                                                                      "Nama",
+                                                                    box: "",
+                                                                    label:
+                                                                      "Division"
+                                                                  },
+                                                                  on: {
+                                                                    change: function(
+                                                                      $event
+                                                                    ) {
+                                                                      return _vm.getSubDivision(
+                                                                        project
+                                                                      )
                                                                     }
                                                                   },
-                                                                  [
-                                                                    _c(
-                                                                      "v-sheet",
-                                                                      {
-                                                                        attrs: {
-                                                                          color:
-                                                                            "green",
-                                                                          width:
-                                                                            "80",
-                                                                          height:
-                                                                            "80",
-                                                                          elevation:
-                                                                            "10"
-                                                                        }
-                                                                      },
-                                                                      [
-                                                                        _c(
-                                                                          "v-icon",
-                                                                          {
-                                                                            attrs: {
-                                                                              dark:
-                                                                                "",
-                                                                              large:
-                                                                                ""
-                                                                            }
-                                                                          },
-                                                                          [
-                                                                            _vm._v(
-                                                                              "\n                                          store\n                                        "
-                                                                            )
-                                                                          ]
-                                                                        )
-                                                                      ],
-                                                                      1
-                                                                    )
-                                                                  ],
-                                                                  1
-                                                                ),
-                                                                _vm._v(" "),
-                                                                _c(
-                                                                  "v-list-item-content",
-                                                                  [
-                                                                    _c(
-                                                                      "div",
-                                                                      {
-                                                                        staticClass:
-                                                                          "overline text-right"
-                                                                      },
-                                                                      [
-                                                                        _vm._v(
-                                                                          "\n                                        Article\n                                      "
-                                                                        )
-                                                                      ]
-                                                                    ),
-                                                                    _vm._v(" "),
-                                                                    _c(
-                                                                      "v-list-item-title",
-                                                                      {
-                                                                        staticClass:
-                                                                          "headline mb-1 text-right"
-                                                                      },
-                                                                      [
-                                                                        _vm._v(
-                                                                          "523615"
-                                                                        )
-                                                                      ]
-                                                                    ),
-                                                                    _vm._v(" "),
-                                                                    _c(
-                                                                      "div",
-                                                                      [
-                                                                        _c(
-                                                                          "v-divider"
-                                                                        )
-                                                                      ],
-                                                                      1
-                                                                    )
-                                                                  ],
-                                                                  1
-                                                                )
+                                                                  model: {
+                                                                    value:
+                                                                      _vm.filterDiv,
+                                                                    callback: function(
+                                                                      $$v
+                                                                    ) {
+                                                                      _vm.filterDiv = $$v
+                                                                    },
+                                                                    expression:
+                                                                      "filterDiv"
+                                                                  }
+                                                                })
                                                               ],
                                                               1
                                                             ),
                                                             _vm._v(" "),
                                                             _c(
-                                                              "v-card-actions",
+                                                              "v-flex",
+                                                              {
+                                                                staticClass:
+                                                                  "pl-2",
+                                                                attrs: {
+                                                                  xs12: "",
+                                                                  sm6: "",
+                                                                  md2: ""
+                                                                }
+                                                              },
                                                               [
-                                                                _c("v-icon", {
-                                                                  staticClass:
-                                                                    "ma-2",
+                                                                _c("v-select", {
                                                                   attrs: {
-                                                                    text: "",
-                                                                    person: ""
+                                                                    items:
+                                                                      _vm.sub_division,
+                                                                    "item-text":
+                                                                      "Nama",
+                                                                    "item-value":
+                                                                      "Nama",
+                                                                    box: "",
+                                                                    label:
+                                                                      "Sub Division"
+                                                                  },
+                                                                  on: {
+                                                                    change: function(
+                                                                      $event
+                                                                    ) {
+                                                                      return _vm.getTask(
+                                                                        project
+                                                                      )
+                                                                    }
+                                                                  },
+                                                                  model: {
+                                                                    value:
+                                                                      _vm.filterSubDiv,
+                                                                    callback: function(
+                                                                      $$v
+                                                                    ) {
+                                                                      _vm.filterSubDiv = $$v
+                                                                    },
+                                                                    expression:
+                                                                      "filterSubDiv"
                                                                   }
-                                                                }),
-                                                                _vm._v(" "),
-                                                                _c("div", {
-                                                                  staticClass:
-                                                                    "overline"
                                                                 })
+                                                              ],
+                                                              1
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "v-flex",
+                                                              {
+                                                                staticClass:
+                                                                  "pl-2",
+                                                                attrs: {
+                                                                  xs12: "",
+                                                                  sm6: "",
+                                                                  md2: ""
+                                                                }
+                                                              },
+                                                              [
+                                                                _c("v-select", {
+                                                                  attrs: {
+                                                                    items:
+                                                                      _vm.task,
+                                                                    "item-text":
+                                                                      "Nama",
+                                                                    "item-value":
+                                                                      "Nama",
+                                                                    box: "",
+                                                                    label:
+                                                                      "Task"
+                                                                  },
+                                                                  model: {
+                                                                    value:
+                                                                      _vm.filterTask,
+                                                                    callback: function(
+                                                                      $$v
+                                                                    ) {
+                                                                      _vm.filterTask = $$v
+                                                                    },
+                                                                    expression:
+                                                                      "filterTask"
+                                                                  }
+                                                                })
+                                                              ],
+                                                              1
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "v-flex",
+                                                              {
+                                                                staticClass:
+                                                                  "pl-2",
+                                                                attrs: {
+                                                                  xs12: "",
+                                                                  sm6: "",
+                                                                  md2: ""
+                                                                }
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "v-btn",
+                                                                  {
+                                                                    on: {
+                                                                      click: function(
+                                                                        $event
+                                                                      ) {
+                                                                        return _vm.clearFilter()
+                                                                      }
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      "Clear"
+                                                                    )
+                                                                  ]
+                                                                )
                                                               ],
                                                               1
                                                             )
@@ -28016,9 +30309,274 @@ var render = function() {
                                                         )
                                                       ],
                                                       1
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _vm._l(
+                                                      _vm.filteredTask(
+                                                        project.All_SubTask
+                                                      ),
+                                                      function(subtask) {
+                                                        return _c(
+                                                          "v-card",
+                                                          {
+                                                            directives: [
+                                                              {
+                                                                name: "ripple",
+                                                                rawName:
+                                                                  "v-ripple"
+                                                              }
+                                                            ],
+                                                            key: subtask.Nama,
+                                                            staticClass:
+                                                              "scroll-y",
+                                                            staticStyle: {
+                                                              background:
+                                                                "#424242 !important"
+                                                            },
+                                                            attrs: {
+                                                              hover: "",
+                                                              flat: ""
+                                                            },
+                                                            on: {
+                                                              click: function(
+                                                                $event
+                                                              ) {
+                                                                return _vm.openTaskDialog(
+                                                                  subtask
+                                                                )
+                                                              }
+                                                            }
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "v-layout",
+                                                              {
+                                                                class:
+                                                                  "pa-3  project " +
+                                                                  subtask.Status,
+                                                                attrs: {
+                                                                  row: "",
+                                                                  wrap: ""
+                                                                }
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "v-flex",
+                                                                  {
+                                                                    attrs: {
+                                                                      xs12: "",
+                                                                      md4: ""
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "div",
+                                                                      {
+                                                                        staticClass:
+                                                                          "caption grey--text"
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          _vm._s(
+                                                                            subtask.Divisi
+                                                                          )
+                                                                        )
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c("div", [
+                                                                      _vm._v(
+                                                                        _vm._s(
+                                                                          subtask.Sub_Divisi
+                                                                        )
+                                                                      )
+                                                                    ])
+                                                                  ]
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "v-flex",
+                                                                  {
+                                                                    attrs: {
+                                                                      xs6: "",
+                                                                      sm4: "",
+                                                                      md2: ""
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "div",
+                                                                      {
+                                                                        staticClass:
+                                                                          "caption grey--text"
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          _vm._s(
+                                                                            subtask.Task
+                                                                          )
+                                                                        )
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c("div", [
+                                                                      _vm._v(
+                                                                        _vm._s(
+                                                                          subtask.Nama
+                                                                        )
+                                                                      )
+                                                                    ])
+                                                                  ]
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "v-flex",
+                                                                  {
+                                                                    attrs: {
+                                                                      xs6: "",
+                                                                      sm4: "",
+                                                                      md2: ""
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "div",
+                                                                      {
+                                                                        staticClass:
+                                                                          "caption grey--text"
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          "Due Date"
+                                                                        )
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c("div", [
+                                                                      _vm._v(
+                                                                        _vm._s(
+                                                                          subtask.Tanggal_Selesai
+                                                                        )
+                                                                      )
+                                                                    ])
+                                                                  ]
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "v-flex",
+                                                                  {
+                                                                    attrs: {
+                                                                      xs6: "",
+                                                                      sm4: "",
+                                                                      md2: ""
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "div",
+                                                                      {
+                                                                        staticClass:
+                                                                          "caption grey--text"
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          "Progress"
+                                                                        )
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "div",
+                                                                      [
+                                                                        _c(
+                                                                          "v-progress-linear",
+                                                                          {
+                                                                            attrs: {
+                                                                              color:
+                                                                                "red",
+                                                                              height:
+                                                                                "20",
+                                                                              value:
+                                                                                subtask.Progress
+                                                                            }
+                                                                          },
+                                                                          [
+                                                                            _c(
+                                                                              "p",
+                                                                              {
+                                                                                staticClass:
+                                                                                  "text-xs-center"
+                                                                              },
+                                                                              [
+                                                                                _vm._v(
+                                                                                  _vm._s(
+                                                                                    subtask.Progress
+                                                                                  ) +
+                                                                                    "%"
+                                                                                )
+                                                                              ]
+                                                                            )
+                                                                          ]
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    )
+                                                                  ]
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "v-flex",
+                                                                  {
+                                                                    attrs: {
+                                                                      xs2: "",
+                                                                      sm4: "",
+                                                                      md2: ""
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "div",
+                                                                      {
+                                                                        staticClass:
+                                                                          "right"
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "v-chip",
+                                                                          {
+                                                                            class:
+                                                                              " white--text my-2 caption " +
+                                                                              subtask.Status,
+                                                                            attrs: {
+                                                                              small:
+                                                                                ""
+                                                                            }
+                                                                          },
+                                                                          [
+                                                                            _vm._v(
+                                                                              _vm._s(
+                                                                                subtask.Status
+                                                                              )
+                                                                            )
+                                                                          ]
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ],
+                                                              1
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c("v-divider")
+                                                          ],
+                                                          1
+                                                        )
+                                                      }
                                                     )
                                                   ],
-                                                  1
+                                                  2
                                                 )
                                               ],
                                               1
@@ -28026,7 +30584,8 @@ var render = function() {
                                           ],
                                           1
                                         )
-                                      ]
+                                      }),
+                                      1
                                     )
                                   ],
                                   1
@@ -28037,10 +30596,10 @@ var render = function() {
                           ],
                           1
                         )
-                      ])
-                    ],
-                    1
-                  )
+                      ],
+                      1
+                    )
+                  ])
                 ],
                 1
               )
@@ -28151,7 +30710,7 @@ var render = function() {
                         { attrs: { xs12: "", md6: "" } },
                         [
                           _c("v-text-field", {
-                            attrs: { label: "Grade", counter: "" },
+                            attrs: { label: "Grade", disabled: "" },
                             model: {
                               value: _vm.User.Grade,
                               callback: function($$v) {
@@ -28228,7 +30787,11 @@ var render = function() {
                         { attrs: { xs12: "", md6: "" } },
                         [
                           _c("v-text-field", {
-                            attrs: { label: "Assosiation Number", counter: "" },
+                            attrs: {
+                              label: "Assosiation Number",
+                              counter: "",
+                              disabled: ""
+                            },
                             model: {
                               value: _vm.User.Nomor_Asosiasi,
                               callback: function($$v) {
@@ -28246,7 +30809,11 @@ var render = function() {
                         { attrs: { xs12: "", md6: "" } },
                         [
                           _c("v-text-field", {
-                            attrs: { label: "SKA Number", counter: "" },
+                            attrs: {
+                              label: "SKA Number",
+                              counter: "",
+                              disabled: ""
+                            },
                             model: {
                               value: _vm.User.Nomor_SKA,
                               callback: function($$v) {
@@ -72223,6 +74790,122 @@ __webpack_require__.r(__webpack_exports__);
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/proyek/update/' + id, payload, successCallback, errorCallback);
     });
   },
+  deleteproject: function deleteproject(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/api/proyek/' + id, successCallback, errorCallback);
+    });
+  },
+  //DIVISI PROYEK
+  adddivisiproyek: function adddivisiproyek(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/divisi_proyek', payload, successCallback, errorCallback);
+    });
+  },
+  deletedivisiproyek: function deletedivisiproyek(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/api/divisi_proyek/' + id, successCallback, errorCallback);
+    });
+  },
+  //SUB DIVISI PROYEK
+  addsubdivisiproyek: function addsubdivisiproyek(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/sub_divisi_proyek', payload, successCallback, errorCallback);
+    });
+  },
+  deletesubdivisiproyek: function deletesubdivisiproyek(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/api/sub_divisi_proyek/' + id, successCallback, errorCallback);
+    });
+  },
+  //ITEM PEKERJAAN
+  additempekerjaan: function additempekerjaan(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/item_pekerjaan', payload, successCallback, errorCallback);
+    });
+  },
+  deleteitempekerjaan: function deleteitempekerjaan(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/api/item_pekerjaan/' + id, successCallback, errorCallback);
+    });
+  },
+  //SUB ITEM PEKERJAAN
+  deletesubitempekerjaan: function deletesubitempekerjaan(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/api/sub_item_pekerjaan/' + id, successCallback, errorCallback);
+    });
+  },
   //LOG PENGERJAAN
   getalllogpengerjaan: function getalllogpengerjaan() {
     return new Promise(function (resolve, reject) {
@@ -72264,6 +74947,20 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/log_pengerjaan/' + id, payload, successCallback, errorCallback);
+    });
+  },
+  deletelogpengerjaan: function deletelogpengerjaan(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/api/log_pengerjaan/' + id, successCallback, errorCallback);
     });
   },
   uploadfile: function uploadfile(payload) {

@@ -17,7 +17,7 @@ class SubItemPekerjaanController extends RestController
      */
     public function index()
     {
-        $sub_divisi=Sub_Divisi_Proyek::get();
+        $sub_divisi=Sub_Item_Pekerjaan::get();
         $response=$this->generateCollection($sub_divisi);
         return $this->sendResponse($response,201);
     }
@@ -41,11 +41,12 @@ class SubItemPekerjaanController extends RestController
     public function store(Request $request)
     {
         try{
-            $sub_item = Sub_Item_Proyek::create([
-                'Id_Item_Pekerjaan' => $request->Id_Divisi_Role,
+            $sub_item = Sub_Item_Pekerjaan::create([
+                'Id_Item_Pekerjaan' => $request->Id_Item_Pekerjaan,
                 'Nama'              => $request->Nama,
-                'Kode'              => $request->Kode,
+                // 'Kode'              => $request->Kode,
                 'Tanggal_Selesai'   => $request->Tanggal_Selesai,
+                'Deskripsi'         => $request->Deskripsi,
                 'Persentase'        => $request->Persentase
             ]);
     

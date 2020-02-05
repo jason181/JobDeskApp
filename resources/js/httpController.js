@@ -230,7 +230,6 @@ export default {
 
             const errorCallback = (err) => {
                 reject(err)
-
             }
 
             Http.delete('/api/jabatan/'+id, successCallback, errorCallback)
@@ -287,7 +286,133 @@ export default {
             Http.patch('/api/proyek/update/'+id, payload, successCallback, errorCallback)
         })
     },
+    deleteproject(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
 
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.delete('/api/proyek/'+id, successCallback, errorCallback)
+        })
+    },
+    //DIVISI PROYEK
+    adddivisiproyek(payload){
+        return new Promise((resolve, reject) => {
+
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+            Http.post('/api/divisi_proyek', payload, successCallback, errorCallback)
+        })
+    },
+    deletedivisiproyek(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.delete('/api/divisi_proyek/'+id, successCallback, errorCallback)
+        })
+    },
+    //SUB DIVISI PROYEK
+    addsubdivisiproyek(payload){
+        return new Promise((resolve, reject) => {
+
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+            Http.post('/api/sub_divisi_proyek', payload, successCallback, errorCallback)
+        })
+    },
+    deletesubdivisiproyek(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.delete('/api/sub_divisi_proyek/'+id, successCallback, errorCallback)
+        })
+    },
+    //ITEM PEKERJAAN
+    additempekerjaan(payload){
+        return new Promise((resolve, reject) => {
+
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+            Http.post('/api/item_pekerjaan', payload, successCallback, errorCallback)
+        })
+    },
+    deleteitempekerjaan(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.delete('/api/item_pekerjaan/'+id, successCallback, errorCallback)
+        })
+    },
+    //SUB ITEM PEKERJAAN
+    deletesubitempekerjaan(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.delete('/api/sub_item_pekerjaan/'+id, successCallback, errorCallback)
+        })
+    },
     //LOG PENGERJAAN
     getalllogpengerjaan(){
         return new Promise((resolve, reject) => {
@@ -299,7 +424,6 @@ export default {
 
             const errorCallback = (err) => {
                 reject(err)
-    
             }
 
             Http.get('/api/log_pengerjaan', successCallback, errorCallback)
@@ -340,7 +464,21 @@ export default {
             Http.patch('/api/log_pengerjaan/'+id, payload, successCallback, errorCallback)
         })
     },
+    deletelogpengerjaan(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
 
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.delete('/api/log_pengerjaan/'+id, successCallback, errorCallback)
+        })
+    },
     uploadfile(payload){
         return new Promise((resolve, reject) => {
 

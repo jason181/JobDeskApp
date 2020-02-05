@@ -11,11 +11,11 @@
         xs12
         md8
       >
-        <material-card
+        <!-- <material-card
           color="green"
           title="User Profile"
           text="Complete your profile"
-        >
+        > -->
           <v-form>
             <v-container py-0>
               <div>
@@ -41,48 +41,165 @@
                       tile
                       class="pa-4"
                     >
-                      <!-- <template> -->
-                        <div>
-                          <h1 class="subheading grey--text">Dashboard</h1>
-                            <v-container>
-                              <v-layout row wrap>
-                                <v-flex sm 6 xs12 md6 lg3>
-                                  <v-card class="ma-3">
-                                    <v-list-item>
-                                      <v-list-item-avatar class="mt-n7" tile>
-                                        <v-sheet color="green" width="80" height="80" elevation="10">
-                                          <v-icon dark large>
-                                            store
-                                          </v-icon>
-                                        </v-sheet>
-                                      </v-list-item-avatar>
-                                      <v-list-item-content>
-                                        <div class="overline text-right">
-                                          Article
-                                        </div>
-                                        <v-list-item-title class="headline mb-1 text-right">523615</v-list-item-title>
-                                        <div><v-divider></v-divider></div>
-                                      </v-list-item-content>
-                                    </v-list-item>
-                                    <v-card-actions>
-                                      <v-icon class="ma-2" text person></v-icon>
-                                      <div class="overline"></div>
-                                    </v-card-actions>
-                                  </v-card>
+                    <!-- Expand Panel -->
+                    <v-expansion-panel >
+                        <v-expansion-panel-content
+                        v-for="project in Projects" 
+                        :key="project.Nama"
+                        expand-icon="mdi-menu-down"
+                        >
+                        <template v-slot:header>
+                        
+                            <v-layout row wrap :class="`pa-3`">
+                                <v-flex xs12 md4 >
+                                    <div class="caption grey--text">Project Title</div>
+                                    <div>{{project.Nama}}</div>
                                 </v-flex>
+                                <v-flex xs6 sm4 md2>
+                                    <div class="caption grey--text">Due Date</div>
+                                    <div>{{project.Tanggal_Selesai}}</div>
+                                </v-flex>   
+                                <v-spacer/>
+                                <v-flex>
+                                    <v-btn small @click="detailProjectDialog(project)">Detail</v-btn>
+                                    <v-btn small @click="editProjectDialog(project)">Edit</v-btn>
+                                </v-flex>  
+                                <!-- <v-flex>
+                                    <v-btn small @click="editProjectDialog(project)">Edit</v-btn>
+                                </v-flex>   -->
+                            </v-layout>
+                            
+                        </template>
 
-                              </v-layout>
+                        <v-card class="grey darken-2">
+                            <v-container >
+                            <v-card>
+                                <v-card-title>
+                                    <span>Filter</span>
+                                </v-card-title>
+                                <v-layout row>
+                                <v-flex class="pl-2" xs12 sm6 md2 >
+                                    <v-select
+                                    v-model="filterDiv"
+                                    :items="project.All_Divisi"
+                                    item-text="Nama"
+                                    item-value="Nama"
+                                    box
+                                    label="Division"
+                                    @change="getSubDivision(project)"
+
+                                    ></v-select>
+                                </v-flex>
+                                <v-flex class="pl-2" xs12 sm6 md2 >
+                                    <v-select
+                                    v-model="filterSubDiv"
+                                    :items="sub_division"
+                                    item-text="Nama"
+                                    item-value="Nama"
+                                    box
+                                    label="Sub Division"
+                                    @change="getTask(project)"
+                                    ></v-select>
+                                </v-flex>     
+                                <v-flex class="pl-2" xs12 sm6 md2 >
+                                    <v-select
+                                    v-model="filterTask"
+                                    :items="task"
+                                    item-text="Nama"
+                                    item-value="Nama"
+                                    box
+                                    label="Task"
+                                    ></v-select>
+                                </v-flex>
+                                <v-flex class="pl-2" xs12 sm6 md2 >
+                                    <v-btn  @click="clearFilter()">Clear</v-btn>
+                                </v-flex>
+                                </v-layout> 
+                            </v-card>   
+
+                            <v-card hover v-ripple class="scroll-y" v-for="subtask in filteredTask(project.All_SubTask)" :key="subtask.Nama" flat style="background: #424242 !important;" @click="openTaskDialog(subtask)">
+                            <v-layout row wrap :class="`pa-3  project ${subtask.Status}`">
+                                <v-flex xs12 md4 >
+                                    <div class="caption grey--text">{{subtask.Divisi}}</div>
+                                    <div>{{subtask.Sub_Divisi}}</div>
+                                </v-flex>
+                                <v-flex xs6 sm4 md2>
+                                    <div class="caption grey--text">{{subtask.Task}}</div>
+                                    <div>{{subtask.Nama}}</div>
+                                </v-flex>     
+                                <v-flex xs6 sm4 md2>
+                                    <div class="caption grey--text">Due Date</div>
+                                    <div>{{subtask.Tanggal_Selesai}}</div>
+                                </v-flex>
+                                <v-flex xs6 sm4 md2> 
+                                    <div class="caption grey--text">Progress</div>
+                                    <div>
+                                        <v-progress-linear
+                                        color="red"
+                                        height="20"
+                                        :value="subtask.Progress"
+                                        >
+                                        <!-- <strong class="text-center">{{project.progress}}%</strong> -->
+                                        <p class="text-xs-center">{{subtask.Progress}}%</p>
+                                        </v-progress-linear>
+                                    </div>
+                                </v-flex>
+                                <v-flex xs2 sm4 md2>
+                                    <!-- <div class="caption grey--text">Status</div> -->
+                                    <div class="right">
+                                        <v-chip small :class="` white--text my-2 caption ${subtask.Status}`">{{subtask.Status}}</v-chip>
+                                    </div>
+                                </v-flex>
+                            </v-layout>
+                            <v-divider></v-divider>
+                            </v-card>
                             </v-container>
-                        </div>
-                      <!-- </template> -->
+                        </v-card>
+                        </v-expansion-panel-content>
+                    </v-expansion-panel>
+                <!-- Expand Panel -->
+                    <!-- DASHBOARD CARDS -->
+                      <!-- <div>
+                        <h1 class="subheading grey--text">Dashboard</h1>
+                          <v-container>
+                            <v-layout row wrap>
+                              <v-flex sm 6 xs12 md6 lg6>
+                                <v-card class="ma-3">
+                                  <v-list>
+                                    <v-list-tile-avatar>
+                                      <v-sheet color="green" width="60" height="60" elevation="10">
+                                        <v-icon dark large>
+                                          store
+                                        </v-icon>
+                                      </v-sheet>
+                                      <v-card-text class="text-xs-center">
+                                        <h4 class="card-title font-weight-bold">Project</h4>
+                                      </v-card-text>
+                                    </v-list-tile-avatar>
+                                    <v-list-tile-content>
+                                      <v-divider light></v-divider>
+                                      <v-list-tile-title class="hheadline mb-1 text-right">10921</v-list-tile-title>
+                                    </v-list-tile-content>
+                                    <v-card-action>
+                                      <v-icon class="ma-2" dark text person></v-icon>
+                                      <div class="overline"></div>
+                                    </v-card-action>
+                                  </v-list>
+                                </v-card>
+                              </v-flex>
+                            </v-layout>
+                          </v-container>
+                        </div> -->
+                        <!-- DASHHBOARD CARDS -->
                     </v-card>
                   </v-tab-item>  
                 </v-tabs>
               </div>
             </v-container>
           </v-form>
-        </material-card>
+        <!-- </material-card> -->
       </v-flex>
+      <!-- PROFILE -->
       <v-flex
         xs12
         md4
@@ -142,7 +259,7 @@
                 <v-text-field
                   v-model="User.Grade"
                   label="Grade"
-                  counter
+                  disabled
                 >
                 </v-text-field>
               </v-flex>
@@ -186,6 +303,7 @@
                   v-model="User.Nomor_Asosiasi"
                   label="Assosiation Number"
                   counter
+                  disabled
                 />
               </v-flex>
               <v-flex
@@ -196,6 +314,7 @@
                   v-model="User.Nomor_SKA"
                   label="SKA Number"
                   counter
+                  disabled
                   />
               </v-flex>
             </v-layout>
@@ -297,6 +416,7 @@
           </v-dialog>
       </v-layout>
     <!-- Change Password Dialog -->
+    <!-- PROFILE -->
     <!-- Alert -->
       <v-snackbar right bottom :color="alert.type"  value="true" v-if="alert.type">
       <v-icon>{{alert.icon}}</v-icon>{{alert.message}}
@@ -338,6 +458,8 @@ export default {
     showOPassword: false,
     showNPassword: false,
     showCPassword: false,
+    //Projects
+    Projects : [],
   }),
   computed : {
     ...mapGetters({
@@ -351,6 +473,20 @@ export default {
   },
   methods : {
     async loaddata ()
+    {
+      this.getAllEmployees()
+      this.getAllProjects()
+    },
+    async getAllProjects()
+    {
+      try {
+          this.Projects = ((await Controller.getallproject()).data)
+          console.log(this.Projects)
+      } catch (err) {
+          console.log(err)
+      }
+    },
+    async getAllEmployees()
     {
       try {
           this.User = ((await Controller.getallemployee()).data).filter(obj=>obj.Id_Akun == this.id_akun)[0]
