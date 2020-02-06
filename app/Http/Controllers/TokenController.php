@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Token;
 use App\Akun;
+use App\Log_Sesi;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -36,6 +37,13 @@ class TokenController extends RestController
             $token->Username=str_random(32);
             $token->Password=str_random(32);
             $token->save();
+            
+            $log_sesi = Log_Sesi::create([
+                'Id_Akun'   => $user->Id_Akun,
+                'Waktu'     => $now,
+                'Keterangan'=> "Login"
+            ]);
+
             $response = $this->generateItem($token);
             return $this->sendResponse($response, 201);
         } catch (InvalidCredentialExcpetion $e) {

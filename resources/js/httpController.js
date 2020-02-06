@@ -1,7 +1,41 @@
 import Http from './http'
 
 export default {
+    //LOG SESI AREA
+    getallsessionlog(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/log_sesi', successCallback, errorCallback)
+        })
+    },
+    addsessionlog(payload) {
+        return new Promise((resolve, reject) => {
+
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
     
+            }
+
+            Http.post('/api/log_sesi', payload, successCallback, errorCallback)
+        })
+    },
+    
+
     //EMPLOYEE AREA
     getallemployee(){
         return new Promise((resolve, reject) => {

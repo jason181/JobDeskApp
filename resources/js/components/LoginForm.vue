@@ -101,8 +101,10 @@ export default {
             username : this.username,
             password : this.password,
           }
-
-
+          let payload={
+            Username    : this.username,
+            Keterangan  : 'Login'
+          }
           await auth.authenticate(data)
           this.$router.push({ name: 'Dashboard' })
         } catch (err) {

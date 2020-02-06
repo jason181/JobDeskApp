@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Transformers\LogSesiTransformers;
-use App\Sub_Divisi_Proyek;
-
+use App\Log_Sesi;
+use App\Akun;
 use Carbon\Carbon;
 
 class LogSesiController extends RestController
@@ -43,9 +43,11 @@ class LogSesiController extends RestController
         try{
             // $waktu = Carbon::now('Asia/Jakarta')->isoFormat('DD-MM-YYYY');
             // return $waktu;
+            $waktu = Carbon::now('Asia/Jakarta');
+            $akun = Akun::where('Username',$request->Username)->first();
             $log_sesi = Log_Sesi::create([
-                'Id_Akun'   => $request->Id_Akun,
-                'Waktu'     => $request->Waktu,
+                'Id_Akun'   => $akun->Id_Akun,
+                'Waktu'     => $waktu,
                 'Keterangan'=> $request->Keterangan
             ]);
     
