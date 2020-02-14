@@ -17,13 +17,13 @@
             <v-spacer/>
             <v-toolbar-items>
                 <v-flex align-center layout py-2>
-                    <v-text-field
+                    <!-- <v-text-field
                         v-if="responsiveInput"
                         class="mr-4 mt-2 purple-input"
                         label="Search..."
                         hide-details
                         color="purple"
-                    />
+                    /> -->
                     <router-link v-ripple class="toolbar-items" to="/panel/dashboard">
                         <v-icon color>mdi-home</v-icon>
                     </router-link>
@@ -107,11 +107,11 @@
                 <v-list-tile
                 v-if="responsive"
                 >
-                <v-text-field
+                <!-- <v-text-field
                     class="purple-input search-input"
                     label="Search..."
                     color="purple"
-                />
+                /> -->
                 </v-list-tile>
                 <v-list-tile
                 v-for="(link, i) in links"

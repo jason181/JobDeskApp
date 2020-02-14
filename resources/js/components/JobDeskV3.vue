@@ -33,6 +33,7 @@
                             </v-flex>   
                             <v-spacer/>
                             <v-flex>
+                                <v-btn small @click="projectNotesDialog(project)">Notes</v-btn>
                                 <v-btn small @click="detailProjectDialog(project)">Detail</v-btn>
                                 <v-btn small @click="editProjectDialog(project)">Edit</v-btn>
                                 <v-btn small @click="deleteProjectAll(project)">Delete</v-btn>
@@ -462,6 +463,7 @@
                                                     >
                                                     <!-- Project Information -->
                                                     PI
+                                                    
                                                     </v-stepper-step>
 
                                                     <v-divider></v-divider>
@@ -1392,7 +1394,8 @@
                                                                 <v-card>
                                                                     <v-spacer></v-spacer>
                                                                     <v-card-text>
-                                                                        <v-text-field pa-5 style="width:30%;"
+                                                                        <v-text-field style="width:30%;"
+                                                                            class="right py-3"
                                                                             v-model="searchsubtask"
                                                                             append-icon="search"
                                                                             label="Search"
@@ -1610,7 +1613,7 @@
                                                     </v-btn>
                                                     <v-list expand style="height: 100%;">
                                                         <!-- style="overflow : auto;" -->
-                                                        <v-list-group
+                                                        <v-list-group class="pa-0"
                                                         value="true">
 
                                                         <template v-slot:activator>
@@ -1714,8 +1717,16 @@
                                                                         <v-list-tile-content>
                                                                             <v-list-tile-title>
                                                                                 <v-layout row wrap>
-                                                                                    <v-flex xs12 md12 >
-                                                                                        {{subtask.Nama }} 
+                                                                                    <v-flex xs12 md10 >
+                                                                                        <v-tooltip left color="grey darken-4">
+                                                                                            <template v-slot:activator="{ on }">
+                                                                                                <div v-on="on" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size:14px;">{{subtask.Nama}}</div>
+                                                                                            </template>
+                                                                                            <span style="color:white">{{subtask.Nama}}</span>
+                                                                                        </v-tooltip>
+                                                                                    </v-flex>
+                                                                                    <v-flex xs12 md2 >
+                                                                                        {{subtask.Persentase }}%
                                                                                     </v-flex>
                                                                                 </v-layout>
                                                                             </v-list-tile-title>
@@ -1744,7 +1755,47 @@
                     </v-dialog>
                 </v-layout>
             <!-- Add Dialog 2 -->
+            
+            <!-- Project Note Dialog -->
+                <v-layout row justify-center>
+                    <v-dialog v-model="projectNoteDialog" scrollable persistent max-width="600px">
+                    <v-card>
+                        <v-card-title>
+                            <span class="headline">{{projectNote.Nama}}</span>
+                            <v-spacer/>
+                        </v-card-title>
+                        <v-divider/>
+                            <span class="headline mx-auto mt-3">Project Note</span>
+                        <v-card-text>
+                        <v-container grid-list-md>
+                            <v-layout wrap>
+                                <!-- Notes -->
+                                <v-flex xs12>
+                                    <v-textarea
+                                    outline
+                                    readonly
+                                    label="Project Note"
+                                    v-model="projectNote.Catatan"
+                                    rows="14"
+                                    ></v-textarea>
+                                </v-flex>
+                                <!-- Notes -->
+                            <!-- Description -->
+                            </v-layout>
+                        </v-container>
+                        
+                        </v-card-text>
+                        <v-divider></v-divider>
+                        <v-card-actions>
+                        <v-spacer></v-spacer>
 
+                        <v-btn color="blue darken-1" flat @click="projectNoteDialog = false">Close</v-btn>
+                        </v-card-actions>
+                    </v-card>
+                    </v-dialog>
+                </v-layout>
+            <!-- Project Note Dialog -->
+            
             <!-- Note Dialog -->
                 <v-dialog
                 v-model="noteDialog"
@@ -1787,31 +1838,30 @@
                                                 <v-icon small left>filter_list</v-icon>
                                                 <span class="caption ">Expand</span>
                                             </v-btn>
-                                            <v-list expand style="height: 300px; overflow-y: auto;">
+                                            <v-list expand style="height: 370px; overflow-y: auto;">
                                                 <v-list-group
                                                 value="true">
 
                                                 <template v-slot:activator>
                                                     <v-list-tile>
-                                                    <v-list-tile-content>
-                                                        <v-list-tile-title>
-                                                        <span>{{detailProject.Nama}}</span>
-                                                        
-                                                        <span class="pl-5"> {{detailProject.Remaining}}</span>
+                                                        <v-list-tile-content>
+                                                            <v-list-tile-title>
+                                                            <span>{{detailProject.Nama}}</span>
+                                                            <span class="pr-3 right"> {{detailProject.Remaining}} </span>
 
-                                                        <!-- <v-btn small color="info">Detail</v-btn> -->
-                                                        </v-list-tile-title>
-                                                    </v-list-tile-content>
-                                                    <v-list-tile-action style="min-width:150px; !important">
+                                                            <!-- <v-btn small color="info">Detail</v-btn> -->
+                                                            </v-list-tile-title>
+                                                        </v-list-tile-content>
+                                                        <v-list-tile-action style="min-width:150px; !important">
                                                             <v-progress-linear
-                                                        color="red"
-                                                        height="20"
-                                                        :value="detailProject.Progress"
-                                                        >
-                                                        <!-- <strong class="text-center">{{project.progress}}%</strong> -->
-                                                        <p class="text-xs-center">{{detailProject.Progress}}%</p>
-                                                        </v-progress-linear>
-                                                    </v-list-tile-action>
+                                                            color="red"
+                                                            height="20"
+                                                            :value="detailProject.Progress"
+                                                            >
+                                                            <!-- <strong class="text-center">{{project.progress}}%</strong> -->
+                                                            <p class="text-xs-center">{{detailProject.Progress}}%</p>
+                                                            </v-progress-linear>
+                                                        </v-list-tile-action>
                                                     </v-list-tile>
                                                 </template>
                                     
@@ -1826,7 +1876,7 @@
                                                             <v-list-tile class="d_div">
                                                             <v-list-tile-content>
                                                                 <v-list-tile-title>{{ div.Nama }}
-                                                                    <span class="pl-5"> {{div.Remaining}}</span>
+                                                                    <span class="pr-3 right"> {{div.Remaining}}</span>
                                                                 </v-list-tile-title>
                                                             </v-list-tile-content>
                                                             <v-list-tile-action style="min-width:150px; !important">
@@ -1845,14 +1895,14 @@
                                                         <v-list-group
                                                         v-for="subdiv in detailProject.All_SubDivisi.filter(obj=>obj.Divisi == div.Nama)"
                                                         :key="subdiv.Id_Sub_Divisi_Proyek"
-                                                        class="pl-2 pr-2" 
+                                                        class="pl-2 pr-2" d3
                                                         :value="expandDetail"
                                                         >
                                                             <template v-slot:activator>
                                                                 <v-list-tile  class="d_sub_div">
                                                                 <v-list-tile-content >
                                                                     <v-list-tile-title>{{ subdiv.Nama }}
-                                                                        <span class="pl-5"> {{subdiv.Remaining}}</span>
+                                                                        <span class="pr-3 right"> {{subdiv.Remaining}}</span>
                                                                     </v-list-tile-title>
                                                                 </v-list-tile-content>
                                                                 <v-list-tile-action style="min-width:150px; !important">
@@ -1877,7 +1927,7 @@
                                                                     <v-list-tile  class="d_task">
                                                                     <v-list-tile-content>
                                                                         <v-list-tile-title>{{ task.Nama }}
-                                                                            <span class="pl-5"> {{task.Remaining}}</span>
+                                                                            <span class="pr-3 right"> {{task.Remaining}}</span>
                                                                         </v-list-tile-title>
                                                                     </v-list-tile-content>
                                                                     <v-list-tile-action style="min-width:150px; !important">
@@ -1898,7 +1948,7 @@
                                                                 class="d_sub_task pl-2 pr-5 mr-3 ">
                                                                 <v-list-tile-content>
                                                                     <v-list-tile-title>{{ subtask.Nama }}
-                                                                        <span class="pl-5"> {{subtask.Remaining}}</span>
+                                                                        <span class="pr-3 right"> {{subtask.Remaining}}</span>
                                                                     </v-list-tile-title>
                                                                 </v-list-tile-content>
                                                                 <v-list-tile-action style="min-width:150px; !important">
@@ -1954,19 +2004,18 @@
                                                 <tr @click="props.expanded = !props.expanded">
                                                 <td>{{ props.item.Nama }}</td>
                                                 <td class="text-sm-center">{{ props.item.Division }}</td>
-                                                <td class="text-sm-center">{{ props.item.Contribute }}</td>
+                                                <td class="text-sm-center">{{ props.item.Contribute }}%</td>
 
                                                 </tr>
                                             </template>
                                             <template v-slot:expand="props">
                                                 <v-card flat v-for="task in props.item.Task_List" :key="task.Nama">
                                                     <v-card-text>
-                                                        <v-layout row wrap>
+                                                        <v-layout row wrap style="font-size:8.5pt">
                                                         {{task.Div}} > {{task.Sub_Div}} > {{task.Task}} > {{task.Name}}
-                                                        <v-spacer/>
+                                                        <v-spacer></v-spacer>
                                                         {{task.Contribute}}%
                                                         </v-layout>
-                                                        
                                                     </v-card-text>
                                                 </v-card>
                                             </template>
@@ -2522,6 +2571,16 @@ export default {
           { text: 'Division', value: 'division',align: 'center' },
           { text: 'Contribute', value: 'contribute',align: 'center' },
         ],
+        // Project Note
+        projectNoteDialog : false,
+        projectNote : {
+            Nama : '',
+            Catatan : '',
+        },
+        initProjectNote : {
+            Nama : '',
+            Catatan : '',
+        }
     }
   },
    mounted(){
@@ -2852,6 +2911,7 @@ export default {
     //         data.All_SubTask    = allsubtask
     // },
     getDataFormat(data){
+        console.log("test")
         let alldivisi =[]
         let allsubdivisi=[]
         let alltask=[]
@@ -2897,7 +2957,7 @@ export default {
                         let target = new Date(eachsubtask.Tanggal_Selesai).getTime();
                         let remaining = parseInt((target-today)/(24*3600*1000));
                         eachsubtask.Remaining = remaining +' days left'
-
+                        
                         if(eachsubtask.Log_Pengerjaan.length > 0){
                             eachsubtask.Log_Pengerjaan = eachsubtask.Log_Pengerjaan.slice().reverse()
                             if(eachsubtask.Log_Pengerjaan.length==1)
@@ -2906,7 +2966,10 @@ export default {
                                 eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username 
                             }
                             else{
+                                console.log(eachsubtask.Log_Pengerjaan)
                                 let data = eachsubtask.Log_Pengerjaan.find(obj=>obj.Berkas!='' )
+                                console.log(data)
+                                console.log(data)
                                 eachsubtask.Progress = data.Progress 
                                 eachsubtask.User = data.Username 
                             }
@@ -3321,17 +3384,25 @@ export default {
                             Task.Div = logs[i].Divisi
                             Task.Contribute = Contribute
                         }
-                        if(i==loglen-1)
+                        let sametask = PCData.Task_List.filter(obj=>obj.Name == Task.Name)
+                        console.log("Sametask")
+                        console.log(sametask)
+                        console.log("index of")
+                        console.log(PCData.Task_List.indexOf(sametask[0]))
+                        let sametaskindex = PCData.Task_List.indexOf(sametask[0])
+                        if(i==loglen-1 ||logs[i+1].Nama != logs[i].Nama)
                         {
-                            PCData.Task_List.push(Task);
-                            Task = [];
-                            Contribute = 0;
-                        }
-                        else if(logs[i+1].Nama != logs[i].Nama)
-                        {
-                            PCData.Task_List.push(Task);
-                            Task = [];
-                            Contribute = 0;
+                            let sametask = PCData.Task_List.filter(obj=>obj.Name == Task.Name)
+                            if(sametaskindex != -1)
+                            {
+                                PCData.Task_List[sametaskindex].Contribute += Contribute
+                            }
+                            else
+                            {
+                                PCData.Task_List.push(Task);
+                                Task = [];
+                                Contribute = 0;
+                            }   
                         }
                     }
                 }
@@ -3442,6 +3513,11 @@ export default {
     },
     getTaskSubTaskForm(project){
         this.subtaskformfilter.All_Task = project.All_Task.filter(obj=>obj.Sub_Divisi == this.subtaskformfilter.SubDivisi)
+    },
+    projectNotesDialog(project){
+        this.projectNoteDialog = true
+        this.projectNote.Nama = project.Nama
+        this.projectNote.Catatan = project.Catatan
     },
     // WORKSPACE
     clearFilter(){

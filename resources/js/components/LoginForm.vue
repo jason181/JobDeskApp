@@ -46,6 +46,7 @@
             </v-card-text>
             <v-divider class="mt-5"/>
             <v-card-actions>
+              <span style="font-size:8pt;">v 1.0.0</span>
               <v-spacer/>
               <v-btn
                 align-center

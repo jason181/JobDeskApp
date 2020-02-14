@@ -6465,6 +6465,55 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -7003,7 +7052,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         text: 'Contribute',
         value: 'contribute',
         align: 'center'
-      }]
+      }],
+      // Project Note
+      projectNoteDialog: false,
+      projectNote: {
+        Nama: '',
+        Catatan: ''
+      },
+      initProjectNote: {
+        Nama: '',
+        Catatan: ''
+      }
     };
   },
   mounted: function mounted() {
@@ -8270,6 +8329,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     //         data.All_SubTask    = allsubtask
     // },
     getDataFormat: function getDataFormat(data) {
+      console.log("test");
       var alldivisi = [];
       var allsubdivisi = [];
       var alltask = [];
@@ -8363,10 +8423,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                           eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress;
                           eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username;
                         } else {
+                          console.log(eachsubtask.Log_Pengerjaan);
+
                           var _data = eachsubtask.Log_Pengerjaan.find(function (obj) {
                             return obj.Berkas != '';
                           });
 
+                          console.log(_data);
+                          console.log(_data);
                           eachsubtask.Progress = _data.Progress;
                           eachsubtask.User = _data.Username;
                         }
@@ -8987,7 +9051,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(project) {
         var _this11 = this;
 
-        var _iteratorNormalCompletion27, _didIteratorError27, _iteratorError27, _iterator27, _step27, subtask, _iteratorNormalCompletion28, _didIteratorError28, _iteratorError28, _loop6, _iterator28, _step28, _iteratorNormalCompletion29, _didIteratorError29, _iteratorError29, _loop7, _iterator29, _step29, _iteratorNormalCompletion30, _didIteratorError30, _iteratorError30, _loop8, _iterator30, _step30, PCDatas, Names, PCLogPengerjaan, _iteratorNormalCompletion31, _didIteratorError31, _iteratorError31, _iterator31, _step31, log, Data, subtasks, id_subtasks, id_subtask, index, isNew, logs, dataTask, _iteratorNormalCompletion32, _didIteratorError32, _iteratorError32, _iterator32, _step32, _log, subtasklen, Tasks, Contribute, _i, _PCDatas, PCData, _i2, _subtasks, _subtask2, loglen, _logs, Task, i, _iteratorNormalCompletion36, _didIteratorError36, _iteratorError36, _iterator36, _step36, _PCData, TContribute, SDContribute, DContribute, PersentaseTask, PersentaseSubDivisi, PersentaseDivisi, PersentaseProyek, _i3, _PCDatas2, _PCData2, _iteratorNormalCompletion37, _didIteratorError37, _iteratorError37, _loop9, _iterator37, _step37;
+        var _iteratorNormalCompletion27, _didIteratorError27, _iteratorError27, _iterator27, _step27, subtask, _iteratorNormalCompletion28, _didIteratorError28, _iteratorError28, _loop6, _iterator28, _step28, _iteratorNormalCompletion29, _didIteratorError29, _iteratorError29, _loop7, _iterator29, _step29, _iteratorNormalCompletion30, _didIteratorError30, _iteratorError30, _loop8, _iterator30, _step30, PCDatas, Names, PCLogPengerjaan, _iteratorNormalCompletion31, _didIteratorError31, _iteratorError31, _iterator31, _step31, log, Data, subtasks, id_subtasks, id_subtask, index, isNew, logs, dataTask, _iteratorNormalCompletion32, _didIteratorError32, _iteratorError32, _iterator32, _step32, _log, subtasklen, Tasks, Contribute, _i, _PCDatas, PCData, _loop9, _i2, _subtasks, TContribute, SDContribute, DContribute, PersentaseTask, PersentaseSubDivisi, PersentaseDivisi, PersentaseProyek, _i3, _PCDatas2, _PCData, _iteratorNormalCompletion36, _didIteratorError36, _iteratorError36, _loop10, _iterator36, _step36;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context11) {
           while (1) {
@@ -9430,116 +9494,93 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   PCData.Task_List = [];
                 }
 
-                _i2 = 0, _subtasks = subtasks;
+                _loop9 = function _loop9() {
+                  var subtask = _subtasks[_i2];
+                  var loglen = subtask.Logs.length;
+                  var logs = subtask.Logs;
+                  var Task = [];
 
-              case 139:
-                if (!(_i2 < _subtasks.length)) {
-                  _context11.next = 171;
-                  break;
-                }
+                  for (var i = 0; i < loglen; i++) {
+                    var _iteratorNormalCompletion37 = true;
+                    var _didIteratorError37 = false;
+                    var _iteratorError37 = undefined;
 
-                _subtask2 = _subtasks[_i2];
-                loglen = _subtask2.Logs.length;
-                _logs = _subtask2.Logs;
-                Task = [];
-                i = 0;
+                    try {
+                      for (var _iterator37 = PCDatas[Symbol.iterator](), _step37; !(_iteratorNormalCompletion37 = (_step37 = _iterator37.next()).done); _iteratorNormalCompletion37 = true) {
+                        var _PCData2 = _step37.value;
 
-              case 145:
-                if (!(i < loglen)) {
-                  _context11.next = 168;
-                  break;
-                }
+                        if (_PCData2.Nama == logs[i].Nama) {
+                          if (i == 0) {
+                            Contribute = logs[i].Progress;
+                            Task.Name = logs[i].Sub_Task;
+                            Task.Task = logs[i].Task;
+                            Task.Sub_Div = logs[i].Sub_Divisi;
+                            Task.Div = logs[i].Divisi;
+                            Task.Contribute = Contribute;
+                          } else if (logs[i].Nama == logs[i - 1].Nama) {
+                            Contribute += logs[i].Progress - logs[i - 1].Progress;
+                            Task.Name = logs[i].Sub_Task;
+                            Task.Task = logs[i].Task;
+                            Task.Sub_Div = logs[i].Sub_Divisi;
+                            Task.Div = logs[i].Divisi;
+                            Task.Contribute = Contribute;
+                          } else {
+                            Contribute = logs[i].Progress - logs[i - 1].Progress;
+                            Task.Name = logs[i].Sub_Task;
+                            Task.Task = logs[i].Task;
+                            Task.Sub_Div = logs[i].Sub_Divisi;
+                            Task.Div = logs[i].Divisi;
+                            Task.Contribute = Contribute;
+                          }
 
-                _iteratorNormalCompletion36 = true;
-                _didIteratorError36 = false;
-                _iteratorError36 = undefined;
-                _context11.prev = 149;
+                          var sametask = _PCData2.Task_List.filter(function (obj) {
+                            return obj.Name == Task.Name;
+                          });
 
-                for (_iterator36 = PCDatas[Symbol.iterator](); !(_iteratorNormalCompletion36 = (_step36 = _iterator36.next()).done); _iteratorNormalCompletion36 = true) {
-                  _PCData = _step36.value;
+                          console.log("Sametask");
+                          console.log(sametask);
+                          console.log("index of");
+                          console.log(_PCData2.Task_List.indexOf(sametask[0]));
 
-                  if (_PCData.Nama == _logs[i].Nama) {
-                    if (i == 0) {
-                      Contribute = _logs[i].Progress;
-                      Task.Name = _logs[i].Sub_Task;
-                      Task.Task = _logs[i].Task;
-                      Task.Sub_Div = _logs[i].Sub_Divisi;
-                      Task.Div = _logs[i].Divisi;
-                      Task.Contribute = Contribute;
-                    } else if (_logs[i].Nama == _logs[i - 1].Nama) {
-                      Contribute += _logs[i].Progress - _logs[i - 1].Progress;
-                      Task.Name = _logs[i].Sub_Task;
-                      Task.Task = _logs[i].Task;
-                      Task.Sub_Div = _logs[i].Sub_Divisi;
-                      Task.Div = _logs[i].Divisi;
-                      Task.Contribute = Contribute;
-                    } else {
-                      Contribute = _logs[i].Progress - _logs[i - 1].Progress;
-                      Task.Name = _logs[i].Sub_Task;
-                      Task.Task = _logs[i].Task;
-                      Task.Sub_Div = _logs[i].Sub_Divisi;
-                      Task.Div = _logs[i].Divisi;
-                      Task.Contribute = Contribute;
-                    }
+                          var sametaskindex = _PCData2.Task_List.indexOf(sametask[0]);
 
-                    if (i == loglen - 1) {
-                      _PCData.Task_List.push(Task);
+                          if (i == loglen - 1 || logs[i + 1].Nama != logs[i].Nama) {
+                            var _sametask = _PCData2.Task_List.filter(function (obj) {
+                              return obj.Name == Task.Name;
+                            });
 
-                      Task = [];
-                      Contribute = 0;
-                    } else if (_logs[i + 1].Nama != _logs[i].Nama) {
-                      _PCData.Task_List.push(Task);
+                            if (sametaskindex != -1) {
+                              _PCData2.Task_List[sametaskindex].Contribute += Contribute;
+                            } else {
+                              _PCData2.Task_List.push(Task);
 
-                      Task = [];
-                      Contribute = 0;
+                              Task = [];
+                              Contribute = 0;
+                            }
+                          }
+                        }
+                      }
+                    } catch (err) {
+                      _didIteratorError37 = true;
+                      _iteratorError37 = err;
+                    } finally {
+                      try {
+                        if (!_iteratorNormalCompletion37 && _iterator37["return"] != null) {
+                          _iterator37["return"]();
+                        }
+                      } finally {
+                        if (_didIteratorError37) {
+                          throw _iteratorError37;
+                        }
+                      }
                     }
                   }
+                };
+
+                for (_i2 = 0, _subtasks = subtasks; _i2 < _subtasks.length; _i2++) {
+                  _loop9();
                 }
 
-                _context11.next = 157;
-                break;
-
-              case 153:
-                _context11.prev = 153;
-                _context11.t6 = _context11["catch"](149);
-                _didIteratorError36 = true;
-                _iteratorError36 = _context11.t6;
-
-              case 157:
-                _context11.prev = 157;
-                _context11.prev = 158;
-
-                if (!_iteratorNormalCompletion36 && _iterator36["return"] != null) {
-                  _iterator36["return"]();
-                }
-
-              case 160:
-                _context11.prev = 160;
-
-                if (!_didIteratorError36) {
-                  _context11.next = 163;
-                  break;
-                }
-
-                throw _iteratorError36;
-
-              case 163:
-                return _context11.finish(160);
-
-              case 164:
-                return _context11.finish(157);
-
-              case 165:
-                i++;
-                _context11.next = 145;
-                break;
-
-              case 168:
-                _i2++;
-                _context11.next = 139;
-                break;
-
-              case 171:
                 Contribute = 0;
                 TContribute = 0;
                 SDContribute = 0;
@@ -9550,20 +9591,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 PersentaseProyek = 0;
                 _i3 = 0, _PCDatas2 = PCDatas;
 
-              case 180:
+              case 149:
                 if (!(_i3 < _PCDatas2.length)) {
-                  _context11.next = 207;
+                  _context11.next = 176;
                   break;
                 }
 
-                _PCData2 = _PCDatas2[_i3];
-                _iteratorNormalCompletion37 = true;
-                _didIteratorError37 = false;
-                _iteratorError37 = undefined;
-                _context11.prev = 185;
+                _PCData = _PCDatas2[_i3];
+                _iteratorNormalCompletion36 = true;
+                _didIteratorError36 = false;
+                _iteratorError36 = undefined;
+                _context11.prev = 154;
 
-                _loop9 = function _loop9() {
-                  var Task_List = _step37.value;
+                _loop10 = function _loop10() {
+                  var Task_List = _step36.value;
                   PersentaseTask = _this11.detailProject.All_SubTask.find(function (obj) {
                     return obj.Nama == Task_List.Name;
                   }).Persentase / 100;
@@ -9582,61 +9623,61 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Contribute += DContribute * PersentaseProyek;
                 };
 
-                for (_iterator37 = _PCData2.Task_List[Symbol.iterator](); !(_iteratorNormalCompletion37 = (_step37 = _iterator37.next()).done); _iteratorNormalCompletion37 = true) {
-                  _loop9();
+                for (_iterator36 = _PCData.Task_List[Symbol.iterator](); !(_iteratorNormalCompletion36 = (_step36 = _iterator36.next()).done); _iteratorNormalCompletion36 = true) {
+                  _loop10();
                 }
 
-                _context11.next = 194;
+                _context11.next = 163;
                 break;
 
-              case 190:
-                _context11.prev = 190;
-                _context11.t7 = _context11["catch"](185);
-                _didIteratorError37 = true;
-                _iteratorError37 = _context11.t7;
+              case 159:
+                _context11.prev = 159;
+                _context11.t6 = _context11["catch"](154);
+                _didIteratorError36 = true;
+                _iteratorError36 = _context11.t6;
 
-              case 194:
-                _context11.prev = 194;
-                _context11.prev = 195;
+              case 163:
+                _context11.prev = 163;
+                _context11.prev = 164;
 
-                if (!_iteratorNormalCompletion37 && _iterator37["return"] != null) {
-                  _iterator37["return"]();
+                if (!_iteratorNormalCompletion36 && _iterator36["return"] != null) {
+                  _iterator36["return"]();
                 }
 
-              case 197:
-                _context11.prev = 197;
+              case 166:
+                _context11.prev = 166;
 
-                if (!_didIteratorError37) {
-                  _context11.next = 200;
+                if (!_didIteratorError36) {
+                  _context11.next = 169;
                   break;
                 }
 
-                throw _iteratorError37;
+                throw _iteratorError36;
 
-              case 200:
-                return _context11.finish(197);
+              case 169:
+                return _context11.finish(166);
 
-              case 201:
-                return _context11.finish(194);
+              case 170:
+                return _context11.finish(163);
 
-              case 202:
-                _PCData2.Contribute = Contribute;
+              case 171:
+                _PCData.Contribute = Contribute;
                 Contribute = 0;
 
-              case 204:
+              case 173:
                 _i3++;
-                _context11.next = 180;
+                _context11.next = 149;
                 break;
 
-              case 207:
+              case 176:
                 this.d_user = PCDatas;
 
-              case 208:
+              case 177:
               case "end":
                 return _context11.stop();
             }
           }
-        }, _callee10, this, [[6, 10, 14, 22], [15,, 17, 21], [25, 30, 34, 42], [35,, 37, 41], [45, 50, 54, 62], [55,, 57, 61], [65, 70, 74, 82], [75,, 77, 81], [90, 94, 98, 106], [99,, 101, 105], [116, 120, 124, 132], [125,, 127, 131], [149, 153, 157, 165], [158,, 160, 164], [185, 190, 194, 202], [195,, 197, 201]]);
+        }, _callee10, this, [[6, 10, 14, 22], [15,, 17, 21], [25, 30, 34, 42], [35,, 37, 41], [45, 50, 54, 62], [55,, 57, 61], [65, 70, 74, 82], [75,, 77, 81], [90, 94, 98, 106], [99,, 101, 105], [116, 120, 124, 132], [125,, 127, 131], [154, 159, 163, 171], [164,, 166, 170]]);
       }));
 
       function detailProjectDialog(_x2) {
@@ -9756,6 +9797,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.subtaskformfilter.All_Task = project.All_Task.filter(function (obj) {
         return obj.Sub_Divisi == _this17.subtaskformfilter.SubDivisi;
       });
+    },
+    projectNotesDialog: function projectNotesDialog(project) {
+      this.projectNoteDialog = true;
+      this.projectNote.Nama = project.Nama;
+      this.projectNote.Catatan = project.Catatan;
     },
     // WORKSPACE
     clearFilter: function clearFilter() {
@@ -9983,6 +10029,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -12371,7 +12418,130 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
+ // import * as easings from 'vuetify/es5/services/goto/easing-patterns'
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -12404,15 +12574,156 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       showOPassword: false,
       showNPassword: false,
       showCPassword: false,
-      //Projects
-      Projects: []
+      //DATA Projects
+      AllProjects: [],
+      UserProjects: [],
+      LogPengerjaanData: [],
+      UserLogs: [],
+      // DUMMY
+      d_projects: [{
+        All_Divisi: [// {
+          //     Nama:'Desain Arsi',
+          //     Persentase:'50',
+          //     Tanggal_Selesai:'2020-10-12',
+          //     Id_Divisi_Role:'1'
+          // },
+          // {
+          //     Nama:'Admin',
+          //     Persentase:'50',
+          //     Tanggal_Selesai:'2020-10-12',
+          //     Id_Divisi_Role:'1'
+          // }
+        ],
+        All_SubDivisi: [// {
+          //     Nama:'Desain',
+          //     Divisi:'Desain Arsi',
+          //     Persentase:'50',
+          //     Tanggal_Selesai:'2020-10-12',
+          // },
+          // {
+          //     Nama:'QS',
+          //     Divisi:'Desain Arsi',
+          //     Persentase:'50',
+          //     Tanggal_Selesai:'2020-10-12',
+          // }
+        ],
+        All_Task: [// {
+          //     Nama:'Konsep',
+          //     Sub_Divisi:'Desain',
+          //     Persentase:'50',
+          //     Tanggal_Selesai:'2020-10-12',
+          //     Id_Divisi_Role:'1',
+          //     Kode:'TSK1',
+          //     Satuan:'Item'
+          // },
+        ],
+        All_SubTask: [// {
+          //     Nama:'Denah Depan',
+          //     Task:'Konsep',
+          //     Persentase:'50',
+          //     Tanggal_Selesai:'2020-10-12',
+          //     Deskripsi:'A',
+          //     Kode:'STSK1'
+          // },
+        ],
+        Id_Proyek: '1',
+        Nama: 'Test',
+        Tanggal_Mulai: '2020-10-12',
+        Tanggal_Selesai: '2020-10-12',
+        Nilai: '2',
+        Target_Outcome: '2020-10-12',
+        Catatan: 'Cek',
+        Pemilik: 'A',
+        Alamat: 'A',
+        Kode: 'PR2'
+      }, {
+        All_Divisi: [{
+          Nama: 'Desain Arsi',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12',
+          Id_Divisi_Role: '1'
+        }, {
+          Nama: 'Admin',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12',
+          Id_Divisi_Role: '1'
+        }],
+        All_SubDivisi: [{
+          Nama: 'Desain',
+          Divisi: 'Desain Arsi',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12'
+        }, {
+          Nama: 'QS',
+          Divisi: 'Desain Arsi',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12'
+        }],
+        All_Task: [{
+          Nama: 'Konsep',
+          Sub_Divisi: 'Desain',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12',
+          Id_Divisi_Role: '1',
+          Kode: 'TSK1',
+          Satuan: 'Item'
+        }],
+        All_SubTask: [{
+          Nama: 'Denah Depan',
+          Task: 'Konsep',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12',
+          Deskripsi: 'A',
+          Kode: 'STSK1'
+        }],
+        Id_Proyek: '2',
+        Nama: 'Test',
+        Tanggal_Mulai: '2020-10-12',
+        Tanggal_Selesai: '2020-10-12',
+        Nilai: '2',
+        Target_Outcome: '2020-10-12',
+        Catatan: 'Cek',
+        Pemilik: 'A',
+        Alamat: 'A',
+        Kode: 'PR2',
+        Status: 'overdue'
+      }],
+      //TRY
+      labels: ['0', 'RSYOG', 'RSLMP', 'HTL1', 'VILLA1', 'GOAMRSJ'],
+      value: [0, 25.2, 26.4, 13.5, 16.6, 18.9],
+      //EXPAND
+      expandDetail: false,
+      //SCROLL
+      type: 'selector',
+      number: 9999,
+      selector: '#Productivity',
+      selected: 'Button',
+      elements: ['Button', 'Radio group'],
+      duration: 1000,
+      offset: 25,
+      easing: 'easeInOutCubic' // easings: Object.keys(easings),
+
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
     id_akun: 'LoggedUser/Id_Akun',
     nama: 'LoggedUser/Name',
     akses: 'LoggedUser/Akses'
-  })),
+  }), {
+    target: function target() {
+      var val = this[this.type]; // if (!isNaN(value)) return Number(value)
+      // else 
+
+      return val;
+    },
+    options: function options() {
+      return {
+        duration: this.duration,
+        offset: this.offset,
+        easing: this.easing
+      };
+    }
+  }),
   mounted: function mounted() {
     this.loaddata();
   },
@@ -12421,19 +12732,61 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _loaddata = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _this = this;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                this.getAllEmployees();
-                this.getAllProjects();
+                _context.prev = 0;
+                _context.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallproject();
 
-              case 2:
+              case 3:
+                this.AllProjects = _context.sent.data;
+                console.log("PROJECTS");
+                console.log(this.AllProjects);
+                console.log("PROJECTS");
+                _context.next = 9;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalllogpengerjaan();
+
+              case 9:
+                _context.t0 = function (obj) {
+                  return obj.Progress != 0;
+                };
+
+                this.LogPengerjaanData = _context.sent.data.filter(_context.t0);
+                console.log("LOG");
+                console.log(this.LogPengerjaanData);
+                console.log("LOG");
+                _context.next = 16;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallemployee();
+
+              case 16:
+                _context.t1 = function (obj) {
+                  return obj.Id_Akun == _this.id_akun;
+                };
+
+                this.User = _context.sent.data.filter(_context.t1)[0];
+                this.User.Tanggal_Masuk = this.User.Tanggal_Masuk.toString();
+                console.log("USER");
+                console.log(this.User);
+                console.log("USER");
+                this.getUserProjects();
+                _context.next = 28;
+                break;
+
+              case 25:
+                _context.prev = 25;
+                _context.t2 = _context["catch"](0);
+                console.log(_context.t2);
+
+              case 28:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee, this, [[0, 25]]);
       }));
 
       function loaddata() {
@@ -12442,125 +12795,592 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return loaddata;
     }(),
-    getAllProjects: function () {
-      var _getAllProjects = _asyncToGenerator(
+    getUserProjects: function () {
+      var _getUserProjects = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this2 = this;
+
+        var _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, UserLog, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _loop, _iterator2, _step2;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
-                _context2.next = 3;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallproject();
-
-              case 3:
-                this.Projects = _context2.sent.data;
-                console.log(this.Projects);
-                _context2.next = 10;
-                break;
+                this.UserLogs = this.LogPengerjaanData.filter(function (obj) {
+                  return obj.Id_Akun == _this2.id_akun;
+                });
+                _iteratorNormalCompletion = true;
+                _didIteratorError = false;
+                _iteratorError = undefined;
+                _context2.prev = 5;
+                _iterator = this.UserLogs[Symbol.iterator]();
 
               case 7:
-                _context2.prev = 7;
-                _context2.t0 = _context2["catch"](0);
-                console.log(_context2.t0);
+                if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
+                  _context2.next = 32;
+                  break;
+                }
 
-              case 10:
+                UserLog = _step.value;
+                _iteratorNormalCompletion2 = true;
+                _didIteratorError2 = false;
+                _iteratorError2 = undefined;
+                _context2.prev = 12;
+
+                _loop = function _loop() {
+                  var Project = _step2.value;
+
+                  if (UserLog.Id_Proyek == Project.Id_Proyek && _this2.UserProjects.filter(function (obj) {
+                    return obj.Id_Proyek == Project.Id_Proyek;
+                  }).length == 0) {
+                    _this2.getDataFormat(Project);
+
+                    _this2.UserProjects.push(Project);
+                  }
+                };
+
+                for (_iterator2 = this.AllProjects[Symbol.iterator](); !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                  _loop();
+                }
+
+                _context2.next = 21;
+                break;
+
+              case 17:
+                _context2.prev = 17;
+                _context2.t0 = _context2["catch"](12);
+                _didIteratorError2 = true;
+                _iteratorError2 = _context2.t0;
+
+              case 21:
+                _context2.prev = 21;
+                _context2.prev = 22;
+
+                if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+                  _iterator2["return"]();
+                }
+
+              case 24:
+                _context2.prev = 24;
+
+                if (!_didIteratorError2) {
+                  _context2.next = 27;
+                  break;
+                }
+
+                throw _iteratorError2;
+
+              case 27:
+                return _context2.finish(24);
+
+              case 28:
+                return _context2.finish(21);
+
+              case 29:
+                _iteratorNormalCompletion = true;
+                _context2.next = 7;
+                break;
+
+              case 32:
+                _context2.next = 38;
+                break;
+
+              case 34:
+                _context2.prev = 34;
+                _context2.t1 = _context2["catch"](5);
+                _didIteratorError = true;
+                _iteratorError = _context2.t1;
+
+              case 38:
+                _context2.prev = 38;
+                _context2.prev = 39;
+
+                if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+                  _iterator["return"]();
+                }
+
+              case 41:
+                _context2.prev = 41;
+
+                if (!_didIteratorError) {
+                  _context2.next = 44;
+                  break;
+                }
+
+                throw _iteratorError;
+
+              case 44:
+                return _context2.finish(41);
+
+              case 45:
+                return _context2.finish(38);
+
+              case 46:
+                console.log("WORKSPACE"); // console.log(this.LogPengerjaanData)
+
+                console.log(this.UserProjects);
+                console.log("WORKSPACE");
+                _context2.next = 54;
+                break;
+
+              case 51:
+                _context2.prev = 51;
+                _context2.t2 = _context2["catch"](0);
+                console.log(_context2.t2);
+
+              case 54:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 7]]);
+        }, _callee2, this, [[0, 51], [5, 34, 38, 46], [12, 17, 21, 29], [22,, 24, 28], [39,, 41, 45]]);
       }));
 
-      function getAllProjects() {
-        return _getAllProjects.apply(this, arguments);
+      function getUserProjects() {
+        return _getUserProjects.apply(this, arguments);
       }
 
-      return getAllProjects;
+      return getUserProjects;
     }(),
-    getAllEmployees: function () {
-      var _getAllEmployees = _asyncToGenerator(
+    getDataFormat: function getDataFormat(data) {
+      var alldivisi = [];
+      var allsubdivisi = [];
+      var alltask = [];
+      var allsubtask = [];
+      var ProgressProyek = 0;
+      var ProgressDivisi = 0;
+      var ProgressSubDivisi = 0;
+      var ProgressTask = 0;
+      var ProgressSubTask = 0;
+      var ContributionProyek = 0;
+      var ContributionDivisi = 0;
+      var ContributionSubDivisi = 0;
+      var ContributionTask = 0;
+      var MySubTaskContribution = 0;
+      var OtherSubTaskContribution = 0;
+      var PersentaseProyek = 0;
+      var PersentaseDivisi = 0;
+      var PersentaseSubDivisi = 0;
+      var PersentaseTask = 0;
+      var PersentaseSubTask = 0;
+      var today = new Date().getTime();
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
+
+      try {
+        for (var _iterator3 = data.Divisi.data[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var div = _step3.value;
+          var _iteratorNormalCompletion4 = true;
+          var _didIteratorError4 = false;
+          var _iteratorError4 = undefined;
+
+          try {
+            for (var _iterator4 = div.Sub_Divisi.data[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+              var subdiv = _step4.value;
+              var _iteratorNormalCompletion5 = true;
+              var _didIteratorError5 = false;
+              var _iteratorError5 = undefined;
+
+              try {
+                for (var _iterator5 = subdiv.Task.data[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                  var task = _step5.value;
+                  var _iteratorNormalCompletion6 = true;
+                  var _didIteratorError6 = false;
+                  var _iteratorError6 = undefined;
+
+                  try {
+                    for (var _iterator6 = task.Sub_Task.data[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                      var subtask = _step6.value;
+                      var eachsubtask = {
+                        Id_Sub_Item_Pekerjaan: subtask.Id_Sub_Item_Pekerjaan,
+                        // Id_Item_Pekerjaan       : subtask.Id_Item_Pekerjaan,
+                        Projek: data.Nama,
+                        Divisi: div.Nama,
+                        Sub_Divisi: subdiv.Nama,
+                        Task: task.Nama,
+                        Nama: subtask.Nama,
+                        // Kode                    : subtask.Kode,
+                        // Deskripsi               : subtask.Deskripsi,
+                        Tanggal_Selesai: subtask.Tanggal_Selesai.split(' ')[0],
+                        Persentase: subtask.Persentase,
+                        User: '',
+                        Remaining: '',
+                        Progress: '0',
+                        Contribution: '0',
+                        Status: '',
+                        Log_Pengerjaan: []
+                      };
+                      var _iteratorNormalCompletion7 = true;
+                      var _didIteratorError7 = false;
+                      var _iteratorError7 = undefined;
+
+                      try {
+                        for (var _iterator7 = this.LogPengerjaanData[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+                          var log = _step7.value;
+
+                          if (log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan) {
+                            eachsubtask.Log_Pengerjaan.push(log);
+                          }
+                        }
+                      } catch (err) {
+                        _didIteratorError7 = true;
+                        _iteratorError7 = err;
+                      } finally {
+                        try {
+                          if (!_iteratorNormalCompletion7 && _iterator7["return"] != null) {
+                            _iterator7["return"]();
+                          }
+                        } finally {
+                          if (_didIteratorError7) {
+                            throw _iteratorError7;
+                          }
+                        }
+                      }
+
+                      var logIndexInc = 0;
+                      var logs = eachsubtask.Log_Pengerjaan.filter(function (obj) {
+                        return obj.Berkas != '';
+                      });
+                      var _iteratorNormalCompletion8 = true;
+                      var _didIteratorError8 = false;
+                      var _iteratorError8 = undefined;
+
+                      try {
+                        for (var _iterator8 = logs[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+                          var _log = _step8.value;
+                          logIndexInc = logs.indexOf(_log) + 1; // console.log("LOG INDEX")
+                          // console.log(logIndexInc)
+                          // console.log(logs.length)
+
+                          if (logIndexInc == logs.length - 1) {
+                            if (_log.Username == this.nama) {
+                              // console.log("add my")
+                              // console.log(log.Progress)
+                              MySubTaskContribution += _log.Progress;
+                            } else {
+                              // console.log("add other")
+                              // console.log(log.Progress)
+                              OtherSubTaskContribution += _log.Progress;
+                            }
+
+                            break;
+                          }
+
+                          if (logs[logIndexInc].Username != _log.Username) {
+                            if (_log.Username == this.nama) {
+                              // console.log("add my")
+                              // console.log(log.Progress)
+                              MySubTaskContribution += _log.Progress;
+                            } else {
+                              // console.log("add other")
+                              // console.log(log.Progress)
+                              OtherSubTaskContribution += _log.Progress;
+                            }
+                          }
+                        } // console.log("Contribution")
+                        // console.log(MySubTaskContribution)
+                        // console.log(OtherSubTaskContribution)
+                        // console.log(MySubTaskContribution-OtherSubTaskContribution)
+
+                      } catch (err) {
+                        _didIteratorError8 = true;
+                        _iteratorError8 = err;
+                      } finally {
+                        try {
+                          if (!_iteratorNormalCompletion8 && _iterator8["return"] != null) {
+                            _iterator8["return"]();
+                          }
+                        } finally {
+                          if (_didIteratorError8) {
+                            throw _iteratorError8;
+                          }
+                        }
+                      }
+
+                      eachsubtask.Contribution = MySubTaskContribution - OtherSubTaskContribution;
+                      MySubTaskContribution = 0;
+                      OtherSubTaskContribution = 0;
+                      ContributionTask += eachsubtask.Contribution * eachsubtask.Persentase / 100; // console.log(ContributionTask)
+
+                      var _target4 = new Date(eachsubtask.Tanggal_Selesai).getTime();
+
+                      var _remaining4 = parseInt((_target4 - today) / (24 * 3600 * 1000));
+
+                      eachsubtask.Remaining = _remaining4 + ' days left';
+
+                      if (eachsubtask.Log_Pengerjaan.length > 0) {
+                        eachsubtask.Log_Pengerjaan = eachsubtask.Log_Pengerjaan.slice().reverse();
+
+                        if (eachsubtask.Log_Pengerjaan.length == 1) {
+                          eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress;
+                          eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username;
+                          ProgressTask += eachsubtask.Progress * eachsubtask.Persentase / 100;
+                        } else {
+                          var _data = eachsubtask.Log_Pengerjaan.find(function (obj) {
+                            return obj.Berkas != '';
+                          });
+
+                          eachsubtask.Progress = _data.Progress;
+                          eachsubtask.User = _data.Username;
+                          ProgressTask += eachsubtask.Progress * eachsubtask.Persentase / 100;
+                        }
+                      }
+
+                      if (_remaining4 < 0 && eachsubtask.Progress != '100') {
+                        eachsubtask.Status = 'overdue';
+                        eachsubtask.Remaining = _remaining4 + ' days overdue';
+                      } else if (eachsubtask.Progress != '100') {
+                        eachsubtask.Status = 'ongoing';
+                      } else {
+                        eachsubtask.Status = 'complete';
+                      }
+
+                      allsubtask.push(eachsubtask);
+                    }
+                  } catch (err) {
+                    _didIteratorError6 = true;
+                    _iteratorError6 = err;
+                  } finally {
+                    try {
+                      if (!_iteratorNormalCompletion6 && _iterator6["return"] != null) {
+                        _iterator6["return"]();
+                      }
+                    } finally {
+                      if (_didIteratorError6) {
+                        throw _iteratorError6;
+                      }
+                    }
+                  }
+
+                  var _target3 = new Date(task.Tanggal_Selesai).getTime();
+
+                  var _remaining3 = parseInt((_target3 - today) / (24 * 3600 * 1000));
+
+                  var eachtask = {
+                    Id_Item_Pekerjaan: task.Id_Item_Pekerjaan,
+                    Id_Divisi_Role: task.Id_Divisi_Role,
+                    Id_Sub_Divisi_Proyek: task.Id_Sub_Divisi_Proyek,
+                    Sub_Divisi: task.Sub_Divisi,
+                    Nama: task.Nama,
+                    Kode: task.Kode,
+                    Satuan: task.Satuan,
+                    Tanggal_Selesai: task.Tanggal_Selesai.split(' ')[0],
+                    Persentase: task.Persentase,
+                    Progress: ProgressTask,
+                    Contribution: ContributionTask,
+                    Remaining: _remaining3 + ' days left'
+                  };
+                  ContributionTask = 0;
+                  ProgressTask = 0;
+                  ContributionSubDivisi += eachtask.Contribution * eachtask.Persentase / 100;
+                  ProgressSubDivisi += eachtask.Progress * eachtask.Persentase / 100;
+
+                  if (eachtask.Progress == 100) {
+                    eachtask.Status = 'complete';
+                    eachtask.Remaining = _remaining3 + ' days left';
+                  } else {
+                    if (_remaining3 >= 0) {
+                      eachtask.Status = 'ongoing';
+                      eachtask.Remaining = _remaining3 + ' days left';
+                    } else if (_remaining3 < 0) {
+                      eachtask.Status = 'overdue';
+                      eachtask.Remaining = _remaining3 + ' days overdue';
+                    }
+                  }
+
+                  alltask.push(eachtask);
+                  PersentaseSubDivisi += task.Persentase;
+                }
+              } catch (err) {
+                _didIteratorError5 = true;
+                _iteratorError5 = err;
+              } finally {
+                try {
+                  if (!_iteratorNormalCompletion5 && _iterator5["return"] != null) {
+                    _iterator5["return"]();
+                  }
+                } finally {
+                  if (_didIteratorError5) {
+                    throw _iteratorError5;
+                  }
+                }
+              }
+
+              var _target2 = new Date(subdiv.Tanggal_Selesai).getTime();
+
+              var _remaining2 = parseInt((_target2 - today) / (24 * 3600 * 1000));
+
+              var eachsubdiv = {
+                Id_Sub_Divisi_Proyek: subdiv.Id_Sub_Divisi_Proyek,
+                Id_Divisi_Proyek: subdiv.Id_Divisi_Proyek,
+                Divisi: subdiv.Divisi,
+                Nama: subdiv.Nama,
+                Tanggal_Selesai: subdiv.Tanggal_Selesai.split(' ')[0],
+                Persentase: subdiv.Persentase,
+                Total_Persentase: PersentaseSubDivisi,
+                Progress: ProgressSubDivisi,
+                Contribution: ContributionSubDivisi,
+                Remaining: _remaining2 + ' days left'
+              };
+              ContributionSubDivisi = 0;
+              ProgressSubDivisi = 0;
+              ContributionDivisi += eachsubdiv.Contribution * eachsubdiv.Persentase / 100;
+              ProgressDivisi += eachsubdiv.Progress * eachsubdiv.Persentase / 100;
+
+              if (eachsubdiv.Progress == 100) {
+                eachsubdiv.Status = 'complete';
+                eachsubdiv.Remaining = _remaining2 + ' days left';
+              } else {
+                if (_remaining2 >= 0) {
+                  eachsubdiv.Status = 'ongoing';
+                  eachsubdiv.Remaining = _remaining2 + ' days left';
+                } else if (_remaining2 < 0) {
+                  eachsubdiv.Status = 'overdue';
+                  eachsubdiv.Remaining = _remaining2 + ' days overdue';
+                }
+              }
+
+              allsubdivisi.push(eachsubdiv);
+              PersentaseSubDivisi = 0;
+              PersentaseDivisi += subdiv.Persentase;
+            }
+          } catch (err) {
+            _didIteratorError4 = true;
+            _iteratorError4 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion4 && _iterator4["return"] != null) {
+                _iterator4["return"]();
+              }
+            } finally {
+              if (_didIteratorError4) {
+                throw _iteratorError4;
+              }
+            }
+          }
+
+          var _target = new Date(div.Tanggal_Selesai).getTime();
+
+          var _remaining = parseInt((_target - today) / (24 * 3600 * 1000));
+
+          var eachdiv = {
+            Id_Divisi_Proyek: div.Id_Divisi_Proyek,
+            Id_Divisi_Role: div.Id_Divisi_Role,
+            Id_Proyek: div.Id_Proyek,
+            Nama: div.Nama,
+            Tanggal_Selesai: div.Tanggal_Selesai.split(' ')[0],
+            Persentase: div.Persentase,
+            Total_Persentase: PersentaseDivisi,
+            Progress: ProgressDivisi,
+            Contribution: ContributionDivisi,
+            Remaining: _remaining + ' days left'
+          };
+          ContributionDivisi = 0;
+          ProgressDivisi = 0;
+          ContributionProyek += eachdiv.Contribution * eachdiv.Persentase / 100;
+          ProgressProyek += eachdiv.Progress * eachdiv.Persentase / 100;
+
+          if (eachdiv.Progress == 100) {
+            eachdiv.Status = 'complete';
+            eachdiv.Remaining = _remaining + ' days left';
+          } else {
+            if (_remaining >= 0) {
+              eachdiv.Status = 'ongoing';
+              eachdiv.Remaining = _remaining + ' days left';
+            } else if (_remaining < 0) {
+              eachdiv.Status = 'overdue';
+              eachdiv.Remaining = _remaining + ' days overdue';
+            }
+          }
+
+          alldivisi.push(eachdiv);
+          PersentaseDivisi = 0;
+          PersentaseProyek += div.Persentase;
+        }
+      } catch (err) {
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+            _iterator3["return"]();
+          }
+        } finally {
+          if (_didIteratorError3) {
+            throw _iteratorError3;
+          }
+        }
+      }
+
+      data.Contribution = ContributionProyek;
+      ContributionProyek = 0;
+      data.Progress = ProgressProyek;
+      ProgressProyek = 0;
+      var target = new Date(data.Target_Outcome).getTime();
+      var remaining = parseInt((target - today) / (24 * 3600 * 1000));
+
+      if (data.Progress == 100) {
+        data.Status = 'complete';
+        data.Remaining = remaining + ' days left';
+      } else {
+        if (remaining >= 0) {
+          data.Status = 'ongoing';
+          data.Remaining = remaining + ' days left';
+        } else if (remaining < 0) {
+          data.Status = 'overdue';
+          data.Remaining = remaining + ' days overdue';
+        }
+      }
+
+      data.Total_Persentase = PersentaseProyek;
+      data.All_Divisi = alldivisi;
+      data.All_SubDivisi = allsubdivisi;
+      data.All_Task = alltask;
+      data.All_SubTask = allsubtask;
+      console.log("DATA");
+      console.log(data);
+    },
+    updateProfile: function () {
+      var _updateProfile = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var _this = this;
-
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
-                _context3.next = 3;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallemployee();
-
-              case 3:
-                _context3.t0 = function (obj) {
-                  return obj.Id_Akun == _this.id_akun;
-                };
-
-                this.User = _context3.sent.data.filter(_context3.t0)[0];
-                this.User.Tanggal_Masuk = this.User.Tanggal_Masuk.toString();
                 console.log(this.User);
-                _context3.next = 12;
-                break;
-
-              case 9:
-                _context3.prev = 9;
-                _context3.t1 = _context3["catch"](0);
-                console.log(_context3.t1);
-
-              case 12:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, this, [[0, 9]]);
-      }));
-
-      function getAllEmployees() {
-        return _getAllEmployees.apply(this, arguments);
-      }
-
-      return getAllEmployees;
-    }(),
-    updateProfile: function () {
-      var _updateProfile = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _context4.prev = 0;
-                console.log(this.User);
-                _context4.next = 4;
+                _context3.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updateemployee(this.User, this.User.Id_Karyawan);
 
               case 4:
-                response = _context4.sent;
+                response = _context3.sent;
                 console.log(response);
-                _context4.next = 8;
+                _context3.next = 8;
                 return this.loaddata();
 
               case 8:
                 this.close();
                 this.showAlert('success', 'Sukses Update Karyawan');
-                _context4.next = 16;
+                _context3.next = 16;
                 break;
 
               case 12:
-                _context4.prev = 12;
-                _context4.t0 = _context4["catch"](0);
-                console.log(_context4.t0);
+                _context3.prev = 12;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
                 this.showAlert('error', 'Gagal Update Karyawan');
 
               case 16:
               case "end":
-                return _context4.stop();
+                return _context3.stop();
             }
           }
-        }, _callee4, this, [[0, 12]]);
+        }, _callee3, this, [[0, 12]]);
       }));
 
       function updateProfile() {
@@ -12572,66 +13392,66 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     changePassword: function () {
       var _changePassword = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
         var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
                 console.log(this.New_Password + this.Confirm_Password);
-                _context5.prev = 1;
+                _context4.prev = 1;
 
                 if (!(this.New_Password === this.Confirm_Password)) {
-                  _context5.next = 19;
+                  _context4.next = 19;
                   break;
                 }
 
                 this.User.Old_Password = this.Old_Password;
                 this.User.Password = this.New_Password;
-                _context5.next = 7;
+                _context4.next = 7;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updateakun(this.User, this.User.Id_Akun);
 
               case 7:
-                response = _context5.sent;
+                response = _context4.sent;
                 console.log(response);
 
                 if (!(response != false)) {
-                  _context5.next = 16;
+                  _context4.next = 16;
                   break;
                 }
 
-                _context5.next = 12;
+                _context4.next = 12;
                 return this.loaddata();
 
               case 12:
                 this.close();
                 this.showAlert('success', 'Sukses Update Password');
-                _context5.next = 17;
+                _context4.next = 17;
                 break;
 
               case 16:
                 this.showAlert('error', 'Password Lama Anda Salah');
 
               case 17:
-                _context5.next = 19;
+                _context4.next = 19;
                 break;
 
               case 19:
-                _context5.next = 25;
+                _context4.next = 25;
                 break;
 
               case 21:
-                _context5.prev = 21;
-                _context5.t0 = _context5["catch"](1);
-                console.log(_context5.t0);
+                _context4.prev = 21;
+                _context4.t0 = _context4["catch"](1);
+                console.log(_context4.t0);
                 this.showAlert('error', 'Konfirmasi Password Anda Tidak Sesuai');
 
               case 25:
               case "end":
-                return _context5.stop();
+                return _context4.stop();
             }
           }
-        }, _callee5, this, [[1, 21]]);
+        }, _callee4, this, [[1, 21]]);
       }));
 
       function changePassword() {
@@ -12650,7 +13470,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.showCPassword = false;
     },
     showAlert: function showAlert(type, alert_message) {
-      var _this2 = this;
+      var _this3 = this;
 
       if (type == 'success') {
         this.alert.icon = 'done';
@@ -12667,9 +13487,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.showAlert.timer = setTimeout(function () {
-        _this2.alert.type = null;
-        _this2.alert.icon = null;
-        _this2.alert.message = null;
+        _this3.alert.type = null;
+        _this3.alert.icon = null;
+        _this3.alert.message = null;
       }, 3000);
     }
   }
@@ -13206,6 +14026,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.d_div{\r\n  border-left: 4px solid #3cd1c2 !Important;\r\n  border-color:#3cd1c2 !Important;\n}\n.d_sub_div{\r\n  border-left: 4px solid #00B8D4 !Important;\r\n  border-color:#00B8D4 !Important;\n}\n.d_task{\r\n  border-left: 4px solid #0091EA !Important;\r\n  border-color:#0091EA !Important;\n}\r\n\r\n/* .d_sub_task{\r\n  border-left: 4px solid #004D40 !Important;\r\n  border-color:#004D40 !Important;\r\n} */\n.project.complete{\r\n  border-left: 4px solid #3cd1c2 !Important;\r\n  border-color:#3cd1c2 !Important;\n}\n.project.ongoing{\r\n  border-left: 4px solid #ffaa2c !Important;\n}\n.project.overdue{\r\n  border-left: 4px solid #f83e70 !Important;\n}\n.project.untake{\r\n  border-left: 4px solid green !Important;\r\n  border-color:green !Important;\n}\n.v-chip.complete{\r\n  background: #3cd1c2 !Important;\n}\n.v-chip.ongoing{\r\n  background: #ffaa2c !Important;\n}\n.v-chip.overdue{\r\n  background: #f83e70 !Important;\n}\n.v-chip.untake{\r\n  background: green !Important;\n}\r\n\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profile.vue?vue&type=style&index=0&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Profile.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.v-sheet--offset {\n    top: -25px;\n    position: relative;\n}\n.d_project{\n  border-left: 4px solid #6effd3 !Important;\n  border-color: #6effd3 !Important;\n}\n.d_div{\n  border-left: 4px solid #3cd1c2 !Important;\n  border-color:#3cd1c2 !Important;\n}\n.d_sub_div{\n  border-left: 4px solid #00B8D4 !Important;\n  border-color:#00B8D4 !Important;\n}\n.d_task{\n  border-left: 4px solid #0091EA !Important;\n  border-color:#0091EA !Important;\n}\n\n/* .d_sub_task{\n  border-left: 4px solid #004D40 !Important;\n  border-color:#004D40 !Important;\n} */\n.project.complete{\n  border-left: 4px solid #3cd1c2 !Important;\n  border-color:#3cd1c2 !Important;\n}\n.project.ongoing{\n  border-left: 4px solid #ffaa2c !Important;\n}\n.project.overdue{\n  border-left: 4px solid #f83e70 !Important;\n}\n.project.untake{\n  border-left: 4px solid green !Important;\n  border-color:green !Important;\n}\n.v-chip.complete{\n  background: #3cd1c2 !Important;\n}\n.v-chip.ongoing{\n  background: #ffaa2c !Important;\n}\n.v-chip.overdue{\n  background: #f83e70 !Important;\n}\n.v-chip.untake{\n  background: green !Important;\n}\n\n", ""]);
 
 // exports
 
@@ -14867,6 +15706,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./JobDeskV3.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/JobDeskV3.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profile.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Profile.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Profile.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profile.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -19635,6 +20504,21 @@ var render = function() {
                                         attrs: { small: "" },
                                         on: {
                                           click: function($event) {
+                                            return _vm.projectNotesDialog(
+                                              project
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Notes")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: { small: "" },
+                                        on: {
+                                          click: function($event) {
                                             return _vm.detailProjectDialog(
                                               project
                                             )
@@ -20997,7 +21881,7 @@ var render = function() {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "\n                                                PI\n                                                "
+                                                        "\n                                                PI\n                                                \n                                                "
                                                       )
                                                     ]
                                                   ),
@@ -25117,13 +26001,13 @@ var render = function() {
                                                                           _c(
                                                                             "v-text-field",
                                                                             {
+                                                                              staticClass:
+                                                                                "right py-3",
                                                                               staticStyle: {
                                                                                 width:
                                                                                   "30%"
                                                                               },
                                                                               attrs: {
-                                                                                "pa-5":
-                                                                                  "",
                                                                                 "append-icon":
                                                                                   "search",
                                                                                 label:
@@ -26144,6 +27028,7 @@ var render = function() {
                                                       _c(
                                                         "v-list-group",
                                                         {
+                                                          staticClass: "pa-0",
                                                           attrs: {
                                                             value: "true"
                                                           },
@@ -26647,7 +27532,99 @@ var render = function() {
                                                                                                           attrs: {
                                                                                                             xs12:
                                                                                                               "",
-                                                                                                            md12:
+                                                                                                            md10:
+                                                                                                              ""
+                                                                                                          }
+                                                                                                        },
+                                                                                                        [
+                                                                                                          _c(
+                                                                                                            "v-tooltip",
+                                                                                                            {
+                                                                                                              attrs: {
+                                                                                                                left:
+                                                                                                                  "",
+                                                                                                                color:
+                                                                                                                  "grey darken-4"
+                                                                                                              },
+                                                                                                              scopedSlots: _vm._u(
+                                                                                                                [
+                                                                                                                  {
+                                                                                                                    key:
+                                                                                                                      "activator",
+                                                                                                                    fn: function(
+                                                                                                                      ref
+                                                                                                                    ) {
+                                                                                                                      var on =
+                                                                                                                        ref.on
+                                                                                                                      return [
+                                                                                                                        _c(
+                                                                                                                          "div",
+                                                                                                                          _vm._g(
+                                                                                                                            {
+                                                                                                                              staticStyle: {
+                                                                                                                                "white-space":
+                                                                                                                                  "nowrap",
+                                                                                                                                overflow:
+                                                                                                                                  "hidden",
+                                                                                                                                "text-overflow":
+                                                                                                                                  "ellipsis",
+                                                                                                                                "font-size":
+                                                                                                                                  "14px"
+                                                                                                                              }
+                                                                                                                            },
+                                                                                                                            on
+                                                                                                                          ),
+                                                                                                                          [
+                                                                                                                            _vm._v(
+                                                                                                                              _vm._s(
+                                                                                                                                subtask.Nama
+                                                                                                                              )
+                                                                                                                            )
+                                                                                                                          ]
+                                                                                                                        )
+                                                                                                                      ]
+                                                                                                                    }
+                                                                                                                  }
+                                                                                                                ],
+                                                                                                                null,
+                                                                                                                true
+                                                                                                              )
+                                                                                                            },
+                                                                                                            [
+                                                                                                              _vm._v(
+                                                                                                                " "
+                                                                                                              ),
+                                                                                                              _c(
+                                                                                                                "span",
+                                                                                                                {
+                                                                                                                  staticStyle: {
+                                                                                                                    color:
+                                                                                                                      "white"
+                                                                                                                  }
+                                                                                                                },
+                                                                                                                [
+                                                                                                                  _vm._v(
+                                                                                                                    _vm._s(
+                                                                                                                      subtask.Nama
+                                                                                                                    )
+                                                                                                                  )
+                                                                                                                ]
+                                                                                                              )
+                                                                                                            ]
+                                                                                                          )
+                                                                                                        ],
+                                                                                                        1
+                                                                                                      ),
+                                                                                                      _vm._v(
+                                                                                                        " "
+                                                                                                      ),
+                                                                                                      _c(
+                                                                                                        "v-flex",
+                                                                                                        {
+                                                                                                          attrs: {
+                                                                                                            xs12:
+                                                                                                              "",
+                                                                                                            md2:
                                                                                                               ""
                                                                                                           }
                                                                                                         },
@@ -26655,9 +27632,9 @@ var render = function() {
                                                                                                           _vm._v(
                                                                                                             "\n                                                                                    " +
                                                                                                               _vm._s(
-                                                                                                                subtask.Nama
+                                                                                                                subtask.Persentase
                                                                                                               ) +
-                                                                                                              " \n                                                                                "
+                                                                                                              "%\n                                                                                "
                                                                                                           )
                                                                                                         ]
                                                                                                       )
@@ -26713,6 +27690,127 @@ var render = function() {
                               )
                             ],
                             1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { row: "", "justify-center": "" } },
+            [
+              _c(
+                "v-dialog",
+                {
+                  attrs: {
+                    scrollable: "",
+                    persistent: "",
+                    "max-width": "600px"
+                  },
+                  model: {
+                    value: _vm.projectNoteDialog,
+                    callback: function($$v) {
+                      _vm.projectNoteDialog = $$v
+                    },
+                    expression: "projectNoteDialog"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-card-title",
+                        [
+                          _c("span", { staticClass: "headline" }, [
+                            _vm._v(_vm._s(_vm.projectNote.Nama))
+                          ]),
+                          _vm._v(" "),
+                          _c("v-spacer")
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-divider"),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "headline mx-auto mt-3" }, [
+                        _vm._v("Project Note")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-text",
+                        [
+                          _c(
+                            "v-container",
+                            { attrs: { "grid-list-md": "" } },
+                            [
+                              _c(
+                                "v-layout",
+                                { attrs: { wrap: "" } },
+                                [
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "" } },
+                                    [
+                                      _c("v-textarea", {
+                                        attrs: {
+                                          outline: "",
+                                          readonly: "",
+                                          label: "Project Note",
+                                          rows: "14"
+                                        },
+                                        model: {
+                                          value: _vm.projectNote.Catatan,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.projectNote,
+                                              "Catatan",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "projectNote.Catatan"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-divider"),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "blue darken-1", flat: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.projectNoteDialog = false
+                                }
+                              }
+                            },
+                            [_vm._v("Close")]
                           )
                         ],
                         1
@@ -26886,7 +27984,7 @@ var render = function() {
                                             "v-list",
                                             {
                                               staticStyle: {
-                                                height: "300px",
+                                                height: "370px",
                                                 "overflow-y": "auto"
                                               },
                                               attrs: { expand: "" }
@@ -26929,7 +28027,7 @@ var render = function() {
                                                                         "span",
                                                                         {
                                                                           staticClass:
-                                                                            "pl-5"
+                                                                            "pr-3 right"
                                                                         },
                                                                         [
                                                                           _vm._v(
@@ -26938,7 +28036,8 @@ var render = function() {
                                                                                 _vm
                                                                                   .detailProject
                                                                                   .Remaining
-                                                                              )
+                                                                              ) +
+                                                                              " "
                                                                           )
                                                                         ]
                                                                       )
@@ -27050,7 +28149,7 @@ var render = function() {
                                                                                   "span",
                                                                                   {
                                                                                     staticClass:
-                                                                                      "pl-5"
+                                                                                      "pr-3 right"
                                                                                   },
                                                                                   [
                                                                                     _vm._v(
@@ -27143,6 +28242,7 @@ var render = function() {
                                                                   staticClass:
                                                                     "pl-2 pr-2",
                                                                   attrs: {
+                                                                    d3: "",
                                                                     value:
                                                                       _vm.expandDetail
                                                                   },
@@ -27176,7 +28276,7 @@ var render = function() {
                                                                                           "span",
                                                                                           {
                                                                                             staticClass:
-                                                                                              "pl-5"
+                                                                                              "pr-3 right"
                                                                                           },
                                                                                           [
                                                                                             _vm._v(
@@ -27306,7 +28406,7 @@ var render = function() {
                                                                                                   "span",
                                                                                                   {
                                                                                                     staticClass:
-                                                                                                      "pl-5"
+                                                                                                      "pr-3 right"
                                                                                                   },
                                                                                                   [
                                                                                                     _vm._v(
@@ -27422,7 +28522,7 @@ var render = function() {
                                                                                             "span",
                                                                                             {
                                                                                               staticClass:
-                                                                                                "pl-5"
+                                                                                                "pr-3 right"
                                                                                             },
                                                                                             [
                                                                                               _vm._v(
@@ -27629,7 +28729,7 @@ var render = function() {
                                                               _vm._s(
                                                                 props.item
                                                                   .Contribute
-                                                              )
+                                                              ) + "%"
                                                             )
                                                           ]
                                                         )
@@ -27657,6 +28757,10 @@ var render = function() {
                                                               _c(
                                                                 "v-layout",
                                                                 {
+                                                                  staticStyle: {
+                                                                    "font-size":
+                                                                      "8.5pt"
+                                                                  },
                                                                   attrs: {
                                                                     row: "",
                                                                     wrap: ""
@@ -27901,6 +29005,10 @@ var render = function() {
                       _c(
                         "v-card-actions",
                         [
+                          _c("span", { staticStyle: { "font-size": "8pt" } }, [
+                            _vm._v("v 1.0.0")
+                          ]),
+                          _vm._v(" "),
                           _c("v-spacer"),
                           _vm._v(" "),
                           _c(
@@ -29914,6 +31022,217 @@ var render = function() {
             { attrs: { xs12: "", md8: "" } },
             [
               _c(
+                "v-layout",
+                { attrs: { "justify-center": "", wrap: "" } },
+                [
+                  _c(
+                    "v-flex",
+                    { attrs: { xs12: "", md6: "" } },
+                    [
+                      _c(
+                        "v-card",
+                        {
+                          staticClass: "pr-1 py-3 pl-3",
+                          attrs: { flat: "", tile: "" }
+                        },
+                        [
+                          [
+                            _c(
+                              "v-card",
+                              {
+                                staticClass: "mt-4 mx-auto",
+                                attrs: { "max-width": "400" }
+                              },
+                              [
+                                _c(
+                                  "v-sheet",
+                                  {
+                                    staticClass: "v-sheet--offset mx-auto",
+                                    attrs: {
+                                      color: "blue",
+                                      elevation: "12",
+                                      "max-width": "calc(100% - 32px)"
+                                    }
+                                  },
+                                  [
+                                    _c("v-sparkline", {
+                                      attrs: {
+                                        labels: _vm.labels,
+                                        value: _vm.value,
+                                        color: "white",
+                                        "line-width": "2",
+                                        padding: "16"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-text",
+                                  { staticClass: "pt-0" },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "title font-weight-light mb-2"
+                                      },
+                                      [_vm._v("Total Project : 8")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "subheading font-weight-light"
+                                      },
+                                      [_vm._v("Average Contribution : 25,4%")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("v-divider", { staticClass: "my-2" }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-icon",
+                                      {
+                                        staticClass: "mr-2",
+                                        attrs: { small: "" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    mdi-clock\n                  "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "caption grey--text font-weight-light"
+                                      },
+                                      [_vm._v("last upload 26 minutes ago")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ]
+                        ],
+                        2
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { xs12: "", md6: "" } },
+                    [
+                      _c(
+                        "v-card",
+                        {
+                          staticClass: "pl-1 py-3 pr-3",
+                          attrs: { flat: "", tile: "" }
+                        },
+                        [
+                          [
+                            _c(
+                              "v-card",
+                              {
+                                staticClass: "mt-4 mx-auto",
+                                attrs: { "max-width": "400" }
+                              },
+                              [
+                                _c(
+                                  "v-sheet",
+                                  {
+                                    staticClass: "v-sheet--offset mx-auto",
+                                    attrs: {
+                                      color: "blue",
+                                      elevation: "12",
+                                      "max-width": "calc(100% - 32px)"
+                                    }
+                                  },
+                                  [
+                                    _c("v-sparkline", {
+                                      attrs: {
+                                        labels: _vm.labels,
+                                        value: _vm.value,
+                                        color: "white",
+                                        "line-width": "2",
+                                        padding: "16"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-text",
+                                  { staticClass: "pt-0" },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "title font-weight-light mb-2"
+                                      },
+                                      [_vm._v("Total Hari Kerja : 398")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "subheading font-weight-light"
+                                      },
+                                      [_vm._v("Persentase Kehadiran : 98%")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("v-divider", { staticClass: "my-2" }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-icon",
+                                      {
+                                        staticClass: "mr-2",
+                                        attrs: { small: "" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    mdi-clock\n                  "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "caption grey--text font-weight-light"
+                                      },
+                                      [_vm._v("(?)")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ]
+                        ],
+                        2
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
                 "v-form",
                 [
                   _c("v-container", { attrs: { "py-0": "" } }, [
@@ -29931,12 +31250,6 @@ var render = function() {
                               grow: _vm.grow,
                               vertical: _vm.vertical,
                               right: _vm.right,
-                              "prev-icon": _vm.prevIcon
-                                ? "mdi-arrow-left-bold-box-outline"
-                                : undefined,
-                              "next-icon": _vm.nextIcon
-                                ? "mdi-arrow-right-bold-box-outline"
-                                : undefined,
                               "icons-and-text": _vm.icons
                             },
                             model: {
@@ -29950,637 +31263,1065 @@ var render = function() {
                           [
                             _c("v-tabs-slider"),
                             _vm._v(" "),
-                            _c("v-tab", [_vm._v("My Productivity")]),
+                            _c(
+                              "v-tab",
+                              {
+                                attrs: { id: "Productivity" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.$vuetify.goTo(
+                                      _vm.target,
+                                      _vm.options
+                                    )
+                                  }
+                                }
+                              },
+                              [_vm._v("My Productivity")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-tab",
+                              {
+                                attrs: { id: "Productivity" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.$vuetify.goTo(
+                                      _vm.target,
+                                      _vm.options
+                                    )
+                                  }
+                                }
+                              },
+                              [_vm._v("Attendance")]
+                            ),
                             _vm._v(" "),
                             _c(
                               "v-tab-item",
                               [
                                 _c(
-                                  "v-card",
-                                  {
-                                    staticClass: "pa-4",
-                                    attrs: { flat: "", tile: "" }
-                                  },
+                                  "v-container",
+                                  { attrs: { fluid: "" } },
                                   [
                                     _c(
-                                      "v-expansion-panel",
-                                      _vm._l(_vm.Projects, function(project) {
-                                        return _c(
-                                          "v-expansion-panel-content",
-                                          {
-                                            key: project.Nama,
-                                            attrs: {
-                                              "expand-icon": "mdi-menu-down"
-                                            },
-                                            scopedSlots: _vm._u(
-                                              [
-                                                {
-                                                  key: "header",
-                                                  fn: function() {
-                                                    return [
-                                                      _c(
-                                                        "v-layout",
-                                                        {
-                                                          class: "pa-3",
-                                                          attrs: {
-                                                            row: "",
-                                                            wrap: ""
-                                                          }
-                                                        },
-                                                        [
-                                                          _c(
-                                                            "v-flex",
-                                                            {
-                                                              attrs: {
-                                                                xs12: "",
-                                                                md4: ""
-                                                              }
-                                                            },
-                                                            [
-                                                              _c(
-                                                                "div",
-                                                                {
-                                                                  staticClass:
-                                                                    "caption grey--text"
-                                                                },
-                                                                [
-                                                                  _vm._v(
-                                                                    "Project Title"
-                                                                  )
-                                                                ]
-                                                              ),
-                                                              _vm._v(" "),
-                                                              _c("div", [
-                                                                _vm._v(
-                                                                  _vm._s(
-                                                                    project.Nama
-                                                                  )
-                                                                )
-                                                              ])
-                                                            ]
-                                                          ),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "v-flex",
-                                                            {
-                                                              attrs: {
-                                                                xs6: "",
-                                                                sm4: "",
-                                                                md2: ""
-                                                              }
-                                                            },
-                                                            [
-                                                              _c(
-                                                                "div",
-                                                                {
-                                                                  staticClass:
-                                                                    "caption grey--text"
-                                                                },
-                                                                [
-                                                                  _vm._v(
-                                                                    "Due Date"
-                                                                  )
-                                                                ]
-                                                              ),
-                                                              _vm._v(" "),
-                                                              _c("div", [
-                                                                _vm._v(
-                                                                  _vm._s(
-                                                                    project.Tanggal_Selesai
-                                                                  )
-                                                                )
-                                                              ])
-                                                            ]
-                                                          ),
-                                                          _vm._v(" "),
-                                                          _c("v-spacer"),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "v-flex",
-                                                            [
-                                                              _c(
-                                                                "v-btn",
-                                                                {
-                                                                  attrs: {
-                                                                    small: ""
-                                                                  },
-                                                                  on: {
-                                                                    click: function(
-                                                                      $event
-                                                                    ) {
-                                                                      return _vm.detailProjectDialog(
-                                                                        project
-                                                                      )
-                                                                    }
-                                                                  }
-                                                                },
-                                                                [
-                                                                  _vm._v(
-                                                                    "Detail"
-                                                                  )
-                                                                ]
-                                                              ),
-                                                              _vm._v(" "),
-                                                              _c(
-                                                                "v-btn",
-                                                                {
-                                                                  attrs: {
-                                                                    small: ""
-                                                                  },
-                                                                  on: {
-                                                                    click: function(
-                                                                      $event
-                                                                    ) {
-                                                                      return _vm.editProjectDialog(
-                                                                        project
-                                                                      )
-                                                                    }
-                                                                  }
-                                                                },
-                                                                [_vm._v("Edit")]
-                                                              )
-                                                            ],
-                                                            1
-                                                          )
-                                                        ],
-                                                        1
-                                                      )
-                                                    ]
-                                                  },
-                                                  proxy: true
-                                                }
-                                              ],
-                                              null,
-                                              true
-                                            )
-                                          },
+                                      "v-layout",
+                                      { attrs: { row: "", wrap: "" } },
+                                      [
+                                        _c(
+                                          "v-flex",
+                                          { attrs: { xs12: "", md12: "" } },
                                           [
-                                            _vm._v(" "),
                                             _c(
                                               "v-card",
-                                              { staticClass: "grey darken-2" },
+                                              {
+                                                staticStyle: { margin: "4px" },
+                                                attrs: {
+                                                  color: "grey darken-2",
+                                                  height: "100%"
+                                                }
+                                              },
                                               [
                                                 _c(
-                                                  "v-container",
+                                                  "v-card-title",
+                                                  {
+                                                    staticClass:
+                                                      "justify-center"
+                                                  },
                                                   [
                                                     _c(
-                                                      "v-card",
+                                                      "span",
+                                                      {
+                                                        staticClass: "headline"
+                                                      },
                                                       [
-                                                        _c("v-card-title", [
-                                                          _c("span", [
-                                                            _vm._v("Filter")
-                                                          ])
-                                                        ]),
-                                                        _vm._v(" "),
+                                                        _vm._v(
+                                                          "Project Contribution"
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "v-card-text",
+                                                  [
+                                                    _c(
+                                                      "v-btn",
+                                                      {
+                                                        attrs: {
+                                                          slot: "activator",
+                                                          small: ""
+                                                        },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            _vm.expandDetail = !_vm.expandDetail
+                                                          }
+                                                        },
+                                                        slot: "activator"
+                                                      },
+                                                      [
                                                         _c(
-                                                          "v-layout",
+                                                          "v-icon",
                                                           {
-                                                            attrs: { row: "" }
+                                                            attrs: {
+                                                              small: "",
+                                                              left: ""
+                                                            }
                                                           },
                                                           [
-                                                            _c(
-                                                              "v-flex",
-                                                              {
-                                                                staticClass:
-                                                                  "pl-2",
-                                                                attrs: {
-                                                                  xs12: "",
-                                                                  sm6: "",
-                                                                  md2: ""
-                                                                }
-                                                              },
-                                                              [
-                                                                _c("v-select", {
-                                                                  attrs: {
-                                                                    items:
-                                                                      project.All_Divisi,
-                                                                    "item-text":
-                                                                      "Nama",
-                                                                    "item-value":
-                                                                      "Nama",
-                                                                    box: "",
-                                                                    label:
-                                                                      "Division"
-                                                                  },
-                                                                  on: {
-                                                                    change: function(
-                                                                      $event
-                                                                    ) {
-                                                                      return _vm.getSubDivision(
-                                                                        project
-                                                                      )
-                                                                    }
-                                                                  },
-                                                                  model: {
-                                                                    value:
-                                                                      _vm.filterDiv,
-                                                                    callback: function(
-                                                                      $$v
-                                                                    ) {
-                                                                      _vm.filterDiv = $$v
-                                                                    },
-                                                                    expression:
-                                                                      "filterDiv"
-                                                                  }
-                                                                })
-                                                              ],
-                                                              1
-                                                            ),
-                                                            _vm._v(" "),
-                                                            _c(
-                                                              "v-flex",
-                                                              {
-                                                                staticClass:
-                                                                  "pl-2",
-                                                                attrs: {
-                                                                  xs12: "",
-                                                                  sm6: "",
-                                                                  md2: ""
-                                                                }
-                                                              },
-                                                              [
-                                                                _c("v-select", {
-                                                                  attrs: {
-                                                                    items:
-                                                                      _vm.sub_division,
-                                                                    "item-text":
-                                                                      "Nama",
-                                                                    "item-value":
-                                                                      "Nama",
-                                                                    box: "",
-                                                                    label:
-                                                                      "Sub Division"
-                                                                  },
-                                                                  on: {
-                                                                    change: function(
-                                                                      $event
-                                                                    ) {
-                                                                      return _vm.getTask(
-                                                                        project
-                                                                      )
-                                                                    }
-                                                                  },
-                                                                  model: {
-                                                                    value:
-                                                                      _vm.filterSubDiv,
-                                                                    callback: function(
-                                                                      $$v
-                                                                    ) {
-                                                                      _vm.filterSubDiv = $$v
-                                                                    },
-                                                                    expression:
-                                                                      "filterSubDiv"
-                                                                  }
-                                                                })
-                                                              ],
-                                                              1
-                                                            ),
-                                                            _vm._v(" "),
-                                                            _c(
-                                                              "v-flex",
-                                                              {
-                                                                staticClass:
-                                                                  "pl-2",
-                                                                attrs: {
-                                                                  xs12: "",
-                                                                  sm6: "",
-                                                                  md2: ""
-                                                                }
-                                                              },
-                                                              [
-                                                                _c("v-select", {
-                                                                  attrs: {
-                                                                    items:
-                                                                      _vm.task,
-                                                                    "item-text":
-                                                                      "Nama",
-                                                                    "item-value":
-                                                                      "Nama",
-                                                                    box: "",
-                                                                    label:
-                                                                      "Task"
-                                                                  },
-                                                                  model: {
-                                                                    value:
-                                                                      _vm.filterTask,
-                                                                    callback: function(
-                                                                      $$v
-                                                                    ) {
-                                                                      _vm.filterTask = $$v
-                                                                    },
-                                                                    expression:
-                                                                      "filterTask"
-                                                                  }
-                                                                })
-                                                              ],
-                                                              1
-                                                            ),
-                                                            _vm._v(" "),
-                                                            _c(
-                                                              "v-flex",
-                                                              {
-                                                                staticClass:
-                                                                  "pl-2",
-                                                                attrs: {
-                                                                  xs12: "",
-                                                                  sm6: "",
-                                                                  md2: ""
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "v-btn",
-                                                                  {
-                                                                    on: {
-                                                                      click: function(
-                                                                        $event
-                                                                      ) {
-                                                                        return _vm.clearFilter()
-                                                                      }
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _vm._v(
-                                                                      "Clear"
-                                                                    )
-                                                                  ]
-                                                                )
-                                                              ],
-                                                              1
+                                                            _vm._v(
+                                                              "filter_list"
                                                             )
-                                                          ],
-                                                          1
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "span",
+                                                          {
+                                                            staticClass:
+                                                              "caption "
+                                                          },
+                                                          [_vm._v("Expand")]
                                                         )
                                                       ],
                                                       1
                                                     ),
                                                     _vm._v(" "),
-                                                    _vm._l(
-                                                      _vm.filteredTask(
-                                                        project.All_SubTask
-                                                      ),
-                                                      function(subtask) {
-                                                        return _c(
-                                                          "v-card",
-                                                          {
-                                                            directives: [
-                                                              {
-                                                                name: "ripple",
-                                                                rawName:
-                                                                  "v-ripple"
-                                                              }
-                                                            ],
-                                                            key: subtask.Nama,
-                                                            staticClass:
-                                                              "scroll-y",
-                                                            staticStyle: {
-                                                              background:
-                                                                "#424242 !important"
-                                                            },
-                                                            attrs: {
-                                                              hover: "",
-                                                              flat: ""
-                                                            },
-                                                            on: {
-                                                              click: function(
-                                                                $event
-                                                              ) {
-                                                                return _vm.openTaskDialog(
-                                                                  subtask
-                                                                )
-                                                              }
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "v-layout",
-                                                              {
-                                                                class:
-                                                                  "pa-3  project " +
-                                                                  subtask.Status,
-                                                                attrs: {
-                                                                  row: "",
-                                                                  wrap: ""
-                                                                }
+                                                    _c(
+                                                      "v-list",
+                                                      {
+                                                        staticStyle: {
+                                                          height: "100%",
+                                                          "min-height": "350px"
+                                                        },
+                                                        attrs: { expand: "" }
+                                                      },
+                                                      _vm._l(
+                                                        _vm.UserProjects,
+                                                        function(project) {
+                                                          return _c(
+                                                            "v-list-group",
+                                                            {
+                                                              key:
+                                                                project.Id_Proyek,
+                                                              staticClass:
+                                                                "px-2",
+                                                              attrs: {
+                                                                value:
+                                                                  _vm.expandDetail
                                                               },
-                                                              [
-                                                                _c(
-                                                                  "v-flex",
+                                                              scopedSlots: _vm._u(
+                                                                [
                                                                   {
-                                                                    attrs: {
-                                                                      xs12: "",
-                                                                      md4: ""
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c(
-                                                                      "div",
-                                                                      {
-                                                                        staticClass:
-                                                                          "caption grey--text"
-                                                                      },
-                                                                      [
-                                                                        _vm._v(
-                                                                          _vm._s(
-                                                                            subtask.Divisi
-                                                                          )
-                                                                        )
-                                                                      ]
-                                                                    ),
-                                                                    _vm._v(" "),
-                                                                    _c("div", [
-                                                                      _vm._v(
-                                                                        _vm._s(
-                                                                          subtask.Sub_Divisi
-                                                                        )
-                                                                      )
-                                                                    ])
-                                                                  ]
-                                                                ),
-                                                                _vm._v(" "),
-                                                                _c(
-                                                                  "v-flex",
-                                                                  {
-                                                                    attrs: {
-                                                                      xs6: "",
-                                                                      sm4: "",
-                                                                      md2: ""
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c(
-                                                                      "div",
-                                                                      {
-                                                                        staticClass:
-                                                                          "caption grey--text"
-                                                                      },
-                                                                      [
-                                                                        _vm._v(
-                                                                          _vm._s(
-                                                                            subtask.Task
-                                                                          )
-                                                                        )
-                                                                      ]
-                                                                    ),
-                                                                    _vm._v(" "),
-                                                                    _c("div", [
-                                                                      _vm._v(
-                                                                        _vm._s(
-                                                                          subtask.Nama
-                                                                        )
-                                                                      )
-                                                                    ])
-                                                                  ]
-                                                                ),
-                                                                _vm._v(" "),
-                                                                _c(
-                                                                  "v-flex",
-                                                                  {
-                                                                    attrs: {
-                                                                      xs6: "",
-                                                                      sm4: "",
-                                                                      md2: ""
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c(
-                                                                      "div",
-                                                                      {
-                                                                        staticClass:
-                                                                          "caption grey--text"
-                                                                      },
-                                                                      [
-                                                                        _vm._v(
-                                                                          "Due Date"
-                                                                        )
-                                                                      ]
-                                                                    ),
-                                                                    _vm._v(" "),
-                                                                    _c("div", [
-                                                                      _vm._v(
-                                                                        _vm._s(
-                                                                          subtask.Tanggal_Selesai
-                                                                        )
-                                                                      )
-                                                                    ])
-                                                                  ]
-                                                                ),
-                                                                _vm._v(" "),
-                                                                _c(
-                                                                  "v-flex",
-                                                                  {
-                                                                    attrs: {
-                                                                      xs6: "",
-                                                                      sm4: "",
-                                                                      md2: ""
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c(
-                                                                      "div",
-                                                                      {
-                                                                        staticClass:
-                                                                          "caption grey--text"
-                                                                      },
-                                                                      [
-                                                                        _vm._v(
-                                                                          "Progress"
-                                                                        )
-                                                                      ]
-                                                                    ),
-                                                                    _vm._v(" "),
-                                                                    _c(
-                                                                      "div",
-                                                                      [
+                                                                    key:
+                                                                      "activator",
+                                                                    fn: function() {
+                                                                      return [
                                                                         _c(
-                                                                          "v-progress-linear",
+                                                                          "v-list-tile",
                                                                           {
-                                                                            attrs: {
-                                                                              color:
-                                                                                "red",
-                                                                              height:
-                                                                                "20",
-                                                                              value:
-                                                                                subtask.Progress
-                                                                            }
+                                                                            staticClass:
+                                                                              "d_project"
                                                                           },
                                                                           [
                                                                             _c(
-                                                                              "p",
+                                                                              "v-list-tile-content",
                                                                               {
-                                                                                staticClass:
-                                                                                  "text-xs-center"
+                                                                                staticStyle: {
+                                                                                  height:
+                                                                                    "50px"
+                                                                                }
                                                                               },
                                                                               [
-                                                                                _vm._v(
-                                                                                  _vm._s(
-                                                                                    subtask.Progress
-                                                                                  ) +
-                                                                                    "%"
+                                                                                _c(
+                                                                                  "v-list-tile-title",
+                                                                                  {
+                                                                                    staticStyle: {
+                                                                                      height:
+                                                                                        "35px",
+                                                                                      "line-height":
+                                                                                        "35px"
+                                                                                    }
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "span",
+                                                                                      [
+                                                                                        _vm._v(
+                                                                                          "\n                                                " +
+                                                                                            _vm._s(
+                                                                                              project.Nama
+                                                                                            ) +
+                                                                                            "\n                                              "
+                                                                                        )
+                                                                                      ]
+                                                                                    ),
+                                                                                    _vm._v(
+                                                                                      " "
+                                                                                    ),
+                                                                                    _c(
+                                                                                      "span",
+                                                                                      {
+                                                                                        staticClass:
+                                                                                          "pr-3 right"
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "v-chip",
+                                                                                          {
+                                                                                            class:
+                                                                                              " white--text my-2 caption " +
+                                                                                              project.Status,
+                                                                                            attrs: {
+                                                                                              small:
+                                                                                                ""
+                                                                                            }
+                                                                                          },
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              _vm._s(
+                                                                                                project.Status
+                                                                                              )
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ],
+                                                                                      1
+                                                                                    )
+                                                                                  ]
+                                                                                )
+                                                                              ],
+                                                                              1
+                                                                            ),
+                                                                            _vm._v(
+                                                                              " "
+                                                                            ),
+                                                                            _c(
+                                                                              "v-list-tile-action",
+                                                                              {
+                                                                                staticStyle: {
+                                                                                  width:
+                                                                                    "125px"
+                                                                                }
+                                                                              },
+                                                                              [
+                                                                                _c(
+                                                                                  "v-progress-linear",
+                                                                                  {
+                                                                                    attrs: {
+                                                                                      color:
+                                                                                        "red",
+                                                                                      height:
+                                                                                        "20",
+                                                                                      value:
+                                                                                        project.Contribution
+                                                                                    }
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "p",
+                                                                                      {
+                                                                                        staticClass:
+                                                                                          "text-xs-center"
+                                                                                      },
+                                                                                      [
+                                                                                        _vm._v(
+                                                                                          _vm._s(
+                                                                                            project.Contribution
+                                                                                          ) +
+                                                                                            "%"
+                                                                                        )
+                                                                                      ]
+                                                                                    )
+                                                                                  ]
+                                                                                )
+                                                                              ],
+                                                                              1
+                                                                            )
+                                                                          ],
+                                                                          1
+                                                                        )
+                                                                      ]
+                                                                    },
+                                                                    proxy: true
+                                                                  }
+                                                                ],
+                                                                null,
+                                                                true
+                                                              )
+                                                            },
+                                                            [
+                                                              _vm._v(" "),
+                                                              _vm._l(
+                                                                project.All_Divisi,
+                                                                function(
+                                                                  div,
+                                                                  index
+                                                                ) {
+                                                                  return _c(
+                                                                    "v-list-group",
+                                                                    {
+                                                                      key: index,
+                                                                      staticClass:
+                                                                        "pl-2 pr-2",
+                                                                      attrs: {
+                                                                        value:
+                                                                          _vm.expandDetail
+                                                                      },
+                                                                      scopedSlots: _vm._u(
+                                                                        [
+                                                                          {
+                                                                            key:
+                                                                              "activator",
+                                                                            fn: function() {
+                                                                              return [
+                                                                                _c(
+                                                                                  "v-list-tile",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "d_div"
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-list-tile-content",
+                                                                                      {
+                                                                                        staticStyle: {
+                                                                                          height:
+                                                                                            "50px"
+                                                                                        }
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "v-list-tile-title",
+                                                                                          {
+                                                                                            staticStyle: {
+                                                                                              height:
+                                                                                                "35px",
+                                                                                              "line-height":
+                                                                                                "35px"
+                                                                                            }
+                                                                                          },
+                                                                                          [
+                                                                                            _c(
+                                                                                              "span",
+                                                                                              [
+                                                                                                _vm._v(
+                                                                                                  "\n                                                " +
+                                                                                                    _vm._s(
+                                                                                                      div.Nama
+                                                                                                    ) +
+                                                                                                    "\n                                              "
+                                                                                                )
+                                                                                              ]
+                                                                                            ),
+                                                                                            _vm._v(
+                                                                                              " "
+                                                                                            ),
+                                                                                            _c(
+                                                                                              "span",
+                                                                                              {
+                                                                                                staticClass:
+                                                                                                  "pr-3 right"
+                                                                                              },
+                                                                                              [
+                                                                                                _c(
+                                                                                                  "v-chip",
+                                                                                                  {
+                                                                                                    class:
+                                                                                                      " white--text my-2 caption " +
+                                                                                                      div.Status,
+                                                                                                    attrs: {
+                                                                                                      small:
+                                                                                                        ""
+                                                                                                    }
+                                                                                                  },
+                                                                                                  [
+                                                                                                    _vm._v(
+                                                                                                      _vm._s(
+                                                                                                        div.Status
+                                                                                                      )
+                                                                                                    )
+                                                                                                  ]
+                                                                                                )
+                                                                                              ],
+                                                                                              1
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ],
+                                                                                      1
+                                                                                    ),
+                                                                                    _vm._v(
+                                                                                      " "
+                                                                                    ),
+                                                                                    _c(
+                                                                                      "v-list-tile-action",
+                                                                                      {
+                                                                                        staticStyle: {
+                                                                                          "min-width":
+                                                                                            "125px"
+                                                                                        }
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "v-progress-linear",
+                                                                                          {
+                                                                                            attrs: {
+                                                                                              color:
+                                                                                                "red",
+                                                                                              height:
+                                                                                                "20",
+                                                                                              value:
+                                                                                                div.Contribution
+                                                                                            }
+                                                                                          },
+                                                                                          [
+                                                                                            _c(
+                                                                                              "p",
+                                                                                              {
+                                                                                                staticClass:
+                                                                                                  "text-xs-center"
+                                                                                              },
+                                                                                              [
+                                                                                                _vm._v(
+                                                                                                  _vm._s(
+                                                                                                    div.Contribution
+                                                                                                  ) +
+                                                                                                    "%"
+                                                                                                )
+                                                                                              ]
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ],
+                                                                                      1
+                                                                                    )
+                                                                                  ],
+                                                                                  1
                                                                                 )
                                                                               ]
+                                                                            },
+                                                                            proxy: true
+                                                                          }
+                                                                        ],
+                                                                        null,
+                                                                        true
+                                                                      )
+                                                                    },
+                                                                    [
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _vm._l(
+                                                                        project.All_SubDivisi.filter(
+                                                                          function(
+                                                                            obj
+                                                                          ) {
+                                                                            return (
+                                                                              obj.Divisi ==
+                                                                              div.Nama
                                                                             )
-                                                                          ]
-                                                                        )
-                                                                      ],
-                                                                      1
-                                                                    )
-                                                                  ]
-                                                                ),
-                                                                _vm._v(" "),
-                                                                _c(
-                                                                  "v-flex",
-                                                                  {
-                                                                    attrs: {
-                                                                      xs2: "",
-                                                                      sm4: "",
-                                                                      md2: ""
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c(
-                                                                      "div",
-                                                                      {
-                                                                        staticClass:
-                                                                          "right"
-                                                                      },
-                                                                      [
-                                                                        _c(
-                                                                          "v-chip",
-                                                                          {
-                                                                            class:
-                                                                              " white--text my-2 caption " +
-                                                                              subtask.Status,
-                                                                            attrs: {
-                                                                              small:
-                                                                                ""
-                                                                            }
-                                                                          },
-                                                                          [
-                                                                            _vm._v(
-                                                                              _vm._s(
-                                                                                subtask.Status
+                                                                          }
+                                                                        ),
+                                                                        function(
+                                                                          subdiv
+                                                                        ) {
+                                                                          return _c(
+                                                                            "v-list-group",
+                                                                            {
+                                                                              key:
+                                                                                subdiv.Id_Sub_Divisi_Proyek,
+                                                                              staticClass:
+                                                                                "pl-2 pr-2",
+                                                                              attrs: {
+                                                                                value:
+                                                                                  _vm.expandDetail
+                                                                              },
+                                                                              scopedSlots: _vm._u(
+                                                                                [
+                                                                                  {
+                                                                                    key:
+                                                                                      "activator",
+                                                                                    fn: function() {
+                                                                                      return [
+                                                                                        _c(
+                                                                                          "v-list-tile",
+                                                                                          {
+                                                                                            staticClass:
+                                                                                              "d_sub_div"
+                                                                                          },
+                                                                                          [
+                                                                                            _c(
+                                                                                              "v-list-tile-content",
+                                                                                              {
+                                                                                                staticStyle: {
+                                                                                                  height:
+                                                                                                    "50px"
+                                                                                                }
+                                                                                              },
+                                                                                              [
+                                                                                                _c(
+                                                                                                  "v-list-tile-title",
+                                                                                                  {
+                                                                                                    staticStyle: {
+                                                                                                      height:
+                                                                                                        "35px",
+                                                                                                      "line-height":
+                                                                                                        "35px"
+                                                                                                    }
+                                                                                                  },
+                                                                                                  [
+                                                                                                    _c(
+                                                                                                      "span",
+                                                                                                      [
+                                                                                                        _vm._v(
+                                                                                                          "\n                                                  " +
+                                                                                                            _vm._s(
+                                                                                                              subdiv.Nama
+                                                                                                            ) +
+                                                                                                            "\n                                                "
+                                                                                                        )
+                                                                                                      ]
+                                                                                                    ),
+                                                                                                    _vm._v(
+                                                                                                      " "
+                                                                                                    ),
+                                                                                                    _c(
+                                                                                                      "span",
+                                                                                                      {
+                                                                                                        staticClass:
+                                                                                                          "pr-3 right"
+                                                                                                      },
+                                                                                                      [
+                                                                                                        _c(
+                                                                                                          "v-chip",
+                                                                                                          {
+                                                                                                            class:
+                                                                                                              " white--text my-2 caption " +
+                                                                                                              subdiv.Status,
+                                                                                                            attrs: {
+                                                                                                              small:
+                                                                                                                ""
+                                                                                                            }
+                                                                                                          },
+                                                                                                          [
+                                                                                                            _vm._v(
+                                                                                                              _vm._s(
+                                                                                                                subdiv.Status
+                                                                                                              )
+                                                                                                            )
+                                                                                                          ]
+                                                                                                        )
+                                                                                                      ],
+                                                                                                      1
+                                                                                                    )
+                                                                                                  ]
+                                                                                                )
+                                                                                              ],
+                                                                                              1
+                                                                                            ),
+                                                                                            _vm._v(
+                                                                                              " "
+                                                                                            ),
+                                                                                            _c(
+                                                                                              "v-list-tile-action",
+                                                                                              {
+                                                                                                staticStyle: {
+                                                                                                  "min-width":
+                                                                                                    "125px"
+                                                                                                }
+                                                                                              },
+                                                                                              [
+                                                                                                _c(
+                                                                                                  "v-progress-linear",
+                                                                                                  {
+                                                                                                    attrs: {
+                                                                                                      color:
+                                                                                                        "red",
+                                                                                                      height:
+                                                                                                        "20",
+                                                                                                      value:
+                                                                                                        subdiv.Contribution
+                                                                                                    }
+                                                                                                  },
+                                                                                                  [
+                                                                                                    _c(
+                                                                                                      "p",
+                                                                                                      {
+                                                                                                        staticClass:
+                                                                                                          "text-xs-center"
+                                                                                                      },
+                                                                                                      [
+                                                                                                        _vm._v(
+                                                                                                          _vm._s(
+                                                                                                            subdiv.Contribution
+                                                                                                          ) +
+                                                                                                            "%"
+                                                                                                        )
+                                                                                                      ]
+                                                                                                    )
+                                                                                                  ]
+                                                                                                )
+                                                                                              ],
+                                                                                              1
+                                                                                            )
+                                                                                          ],
+                                                                                          1
+                                                                                        )
+                                                                                      ]
+                                                                                    },
+                                                                                    proxy: true
+                                                                                  }
+                                                                                ],
+                                                                                null,
+                                                                                true
                                                                               )
-                                                                            )
-                                                                          ]
-                                                                        )
-                                                                      ],
-                                                                      1
-                                                                    )
-                                                                  ]
-                                                                )
-                                                              ],
-                                                              1
-                                                            ),
-                                                            _vm._v(" "),
-                                                            _c("v-divider")
-                                                          ],
-                                                          1
-                                                        )
-                                                      }
+                                                                            },
+                                                                            [
+                                                                              _vm._v(
+                                                                                " "
+                                                                              ),
+                                                                              _vm._l(
+                                                                                project.All_Task.filter(
+                                                                                  function(
+                                                                                    obj
+                                                                                  ) {
+                                                                                    return (
+                                                                                      obj.Sub_Divisi ==
+                                                                                      subdiv.Nama
+                                                                                    )
+                                                                                  }
+                                                                                ),
+                                                                                function(
+                                                                                  task
+                                                                                ) {
+                                                                                  return _c(
+                                                                                    "v-list-group",
+                                                                                    {
+                                                                                      key:
+                                                                                        task.Id_Item_Pekerjaan,
+                                                                                      staticClass:
+                                                                                        "pl-2 pr-2",
+                                                                                      attrs: {
+                                                                                        value:
+                                                                                          _vm.expandDetail
+                                                                                      },
+                                                                                      scopedSlots: _vm._u(
+                                                                                        [
+                                                                                          {
+                                                                                            key:
+                                                                                              "activator",
+                                                                                            fn: function() {
+                                                                                              return [
+                                                                                                _c(
+                                                                                                  "v-list-tile",
+                                                                                                  {
+                                                                                                    staticClass:
+                                                                                                      "d_task"
+                                                                                                  },
+                                                                                                  [
+                                                                                                    _c(
+                                                                                                      "v-list-tile-content",
+                                                                                                      {
+                                                                                                        staticStyle: {
+                                                                                                          height:
+                                                                                                            "50px"
+                                                                                                        }
+                                                                                                      },
+                                                                                                      [
+                                                                                                        _c(
+                                                                                                          "v-list-tile-title",
+                                                                                                          {
+                                                                                                            staticStyle: {
+                                                                                                              height:
+                                                                                                                "35px",
+                                                                                                              "line-height":
+                                                                                                                "35px"
+                                                                                                            }
+                                                                                                          },
+                                                                                                          [
+                                                                                                            _c(
+                                                                                                              "span",
+                                                                                                              [
+                                                                                                                _vm._v(
+                                                                                                                  "\n                                                        " +
+                                                                                                                    _vm._s(
+                                                                                                                      div.Nama
+                                                                                                                    ) +
+                                                                                                                    "\n                                                      "
+                                                                                                                )
+                                                                                                              ]
+                                                                                                            ),
+                                                                                                            _vm._v(
+                                                                                                              " "
+                                                                                                            ),
+                                                                                                            _c(
+                                                                                                              "span",
+                                                                                                              {
+                                                                                                                staticClass:
+                                                                                                                  "pr-3 right"
+                                                                                                              },
+                                                                                                              [
+                                                                                                                _c(
+                                                                                                                  "v-chip",
+                                                                                                                  {
+                                                                                                                    class:
+                                                                                                                      " white--text my-2 caption " +
+                                                                                                                      task.Status,
+                                                                                                                    attrs: {
+                                                                                                                      small:
+                                                                                                                        ""
+                                                                                                                    }
+                                                                                                                  },
+                                                                                                                  [
+                                                                                                                    _vm._v(
+                                                                                                                      _vm._s(
+                                                                                                                        task.Status
+                                                                                                                      )
+                                                                                                                    )
+                                                                                                                  ]
+                                                                                                                )
+                                                                                                              ],
+                                                                                                              1
+                                                                                                            )
+                                                                                                          ]
+                                                                                                        )
+                                                                                                      ],
+                                                                                                      1
+                                                                                                    ),
+                                                                                                    _vm._v(
+                                                                                                      " "
+                                                                                                    ),
+                                                                                                    _c(
+                                                                                                      "v-list-tile-action",
+                                                                                                      {
+                                                                                                        staticStyle: {
+                                                                                                          "min-width":
+                                                                                                            "125px"
+                                                                                                        }
+                                                                                                      },
+                                                                                                      [
+                                                                                                        _c(
+                                                                                                          "v-progress-linear",
+                                                                                                          {
+                                                                                                            attrs: {
+                                                                                                              color:
+                                                                                                                "red",
+                                                                                                              height:
+                                                                                                                "20",
+                                                                                                              value:
+                                                                                                                task.Contribution
+                                                                                                            }
+                                                                                                          },
+                                                                                                          [
+                                                                                                            _c(
+                                                                                                              "p",
+                                                                                                              {
+                                                                                                                staticClass:
+                                                                                                                  "text-xs-center"
+                                                                                                              },
+                                                                                                              [
+                                                                                                                _vm._v(
+                                                                                                                  _vm._s(
+                                                                                                                    task.Contribution
+                                                                                                                  ) +
+                                                                                                                    "%"
+                                                                                                                )
+                                                                                                              ]
+                                                                                                            )
+                                                                                                          ]
+                                                                                                        )
+                                                                                                      ],
+                                                                                                      1
+                                                                                                    )
+                                                                                                  ],
+                                                                                                  1
+                                                                                                )
+                                                                                              ]
+                                                                                            },
+                                                                                            proxy: true
+                                                                                          }
+                                                                                        ],
+                                                                                        null,
+                                                                                        true
+                                                                                      )
+                                                                                    },
+                                                                                    [
+                                                                                      _vm._v(
+                                                                                        " "
+                                                                                      ),
+                                                                                      _vm._l(
+                                                                                        project.All_SubTask.filter(
+                                                                                          function(
+                                                                                            obj
+                                                                                          ) {
+                                                                                            return (
+                                                                                              obj.Task ==
+                                                                                              task.Nama
+                                                                                            )
+                                                                                          }
+                                                                                        ),
+                                                                                        function(
+                                                                                          subtask
+                                                                                        ) {
+                                                                                          return _c(
+                                                                                            "v-list-tile",
+                                                                                            {
+                                                                                              key:
+                                                                                                subtask.Id_Sub_Item_Pekerjaan,
+                                                                                              staticClass:
+                                                                                                "d_sub_task pl-2 pr-5 mr-3 "
+                                                                                            },
+                                                                                            [
+                                                                                              _c(
+                                                                                                "v-list-tile-content",
+                                                                                                {
+                                                                                                  staticStyle: {
+                                                                                                    height:
+                                                                                                      "50px"
+                                                                                                  }
+                                                                                                },
+                                                                                                [
+                                                                                                  _c(
+                                                                                                    "v-list-tile-title",
+                                                                                                    {
+                                                                                                      staticStyle: {
+                                                                                                        height:
+                                                                                                          "35px",
+                                                                                                        "line-height":
+                                                                                                          "35px"
+                                                                                                      }
+                                                                                                    },
+                                                                                                    [
+                                                                                                      _c(
+                                                                                                        "v-layout",
+                                                                                                        {
+                                                                                                          attrs: {
+                                                                                                            row:
+                                                                                                              "",
+                                                                                                            wrap:
+                                                                                                              ""
+                                                                                                          }
+                                                                                                        },
+                                                                                                        [
+                                                                                                          _c(
+                                                                                                            "v-flex",
+                                                                                                            {
+                                                                                                              attrs: {
+                                                                                                                xs12:
+                                                                                                                  "",
+                                                                                                                md8:
+                                                                                                                  ""
+                                                                                                              }
+                                                                                                            },
+                                                                                                            [
+                                                                                                              _c(
+                                                                                                                "v-tooltip",
+                                                                                                                {
+                                                                                                                  attrs: {
+                                                                                                                    right:
+                                                                                                                      "",
+                                                                                                                    color:
+                                                                                                                      "grey darken-4"
+                                                                                                                  },
+                                                                                                                  scopedSlots: _vm._u(
+                                                                                                                    [
+                                                                                                                      {
+                                                                                                                        key:
+                                                                                                                          "activator",
+                                                                                                                        fn: function(
+                                                                                                                          ref
+                                                                                                                        ) {
+                                                                                                                          var on =
+                                                                                                                            ref.on
+                                                                                                                          return [
+                                                                                                                            _c(
+                                                                                                                              "div",
+                                                                                                                              _vm._g(
+                                                                                                                                {
+                                                                                                                                  staticStyle: {
+                                                                                                                                    "white-space":
+                                                                                                                                      "nowrap",
+                                                                                                                                    overflow:
+                                                                                                                                      "hidden",
+                                                                                                                                    "text-overflow":
+                                                                                                                                      "ellipsis",
+                                                                                                                                    "font-size":
+                                                                                                                                      "14px"
+                                                                                                                                  }
+                                                                                                                                },
+                                                                                                                                on
+                                                                                                                              ),
+                                                                                                                              [
+                                                                                                                                _vm._v(
+                                                                                                                                  _vm._s(
+                                                                                                                                    subtask.Nama
+                                                                                                                                  )
+                                                                                                                                )
+                                                                                                                              ]
+                                                                                                                            )
+                                                                                                                          ]
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    ],
+                                                                                                                    null,
+                                                                                                                    true
+                                                                                                                  )
+                                                                                                                },
+                                                                                                                [
+                                                                                                                  _vm._v(
+                                                                                                                    " "
+                                                                                                                  ),
+                                                                                                                  _c(
+                                                                                                                    "span",
+                                                                                                                    {
+                                                                                                                      staticStyle: {
+                                                                                                                        color:
+                                                                                                                          "white"
+                                                                                                                      }
+                                                                                                                    },
+                                                                                                                    [
+                                                                                                                      _vm._v(
+                                                                                                                        _vm._s(
+                                                                                                                          subtask.Nama
+                                                                                                                        )
+                                                                                                                      )
+                                                                                                                    ]
+                                                                                                                  )
+                                                                                                                ]
+                                                                                                              )
+                                                                                                            ],
+                                                                                                            1
+                                                                                                          ),
+                                                                                                          _vm._v(
+                                                                                                            " "
+                                                                                                          ),
+                                                                                                          _c(
+                                                                                                            "v-flex",
+                                                                                                            {
+                                                                                                              attrs: {
+                                                                                                                xs12:
+                                                                                                                  "",
+                                                                                                                md4:
+                                                                                                                  ""
+                                                                                                              }
+                                                                                                            },
+                                                                                                            [
+                                                                                                              _c(
+                                                                                                                "div",
+                                                                                                                {
+                                                                                                                  staticClass:
+                                                                                                                    "pr-3 right"
+                                                                                                                },
+                                                                                                                [
+                                                                                                                  _c(
+                                                                                                                    "v-chip",
+                                                                                                                    {
+                                                                                                                      class:
+                                                                                                                        " white--text my-2 caption " +
+                                                                                                                        subtask.Status,
+                                                                                                                      attrs: {
+                                                                                                                        small:
+                                                                                                                          ""
+                                                                                                                      }
+                                                                                                                    },
+                                                                                                                    [
+                                                                                                                      _vm._v(
+                                                                                                                        _vm._s(
+                                                                                                                          subtask.Status
+                                                                                                                        )
+                                                                                                                      )
+                                                                                                                    ]
+                                                                                                                  )
+                                                                                                                ],
+                                                                                                                1
+                                                                                                              )
+                                                                                                            ]
+                                                                                                          )
+                                                                                                        ],
+                                                                                                        1
+                                                                                                      )
+                                                                                                    ],
+                                                                                                    1
+                                                                                                  )
+                                                                                                ],
+                                                                                                1
+                                                                                              ),
+                                                                                              _vm._v(
+                                                                                                " "
+                                                                                              ),
+                                                                                              _c(
+                                                                                                "v-list-tile-action",
+                                                                                                {
+                                                                                                  staticStyle: {
+                                                                                                    "min-width":
+                                                                                                      "125px"
+                                                                                                  }
+                                                                                                },
+                                                                                                [
+                                                                                                  _c(
+                                                                                                    "v-progress-linear",
+                                                                                                    {
+                                                                                                      attrs: {
+                                                                                                        color:
+                                                                                                          "red",
+                                                                                                        height:
+                                                                                                          "20",
+                                                                                                        value:
+                                                                                                          subtask.Contribution
+                                                                                                      }
+                                                                                                    },
+                                                                                                    [
+                                                                                                      _c(
+                                                                                                        "p",
+                                                                                                        {
+                                                                                                          staticClass:
+                                                                                                            "text-xs-center"
+                                                                                                        },
+                                                                                                        [
+                                                                                                          _vm._v(
+                                                                                                            _vm._s(
+                                                                                                              subtask.Contribution
+                                                                                                            ) +
+                                                                                                              "%"
+                                                                                                          )
+                                                                                                        ]
+                                                                                                      )
+                                                                                                    ]
+                                                                                                  )
+                                                                                                ],
+                                                                                                1
+                                                                                              )
+                                                                                            ],
+                                                                                            1
+                                                                                          )
+                                                                                        }
+                                                                                      )
+                                                                                    ],
+                                                                                    2
+                                                                                  )
+                                                                                }
+                                                                              )
+                                                                            ],
+                                                                            2
+                                                                          )
+                                                                        }
+                                                                      )
+                                                                    ],
+                                                                    2
+                                                                  )
+                                                                }
+                                                              )
+                                                            ],
+                                                            2
+                                                          )
+                                                        }
+                                                      ),
+                                                      1
                                                     )
                                                   ],
-                                                  2
+                                                  1
                                                 )
                                               ],
                                               1
@@ -30588,7 +32329,7 @@ var render = function() {
                                           ],
                                           1
                                         )
-                                      }),
+                                      ],
                                       1
                                     )
                                   ],
@@ -30596,7 +32337,9 @@ var render = function() {
                                 )
                               ],
                               1
-                            )
+                            ),
+                            _vm._v(" "),
+                            _c("v-tab-item")
                           ],
                           1
                         )
@@ -30613,270 +32356,251 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-flex",
-            { attrs: { xs12: "", md4: "" } },
+            { staticClass: "pr-4", attrs: { xs12: "", md4: "" } },
             [
               _c(
-                "material-card",
-                { staticClass: "v-card-profile" },
+                "v-layout",
+                { attrs: { wrap: "" } },
                 [
                   _c(
-                    "v-avatar",
-                    {
-                      staticClass: "mx-auto d-block",
-                      attrs: { slot: "offset", size: "130" },
-                      slot: "offset"
-                    },
-                    [
-                      _c("img", {
-                        attrs: {
-                          src:
-                            "https://demos.creative-tim.com/vue-material-dashboard/img/marc.aba54d65.jpg"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-layout",
-                    { attrs: { wrap: "" } },
+                    "v-flex",
+                    { staticClass: "py-0", attrs: { xs12: "", md12: "" } },
                     [
                       _c(
-                        "v-flex",
-                        { attrs: { xs12: "", md12: "" } },
+                        "v-card-text",
+                        { staticClass: "text-xs-center py-0" },
                         [
-                          _c("v-card-text", { staticClass: "text-xs-center" }, [
-                            _c(
-                              "h4",
-                              { staticClass: "card-title font-weight-bold" },
-                              [_vm._v(_vm._s(_vm.User.Nama))]
-                            )
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "", md6: "" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { disabled: "" },
-                            model: {
-                              value: _vm.User.Jabatan,
-                              callback: function($$v) {
-                                _vm.$set(_vm.User, "Jabatan", $$v)
-                              },
-                              expression: "User.Jabatan"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "", md6: "" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { disabled: "" },
-                            model: {
-                              value: _vm.User.Divisi,
-                              callback: function($$v) {
-                                _vm.$set(_vm.User, "Divisi", $$v)
-                              },
-                              expression: "User.Divisi"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "", md6: "" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "Kode", disabled: "" },
-                            model: {
-                              value: _vm.User.Kode,
-                              callback: function($$v) {
-                                _vm.$set(_vm.User, "Kode", $$v)
-                              },
-                              expression: "User.Kode"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "", md6: "" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "Grade", disabled: "" },
-                            model: {
-                              value: _vm.User.Grade,
-                              callback: function($$v) {
-                                _vm.$set(_vm.User, "Grade", $$v)
-                              },
-                              expression: "User.Grade"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "", md6: "" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "KTP", disabled: "" },
-                            model: {
-                              value: _vm.User.KTP,
-                              callback: function($$v) {
-                                _vm.$set(_vm.User, "KTP", $$v)
-                              },
-                              expression: "User.KTP"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "", md6: "" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "Tanggal Masuk", disabled: "" },
-                            model: {
-                              value: _vm.User.Tanggal_Masuk,
-                              callback: function($$v) {
-                                _vm.$set(_vm.User, "Tanggal_Masuk", $$v)
-                              },
-                              expression: "User.Tanggal_Masuk"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "", md12: "" } },
-                        [
-                          _c("v-textarea", {
-                            attrs: {
-                              clearable: "",
-                              "clear-icon": "cancel",
-                              label: "Alamat",
-                              counter: ""
-                            },
-                            model: {
-                              value: _vm.User.Alamat,
-                              callback: function($$v) {
-                                _vm.$set(_vm.User, "Alamat", $$v)
-                              },
-                              expression: "User.Alamat"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "", md6: "" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: {
-                              label: "Assosiation Number",
-                              counter: "",
-                              disabled: ""
-                            },
-                            model: {
-                              value: _vm.User.Nomor_Asosiasi,
-                              callback: function($$v) {
-                                _vm.$set(_vm.User, "Nomor_Asosiasi", $$v)
-                              },
-                              expression: "User.Nomor_Asosiasi"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "", md6: "" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: {
-                              label: "SKA Number",
-                              counter: "",
-                              disabled: ""
-                            },
-                            model: {
-                              value: _vm.User.Nomor_SKA,
-                              callback: function($$v) {
-                                _vm.$set(_vm.User, "Nomor_SKA", $$v)
-                              },
-                              expression: "User.Nomor_SKA"
-                            }
-                          })
-                        ],
-                        1
+                          _c(
+                            "h4",
+                            { staticClass: "card-title font-weight-bold mt-0" },
+                            [_vm._v(_vm._s(_vm.User.Nama))]
+                          )
+                        ]
                       )
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
-                    "v-card-text",
-                    { staticClass: "text-xs-center" },
+                    "v-flex",
+                    { staticClass: "py-0", attrs: { xs12: "", md6: "" } },
+                    [
+                      _c("v-text-field", {
+                        attrs: { disabled: "" },
+                        model: {
+                          value: _vm.User.Jabatan,
+                          callback: function($$v) {
+                            _vm.$set(_vm.User, "Jabatan", $$v)
+                          },
+                          expression: "User.Jabatan"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { staticClass: "py-0", attrs: { xs12: "", md6: "" } },
+                    [
+                      _c("v-text-field", {
+                        attrs: { disabled: "" },
+                        model: {
+                          value: _vm.User.Divisi,
+                          callback: function($$v) {
+                            _vm.$set(_vm.User, "Divisi", $$v)
+                          },
+                          expression: "User.Divisi"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { staticClass: "py-0", attrs: { xs12: "", md6: "" } },
+                    [
+                      _c("v-text-field", {
+                        attrs: { label: "Kode", disabled: "" },
+                        model: {
+                          value: _vm.User.Kode,
+                          callback: function($$v) {
+                            _vm.$set(_vm.User, "Kode", $$v)
+                          },
+                          expression: "User.Kode"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { staticClass: "py-0", attrs: { xs12: "", md6: "" } },
+                    [
+                      _c("v-text-field", {
+                        attrs: { label: "Grade", disabled: "" },
+                        model: {
+                          value: _vm.User.Grade,
+                          callback: function($$v) {
+                            _vm.$set(_vm.User, "Grade", $$v)
+                          },
+                          expression: "User.Grade"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { staticClass: "py-0", attrs: { xs12: "", md6: "" } },
+                    [
+                      _c("v-text-field", {
+                        attrs: { label: "KTP", disabled: "" },
+                        model: {
+                          value: _vm.User.KTP,
+                          callback: function($$v) {
+                            _vm.$set(_vm.User, "KTP", $$v)
+                          },
+                          expression: "User.KTP"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { staticClass: "py-0", attrs: { xs12: "", md6: "" } },
+                    [
+                      _c("v-text-field", {
+                        attrs: { label: "Tanggal Masuk", disabled: "" },
+                        model: {
+                          value: _vm.User.Tanggal_Masuk,
+                          callback: function($$v) {
+                            _vm.$set(_vm.User, "Tanggal_Masuk", $$v)
+                          },
+                          expression: "User.Tanggal_Masuk"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { staticClass: "py-0", attrs: { xs12: "", md12: "" } },
+                    [
+                      _c("v-textarea", {
+                        attrs: {
+                          clearable: "",
+                          "clear-icon": "cancel",
+                          label: "Alamat",
+                          counter: "",
+                          rows: "3"
+                        },
+                        model: {
+                          value: _vm.User.Alamat,
+                          callback: function($$v) {
+                            _vm.$set(_vm.User, "Alamat", $$v)
+                          },
+                          expression: "User.Alamat"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { staticClass: "py-0", attrs: { xs12: "", md6: "" } },
+                    [
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "Assosiation Number",
+                          counter: "",
+                          disabled: ""
+                        },
+                        model: {
+                          value: _vm.User.Nomor_Asosiasi,
+                          callback: function($$v) {
+                            _vm.$set(_vm.User, "Nomor_Asosiasi", $$v)
+                          },
+                          expression: "User.Nomor_Asosiasi"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { staticClass: "py-0", attrs: { xs12: "", md6: "" } },
+                    [
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "SKA Number",
+                          counter: "",
+                          disabled: ""
+                        },
+                        model: {
+                          value: _vm.User.Nomor_SKA,
+                          callback: function($$v) {
+                            _vm.$set(_vm.User, "Nomor_SKA", $$v)
+                          },
+                          expression: "User.Nomor_SKA"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                { staticClass: "text-xs-center" },
+                [
+                  _c(
+                    "v-flex",
+                    { staticClass: "py-0", attrs: { xs12: "", md12: "" } },
                     [
                       _c(
-                        "v-flex",
-                        { attrs: { xs12: "", md12: "" } },
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              staticClass: "font-weight-light",
-                              attrs: { color: "success", round: "" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.updateProfile()
-                                }
-                              }
-                            },
-                            [_vm._v("Update Profile\n              ")]
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
+                        "v-btn",
+                        {
+                          staticClass: "font-weight-light",
+                          attrs: { color: "success", round: "" },
+                          on: {
+                            click: function($event) {
+                              return _vm.updateProfile()
+                            }
+                          }
+                        },
+                        [_vm._v("Update Profile\n              ")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { staticClass: "py-0", attrs: { xs12: "", md12: "" } },
+                    [
                       _c(
-                        "v-flex",
-                        { attrs: { xs12: "", md12: "" } },
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              staticClass: "font-weight-light",
-                              attrs: { color: "success", round: "" },
-                              on: {
-                                click: function($event) {
-                                  _vm.passwordDialog = true
-                                }
-                              }
-                            },
-                            [_vm._v("Change Password\n              ")]
-                          )
-                        ],
-                        1
+                        "v-btn",
+                        {
+                          staticClass: "font-weight-light",
+                          attrs: { color: "success", round: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.passwordDialog = true
+                            }
+                          }
+                        },
+                        [_vm._v("Change Password\n              ")]
                       )
                     ],
                     1
@@ -31220,17 +32944,6 @@ var render = function() {
                     "v-flex",
                     { attrs: { "align-center": "", layout: "", "py-2": "" } },
                     [
-                      _vm.responsiveInput
-                        ? _c("v-text-field", {
-                            staticClass: "mr-4 mt-2 purple-input",
-                            attrs: {
-                              label: "Search...",
-                              "hide-details": "",
-                              color: "purple"
-                            }
-                          })
-                        : _vm._e(),
-                      _vm._v(" "),
                       _c(
                         "router-link",
                         {
@@ -31462,18 +33175,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("v-divider"),
                       _vm._v(" "),
-                      _vm.responsive
-                        ? _c(
-                            "v-list-tile",
-                            [
-                              _c("v-text-field", {
-                                staticClass: "purple-input search-input",
-                                attrs: { label: "Search...", color: "purple" }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e(),
+                      _vm.responsive ? _c("v-list-tile") : _vm._e(),
                       _vm._v(" "),
                       _vm._l(_vm.links, function(link, i) {
                         return _c(
@@ -74435,7 +76137,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Profile_vue_vue_type_template_id_3bd692e4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Profile.vue?vue&type=template&id=3bd692e4& */ "./resources/js/components/Profile.vue?vue&type=template&id=3bd692e4&");
 /* harmony import */ var _Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Profile.vue?vue&type=script&lang=js& */ "./resources/js/components/Profile.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Profile.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/Profile.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -74443,7 +76147,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Profile_vue_vue_type_template_id_3bd692e4___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Profile_vue_vue_type_template_id_3bd692e4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -74472,6 +76176,22 @@ component.options.__file = "resources/js/components/Profile.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Profile.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profile.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Profile.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/Profile.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Profile.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profile.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
