@@ -25,6 +25,7 @@ class DashboardTransformers extends TransformerAbstract
             'Sub_Task'              => $dashboard->sub_item_pekerjaans->Nama,
             'Deskripsi_Sub_Task'    => $dashboard->sub_item_pekerjaans->Deskripsi,
             'Due'                   => date('m-d-Y', strtotime($dashboard->sub_item_pekerjaans->Tanggal_Selesai)),
+            'Total_Progress'        => 0,
             'Progress'              => 0,
             'Desc'                  => $dashboard->sub_item_pekerjaans->Deskripsi,
             'Remaining'             => '',

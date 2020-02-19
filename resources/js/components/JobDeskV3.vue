@@ -111,17 +111,17 @@
                                     <v-progress-linear
                                     color="red"
                                     height="20"
-                                    :value="subtask.Progress"
+                                    style="top:-11px"
+                                    :value="subtask.Total_Progress"
                                     >
-                                    <!-- <strong class="text-center">{{project.progress}}%</strong> -->
-                                    <p class="text-xs-center">{{subtask.Progress}}%</p>
+                                    <p class="text-xs-center">{{subtask.Total_Progress}}%</p>
                                     </v-progress-linear>
                                 </div>
                             </v-flex>
                             <v-flex xs2 sm4 md2>
                                 <!-- <div class="caption grey--text">Status</div> -->
                                 <div class="right">
-                                    <v-chip small :class="` white--text my-2 caption ${subtask.Status}`">{{subtask.Status}}</v-chip>
+                                    <v-chip small style="top:13px" :class="` white--text my-2 caption ${subtask.Status}`">{{subtask.Status}}</v-chip>
                                 </div>
                             </v-flex>
                         </v-layout>
@@ -214,7 +214,7 @@
                             <!-- Date & Time Remaininig -->
 
                             <!-- Progress -->
-                            <v-flex xs12 md4>
+                            <v-flex xs12 md2>
                                 <v-text-field
                                     v-model="editTask.Progress"
                                     label="Progress"
@@ -222,18 +222,25 @@
                                     counter='3'
                                     type="number"
                                     :readonly="editTask.status=='untake'"
-                                    
                                 ></v-text-field>
                             </v-flex>
-                            
+                            <v-flex xs12 md2>
+                                <v-text-field
+                                    :value="parseInt(editTask.Total_Progress) + parseInt(editTask.Progress)"
+                                    label="Total"
+                                    prepend-icon="timeline"
+                                    counter='3'
+                                    type="number"
+                                    readonly
+                                ></v-text-field>
+                            </v-flex>
                             <v-flex xs12 md8>
                                 <v-progress-linear
                                 color="red"
                                 height="20"
-                                :value="editTask.Progress"
+                                :value="parseInt(editTask.Total_Progress) + parseInt(editTask.Progress)"
                                 >
-                                <!-- <strong class="text-center">{{project.progress}}%</strong> -->
-                                <p class="text-xs-center">{{editTask.Progress}}%</p>
+                                <p class="text-xs-center">{{parseInt(editTask.Total_Progress) + parseInt(editTask.Progress)}}%</p>
                                 </v-progress-linear>
                             </v-flex>
                             <!-- Progress -->
@@ -521,7 +528,7 @@
                                                         <v-card-text> 
                                                             <v-container>
                                                                 <v-layout row wrap>
-                                                                    <v-flex xs4>
+                                                                    <v-flex xs5 md2>
                                                                         <v-text-field 
                                                                         box
                                                                         v-model="editProject.Kode" 
@@ -530,7 +537,7 @@
                                                                         height=2
                                                                         ></v-text-field>
                                                                     </v-flex>         
-                                                                    <v-flex xs8 class="pr-2">
+                                                                    <v-flex xs7 md6 class="pr-2">
                                                                         <v-text-field 
                                                                         box
                                                                         v-model="editProject.Nama" 
@@ -539,7 +546,7 @@
                                                                         height=2
                                                                         ></v-text-field>
                                                                     </v-flex>          
-                                                                    <v-flex xs12 md6 class="pr-2">
+                                                                    <v-flex xs6 md4 class="pr-2">
                                                                         <v-text-field 
                                                                         box
                                                                         v-model="editProject.Nilai" 
@@ -547,16 +554,16 @@
                                                                         prepend-icon="contact_support"
                                                                         ></v-text-field>
                                                                     </v-flex>
-                                                                    <v-flex xs12 md6>
+                                                                    <v-flex xs6 md4>
                                                                         <v-text-field 
                                                                         box
                                                                         v-model="editProject.Target_Outcome" 
-                                                                        label="Target Outcome" 
+                                                                        label="Target Selesai" 
                                                                         prepend-icon="contact_support"
                                                                         ></v-text-field>
                                                                     </v-flex>
 
-                                                                    <v-flex xs12 md4 class="pr-2">
+                                                                    <v-flex xs6 md4 class="pr-2">
                                                                         <v-menu
                                                                         v-model="startDate"
                                                                         :close-on-content-click="false"
@@ -580,7 +587,7 @@
                                                                         <v-date-picker  v-model="editProject.Tanggal_Mulai" @input="startDate = false"></v-date-picker>
                                                                         </v-menu>
                                                                     </v-flex>
-                                                                    <v-flex xs12 md4 class="pr-2">
+                                                                    <!-- <v-flex xs12 md4 class="pr-2">
                                                                         <v-menu
                                                                         v-model="finishDate"
                                                                         :close-on-content-click="false"
@@ -603,8 +610,8 @@
                                                                         </template>
                                                                         <v-date-picker  v-model="editProject.Tanggal_Selesai" @input="finishDate = false"></v-date-picker>
                                                                         </v-menu>
-                                                                    </v-flex>
-                                                                    <v-flex xs12 md4 >
+                                                                    </v-flex> -->
+                                                                    <v-flex xs6 md4>
                                                                         <v-text-field 
                                                                         box
                                                                         v-model="editProject.Pemilik" 
@@ -612,24 +619,24 @@
                                                                         prepend-icon="contact_support"
                                                                         ></v-text-field>
                                                                     </v-flex>
-                                                                    <v-flex xs12 md8 class="pr-2">
-                                                                        <v-textarea    
-                                                                        box                                     
-                                                                        label="Note"
-                                                                        v-model="editProject.Catatan"
-                                                                        prepend-icon="contact_support"
-
-                                                                        ></v-textarea>
-                                                                    </v-flex>    
-                                                                    <v-flex xs12 md4 >
+                                                                    <v-flex xs12 md12 >
                                                                         <v-textarea    
                                                                         box                                     
                                                                         label="Address"
                                                                         v-model="editProject.Alamat"
                                                                         prepend-icon="contact_support"
-
+                                                                        rows="2"
                                                                         ></v-textarea>
                                                                     </v-flex>                                                
+                                                                    <v-flex xs12 md12 class="pr-2">
+                                                                        <v-textarea    
+                                                                        box                                     
+                                                                        label="Note"
+                                                                        v-model="editProject.Catatan"
+                                                                        prepend-icon="contact_support"
+                                                                        rows="6"
+                                                                        ></v-textarea>
+                                                                    </v-flex>    
                                                                 </v-layout>
                                                             
                                                             </v-container>
@@ -1611,7 +1618,7 @@
                                                         <v-icon small left>filter_list</v-icon>
                                                         <span class="caption ">Expand</span>
                                                     </v-btn>
-                                                    <v-list expand style="height: 100%;">
+                                                    <v-list expand style="height: 100%;min-height:200px;">
                                                         <!-- style="overflow : auto;" -->
                                                         <v-list-group class="pa-0"
                                                         value="true">
@@ -1856,10 +1863,9 @@
                                                             <v-progress-linear
                                                             color="red"
                                                             height="20"
-                                                            :value="detailProject.Progress"
+                                                            :value="detailProject.Total_Progress"
                                                             >
-                                                            <!-- <strong class="text-center">{{project.progress}}%</strong> -->
-                                                            <p class="text-xs-center">{{detailProject.Progress}}%</p>
+                                                            <p class="text-xs-center">{{detailProject.Total_Progress}}%</p>
                                                             </v-progress-linear>
                                                         </v-list-tile-action>
                                                     </v-list-tile>
@@ -1883,10 +1889,10 @@
                                                                 <v-progress-linear
                                                                 color="red"
                                                                 height="20"
-                                                                :value="div.Progress"
+                                                                :value="div.Total_Progress"
                                                                 >
-                                                                <!-- <strong class="text-center">{{project.progress}}%</strong> -->
-                                                                <p class="text-xs-center">{{div.Progress}}%</p>
+                                                                <!-- <strong class="text-center">{{project.Total_Progress}}%</strong> -->
+                                                                <p class="text-xs-center">{{div.Total_Progress}}%</p>
                                                                 </v-progress-linear>
                                                             </v-list-tile-action>
                                                             </v-list-tile>
@@ -1909,9 +1915,9 @@
                                                                     <v-progress-linear
                                                                     color="red"
                                                                     height="20"
-                                                                    :value="subdiv.Progress"
+                                                                    :value="subdiv.Total_Progress"
                                                                     >
-                                                                    <p class="text-xs-center">{{subdiv.Progress}}%</p>
+                                                                    <p class="text-xs-center">{{subdiv.Total_Progress}}%</p>
                                                                     </v-progress-linear>
                                                                 </v-list-tile-action>
                                                                 </v-list-tile>
@@ -1934,9 +1940,9 @@
                                                                         <v-progress-linear
                                                                         color="red"
                                                                         height="20"
-                                                                        :value="task.Progress"
+                                                                        :value="task.Total_Progress"
                                                                         >
-                                                                        <p class="text-xs-center">{{task.Progress}}%</p>
+                                                                        <p class="text-xs-center">{{task.Total_Progress}}%</p>
                                                                         </v-progress-linear>
                                                                     </v-list-tile-action>
                                                                     </v-list-tile>
@@ -1945,7 +1951,7 @@
                                                                 <v-list-tile
                                                                 v-for="subtask in  detailProject.All_SubTask.filter(obj=>obj.Task == task.Nama)"
                                                                 :key="subtask.Id_Sub_Item_Pekerjaan"
-                                                                class="d_sub_task pl-2 pr-5 mr-3 ">
+                                                                class="d_sub_task ml-2 pr-5 mr-3 ">
                                                                 <v-list-tile-content>
                                                                     <v-list-tile-title>{{ subtask.Nama }}
                                                                         <span class="pr-3 right"> {{subtask.Remaining}}</span>
@@ -1955,21 +1961,14 @@
                                                                     <v-progress-linear
                                                                     color="red"
                                                                     height="20"
-                                                                    :value="subtask.Progress"
+                                                                    :value="subtask.Total_Progress"
                                                                     >
-                                                                    <p class="text-xs-center">{{subtask.Progress}}%</p>
+                                                                    <p class="text-xs-center">{{subtask.Total_Progress}}%</p>
                                                                     </v-progress-linear>
                                                                 </v-list-tile-action>
                                                                 </v-list-tile>
-                                                            
-                    
-                                                            
                                                             </v-list-group>
-
-                
-                                                            
                                                         </v-list-group>
-                                                    
                                         
                                                         <!-- <v-list-tile-action>
                                                         <v-icon>{{ div.action }}</v-icon>
@@ -2872,6 +2871,7 @@ export default {
     //                     let today = new Date().getTime();
     //                     let target = new Date(eachsubtask.Tanggal_Selesai).getTime();
     //                     let remaining = parseInt((target-today)/(24*3600*1000));
+
     //                     eachsubtask.Remaining = remaining +' days left'
 
     //                     if(eachsubtask.Log_Pengerjaan.length > 0){
@@ -2911,7 +2911,6 @@ export default {
     //         data.All_SubTask    = allsubtask
     // },
     getDataFormat(data){
-        console.log("test")
         let alldivisi =[]
         let allsubdivisi=[]
         let alltask=[]
@@ -2944,12 +2943,14 @@ export default {
                             Persentase              : subtask.Persentase,
                             User                    : '',
                             Remaining               : '',
+                            Total_Progress          : '0',
                             Progress                : '0',
                             Status                  : 'untake',
                             Log_Pengerjaan          :[],
                         }
                         for(let log of this.logPengerjaanData){
                             if(log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan){
+                                eachsubtask.Total_Progress = parseInt(log.Progress)+parseInt(eachsubtask.Total_Progress)
                                 eachsubtask.Log_Pengerjaan.push(log)
                             }
                         }
@@ -2958,27 +2959,25 @@ export default {
                         let remaining = parseInt((target-today)/(24*3600*1000));
                         eachsubtask.Remaining = remaining +' days left'
                         
-                        if(eachsubtask.Log_Pengerjaan.length > 0){
-                            eachsubtask.Log_Pengerjaan = eachsubtask.Log_Pengerjaan.slice().reverse()
-                            if(eachsubtask.Log_Pengerjaan.length==1)
-                            {
-                                eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress 
-                                eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username 
-                            }
-                            else{
-                                console.log(eachsubtask.Log_Pengerjaan)
-                                let data = eachsubtask.Log_Pengerjaan.find(obj=>obj.Berkas!='' )
-                                console.log(data)
-                                console.log(data)
-                                eachsubtask.Progress = data.Progress 
-                                eachsubtask.User = data.Username 
-                            }
-                        }
-                        if(remaining < 0 && eachsubtask.Progress != '100'){
+                        // if(eachsubtask.Log_Pengerjaan.length > 0){
+                        //     eachsubtask.Log_Pengerjaan = eachsubtask.Log_Pengerjaan.slice().reverse()
+                        //     if(eachsubtask.Log_Pengerjaan.length==1)
+                        //     {
+                        //         eachsubtask.Total_Progress = eachsubtask.Log_Pengerjaan[0].Progress 
+                        //         eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username 
+                        //     }
+                        //     else{
+                        //         let data = eachsubtask.Log_Pengerjaan.find(obj=>obj.Berkas!='' )
+                        //         console.log(data)
+                        //         eachsubtask.Progress = data.Progress 
+                        //         eachsubtask.User = data.Username 
+                        //     }
+                        // }
+                        if(remaining < 0 && eachsubtask.Total_Progress != '100'){
                             eachsubtask.Status = 'overdue'
                             eachsubtask.Remaining = remaining +' days overdue'
                         }
-                        else if(eachsubtask.Progress!='100'){
+                        else if(eachsubtask.Total_Progress!='100'){
                             eachsubtask.Status = 'ongoing'
                         }
                         else{
@@ -3035,6 +3034,7 @@ export default {
         data.All_Task       = alltask
         data.All_SubTask    = allsubtask
         data.Total_Persentase = PersentaseProyek
+        console.log(data)
     },
 
     async sendAccessRequest(){
@@ -3070,7 +3070,7 @@ export default {
                 Berkas  : pathfile,
             }
             const response= (await Controller.updatelogpengerjaan(payload,Id_Pengerjaan)).data
-            if(this.editTask.Progress == 100)
+            if(this.editTask.Total_Progress == 100)
             {
                 await this.accessDone()
             }
@@ -3238,8 +3238,7 @@ export default {
     async detailProjectDialog(project){
         this.detailProject = Object.assign({},project)
         this.detailProject.Remaining = parseInt((new Date(this.detailProject.Target_Outcome).getTime()-new Date().getTime())/(24*3600*1000)) +' days left'
-        // this.detailProject.Progress = await Controller.getProgressProyek(this.detailProject.Id_Proyek)
-        this.detailProject.Progress = 0
+        this.detailProject.Total_Progress = 0
 
         for(let subtask of this.detailProject.All_SubTask){
             subtask.Remaining = parseInt((new Date(subtask.Tanggal_Selesai).getTime()-new Date().getTime())/(24*3600*1000)) +' days left'
@@ -3248,10 +3247,9 @@ export default {
         for(let task of this.detailProject.All_Task){
 
             task.Remaining = parseInt((new Date(task.Tanggal_Selesai).getTime()-new Date().getTime())/(24*3600*1000)) +' days left'
-            task.Progress =0
+            task.Total_Progress =0
             for(let subtask of this.detailProject.All_SubTask.filter(obj=>obj.Task == task.Nama)){
-                    
-                  task.Progress +=  subtask.Progress * subtask.Persentase/100
+                task.Total_Progress +=  subtask.Total_Progress * subtask.Persentase/100
             }
             // task.Progress= await Controller.getProgressItem(task.Id_Item_Pekerjaan)
         }
@@ -3260,10 +3258,10 @@ export default {
 
             subdiv.Remaining = parseInt((new Date(subdiv.Tanggal_Selesai).getTime()-new Date().getTime())/(24*3600*1000)) +' days left'
             // subdiv.Progress= await Controller.getProgressSubDivisi(subdiv.Id_Sub_Divisi_Proyek)
-            subdiv.Progress =0
+            subdiv.Total_Progress =0
             for(let task of this.detailProject.All_Task.filter(obj=>obj.Sub_Divisi == subdiv.Nama)){
                    
-                  subdiv.Progress +=  task.Progress * task.Persentase/100
+                  subdiv.Total_Progress +=  task.Total_Progress * task.Persentase/100
             }
 
         }
@@ -3272,12 +3270,12 @@ export default {
 
             div.Remaining = parseInt((new Date(div.Tanggal_Selesai).getTime()-new Date().getTime())/(24*3600*1000)) +' days left'
             // div.Progress= await Controller.getProgressDivisi(div.Id_Divisi_Proyek)
-            div.Progress =0
+            div.Total_Progress =0
             for(let subdiv of this.detailProject.All_SubDivisi.filter(obj=>obj.Divisi == div.Nama)){
                     
-                  div.Progress +=  subdiv.Progress * subdiv.Persentase/100
+                  div.Total_Progress +=  subdiv.Total_Progress * subdiv.Persentase/100
             }
-            this.detailProject.Progress += div.Progress * div.Persentase/100
+            this.detailProject.Total_Progress += div.Total_Progress * div.Persentase/100
         }
 
         this.detailDialog = true
@@ -3286,8 +3284,8 @@ export default {
 
         let PCDatas = [];
         let Names = [];
-        //filter yang id proyeknya sesuai detail dan progress != 0
-        let PCLogPengerjaan = this.logPengerjaanData.filter(obj=>obj.Id_Proyek == project.Id_Proyek && obj.Progress != 0);
+        //filter yang id proyeknya sesuai detail dan Berkas != ''
+        let PCLogPengerjaan = this.logPengerjaanData.filter(obj=>obj.Id_Proyek == project.Id_Proyek && obj.Berkas != '');
         //sort berdasarkan sub item pekerjaan untuk mempermudah langkah selanjutnya
         PCLogPengerjaan.sort((a,b) => a['Id_Sub_Item_Pekerjaan'] < b['Id_Sub_Item_Pekerjaan'] ? -1 : 1) 
         //mengambil data nama dan divisi dari karyawan yang melakukan kontribusi
@@ -3298,11 +3296,12 @@ export default {
                 let Data = { Nama:'', Division:'' }
                 Names.push(log.Nama)
                 Data.Nama=log.Nama;
-                Data.Division=log.Divisi;
+                Data.Division=log.Divisi_Karyawan;
+                Data.Task_List = []
                 PCDatas.push(Data)
             }
         }
-        
+
         let subtasks = []
         let id_subtasks = []
         let id_subtask = 0
@@ -3340,7 +3339,9 @@ export default {
 
         let subtasklen  = subtasks.length
         let Tasks = []
+        let Task = []
         let Contribute = 0
+        index =0
         for(let PCData of PCDatas)
         {
             PCData.Task_List = []
@@ -3350,60 +3351,84 @@ export default {
             let loglen      = subtask.Logs.length
             let logs        = subtask.Logs
             
-            let Task = []
+            let dataTask = { Name : '', Task : '', Sub_Div : '', Div : '', Contribute : 0}
             for(let i = 0 ; i<loglen ; i++)
             {
                 for(let PCData of PCDatas)
                 {
                     if(PCData.Nama == logs[i].Nama)
                     {
-                        if(i==0)
+                        Task = PCData.Task_List.find(obj=>obj.Name == logs[i].Sub_Task)
+                        if(typeof Task === 'undefined')
                         {
-                            Contribute = logs[i].Progress
-                            Task.Name = logs[i].Sub_Task
-                            Task.Task = logs[i].Task
-                            Task.Sub_Div = logs[i].Sub_Divisi
-                            Task.Div = logs[i].Divisi
-                            Task.Contribute = Contribute
-                        }
-                        else if(logs[i].Nama == logs[i-1].Nama)
-                        {
-                            Contribute += logs[i].Progress - logs[i-1].Progress
-                            Task.Name = logs[i].Sub_Task
-                            Task.Task = logs[i].Task
-                            Task.Sub_Div = logs[i].Sub_Divisi
-                            Task.Div = logs[i].Divisi
-                            Task.Contribute = Contribute
+                            dataTask.Name       = logs[i].Sub_Task
+                            dataTask.Task       = logs[i].Task
+                            dataTask.Sub_Div    = logs[i].Sub_Divisi
+                            dataTask.Div        = logs[i].Divisi
+                            dataTask.Contribute = logs[i].Progress
+                            PCData.Task_List.push(dataTask)
                         }
                         else
                         {
-                            Contribute = logs[i].Progress - logs[i-1].Progress
-                            Task.Name = logs[i].Sub_Task
-                            Task.Task = logs[i].Task
-                            Task.Sub_Div = logs[i].Sub_Divisi
-                            Task.Div = logs[i].Divisi
-                            Task.Contribute = Contribute
+                            index = PCData.Task_List.indexOf(Task)
+                            PCData.Task_List[index].Contribute += logs[i].Progress
                         }
-                        let sametask = PCData.Task_List.filter(obj=>obj.Name == Task.Name)
-                        console.log("Sametask")
-                        console.log(sametask)
-                        console.log("index of")
-                        console.log(PCData.Task_List.indexOf(sametask[0]))
-                        let sametaskindex = PCData.Task_List.indexOf(sametask[0])
-                        if(i==loglen-1 ||logs[i+1].Nama != logs[i].Nama)
-                        {
-                            let sametask = PCData.Task_List.filter(obj=>obj.Name == Task.Name)
-                            if(sametaskindex != -1)
-                            {
-                                PCData.Task_List[sametaskindex].Contribute += Contribute
-                            }
-                            else
-                            {
-                                PCData.Task_List.push(Task);
-                                Task = [];
-                                Contribute = 0;
-                            }   
-                        }
+                        dataTask = { Name : '', Task : '', Sub_Div : '', Div : '', Contribute : 0}
+                        // Contribute = logs[i].Progress
+                        // Task.Name = logs[i].Sub_Task
+                        // Task.Task = logs[i].Task
+                        // Task.Sub_Div = logs[i].Sub_Divisi
+                        // Task.Div = logs[i].Divisi
+                        // Task.Contribute += logs[i].Progress
+                        // console.log(Task)
+                        // console.log("Task")
+                        // if(i==0)
+                        // {
+                        //     Contribute = logs[i].Progress
+                        //     Task.Name = logs[i].Sub_Task
+                        //     Task.Task = logs[i].Task
+                        //     Task.Sub_Div = logs[i].Sub_Divisi
+                        //     Task.Div = logs[i].Divisi
+                        //     Task.Contribute = Contribute
+                        // }
+                        // else if(logs[i].Nama == logs[i-1].Nama)
+                        // {
+                        //     Contribute += logs[i].Progress - logs[i-1].Progress
+                        //     Task.Name = logs[i].Sub_Task
+                        //     Task.Task = logs[i].Task
+                        //     Task.Sub_Div = logs[i].Sub_Divisi
+                        //     Task.Div = logs[i].Divisi
+                        //     Task.Contribute = Contribute
+                        // }
+                        // else
+                        // {
+                        //     Contribute = logs[i].Progress - logs[i-1].Progress
+                        //     Task.Name = logs[i].Sub_Task
+                        //     Task.Task = logs[i].Task
+                        //     Task.Sub_Div = logs[i].Sub_Divisi
+                        //     Task.Div = logs[i].Divisi
+                        //     Task.Contribute = Contribute
+                        // }
+                        // let sametask = PCData.Task_List.filter(obj=>obj.Name == Task.Name)
+                        // console.log("Sametask")
+                        // console.log(sametask)
+                        // console.log("index of")
+                        // console.log(PCData.Task_List.indexOf(sametask[0]))
+                        // let sametaskindex = PCData.Task_List.indexOf(sametask[0])
+                        // if(i==loglen-1 ||logs[i+1].Nama != logs[i].Nama)
+                        // {
+                        //     let sametask = PCData.Task_List.filter(obj=>obj.Name == Task.Name)
+                        //     if(sametaskindex != -1)
+                        //     {
+                        //         PCData.Task_List[sametaskindex].Contribute += Contribute
+                        //     }
+                        //     else
+                        //     {
+                        //         PCData.Task_List.push(Task);
+                        //         Task = { Name : '', Task : '', Sub_Div : '', Div : '', Contribute : 0}
+                        //         Contribute = 0;
+                        //     }   
+                        // }
                     }
                 }
             }
@@ -3687,6 +3712,25 @@ export default {
 <style>
 
 .d_div{
+  border-left: 4px solid #0277BD !Important;
+  border-color:#0277BD !Important;
+}
+.d_sub_div{
+  border-left: 4px solid #0091EA !Important;
+  border-color:#0091EA !Important;
+}
+
+.d_task{
+  border-left: 4px solid #00B8D4 !Important;
+  border-color:#00B8D4 !Important;
+}
+
+.d_sub_task{
+   border-left: 4px solid #3cd1c2 !Important;
+  border-color:#3cd1c2 !Important;
+}
+
+/* .d_div{
   border-left: 4px solid #3cd1c2 !Important;
   border-color:#3cd1c2 !Important;
 }
@@ -3700,37 +3744,36 @@ export default {
   border-color:#0091EA !Important;
 }
 
-/* .d_sub_task{
-  border-left: 4px solid #004D40 !Important;
-  border-color:#004D40 !Important;
+.d_sub_task{
+  border-left: 4px solid #0277BD !Important;
+  border-color:#0277BD !Important;
 } */
 
 
 .project.complete{
-  border-left: 4px solid #3cd1c2 !Important;
-  border-color:#3cd1c2 !Important;
+  border-left: 4px solid #2196f3 !Important;
+  border-color:#2196f3 !Important;
 }
 .project.ongoing{
-  border-left: 4px solid #ffaa2c !Important;
+  border-left: 4px solid #4caf50 !Important;
 }
 .project.overdue{
-  border-left: 4px solid #f83e70 !Important;
+  border-left: 4px solid #ff5252 !Important;
 }
 .project.untake{
   border-left: 4px solid green !Important;
   border-color:green !Important;
-
 }
 
 
 .v-chip.complete{
-  background: #3cd1c2 !Important;
+  background: #2196f3 !Important;
 }
 .v-chip.ongoing{
-  background: #ffaa2c !Important;
+  background: #4caf50 !Important;
 }
 .v-chip.overdue{
-  background: #f83e70 !Important;
+  background: #ff5252 !Important;
 }
 .v-chip.untake{
   background: green !Important;

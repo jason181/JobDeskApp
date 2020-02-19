@@ -37,7 +37,7 @@
                   >
                     <v-sparkline
                       :labels="labels"
-                      :value="value"
+                      :value="values"
                       color="white"
                       line-width="2"
                       padding="16"
@@ -45,8 +45,8 @@
                   </v-sheet>
 
                   <v-card-text class="pt-0">
-                    <div class="title font-weight-light mb-2">Total Project : 8</div>
-                    <div class="subheading font-weight-light">Average Contribution : 25,4%</div>
+                    <div class="title font-weight-light mb-2">Total Project : {{Total_Project}}</div>
+                    <div class="subheading font-weight-light">Average Contribution : {{Average_Contribution}}%</div>
                     <v-divider class="my-2"></v-divider>
                     <v-icon
                       class="mr-2"
@@ -82,7 +82,7 @@
                   >
                     <v-sparkline
                       :labels="labels"
-                      :value="value"
+                      :value="values"
                       color="white"
                       line-width="2"
                       padding="16"
@@ -99,7 +99,7 @@
                     >
                       mdi-clock
                     </v-icon>
-                    <span class="caption grey--text font-weight-light">(?)</span>
+                    <span class="caption grey--text font-weight-light">last Fingerprint 2 days ago</span>
                   </v-card-text>
                 </v-card>
               </template>
@@ -236,7 +236,7 @@
                                                     <v-list-tile-content style="height:50px">
                                                       <v-list-tile-title style="height:35px;line-height:35px">
                                                         <span>
-                                                          {{div.Nama}}
+                                                          {{task.Nama}}
                                                         </span>
                                                         <span class="pr-3 right"> 
                                                           <v-chip small :class="` white--text my-2 caption ${task.Status}`">{{task.Status}}</v-chip>
@@ -257,17 +257,17 @@
                                               <v-list-tile
                                               v-for="subtask in  project.All_SubTask.filter(obj=>obj.Task == task.Nama)"
                                               :key="subtask.Id_Sub_Item_Pekerjaan"
-                                              class="d_sub_task pl-2 pr-5 mr-3 ">
-                                              <v-list-tile-content style="height:50px">
+                                              class="d_sub_task ml-2 pr-5 mr-3 ">
+                                              <v-list-tile-content>
                                                 <v-list-tile-title style="height:35px;line-height:35px;">
                                                   <v-layout row wrap>
                                                     <v-flex xs12 md8>
-                                                      <v-tooltip right color="grey darken-4"> 
-                                                        <template v-slot:activator="{ on }">
-                                                            <div v-on="on" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size:14px;">{{subtask.Nama}}</div>
-                                                        </template>
-                                                        <span style="color:white;">{{subtask.Nama}}</span>
-                                                      </v-tooltip>
+                                                      <v-tooltip left color="grey darken-4"> 
+                                                      <template v-slot:activator="{ on }">
+                                                        <div v-on="on" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size:14px;">{{subtask.Nama}}</div>
+                                                      </template>
+                                                      <span style="color:white;">{{subtask.Nama}}</span>
+                                                    </v-tooltip>
                                                     </v-flex>
                                                     <v-flex xs12 md4>
                                                       <div class="pr-3 right"> 
@@ -311,7 +311,7 @@
         xs12
         md4
         class="pr-4"
-        
+        v-if="profile"
       >
         <!-- <material-card class="v-card-profile" floating> -->
           <!-- <v-avatar
@@ -445,7 +445,7 @@
                 class="py-0"
               >
                 <v-btn
-                  color="success"
+                  color="info"
                   round
                   class="font-weight-light"
                   @click="updateProfile()"
@@ -458,7 +458,7 @@
                 class="py-0"
               >
                 <v-btn
-                  color="success"
+                  color="info"
                   round
                   class="font-weight-light"
                   @click="passwordDialog = true"
@@ -538,6 +538,33 @@
           </v-card>
           </v-dialog>
       </v-layout>
+      <!-- <v-layout row wrap>
+        <v-spacer></v-spacer>
+        <v-flex xs12 md1>
+          <v-btn
+            class="right"
+            small
+            @click="profile = false" 
+            v-if="profile == true"
+          >
+          Hide 
+            <v-icon>
+              cancel
+            </v-icon>
+          </v-btn>
+          <v-btn
+            class="right"
+            small
+            @click="profile = true" 
+            v-if="profile == false"
+          >
+          Show 
+            <v-icon>
+              remove_red_eye
+            </v-icon>
+          </v-btn>
+        </v-flex>
+      </v-layout> -->
     <!-- Change Password Dialog -->
     <!-- Alert -->
       <v-snackbar right bottom :color="alert.type"  value="true" v-if="alert.type">
@@ -576,6 +603,7 @@ export default {
     tabs: 1,
     //Tabs
     User : [],
+    profile : true,
     New_Password : '',
     Old_Password : '',
     Confirm_Password : '',
@@ -587,154 +615,13 @@ export default {
     UserProjects : [],
     LogPengerjaanData:[],
     UserLogs :[],
+    Total_Project:0,
+    Average_Contribution:0,
     // DUMMY
-    d_projects : [{
-      All_Divisi:[
-          // {
-          //     Nama:'Desain Arsi',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          //     Id_Divisi_Role:'1'
-          // },
-          // {
-          //     Nama:'Admin',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          //     Id_Divisi_Role:'1'
-
-          // }
-      ],
-      All_SubDivisi:[
-          // {
-          //     Nama:'Desain',
-          //     Divisi:'Desain Arsi',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          // },
-          // {
-          //     Nama:'QS',
-          //     Divisi:'Desain Arsi',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          // }
-      ],
-      All_Task:[
-          // {
-          //     Nama:'Konsep',
-          //     Sub_Divisi:'Desain',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          //     Id_Divisi_Role:'1',
-          //     Kode:'TSK1',
-          //     Satuan:'Item'
-
-          // },
-      ],
-      All_SubTask:[
-          // {
-          //     Nama:'Denah Depan',
-          //     Task:'Konsep',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          //     Deskripsi:'A',
-          //     Kode:'STSK1'
-          // },
-      ],
-
-      Id_Proyek:'1',
-      Nama: 'Test', 
-      Tanggal_Mulai: '2020-10-12',
-      Tanggal_Selesai: '2020-10-12', 
-      Nilai:'2',
-      Target_Outcome:'2020-10-12',
-      Catatan:'Cek',
-      Pemilik:'A',
-      Alamat:'A',
-      Kode:'PR2',
-    },
-    {
-      All_Divisi:[
-          {
-              Nama:'Desain Arsi',
-              Persentase:'50',
-              Tanggal_Selesai:'2020-10-12',
-              Id_Divisi_Role:'1'
-          },
-          {
-              Nama:'Admin',
-              Persentase:'50',
-              Tanggal_Selesai:'2020-10-12',
-              Id_Divisi_Role:'1'
-
-          }
-      ],
-      All_SubDivisi:[
-          {
-              Nama:'Desain',
-              Divisi:'Desain Arsi',
-              Persentase:'50',
-              Tanggal_Selesai:'2020-10-12',
-          },
-          {
-              Nama:'QS',
-              Divisi:'Desain Arsi',
-              Persentase:'50',
-              Tanggal_Selesai:'2020-10-12',
-          }
-      ],
-      All_Task:[
-          {
-              Nama:'Konsep',
-              Sub_Divisi:'Desain',
-              Persentase:'50',
-              Tanggal_Selesai:'2020-10-12',
-              Id_Divisi_Role:'1',
-              Kode:'TSK1',
-              Satuan:'Item'
-
-          },
-      ],
-      All_SubTask:[
-          {
-              Nama:'Denah Depan',
-              Task:'Konsep',
-              Persentase:'50',
-              Tanggal_Selesai:'2020-10-12',
-              Deskripsi:'A',
-              Kode:'STSK1'
-          },
-      ],
-
-      Id_Proyek:'2',
-      Nama: 'Test', 
-      Tanggal_Mulai: '2020-10-12',
-      Tanggal_Selesai: '2020-10-12', 
-      Nilai:'2',
-      Target_Outcome:'2020-10-12',
-      Catatan:'Cek',
-      Pemilik:'A',
-      Alamat:'A',
-      Kode:'PR2',
-      Status : 'overdue',
-    },
-    ],
+    // ............
     //TRY
-    labels: [
-        '0',
-        'RSYOG',
-        'RSLMP',
-        'HTL1',
-        'VILLA1',
-        'GOAMRSJ',
-      ],
-    value: [
-        0,
-        25.2,
-        26.4,
-        13.5,
-        16.6,
-        18.9,
-      ],
+    labels: ['0',],
+    values: [0,],
     //EXPAND
     expandDetail:false,
     //SCROLL
@@ -776,18 +663,18 @@ export default {
     {
       try {
         this.AllProjects = ((await Controller.getallproject()).data)
-        console.log("PROJECTS")
-        console.log(this.AllProjects)
-        console.log("PROJECTS")
+        // console.log("PROJECTS")
+        // console.log(this.AllProjects)
+        // console.log("PROJECTS")
         this.LogPengerjaanData = (await Controller.getalllogpengerjaan()).data.filter(obj=>obj.Progress != 0)
-        console.log("LOG")
-        console.log(this.LogPengerjaanData)
-        console.log("LOG")
+        // console.log("LOG")
+        // console.log(this.LogPengerjaanData)
+        // console.log("LOG")
         this.User = ((await Controller.getallemployee()).data).filter(obj=>obj.Id_Akun == this.id_akun)[0]
         this.User.Tanggal_Masuk = this.User.Tanggal_Masuk.toString()
-        console.log("USER")
-        console.log(this.User)
-        console.log("USER")
+        // console.log("USER")
+        // console.log(this.User)
+        // console.log("USER")
         this.getUserProjects();
       } catch (err) {
         console.log(err)
@@ -809,6 +696,23 @@ export default {
             }
           }
         }
+        this.Total_Project = this.UserProjects.length
+        let Total_Contribution = 0
+        let value = 0
+        for(let UserProject of this.UserProjects)
+        {
+          Total_Contribution += UserProject.Contribution
+          this.labels.push(UserProject.Kode)
+          value = (Math.round(UserProject.Contribution * 1000) / 1000).toFixed(3)
+          this.values.push(parseFloat(value))
+          console.log(value)
+        }
+        console.log("this.value")
+        console.log(this.values)
+        
+        this.Average_Contribution = Total_Contribution / this.Total_Project
+        this.Average_Contribution=(Math.round(this.Average_Contribution * 1000) / 1000).toFixed(3);
+        
         console.log("WORKSPACE")
         // console.log(this.LogPengerjaanData)
         console.log(this.UserProjects)
@@ -881,41 +785,45 @@ export default {
                         let logs = eachsubtask.Log_Pengerjaan.filter(obj=>obj.Berkas!='')
                         for(let log of logs)
                         {
-                          logIndexInc = logs.indexOf(log)+1
-                          // console.log("LOG INDEX")
-                          // console.log(logIndexInc)
-                          // console.log(logs.length)
-                          if(logIndexInc == logs.length-1)
-                          {
-                            if(log.Username == this.nama)
-                            {
-                              // console.log("add my")
-                              // console.log(log.Progress)
-                              MySubTaskContribution += log.Progress
-                            }
-                            else
-                            {
-                              // console.log("add other")
-                              // console.log(log.Progress)
-                              OtherSubTaskContribution += log.Progress
-                            }
-                            break;
-                          }
-                          if(logs[logIndexInc].Username != log.Username)
-                          {
-                            if(log.Username == this.nama)
-                            {
-                              // console.log("add my")
-                              // console.log(log.Progress)
-                              MySubTaskContribution += log.Progress
-                            }
-                            else
-                            {
-                              // console.log("add other")
-                              // console.log(log.Progress)
-                              OtherSubTaskContribution += log.Progress
-                            }
-                          }
+                          if(log.Username == this.nama)
+                            MySubTaskContribution += log.Progress
+                          else
+                            OtherSubTaskContribution += log.Progress
+                          // logIndexInc = logs.indexOf(log)+1
+                          // // console.log("LOG INDEX")
+                          // // console.log(logIndexInc)
+                          // // console.log(logs.length)
+                          // if(logIndexInc == logs.length-1)
+                          // {
+                          //   if(log.Username == this.nama)
+                          //   {
+                          //     // console.log("add my")
+                          //     // console.log(log.Progress)
+                          //     MySubTaskContribution += log.Progress
+                          //   }
+                          //   else
+                          //   {
+                          //     // console.log("add other")
+                          //     // console.log(log.Progress)
+                          //     OtherSubTaskContribution += log.Progress
+                          //   }
+                          //   break;
+                          // }
+                          // if(logs[logIndexInc].Username != log.Username)
+                          // {
+                          //   if(log.Username == this.nama)
+                          //   {
+                          //     // console.log("add my")
+                          //     // console.log(log.Progress)
+                          //     MySubTaskContribution += log.Progress
+                          //   }
+                          //   else
+                          //   {
+                          //     // console.log("add other")
+                          //     // console.log(log.Progress)
+                          //     OtherSubTaskContribution += log.Progress
+                          //   }
+                          // }
                         }
                         // console.log("Contribution")
                         // console.log(MySubTaskContribution)
@@ -1204,11 +1112,11 @@ export default {
     position: relative;
   }
 
-.d_project{
-  border-left: 4px solid #6effd3 !Important;
-  border-color: #6effd3 !Important;
+ .d_project{
+  border-left: 4px solid #01579B !Important;
+  border-color: #01579B !Important;
 }
-.d_div{
+/*.d_div{
   border-left: 4px solid #3cd1c2 !Important;
   border-color:#3cd1c2 !Important;
 }
@@ -1220,14 +1128,14 @@ export default {
 .d_task{
   border-left: 4px solid #0091EA !Important;
   border-color:#0091EA !Important;
-}
+} */
 
 /* .d_sub_task{
   border-left: 4px solid #004D40 !Important;
   border-color:#004D40 !Important;
 } */
 
-
+/* 
 .project.complete{
   border-left: 4px solid #3cd1c2 !Important;
   border-color:#3cd1c2 !Important;
@@ -1256,7 +1164,7 @@ export default {
 }
 .v-chip.untake{
   background: green !Important;
-}
+} */
 
 </style>
 

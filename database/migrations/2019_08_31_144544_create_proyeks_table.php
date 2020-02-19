@@ -23,7 +23,7 @@ class CreateProyeksTable extends Migration
             $table->date('Target_Outcome');
             $table->date('Tanggal_Mulai');
             $table->date('Tanggal_Selesai');
-            $table->string('Catatan',255);
+            $table->longText('Catatan');
             
             $table->softDeletes();
             $table->timestamps();

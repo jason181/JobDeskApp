@@ -169,36 +169,39 @@ class AkunController extends RestController
             
             $logs = $alllogs[0];
             
-            if ($logs['Berkas']=='')
+            foreach($alllogs as $log)
             {
-                foreach($alllogs as $log)
-                {
-                    if($log['Berkas']!='')
-                    {
-                        
-                        $datas['data'][$count]['Progress']=$log['Progress'];
-                        break;
-                    }
-                    // return $log;
-                }
+                $datas['data'][$count]['Total_Progress']+=$log['Progress'];
             }
-            else
-            {
-                $datas['data'][$count]['Progress']=$logs['Progress'];
-            }
+            // return $datas;
+            // if ($logs['Berkas']=='')
+            // {
+            //     foreach($alllogs as $log)
+            //     {
+            //         if($log['Berkas']!='')
+            //         {
+            //             $datas['data'][$count]['Total_Progress']+=$log['Progress'];
+            //             break;
+            //         }
+            //         // return $log;
+            //     }
+            // }
+            // else
+            // {
+            //     $datas['data'][$count]['Total_Progress']+=$logs['Progress'];
+            // }
             // return $datas['data'][$count]['Progress'];
             $User=Akun::find($logs['Id_Akun']);
             
             $datas['data'][$count]['User']=$User->Username;
             $now=Carbon::now('Asia/Jakarta');
             // return $now;
-
             $diff = $now->diffInDays($data['Tanggal_Selesai'], false);
             $remaining = $diff.' days left';
 
             $datas['data'][$count]['Remaining']=$remaining;
 
-            if ($logs['Progress']==100)
+            if ($logs['Total_Progress']==100)
                 $datas['data'][$count]['Status']='complete';
             else if($diff<0)
                 $datas['data'][$count]['Status']='overdue';

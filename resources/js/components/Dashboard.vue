@@ -50,10 +50,10 @@
                       <v-progress-linear
                       color="red"
                       height="20"
-                      :value="project.Progress"
+                      :value="project.Total_Progress"
                       >
                       <!-- <strong class="text-center">{{project.progress}}%</strong> -->
-                      <p class="text-xs-center">{{project.Progress}}%</p>
+                      <p class="text-xs-center">{{project.Total_Progress}}%</p>
                       </v-progress-linear>
                 </div>
             </v-flex>
@@ -147,7 +147,7 @@
                 <!-- Date & Time Remaininig -->
 
                 <!-- Progress -->
-                <v-flex xs12 md4>
+                <v-flex xs12 md2>
                     <v-text-field
                         v-model="editProject.Progress"
                         label="Progress"
@@ -155,18 +155,25 @@
                         counter='3'
                         type="number"
                         :readonly="editProject.status=='untake'"
-                        
                     ></v-text-field>
                 </v-flex>
-                
+                <v-flex xs12 md2>
+                    <v-text-field
+                        :value="parseInt(editProject.Total_Progress) + parseInt(editProject.Progress)"
+                        label="Total"
+                        prepend-icon="timeline"
+                        counter='3'
+                        type="number"
+                        readonly
+                    ></v-text-field>
+                </v-flex>
                 <v-flex xs12 md8>
                     <v-progress-linear
                     color="red"
                     height="20"
-                    :value="editProject.Progress"
+                    :value="parseInt(editProject.Total_Progress) + parseInt(editProject.Progress)"
                     >
-                    <!-- <strong class="text-center">{{project.progress}}%</strong> -->
-                    <p class="text-xs-center">{{editProject.Progress}}%</p>
+                    <p class="text-xs-center">{{parseInt(editProject.Total_Progress) + parseInt(editProject.Progress)}}%</p>
                     </v-progress-linear>
                 </v-flex>
                 <!-- Progress -->
