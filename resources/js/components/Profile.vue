@@ -2,7 +2,8 @@
   <v-container
     fill-height
     fluid
-    grid-list-xl>
+    grid-list-xl
+    >
     <v-layout
       justify-center
       wrap
@@ -262,7 +263,7 @@
                                                 <v-list-tile-title style="height:35px;line-height:35px;">
                                                   <v-layout row wrap>
                                                     <v-flex xs12 md8>
-                                                      <v-tooltip left color="grey darken-4"> 
+                                                      <v-tooltip left color="grey darken-4" style="left:-260px"> 
                                                       <template v-slot:activator="{ on }">
                                                         <div v-on="on" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size:14px;">{{subtask.Nama}}</div>
                                                       </template>

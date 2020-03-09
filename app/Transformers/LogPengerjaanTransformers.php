@@ -14,6 +14,8 @@ class LogPengerjaanTransformers extends TransformerAbstract
      */
     public function transform(Log_Pengerjaan $log_pengerjaan)
     {
+        // transform($data)
+
         return [
             'Id_Log_Pengerjaan'     => $log_pengerjaan->Id_Pengerjaan,
             'Id_Sub_Item_Pekerjaan' => $log_pengerjaan->Id_Sub_Item_Pekerjaan,
@@ -31,6 +33,8 @@ class LogPengerjaanTransformers extends TransformerAbstract
             'Progress'              => $log_pengerjaan->Progress,
             'Berkas'                => $log_pengerjaan->Berkas,
             'Catatan'               => $log_pengerjaan->Catatan,
+
+            
 
         ];
     }

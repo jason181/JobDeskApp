@@ -19,9 +19,10 @@ class CreateSubItemPekerjaansTable extends Migration
             $table->string('Nama',75);
             // $table->string('Kode',50);     
             $table->string('Deskripsi',255);
+            $table->integer('Durasi');
             $table->dateTime('Tanggal_Selesai');
             $table->integer('Persentase');
-            // $table->string('Berkas',255);
+            $table->integer('Prestasi_Kerja');
             $table->softDeletes();
             $table->timestamps();
 

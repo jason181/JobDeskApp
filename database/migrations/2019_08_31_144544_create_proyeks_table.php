@@ -20,6 +20,7 @@ class CreateProyeksTable extends Migration
             $table->string('Pemilik',15);
             $table->string('Alamat',255);
             $table->double('Nilai');
+            $table->integer('Durasi');
             $table->date('Target_Outcome');
             $table->date('Tanggal_Mulai');
             $table->date('Tanggal_Selesai');

@@ -35,8 +35,8 @@
                             <v-flex>
                                 <v-btn small @click="projectNotesDialog(project)">Notes</v-btn>
                                 <v-btn small @click="detailProjectDialog(project)">Detail</v-btn>
-                                <v-btn small @click="editProjectDialog(project)">Edit</v-btn>
-                                <v-btn small @click="deleteProjectAll(project)">Delete</v-btn>
+                                <v-btn small v-if="Divisi == 'Admin'" @click="editProjectDialog(project)">Edit</v-btn>
+                                <v-btn small v-if="Divisi == 'Admin'" @click="deleteProjectAll(project)">Delete</v-btn>
                             </v-flex>  
                             <!-- <v-flex>
                                 <v-btn small @click="editProjectDialog(project)">Edit</v-btn>
@@ -46,13 +46,13 @@
                     </template>
 
                     <v-card class="grey darken-2">
-                        <v-container >
-                        <v-card>
+                        <v-container class="pa-3">
+                        <v-card class="pa-2">
                             <v-card-title>
                                 <span>Filter</span>
                             </v-card-title>
-                            <v-layout row>
-                            <v-flex class="pl-2" xs12 sm12 md2 >
+                            <v-layout row wrap>
+                            <v-flex class="px-1" xs12 sm12 md2 >
                                 <v-select
                                 v-model="filterDiv"
                                 :items="project.All_Divisi"
@@ -61,10 +61,9 @@
                                 box
                                 label="Division"
                                 @change="getSubDivision(project)"
-
                                 ></v-select>
                             </v-flex>
-                            <v-flex class="pl-2" xs12 sm12 md2 >
+                            <v-flex class="px-1" xs12 sm12 md2 >
                                 <v-select
                                 v-model="filterSubDiv"
                                 :items="sub_division"
@@ -75,7 +74,7 @@
                                 @change="getTask(project)"
                                 ></v-select>
                             </v-flex>     
-                            <v-flex class="pl-2" xs12 sm12 md2 >
+                            <v-flex class="px-1" xs12 sm12 md2 >
                                 <v-select
                                 v-model="filterTask"
                                 :items="task"
@@ -85,19 +84,19 @@
                                 label="Task"
                                 ></v-select>
                             </v-flex>
-                            <v-flex class="pl-2" xs12 sm6 md2 >
+                            <v-flex class="px-1" xs12 sm6 md2 >
                                 <v-btn  @click="clearFilter()">Clear</v-btn>
                             </v-flex>
                             </v-layout> 
                         </v-card>   
 
                         <v-card hover v-ripple class="scroll-y" v-for="subtask in filteredTask(project.All_SubTask)" :key="subtask.Nama" flat style="background: #424242 !important;" @click="openTaskDialog(subtask)">
-                        <v-layout row wrap :class="`pa-3  project ${subtask.Status}`">
+                        <v-layout row wrap :class="`pa-3  project ${subtask.Color}`">
                             <v-flex xs12 md2>
                                 <div class="caption grey--text">{{subtask.Divisi}}</div>
                                 <div>{{subtask.Sub_Divisi}}</div>
                             </v-flex>
-                            <v-flex xs6 sm4 md4>
+                            <v-flex xs6 sm4 md3>
                                 <div class="caption grey--text">{{subtask.Task}}</div>
                                 <div>{{subtask.Nama}}</div>
                             </v-flex>     
@@ -118,19 +117,19 @@
                                     </v-progress-linear>
                                 </div>
                             </v-flex>
-                            <v-flex xs2 sm4 md2>
+                            <v-flex xs2 sm4 md3>
                                 <!-- <div class="caption grey--text">Status</div> -->
-                                <div class="right">
-                                    <v-chip small style="top:13px" :class="` white--text my-2 caption ${subtask.Status}`">{{subtask.Status}}</v-chip>
+                                <div align="center" justify="center">
+                                    <v-chip small style="top:13px" :class="` white--text my-2 caption ${subtask.Color}`">{{subtask.Work_Status}}</v-chip>
+                                <!-- </div>
+                                <div align="center" justify="center"> -->
+                                    <v-chip small style="top:13px" :class="` white--text my-2 caption ${subtask.Color}`">{{subtask.Time_Status}}</v-chip>
                                 </div>
                             </v-flex>
                         </v-layout>
                         <v-divider></v-divider>
                         </v-card>
                         </v-container>
-
-
-                        
                     </v-card>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
@@ -384,7 +383,7 @@
                         <v-btn color="blue darken-1" flat @click="taskDialog = false">Close</v-btn>
                         <v-btn color="blue darken-1" v-if="editTask.Status_Akses=='Locked' || editTask.Status_Akses=='Request Download'" flat @click="requestDialog = true">REQUEST</v-btn>
                         
-                        <v-btn color="blue darken-1" v-else flat @click="uploadProgress()">Save</v-btn>
+                        <v-btn color="blue darken-1" v-else flat @click="uploadProgress()" :loading="uploadProgressLoading">Save</v-btn>
                         <!-- <v-btn color="blue darken-1" v-if="editTask.status=='untake'" flat @click="taskDialog = false">Request</v-btn>
                         <v-btn color="blue darken-1" v-else flat @click="taskDialog = false">Save</v-btn> -->
 
@@ -444,8 +443,8 @@
                             <v-toolbar-title class="white--text" v-if="editmode == true">Edit Project</v-toolbar-title>
                             <v-spacer></v-spacer>
                             <v-toolbar-items>
-                                <v-btn dark flat v-if="editmode == false" @click="addProjectAll()">Add</v-btn>
-                                <v-btn dark flat v-else-if="editmode == true" @click="updateProjectAll()">Save</v-btn>
+                                <v-btn dark flat v-if="editmode == false" @click="addProjectAll()" :loading="addLoading">Add</v-btn>
+                                <v-btn dark flat v-else-if="editmode == true" @click="updateProjectAll()" :loading="editLoading">Save</v-btn>
 
                                 
                             </v-toolbar-items>
@@ -2243,133 +2242,127 @@ export default {
 
         editProject:
         {
-            All_Divisi:[
-                // {
-                //     Nama:'Desain Arsi',
-                //     Persentase:'50',
-                //     Tanggal_Selesai:'2020-10-12',
-                //     Id_Divisi_Role:'1'
-                // },
-                // {
-                //     Nama:'Admin',
-                //     Persentase:'50',
-                //     Tanggal_Selesai:'2020-10-12',
-                //     Id_Divisi_Role:'1'
-
-                // }
-            ],
-            All_SubDivisi:[
-                // {
-                //     Nama:'Desain',
-                //     Divisi:'Desain Arsi',
-                //     Persentase:'50',
-                //     Tanggal_Selesai:'2020-10-12',
-                // },
-                // {
-                //     Nama:'QS',
-                //     Divisi:'Desain Arsi',
-                //     Persentase:'50',
-                //     Tanggal_Selesai:'2020-10-12',
-                // }
-            ],
-            All_Task:[
-                // {
-                //     Nama:'Konsep',
-                //     Sub_Divisi:'Desain',
-                //     Persentase:'50',
-                //     Tanggal_Selesai:'2020-10-12',
-                //     Id_Divisi_Role:'1',
-                //     Kode:'TSK1',
-                //     Satuan:'Item'
-
-                // },
-            ],
-            All_SubTask:[
-                // {
-                //     Nama:'Denah Depan',
-                //     Task:'Konsep',
-                //     Persentase:'50',
-                //     Tanggal_Selesai:'2020-10-12',
-                //     Deskripsi:'A',
-                //     Kode:'STSK1'
-                // },
-            ],
-
-            // Nama: 'Test', 
-            // Tanggal_Mulai: '2020-10-12',
-            // Tanggal_Selesai: '2020-10-12', 
-            // Nilai:'2',
-            // Target_Outcome:'2020-10-12',
-            // Catatan:'Cek',
-            // Pemilik:'A',
-            // Alamat:'A',
-            // Kode:'PR2'
-
+            All_Divisi:[],
+            All_SubDivisi:[],
+            All_Task:[],
+            All_SubTask:[],
+            //  All_Divisi:[
+            //     {
+            //         Nama:'',
+            //         Persentase:'',
+            //         Tanggal_Selesai:'',
+            //         Id_Divisi_Role:''
+            //     },
+            // ],
+            // All_SubDivisi:[
+            //     {
+            //         Nama:'',
+            //         Divisi:'',
+            //         Persentase:'',
+            //         Tanggal_Selesai:'',
+            //     },
+            // ],
+            // All_Task:[
+            //     {
+            //         Nama:'',
+            //         Sub_Divisi:'',
+            //         Persentase:'',
+            //         Tanggal_Selesai:'',
+            //         Id_Divisi_Role:'',
+            //         // Kode:'',
+            //         // Satuan:''
+            //     },
+            // ],
+            // All_SubTask:[
+            //     {
+            //         Nama:'',
+            //         Task:'',
+            //         Persentase:'',
+            //         Tanggal_Selesai:'',
+            //         // Deskripsi:'',
+            //         // Kode:''
+            //     },
+            // ],
+            // Nama: '-', 
+            // Tanggal_Mulai: '',
+            // Tanggal_Selesai: '', 
+            // Nilai:0,
+            // Target_Outcome:'',
+            // Catatan:'-',
+            // Pemilik:'-',
+            // Alamat:'-',
+            // Kode:'-',
+            Total_Persentase:0
         },
         initEditProject:
         {
-             All_Divisi:[
-                // {
-                //     Nama:'Desain Arsi',
-                //     Persentase:'50',
-                //     Tanggal_Selesai:'2020-10-12',
-                //     Id_Divisi_Role:'1'
-                // },
-                // {
-                //     Nama:'Admin',
-                //     Persentase:'50',
-                //     Tanggal_Selesai:'2020-10-12',
-                //     Id_Divisi_Role:'1'
-
-                // }
+            All_Divisi:[
+                {
+                    Total_Persentase:0
+                }
             ],
             All_SubDivisi:[
-                // {
-                //     Nama:'Desain',
-                //     Divisi:'Desain Arsi',
-                //     Persentase:'50',
-                //     Tanggal_Selesai:'2020-10-12',
-                // },
-                // {
-                //     Nama:'QS',
-                //     Divisi:'Desain Arsi',
-                //     Persentase:'50',
-                //     Tanggal_Selesai:'2020-10-12',
-                // }
+                {
+                    Total_Persentase:0
+                }
             ],
             All_Task:[
                 {
-                    // Nama:'Konsep',
-                    // Sub_Divisi:'Desain',
-                    // Persentase:'50',
-                    // Tanggal_Selesai:'2020-10-12',
-                    // Id_Divisi_Role:'1',
-                    // Kode:'TSK1',
-                    // Satuan:'Item'
-
-                },
+                    Total_Persentase:0
+                }
             ],
             All_SubTask:[
-                // {
-                //     Nama:'Denah Depan',
-                //     Task:'Konsep',
-                //     Persentase:'50',
-                //     Tanggal_Selesai:'2020-10-12',
-                //     Deskripsi:'A',
-                //     Kode:'STSK1'
-                // },
+                {
+                    Total_Persentase:0
+                }
             ],
-
-            // Nama: 'Test', 
-            // Tanggal_Mulai: '2020-10-12',
-            // Tanggal_Selesai: '2020-10-12', 
-            // Nilai:'2',
-            // Target_Outcome:'2020-10-12',
-            // Catatan:'Cek',
-            // Pemilik:'A',
-            // Alamat:'A',
-            // Kode:'PR2'
-
+            //  All_Divisi:[
+            //     {
+            //         Nama:'',
+            //         Persentase:'',
+            //         Tanggal_Selesai:'',
+            //         Id_Divisi_Role:''
+            //     },
+            // ],
+            // All_SubDivisi:[
+            //     {
+            //         Nama:'',
+            //         Divisi:'',
+            //         Persentase:'',
+            //         Tanggal_Selesai:'',
+            //     },
+            // ],
+            // All_Task:[
+            //     {
+            //         Nama:'',
+            //         Sub_Divisi:'',
+            //         Persentase:'',
+            //         Tanggal_Selesai:'',
+            //         Id_Divisi_Role:'',
+            //         // Kode:'',
+            //         // Satuan:''
+            //     },
+            // ],
+            // All_SubTask:[
+            //     {
+            //         Nama:'',
+            //         Task:'',
+            //         Persentase:'',
+            //         Tanggal_Selesai:'',
+            //         // Deskripsi:'',
+            //         // Kode:''
+            //     },
+            // ],
+            // Nama: '-', 
+            // Tanggal_Mulai: '',
+            // Tanggal_Selesai: '', 
+            // Nilai:0,
+            // Target_Outcome:'',
+            // Catatan:'-',
+            // Pemilik:'-',
+            // Alamat:'-',
+            // Kode:'-'
+            Total_Persentase:0
         },
     
         div_headers: [
@@ -2408,52 +2401,58 @@ export default {
             Id_Proyek:'',
             Persentase:'',
             Tanggal_Selesai:'',
-            // New:0,
+            Total_Persentase:0,
         },
         defaultdivform:{
             Id_Divisi_Role:'',
             Id_Proyek:'',
             Persentase:'',
             Tanggal_Selesai:'',
-            // New:0,
+            Total_Persentase:0,
         },
         subdivform:{
             Nama:'',
             Divisi:'',
             Persentase:'',
             Tanggal_Selesai:'',
+            Total_Persentase:0,
         },
         defaultsubdivform:{
             Nama:'',
             Divisi:'',
             Persentase:'',
             Tanggal_Selesai:'',
+            Total_Persentase:0,
         },
         taskform:{
             Nama:'',
             Sub_Divisi:'',
             Persentase:'',
             Tanggal_Selesai:'',
+            Total_Persentase:0,
         },
         defaulttaskform:{
             Nama:'',
             Sub_Divisi:'',
             Persentase:'',
             Tanggal_Selesai:'',
+            Total_Persentase:0,
         },
         subtaskform:{
             Nama:'',
             Task:'',
             Persentase:'',
             Tanggal_Selesai:'',
-            Deskripsi:''
+            Deskripsi:'',
+            Prestasi_Kerja:0,
         },
         defaultsubtaskform:{
             Nama:'',
             Task:'',
             Persentase:'',
             Tanggal_Selesai:'',
-            Deskripsi:''
+            Deskripsi:'',
+            Prestasi_Kerja:0,
         },
         subtaskformfilter:{
             Divisi:'',
@@ -2576,10 +2575,10 @@ export default {
             Nama : '',
             Catatan : '',
         },
-        initProjectNote : {
-            Nama : '',
-            Catatan : '',
-        }
+        //LOADING
+        addLoading:false,
+        editLoading:false,
+        uploadProgressLoading:false,
     }
   },
    mounted(){
@@ -2599,15 +2598,16 @@ export default {
     },
     async addProjectAll(){
         try{
+            this.addLoading=true;
             let response = (await Controller.addproject(this.editProject))
             await this.getProject()
             this.close()
-            this.showAlert('success','Sukses Tambah Proyek')
+            (this.showAlert('success','Sukses Tambah Proyek').then(()=>{this.addLoading=false;}))
 
             console.log(response)
         }catch (err) {
             console.log(err)
-            this.showAlert('error','Gagal Tambah Proyek')
+            (this.showAlert('error','Gagal Tambah Proyek').then(()=>{this.addLoading=false;}))
 
         }
     },
@@ -2615,6 +2615,7 @@ export default {
         // let response 
         //UPDATE
         try{
+            this.editLoading=true;
             this.addDetails();     //Tambah semua detail yang ditambahkan
             this.deleteDetails();  //Hapus semua detail yang dihapus
             // //UPDATE sisanya, item yang sudah ada didb tapi datanya diubah
@@ -2624,23 +2625,18 @@ export default {
             console.log(response)
             await this.getProject()
             this.close()
-            this.showAlert('success','Sukses Update Proyek')
+            (this.showAlert('success','Sukses Update Proyek').then(()=>{this.editLoading=false;}))
 
-            // for(let item of data){
-            //     this.getDataFormat(item)
-            // }
-            // let data = (await Controller.getallproject()).data
-            // this.tempProjects=Object.assign({},data)
         }catch (err) {
             console.log(err)
-            this.showAlert('error','Gagal Update Proyek')
+            (this.showAlert('error','Gagal Update Proyek').then(()=>{this.addLoading=false;}))
 
         }
     },
     async deleteProjectAll(data){
         try{
             this.editProject = Object.assign({},data)
-            this.deleteDetails()
+            this.deleteAllDetails(data)
             let response = (await Controller.deleteproject(data.Id_Proyek))
             await this.getProject()
             this.close()
@@ -2723,6 +2719,7 @@ export default {
         return this.editProject
     },
     async deleteDetails() {
+        //Menghapus semua detail suatu proyek yang tidak memiliki id
         for(let deldiv of this.delProject.All_Divisi)
         {
             if(typeof deldiv.Id_Divisi_Proyek !== "undefined")
@@ -2779,9 +2776,54 @@ export default {
             }
         }
     },
+    async deleteAllDetails(data) {
+        //Menghapus semua detail suatu proyek
+        for(let deldiv of data.All_Divisi)
+        {
+            let response = await Controller.deletedivisiproyek(deldiv.Id_Divisi_Proyek)
+            console.log("DELETE")
+            console.log(response)
+        }
+        for(let delsubdiv of data.All_SubDivisi)
+        {
+            let response = await Controller.deletesubdivisiproyek(delsubdiv.Id_Sub_Divisi_Proyek)
+            console.log("DELETE")
+            console.log(response)
+        }
+        for(let deltask of data.All_Task)
+        {
+            let response = await Controller.deleteitempekerjaan(deltask.Id_Item_Pekerjaan)
+            console.log("DELETE")
+            console.log(response)
+        }
+        for(let delsubtask of data.All_SubTask)
+        {
+            console.log("Log / Subtask")
+            console.log(delsubtask.Id_Sub_Item_Pekerjaan)
+            let test = this.logPengerjaanData.filter(obj=>obj.Id_Proyek == 1)
+            console.log(test)
+            
+            for(let dellog of this.logPengerjaanData.filter(obj=>obj.Id_Sub_Item_Pekerjaan == delsubtask.Id_Sub_Item_Pekerjaan))
+            {
+                let logresponse = await Controller.deletelogpengerjaan(dellog.Id_Log_Pengerjaan)
+                console.log("LOGRESPONSE")
+                console.log(logresponse)
+                
+            }
+            for(let delakses of this.allAccessData.filter(obj=>obj.Id_Sub_Item_Pekerjaan === delsubtask.Id_Sub_Item_Pekerjaan))
+            {
+                let aksesresponse = await Controller.deletejobakses(delakses.Id_Akses_Pekerjaan)
+                console.log("LOGAKSES")
+                console.log(aksesresponse)
+            }
+            let response = await Controller.deletesubitempekerjaan(delsubtask.Id_Sub_Item_Pekerjaan)
+            console.log("DELETE")
+            console.log(response)
+        }
+    },
     async getProject () {
         try {
-            let data = (await Controller.getallproject()).data
+            let data = (await Controller.getproject()).data
             this.logPengerjaanData = (await Controller.getalllogpengerjaan()).data
             this.allAccessData = (await Controller.getalljobakses()).data
             this.jobAksesData = this.allAccessData.filter(obj=>obj.Id_Akun == this.Id_Akun)
@@ -2796,120 +2838,6 @@ export default {
             console.log(err)
         }
     },
-
-    // getDataFormat(data){
-    //     let alldivisi =[]
-    //     let allsubdivisi=[]
-    //     let alltask=[]
-    //     let allsubtask=[]
-
-    //     let PersentaseProyek
-    //     let PersentaseDivisi
-    //     let PersentaseSubDivisi
-    //     let PersentaseTask
-
-    //     for(let div of data.Divisi.data){
-    //         let eachdiv ={
-    //             Id_Divisi_Proyek    : div.Id_Divisi_Proyek,
-    //             Id_Divisi_Role      : div.Id_Divisi_Role,
-    //             Id_Proyek           : div.Id_Proyek,
-    //             Nama                : div.Nama,
-    //             Tanggal_Selesai     : div.Tanggal_Selesai.split(' ')[0],
-    //             Persentase          : div.Persentase,
-    //         }
-    //         alldivisi.push(eachdiv)
-            
-    //         for(let subdiv of div.Sub_Divisi.data){
-    //             let eachsubdiv ={
-    //                 Id_Sub_Divisi_Proyek    :subdiv.Id_Sub_Divisi_Proyek,
-    //                 Id_Divisi_Proyek        : subdiv.Id_Divisi_Proyek,
-    //                 Divisi                  : subdiv.Divisi,
-    //                 Nama                    : subdiv.Nama,
-    //                 Tanggal_Selesai         : subdiv.Tanggal_Selesai.split(' ')[0],
-    //                 Persentase              : subdiv.Persentase
-    //             }
-    //             allsubdivisi.push(eachsubdiv)
-
-    //             for(let task of subdiv.Task.data){
-    //                 let eachtask ={
-    //                     Id_Item_Pekerjaan   : task.Id_Item_Pekerjaan,
-    //                     Id_Divisi_Role      : task.Id_Divisi_Role, 
-    //                     Id_Sub_Divisi_Proyek    :task.Id_Sub_Divisi_Proyek,
-    //                     Sub_Divisi          : task.Sub_Divisi,                        
-    //                     Nama                : task.Nama,
-    //                     Kode                : task.Kode,
-    //                     Satuan              : task.Satuan,
-    //                     Tanggal_Selesai     : task.Tanggal_Selesai.split(' ')[0],
-    //                     Persentase          : task.Persentase
-    //                 }
-    //                 alltask.push(eachtask)
-    //                 for(let subtask of task.Sub_Task.data){
-    //                     let eachsubtask ={
-    //                         Id_Sub_Item_Pekerjaan   : subtask.Id_Sub_Item_Pekerjaan,
-    //                         Id_Item_Pekerjaan       : subtask.Id_Item_Pekerjaan,
-    //                         Projek                  : data.Nama,
-    //                         Divisi                  : div.Nama, 
-    //                         Sub_Divisi              : subdiv.Nama,                     
-    //                         Task                    : task.Nama,                     
-    //                         Nama                    : subtask.Nama,
-    //                         Kode                    : subtask.Kode,
-    //                         Deskripsi               : subtask.Deskripsi,
-    //                         Tanggal_Selesai         : subtask.Tanggal_Selesai.split(' ')[0],
-    //                         Persentase              : subtask.Persentase,
-    //                         User                    : '',
-    //                         Remaining               : '',
-    //                         Progress                : '0',
-    //                         Status                  : 'untake',
-    //                         Log_Pengerjaan          :[],
-
-    //                     }
-    //                     for(let log of this.logPengerjaanData){
-    //                         if(log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan){
-    //                             eachsubtask.Log_Pengerjaan.push(log)
-    //                         }
-    //                     }
-    //                     let today = new Date().getTime();
-    //                     let target = new Date(eachsubtask.Tanggal_Selesai).getTime();
-    //                     let remaining = parseInt((target-today)/(24*3600*1000));
-
-    //                     eachsubtask.Remaining = remaining +' days left'
-
-    //                     if(eachsubtask.Log_Pengerjaan.length > 0){
-    //                         eachsubtask.Log_Pengerjaan = eachsubtask.Log_Pengerjaan.slice().reverse()
-    //                         if(eachsubtask.Log_Pengerjaan.length==1)
-    //                         {
-    //                             eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress 
-    //                             eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username 
-    //                         }
-    //                         else{
-    //                             let data = eachsubtask.Log_Pengerjaan.find(obj=>obj.Berkas!='' )
-    //                             eachsubtask.Progress = data.Progress 
-    //                             eachsubtask.User = data.Username 
-    //                         }
-    //                     }
-                        
-    //                     if(remaining < 0 && eachsubtask.Progress != '100'){
-    //                         eachsubtask.Status = 'overdue'
-    //                         eachsubtask.Remaining = remaining +' days overdue'
-    //                     }
-    //                     else if(eachsubtask.Progress!='100'){
-    //                         eachsubtask.Status = 'ongoing'
-    //                     }
-    //                     else{
-    //                         eachsubtask.Status = 'complete'
-    //                     }
-
-    //                     allsubtask.push(eachsubtask)
-    //                 }
-    //             }
-    //         }
-
-    //     }
-    //         data.All_Divisi     = alldivisi
-    //         data.All_SubDivisi  = allsubdivisi
-    //         data.All_Task       = alltask
-    //         data.All_SubTask    = allsubtask
-    // },
     getDataFormat(data){
         let alldivisi =[]
         let allsubdivisi=[]
@@ -2945,12 +2873,16 @@ export default {
                             Remaining               : '',
                             Total_Progress          : '0',
                             Progress                : '0',
-                            Status                  : 'untake',
+                            Work_Status             : 'untake',
+                            Time_Status             : 'in time',
+                            Color                   : 'grey',
+                            Log_Submitted           : '',
                             Log_Pengerjaan          :[],
                         }
                         for(let log of this.logPengerjaanData){
                             if(log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan){
                                 eachsubtask.Total_Progress = parseInt(log.Progress)+parseInt(eachsubtask.Total_Progress)
+                                eachsubtask.Log_Submitted = log.Waktu_Selesai.split(' ')[0],
                                 eachsubtask.Log_Pengerjaan.push(log)
                             }
                         }
@@ -2973,16 +2905,87 @@ export default {
                         //         eachsubtask.User = data.Username 
                         //     }
                         // }
-                        if(remaining < 0 && eachsubtask.Total_Progress != '100'){
-                            eachsubtask.Status = 'overdue'
-                            eachsubtask.Remaining = remaining +' days overdue'
+                        let filteredlog = this.logPengerjaanData.filter(obj=>obj.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan)
+
+                        if(filteredlog.length == 0)
+                        {
+                            eachsubtask.Work_Status = 'Available'
+                            if(remaining<0)
+                            {
+                                eachsubtask.Time_Status = 'Overdue'
+                                eachsubtask.Color = 'rred'
+                                eachsubtask.Remaining = remaining +' days overdue'
+                            }
+                            else if (remaining==0)
+                            {
+                                eachsubtask.Time_Status = 'On Time'
+                                eachsubtask.Color = 'yyellow';
+                            }
+                            else
+                            {
+                                eachsubtask.Color = 'ggrey';
+                                eachsubtask.Time_Status = 'In Time'
+                            }
                         }
-                        else if(eachsubtask.Total_Progress!='100'){
-                            eachsubtask.Status = 'ongoing'
+                        else
+                        {
+                            if(eachsubtask.Total_Progress != '100')
+                            {
+                                eachsubtask.Work_Status = 'On Going'
+                                if(remaining<0)
+                                {
+                                    eachsubtask.Time_Status = 'Overdue'
+                                    eachsubtask.Color = 'rred'
+
+                                    eachsubtask.Remaining = remaining +' days overdue'
+                                }
+                                else
+                                {
+                                    eachsubtask.Time_Status = 'In Time'
+                                    eachsubtask.Color = 'ggreen'
+                                }
+                            }
+                            else
+                            {
+                                eachsubtask.Work_Status = 'Complete'
+                                let submitted = new Date(eachsubtask.Log_Submitted).getTime();
+                                let diff = parseInt((target-submitted)/(24*3600*1000))
+                                if(diff<0)
+                                {
+                                    eachsubtask.Time_Status = 'Overdue'
+                                    eachsubtask.Color = 'rred'
+                                    eachsubtask.Remaining = remaining +' days overdue'
+                                }
+                                else
+                                {
+                                    eachsubtask.Time_Status = 'On Time'
+                                    eachsubtask.Color = 'bblue'
+                                }
+                                // if(eachsubtask.Time_Status == 'Overdue')
+                                // {
+                                //     eachsubtask.Time_Status = 'Overdue'
+                                //     eachsubtask.Status = 'overdue'
+                                //     eachsubtask.Remaining = remaining +' days overdue'
+                                // }
+                                // else
+                                // {
+                                //     eachsubtask.Time_Status = 'On Time'
+                                //     eachsubtask.Status = 'complete'
+                                // }
+                            }
+                            // if(remaining < 0 && eachsubtask.Total_Progress != '100'){
+                            //     eachsubtask.Time_Status = 'Overdue'
+                            //     eachsubtask.Status = 'overdue'
+                            //     eachsubtask.Remaining = remaining +' days overdue'
+                            // }
+                            // else if(eachsubtask.Total_Progress!='100'){
+                            //     eachsubtask.Status = 'ongoing'
+                            // }
+                            // else{
+                            //     eachsubtask.Status = 'complete'
+                            // }
                         }
-                        else{
-                            eachsubtask.Status = 'complete'
-                        }
+                        
                         PersentaseTask += subtask.Persentase;
 
                         allsubtask.push(eachsubtask)
@@ -3057,6 +3060,7 @@ export default {
 
     async uploadProgress(){
         try {
+            this.uploadProgressLoading=true;
             let payloadFile = new FormData();
             payloadFile.append('Berkas',this.file);
             payloadFile.append('Id_Akun',this.Id_Akun);
@@ -3081,11 +3085,13 @@ export default {
             this.removefile()
             let index = this.editTask.Log_Pengerjaan.findIndex(obj=>obj.Id_Log_Pengerjaan==response.Id_Log_Pengerjaan)
             Object.assign(this.editTask.Log_Pengerjaan[index], response)
-            this.close()
+            (this.close().then(()=>{this.uploadProgressLoading=false;}))
             this.showAlert('success','Sukses Upload Progress')
+            // this.uploadProgressLoading=false;
         } catch (err) {
             console.log(err)
             this.showAlert('error','Gagal Upload Progress')
+            // this.uploadProgressLoading=false;
         }
     },
 
@@ -3175,14 +3181,11 @@ export default {
         this.editProject.All_SubDivisi.splice(this.editProject.All_SubDivisi.indexOf(index), 1)
         this.editProject.All_SubDivisi = [...this.editProject.All_SubDivisi]
     },
-
     addTaskForm(){
-        this.taskform.Total_Persentase = 0
         this.editProject.All_Task.push(this.taskform)
         let subdiv = this.editProject.All_SubDivisi.filter(obj=>obj.Nama == this.taskform.Sub_Divisi)
         subdiv[0].Total_Persentase = parseInt(this.taskform.Persentase) + parseInt(subdiv[0].Total_Persentase)
         this.taskform = Object.assign({}, this.defaulttaskform)
-
     },
     delTaskForm(index){
         let subdiv = this.editProject.All_SubDivisi.filter(obj=>obj.Nama == index.Sub_Divisi)
@@ -3200,8 +3203,14 @@ export default {
        
     },
     addSubTaskForm(){
+        // this.editProject.Prestasi_Kerja = 0
+        let today = new Date().getTime();
+        let target = new Date(this.subtaskform.Tanggal_Selesai).getTime();
+        let remaining = parseInt((target-today)/(24*3600*1000));
+
+        if(remaining)
+
         this.editProject.All_SubTask.push(this.subtaskform)
-        // console.log(task)
         let task = this.editProject.All_Task.filter(obj=>obj.Nama == this.subtaskform.Task)
         console.log(task)
         task[0].Total_Persentase = parseInt(this.subtaskform.Persentase) + parseInt(task[0].Total_Persentase)
@@ -3492,7 +3501,6 @@ export default {
               
           }
       }
-
     },
     getSubDivision(project){
         this.sub_division = project.All_SubDivisi.filter(obj=>obj.Divisi == this.filterDiv)
@@ -3516,9 +3524,7 @@ export default {
                 }
                 else{
                     return data.filter(obj=>obj.Divisi==this.filterDiv && obj.Sub_Divisi==this.filterSubDiv)
-                    
                 }
-
             }
             else{
                 return data.filter(obj=>obj.Divisi==this.filterDiv)
@@ -3624,7 +3630,7 @@ export default {
     //   console.log('http://localhost:8000/'+data.Berkas)
       this.$http({
         method: 'get',
-        url: 'http://localhost:8000/'+data.Berkas,
+        url: 'http://192.168.1.71:8000/'+data.Berkas,
         responseType: 'arraybuffer'
       })
       .then(response => {
@@ -3750,33 +3756,33 @@ export default {
 } */
 
 
-.project.complete{
+.project.bblue{
   border-left: 4px solid #2196f3 !Important;
   border-color:#2196f3 !Important;
 }
-.project.ongoing{
+.project.ggreen{
   border-left: 4px solid #4caf50 !Important;
 }
-.project.overdue{
+.project.rred{
   border-left: 4px solid #ff5252 !Important;
 }
-.project.untake{
-  border-left: 4px solid green !Important;
-  border-color:green !Important;
+.project.ggrey{
+  border-left: 4px solid #78909C !Important;
+  border-color:#78909C !Important;
 }
 
 
-.v-chip.complete{
+.v-chip.bblue{
   background: #2196f3 !Important;
 }
-.v-chip.ongoing{
+.v-chip.ggreen{
   background: #4caf50 !Important;
 }
-.v-chip.overdue{
+.v-chip.rred{
   background: #ff5252 !Important;
 }
-.v-chip.untake{
-  background: green !Important;
+.v-chip.ggrey{
+  background: #78909C !Important;
 }
 
 </style>

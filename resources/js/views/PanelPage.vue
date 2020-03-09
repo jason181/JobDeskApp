@@ -238,6 +238,14 @@ export default {
                 'M-JobAccess-D',
             ]
         },
+        {
+            to: '/panel/admin_panel',
+            icon: 'assignment',
+            text: 'Admin Panel',
+            access:[
+                'Panel',
+            ]
+        },
         ],
         color: 'general',
         image :'',

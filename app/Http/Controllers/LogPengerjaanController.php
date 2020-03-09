@@ -60,7 +60,6 @@ class LogPengerjaanController extends RestController
                 'Berkas'                => '',
                 'Catatan'               => '',
 
-
             ]);
             return response()->json([
                 'status' => (bool) $log,
@@ -76,7 +75,7 @@ class LogPengerjaanController extends RestController
     {
         try {
             
-
+            ini_set('memory_limit','256M');
             $file = $request->file('Berkas');
       
             $nama_file = $file->getClientOriginalName();

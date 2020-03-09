@@ -10,13 +10,10 @@ import JobDesk from './components/JobDesk'
 import JobDeskV2 from './components/JobDeskV2'
 import JobDeskV3 from './components/JobDeskV3'
 import Employee from './components/ManagementEmployee'
+import AdminPanel from './components/AdminPanel'
 
 import Role from './components/ManagementRole'
 import JobAccess from './components/JobAccessRequest'
-
-
-
-
 
 
 export const routes = [
@@ -47,7 +44,7 @@ export const routes = [
     {
         path: '/',
         meta: {
-          name: '',
+        name: '',
           // requiresAuth: false
         },
         component: LoginPage,
@@ -174,6 +171,19 @@ export const routes = [
             ]
           },
           component : JobAccess,
+          beforeEnter: middleware([
+            auth
+          ])
+        },
+        {
+          path: 'admin_panel',
+          meta: {
+            name: 'Admin Panel',
+            Akses:[
+              'Panel'
+            ]
+          },
+          component : AdminPanel,
           beforeEnter: middleware([
             auth
           ])

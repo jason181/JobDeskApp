@@ -21,7 +21,7 @@ class Proyek extends Model
         'Target_Outcome',
         'Tanggal_Mulai',
         'Tanggal_Selesai',
-        'Catatan'
+        'Catatan',
     ];
 
     public function divisi_proyeks()

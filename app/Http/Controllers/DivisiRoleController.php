@@ -94,7 +94,6 @@ class DivisiRoleController extends RestController
     public function update(Request $request, $id)
     {
         try{
-
             $events = Divisi_Role::find($id)->update($request->All());
             $data = Divisi_Role::find($id);
             $response = $this->generateItem($data);

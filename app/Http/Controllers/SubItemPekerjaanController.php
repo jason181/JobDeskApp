@@ -47,7 +47,8 @@ class SubItemPekerjaanController extends RestController
                 // 'Kode'              => $request->Kode,
                 'Tanggal_Selesai'   => $request->Tanggal_Selesai,
                 'Deskripsi'         => $request->Deskripsi,
-                'Persentase'        => $request->Persentase
+                'Persentase'        => $request->Persentase,
+                'Prestasi_Kerja'    => $request->Prestasi_Kerja
             ]);
     
             return response()->json([

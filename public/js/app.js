@@ -1996,6 +1996,1575 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdminPanel.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AdminPanel.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../httpController */ "./resources/js/httpController.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+ // import * as easings from 'vuetify/es5/services/goto/easing-patterns'
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      //Select
+      project_status: [{
+        Status: "All"
+      }, {
+        Status: "Finished"
+      }, {
+        Status: "On Going"
+      }],
+      //Select
+      //Alerts
+      alert: {
+        type: null,
+        message: null,
+        icon: null
+      },
+      //Alerts
+      //Tabs
+      tab: null,
+      icons: false,
+      centered: false,
+      grow: true,
+      vertical: false,
+      prevIcon: false,
+      nextIcon: false,
+      right: false,
+      tabs: 1,
+      //Tabs
+      //Projects
+      project_card: [],
+      projects: [],
+      d_projects: [{
+        All_Divisi: [{
+          Nama: 'Desain Arsi',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12',
+          Id_Divisi_Role: '1'
+        }, {
+          Nama: 'Admin',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12',
+          Id_Divisi_Role: '1'
+        }],
+        All_SubDivisi: [{
+          Nama: 'Desain',
+          Divisi: 'Desain Arsi',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12'
+        }, {
+          Nama: 'QS',
+          Divisi: 'Desain Arsi',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12'
+        }],
+        All_Task: [{
+          Nama: 'Konsep',
+          Sub_Divisi: 'Desain',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12',
+          Id_Divisi_Role: '1',
+          Kode: 'TSK1',
+          Satuan: 'Item'
+        }],
+        All_SubTask: [{
+          Nama: 'Denah Depan Denah Depan Denah Depan Denah Depan Denah Depan ',
+          Divisi: 'Perencanaan',
+          Sub_Divisi: "Desain",
+          Task: 'Desain Skematik',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12',
+          Deskripsi: 'A',
+          Kode: 'STSK1',
+          Total_Progress: 80,
+          Work_Status: 'On Going',
+          Time_Status: 'In Time',
+          Color: 'ggreen',
+          Remaining: '12 days remaining'
+        }, {
+          Nama: 'Denah Belakang Denah Belakang Denah Belakang Denah Belakang ',
+          Divisi: 'Perencanaan',
+          Sub_Divisi: "Desain",
+          Task: 'Desain Skematik',
+          Persentase: '50',
+          Tanggal_Selesai: '2020-10-12',
+          Deskripsi: 'A',
+          Kode: 'STSK1',
+          Total_Progress: 100,
+          Work_Status: 'On Going',
+          Time_Status: 'In Time',
+          Color: 'bblue',
+          Remaining: '10 days remaining'
+        }],
+        Nama: 'Test',
+        Tanggal_Mulai: '2020-10-12',
+        Tanggal_Selesai: '2020-10-12',
+        Nilai: '2',
+        Target_Outcome: '2020-10-12',
+        Catatan: 'Cek',
+        Pemilik: 'A',
+        Alamat: 'A',
+        Kode: 'PR2'
+      }],
+      logPengerjaanData: [],
+      //Projects
+      //DIALOG
+      //Task Dialog
+      taskDialog: false,
+      editTask: {
+        Id_Sub_Item_Pekerjaan: '',
+        Id_Item_Pekerjaan: '',
+        Projek: '',
+        Division: '',
+        Sub_Division: '',
+        Task: '',
+        Nama: '',
+        Kode: '',
+        Tanggal_Selesai: '',
+        Persentase: '',
+        User: '',
+        Remaining: '',
+        Progress: 0,
+        Status: 'untake',
+        Status_Akses: 'Locked',
+        Log_Pengerjaan: [],
+        Note: '',
+        Id_Akses: ''
+      },
+      initEditTask: {
+        Id_Sub_Item_Pekerjaan: '',
+        Id_Item_Pekerjaan: '',
+        Projek: '',
+        Division: '',
+        Sub_Division: '',
+        Task: '',
+        Nama: '',
+        Kode: '',
+        Tanggal_Selesai: '',
+        Persentase: '',
+        User: '',
+        Remaining: '',
+        Progress: '0',
+        Status: 'untake',
+        Status_Akses: 'Locked',
+        Log_Pengerjaan: [],
+        Note: '',
+        Id_Akses: ''
+      },
+      //Task Dialog
+      //Date Dialog
+      dateDialog: false,
+      //Date Dialog
+      //Note Dialog
+      noteDialog: false,
+      noteText: '',
+      noteUser: '',
+      //Note Dialog
+      // Project Note Dialog
+      projectNoteDialog: false,
+      projectNote: {
+        Nama: '',
+        Catatan: ''
+      },
+      // Project Note Dialog
+      //Performance Dialog
+      performanceDialog: false,
+      //Performance Dialog
+      //Filter
+      filter_status: '',
+      filterDiv: '',
+      filterSubDiv: '',
+      filterTask: '',
+      //Filter
+      //Performance Rating
+      //DATA
+      performance: {
+        Nama: '',
+        Rating: 0,
+        Keterangan: '',
+        emptyIcon: 'mdi-star-outline',
+        fullIcon: 'mdi-star',
+        halfIncrements: false,
+        hover: true,
+        length: 4,
+        readonly: false,
+        size: 32,
+        dense: false,
+        color: 'grey darken-1',
+        bgColor: 'grey lighten-1'
+      },
+      initPerformance: {
+        Nama: '',
+        Rating: 0,
+        Keterangan: '',
+        emptyIcon: 'mdi-star-outline',
+        fullIcon: 'mdi-star',
+        halfIncrements: false,
+        hover: true,
+        length: 4,
+        readonly: false,
+        size: 32,
+        dense: false,
+        color: 'grey darken-1',
+        bgColor: 'grey lighten-1'
+      },
+      //DATA
+      //Performance Rating
+      //LOADING
+      savePerformanceLoading: false //LOADING
+
+    };
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
+    id_akun: 'LoggedUser/Id_Akun',
+    nama: 'LoggedUser/Name',
+    akses: 'LoggedUser/Akses'
+  })),
+  mounted: function mounted() {
+    this.loaddata();
+  },
+  methods: {
+    loaddata: function () {
+      var _loaddata = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var data, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, project;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallproject();
+
+              case 3:
+                data = _context.sent;
+                _iteratorNormalCompletion = true;
+                _didIteratorError = false;
+                _iteratorError = undefined;
+                _context.prev = 7;
+
+                for (_iterator = data[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                  project = _step.value;
+                  project.isGetDataFormat = false; // let pro = (await Controller.getoneproject(project.Id_Proyek)).data
+                  // this.getDataFormat(pro)
+                  // console.log(pro)
+                }
+
+                _context.next = 15;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](7);
+                _didIteratorError = true;
+                _iteratorError = _context.t0;
+
+              case 15:
+                _context.prev = 15;
+                _context.prev = 16;
+
+                if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+                  _iterator["return"]();
+                }
+
+              case 18:
+                _context.prev = 18;
+
+                if (!_didIteratorError) {
+                  _context.next = 21;
+                  break;
+                }
+
+                throw _iteratorError;
+
+              case 21:
+                return _context.finish(18);
+
+              case 22:
+                return _context.finish(15);
+
+              case 23:
+                this.projects = data;
+                this.getItemData(this.projects[0]);
+                console.log(this.projects);
+                _context.next = 31;
+                break;
+
+              case 28:
+                _context.prev = 28;
+                _context.t1 = _context["catch"](0);
+                console.log(_context.t1);
+
+              case 31:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 28], [7, 11, 15, 23], [16,, 18, 22]]);
+      }));
+
+      function loaddata() {
+        return _loaddata.apply(this, arguments);
+      }
+
+      return loaddata;
+    }(),
+    //GET DATA
+    getItemData: function () {
+      var _getItemData = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(item) {
+        var index, project, _index;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                console.log("item");
+                console.log(item);
+                this.project_card = [];
+
+                if (!(item.isGetDataFormat == false)) {
+                  _context2.next = 16;
+                  break;
+                }
+
+                index = this.projects.indexOf(item);
+                _context2.next = 7;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getoneproject(item.Id_Proyek);
+
+              case 7:
+                project = _context2.sent.data;
+                this.getDataFormat(project);
+                this.projects[index] = Object.assign({}, project);
+                this.projects[index] = project;
+                console.log("CEK");
+                this.project_card = this.projects[index];
+                console.log(this.projects);
+                _context2.next = 19;
+                break;
+
+              case 16:
+                _index = this.projects.indexOf(item); // let project = (await Controller.getoneproject(item.Id_Proyek)).data
+                // this.getDataFormat(project)
+                // this.projects[index] = Object.assign({}, project)
+                // this.projects[index]=project
+                // console.log("CEK")
+
+                this.project_card = this.projects[_index];
+                console.log(this.projects);
+
+              case 19:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function getItemData(_x) {
+        return _getItemData.apply(this, arguments);
+      }
+
+      return getItemData;
+    }(),
+    // itemData(){
+    //   return this.projects[0];
+    // },
+    getDataFormat: function () {
+      var _getDataFormat = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(data) {
+        var _this = this;
+
+        var alldivisi, allsubdivisi, alltask, allsubtask, PersentaseProyek, PersentaseDivisi, PersentaseSubDivisi, PersentaseTask, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, div, _iteratorNormalCompletion3, _didIteratorError3, _iteratorError3, _iterator3, _step3, subdiv, _iteratorNormalCompletion4, _didIteratorError4, _iteratorError4, _iterator4, _step4, task, _iteratorNormalCompletion5, _didIteratorError5, _iteratorError5, _loop, _iterator5, _step5, eachtask, eachsubdiv, eachdiv;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                if (!(this.logPengerjaanData.length == 0)) {
+                  _context3.next = 4;
+                  break;
+                }
+
+                _context3.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalllogpengerjaan();
+
+              case 3:
+                this.logPengerjaanData = _context3.sent.data;
+
+              case 4:
+                alldivisi = [];
+                allsubdivisi = [];
+                alltask = [];
+                allsubtask = [];
+                PersentaseProyek = 0;
+                PersentaseDivisi = 0;
+                PersentaseSubDivisi = 0;
+                PersentaseTask = 0;
+                _iteratorNormalCompletion2 = true;
+                _didIteratorError2 = false;
+                _iteratorError2 = undefined;
+                _context3.prev = 15;
+                _iterator2 = data.Divisi.data[Symbol.iterator]();
+
+              case 17:
+                if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
+                  _context3.next = 102;
+                  break;
+                }
+
+                div = _step2.value;
+                _iteratorNormalCompletion3 = true;
+                _didIteratorError3 = false;
+                _iteratorError3 = undefined;
+                _context3.prev = 22;
+                _iterator3 = div.Sub_Divisi.data[Symbol.iterator]();
+
+              case 24:
+                if (_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done) {
+                  _context3.next = 81;
+                  break;
+                }
+
+                subdiv = _step3.value;
+                _iteratorNormalCompletion4 = true;
+                _didIteratorError4 = false;
+                _iteratorError4 = undefined;
+                _context3.prev = 29;
+                _iterator4 = subdiv.Task.data[Symbol.iterator]();
+
+              case 31:
+                if (_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done) {
+                  _context3.next = 60;
+                  break;
+                }
+
+                task = _step4.value;
+                _iteratorNormalCompletion5 = true;
+                _didIteratorError5 = false;
+                _iteratorError5 = undefined;
+                _context3.prev = 36;
+
+                _loop = function _loop() {
+                  var subtask = _step5.value;
+                  var eachsubtask = {
+                    Id_Sub_Item_Pekerjaan: subtask.Id_Sub_Item_Pekerjaan,
+                    Id_Item_Pekerjaan: subtask.Id_Item_Pekerjaan,
+                    Projek: data.Nama,
+                    Divisi: div.Nama,
+                    Sub_Divisi: subdiv.Nama,
+                    Task: task.Nama,
+                    Nama: subtask.Nama,
+                    Kode: subtask.Kode,
+                    Deskripsi: subtask.Deskripsi,
+                    Tanggal_Selesai: subtask.Tanggal_Selesai.split(' ')[0],
+                    Persentase: subtask.Persentase,
+                    User: '',
+                    Remaining: '',
+                    Total_Progress: '0',
+                    Progress: '0',
+                    Work_Status: 'untake',
+                    Time_Status: 'in time',
+                    Color: 'grey',
+                    Log_Submitted: '',
+                    Log_Pengerjaan: [],
+                    Prestasi_Kerja: subtask.Prestasi_Kerja
+                  };
+                  var _iteratorNormalCompletion6 = true;
+                  var _didIteratorError6 = false;
+                  var _iteratorError6 = undefined;
+
+                  try {
+                    for (var _iterator6 = _this.logPengerjaanData[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                      var log = _step6.value;
+
+                      if (log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan) {
+                        eachsubtask.Total_Progress = parseInt(log.Progress) + parseInt(eachsubtask.Total_Progress);
+                        eachsubtask.Log_Submitted = log.Waktu_Selesai.split(' ')[0], eachsubtask.Log_Pengerjaan.push(log);
+                      }
+                    }
+                  } catch (err) {
+                    _didIteratorError6 = true;
+                    _iteratorError6 = err;
+                  } finally {
+                    try {
+                      if (!_iteratorNormalCompletion6 && _iterator6["return"] != null) {
+                        _iterator6["return"]();
+                      }
+                    } finally {
+                      if (_didIteratorError6) {
+                        throw _iteratorError6;
+                      }
+                    }
+                  }
+
+                  var today = new Date().getTime();
+                  var target = new Date(eachsubtask.Tanggal_Selesai).getTime();
+                  var remaining = parseInt((target - today) / (24 * 3600 * 1000));
+                  eachsubtask.Remaining = remaining + ' days left';
+
+                  var filteredlog = _this.logPengerjaanData.filter(function (obj) {
+                    return obj.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan;
+                  });
+
+                  if (filteredlog.length == 0) {
+                    eachsubtask.Work_Status = 'Available';
+
+                    if (remaining < 0) {
+                      eachsubtask.Time_Status = 'Overdue';
+                      eachsubtask.Color = 'rred';
+                      eachsubtask.Remaining = remaining + ' days overdue';
+                    } else if (remaining == 0) {
+                      eachsubtask.Time_Status = 'On Time';
+                      eachsubtask.Color = 'yyellow';
+                    } else {
+                      eachsubtask.Color = 'ggrey';
+                      eachsubtask.Time_Status = 'In Time';
+                    }
+                  } else {
+                    if (eachsubtask.Total_Progress != '100') {
+                      eachsubtask.Work_Status = 'On Going';
+
+                      if (remaining < 0) {
+                        eachsubtask.Time_Status = 'Overdue';
+                        eachsubtask.Color = 'rred';
+                        eachsubtask.Remaining = remaining + ' days overdue';
+                      } else {
+                        eachsubtask.Time_Status = 'In Time';
+                        eachsubtask.Color = 'ggreen';
+                      }
+                    } else {
+                      eachsubtask.Work_Status = 'Complete';
+                      var submitted = new Date(eachsubtask.Log_Submitted).getTime();
+                      var diff = parseInt((target - submitted) / (24 * 3600 * 1000));
+
+                      if (diff < 0) {
+                        eachsubtask.Time_Status = 'Overdue';
+                        eachsubtask.Color = 'rred';
+                        eachsubtask.Remaining = remaining + ' days overdue';
+                      } else {
+                        eachsubtask.Time_Status = 'On Time';
+                        eachsubtask.Color = 'bblue';
+                      }
+                    }
+                  }
+
+                  PersentaseTask += subtask.Persentase;
+                  allsubtask.push(eachsubtask);
+                };
+
+                for (_iterator5 = task.Sub_Task.data[Symbol.iterator](); !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                  _loop();
+                }
+
+                _context3.next = 45;
+                break;
+
+              case 41:
+                _context3.prev = 41;
+                _context3.t0 = _context3["catch"](36);
+                _didIteratorError5 = true;
+                _iteratorError5 = _context3.t0;
+
+              case 45:
+                _context3.prev = 45;
+                _context3.prev = 46;
+
+                if (!_iteratorNormalCompletion5 && _iterator5["return"] != null) {
+                  _iterator5["return"]();
+                }
+
+              case 48:
+                _context3.prev = 48;
+
+                if (!_didIteratorError5) {
+                  _context3.next = 51;
+                  break;
+                }
+
+                throw _iteratorError5;
+
+              case 51:
+                return _context3.finish(48);
+
+              case 52:
+                return _context3.finish(45);
+
+              case 53:
+                eachtask = {
+                  Id_Item_Pekerjaan: task.Id_Item_Pekerjaan,
+                  Id_Divisi_Role: task.Id_Divisi_Role,
+                  Id_Sub_Divisi_Proyek: task.Id_Sub_Divisi_Proyek,
+                  Sub_Divisi: task.Sub_Divisi,
+                  Nama: task.Nama,
+                  Kode: task.Kode,
+                  Satuan: task.Satuan,
+                  Tanggal_Selesai: task.Tanggal_Selesai.split(' ')[0],
+                  Persentase: task.Persentase,
+                  Total_Persentase: PersentaseTask
+                };
+                alltask.push(eachtask);
+                PersentaseTask = 0;
+                PersentaseSubDivisi += task.Persentase;
+
+              case 57:
+                _iteratorNormalCompletion4 = true;
+                _context3.next = 31;
+                break;
+
+              case 60:
+                _context3.next = 66;
+                break;
+
+              case 62:
+                _context3.prev = 62;
+                _context3.t1 = _context3["catch"](29);
+                _didIteratorError4 = true;
+                _iteratorError4 = _context3.t1;
+
+              case 66:
+                _context3.prev = 66;
+                _context3.prev = 67;
+
+                if (!_iteratorNormalCompletion4 && _iterator4["return"] != null) {
+                  _iterator4["return"]();
+                }
+
+              case 69:
+                _context3.prev = 69;
+
+                if (!_didIteratorError4) {
+                  _context3.next = 72;
+                  break;
+                }
+
+                throw _iteratorError4;
+
+              case 72:
+                return _context3.finish(69);
+
+              case 73:
+                return _context3.finish(66);
+
+              case 74:
+                eachsubdiv = {
+                  Id_Sub_Divisi_Proyek: subdiv.Id_Sub_Divisi_Proyek,
+                  Id_Divisi_Proyek: subdiv.Id_Divisi_Proyek,
+                  Divisi: subdiv.Divisi,
+                  Nama: subdiv.Nama,
+                  Tanggal_Selesai: subdiv.Tanggal_Selesai.split(' ')[0],
+                  Persentase: subdiv.Persentase,
+                  Total_Persentase: PersentaseSubDivisi
+                };
+                allsubdivisi.push(eachsubdiv);
+                PersentaseSubDivisi = 0;
+                PersentaseDivisi += subdiv.Persentase;
+
+              case 78:
+                _iteratorNormalCompletion3 = true;
+                _context3.next = 24;
+                break;
+
+              case 81:
+                _context3.next = 87;
+                break;
+
+              case 83:
+                _context3.prev = 83;
+                _context3.t2 = _context3["catch"](22);
+                _didIteratorError3 = true;
+                _iteratorError3 = _context3.t2;
+
+              case 87:
+                _context3.prev = 87;
+                _context3.prev = 88;
+
+                if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+                  _iterator3["return"]();
+                }
+
+              case 90:
+                _context3.prev = 90;
+
+                if (!_didIteratorError3) {
+                  _context3.next = 93;
+                  break;
+                }
+
+                throw _iteratorError3;
+
+              case 93:
+                return _context3.finish(90);
+
+              case 94:
+                return _context3.finish(87);
+
+              case 95:
+                eachdiv = {
+                  Id_Divisi_Proyek: div.Id_Divisi_Proyek,
+                  Id_Divisi_Role: div.Id_Divisi_Role,
+                  Id_Proyek: div.Id_Proyek,
+                  Nama: div.Nama,
+                  Tanggal_Selesai: div.Tanggal_Selesai.split(' ')[0],
+                  Persentase: div.Persentase,
+                  Total_Persentase: PersentaseDivisi
+                };
+                alldivisi.push(eachdiv);
+                PersentaseDivisi = 0;
+                PersentaseProyek += div.Persentase;
+
+              case 99:
+                _iteratorNormalCompletion2 = true;
+                _context3.next = 17;
+                break;
+
+              case 102:
+                _context3.next = 108;
+                break;
+
+              case 104:
+                _context3.prev = 104;
+                _context3.t3 = _context3["catch"](15);
+                _didIteratorError2 = true;
+                _iteratorError2 = _context3.t3;
+
+              case 108:
+                _context3.prev = 108;
+                _context3.prev = 109;
+
+                if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+                  _iterator2["return"]();
+                }
+
+              case 111:
+                _context3.prev = 111;
+
+                if (!_didIteratorError2) {
+                  _context3.next = 114;
+                  break;
+                }
+
+                throw _iteratorError2;
+
+              case 114:
+                return _context3.finish(111);
+
+              case 115:
+                return _context3.finish(108);
+
+              case 116:
+                data.All_Divisi = alldivisi;
+                data.All_SubDivisi = allsubdivisi;
+                data.All_Task = alltask;
+                data.All_SubTask = allsubtask;
+                data.Total_Persentase = PersentaseProyek;
+                data.isGetDataFormat = true; // if(data.c)
+
+                console.log(data);
+
+              case 123:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[15, 104, 108, 116], [22, 83, 87, 95], [29, 62, 66, 74], [36, 41, 45, 53], [46,, 48, 52], [67,, 69, 73], [88,, 90, 94], [109,, 111, 115]]);
+      }));
+
+      function getDataFormat(_x2) {
+        return _getDataFormat.apply(this, arguments);
+      }
+
+      return getDataFormat;
+    }(),
+    //***********GET DATA***********\\
+    //***********POST DATA***********\\
+    //***********POST DATA***********\\
+    //***********UPDATE DATA***********\\
+    savePerformance: function () {
+      var _savePerformance = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(data) {
+        var _this2 = this;
+
+        var _iteratorNormalCompletion7, _didIteratorError7, _iteratorError7, _iterator7, _step7, subtask, response;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                this.savePerformanceLoading = true;
+                _iteratorNormalCompletion7 = true;
+                _didIteratorError7 = false;
+                _iteratorError7 = undefined;
+                _context4.prev = 5;
+
+                for (_iterator7 = this.project_card.All_SubTask[Symbol.iterator](); !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+                  subtask = _step7.value;
+
+                  if (subtask.Id_Sub_Item_Pekerjaan == data.Id_Sub_Item_Pekerjaan) {
+                    subtask.Prestasi_Kerja = this.performance.Rating;
+                  }
+                }
+
+                _context4.next = 13;
+                break;
+
+              case 9:
+                _context4.prev = 9;
+                _context4.t0 = _context4["catch"](5);
+                _didIteratorError7 = true;
+                _iteratorError7 = _context4.t0;
+
+              case 13:
+                _context4.prev = 13;
+                _context4.prev = 14;
+
+                if (!_iteratorNormalCompletion7 && _iterator7["return"] != null) {
+                  _iterator7["return"]();
+                }
+
+              case 16:
+                _context4.prev = 16;
+
+                if (!_didIteratorError7) {
+                  _context4.next = 19;
+                  break;
+                }
+
+                throw _iteratorError7;
+
+              case 19:
+                return _context4.finish(16);
+
+              case 20:
+                return _context4.finish(13);
+
+              case 21:
+                _context4.next = 23;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updateproject(this.project_card, this.project_card.Id_Proyek).then(function () {
+                  _this2.savePerformanceLoading = false;
+                });
+
+              case 23:
+                response = _context4.sent;
+                this.close();
+                this.showAlert('success', 'Save Performance Success');
+                _context4.next = 32;
+                break;
+
+              case 28:
+                _context4.prev = 28;
+                _context4.t1 = _context4["catch"](0);
+                console.log(_context4.t1)(this.showAlert('error', 'Save Performance Failed'));
+                this.savePerformanceLoading = false;
+
+              case 32:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 28], [5, 9, 13, 21], [14,, 16, 20]]);
+      }));
+
+      function savePerformance(_x3) {
+        return _savePerformance.apply(this, arguments);
+      }
+
+      return savePerformance;
+    }(),
+    //***********UPDATE DATA***********\\
+    //***********DELETE DATA***********\\
+    //***********DELETE DATA***********\\
+    //***********OPEN DIALOG***********\\
+    openTaskDialog: function openTaskDialog(data) {
+      this.taskDialog = true;
+      this.editTask = data;
+    },
+    openProjectNotesDialog: function openProjectNotesDialog(project) {
+      this.projectNoteDialog = true;
+      this.projectNote.Nama = project.Nama;
+      this.projectNote.Catatan = project.Catatan;
+    },
+    openPerformanceDialog: function openPerformanceDialog(data) {
+      console.log("MASUK");
+      console.log(data);
+      this.performanceDialog = true;
+      this.performance.Nama = data.Nama;
+      this.performance.Rating = data.Prestasi_Kerja;
+
+      if (this.performance.Rating == 1) {
+        this.performance.Keterangan = 'Bad Performance';
+        this.performance.color = 'red';
+        this.performance.bgColor = 'red lighten-1';
+      }
+
+      if (this.performance.Rating == 2) {
+        this.performance.Keterangan = 'Semi Performance';
+        this.performance.color = 'yellow';
+        this.performance.bgColor = 'yellow lighten-1';
+      }
+
+      if (this.performance.Rating == 3) {
+        this.performance.Keterangan = 'Performance';
+        this.performance.color = 'green';
+        this.performance.bgColor = 'green lighten-1';
+      }
+
+      if (this.performance.Rating == 4) {
+        this.performance.Keterangan = 'Best Performance';
+        this.performance.color = 'blue';
+        this.performance.bgColor = 'blue lighten-1';
+      }
+    },
+    // ***********Close Dialog***********\\
+    // closePerformanceDialog()
+    // {
+    //   performanceDialog=false;
+    //   Object.assign(this.editTask.Log_Pengerjaan[index], response)
+    // },
+    //***********FILTER***********\\
+    filteredProject: function filteredProject(data) {
+      if (this.filter_status != "") {
+        if (this.filter_status == 'All') {
+          return data;
+        } else if (this.filter_status == 'Finished') {
+          console.log("SINI");
+          return data.filter(function (obj) {
+            return obj.deleted_at != null;
+          });
+        } else {
+          return data.filter(function (obj) {
+            return obj.deleted_at == null;
+          });
+        }
+      } else {
+        return data;
+      }
+    },
+    //***********FILTER***********\\
+    //***********FILES***********\\
+    pickFile: function pickFile() {
+      if (this.file == '') {
+        this.$refs.file.click();
+      }
+    },
+    onFilePicked: function onFilePicked(e) {
+      var _this3 = this;
+
+      var files = e.target.files;
+
+      if (files[0] !== undefined) {
+        this.fileName = files[0].name;
+
+        if (this.fileName.lastIndexOf('.') <= 0) {
+          return;
+        }
+
+        var fr = new FileReader();
+        fr.readAsDataURL(files[0]);
+        fr.addEventListener('load', function () {
+          _this3.fileUrl = fr.result;
+          _this3.file = files[0];
+
+          _this3.namefile.push(_this3.file.name);
+        });
+      } else {
+        // console.log("else")
+        this.fileName = '';
+        this.fileUrl = ''; // this.editedItem.image =''
+      }
+    },
+    removefile: function removefile() {
+      this.namefile = [];
+      this.file = '';
+      this.fileUrl = '';
+    },
+    forceFileDownload: function () {
+      var _forceFileDownload = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(response, data) {
+        var url, link;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                url = window.URL.createObjectURL(new Blob([response.data]));
+                link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', data.Berkas.split('/')[3]); //or any other extension
+
+                document.body.appendChild(link);
+                link.click();
+                _context5.next = 8;
+                return this.accessDone();
+
+              case 8:
+                this.editTask.Status_Akses = 'Locked';
+
+              case 9:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function forceFileDownload(_x4, _x5) {
+        return _forceFileDownload.apply(this, arguments);
+      }
+
+      return forceFileDownload;
+    }(),
+    downloadIt: function downloadIt(data) {
+      var _this4 = this;
+
+      //   console.log('http://localhost:8000/'+data.Berkas)
+      this.$http({
+        method: 'get',
+        url: 'http://192.168.1.71:8000/' + data.Berkas,
+        responseType: 'arraybuffer'
+      }).then(function (response) {
+        _this4.forceFileDownload(response, data);
+      })["catch"](function () {
+        return console.log('error occured');
+      });
+    },
+    //***********FILES***********\\
+    //***********OTHERS***********\\
+    getPerformaceStatus: function getPerformaceStatus() {
+      console.log("MASUK"); // performance:{
+      // Nama :'',
+      // Rating : 0,
+      // Keterangan: 'TES',
+      // emptyIcon: 'mdi-star-outline',
+      // fullIcon: 'mdi-star',
+      // halfIncrements: false,
+      // hover: true,
+      // length: 4,
+      // readonly: false,
+      // size: 64,
+      // dense: false,
+      // color: 'grey darken-1',
+      // bgColor: 'grey lighten-1',
+
+      if (this.performance.Rating == 1) {
+        this.performance.Keterangan = 'Bad Performance';
+        this.performance.color = 'red';
+        this.performance.bgColor = 'red lighten-1';
+      }
+
+      if (this.performance.Rating == 2) {
+        this.performance.Keterangan = 'Semi Performance';
+        this.performance.color = 'yellow';
+        this.performance.bgColor = 'yellow lighten-1';
+      }
+
+      if (this.performance.Rating == 3) {
+        this.performance.Keterangan = 'Performance';
+        this.performance.color = 'green';
+        this.performance.bgColor = 'green lighten-1';
+      }
+
+      if (this.performance.Rating == 4) {
+        this.performance.Keterangan = 'Best Performance';
+        this.performance.color = 'blue';
+        this.performance.bgColor = 'blue lighten-1';
+      }
+
+      console.log(this.performance.Keterangan);
+    },
+    close: function close() {
+      var _this5 = this;
+
+      setTimeout(function () {
+        _this5.performanceDialog = false;
+        _this5.taskDialog = false;
+        _this5.performance = Object.assign({}, _this5.initPerformance); // this.performance.color='grey darken-1'
+        // this.performance.bgColor= 'grey lighten-1'
+        // this.performance.Nama=''
+        // this.performance.Rating=0
+        // this.performance.Keterangan=''
+      }, 300);
+    },
+    showAlert: function showAlert(type, alert_message) {
+      var _this6 = this;
+
+      if (type == 'success') {
+        this.alert.icon = 'fas fa-check-circle';
+      } else if (type == 'error') {
+        this.alert.icon = 'fas fa-exclamation-circle';
+      }
+
+      this.alert.type = type;
+      this.alert.message = alert_message;
+      var timer = this.showAlert.timer;
+
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      this.showAlert.timer = setTimeout(function () {
+        _this6.alert.type = null;
+        _this6.alert.icon = null;
+        _this6.alert.message = null;
+      }, 3000);
+    } //***********OTHERS***********\\
+
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dashboard.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Dashboard.vue?vue&type=script&lang=js& ***!
@@ -6519,7 +8088,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6705,114 +8273,118 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       dateSubtask2: false,
       editmode: false,
       editProject: {
-        All_Divisi: [// {
-          //     Nama:'Desain Arsi',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          //     Id_Divisi_Role:'1'
-          // },
-          // {
-          //     Nama:'Admin',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          //     Id_Divisi_Role:'1'
-          // }
-        ],
-        All_SubDivisi: [// {
-          //     Nama:'Desain',
-          //     Divisi:'Desain Arsi',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          // },
-          // {
-          //     Nama:'QS',
-          //     Divisi:'Desain Arsi',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          // }
-        ],
-        All_Task: [// {
-          //     Nama:'Konsep',
-          //     Sub_Divisi:'Desain',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          //     Id_Divisi_Role:'1',
-          //     Kode:'TSK1',
-          //     Satuan:'Item'
-          // },
-        ],
-        All_SubTask: [// {
-          //     Nama:'Denah Depan',
-          //     Task:'Konsep',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          //     Deskripsi:'A',
-          //     Kode:'STSK1'
-          // },
-        ] // Nama: 'Test', 
-        // Tanggal_Mulai: '2020-10-12',
-        // Tanggal_Selesai: '2020-10-12', 
-        // Nilai:'2',
-        // Target_Outcome:'2020-10-12',
-        // Catatan:'Cek',
-        // Pemilik:'A',
-        // Alamat:'A',
-        // Kode:'PR2'
-
+        All_Divisi: [],
+        All_SubDivisi: [],
+        All_Task: [],
+        All_SubTask: [],
+        //  All_Divisi:[
+        //     {
+        //         Nama:'',
+        //         Persentase:'',
+        //         Tanggal_Selesai:'',
+        //         Id_Divisi_Role:''
+        //     },
+        // ],
+        // All_SubDivisi:[
+        //     {
+        //         Nama:'',
+        //         Divisi:'',
+        //         Persentase:'',
+        //         Tanggal_Selesai:'',
+        //     },
+        // ],
+        // All_Task:[
+        //     {
+        //         Nama:'',
+        //         Sub_Divisi:'',
+        //         Persentase:'',
+        //         Tanggal_Selesai:'',
+        //         Id_Divisi_Role:'',
+        //         // Kode:'',
+        //         // Satuan:''
+        //     },
+        // ],
+        // All_SubTask:[
+        //     {
+        //         Nama:'',
+        //         Task:'',
+        //         Persentase:'',
+        //         Tanggal_Selesai:'',
+        //         // Deskripsi:'',
+        //         // Kode:''
+        //     },
+        // ],
+        // Nama: '-', 
+        // Tanggal_Mulai: '',
+        // Tanggal_Selesai: '', 
+        // Nilai:0,
+        // Target_Outcome:'',
+        // Catatan:'-',
+        // Pemilik:'-',
+        // Alamat:'-',
+        // Kode:'-',
+        Total_Persentase: 0
       },
       initEditProject: {
-        All_Divisi: [// {
-          //     Nama:'Desain Arsi',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          //     Id_Divisi_Role:'1'
-          // },
-          // {
-          //     Nama:'Admin',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          //     Id_Divisi_Role:'1'
-          // }
-        ],
-        All_SubDivisi: [// {
-          //     Nama:'Desain',
-          //     Divisi:'Desain Arsi',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          // },
-          // {
-          //     Nama:'QS',
-          //     Divisi:'Desain Arsi',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          // }
-        ],
-        All_Task: [{// Nama:'Konsep',
-          // Sub_Divisi:'Desain',
-          // Persentase:'50',
-          // Tanggal_Selesai:'2020-10-12',
-          // Id_Divisi_Role:'1',
-          // Kode:'TSK1',
-          // Satuan:'Item'
+        All_Divisi: [{
+          Total_Persentase: 0
         }],
-        All_SubTask: [// {
-          //     Nama:'Denah Depan',
-          //     Task:'Konsep',
-          //     Persentase:'50',
-          //     Tanggal_Selesai:'2020-10-12',
-          //     Deskripsi:'A',
-          //     Kode:'STSK1'
-          // },
-        ] // Nama: 'Test', 
-        // Tanggal_Mulai: '2020-10-12',
-        // Tanggal_Selesai: '2020-10-12', 
-        // Nilai:'2',
-        // Target_Outcome:'2020-10-12',
-        // Catatan:'Cek',
-        // Pemilik:'A',
-        // Alamat:'A',
-        // Kode:'PR2'
-
+        All_SubDivisi: [{
+          Total_Persentase: 0
+        }],
+        All_Task: [{
+          Total_Persentase: 0
+        }],
+        All_SubTask: [{
+          Total_Persentase: 0
+        }],
+        //  All_Divisi:[
+        //     {
+        //         Nama:'',
+        //         Persentase:'',
+        //         Tanggal_Selesai:'',
+        //         Id_Divisi_Role:''
+        //     },
+        // ],
+        // All_SubDivisi:[
+        //     {
+        //         Nama:'',
+        //         Divisi:'',
+        //         Persentase:'',
+        //         Tanggal_Selesai:'',
+        //     },
+        // ],
+        // All_Task:[
+        //     {
+        //         Nama:'',
+        //         Sub_Divisi:'',
+        //         Persentase:'',
+        //         Tanggal_Selesai:'',
+        //         Id_Divisi_Role:'',
+        //         // Kode:'',
+        //         // Satuan:''
+        //     },
+        // ],
+        // All_SubTask:[
+        //     {
+        //         Nama:'',
+        //         Task:'',
+        //         Persentase:'',
+        //         Tanggal_Selesai:'',
+        //         // Deskripsi:'',
+        //         // Kode:''
+        //     },
+        // ],
+        // Nama: '-', 
+        // Tanggal_Mulai: '',
+        // Tanggal_Selesai: '', 
+        // Nilai:0,
+        // Target_Outcome:'',
+        // Catatan:'-',
+        // Pemilik:'-',
+        // Alamat:'-',
+        // Kode:'-'
+        Total_Persentase: 0
       },
       div_headers: [{
         text: 'Name',
@@ -6909,53 +8481,59 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         Id_Divisi_Role: '',
         Id_Proyek: '',
         Persentase: '',
-        Tanggal_Selesai: '' // New:0,
-
+        Tanggal_Selesai: '',
+        Total_Persentase: 0
       },
       defaultdivform: {
         Id_Divisi_Role: '',
         Id_Proyek: '',
         Persentase: '',
-        Tanggal_Selesai: '' // New:0,
-
+        Tanggal_Selesai: '',
+        Total_Persentase: 0
       },
       subdivform: {
         Nama: '',
         Divisi: '',
         Persentase: '',
-        Tanggal_Selesai: ''
+        Tanggal_Selesai: '',
+        Total_Persentase: 0
       },
       defaultsubdivform: {
         Nama: '',
         Divisi: '',
         Persentase: '',
-        Tanggal_Selesai: ''
+        Tanggal_Selesai: '',
+        Total_Persentase: 0
       },
       taskform: {
         Nama: '',
         Sub_Divisi: '',
         Persentase: '',
-        Tanggal_Selesai: ''
+        Tanggal_Selesai: '',
+        Total_Persentase: 0
       },
       defaulttaskform: {
         Nama: '',
         Sub_Divisi: '',
         Persentase: '',
-        Tanggal_Selesai: ''
+        Tanggal_Selesai: '',
+        Total_Persentase: 0
       },
       subtaskform: {
         Nama: '',
         Task: '',
         Persentase: '',
         Tanggal_Selesai: '',
-        Deskripsi: ''
+        Deskripsi: '',
+        Prestasi_Kerja: 0
       },
       defaultsubtaskform: {
         Nama: '',
         Task: '',
         Persentase: '',
         Tanggal_Selesai: '',
-        Deskripsi: ''
+        Deskripsi: '',
+        Prestasi_Kerja: 0
       },
       subtaskformfilter: {
         Divisi: '',
@@ -7065,10 +8643,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         Nama: '',
         Catatan: ''
       },
-      initProjectNote: {
-        Nama: '',
-        Catatan: ''
-      }
+      //LOADING
+      addLoading: false,
+      editLoading: false,
+      uploadProgressLoading: false
     };
   },
   mounted: function mounted() {
@@ -7092,34 +8670,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _addProjectAll = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _this2 = this;
+
         var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
+                this.addLoading = true;
+                _context.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addproject(this.editProject);
 
-              case 3:
+              case 4:
                 response = _context.sent;
-                _context.next = 6;
+                _context.next = 7;
                 return this.getProject();
 
-              case 6:
-                this.close();
-                this.showAlert('success', 'Sukses Tambah Proyek');
+              case 7:
+                this.close()(this.showAlert('success', 'Sukses Tambah Proyek').then(function () {
+                  _this2.addLoading = false;
+                }));
                 console.log(response);
-                _context.next = 15;
+                _context.next = 14;
                 break;
 
               case 11:
                 _context.prev = 11;
                 _context.t0 = _context["catch"](0);
-                console.log(_context.t0);
-                this.showAlert('error', 'Gagal Tambah Proyek');
+                console.log(_context.t0)(this.showAlert('error', 'Gagal Tambah Proyek').then(function () {
+                  _this2.addLoading = false;
+                }));
 
-              case 15:
+              case 14:
               case "end":
                 return _context.stop();
             }
@@ -7137,45 +8720,45 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _updateProjectAll = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this3 = this;
+
         var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
+                this.editLoading = true;
                 this.addDetails(); //Tambah semua detail yang ditambahkan
 
                 this.deleteDetails(); //Hapus semua detail yang dihapus
                 // //UPDATE sisanya, item yang sudah ada didb tapi datanya diubah
 
                 console.log(this.editProject);
-                _context2.next = 6;
+                _context2.next = 7;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updateproject(this.editProject, this.editProject.Id_Proyek);
 
-              case 6:
+              case 7:
                 response = _context2.sent;
                 console.log(response);
-                _context2.next = 10;
+                _context2.next = 11;
                 return this.getProject();
 
-              case 10:
-                this.close();
-                this.showAlert('success', 'Sukses Update Proyek'); // for(let item of data){
-                //     this.getDataFormat(item)
-                // }
-                // let data = (await Controller.getallproject()).data
-                // this.tempProjects=Object.assign({},data)
-
-                _context2.next = 18;
+              case 11:
+                this.close()(this.showAlert('success', 'Sukses Update Proyek').then(function () {
+                  _this3.editLoading = false;
+                }));
+                _context2.next = 17;
                 break;
 
               case 14:
                 _context2.prev = 14;
                 _context2.t0 = _context2["catch"](0);
-                console.log(_context2.t0);
-                this.showAlert('error', 'Gagal Update Proyek');
+                console.log(_context2.t0)(this.showAlert('error', 'Gagal Update Proyek').then(function () {
+                  _this3.addLoading = false;
+                }));
 
-              case 18:
+              case 17:
               case "end":
                 return _context2.stop();
             }
@@ -7200,7 +8783,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context3.prev = 0;
                 this.editProject = Object.assign({}, data);
-                this.deleteDetails();
+                this.deleteAllDetails(data);
                 _context3.next = 5;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deleteproject(data.Id_Proyek);
 
@@ -7240,7 +8823,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _addDetails = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var _this2 = this;
+        var _this4 = this;
 
         var response, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, div, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, subdiv, _iteratorNormalCompletion5, _didIteratorError5, _iteratorError5, _iterator5, _step5, _div, _iteratorNormalCompletion3, _didIteratorError3, _iteratorError3, _iterator3, _step3, task, _iteratorNormalCompletion6, _didIteratorError6, _iteratorError6, _loop, _iterator6, _step6, _iteratorNormalCompletion4, _didIteratorError4, _iteratorError4, _iterator4, _step4, subtask, _iteratorNormalCompletion7, _didIteratorError7, _iteratorError7, _iterator7, _step7, _task;
 
@@ -7461,7 +9044,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   if (task.Sub_Divisi == subdiv.Nama) {
                     task.Id_Sub_Divisi_Proyek = subdiv.Id_Sub_Divisi_Proyek;
-                    task.Id_Divisi_Role = _this2.editProject.All_Divisi.filter(function (obj) {
+                    task.Id_Divisi_Role = _this4.editProject.All_Divisi.filter(function (obj) {
                       return obj.Id_Divisi_Proyek == subdiv.Id_Divisi_Proyek;
                     })[0].Id_Divisi_Role;
                   }
@@ -7689,7 +9272,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _deleteDetails = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var _this3 = this;
+        var _this5 = this;
 
         var _iteratorNormalCompletion8, _didIteratorError8, _iteratorError8, _iterator8, _step8, deldiv, response, _iteratorNormalCompletion9, _didIteratorError9, _iteratorError9, _iterator9, _step9, delsubdiv, _response, _iteratorNormalCompletion10, _didIteratorError10, _iteratorError10, _iterator10, _step10, deltask, _response2, _iteratorNormalCompletion11, _didIteratorError11, _iteratorError11, _loop2, _iterator11, _step11;
 
@@ -7697,6 +9280,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
+                //Menghapus semua detail suatu proyek yang tidak memiliki id
                 _iteratorNormalCompletion8 = true;
                 _didIteratorError8 = false;
                 _iteratorError8 = undefined;
@@ -7920,7 +9504,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                           console.log("Log / Subtask");
                           console.log(delsubtask.Id_Sub_Item_Pekerjaan);
-                          test = _this3.logPengerjaanData.filter(function (obj) {
+                          test = _this5.logPengerjaanData.filter(function (obj) {
                             return obj.Id_Proyek == 1;
                           });
                           console.log(test);
@@ -7928,7 +9512,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                           _didIteratorError12 = false;
                           _iteratorError12 = undefined;
                           _context5.prev = 9;
-                          _iterator12 = _this3.logPengerjaanData.filter(function (obj) {
+                          _iterator12 = _this5.logPengerjaanData.filter(function (obj) {
                             return obj.Id_Sub_Item_Pekerjaan == delsubtask.Id_Sub_Item_Pekerjaan;
                           })[Symbol.iterator]();
 
@@ -7991,7 +9575,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                           _didIteratorError13 = false;
                           _iteratorError13 = undefined;
                           _context5.prev = 38;
-                          _iterator13 = _this3.allAccessData.filter(function (obj) {
+                          _iterator13 = _this5.allAccessData.filter(function (obj) {
                             return obj.Id_Sub_Item_Pekerjaan === delsubtask.Id_Sub_Item_Pekerjaan;
                           })[Symbol.iterator]();
 
@@ -8128,101 +9712,521 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return deleteDetails;
     }(),
-    getProject: function () {
-      var _getProject = _asyncToGenerator(
+    deleteAllDetails: function () {
+      var _deleteAllDetails = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
-        var _this4 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(data) {
+        var _this6 = this;
 
-        var data, _iteratorNormalCompletion14, _didIteratorError14, _iteratorError14, _iterator14, _step14, item;
+        var _iteratorNormalCompletion14, _didIteratorError14, _iteratorError14, _iterator14, _step14, deldiv, response, _iteratorNormalCompletion15, _didIteratorError15, _iteratorError15, _iterator15, _step15, delsubdiv, _response4, _iteratorNormalCompletion16, _didIteratorError16, _iteratorError16, _iterator16, _step16, deltask, _response5, _iteratorNormalCompletion17, _didIteratorError17, _iteratorError17, _loop3, _iterator17, _step17;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context7) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context8) {
           while (1) {
-            switch (_context7.prev = _context7.next) {
+            switch (_context8.prev = _context8.next) {
               case 0:
-                _context7.prev = 0;
-                _context7.next = 3;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallproject();
-
-              case 3:
-                data = _context7.sent.data;
-                _context7.next = 6;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalllogpengerjaan();
-
-              case 6:
-                this.logPengerjaanData = _context7.sent.data;
-                _context7.next = 9;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalljobakses();
-
-              case 9:
-                this.allAccessData = _context7.sent.data;
-                this.jobAksesData = this.allAccessData.filter(function (obj) {
-                  return obj.Id_Akun == _this4.Id_Akun;
-                });
-                _context7.next = 13;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalldivisirole();
-
-              case 13:
-                this.division = _context7.sent.data;
+                //Menghapus semua detail suatu proyek
                 _iteratorNormalCompletion14 = true;
                 _didIteratorError14 = false;
                 _iteratorError14 = undefined;
-                _context7.prev = 17;
+                _context8.prev = 3;
+                _iterator14 = data.All_Divisi[Symbol.iterator]();
 
-                for (_iterator14 = data[Symbol.iterator](); !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
-                  item = _step14.value;
-                  this.getDataFormat(item);
+              case 5:
+                if (_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done) {
+                  _context8.next = 15;
+                  break;
                 }
 
-                _context7.next = 25;
+                deldiv = _step14.value;
+                _context8.next = 9;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletedivisiproyek(deldiv.Id_Divisi_Proyek);
+
+              case 9:
+                response = _context8.sent;
+                console.log("DELETE");
+                console.log(response);
+
+              case 12:
+                _iteratorNormalCompletion14 = true;
+                _context8.next = 5;
                 break;
 
-              case 21:
-                _context7.prev = 21;
-                _context7.t0 = _context7["catch"](17);
-                _didIteratorError14 = true;
-                _iteratorError14 = _context7.t0;
+              case 15:
+                _context8.next = 21;
+                break;
 
-              case 25:
-                _context7.prev = 25;
-                _context7.prev = 26;
+              case 17:
+                _context8.prev = 17;
+                _context8.t0 = _context8["catch"](3);
+                _didIteratorError14 = true;
+                _iteratorError14 = _context8.t0;
+
+              case 21:
+                _context8.prev = 21;
+                _context8.prev = 22;
 
                 if (!_iteratorNormalCompletion14 && _iterator14["return"] != null) {
                   _iterator14["return"]();
                 }
 
-              case 28:
-                _context7.prev = 28;
+              case 24:
+                _context8.prev = 24;
 
                 if (!_didIteratorError14) {
-                  _context7.next = 31;
+                  _context8.next = 27;
                   break;
                 }
 
                 throw _iteratorError14;
 
+              case 27:
+                return _context8.finish(24);
+
+              case 28:
+                return _context8.finish(21);
+
+              case 29:
+                _iteratorNormalCompletion15 = true;
+                _didIteratorError15 = false;
+                _iteratorError15 = undefined;
+                _context8.prev = 32;
+                _iterator15 = data.All_SubDivisi[Symbol.iterator]();
+
+              case 34:
+                if (_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done) {
+                  _context8.next = 44;
+                  break;
+                }
+
+                delsubdiv = _step15.value;
+                _context8.next = 38;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletesubdivisiproyek(delsubdiv.Id_Sub_Divisi_Proyek);
+
+              case 38:
+                _response4 = _context8.sent;
+                console.log("DELETE");
+                console.log(_response4);
+
+              case 41:
+                _iteratorNormalCompletion15 = true;
+                _context8.next = 34;
+                break;
+
+              case 44:
+                _context8.next = 50;
+                break;
+
+              case 46:
+                _context8.prev = 46;
+                _context8.t1 = _context8["catch"](32);
+                _didIteratorError15 = true;
+                _iteratorError15 = _context8.t1;
+
+              case 50:
+                _context8.prev = 50;
+                _context8.prev = 51;
+
+                if (!_iteratorNormalCompletion15 && _iterator15["return"] != null) {
+                  _iterator15["return"]();
+                }
+
+              case 53:
+                _context8.prev = 53;
+
+                if (!_didIteratorError15) {
+                  _context8.next = 56;
+                  break;
+                }
+
+                throw _iteratorError15;
+
+              case 56:
+                return _context8.finish(53);
+
+              case 57:
+                return _context8.finish(50);
+
+              case 58:
+                _iteratorNormalCompletion16 = true;
+                _didIteratorError16 = false;
+                _iteratorError16 = undefined;
+                _context8.prev = 61;
+                _iterator16 = data.All_Task[Symbol.iterator]();
+
+              case 63:
+                if (_iteratorNormalCompletion16 = (_step16 = _iterator16.next()).done) {
+                  _context8.next = 73;
+                  break;
+                }
+
+                deltask = _step16.value;
+                _context8.next = 67;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deleteitempekerjaan(deltask.Id_Item_Pekerjaan);
+
+              case 67:
+                _response5 = _context8.sent;
+                console.log("DELETE");
+                console.log(_response5);
+
+              case 70:
+                _iteratorNormalCompletion16 = true;
+                _context8.next = 63;
+                break;
+
+              case 73:
+                _context8.next = 79;
+                break;
+
+              case 75:
+                _context8.prev = 75;
+                _context8.t2 = _context8["catch"](61);
+                _didIteratorError16 = true;
+                _iteratorError16 = _context8.t2;
+
+              case 79:
+                _context8.prev = 79;
+                _context8.prev = 80;
+
+                if (!_iteratorNormalCompletion16 && _iterator16["return"] != null) {
+                  _iterator16["return"]();
+                }
+
+              case 82:
+                _context8.prev = 82;
+
+                if (!_didIteratorError16) {
+                  _context8.next = 85;
+                  break;
+                }
+
+                throw _iteratorError16;
+
+              case 85:
+                return _context8.finish(82);
+
+              case 86:
+                return _context8.finish(79);
+
+              case 87:
+                _iteratorNormalCompletion17 = true;
+                _didIteratorError17 = false;
+                _iteratorError17 = undefined;
+                _context8.prev = 90;
+                _loop3 =
+                /*#__PURE__*/
+                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _loop3() {
+                  var delsubtask, test, _iteratorNormalCompletion18, _didIteratorError18, _iteratorError18, _iterator18, _step18, dellog, logresponse, _iteratorNormalCompletion19, _didIteratorError19, _iteratorError19, _iterator19, _step19, delakses, aksesresponse, response;
+
+                  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _loop3$(_context7) {
+                    while (1) {
+                      switch (_context7.prev = _context7.next) {
+                        case 0:
+                          delsubtask = _step17.value;
+                          console.log("Log / Subtask");
+                          console.log(delsubtask.Id_Sub_Item_Pekerjaan);
+                          test = _this6.logPengerjaanData.filter(function (obj) {
+                            return obj.Id_Proyek == 1;
+                          });
+                          console.log(test);
+                          _iteratorNormalCompletion18 = true;
+                          _didIteratorError18 = false;
+                          _iteratorError18 = undefined;
+                          _context7.prev = 8;
+                          _iterator18 = _this6.logPengerjaanData.filter(function (obj) {
+                            return obj.Id_Sub_Item_Pekerjaan == delsubtask.Id_Sub_Item_Pekerjaan;
+                          })[Symbol.iterator]();
+
+                        case 10:
+                          if (_iteratorNormalCompletion18 = (_step18 = _iterator18.next()).done) {
+                            _context7.next = 20;
+                            break;
+                          }
+
+                          dellog = _step18.value;
+                          _context7.next = 14;
+                          return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletelogpengerjaan(dellog.Id_Log_Pengerjaan);
+
+                        case 14:
+                          logresponse = _context7.sent;
+                          console.log("LOGRESPONSE");
+                          console.log(logresponse);
+
+                        case 17:
+                          _iteratorNormalCompletion18 = true;
+                          _context7.next = 10;
+                          break;
+
+                        case 20:
+                          _context7.next = 26;
+                          break;
+
+                        case 22:
+                          _context7.prev = 22;
+                          _context7.t0 = _context7["catch"](8);
+                          _didIteratorError18 = true;
+                          _iteratorError18 = _context7.t0;
+
+                        case 26:
+                          _context7.prev = 26;
+                          _context7.prev = 27;
+
+                          if (!_iteratorNormalCompletion18 && _iterator18["return"] != null) {
+                            _iterator18["return"]();
+                          }
+
+                        case 29:
+                          _context7.prev = 29;
+
+                          if (!_didIteratorError18) {
+                            _context7.next = 32;
+                            break;
+                          }
+
+                          throw _iteratorError18;
+
+                        case 32:
+                          return _context7.finish(29);
+
+                        case 33:
+                          return _context7.finish(26);
+
+                        case 34:
+                          _iteratorNormalCompletion19 = true;
+                          _didIteratorError19 = false;
+                          _iteratorError19 = undefined;
+                          _context7.prev = 37;
+                          _iterator19 = _this6.allAccessData.filter(function (obj) {
+                            return obj.Id_Sub_Item_Pekerjaan === delsubtask.Id_Sub_Item_Pekerjaan;
+                          })[Symbol.iterator]();
+
+                        case 39:
+                          if (_iteratorNormalCompletion19 = (_step19 = _iterator19.next()).done) {
+                            _context7.next = 49;
+                            break;
+                          }
+
+                          delakses = _step19.value;
+                          _context7.next = 43;
+                          return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletejobakses(delakses.Id_Akses_Pekerjaan);
+
+                        case 43:
+                          aksesresponse = _context7.sent;
+                          console.log("LOGAKSES");
+                          console.log(aksesresponse);
+
+                        case 46:
+                          _iteratorNormalCompletion19 = true;
+                          _context7.next = 39;
+                          break;
+
+                        case 49:
+                          _context7.next = 55;
+                          break;
+
+                        case 51:
+                          _context7.prev = 51;
+                          _context7.t1 = _context7["catch"](37);
+                          _didIteratorError19 = true;
+                          _iteratorError19 = _context7.t1;
+
+                        case 55:
+                          _context7.prev = 55;
+                          _context7.prev = 56;
+
+                          if (!_iteratorNormalCompletion19 && _iterator19["return"] != null) {
+                            _iterator19["return"]();
+                          }
+
+                        case 58:
+                          _context7.prev = 58;
+
+                          if (!_didIteratorError19) {
+                            _context7.next = 61;
+                            break;
+                          }
+
+                          throw _iteratorError19;
+
+                        case 61:
+                          return _context7.finish(58);
+
+                        case 62:
+                          return _context7.finish(55);
+
+                        case 63:
+                          _context7.next = 65;
+                          return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletesubitempekerjaan(delsubtask.Id_Sub_Item_Pekerjaan);
+
+                        case 65:
+                          response = _context7.sent;
+                          console.log("DELETE");
+                          console.log(response);
+
+                        case 68:
+                        case "end":
+                          return _context7.stop();
+                      }
+                    }
+                  }, _loop3, null, [[8, 22, 26, 34], [27,, 29, 33], [37, 51, 55, 63], [56,, 58, 62]]);
+                });
+                _iterator17 = data.All_SubTask[Symbol.iterator]();
+
+              case 93:
+                if (_iteratorNormalCompletion17 = (_step17 = _iterator17.next()).done) {
+                  _context8.next = 98;
+                  break;
+                }
+
+                return _context8.delegateYield(_loop3(), "t3", 95);
+
+              case 95:
+                _iteratorNormalCompletion17 = true;
+                _context8.next = 93;
+                break;
+
+              case 98:
+                _context8.next = 104;
+                break;
+
+              case 100:
+                _context8.prev = 100;
+                _context8.t4 = _context8["catch"](90);
+                _didIteratorError17 = true;
+                _iteratorError17 = _context8.t4;
+
+              case 104:
+                _context8.prev = 104;
+                _context8.prev = 105;
+
+                if (!_iteratorNormalCompletion17 && _iterator17["return"] != null) {
+                  _iterator17["return"]();
+                }
+
+              case 107:
+                _context8.prev = 107;
+
+                if (!_didIteratorError17) {
+                  _context8.next = 110;
+                  break;
+                }
+
+                throw _iteratorError17;
+
+              case 110:
+                return _context8.finish(107);
+
+              case 111:
+                return _context8.finish(104);
+
+              case 112:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee6, null, [[3, 17, 21, 29], [22,, 24, 28], [32, 46, 50, 58], [51,, 53, 57], [61, 75, 79, 87], [80,, 82, 86], [90, 100, 104, 112], [105,, 107, 111]]);
+      }));
+
+      function deleteAllDetails(_x2) {
+        return _deleteAllDetails.apply(this, arguments);
+      }
+
+      return deleteAllDetails;
+    }(),
+    getProject: function () {
+      var _getProject = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var _this7 = this;
+
+        var data, _iteratorNormalCompletion20, _didIteratorError20, _iteratorError20, _iterator20, _step20, item;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.prev = 0;
+                _context9.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getproject();
+
+              case 3:
+                data = _context9.sent.data;
+                _context9.next = 6;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalllogpengerjaan();
+
+              case 6:
+                this.logPengerjaanData = _context9.sent.data;
+                _context9.next = 9;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalljobakses();
+
+              case 9:
+                this.allAccessData = _context9.sent.data;
+                this.jobAksesData = this.allAccessData.filter(function (obj) {
+                  return obj.Id_Akun == _this7.Id_Akun;
+                });
+                _context9.next = 13;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalldivisirole();
+
+              case 13:
+                this.division = _context9.sent.data;
+                _iteratorNormalCompletion20 = true;
+                _didIteratorError20 = false;
+                _iteratorError20 = undefined;
+                _context9.prev = 17;
+
+                for (_iterator20 = data[Symbol.iterator](); !(_iteratorNormalCompletion20 = (_step20 = _iterator20.next()).done); _iteratorNormalCompletion20 = true) {
+                  item = _step20.value;
+                  this.getDataFormat(item);
+                }
+
+                _context9.next = 25;
+                break;
+
+              case 21:
+                _context9.prev = 21;
+                _context9.t0 = _context9["catch"](17);
+                _didIteratorError20 = true;
+                _iteratorError20 = _context9.t0;
+
+              case 25:
+                _context9.prev = 25;
+                _context9.prev = 26;
+
+                if (!_iteratorNormalCompletion20 && _iterator20["return"] != null) {
+                  _iterator20["return"]();
+                }
+
+              case 28:
+                _context9.prev = 28;
+
+                if (!_didIteratorError20) {
+                  _context9.next = 31;
+                  break;
+                }
+
+                throw _iteratorError20;
+
               case 31:
-                return _context7.finish(28);
+                return _context9.finish(28);
 
               case 32:
-                return _context7.finish(25);
+                return _context9.finish(25);
 
               case 33:
                 this.tempProjects = data;
-                _context7.next = 39;
+                _context9.next = 39;
                 break;
 
               case 36:
-                _context7.prev = 36;
-                _context7.t1 = _context7["catch"](0);
-                console.log(_context7.t1);
+                _context9.prev = 36;
+                _context9.t1 = _context9["catch"](0);
+                console.log(_context9.t1);
 
               case 39:
               case "end":
-                return _context7.stop();
+                return _context9.stop();
             }
           }
-        }, _callee6, this, [[0, 36], [17, 21, 25, 33], [26,, 28, 32]]);
+        }, _callee7, this, [[0, 36], [17, 21, 25, 33], [26,, 28, 32]]);
       }));
 
       function getProject() {
@@ -8231,110 +10235,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return getProject;
     }(),
-    // getDataFormat(data){
-    //     let alldivisi =[]
-    //     let allsubdivisi=[]
-    //     let alltask=[]
-    //     let allsubtask=[]
-    //     let PersentaseProyek
-    //     let PersentaseDivisi
-    //     let PersentaseSubDivisi
-    //     let PersentaseTask
-    //     for(let div of data.Divisi.data){
-    //         let eachdiv ={
-    //             Id_Divisi_Proyek    : div.Id_Divisi_Proyek,
-    //             Id_Divisi_Role      : div.Id_Divisi_Role,
-    //             Id_Proyek           : div.Id_Proyek,
-    //             Nama                : div.Nama,
-    //             Tanggal_Selesai     : div.Tanggal_Selesai.split(' ')[0],
-    //             Persentase          : div.Persentase,
-    //         }
-    //         alldivisi.push(eachdiv)
-    //         for(let subdiv of div.Sub_Divisi.data){
-    //             let eachsubdiv ={
-    //                 Id_Sub_Divisi_Proyek    :subdiv.Id_Sub_Divisi_Proyek,
-    //                 Id_Divisi_Proyek        : subdiv.Id_Divisi_Proyek,
-    //                 Divisi                  : subdiv.Divisi,
-    //                 Nama                    : subdiv.Nama,
-    //                 Tanggal_Selesai         : subdiv.Tanggal_Selesai.split(' ')[0],
-    //                 Persentase              : subdiv.Persentase
-    //             }
-    //             allsubdivisi.push(eachsubdiv)
-    //             for(let task of subdiv.Task.data){
-    //                 let eachtask ={
-    //                     Id_Item_Pekerjaan   : task.Id_Item_Pekerjaan,
-    //                     Id_Divisi_Role      : task.Id_Divisi_Role, 
-    //                     Id_Sub_Divisi_Proyek    :task.Id_Sub_Divisi_Proyek,
-    //                     Sub_Divisi          : task.Sub_Divisi,                        
-    //                     Nama                : task.Nama,
-    //                     Kode                : task.Kode,
-    //                     Satuan              : task.Satuan,
-    //                     Tanggal_Selesai     : task.Tanggal_Selesai.split(' ')[0],
-    //                     Persentase          : task.Persentase
-    //                 }
-    //                 alltask.push(eachtask)
-    //                 for(let subtask of task.Sub_Task.data){
-    //                     let eachsubtask ={
-    //                         Id_Sub_Item_Pekerjaan   : subtask.Id_Sub_Item_Pekerjaan,
-    //                         Id_Item_Pekerjaan       : subtask.Id_Item_Pekerjaan,
-    //                         Projek                  : data.Nama,
-    //                         Divisi                  : div.Nama, 
-    //                         Sub_Divisi              : subdiv.Nama,                     
-    //                         Task                    : task.Nama,                     
-    //                         Nama                    : subtask.Nama,
-    //                         Kode                    : subtask.Kode,
-    //                         Deskripsi               : subtask.Deskripsi,
-    //                         Tanggal_Selesai         : subtask.Tanggal_Selesai.split(' ')[0],
-    //                         Persentase              : subtask.Persentase,
-    //                         User                    : '',
-    //                         Remaining               : '',
-    //                         Progress                : '0',
-    //                         Status                  : 'untake',
-    //                         Log_Pengerjaan          :[],
-    //                     }
-    //                     for(let log of this.logPengerjaanData){
-    //                         if(log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan){
-    //                             eachsubtask.Log_Pengerjaan.push(log)
-    //                         }
-    //                     }
-    //                     let today = new Date().getTime();
-    //                     let target = new Date(eachsubtask.Tanggal_Selesai).getTime();
-    //                     let remaining = parseInt((target-today)/(24*3600*1000));
-    //                     eachsubtask.Remaining = remaining +' days left'
-    //                     if(eachsubtask.Log_Pengerjaan.length > 0){
-    //                         eachsubtask.Log_Pengerjaan = eachsubtask.Log_Pengerjaan.slice().reverse()
-    //                         if(eachsubtask.Log_Pengerjaan.length==1)
-    //                         {
-    //                             eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress 
-    //                             eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username 
-    //                         }
-    //                         else{
-    //                             let data = eachsubtask.Log_Pengerjaan.find(obj=>obj.Berkas!='' )
-    //                             eachsubtask.Progress = data.Progress 
-    //                             eachsubtask.User = data.Username 
-    //                         }
-    //                     }
-    //                     if(remaining < 0 && eachsubtask.Progress != '100'){
-    //                         eachsubtask.Status = 'overdue'
-    //                         eachsubtask.Remaining = remaining +' days overdue'
-    //                     }
-    //                     else if(eachsubtask.Progress!='100'){
-    //                         eachsubtask.Status = 'ongoing'
-    //                     }
-    //                     else{
-    //                         eachsubtask.Status = 'complete'
-    //                     }
-    //                     allsubtask.push(eachsubtask)
-    //                 }
-    //             }
-    //         }
-    //     }
-    //         data.All_Divisi     = alldivisi
-    //         data.All_SubDivisi  = allsubdivisi
-    //         data.All_Task       = alltask
-    //         data.All_SubTask    = allsubtask
-    // },
     getDataFormat: function getDataFormat(data) {
+      var _this8 = this;
+
       var alldivisi = [];
       var allsubdivisi = [];
       var alltask = [];
@@ -8343,34 +10246,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var PersentaseDivisi = 0;
       var PersentaseSubDivisi = 0;
       var PersentaseTask = 0;
-      var _iteratorNormalCompletion15 = true;
-      var _didIteratorError15 = false;
-      var _iteratorError15 = undefined;
+      var _iteratorNormalCompletion21 = true;
+      var _didIteratorError21 = false;
+      var _iteratorError21 = undefined;
 
       try {
-        for (var _iterator15 = data.Divisi.data[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
-          var div = _step15.value;
-          var _iteratorNormalCompletion16 = true;
-          var _didIteratorError16 = false;
-          var _iteratorError16 = undefined;
+        for (var _iterator21 = data.Divisi.data[Symbol.iterator](), _step21; !(_iteratorNormalCompletion21 = (_step21 = _iterator21.next()).done); _iteratorNormalCompletion21 = true) {
+          var div = _step21.value;
+          var _iteratorNormalCompletion22 = true;
+          var _didIteratorError22 = false;
+          var _iteratorError22 = undefined;
 
           try {
-            for (var _iterator16 = div.Sub_Divisi.data[Symbol.iterator](), _step16; !(_iteratorNormalCompletion16 = (_step16 = _iterator16.next()).done); _iteratorNormalCompletion16 = true) {
-              var subdiv = _step16.value;
-              var _iteratorNormalCompletion17 = true;
-              var _didIteratorError17 = false;
-              var _iteratorError17 = undefined;
+            for (var _iterator22 = div.Sub_Divisi.data[Symbol.iterator](), _step22; !(_iteratorNormalCompletion22 = (_step22 = _iterator22.next()).done); _iteratorNormalCompletion22 = true) {
+              var subdiv = _step22.value;
+              var _iteratorNormalCompletion23 = true;
+              var _didIteratorError23 = false;
+              var _iteratorError23 = undefined;
 
               try {
-                for (var _iterator17 = subdiv.Task.data[Symbol.iterator](), _step17; !(_iteratorNormalCompletion17 = (_step17 = _iterator17.next()).done); _iteratorNormalCompletion17 = true) {
-                  var _task2 = _step17.value;
-                  var _iteratorNormalCompletion18 = true;
-                  var _didIteratorError18 = false;
-                  var _iteratorError18 = undefined;
+                for (var _iterator23 = subdiv.Task.data[Symbol.iterator](), _step23; !(_iteratorNormalCompletion23 = (_step23 = _iterator23.next()).done); _iteratorNormalCompletion23 = true) {
+                  var _task2 = _step23.value;
+                  var _iteratorNormalCompletion24 = true;
+                  var _didIteratorError24 = false;
+                  var _iteratorError24 = undefined;
 
                   try {
-                    for (var _iterator18 = _task2.Sub_Task.data[Symbol.iterator](), _step18; !(_iteratorNormalCompletion18 = (_step18 = _iterator18.next()).done); _iteratorNormalCompletion18 = true) {
-                      var subtask = _step18.value;
+                    var _loop4 = function _loop4() {
+                      var subtask = _step24.value;
                       var eachsubtask = {
                         Id_Sub_Item_Pekerjaan: subtask.Id_Sub_Item_Pekerjaan,
                         Id_Item_Pekerjaan: subtask.Id_Item_Pekerjaan,
@@ -8387,33 +10290,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                         Remaining: '',
                         Total_Progress: '0',
                         Progress: '0',
-                        Status: 'untake',
+                        Work_Status: 'untake',
+                        Time_Status: 'in time',
+                        Color: 'grey',
+                        Log_Submitted: '',
                         Log_Pengerjaan: []
                       };
-                      var _iteratorNormalCompletion19 = true;
-                      var _didIteratorError19 = false;
-                      var _iteratorError19 = undefined;
+                      var _iteratorNormalCompletion25 = true;
+                      var _didIteratorError25 = false;
+                      var _iteratorError25 = undefined;
 
                       try {
-                        for (var _iterator19 = this.logPengerjaanData[Symbol.iterator](), _step19; !(_iteratorNormalCompletion19 = (_step19 = _iterator19.next()).done); _iteratorNormalCompletion19 = true) {
-                          var log = _step19.value;
+                        for (var _iterator25 = _this8.logPengerjaanData[Symbol.iterator](), _step25; !(_iteratorNormalCompletion25 = (_step25 = _iterator25.next()).done); _iteratorNormalCompletion25 = true) {
+                          var log = _step25.value;
 
                           if (log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan) {
                             eachsubtask.Total_Progress = parseInt(log.Progress) + parseInt(eachsubtask.Total_Progress);
-                            eachsubtask.Log_Pengerjaan.push(log);
+                            eachsubtask.Log_Submitted = log.Waktu_Selesai.split(' ')[0], eachsubtask.Log_Pengerjaan.push(log);
                           }
                         }
                       } catch (err) {
-                        _didIteratorError19 = true;
-                        _iteratorError19 = err;
+                        _didIteratorError25 = true;
+                        _iteratorError25 = err;
                       } finally {
                         try {
-                          if (!_iteratorNormalCompletion19 && _iterator19["return"] != null) {
-                            _iterator19["return"]();
+                          if (!_iteratorNormalCompletion25 && _iterator25["return"] != null) {
+                            _iterator25["return"]();
                           }
                         } finally {
-                          if (_didIteratorError19) {
-                            throw _iteratorError19;
+                          if (_didIteratorError25) {
+                            throw _iteratorError25;
                           }
                         }
                       }
@@ -8436,29 +10342,92 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                       //     }
                       // }
 
-                      if (remaining < 0 && eachsubtask.Total_Progress != '100') {
-                        eachsubtask.Status = 'overdue';
-                        eachsubtask.Remaining = remaining + ' days overdue';
-                      } else if (eachsubtask.Total_Progress != '100') {
-                        eachsubtask.Status = 'ongoing';
+                      var filteredlog = _this8.logPengerjaanData.filter(function (obj) {
+                        return obj.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan;
+                      });
+
+                      if (filteredlog.length == 0) {
+                        eachsubtask.Work_Status = 'Available';
+
+                        if (remaining < 0) {
+                          eachsubtask.Time_Status = 'Overdue';
+                          eachsubtask.Color = 'rred';
+                          eachsubtask.Remaining = remaining + ' days overdue';
+                        } else if (remaining == 0) {
+                          eachsubtask.Time_Status = 'On Time';
+                          eachsubtask.Color = 'yyellow';
+                        } else {
+                          eachsubtask.Color = 'ggrey';
+                          eachsubtask.Time_Status = 'In Time';
+                        }
                       } else {
-                        eachsubtask.Status = 'complete';
+                        if (eachsubtask.Total_Progress != '100') {
+                          eachsubtask.Work_Status = 'On Going';
+
+                          if (remaining < 0) {
+                            eachsubtask.Time_Status = 'Overdue';
+                            eachsubtask.Color = 'rred';
+                            eachsubtask.Remaining = remaining + ' days overdue';
+                          } else {
+                            eachsubtask.Time_Status = 'In Time';
+                            eachsubtask.Color = 'ggreen';
+                          }
+                        } else {
+                          eachsubtask.Work_Status = 'Complete';
+                          var submitted = new Date(eachsubtask.Log_Submitted).getTime();
+                          var diff = parseInt((target - submitted) / (24 * 3600 * 1000));
+
+                          if (diff < 0) {
+                            eachsubtask.Time_Status = 'Overdue';
+                            eachsubtask.Color = 'rred';
+                            eachsubtask.Remaining = remaining + ' days overdue';
+                          } else {
+                            eachsubtask.Time_Status = 'On Time';
+                            eachsubtask.Color = 'bblue';
+                          } // if(eachsubtask.Time_Status == 'Overdue')
+                          // {
+                          //     eachsubtask.Time_Status = 'Overdue'
+                          //     eachsubtask.Status = 'overdue'
+                          //     eachsubtask.Remaining = remaining +' days overdue'
+                          // }
+                          // else
+                          // {
+                          //     eachsubtask.Time_Status = 'On Time'
+                          //     eachsubtask.Status = 'complete'
+                          // }
+
+                        } // if(remaining < 0 && eachsubtask.Total_Progress != '100'){
+                        //     eachsubtask.Time_Status = 'Overdue'
+                        //     eachsubtask.Status = 'overdue'
+                        //     eachsubtask.Remaining = remaining +' days overdue'
+                        // }
+                        // else if(eachsubtask.Total_Progress!='100'){
+                        //     eachsubtask.Status = 'ongoing'
+                        // }
+                        // else{
+                        //     eachsubtask.Status = 'complete'
+                        // }
+
                       }
 
                       PersentaseTask += subtask.Persentase;
                       allsubtask.push(eachsubtask);
+                    };
+
+                    for (var _iterator24 = _task2.Sub_Task.data[Symbol.iterator](), _step24; !(_iteratorNormalCompletion24 = (_step24 = _iterator24.next()).done); _iteratorNormalCompletion24 = true) {
+                      _loop4();
                     }
                   } catch (err) {
-                    _didIteratorError18 = true;
-                    _iteratorError18 = err;
+                    _didIteratorError24 = true;
+                    _iteratorError24 = err;
                   } finally {
                     try {
-                      if (!_iteratorNormalCompletion18 && _iterator18["return"] != null) {
-                        _iterator18["return"]();
+                      if (!_iteratorNormalCompletion24 && _iterator24["return"] != null) {
+                        _iterator24["return"]();
                       }
                     } finally {
-                      if (_didIteratorError18) {
-                        throw _iteratorError18;
+                      if (_didIteratorError24) {
+                        throw _iteratorError24;
                       }
                     }
                   }
@@ -8480,16 +10449,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   PersentaseSubDivisi += _task2.Persentase;
                 }
               } catch (err) {
-                _didIteratorError17 = true;
-                _iteratorError17 = err;
+                _didIteratorError23 = true;
+                _iteratorError23 = err;
               } finally {
                 try {
-                  if (!_iteratorNormalCompletion17 && _iterator17["return"] != null) {
-                    _iterator17["return"]();
+                  if (!_iteratorNormalCompletion23 && _iterator23["return"] != null) {
+                    _iterator23["return"]();
                   }
                 } finally {
-                  if (_didIteratorError17) {
-                    throw _iteratorError17;
+                  if (_didIteratorError23) {
+                    throw _iteratorError23;
                   }
                 }
               }
@@ -8508,16 +10477,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               PersentaseDivisi += subdiv.Persentase;
             }
           } catch (err) {
-            _didIteratorError16 = true;
-            _iteratorError16 = err;
+            _didIteratorError22 = true;
+            _iteratorError22 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion16 && _iterator16["return"] != null) {
-                _iterator16["return"]();
+              if (!_iteratorNormalCompletion22 && _iterator22["return"] != null) {
+                _iterator22["return"]();
               }
             } finally {
-              if (_didIteratorError16) {
-                throw _iteratorError16;
+              if (_didIteratorError22) {
+                throw _iteratorError22;
               }
             }
           }
@@ -8536,321 +10505,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           PersentaseProyek += div.Persentase;
         }
       } catch (err) {
-        _didIteratorError15 = true;
-        _iteratorError15 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion15 && _iterator15["return"] != null) {
-            _iterator15["return"]();
-          }
-        } finally {
-          if (_didIteratorError15) {
-            throw _iteratorError15;
-          }
-        }
-      }
-
-      data.All_Divisi = alldivisi;
-      data.All_SubDivisi = allsubdivisi;
-      data.All_Task = alltask;
-      data.All_SubTask = allsubtask;
-      data.Total_Persentase = PersentaseProyek;
-      console.log(data);
-    },
-    sendAccessRequest: function () {
-      var _sendAccessRequest = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
-        var payload, response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context8) {
-          while (1) {
-            switch (_context8.prev = _context8.next) {
-              case 0:
-                _context8.prev = 0;
-                payload = {
-                  Id_Akun: this.Id_Akun,
-                  Id_Sub_Item_Pekerjaan: this.editTask.Id_Sub_Item_Pekerjaan,
-                  Status: this.reqForm.Status,
-                  Deskripsi: this.reqForm.Deskripsi,
-                  Verifikasi: 'Unverified'
-                };
-                _context8.next = 4;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addjobakses(payload);
-
-              case 4:
-                response = _context8.sent.data;
-                this.requestDialog = false;
-                this.showAlert('success', 'Sukses Mengirim Request');
-                _context8.next = 13;
-                break;
-
-              case 9:
-                _context8.prev = 9;
-                _context8.t0 = _context8["catch"](0);
-                console.log(_context8.t0);
-                this.showAlert('error', 'Gagal Mengirim Request');
-
-              case 13:
-              case "end":
-                return _context8.stop();
-            }
-          }
-        }, _callee7, this, [[0, 9]]);
-      }));
-
-      function sendAccessRequest() {
-        return _sendAccessRequest.apply(this, arguments);
-      }
-
-      return sendAccessRequest;
-    }(),
-    uploadProgress: function () {
-      var _uploadProgress = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
-        var _this5 = this;
-
-        var payloadFile, pathfile, Id_Pengerjaan, payload, response, index;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context9) {
-          while (1) {
-            switch (_context9.prev = _context9.next) {
-              case 0:
-                _context9.prev = 0;
-                payloadFile = new FormData();
-                payloadFile.append('Berkas', this.file);
-                payloadFile.append('Id_Akun', this.Id_Akun);
-                _context9.next = 6;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].uploadfile(payloadFile);
-
-              case 6:
-                pathfile = _context9.sent.data;
-                Id_Pengerjaan = this.editTask.Log_Pengerjaan.find(function (obj) {
-                  return obj.Id_Akun == _this5.Id_Akun && obj.Berkas == '';
-                }).Id_Log_Pengerjaan;
-                payload = {
-                  Progress: this.editTask.Progress,
-                  Catatan: this.editTask.Note,
-                  Berkas: pathfile
-                };
-                _context9.next = 11;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatelogpengerjaan(payload, Id_Pengerjaan);
-
-              case 11:
-                response = _context9.sent.data;
-
-                if (!(this.editTask.Total_Progress == 100)) {
-                  _context9.next = 17;
-                  break;
-                }
-
-                _context9.next = 15;
-                return this.accessDone();
-
-              case 15:
-                _context9.next = 19;
-                break;
-
-              case 17:
-                _context9.next = 19;
-                return this.duplicateEmptyLog();
-
-              case 19:
-                this.removefile();
-                index = this.editTask.Log_Pengerjaan.findIndex(function (obj) {
-                  return obj.Id_Log_Pengerjaan == response.Id_Log_Pengerjaan;
-                });
-                Object.assign(this.editTask.Log_Pengerjaan[index], response);
-                this.close();
-                this.showAlert('success', 'Sukses Upload Progress');
-                _context9.next = 30;
-                break;
-
-              case 26:
-                _context9.prev = 26;
-                _context9.t0 = _context9["catch"](0);
-                console.log(_context9.t0);
-                this.showAlert('error', 'Gagal Upload Progress');
-
-              case 30:
-              case "end":
-                return _context9.stop();
-            }
-          }
-        }, _callee8, this, [[0, 26]]);
-      }));
-
-      function uploadProgress() {
-        return _uploadProgress.apply(this, arguments);
-      }
-
-      return uploadProgress;
-    }(),
-    accessDone: function () {
-      var _accessDone = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
-        var payload, response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context10) {
-          while (1) {
-            switch (_context10.prev = _context10.next) {
-              case 0:
-                _context10.prev = 0;
-                payload = {
-                  Verifikasi: 'Done'
-                };
-                _context10.next = 4;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatejobakses(payload, this.editTask.Id_Akses);
-
-              case 4:
-                response = _context10.sent;
-                console.log(response);
-                _context10.next = 8;
-                return this.getProject();
-
-              case 8:
-                _context10.next = 13;
-                break;
-
-              case 10:
-                _context10.prev = 10;
-                _context10.t0 = _context10["catch"](0);
-                this.showAlert('error', 'Gagal Verifikasi');
-
-              case 13:
-              case "end":
-                return _context10.stop();
-            }
-          }
-        }, _callee9, this, [[0, 10]]);
-      }));
-
-      function accessDone() {
-        return _accessDone.apply(this, arguments);
-      }
-
-      return accessDone;
-    }(),
-    addDivForm: function addDivForm() {
-      var _iteratorNormalCompletion20 = true;
-      var _didIteratorError20 = false;
-      var _iteratorError20 = undefined;
-
-      try {
-        for (var _iterator20 = this.division[Symbol.iterator](), _step20; !(_iteratorNormalCompletion20 = (_step20 = _iterator20.next()).done); _iteratorNormalCompletion20 = true) {
-          var div = _step20.value;
-
-          if (div.Id_Divisi_Role == this.divform.Id_Divisi_Role) {
-            this.divform.Nama = div.Deskripsi;
-            break;
-          }
-        }
-      } catch (err) {
-        _didIteratorError20 = true;
-        _iteratorError20 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion20 && _iterator20["return"] != null) {
-            _iterator20["return"]();
-          }
-        } finally {
-          if (_didIteratorError20) {
-            throw _iteratorError20;
-          }
-        }
-      }
-
-      if (this.editmode == true) {
-        this.divform.Id_Proyek = this.editProject.Id_Proyek;
-      }
-
-      this.divform.Total_Persentase = 0;
-      this.editProject.All_Divisi.push(this.divform);
-      this.editProject.Total_Persentase = parseInt(this.divform.Persentase) + parseInt(this.editProject.Total_Persentase);
-      this.divform = Object.assign({}, this.defaultdivform);
-    },
-    delDivForm: function delDivForm(index) {
-      var _this6 = this;
-
-      this.editProject.Total_Persentase = parseInt(this.editProject.Total_Persentase) - parseInt(index.Persentase);
-      var _iteratorNormalCompletion21 = true;
-      var _didIteratorError21 = false;
-      var _iteratorError21 = undefined;
-
-      try {
-        var _loop3 = function _loop3() {
-          var subdiv = _step21.value;
-          var _iteratorNormalCompletion22 = true;
-          var _didIteratorError22 = false;
-          var _iteratorError22 = undefined;
-
-          try {
-            var _loop4 = function _loop4() {
-              var task = _step22.value;
-              var _iteratorNormalCompletion23 = true;
-              var _didIteratorError23 = false;
-              var _iteratorError23 = undefined;
-
-              try {
-                for (var _iterator23 = _this6.editProject.All_SubTask.filter(function (obj) {
-                  return obj.Task === task.Nama;
-                })[Symbol.iterator](), _step23; !(_iteratorNormalCompletion23 = (_step23 = _iterator23.next()).done); _iteratorNormalCompletion23 = true) {
-                  var subtask = _step23.value;
-
-                  _this6.delProject.All_SubTask.push(subtask);
-
-                  _this6.editProject.All_SubTask.splice(_this6.editProject.All_SubTask.indexOf(subtask));
-                }
-              } catch (err) {
-                _didIteratorError23 = true;
-                _iteratorError23 = err;
-              } finally {
-                try {
-                  if (!_iteratorNormalCompletion23 && _iterator23["return"] != null) {
-                    _iterator23["return"]();
-                  }
-                } finally {
-                  if (_didIteratorError23) {
-                    throw _iteratorError23;
-                  }
-                }
-              }
-
-              _this6.delProject.All_Task.push(task);
-
-              _this6.editProject.All_Task.splice(_this6.editProject.All_Task.indexOf(task));
-            };
-
-            for (var _iterator22 = _this6.editProject.All_Task.filter(function (obj) {
-              return obj.Sub_Divisi === subdiv.Nama;
-            })[Symbol.iterator](), _step22; !(_iteratorNormalCompletion22 = (_step22 = _iterator22.next()).done); _iteratorNormalCompletion22 = true) {
-              _loop4();
-            }
-          } catch (err) {
-            _didIteratorError22 = true;
-            _iteratorError22 = err;
-          } finally {
-            try {
-              if (!_iteratorNormalCompletion22 && _iterator22["return"] != null) {
-                _iterator22["return"]();
-              }
-            } finally {
-              if (_didIteratorError22) {
-                throw _iteratorError22;
-              }
-            }
-          }
-
-          _this6.delProject.All_SubDivisi.push(subdiv);
-
-          _this6.editProject.All_SubDivisi.splice(_this6.editProject.All_SubDivisi.indexOf(subdiv));
-        };
-
-        for (var _iterator21 = this.editProject.All_SubDivisi.filter(function (obj) {
-          return obj.Divisi === index.Nama;
-        })[Symbol.iterator](), _step21; !(_iteratorNormalCompletion21 = (_step21 = _iterator21.next()).done); _iteratorNormalCompletion21 = true) {
-          _loop3();
-        }
-      } catch (err) {
         _didIteratorError21 = true;
         _iteratorError21 = err;
       } finally {
@@ -8865,129 +10519,202 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
 
-      this.delProject.All_Divisi.push(index);
-      this.editProject.All_Divisi.splice(this.editProject.All_Divisi.indexOf(index));
-      this.editProject.All_Divisi = _toConsumableArray(this.editProject.All_Divisi);
-      this.editProject.All_SubDivisi = _toConsumableArray(this.editProject.All_SubDivisi);
-      this.editProject.All_Task = _toConsumableArray(this.editProject.All_Task);
-      this.editProject.All_SubTask = _toConsumableArray(this.editProject.All_SubTask);
+      data.All_Divisi = alldivisi;
+      data.All_SubDivisi = allsubdivisi;
+      data.All_Task = alltask;
+      data.All_SubTask = allsubtask;
+      data.Total_Persentase = PersentaseProyek;
+      console.log(data);
     },
-    addSubDivForm: function addSubDivForm() {
-      var _this7 = this;
+    sendAccessRequest: function () {
+      var _sendAccessRequest = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        var payload, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                _context10.prev = 0;
+                payload = {
+                  Id_Akun: this.Id_Akun,
+                  Id_Sub_Item_Pekerjaan: this.editTask.Id_Sub_Item_Pekerjaan,
+                  Status: this.reqForm.Status,
+                  Deskripsi: this.reqForm.Deskripsi,
+                  Verifikasi: 'Unverified'
+                };
+                _context10.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addjobakses(payload);
 
-      this.subdivform.Total_Persentase = 0;
-      this.editProject.All_SubDivisi.push(this.subdivform);
-      var div = this.editProject.All_Divisi.filter(function (obj) {
-        return obj.Nama == _this7.subdivform.Divisi;
-      });
-      div[0].Total_Persentase = parseInt(this.subdivform.Persentase) + parseInt(div[0].Total_Persentase);
-      this.subdivform = Object.assign({}, this.defaultsubdivform);
-    },
-    delSubDivForm: function delSubDivForm(index) {
-      var _this8 = this;
+              case 4:
+                response = _context10.sent.data;
+                this.requestDialog = false;
+                this.showAlert('success', 'Sukses Mengirim Request');
+                _context10.next = 13;
+                break;
 
-      var div = this.editProject.All_Divisi.filter(function (obj) {
-        return obj.Nama == index.Divisi;
-      });
-      div[0].Total_Persentase = parseInt(div[0].Total_Persentase) - parseInt(index.Persentase);
-      var subdiv = this.editProject.All_SubDivisi.filter(function (obj) {
-        return obj.Nama === index.Nama;
-      });
-      var _iteratorNormalCompletion24 = true;
-      var _didIteratorError24 = false;
-      var _iteratorError24 = undefined;
+              case 9:
+                _context10.prev = 9;
+                _context10.t0 = _context10["catch"](0);
+                console.log(_context10.t0);
+                this.showAlert('error', 'Gagal Mengirim Request');
 
-      try {
-        var _loop5 = function _loop5() {
-          var task = _step24.value;
-          var _iteratorNormalCompletion25 = true;
-          var _didIteratorError25 = false;
-          var _iteratorError25 = undefined;
-
-          try {
-            for (var _iterator25 = _this8.editProject.All_SubTask.filter(function (obj) {
-              return obj.Task === task.Nama;
-            })[Symbol.iterator](), _step25; !(_iteratorNormalCompletion25 = (_step25 = _iterator25.next()).done); _iteratorNormalCompletion25 = true) {
-              var subtask = _step25.value;
-
-              _this8.delProject.All_SubTask.push(subtask);
-
-              _this8.editProject.All_SubTask.splice(_this8.editProject.All_SubTask.indexOf(subtask));
-            }
-          } catch (err) {
-            _didIteratorError25 = true;
-            _iteratorError25 = err;
-          } finally {
-            try {
-              if (!_iteratorNormalCompletion25 && _iterator25["return"] != null) {
-                _iterator25["return"]();
-              }
-            } finally {
-              if (_didIteratorError25) {
-                throw _iteratorError25;
-              }
+              case 13:
+              case "end":
+                return _context10.stop();
             }
           }
+        }, _callee8, this, [[0, 9]]);
+      }));
 
-          _this8.delProject.All_Task.push(task);
-
-          _this8.editProject.All_Task.splice(_this8.editProject.All_Task.indexOf(task));
-        };
-
-        for (var _iterator24 = this.editProject.All_Task.filter(function (obj) {
-          return obj.Sub_Divisi === subdiv.Nama;
-        })[Symbol.iterator](), _step24; !(_iteratorNormalCompletion24 = (_step24 = _iterator24.next()).done); _iteratorNormalCompletion24 = true) {
-          _loop5();
-        }
-      } catch (err) {
-        _didIteratorError24 = true;
-        _iteratorError24 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion24 && _iterator24["return"] != null) {
-            _iterator24["return"]();
-          }
-        } finally {
-          if (_didIteratorError24) {
-            throw _iteratorError24;
-          }
-        }
+      function sendAccessRequest() {
+        return _sendAccessRequest.apply(this, arguments);
       }
 
-      this.delProject.All_SubDivisi.push(index);
-      this.editProject.All_SubDivisi.splice(this.editProject.All_SubDivisi.indexOf(index), 1);
-      this.editProject.All_SubDivisi = _toConsumableArray(this.editProject.All_SubDivisi);
-    },
-    addTaskForm: function addTaskForm() {
-      var _this9 = this;
+      return sendAccessRequest;
+    }(),
+    uploadProgress: function () {
+      var _uploadProgress = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+        var _this9 = this;
 
-      this.taskform.Total_Persentase = 0;
-      this.editProject.All_Task.push(this.taskform);
-      var subdiv = this.editProject.All_SubDivisi.filter(function (obj) {
-        return obj.Nama == _this9.taskform.Sub_Divisi;
-      });
-      subdiv[0].Total_Persentase = parseInt(this.taskform.Persentase) + parseInt(subdiv[0].Total_Persentase);
-      this.taskform = Object.assign({}, this.defaulttaskform);
-    },
-    delTaskForm: function delTaskForm(index) {
-      var subdiv = this.editProject.All_SubDivisi.filter(function (obj) {
-        return obj.Nama == index.Sub_Divisi;
-      });
-      subdiv[0].Total_Persentase = parseInt(subdiv[0].Total_Persentase) - parseInt(index.Persentase);
-      var task = this.editProject.All_Task.filter(function (obj) {
-        return obj.Nama === index.Nama;
-      });
+        var payloadFile, pathfile, Id_Pengerjaan, payload, response, index;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context11) {
+          while (1) {
+            switch (_context11.prev = _context11.next) {
+              case 0:
+                _context11.prev = 0;
+                this.uploadProgressLoading = true;
+                payloadFile = new FormData();
+                payloadFile.append('Berkas', this.file);
+                payloadFile.append('Id_Akun', this.Id_Akun);
+                _context11.next = 7;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].uploadfile(payloadFile);
+
+              case 7:
+                pathfile = _context11.sent.data;
+                Id_Pengerjaan = this.editTask.Log_Pengerjaan.find(function (obj) {
+                  return obj.Id_Akun == _this9.Id_Akun && obj.Berkas == '';
+                }).Id_Log_Pengerjaan;
+                payload = {
+                  Progress: this.editTask.Progress,
+                  Catatan: this.editTask.Note,
+                  Berkas: pathfile
+                };
+                _context11.next = 12;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatelogpengerjaan(payload, Id_Pengerjaan);
+
+              case 12:
+                response = _context11.sent.data;
+
+                if (!(this.editTask.Total_Progress == 100)) {
+                  _context11.next = 18;
+                  break;
+                }
+
+                _context11.next = 16;
+                return this.accessDone();
+
+              case 16:
+                _context11.next = 20;
+                break;
+
+              case 18:
+                _context11.next = 20;
+                return this.duplicateEmptyLog();
+
+              case 20:
+                this.removefile();
+                index = this.editTask.Log_Pengerjaan.findIndex(function (obj) {
+                  return obj.Id_Log_Pengerjaan == response.Id_Log_Pengerjaan;
+                });
+                Object.assign(this.editTask.Log_Pengerjaan[index], response)(this.close().then(function () {
+                  _this9.uploadProgressLoading = false;
+                }));
+                this.showAlert('success', 'Sukses Upload Progress'); // this.uploadProgressLoading=false;
+
+                _context11.next = 30;
+                break;
+
+              case 26:
+                _context11.prev = 26;
+                _context11.t0 = _context11["catch"](0);
+                console.log(_context11.t0);
+                this.showAlert('error', 'Gagal Upload Progress'); // this.uploadProgressLoading=false;
+
+              case 30:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee9, this, [[0, 26]]);
+      }));
+
+      function uploadProgress() {
+        return _uploadProgress.apply(this, arguments);
+      }
+
+      return uploadProgress;
+    }(),
+    accessDone: function () {
+      var _accessDone = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+        var payload, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context12) {
+          while (1) {
+            switch (_context12.prev = _context12.next) {
+              case 0:
+                _context12.prev = 0;
+                payload = {
+                  Verifikasi: 'Done'
+                };
+                _context12.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatejobakses(payload, this.editTask.Id_Akses);
+
+              case 4:
+                response = _context12.sent;
+                console.log(response);
+                _context12.next = 8;
+                return this.getProject();
+
+              case 8:
+                _context12.next = 13;
+                break;
+
+              case 10:
+                _context12.prev = 10;
+                _context12.t0 = _context12["catch"](0);
+                this.showAlert('error', 'Gagal Verifikasi');
+
+              case 13:
+              case "end":
+                return _context12.stop();
+            }
+          }
+        }, _callee10, this, [[0, 10]]);
+      }));
+
+      function accessDone() {
+        return _accessDone.apply(this, arguments);
+      }
+
+      return accessDone;
+    }(),
+    addDivForm: function addDivForm() {
       var _iteratorNormalCompletion26 = true;
       var _didIteratorError26 = false;
       var _iteratorError26 = undefined;
 
       try {
-        for (var _iterator26 = this.editProject.All_SubTask.filter(function (obj) {
-          return obj.Task === task.Nama;
-        })[Symbol.iterator](), _step26; !(_iteratorNormalCompletion26 = (_step26 = _iterator26.next()).done); _iteratorNormalCompletion26 = true) {
-          var subtask = _step26.value;
-          this.delProject.All_SubTask.push(subtask);
-          this.editProject.All_SubTask.splice(this.editProject.All_SubTask.indexOf(subtask));
+        for (var _iterator26 = this.division[Symbol.iterator](), _step26; !(_iteratorNormalCompletion26 = (_step26 = _iterator26.next()).done); _iteratorNormalCompletion26 = true) {
+          var div = _step26.value;
+
+          if (div.Id_Divisi_Role == this.divform.Id_Divisi_Role) {
+            this.divform.Nama = div.Deskripsi;
+            break;
+          }
         }
       } catch (err) {
         _didIteratorError26 = true;
@@ -9004,17 +10731,264 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
 
+      if (this.editmode == true) {
+        this.divform.Id_Proyek = this.editProject.Id_Proyek;
+      }
+
+      this.divform.Total_Persentase = 0;
+      this.editProject.All_Divisi.push(this.divform);
+      this.editProject.Total_Persentase = parseInt(this.divform.Persentase) + parseInt(this.editProject.Total_Persentase);
+      this.divform = Object.assign({}, this.defaultdivform);
+    },
+    delDivForm: function delDivForm(index) {
+      var _this10 = this;
+
+      this.editProject.Total_Persentase = parseInt(this.editProject.Total_Persentase) - parseInt(index.Persentase);
+      var _iteratorNormalCompletion27 = true;
+      var _didIteratorError27 = false;
+      var _iteratorError27 = undefined;
+
+      try {
+        var _loop5 = function _loop5() {
+          var subdiv = _step27.value;
+          var _iteratorNormalCompletion28 = true;
+          var _didIteratorError28 = false;
+          var _iteratorError28 = undefined;
+
+          try {
+            var _loop6 = function _loop6() {
+              var task = _step28.value;
+              var _iteratorNormalCompletion29 = true;
+              var _didIteratorError29 = false;
+              var _iteratorError29 = undefined;
+
+              try {
+                for (var _iterator29 = _this10.editProject.All_SubTask.filter(function (obj) {
+                  return obj.Task === task.Nama;
+                })[Symbol.iterator](), _step29; !(_iteratorNormalCompletion29 = (_step29 = _iterator29.next()).done); _iteratorNormalCompletion29 = true) {
+                  var subtask = _step29.value;
+
+                  _this10.delProject.All_SubTask.push(subtask);
+
+                  _this10.editProject.All_SubTask.splice(_this10.editProject.All_SubTask.indexOf(subtask));
+                }
+              } catch (err) {
+                _didIteratorError29 = true;
+                _iteratorError29 = err;
+              } finally {
+                try {
+                  if (!_iteratorNormalCompletion29 && _iterator29["return"] != null) {
+                    _iterator29["return"]();
+                  }
+                } finally {
+                  if (_didIteratorError29) {
+                    throw _iteratorError29;
+                  }
+                }
+              }
+
+              _this10.delProject.All_Task.push(task);
+
+              _this10.editProject.All_Task.splice(_this10.editProject.All_Task.indexOf(task));
+            };
+
+            for (var _iterator28 = _this10.editProject.All_Task.filter(function (obj) {
+              return obj.Sub_Divisi === subdiv.Nama;
+            })[Symbol.iterator](), _step28; !(_iteratorNormalCompletion28 = (_step28 = _iterator28.next()).done); _iteratorNormalCompletion28 = true) {
+              _loop6();
+            }
+          } catch (err) {
+            _didIteratorError28 = true;
+            _iteratorError28 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion28 && _iterator28["return"] != null) {
+                _iterator28["return"]();
+              }
+            } finally {
+              if (_didIteratorError28) {
+                throw _iteratorError28;
+              }
+            }
+          }
+
+          _this10.delProject.All_SubDivisi.push(subdiv);
+
+          _this10.editProject.All_SubDivisi.splice(_this10.editProject.All_SubDivisi.indexOf(subdiv));
+        };
+
+        for (var _iterator27 = this.editProject.All_SubDivisi.filter(function (obj) {
+          return obj.Divisi === index.Nama;
+        })[Symbol.iterator](), _step27; !(_iteratorNormalCompletion27 = (_step27 = _iterator27.next()).done); _iteratorNormalCompletion27 = true) {
+          _loop5();
+        }
+      } catch (err) {
+        _didIteratorError27 = true;
+        _iteratorError27 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion27 && _iterator27["return"] != null) {
+            _iterator27["return"]();
+          }
+        } finally {
+          if (_didIteratorError27) {
+            throw _iteratorError27;
+          }
+        }
+      }
+
+      this.delProject.All_Divisi.push(index);
+      this.editProject.All_Divisi.splice(this.editProject.All_Divisi.indexOf(index));
+      this.editProject.All_Divisi = _toConsumableArray(this.editProject.All_Divisi);
+      this.editProject.All_SubDivisi = _toConsumableArray(this.editProject.All_SubDivisi);
+      this.editProject.All_Task = _toConsumableArray(this.editProject.All_Task);
+      this.editProject.All_SubTask = _toConsumableArray(this.editProject.All_SubTask);
+    },
+    addSubDivForm: function addSubDivForm() {
+      var _this11 = this;
+
+      this.subdivform.Total_Persentase = 0;
+      this.editProject.All_SubDivisi.push(this.subdivform);
+      var div = this.editProject.All_Divisi.filter(function (obj) {
+        return obj.Nama == _this11.subdivform.Divisi;
+      });
+      div[0].Total_Persentase = parseInt(this.subdivform.Persentase) + parseInt(div[0].Total_Persentase);
+      this.subdivform = Object.assign({}, this.defaultsubdivform);
+    },
+    delSubDivForm: function delSubDivForm(index) {
+      var _this12 = this;
+
+      var div = this.editProject.All_Divisi.filter(function (obj) {
+        return obj.Nama == index.Divisi;
+      });
+      div[0].Total_Persentase = parseInt(div[0].Total_Persentase) - parseInt(index.Persentase);
+      var subdiv = this.editProject.All_SubDivisi.filter(function (obj) {
+        return obj.Nama === index.Nama;
+      });
+      var _iteratorNormalCompletion30 = true;
+      var _didIteratorError30 = false;
+      var _iteratorError30 = undefined;
+
+      try {
+        var _loop7 = function _loop7() {
+          var task = _step30.value;
+          var _iteratorNormalCompletion31 = true;
+          var _didIteratorError31 = false;
+          var _iteratorError31 = undefined;
+
+          try {
+            for (var _iterator31 = _this12.editProject.All_SubTask.filter(function (obj) {
+              return obj.Task === task.Nama;
+            })[Symbol.iterator](), _step31; !(_iteratorNormalCompletion31 = (_step31 = _iterator31.next()).done); _iteratorNormalCompletion31 = true) {
+              var subtask = _step31.value;
+
+              _this12.delProject.All_SubTask.push(subtask);
+
+              _this12.editProject.All_SubTask.splice(_this12.editProject.All_SubTask.indexOf(subtask));
+            }
+          } catch (err) {
+            _didIteratorError31 = true;
+            _iteratorError31 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion31 && _iterator31["return"] != null) {
+                _iterator31["return"]();
+              }
+            } finally {
+              if (_didIteratorError31) {
+                throw _iteratorError31;
+              }
+            }
+          }
+
+          _this12.delProject.All_Task.push(task);
+
+          _this12.editProject.All_Task.splice(_this12.editProject.All_Task.indexOf(task));
+        };
+
+        for (var _iterator30 = this.editProject.All_Task.filter(function (obj) {
+          return obj.Sub_Divisi === subdiv.Nama;
+        })[Symbol.iterator](), _step30; !(_iteratorNormalCompletion30 = (_step30 = _iterator30.next()).done); _iteratorNormalCompletion30 = true) {
+          _loop7();
+        }
+      } catch (err) {
+        _didIteratorError30 = true;
+        _iteratorError30 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion30 && _iterator30["return"] != null) {
+            _iterator30["return"]();
+          }
+        } finally {
+          if (_didIteratorError30) {
+            throw _iteratorError30;
+          }
+        }
+      }
+
+      this.delProject.All_SubDivisi.push(index);
+      this.editProject.All_SubDivisi.splice(this.editProject.All_SubDivisi.indexOf(index), 1);
+      this.editProject.All_SubDivisi = _toConsumableArray(this.editProject.All_SubDivisi);
+    },
+    addTaskForm: function addTaskForm() {
+      var _this13 = this;
+
+      this.editProject.All_Task.push(this.taskform);
+      var subdiv = this.editProject.All_SubDivisi.filter(function (obj) {
+        return obj.Nama == _this13.taskform.Sub_Divisi;
+      });
+      subdiv[0].Total_Persentase = parseInt(this.taskform.Persentase) + parseInt(subdiv[0].Total_Persentase);
+      this.taskform = Object.assign({}, this.defaulttaskform);
+    },
+    delTaskForm: function delTaskForm(index) {
+      var subdiv = this.editProject.All_SubDivisi.filter(function (obj) {
+        return obj.Nama == index.Sub_Divisi;
+      });
+      subdiv[0].Total_Persentase = parseInt(subdiv[0].Total_Persentase) - parseInt(index.Persentase);
+      var task = this.editProject.All_Task.filter(function (obj) {
+        return obj.Nama === index.Nama;
+      });
+      var _iteratorNormalCompletion32 = true;
+      var _didIteratorError32 = false;
+      var _iteratorError32 = undefined;
+
+      try {
+        for (var _iterator32 = this.editProject.All_SubTask.filter(function (obj) {
+          return obj.Task === task.Nama;
+        })[Symbol.iterator](), _step32; !(_iteratorNormalCompletion32 = (_step32 = _iterator32.next()).done); _iteratorNormalCompletion32 = true) {
+          var subtask = _step32.value;
+          this.delProject.All_SubTask.push(subtask);
+          this.editProject.All_SubTask.splice(this.editProject.All_SubTask.indexOf(subtask));
+        }
+      } catch (err) {
+        _didIteratorError32 = true;
+        _iteratorError32 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion32 && _iterator32["return"] != null) {
+            _iterator32["return"]();
+          }
+        } finally {
+          if (_didIteratorError32) {
+            throw _iteratorError32;
+          }
+        }
+      }
+
       this.delProject.All_Task.push(index);
       this.editProject.All_Task.splice(this.editProject.All_Task.indexOf(index), 1);
       this.editProject.All_Task = _toConsumableArray(this.editProject.All_Task);
     },
     addSubTaskForm: function addSubTaskForm() {
-      var _this10 = this;
+      var _this14 = this;
 
-      this.editProject.All_SubTask.push(this.subtaskform); // console.log(task)
-
+      // this.editProject.Prestasi_Kerja = 0
+      var today = new Date().getTime();
+      var target = new Date(this.subtaskform.Tanggal_Selesai).getTime();
+      var remaining = parseInt((target - today) / (24 * 3600 * 1000));
+      if (remaining) this.editProject.All_SubTask.push(this.subtaskform);
       var task = this.editProject.All_Task.filter(function (obj) {
-        return obj.Nama == _this10.subtaskform.Task;
+        return obj.Nama == _this14.subtaskform.Task;
       });
       console.log(task);
       task[0].Total_Persentase = parseInt(this.subtaskform.Persentase) + parseInt(task[0].Total_Persentase);
@@ -9049,287 +11023,287 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     detailProjectDialog: function () {
       var _detailProjectDialog = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(project) {
-        var _this11 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11(project) {
+        var _this15 = this;
 
-        var _iteratorNormalCompletion27, _didIteratorError27, _iteratorError27, _iterator27, _step27, subtask, _iteratorNormalCompletion28, _didIteratorError28, _iteratorError28, _loop6, _iterator28, _step28, _iteratorNormalCompletion29, _didIteratorError29, _iteratorError29, _loop7, _iterator29, _step29, _iteratorNormalCompletion30, _didIteratorError30, _iteratorError30, _loop8, _iterator30, _step30, PCDatas, Names, PCLogPengerjaan, _iteratorNormalCompletion31, _didIteratorError31, _iteratorError31, _iterator31, _step31, log, Data, subtasks, id_subtasks, id_subtask, index, isNew, logs, dataTask, _iteratorNormalCompletion32, _didIteratorError32, _iteratorError32, _iterator32, _step32, _log, subtasklen, Tasks, Task, Contribute, _i, _PCDatas, PCData, _loop9, _i2, _subtasks, TContribute, SDContribute, DContribute, PersentaseTask, PersentaseSubDivisi, PersentaseDivisi, PersentaseProyek, _i3, _PCDatas2, _PCData, _iteratorNormalCompletion36, _didIteratorError36, _iteratorError36, _loop10, _iterator36, _step36;
+        var _iteratorNormalCompletion33, _didIteratorError33, _iteratorError33, _iterator33, _step33, subtask, _iteratorNormalCompletion34, _didIteratorError34, _iteratorError34, _loop8, _iterator34, _step34, _iteratorNormalCompletion35, _didIteratorError35, _iteratorError35, _loop9, _iterator35, _step35, _iteratorNormalCompletion36, _didIteratorError36, _iteratorError36, _loop10, _iterator36, _step36, PCDatas, Names, PCLogPengerjaan, _iteratorNormalCompletion37, _didIteratorError37, _iteratorError37, _iterator37, _step37, log, Data, subtasks, id_subtasks, id_subtask, index, isNew, logs, dataTask, _iteratorNormalCompletion38, _didIteratorError38, _iteratorError38, _iterator38, _step38, _log, subtasklen, Tasks, Task, Contribute, _i, _PCDatas, PCData, _loop11, _i2, _subtasks, TContribute, SDContribute, DContribute, PersentaseTask, PersentaseSubDivisi, PersentaseDivisi, PersentaseProyek, _i3, _PCDatas2, _PCData, _iteratorNormalCompletion42, _didIteratorError42, _iteratorError42, _loop12, _iterator42, _step42;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context11) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context13) {
           while (1) {
-            switch (_context11.prev = _context11.next) {
+            switch (_context13.prev = _context13.next) {
               case 0:
                 this.detailProject = Object.assign({}, project);
                 this.detailProject.Remaining = parseInt((new Date(this.detailProject.Target_Outcome).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left';
                 this.detailProject.Total_Progress = 0;
-                _iteratorNormalCompletion27 = true;
-                _didIteratorError27 = false;
-                _iteratorError27 = undefined;
-                _context11.prev = 6;
+                _iteratorNormalCompletion33 = true;
+                _didIteratorError33 = false;
+                _iteratorError33 = undefined;
+                _context13.prev = 6;
 
-                for (_iterator27 = this.detailProject.All_SubTask[Symbol.iterator](); !(_iteratorNormalCompletion27 = (_step27 = _iterator27.next()).done); _iteratorNormalCompletion27 = true) {
-                  subtask = _step27.value;
+                for (_iterator33 = this.detailProject.All_SubTask[Symbol.iterator](); !(_iteratorNormalCompletion33 = (_step33 = _iterator33.next()).done); _iteratorNormalCompletion33 = true) {
+                  subtask = _step33.value;
                   subtask.Remaining = parseInt((new Date(subtask.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left';
                 }
 
-                _context11.next = 14;
+                _context13.next = 14;
                 break;
 
               case 10:
-                _context11.prev = 10;
-                _context11.t0 = _context11["catch"](6);
-                _didIteratorError27 = true;
-                _iteratorError27 = _context11.t0;
+                _context13.prev = 10;
+                _context13.t0 = _context13["catch"](6);
+                _didIteratorError33 = true;
+                _iteratorError33 = _context13.t0;
 
               case 14:
-                _context11.prev = 14;
-                _context11.prev = 15;
+                _context13.prev = 14;
+                _context13.prev = 15;
 
-                if (!_iteratorNormalCompletion27 && _iterator27["return"] != null) {
-                  _iterator27["return"]();
+                if (!_iteratorNormalCompletion33 && _iterator33["return"] != null) {
+                  _iterator33["return"]();
                 }
 
               case 17:
-                _context11.prev = 17;
+                _context13.prev = 17;
 
-                if (!_didIteratorError27) {
-                  _context11.next = 20;
+                if (!_didIteratorError33) {
+                  _context13.next = 20;
                   break;
                 }
 
-                throw _iteratorError27;
+                throw _iteratorError33;
 
               case 20:
-                return _context11.finish(17);
+                return _context13.finish(17);
 
               case 21:
-                return _context11.finish(14);
+                return _context13.finish(14);
 
               case 22:
-                _iteratorNormalCompletion28 = true;
-                _didIteratorError28 = false;
-                _iteratorError28 = undefined;
-                _context11.prev = 25;
+                _iteratorNormalCompletion34 = true;
+                _didIteratorError34 = false;
+                _iteratorError34 = undefined;
+                _context13.prev = 25;
 
-                _loop6 = function _loop6() {
-                  var task = _step28.value;
+                _loop8 = function _loop8() {
+                  var task = _step34.value;
                   task.Remaining = parseInt((new Date(task.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left';
                   task.Total_Progress = 0;
-                  var _iteratorNormalCompletion33 = true;
-                  var _didIteratorError33 = false;
-                  var _iteratorError33 = undefined;
+                  var _iteratorNormalCompletion39 = true;
+                  var _didIteratorError39 = false;
+                  var _iteratorError39 = undefined;
 
                   try {
-                    for (var _iterator33 = _this11.detailProject.All_SubTask.filter(function (obj) {
+                    for (var _iterator39 = _this15.detailProject.All_SubTask.filter(function (obj) {
                       return obj.Task == task.Nama;
-                    })[Symbol.iterator](), _step33; !(_iteratorNormalCompletion33 = (_step33 = _iterator33.next()).done); _iteratorNormalCompletion33 = true) {
-                      var _subtask = _step33.value;
+                    })[Symbol.iterator](), _step39; !(_iteratorNormalCompletion39 = (_step39 = _iterator39.next()).done); _iteratorNormalCompletion39 = true) {
+                      var _subtask = _step39.value;
                       task.Total_Progress += _subtask.Total_Progress * _subtask.Persentase / 100;
                     } // task.Progress= await Controller.getProgressItem(task.Id_Item_Pekerjaan)
 
                   } catch (err) {
-                    _didIteratorError33 = true;
-                    _iteratorError33 = err;
+                    _didIteratorError39 = true;
+                    _iteratorError39 = err;
                   } finally {
                     try {
-                      if (!_iteratorNormalCompletion33 && _iterator33["return"] != null) {
-                        _iterator33["return"]();
+                      if (!_iteratorNormalCompletion39 && _iterator39["return"] != null) {
+                        _iterator39["return"]();
                       }
                     } finally {
-                      if (_didIteratorError33) {
-                        throw _iteratorError33;
+                      if (_didIteratorError39) {
+                        throw _iteratorError39;
                       }
                     }
                   }
                 };
 
-                for (_iterator28 = this.detailProject.All_Task[Symbol.iterator](); !(_iteratorNormalCompletion28 = (_step28 = _iterator28.next()).done); _iteratorNormalCompletion28 = true) {
-                  _loop6();
-                }
-
-                _context11.next = 34;
-                break;
-
-              case 30:
-                _context11.prev = 30;
-                _context11.t1 = _context11["catch"](25);
-                _didIteratorError28 = true;
-                _iteratorError28 = _context11.t1;
-
-              case 34:
-                _context11.prev = 34;
-                _context11.prev = 35;
-
-                if (!_iteratorNormalCompletion28 && _iterator28["return"] != null) {
-                  _iterator28["return"]();
-                }
-
-              case 37:
-                _context11.prev = 37;
-
-                if (!_didIteratorError28) {
-                  _context11.next = 40;
-                  break;
-                }
-
-                throw _iteratorError28;
-
-              case 40:
-                return _context11.finish(37);
-
-              case 41:
-                return _context11.finish(34);
-
-              case 42:
-                _iteratorNormalCompletion29 = true;
-                _didIteratorError29 = false;
-                _iteratorError29 = undefined;
-                _context11.prev = 45;
-
-                _loop7 = function _loop7() {
-                  var subdiv = _step29.value;
-                  subdiv.Remaining = parseInt((new Date(subdiv.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // subdiv.Progress= await Controller.getProgressSubDivisi(subdiv.Id_Sub_Divisi_Proyek)
-
-                  subdiv.Total_Progress = 0;
-                  var _iteratorNormalCompletion34 = true;
-                  var _didIteratorError34 = false;
-                  var _iteratorError34 = undefined;
-
-                  try {
-                    for (var _iterator34 = _this11.detailProject.All_Task.filter(function (obj) {
-                      return obj.Sub_Divisi == subdiv.Nama;
-                    })[Symbol.iterator](), _step34; !(_iteratorNormalCompletion34 = (_step34 = _iterator34.next()).done); _iteratorNormalCompletion34 = true) {
-                      var _task3 = _step34.value;
-                      subdiv.Total_Progress += _task3.Total_Progress * _task3.Persentase / 100;
-                    }
-                  } catch (err) {
-                    _didIteratorError34 = true;
-                    _iteratorError34 = err;
-                  } finally {
-                    try {
-                      if (!_iteratorNormalCompletion34 && _iterator34["return"] != null) {
-                        _iterator34["return"]();
-                      }
-                    } finally {
-                      if (_didIteratorError34) {
-                        throw _iteratorError34;
-                      }
-                    }
-                  }
-                };
-
-                for (_iterator29 = this.detailProject.All_SubDivisi[Symbol.iterator](); !(_iteratorNormalCompletion29 = (_step29 = _iterator29.next()).done); _iteratorNormalCompletion29 = true) {
-                  _loop7();
-                }
-
-                _context11.next = 54;
-                break;
-
-              case 50:
-                _context11.prev = 50;
-                _context11.t2 = _context11["catch"](45);
-                _didIteratorError29 = true;
-                _iteratorError29 = _context11.t2;
-
-              case 54:
-                _context11.prev = 54;
-                _context11.prev = 55;
-
-                if (!_iteratorNormalCompletion29 && _iterator29["return"] != null) {
-                  _iterator29["return"]();
-                }
-
-              case 57:
-                _context11.prev = 57;
-
-                if (!_didIteratorError29) {
-                  _context11.next = 60;
-                  break;
-                }
-
-                throw _iteratorError29;
-
-              case 60:
-                return _context11.finish(57);
-
-              case 61:
-                return _context11.finish(54);
-
-              case 62:
-                _iteratorNormalCompletion30 = true;
-                _didIteratorError30 = false;
-                _iteratorError30 = undefined;
-                _context11.prev = 65;
-
-                _loop8 = function _loop8() {
-                  var div = _step30.value;
-                  div.Remaining = parseInt((new Date(div.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // div.Progress= await Controller.getProgressDivisi(div.Id_Divisi_Proyek)
-
-                  div.Total_Progress = 0;
-                  var _iteratorNormalCompletion35 = true;
-                  var _didIteratorError35 = false;
-                  var _iteratorError35 = undefined;
-
-                  try {
-                    for (var _iterator35 = _this11.detailProject.All_SubDivisi.filter(function (obj) {
-                      return obj.Divisi == div.Nama;
-                    })[Symbol.iterator](), _step35; !(_iteratorNormalCompletion35 = (_step35 = _iterator35.next()).done); _iteratorNormalCompletion35 = true) {
-                      var subdiv = _step35.value;
-                      div.Total_Progress += subdiv.Total_Progress * subdiv.Persentase / 100;
-                    }
-                  } catch (err) {
-                    _didIteratorError35 = true;
-                    _iteratorError35 = err;
-                  } finally {
-                    try {
-                      if (!_iteratorNormalCompletion35 && _iterator35["return"] != null) {
-                        _iterator35["return"]();
-                      }
-                    } finally {
-                      if (_didIteratorError35) {
-                        throw _iteratorError35;
-                      }
-                    }
-                  }
-
-                  _this11.detailProject.Total_Progress += div.Total_Progress * div.Persentase / 100;
-                };
-
-                for (_iterator30 = this.detailProject.All_Divisi[Symbol.iterator](); !(_iteratorNormalCompletion30 = (_step30 = _iterator30.next()).done); _iteratorNormalCompletion30 = true) {
+                for (_iterator34 = this.detailProject.All_Task[Symbol.iterator](); !(_iteratorNormalCompletion34 = (_step34 = _iterator34.next()).done); _iteratorNormalCompletion34 = true) {
                   _loop8();
                 }
 
-                _context11.next = 74;
+                _context13.next = 34;
                 break;
 
-              case 70:
-                _context11.prev = 70;
-                _context11.t3 = _context11["catch"](65);
-                _didIteratorError30 = true;
-                _iteratorError30 = _context11.t3;
+              case 30:
+                _context13.prev = 30;
+                _context13.t1 = _context13["catch"](25);
+                _didIteratorError34 = true;
+                _iteratorError34 = _context13.t1;
 
-              case 74:
-                _context11.prev = 74;
-                _context11.prev = 75;
+              case 34:
+                _context13.prev = 34;
+                _context13.prev = 35;
 
-                if (!_iteratorNormalCompletion30 && _iterator30["return"] != null) {
-                  _iterator30["return"]();
+                if (!_iteratorNormalCompletion34 && _iterator34["return"] != null) {
+                  _iterator34["return"]();
                 }
 
-              case 77:
-                _context11.prev = 77;
+              case 37:
+                _context13.prev = 37;
 
-                if (!_didIteratorError30) {
-                  _context11.next = 80;
+                if (!_didIteratorError34) {
+                  _context13.next = 40;
                   break;
                 }
 
-                throw _iteratorError30;
+                throw _iteratorError34;
+
+              case 40:
+                return _context13.finish(37);
+
+              case 41:
+                return _context13.finish(34);
+
+              case 42:
+                _iteratorNormalCompletion35 = true;
+                _didIteratorError35 = false;
+                _iteratorError35 = undefined;
+                _context13.prev = 45;
+
+                _loop9 = function _loop9() {
+                  var subdiv = _step35.value;
+                  subdiv.Remaining = parseInt((new Date(subdiv.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // subdiv.Progress= await Controller.getProgressSubDivisi(subdiv.Id_Sub_Divisi_Proyek)
+
+                  subdiv.Total_Progress = 0;
+                  var _iteratorNormalCompletion40 = true;
+                  var _didIteratorError40 = false;
+                  var _iteratorError40 = undefined;
+
+                  try {
+                    for (var _iterator40 = _this15.detailProject.All_Task.filter(function (obj) {
+                      return obj.Sub_Divisi == subdiv.Nama;
+                    })[Symbol.iterator](), _step40; !(_iteratorNormalCompletion40 = (_step40 = _iterator40.next()).done); _iteratorNormalCompletion40 = true) {
+                      var _task3 = _step40.value;
+                      subdiv.Total_Progress += _task3.Total_Progress * _task3.Persentase / 100;
+                    }
+                  } catch (err) {
+                    _didIteratorError40 = true;
+                    _iteratorError40 = err;
+                  } finally {
+                    try {
+                      if (!_iteratorNormalCompletion40 && _iterator40["return"] != null) {
+                        _iterator40["return"]();
+                      }
+                    } finally {
+                      if (_didIteratorError40) {
+                        throw _iteratorError40;
+                      }
+                    }
+                  }
+                };
+
+                for (_iterator35 = this.detailProject.All_SubDivisi[Symbol.iterator](); !(_iteratorNormalCompletion35 = (_step35 = _iterator35.next()).done); _iteratorNormalCompletion35 = true) {
+                  _loop9();
+                }
+
+                _context13.next = 54;
+                break;
+
+              case 50:
+                _context13.prev = 50;
+                _context13.t2 = _context13["catch"](45);
+                _didIteratorError35 = true;
+                _iteratorError35 = _context13.t2;
+
+              case 54:
+                _context13.prev = 54;
+                _context13.prev = 55;
+
+                if (!_iteratorNormalCompletion35 && _iterator35["return"] != null) {
+                  _iterator35["return"]();
+                }
+
+              case 57:
+                _context13.prev = 57;
+
+                if (!_didIteratorError35) {
+                  _context13.next = 60;
+                  break;
+                }
+
+                throw _iteratorError35;
+
+              case 60:
+                return _context13.finish(57);
+
+              case 61:
+                return _context13.finish(54);
+
+              case 62:
+                _iteratorNormalCompletion36 = true;
+                _didIteratorError36 = false;
+                _iteratorError36 = undefined;
+                _context13.prev = 65;
+
+                _loop10 = function _loop10() {
+                  var div = _step36.value;
+                  div.Remaining = parseInt((new Date(div.Tanggal_Selesai).getTime() - new Date().getTime()) / (24 * 3600 * 1000)) + ' days left'; // div.Progress= await Controller.getProgressDivisi(div.Id_Divisi_Proyek)
+
+                  div.Total_Progress = 0;
+                  var _iteratorNormalCompletion41 = true;
+                  var _didIteratorError41 = false;
+                  var _iteratorError41 = undefined;
+
+                  try {
+                    for (var _iterator41 = _this15.detailProject.All_SubDivisi.filter(function (obj) {
+                      return obj.Divisi == div.Nama;
+                    })[Symbol.iterator](), _step41; !(_iteratorNormalCompletion41 = (_step41 = _iterator41.next()).done); _iteratorNormalCompletion41 = true) {
+                      var subdiv = _step41.value;
+                      div.Total_Progress += subdiv.Total_Progress * subdiv.Persentase / 100;
+                    }
+                  } catch (err) {
+                    _didIteratorError41 = true;
+                    _iteratorError41 = err;
+                  } finally {
+                    try {
+                      if (!_iteratorNormalCompletion41 && _iterator41["return"] != null) {
+                        _iterator41["return"]();
+                      }
+                    } finally {
+                      if (_didIteratorError41) {
+                        throw _iteratorError41;
+                      }
+                    }
+                  }
+
+                  _this15.detailProject.Total_Progress += div.Total_Progress * div.Persentase / 100;
+                };
+
+                for (_iterator36 = this.detailProject.All_Divisi[Symbol.iterator](); !(_iteratorNormalCompletion36 = (_step36 = _iterator36.next()).done); _iteratorNormalCompletion36 = true) {
+                  _loop10();
+                }
+
+                _context13.next = 74;
+                break;
+
+              case 70:
+                _context13.prev = 70;
+                _context13.t3 = _context13["catch"](65);
+                _didIteratorError36 = true;
+                _iteratorError36 = _context13.t3;
+
+              case 74:
+                _context13.prev = 74;
+                _context13.prev = 75;
+
+                if (!_iteratorNormalCompletion36 && _iterator36["return"] != null) {
+                  _iterator36["return"]();
+                }
+
+              case 77:
+                _context13.prev = 77;
+
+                if (!_didIteratorError36) {
+                  _context13.next = 80;
+                  break;
+                }
+
+                throw _iteratorError36;
 
               case 80:
-                return _context11.finish(77);
+                return _context13.finish(77);
 
               case 81:
-                return _context11.finish(74);
+                return _context13.finish(74);
 
               case 82:
                 this.detailDialog = true; // PROJECT CONTRIBUTOR,
@@ -9345,13 +11319,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   return a['Id_Sub_Item_Pekerjaan'] < b['Id_Sub_Item_Pekerjaan'] ? -1 : 1;
                 }); //mengambil data nama dan divisi dari karyawan yang melakukan kontribusi
 
-                _iteratorNormalCompletion31 = true;
-                _didIteratorError31 = false;
-                _iteratorError31 = undefined;
-                _context11.prev = 90;
+                _iteratorNormalCompletion37 = true;
+                _didIteratorError37 = false;
+                _iteratorError37 = undefined;
+                _context13.prev = 90;
 
-                for (_iterator31 = PCLogPengerjaan[Symbol.iterator](); !(_iteratorNormalCompletion31 = (_step31 = _iterator31.next()).done); _iteratorNormalCompletion31 = true) {
-                  log = _step31.value;
+                for (_iterator37 = PCLogPengerjaan[Symbol.iterator](); !(_iteratorNormalCompletion37 = (_step37 = _iterator37.next()).done); _iteratorNormalCompletion37 = true) {
+                  log = _step37.value;
 
                   if (Names.indexOf(log.Nama) === -1) {
                     Data = {
@@ -9366,38 +11340,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   }
                 }
 
-                _context11.next = 98;
+                _context13.next = 98;
                 break;
 
               case 94:
-                _context11.prev = 94;
-                _context11.t4 = _context11["catch"](90);
-                _didIteratorError31 = true;
-                _iteratorError31 = _context11.t4;
+                _context13.prev = 94;
+                _context13.t4 = _context13["catch"](90);
+                _didIteratorError37 = true;
+                _iteratorError37 = _context13.t4;
 
               case 98:
-                _context11.prev = 98;
-                _context11.prev = 99;
+                _context13.prev = 98;
+                _context13.prev = 99;
 
-                if (!_iteratorNormalCompletion31 && _iterator31["return"] != null) {
-                  _iterator31["return"]();
+                if (!_iteratorNormalCompletion37 && _iterator37["return"] != null) {
+                  _iterator37["return"]();
                 }
 
               case 101:
-                _context11.prev = 101;
+                _context13.prev = 101;
 
-                if (!_didIteratorError31) {
-                  _context11.next = 104;
+                if (!_didIteratorError37) {
+                  _context13.next = 104;
                   break;
                 }
 
-                throw _iteratorError31;
+                throw _iteratorError37;
 
               case 104:
-                return _context11.finish(101);
+                return _context13.finish(101);
 
               case 105:
-                return _context11.finish(98);
+                return _context13.finish(98);
 
               case 106:
                 subtasks = [];
@@ -9414,13 +11388,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Contribute: 0,
                   Logs: []
                 };
-                _iteratorNormalCompletion32 = true;
-                _didIteratorError32 = false;
-                _iteratorError32 = undefined;
-                _context11.prev = 116;
+                _iteratorNormalCompletion38 = true;
+                _didIteratorError38 = false;
+                _iteratorError38 = undefined;
+                _context13.prev = 116;
 
-                for (_iterator32 = PCLogPengerjaan[Symbol.iterator](); !(_iteratorNormalCompletion32 = (_step32 = _iterator32.next()).done); _iteratorNormalCompletion32 = true) {
-                  _log = _step32.value;
+                for (_iterator38 = PCLogPengerjaan[Symbol.iterator](); !(_iteratorNormalCompletion38 = (_step38 = _iterator38.next()).done); _iteratorNormalCompletion38 = true) {
+                  _log = _step38.value;
                   index = id_subtasks.indexOf(_log.Id_Sub_Item_Pekerjaan);
 
                   if (index === -1) {
@@ -9450,38 +11424,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   }
                 }
 
-                _context11.next = 124;
+                _context13.next = 124;
                 break;
 
               case 120:
-                _context11.prev = 120;
-                _context11.t5 = _context11["catch"](116);
-                _didIteratorError32 = true;
-                _iteratorError32 = _context11.t5;
+                _context13.prev = 120;
+                _context13.t5 = _context13["catch"](116);
+                _didIteratorError38 = true;
+                _iteratorError38 = _context13.t5;
 
               case 124:
-                _context11.prev = 124;
-                _context11.prev = 125;
+                _context13.prev = 124;
+                _context13.prev = 125;
 
-                if (!_iteratorNormalCompletion32 && _iterator32["return"] != null) {
-                  _iterator32["return"]();
+                if (!_iteratorNormalCompletion38 && _iterator38["return"] != null) {
+                  _iterator38["return"]();
                 }
 
               case 127:
-                _context11.prev = 127;
+                _context13.prev = 127;
 
-                if (!_didIteratorError32) {
-                  _context11.next = 130;
+                if (!_didIteratorError38) {
+                  _context13.next = 130;
                   break;
                 }
 
-                throw _iteratorError32;
+                throw _iteratorError38;
 
               case 130:
-                return _context11.finish(127);
+                return _context13.finish(127);
 
               case 131:
-                return _context11.finish(124);
+                return _context13.finish(124);
 
               case 132:
                 dataTask.Logs = logs;
@@ -9497,7 +11471,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   PCData.Task_List = [];
                 }
 
-                _loop9 = function _loop9() {
+                _loop11 = function _loop11() {
                   var subtask = _subtasks[_i2];
                   var loglen = subtask.Logs.length;
                   var logs = subtask.Logs;
@@ -9509,14 +11483,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     Contribute: 0
                   };
 
-                  var _loop11 = function _loop11(i) {
-                    var _iteratorNormalCompletion37 = true;
-                    var _didIteratorError37 = false;
-                    var _iteratorError37 = undefined;
+                  var _loop13 = function _loop13(i) {
+                    var _iteratorNormalCompletion43 = true;
+                    var _didIteratorError43 = false;
+                    var _iteratorError43 = undefined;
 
                     try {
-                      for (var _iterator37 = PCDatas[Symbol.iterator](), _step37; !(_iteratorNormalCompletion37 = (_step37 = _iterator37.next()).done); _iteratorNormalCompletion37 = true) {
-                        var _PCData2 = _step37.value;
+                      for (var _iterator43 = PCDatas[Symbol.iterator](), _step43; !(_iteratorNormalCompletion43 = (_step43 = _iterator43.next()).done); _iteratorNormalCompletion43 = true) {
+                        var _PCData2 = _step43.value;
 
                         if (_PCData2.Nama == logs[i].Nama) {
                           Task = _PCData2.Task_List.find(function (obj) {
@@ -9600,28 +11574,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                         }
                       }
                     } catch (err) {
-                      _didIteratorError37 = true;
-                      _iteratorError37 = err;
+                      _didIteratorError43 = true;
+                      _iteratorError43 = err;
                     } finally {
                       try {
-                        if (!_iteratorNormalCompletion37 && _iterator37["return"] != null) {
-                          _iterator37["return"]();
+                        if (!_iteratorNormalCompletion43 && _iterator43["return"] != null) {
+                          _iterator43["return"]();
                         }
                       } finally {
-                        if (_didIteratorError37) {
-                          throw _iteratorError37;
+                        if (_didIteratorError43) {
+                          throw _iteratorError43;
                         }
                       }
                     }
                   };
 
                   for (var i = 0; i < loglen; i++) {
-                    _loop11(i);
+                    _loop13(i);
                   }
                 };
 
                 for (_i2 = 0, _subtasks = subtasks; _i2 < _subtasks.length; _i2++) {
-                  _loop9();
+                  _loop11();
                 }
 
                 Contribute = 0;
@@ -9636,28 +11610,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 151:
                 if (!(_i3 < _PCDatas2.length)) {
-                  _context11.next = 178;
+                  _context13.next = 178;
                   break;
                 }
 
                 _PCData = _PCDatas2[_i3];
-                _iteratorNormalCompletion36 = true;
-                _didIteratorError36 = false;
-                _iteratorError36 = undefined;
-                _context11.prev = 156;
+                _iteratorNormalCompletion42 = true;
+                _didIteratorError42 = false;
+                _iteratorError42 = undefined;
+                _context13.prev = 156;
 
-                _loop10 = function _loop10() {
-                  var Task_List = _step36.value;
-                  PersentaseTask = _this11.detailProject.All_SubTask.find(function (obj) {
+                _loop12 = function _loop12() {
+                  var Task_List = _step42.value;
+                  PersentaseTask = _this15.detailProject.All_SubTask.find(function (obj) {
                     return obj.Nama == Task_List.Name;
                   }).Persentase / 100;
-                  PersentaseSubDivisi = _this11.detailProject.All_Task.find(function (obj) {
+                  PersentaseSubDivisi = _this15.detailProject.All_Task.find(function (obj) {
                     return obj.Nama == Task_List.Task;
                   }).Persentase / 100;
-                  PersentaseDivisi = _this11.detailProject.All_SubDivisi.find(function (obj) {
+                  PersentaseDivisi = _this15.detailProject.All_SubDivisi.find(function (obj) {
                     return obj.Nama == Task_List.Sub_Div;
                   }).Persentase / 100;
-                  PersentaseProyek = _this11.detailProject.All_Divisi.find(function (obj) {
+                  PersentaseProyek = _this15.detailProject.All_Divisi.find(function (obj) {
                     return obj.Nama == Task_List.Div;
                   }).Persentase / 100;
                   TContribute = Task_List.Contribute * PersentaseTask;
@@ -9666,42 +11640,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Contribute += DContribute * PersentaseProyek;
                 };
 
-                for (_iterator36 = _PCData.Task_List[Symbol.iterator](); !(_iteratorNormalCompletion36 = (_step36 = _iterator36.next()).done); _iteratorNormalCompletion36 = true) {
-                  _loop10();
+                for (_iterator42 = _PCData.Task_List[Symbol.iterator](); !(_iteratorNormalCompletion42 = (_step42 = _iterator42.next()).done); _iteratorNormalCompletion42 = true) {
+                  _loop12();
                 }
 
-                _context11.next = 165;
+                _context13.next = 165;
                 break;
 
               case 161:
-                _context11.prev = 161;
-                _context11.t6 = _context11["catch"](156);
-                _didIteratorError36 = true;
-                _iteratorError36 = _context11.t6;
+                _context13.prev = 161;
+                _context13.t6 = _context13["catch"](156);
+                _didIteratorError42 = true;
+                _iteratorError42 = _context13.t6;
 
               case 165:
-                _context11.prev = 165;
-                _context11.prev = 166;
+                _context13.prev = 165;
+                _context13.prev = 166;
 
-                if (!_iteratorNormalCompletion36 && _iterator36["return"] != null) {
-                  _iterator36["return"]();
+                if (!_iteratorNormalCompletion42 && _iterator42["return"] != null) {
+                  _iterator42["return"]();
                 }
 
               case 168:
-                _context11.prev = 168;
+                _context13.prev = 168;
 
-                if (!_didIteratorError36) {
-                  _context11.next = 171;
+                if (!_didIteratorError42) {
+                  _context13.next = 171;
                   break;
                 }
 
-                throw _iteratorError36;
+                throw _iteratorError42;
 
               case 171:
-                return _context11.finish(168);
+                return _context13.finish(168);
 
               case 172:
-                return _context11.finish(165);
+                return _context13.finish(165);
 
               case 173:
                 _PCData.Contribute = Contribute;
@@ -9709,7 +11683,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 175:
                 _i3++;
-                _context11.next = 151;
+                _context13.next = 151;
                 break;
 
               case 178:
@@ -9717,13 +11691,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 179:
               case "end":
-                return _context11.stop();
+                return _context13.stop();
             }
           }
-        }, _callee10, this, [[6, 10, 14, 22], [15,, 17, 21], [25, 30, 34, 42], [35,, 37, 41], [45, 50, 54, 62], [55,, 57, 61], [65, 70, 74, 82], [75,, 77, 81], [90, 94, 98, 106], [99,, 101, 105], [116, 120, 124, 132], [125,, 127, 131], [156, 161, 165, 173], [166,, 168, 172]]);
+        }, _callee11, this, [[6, 10, 14, 22], [15,, 17, 21], [25, 30, 34, 42], [35,, 37, 41], [45, 50, 54, 62], [55,, 57, 61], [65, 70, 74, 82], [75,, 77, 81], [90, 94, 98, 106], [99,, 101, 105], [116, 120, 124, 132], [125,, 127, 131], [156, 161, 165, 173], [166,, 168, 172]]);
       }));
 
-      function detailProjectDialog(_x2) {
+      function detailProjectDialog(_x3) {
         return _detailProjectDialog.apply(this, arguments);
       }
 
@@ -9738,15 +11712,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.templateProject = '';
     },
     close: function close() {
-      var _this12 = this;
+      var _this16 = this;
 
       setTimeout(function () {
-        _this12.taskDialog = false;
-        _this12.addDialog2 = false;
-        _this12.editmode = false;
-        _this12.editProject = Object.assign({}, _this12.initEditProject);
-        _this12.delProject = Object.assign({}, _this12.initEditProject);
-        _this12.templateProject = '';
+        _this16.taskDialog = false;
+        _this16.addDialog2 = false;
+        _this16.editmode = false;
+        _this16.editProject = Object.assign({}, _this16.initEditProject);
+        _this16.delProject = Object.assign({}, _this16.initEditProject);
+        _this16.templateProject = '';
       }, 300);
     },
     openTaskDialog: function openTaskDialog(data) {
@@ -9754,13 +11728,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.editTask = data;
       this.editTask.Status_Akses = 'Locked'; //<==================================NEED EDIT
 
-      var _iteratorNormalCompletion38 = true;
-      var _didIteratorError38 = false;
-      var _iteratorError38 = undefined;
+      var _iteratorNormalCompletion44 = true;
+      var _didIteratorError44 = false;
+      var _iteratorError44 = undefined;
 
       try {
-        for (var _iterator38 = this.jobAksesData[Symbol.iterator](), _step38; !(_iteratorNormalCompletion38 = (_step38 = _iterator38.next()).done); _iteratorNormalCompletion38 = true) {
-          var akses = _step38.value;
+        for (var _iterator44 = this.jobAksesData[Symbol.iterator](), _step44; !(_iteratorNormalCompletion44 = (_step44 = _iterator44.next()).done); _iteratorNormalCompletion44 = true) {
+          var akses = _step44.value;
 
           if (akses.Id_Sub_Item_Pekerjaan == data.Id_Sub_Item_Pekerjaan && akses.Verifikasi == "Verified" && akses.Id_Akun == this.Id_Akun) {
             this.editTask.Status_Akses = akses.Status;
@@ -9768,55 +11742,55 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }
       } catch (err) {
-        _didIteratorError38 = true;
-        _iteratorError38 = err;
+        _didIteratorError44 = true;
+        _iteratorError44 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion38 && _iterator38["return"] != null) {
-            _iterator38["return"]();
+          if (!_iteratorNormalCompletion44 && _iterator44["return"] != null) {
+            _iterator44["return"]();
           }
         } finally {
-          if (_didIteratorError38) {
-            throw _iteratorError38;
+          if (_didIteratorError44) {
+            throw _iteratorError44;
           }
         }
       }
     },
     getSubDivision: function getSubDivision(project) {
-      var _this13 = this;
+      var _this17 = this;
 
       this.sub_division = project.All_SubDivisi.filter(function (obj) {
-        return obj.Divisi == _this13.filterDiv;
+        return obj.Divisi == _this17.filterDiv;
       });
       this.filterSubDiv = '';
       this.filterTask = '';
     },
     getTask: function getTask(project) {
-      var _this14 = this;
+      var _this18 = this;
 
       this.task = project.All_Task.filter(function (obj) {
-        return obj.Sub_Divisi == _this14.filterSubDiv;
+        return obj.Sub_Divisi == _this18.filterSubDiv;
       });
       this.filterTask = '';
     },
     filteredTask: function filteredTask(data) {
-      var _this15 = this;
+      var _this19 = this;
 
       if (this.filterDiv != "") {
         // console.log("in")
         if (this.filterSubDiv != "") {
           if (this.filterTask != "") {
             return data.filter(function (obj) {
-              return obj.Divisi == _this15.filterDiv && obj.Sub_Divisi == _this15.filterSubDiv && obj.Task == _this15.filterTask;
+              return obj.Divisi == _this19.filterDiv && obj.Sub_Divisi == _this19.filterSubDiv && obj.Task == _this19.filterTask;
             });
           } else {
             return data.filter(function (obj) {
-              return obj.Divisi == _this15.filterDiv && obj.Sub_Divisi == _this15.filterSubDiv;
+              return obj.Divisi == _this19.filterDiv && obj.Sub_Divisi == _this19.filterSubDiv;
             });
           }
         } else {
           return data.filter(function (obj) {
-            return obj.Divisi == _this15.filterDiv;
+            return obj.Divisi == _this19.filterDiv;
           });
         }
       } else {
@@ -9825,20 +11799,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     // WORKSPACE
     getSubDivisionSubTaskForm: function getSubDivisionSubTaskForm(project) {
-      var _this16 = this;
+      var _this20 = this;
 
       this.subtaskformfilter.All_SubDivisi = project.All_SubDivisi.filter(function (obj) {
-        return obj.Divisi == _this16.subtaskformfilter.Divisi;
+        return obj.Divisi == _this20.subtaskformfilter.Divisi;
       });
       this.subtaskformfilter.All_Task = [];
       console.log("SUBTASKFORM");
       console.log(this.subtaskformfilter);
     },
     getTaskSubTaskForm: function getTaskSubTaskForm(project) {
-      var _this17 = this;
+      var _this21 = this;
 
       this.subtaskformfilter.All_Task = project.All_Task.filter(function (obj) {
-        return obj.Sub_Divisi == _this17.subtaskformfilter.SubDivisi;
+        return obj.Sub_Divisi == _this21.subtaskformfilter.SubDivisi;
       });
     },
     projectNotesDialog: function projectNotesDialog(project) {
@@ -9858,7 +11832,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     onFilePicked: function onFilePicked(e) {
-      var _this18 = this;
+      var _this22 = this;
 
       var files = e.target.files;
 
@@ -9875,10 +11849,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         fr.addEventListener('load', function () {
           // console.log(fr.result)
           //  console.log("Masuk FR")
-          _this18.fileUrl = fr.result;
-          _this18.file = files[0];
+          _this22.fileUrl = fr.result;
+          _this22.file = files[0];
 
-          _this18.namefile.push(_this18.file.name); //   this.namefile[0].size = this.file.size
+          _this22.namefile.push(_this22.file.name); //   this.namefile[0].size = this.file.size
           //   console.log(this.file)
           //   console.log(files)
           //   console.log("Name : "+this.file.name)
@@ -9903,11 +11877,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     forceFileDownload: function () {
       var _forceFileDownload = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11(response, data) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12(response, data) {
         var url, link;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context12) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context14) {
           while (1) {
-            switch (_context12.prev = _context12.next) {
+            switch (_context14.prev = _context14.next) {
               case 0:
                 url = window.URL.createObjectURL(new Blob([response.data])); //   console.log(url)
 
@@ -9917,7 +11891,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                 document.body.appendChild(link);
                 link.click();
-                _context12.next = 8;
+                _context14.next = 8;
                 return this.accessDone();
 
               case 8:
@@ -9925,34 +11899,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 9:
               case "end":
-                return _context12.stop();
+                return _context14.stop();
             }
           }
-        }, _callee11, this);
+        }, _callee12, this);
       }));
 
-      function forceFileDownload(_x3, _x4) {
+      function forceFileDownload(_x4, _x5) {
         return _forceFileDownload.apply(this, arguments);
       }
 
       return forceFileDownload;
     }(),
     downloadIt: function downloadIt(data) {
-      var _this19 = this;
+      var _this23 = this;
 
       //   console.log('http://localhost:8000/'+data.Berkas)
       this.$http({
         method: 'get',
-        url: 'http://localhost:8000/' + data.Berkas,
+        url: 'http://192.168.1.71:8000/' + data.Berkas,
         responseType: 'arraybuffer'
       }).then(function (response) {
-        _this19.forceFileDownload(response, data);
+        _this23.forceFileDownload(response, data);
       })["catch"](function () {
         return console.log('error occured');
       });
     },
     showAlert: function showAlert(type, alert_message) {
-      var _this20 = this;
+      var _this24 = this;
 
       if (type == 'success') {
         this.alert.icon = 'fas fa-check-circle';
@@ -9969,45 +11943,45 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.showAlert.timer = setTimeout(function () {
-        _this20.alert.type = null;
-        _this20.alert.icon = null;
-        _this20.alert.message = null;
+        _this24.alert.type = null;
+        _this24.alert.icon = null;
+        _this24.alert.message = null;
       }, 3000);
     },
     duplicateEmptyLog: function () {
       var _duplicateEmptyLog = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
         var payloadLog, response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context13) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context15) {
           while (1) {
-            switch (_context13.prev = _context13.next) {
+            switch (_context15.prev = _context15.next) {
               case 0:
-                _context13.prev = 0;
+                _context15.prev = 0;
                 payloadLog = {
                   Id_Sub_Item_Pekerjaan: this.editTask.Id_Sub_Item_Pekerjaan,
                   Id_Akun: this.Id_Akun
                 };
-                _context13.next = 4;
+                _context15.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addlogpengerjaan(payloadLog);
 
               case 4:
-                response = _context13.sent;
-                _context13.next = 11;
+                response = _context15.sent;
+                _context15.next = 11;
                 break;
 
               case 7:
-                _context13.prev = 7;
-                _context13.t0 = _context13["catch"](0);
-                console.log(_context13.t0);
+                _context15.prev = 7;
+                _context15.t0 = _context15["catch"](0);
+                console.log(_context15.t0);
                 this.showAlert('error', 'Gagal Mengirim Request');
 
               case 11:
               case "end":
-                return _context13.stop();
+                return _context15.stop();
             }
           }
-        }, _callee12, this, [[0, 7]]);
+        }, _callee13, this, [[0, 7]]);
       }));
 
       function duplicateEmptyLog() {
@@ -12610,6 +14584,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
  // import * as easings from 'vuetify/es5/services/goto/easing-patterns'
 
@@ -13776,6 +15751,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         icon: 'assignment_late',
         text: 'Job Access Request',
         access: ['M-JobAccess-C', 'M-JobAccess-R', 'M-JobAccess-U', 'M-JobAccess-D']
+      }, {
+        to: '/panel/admin_panel',
+        icon: 'assignment',
+        text: 'Admin Panel',
+        access: ['Panel']
       }],
       color: 'general',
       image: '',
@@ -13977,6 +15957,25 @@ exports.push([module.i, "/*!\n* Vuetify v1.5.22\n* Forged by John Leider\n* Rele
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdminPanel.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AdminPanel.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.d_div{\n  border-left: 4px solid #0277BD !Important;\n  border-color:#0277BD !Important;\n}\n.d_sub_div{\n  border-left: 4px solid #0091EA !Important;\n  border-color:#0091EA !Important;\n}\n.d_task{\n  border-left: 4px solid #00B8D4 !Important;\n  border-color:#00B8D4 !Important;\n}\n.d_sub_task{\n   border-left: 4px solid #3cd1c2 !Important;\n  border-color:#3cd1c2 !Important;\n}\n\n/* .d_div{\n  border-left: 4px solid #3cd1c2 !Important;\n  border-color:#3cd1c2 !Important;\n}\n.d_sub_div{\n  border-left: 4px solid #00B8D4 !Important;\n  border-color:#00B8D4 !Important;\n}\n\n.d_task{\n  border-left: 4px solid #0091EA !Important;\n  border-color:#0091EA !Important;\n}\n\n.d_sub_task{\n  border-left: 4px solid #0277BD !Important;\n  border-color:#0277BD !Important;\n} */\n.project{\n  border-radius: 5px;\n  margin-top:0px !important;\n}\n.project.bblue{\n  border-left: 4px solid #2196f3 !important;\n  border-color:#2196f3 !important;\n}\n.project.ggreen{\n  border-left: 4px solid #4caf50 !important;\n  border-color:#4caf50 !important;\n}\n.project.rred{\n  border-left: 4px solid #ff5252 !important;\n  border-color:#ff5252 !important;\n}\n.project.ggrey{\n  border-left: 4px solid #78909C !important;\n  border-color:#78909C !important;\n}\n.v-chip.bblue{\n  background: #2196f3 !important;\n}\n.v-chip.ggreen{\n  background: #4caf50 !important;\n}\n.v-chip.rred{\n  background: #ff5252 !important;\n}\n.v-chip.ggrey{\n  background: #78909C !important;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dashboard.vue?vue&type=style&index=0&lang=css&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Dashboard.vue?vue&type=style&index=0&lang=css& ***!
@@ -14046,7 +16045,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.d_div{\r\n  border-left: 4px solid #0277BD !Important;\r\n  border-color:#0277BD !Important;\n}\n.d_sub_div{\r\n  border-left: 4px solid #0091EA !Important;\r\n  border-color:#0091EA !Important;\n}\n.d_task{\r\n  border-left: 4px solid #00B8D4 !Important;\r\n  border-color:#00B8D4 !Important;\n}\n.d_sub_task{\r\n   border-left: 4px solid #3cd1c2 !Important;\r\n  border-color:#3cd1c2 !Important;\n}\r\n\r\n/* .d_div{\r\n  border-left: 4px solid #3cd1c2 !Important;\r\n  border-color:#3cd1c2 !Important;\r\n}\r\n.d_sub_div{\r\n  border-left: 4px solid #00B8D4 !Important;\r\n  border-color:#00B8D4 !Important;\r\n}\r\n\r\n.d_task{\r\n  border-left: 4px solid #0091EA !Important;\r\n  border-color:#0091EA !Important;\r\n}\r\n\r\n.d_sub_task{\r\n  border-left: 4px solid #0277BD !Important;\r\n  border-color:#0277BD !Important;\r\n} */\n.project.complete{\r\n  border-left: 4px solid #2196f3 !Important;\r\n  border-color:#2196f3 !Important;\n}\n.project.ongoing{\r\n  border-left: 4px solid #4caf50 !Important;\n}\n.project.overdue{\r\n  border-left: 4px solid #ff5252 !Important;\n}\n.project.untake{\r\n  border-left: 4px solid green !Important;\r\n  border-color:green !Important;\n}\n.v-chip.complete{\r\n  background: #2196f3 !Important;\n}\n.v-chip.ongoing{\r\n  background: #4caf50 !Important;\n}\n.v-chip.overdue{\r\n  background: #ff5252 !Important;\n}\n.v-chip.untake{\r\n  background: green !Important;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.d_div{\r\n  border-left: 4px solid #0277BD !Important;\r\n  border-color:#0277BD !Important;\n}\n.d_sub_div{\r\n  border-left: 4px solid #0091EA !Important;\r\n  border-color:#0091EA !Important;\n}\n.d_task{\r\n  border-left: 4px solid #00B8D4 !Important;\r\n  border-color:#00B8D4 !Important;\n}\n.d_sub_task{\r\n   border-left: 4px solid #3cd1c2 !Important;\r\n  border-color:#3cd1c2 !Important;\n}\r\n\r\n/* .d_div{\r\n  border-left: 4px solid #3cd1c2 !Important;\r\n  border-color:#3cd1c2 !Important;\r\n}\r\n.d_sub_div{\r\n  border-left: 4px solid #00B8D4 !Important;\r\n  border-color:#00B8D4 !Important;\r\n}\r\n\r\n.d_task{\r\n  border-left: 4px solid #0091EA !Important;\r\n  border-color:#0091EA !Important;\r\n}\r\n\r\n.d_sub_task{\r\n  border-left: 4px solid #0277BD !Important;\r\n  border-color:#0277BD !Important;\r\n} */\n.project.bblue{\r\n  border-left: 4px solid #2196f3 !Important;\r\n  border-color:#2196f3 !Important;\n}\n.project.ggreen{\r\n  border-left: 4px solid #4caf50 !Important;\n}\n.project.rred{\r\n  border-left: 4px solid #ff5252 !Important;\n}\n.project.ggrey{\r\n  border-left: 4px solid #78909C !Important;\r\n  border-color:#78909C !Important;\n}\n.v-chip.bblue{\r\n  background: #2196f3 !Important;\n}\n.v-chip.ggreen{\r\n  background: #4caf50 !Important;\n}\n.v-chip.rred{\r\n  background: #ff5252 !Important;\n}\n.v-chip.ggrey{\r\n  background: #78909C !Important;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -15628,6 +17627,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdminPanel.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AdminPanel.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./AdminPanel.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdminPanel.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dashboard.vue?vue&type=style&index=0&lang=css&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Dashboard.vue?vue&type=style&index=0&lang=css& ***!
@@ -16372,6 +18401,1485 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 "use strict";
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o};!function(){function o(e,t){if(!o.installed){if(o.installed=!0,!t)return void console.error("You have to install axios");e.axios=t,Object.defineProperties(e.prototype,{axios:{get:function(){return t}},$http:{get:function(){return t}}})}}"object"==( false?undefined:_typeof(exports))?module.exports=o: true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function(){return o}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):undefined}();
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdminPanel.vue?vue&type=template&id=8a230bc0&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AdminPanel.vue?vue&type=template&id=8a230bc0& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-container",
+    { attrs: { fluid: "", "grid-list-xl": "" } },
+    [
+      _c(
+        "v-container",
+        { attrs: { fluid: "", "py-0": "" } },
+        [
+          _c(
+            "v-tabs",
+            {
+              staticClass: "elevation-2",
+              attrs: {
+                "background-color": "deep-purple accent-4",
+                dark: "",
+                centered: _vm.centered,
+                grow: _vm.grow,
+                vertical: _vm.vertical,
+                right: _vm.right,
+                "icons-and-text": _vm.icons
+              },
+              model: {
+                value: _vm.tab,
+                callback: function($$v) {
+                  _vm.tab = $$v
+                },
+                expression: "tab"
+              }
+            },
+            [
+              _c("v-tab-slider"),
+              _vm._v(" "),
+              _c("v-tab", [_vm._v("Project")]),
+              _vm._v(" "),
+              _c("v-tab", [_vm._v("Employee")]),
+              _vm._v(" "),
+              _c(
+                "v-tab-item",
+                [
+                  _c(
+                    "v-container",
+                    { attrs: { fluid: "" } },
+                    [
+                      _c(
+                        "v-layout",
+                        { attrs: { row: "", wrap: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { xs12: "", md12: "" } },
+                            [
+                              _c(
+                                "v-layout",
+                                {
+                                  staticClass: "mb-2 pa-3",
+                                  attrs: { "justify-start": "" }
+                                },
+                                [
+                                  _c(
+                                    "h3",
+                                    {
+                                      staticStyle: {
+                                        "border-bottom": "white solid 3px"
+                                      }
+                                    },
+                                    [_vm._v("PROJECT LIST")]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("v-select", {
+                                staticStyle: { "max-width": "200px" },
+                                attrs: {
+                                  items: _vm.project_status,
+                                  "item-text": "Status",
+                                  "item-value": "Status",
+                                  box: "",
+                                  label: "Status"
+                                },
+                                model: {
+                                  value: _vm.filter_status,
+                                  callback: function($$v) {
+                                    _vm.filter_status = $$v
+                                  },
+                                  expression: "filter_status"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-expansion-panel",
+                                _vm._l(
+                                  _vm.filteredProject(this.projects),
+                                  function(project) {
+                                    return _c(
+                                      "v-expansion-panel-content",
+                                      {
+                                        key: project.Nama,
+                                        attrs: {
+                                          "expand-icon": "mdi-menu-down"
+                                        },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "header",
+                                              fn: function() {
+                                                return [
+                                                  _c(
+                                                    "v-layout",
+                                                    {
+                                                      class: "pa-3",
+                                                      attrs: {
+                                                        row: "",
+                                                        wrap: ""
+                                                      },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          return _vm.getItemData(
+                                                            project
+                                                          )
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-flex",
+                                                        {
+                                                          attrs: {
+                                                            xs12: "",
+                                                            md4: ""
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "caption grey--text"
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "Project Title"
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("div", [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                project.Nama
+                                                              )
+                                                            )
+                                                          ])
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-flex",
+                                                        {
+                                                          attrs: {
+                                                            xs6: "",
+                                                            sm4: "",
+                                                            md2: ""
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "caption grey--text"
+                                                            },
+                                                            [_vm._v("Due Date")]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("div", [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                project.Tanggal_Selesai
+                                                              )
+                                                            )
+                                                          ])
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c("v-spacer"),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-flex",
+                                                        [
+                                                          _c(
+                                                            "v-btn",
+                                                            {
+                                                              attrs: {
+                                                                small: ""
+                                                              },
+                                                              on: {
+                                                                click: function(
+                                                                  $event
+                                                                ) {
+                                                                  return _vm.openProjectNotesDialog(
+                                                                    project
+                                                                  )
+                                                                }
+                                                              }
+                                                            },
+                                                            [_vm._v("Notes")]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-btn",
+                                                            {
+                                                              attrs: {
+                                                                small: ""
+                                                              }
+                                                            },
+                                                            [_vm._v("Detail")]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-btn",
+                                                            {
+                                                              attrs: {
+                                                                small: ""
+                                                              }
+                                                            },
+                                                            [_vm._v("Restore")]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-btn",
+                                                            {
+                                                              attrs: {
+                                                                small: ""
+                                                              }
+                                                            },
+                                                            [_vm._v("Delete")]
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ]
+                                              },
+                                              proxy: true
+                                            }
+                                          ],
+                                          null,
+                                          true
+                                        )
+                                      },
+                                      [
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-card",
+                                          { staticClass: "grey darken-2" },
+                                          [
+                                            _c(
+                                              "v-container",
+                                              { staticClass: "pa-3" },
+                                              [
+                                                _c(
+                                                  "v-card",
+                                                  { staticClass: "pa-2" },
+                                                  [
+                                                    _c("v-card-title", [
+                                                      _c("span", [
+                                                        _vm._v("Filter")
+                                                      ])
+                                                    ])
+                                                  ],
+                                                  1
+                                                ),
+                                                _vm._v(" "),
+                                                _vm._l(
+                                                  _vm.project_card.All_SubTask,
+                                                  function(subtask) {
+                                                    return _c(
+                                                      "v-card",
+                                                      {
+                                                        directives: [
+                                                          {
+                                                            name: "ripple",
+                                                            rawName: "v-ripple"
+                                                          }
+                                                        ],
+                                                        key: subtask.Nama,
+                                                        staticClass:
+                                                          "px-3 scroll-y",
+                                                        staticStyle: {
+                                                          background:
+                                                            "#424242 !important"
+                                                        },
+                                                        attrs: {
+                                                          hover: "",
+                                                          flat: ""
+                                                        },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            return _vm.openTaskDialog(
+                                                              subtask
+                                                            )
+                                                          }
+                                                        }
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "v-layout",
+                                                          {
+                                                            class:
+                                                              "pa-3  project " +
+                                                              subtask.Color,
+                                                            attrs: {
+                                                              row: "",
+                                                              wrap: ""
+                                                            }
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "v-flex",
+                                                              {
+                                                                attrs: {
+                                                                  xs12: "",
+                                                                  md2: ""
+                                                                }
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "div",
+                                                                  {
+                                                                    staticClass:
+                                                                      "caption grey--text"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        subtask.Divisi
+                                                                      )
+                                                                    )
+                                                                  ]
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c("div", [
+                                                                  _vm._v(
+                                                                    _vm._s(
+                                                                      subtask.Sub_Divisi
+                                                                    )
+                                                                  )
+                                                                ])
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "v-flex",
+                                                              {
+                                                                attrs: {
+                                                                  xs6: "",
+                                                                  sm4: "",
+                                                                  md3: ""
+                                                                }
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "div",
+                                                                  {
+                                                                    staticClass:
+                                                                      "caption grey--text"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        subtask.Task
+                                                                      )
+                                                                    )
+                                                                  ]
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c("div", [
+                                                                  _vm._v(
+                                                                    _vm._s(
+                                                                      subtask.Nama
+                                                                    )
+                                                                  )
+                                                                ])
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "v-flex",
+                                                              {
+                                                                attrs: {
+                                                                  xs6: "",
+                                                                  sm4: "",
+                                                                  md2: ""
+                                                                }
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "div",
+                                                                  {
+                                                                    staticClass:
+                                                                      "caption grey--text"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      "Due Date"
+                                                                    )
+                                                                  ]
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c("div", [
+                                                                  _vm._v(
+                                                                    _vm._s(
+                                                                      subtask.Tanggal_Selesai
+                                                                    )
+                                                                  )
+                                                                ])
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "v-flex",
+                                                              {
+                                                                attrs: {
+                                                                  xs6: "",
+                                                                  sm4: "",
+                                                                  md2: ""
+                                                                }
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "div",
+                                                                  {
+                                                                    staticClass:
+                                                                      "caption grey--text"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      "Progress"
+                                                                    )
+                                                                  ]
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "div",
+                                                                  [
+                                                                    _c(
+                                                                      "v-progress-linear",
+                                                                      {
+                                                                        staticStyle: {
+                                                                          top:
+                                                                            "-11px"
+                                                                        },
+                                                                        attrs: {
+                                                                          color:
+                                                                            "red",
+                                                                          height:
+                                                                            "20",
+                                                                          value:
+                                                                            subtask.Total_Progress
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "p",
+                                                                          {
+                                                                            staticClass:
+                                                                              "text-xs-center"
+                                                                          },
+                                                                          [
+                                                                            _vm._v(
+                                                                              _vm._s(
+                                                                                subtask.Total_Progress
+                                                                              ) +
+                                                                                "%"
+                                                                            )
+                                                                          ]
+                                                                        )
+                                                                      ]
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                )
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "v-flex",
+                                                              {
+                                                                attrs: {
+                                                                  xs2: "",
+                                                                  sm4: "",
+                                                                  md3: ""
+                                                                }
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "div",
+                                                                  {
+                                                                    attrs: {
+                                                                      align:
+                                                                        "center",
+                                                                      justify:
+                                                                        "center"
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "v-chip",
+                                                                      {
+                                                                        class:
+                                                                          " white--text my-2 caption " +
+                                                                          subtask.Color,
+                                                                        staticStyle: {
+                                                                          top:
+                                                                            "13px"
+                                                                        },
+                                                                        attrs: {
+                                                                          small:
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          _vm._s(
+                                                                            subtask.Work_Status
+                                                                          )
+                                                                        )
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "v-chip",
+                                                                      {
+                                                                        class:
+                                                                          " white--text my-2 caption " +
+                                                                          subtask.Color,
+                                                                        staticStyle: {
+                                                                          top:
+                                                                            "13px"
+                                                                        },
+                                                                        attrs: {
+                                                                          small:
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          _vm._s(
+                                                                            subtask.Time_Status
+                                                                          )
+                                                                        )
+                                                                      ]
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                )
+                                                              ]
+                                                            )
+                                                          ],
+                                                          1
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c("v-divider")
+                                                      ],
+                                                      1
+                                                    )
+                                                  }
+                                                )
+                                              ],
+                                              2
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  }
+                                ),
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-tab-item")
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-layout",
+        { attrs: { row: "", "justify-center": "" } },
+        [
+          _c(
+            "v-dialog",
+            {
+              attrs: { scrollable: "", persistent: "", "max-width": "600px" },
+              model: {
+                value: _vm.taskDialog,
+                callback: function($$v) {
+                  _vm.taskDialog = $$v
+                },
+                expression: "taskDialog"
+              }
+            },
+            [
+              _c(
+                "v-card",
+                [
+                  _c(
+                    "v-card-title",
+                    [
+                      _c("span", { staticClass: "headline" }, [
+                        _vm._v(_vm._s(_vm.editTask.Nama))
+                      ]),
+                      _vm._v(" "),
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _vm.editTask.User != ""
+                        ? _c("span", [
+                            _vm._v(
+                              "Last Progress By : " + _vm._s(_vm.editTask.User)
+                            )
+                          ])
+                        : _vm._e()
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-divider"),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "ml-4" }, [
+                    _vm._v(
+                      _vm._s(_vm.editTask.Divisi) +
+                        " > " +
+                        _vm._s(_vm.editTask.Sub_Divisi) +
+                        " > " +
+                        _vm._s(_vm.editTask.Task)
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-container",
+                        { attrs: { "grid-list-md": "" } },
+                        [
+                          _c(
+                            "v-layout",
+                            { attrs: { wrap: "" } },
+                            [
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      label: "Sub Task",
+                                      readonly: "",
+                                      "prepend-icon": "description"
+                                    },
+                                    model: {
+                                      value: _vm.editTask.Nama,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.editTask, "Nama", $$v)
+                                      },
+                                      expression: "editTask.Nama"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "" } },
+                                [
+                                  _c("v-textarea", {
+                                    attrs: {
+                                      outline: "",
+                                      readonly: "",
+                                      label: "Description"
+                                    },
+                                    model: {
+                                      value: _vm.editTask.Deskripsi,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.editTask, "Deskripsi", $$v)
+                                      },
+                                      expression: "editTask.Deskripsi"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md5: "" } },
+                                [
+                                  _c(
+                                    "v-menu",
+                                    {
+                                      attrs: {
+                                        "close-on-content-click": false,
+                                        "nudge-right": 40,
+                                        transition: "scale-transition",
+                                        "offset-y": "",
+                                        "full-width": "",
+                                        "min-width": "290px",
+                                        readonly: ""
+                                      },
+                                      scopedSlots: _vm._u([
+                                        {
+                                          key: "activator",
+                                          fn: function(ref) {
+                                            var on = ref.on
+                                            return [
+                                              _c(
+                                                "v-text-field",
+                                                _vm._g(
+                                                  {
+                                                    attrs: {
+                                                      label: "Due Date",
+                                                      "prepend-icon": "event",
+                                                      readonly: ""
+                                                    },
+                                                    model: {
+                                                      value:
+                                                        _vm.editTask
+                                                          .Tanggal_Selesai,
+                                                      callback: function($$v) {
+                                                        _vm.$set(
+                                                          _vm.editTask,
+                                                          "Tanggal_Selesai",
+                                                          $$v
+                                                        )
+                                                      },
+                                                      expression:
+                                                        "editTask.Tanggal_Selesai"
+                                                    }
+                                                  },
+                                                  on
+                                                )
+                                              )
+                                            ]
+                                          }
+                                        }
+                                      ]),
+                                      model: {
+                                        value: _vm.dateDialog,
+                                        callback: function($$v) {
+                                          _vm.dateDialog = $$v
+                                        },
+                                        expression: "dateDialog"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(" "),
+                                      _c("v-date-picker", {
+                                        attrs: { readonly: "" },
+                                        on: {
+                                          input: function($event) {
+                                            _vm.dateDialog = false
+                                          }
+                                        },
+                                        model: {
+                                          value: _vm.editTask.Tanggal_Selesai,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.editTask,
+                                              "Tanggal_Selesai",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "editTask.Tanggal_Selesai"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("v-spacer"),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md6: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      label: "Time Remaining",
+                                      "prepend-icon": "timer",
+                                      readonly: ""
+                                    },
+                                    model: {
+                                      value: _vm.editTask.Remaining,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.editTask, "Remaining", $$v)
+                                      },
+                                      expression: "editTask.Remaining"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md2: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      value:
+                                        parseInt(_vm.editTask.Total_Progress) +
+                                        "%",
+                                      label: "Total",
+                                      "prepend-icon": "timeline",
+                                      type: "text",
+                                      readonly: ""
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("v-spacer"),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", md9: "" } },
+                                [
+                                  _c(
+                                    "v-progress-linear",
+                                    {
+                                      attrs: {
+                                        color: "red",
+                                        height: "20",
+                                        value: parseInt(
+                                          _vm.editTask.Total_Progress
+                                        ),
+                                        label: "progress"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "p",
+                                        { staticClass: "text-xs-center" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              parseInt(
+                                                _vm.editTask.Total_Progress
+                                              )
+                                            ) + "%"
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "" } },
+                                [
+                                  _c(
+                                    "v-list",
+                                    { attrs: { subheader: "" } },
+                                    [
+                                      _c("v-subheader", [
+                                        _vm._v("Log Progress")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("v-divider"),
+                                      _vm._v(" "),
+                                      _vm._l(
+                                        _vm.editTask.Log_Pengerjaan.filter(
+                                          function(obj) {
+                                            return obj.Berkas != ""
+                                          }
+                                        ),
+                                        function(item) {
+                                          return _c(
+                                            "v-list-tile",
+                                            {
+                                              key: item.Id_Log_Pengerjaan,
+                                              attrs: { avatar: "" }
+                                            },
+                                            [
+                                              _c(
+                                                "v-list-tile-avatar",
+                                                [
+                                                  _c("v-icon", [
+                                                    _vm._v("folder")
+                                                  ])
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-tile-content",
+                                                [
+                                                  _c(
+                                                    "v-layout",
+                                                    {
+                                                      staticStyle: {
+                                                        width: "100%"
+                                                      },
+                                                      attrs: { row: "" }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-flex",
+                                                        { attrs: { xs6: "" } },
+                                                        [
+                                                          _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "caption grey--text"
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "File Name"
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("div", [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                item.Berkas.split(
+                                                                  "/"
+                                                                )[3]
+                                                              )
+                                                            )
+                                                          ])
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-flex",
+                                                        { attrs: { xs6: "" } },
+                                                        [
+                                                          _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "caption grey--text"
+                                                            },
+                                                            [_vm._v("Date")]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("div", [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                item.Waktu_Selesai.split(
+                                                                  " "
+                                                                )[0]
+                                                              )
+                                                            )
+                                                          ])
+                                                        ]
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-tile-action",
+                                                [
+                                                  _c(
+                                                    "v-layout",
+                                                    { attrs: { row: "" } },
+                                                    [
+                                                      _c(
+                                                        "v-flex",
+                                                        { attrs: { xs6: "" } },
+                                                        [
+                                                          _vm.editTask
+                                                            .Status_Akses !=
+                                                            "Locked" &&
+                                                          item.Berkas != ""
+                                                            ? _c(
+                                                                "v-btn",
+                                                                {
+                                                                  attrs: {
+                                                                    icon: "",
+                                                                    ripple: ""
+                                                                  },
+                                                                  on: {
+                                                                    click: function(
+                                                                      $event
+                                                                    ) {
+                                                                      return _vm.downloadIt(
+                                                                        item
+                                                                      )
+                                                                    }
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "v-icon",
+                                                                    {
+                                                                      attrs: {
+                                                                        color:
+                                                                          "grey lighten-1"
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _vm._v(
+                                                                        "cloud_download"
+                                                                      )
+                                                                    ]
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            : _vm._e()
+                                                        ],
+                                                        1
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-flex",
+                                                        { attrs: { xs6: "" } },
+                                                        [
+                                                          _c(
+                                                            "v-btn",
+                                                            {
+                                                              attrs: {
+                                                                icon: "",
+                                                                ripple: ""
+                                                              },
+                                                              on: {
+                                                                click: function(
+                                                                  $event
+                                                                ) {
+                                                                  _vm.noteDialog = !_vm.noteDialog
+                                                                  _vm.noteText =
+                                                                    item.Catatan
+                                                                  _vm.noteUser =
+                                                                    item.Username
+                                                                }
+                                                              }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "v-icon",
+                                                                {
+                                                                  attrs: {
+                                                                    color:
+                                                                      "grey lighten-1"
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "message"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        }
+                                      )
+                                    ],
+                                    2
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-divider"),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "blue darken-1", flat: "" },
+                          on: {
+                            click: function($event) {
+                              return _vm.close()
+                            }
+                          }
+                        },
+                        [_vm._v("Close")]
+                      ),
+                      _vm._v(" "),
+                      _vm.editTask.Total_Progress == 100
+                        ? _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "blue darken-1", flat: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.openPerformanceDialog(_vm.editTask)
+                                }
+                              }
+                            },
+                            [_vm._v("Performance")]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-layout",
+        { attrs: { row: "", "justify-center": "" } },
+        [
+          _c(
+            "v-dialog",
+            {
+              attrs: { scrollable: "", persistent: "", "max-width": "600px" },
+              model: {
+                value: _vm.projectNoteDialog,
+                callback: function($$v) {
+                  _vm.projectNoteDialog = $$v
+                },
+                expression: "projectNoteDialog"
+              }
+            },
+            [
+              _c(
+                "v-card",
+                [
+                  _c(
+                    "v-card-title",
+                    [
+                      _c("span", { staticClass: "headline" }, [
+                        _vm._v(_vm._s(_vm.projectNote.Nama))
+                      ]),
+                      _vm._v(" "),
+                      _c("v-spacer")
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-divider"),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "headline mx-auto mt-3" }, [
+                    _vm._v("Project Note")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-container",
+                        { attrs: { "grid-list-md": "" } },
+                        [
+                          _c(
+                            "v-layout",
+                            { attrs: { wrap: "" } },
+                            [
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "" } },
+                                [
+                                  _c("v-textarea", {
+                                    attrs: {
+                                      outline: "",
+                                      readonly: "",
+                                      label: "Project Note",
+                                      rows: "14"
+                                    },
+                                    model: {
+                                      value: _vm.projectNote.Catatan,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.projectNote,
+                                          "Catatan",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "projectNote.Catatan"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-divider"),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "blue darken-1", flat: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.projectNoteDialog = false
+                            }
+                          }
+                        },
+                        [_vm._v("Close")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-layout",
+        { attrs: { row: "", "justify-center": "" } },
+        [
+          _c(
+            "v-dialog",
+            {
+              attrs: { scrollable: "", persistent: "", "max-width": "300px" },
+              model: {
+                value: _vm.performanceDialog,
+                callback: function($$v) {
+                  _vm.performanceDialog = $$v
+                },
+                expression: "performanceDialog"
+              }
+            },
+            [
+              _c(
+                "v-card",
+                [
+                  _c(
+                    "v-card-title",
+                    [
+                      _c("span", { staticStyle: { "font-size": "18px" } }, [
+                        _vm._v("Performance")
+                      ]),
+                      _vm._v(" "),
+                      _c("v-spacer")
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-divider"),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-layout",
+                        { attrs: { wrap: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            {
+                              attrs: { xs12: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.getPerformaceStatus()
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                { attrs: { align: "center" } },
+                                [
+                                  _c("v-rating", {
+                                    attrs: {
+                                      length: _vm.performance.length,
+                                      "empty-icon": _vm.performance.emptyIcon,
+                                      "full-icon": _vm.performance.fullIcon,
+                                      "half-increments":
+                                        _vm.performance.halfIncrements,
+                                      hover: _vm.performance.hover,
+                                      readonly: _vm.performance.readonly,
+                                      size: _vm.performance.size,
+                                      dense: _vm.performance.dense,
+                                      color: _vm.performance.color,
+                                      "background-color":
+                                        _vm.performance.bgColor
+                                    },
+                                    model: {
+                                      value: _vm.performance.Rating,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.performance, "Rating", $$v)
+                                      },
+                                      expression: "performance.Rating"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass: "mx-auto mt-3",
+                                      staticStyle: { "font-size": "14px" },
+                                      attrs: { align: "center" }
+                                    },
+                                    [_vm._v(_vm._s(_vm.performance.Keterangan))]
+                                  )
+                                ],
+                                1
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-divider"),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "blue darken-1", flat: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.performanceDialog = false
+                            }
+                          }
+                        },
+                        [_vm._v("Close")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            color: "blue darken-1",
+                            flat: "",
+                            loading: _vm.savePerformanceLoading
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.savePerformance(_vm.editTask)
+                            }
+                          }
+                        },
+                        [_vm._v("Save")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm.alert.type
+        ? _c(
+            "v-snackbar",
+            {
+              attrs: {
+                right: "",
+                bottom: "",
+                color: _vm.alert.type,
+                value: "true"
+              }
+            },
+            [
+              _c("v-icon", [_vm._v(_vm._s(_vm.alert.icon))]),
+              _vm._v(_vm._s(_vm.alert.message) + "\n    ")
+            ],
+            1
+          )
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
 
 /***/ }),
 
@@ -20581,33 +24089,39 @@ var render = function() {
                                       [_vm._v("Detail")]
                                     ),
                                     _vm._v(" "),
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: { small: "" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.editProjectDialog(
-                                              project
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Edit")]
-                                    ),
+                                    _vm.Divisi == "Admin"
+                                      ? _c(
+                                          "v-btn",
+                                          {
+                                            attrs: { small: "" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.editProjectDialog(
+                                                  project
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Edit")]
+                                        )
+                                      : _vm._e(),
                                     _vm._v(" "),
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: { small: "" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.deleteProjectAll(project)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Delete")]
-                                    )
+                                    _vm.Divisi == "Admin"
+                                      ? _c(
+                                          "v-btn",
+                                          {
+                                            attrs: { small: "" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.deleteProjectAll(
+                                                  project
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Delete")]
+                                        )
+                                      : _vm._e()
                                   ],
                                   1
                                 )
@@ -20631,9 +24145,11 @@ var render = function() {
                     [
                       _c(
                         "v-container",
+                        { staticClass: "pa-3" },
                         [
                           _c(
                             "v-card",
+                            { staticClass: "pa-2" },
                             [
                               _c("v-card-title", [
                                 _c("span", [_vm._v("Filter")])
@@ -20641,12 +24157,12 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "v-layout",
-                                { attrs: { row: "" } },
+                                { attrs: { row: "", wrap: "" } },
                                 [
                                   _c(
                                     "v-flex",
                                     {
-                                      staticClass: "pl-2",
+                                      staticClass: "px-1",
                                       attrs: { xs12: "", sm12: "", md2: "" }
                                     },
                                     [
@@ -20678,7 +24194,7 @@ var render = function() {
                                   _c(
                                     "v-flex",
                                     {
-                                      staticClass: "pl-2",
+                                      staticClass: "px-1",
                                       attrs: { xs12: "", sm12: "", md2: "" }
                                     },
                                     [
@@ -20710,7 +24226,7 @@ var render = function() {
                                   _c(
                                     "v-flex",
                                     {
-                                      staticClass: "pl-2",
+                                      staticClass: "px-1",
                                       attrs: { xs12: "", sm12: "", md2: "" }
                                     },
                                     [
@@ -20737,7 +24253,7 @@ var render = function() {
                                   _c(
                                     "v-flex",
                                     {
-                                      staticClass: "pl-2",
+                                      staticClass: "px-1",
                                       attrs: { xs12: "", sm6: "", md2: "" }
                                     },
                                     [
@@ -20787,7 +24303,7 @@ var render = function() {
                                   _c(
                                     "v-layout",
                                     {
-                                      class: "pa-3  project " + subtask.Status,
+                                      class: "pa-3  project " + subtask.Color,
                                       attrs: { row: "", wrap: "" }
                                     },
                                     [
@@ -20812,7 +24328,7 @@ var render = function() {
                                       _c(
                                         "v-flex",
                                         {
-                                          attrs: { xs6: "", sm4: "", md4: "" }
+                                          attrs: { xs6: "", sm4: "", md3: "" }
                                         },
                                         [
                                           _c(
@@ -20905,23 +24421,48 @@ var render = function() {
                                       _c(
                                         "v-flex",
                                         {
-                                          attrs: { xs2: "", sm4: "", md2: "" }
+                                          attrs: { xs2: "", sm4: "", md3: "" }
                                         },
                                         [
                                           _c(
                                             "div",
-                                            { staticClass: "right" },
+                                            {
+                                              attrs: {
+                                                align: "center",
+                                                justify: "center"
+                                              }
+                                            },
                                             [
                                               _c(
                                                 "v-chip",
                                                 {
                                                   class:
                                                     " white--text my-2 caption " +
-                                                    subtask.Status,
+                                                    subtask.Color,
                                                   staticStyle: { top: "13px" },
                                                   attrs: { small: "" }
                                                 },
-                                                [_vm._v(_vm._s(subtask.Status))]
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(subtask.Work_Status)
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-chip",
+                                                {
+                                                  class:
+                                                    " white--text my-2 caption " +
+                                                    subtask.Color,
+                                                  staticStyle: { top: "13px" },
+                                                  attrs: { small: "" }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(subtask.Time_Status)
+                                                  )
+                                                ]
                                               )
                                             ],
                                             1
@@ -21669,7 +25210,11 @@ var render = function() {
                             : _c(
                                 "v-btn",
                                 {
-                                  attrs: { color: "blue darken-1", flat: "" },
+                                  attrs: {
+                                    color: "blue darken-1",
+                                    flat: "",
+                                    loading: _vm.uploadProgressLoading
+                                  },
                                   on: {
                                     click: function($event) {
                                       return _vm.uploadProgress()
@@ -21875,7 +25420,11 @@ var render = function() {
                                 ? _c(
                                     "v-btn",
                                     {
-                                      attrs: { dark: "", flat: "" },
+                                      attrs: {
+                                        dark: "",
+                                        flat: "",
+                                        loading: _vm.addLoading
+                                      },
                                       on: {
                                         click: function($event) {
                                           return _vm.addProjectAll()
@@ -21888,7 +25437,11 @@ var render = function() {
                                 ? _c(
                                     "v-btn",
                                     {
-                                      attrs: { dark: "", flat: "" },
+                                      attrs: {
+                                        dark: "",
+                                        flat: "",
+                                        loading: _vm.editLoading
+                                      },
                                       on: {
                                         click: function($event) {
                                           return _vm.updateProjectAll()
@@ -32087,6 +35640,10 @@ var render = function() {
                                                                                                               _c(
                                                                                                                 "v-tooltip",
                                                                                                                 {
+                                                                                                                  staticStyle: {
+                                                                                                                    left:
+                                                                                                                      "-260px"
+                                                                                                                  },
                                                                                                                   attrs: {
                                                                                                                     left:
                                                                                                                       "",
@@ -75404,6 +78961,93 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
 /***/ }),
 
+/***/ "./resources/js/components/AdminPanel.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/AdminPanel.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AdminPanel_vue_vue_type_template_id_8a230bc0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdminPanel.vue?vue&type=template&id=8a230bc0& */ "./resources/js/components/AdminPanel.vue?vue&type=template&id=8a230bc0&");
+/* harmony import */ var _AdminPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminPanel.vue?vue&type=script&lang=js& */ "./resources/js/components/AdminPanel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _AdminPanel_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AdminPanel.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/AdminPanel.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _AdminPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AdminPanel_vue_vue_type_template_id_8a230bc0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AdminPanel_vue_vue_type_template_id_8a230bc0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AdminPanel.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AdminPanel.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/AdminPanel.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AdminPanel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdminPanel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AdminPanel.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/AdminPanel.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanel_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./AdminPanel.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdminPanel.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanel_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanel_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanel_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanel_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanel_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AdminPanel.vue?vue&type=template&id=8a230bc0&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/AdminPanel.vue?vue&type=template&id=8a230bc0& ***!
+  \*******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanel_vue_vue_type_template_id_8a230bc0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AdminPanel.vue?vue&type=template&id=8a230bc0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdminPanel.vue?vue&type=template&id=8a230bc0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanel_vue_vue_type_template_id_8a230bc0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanel_vue_vue_type_template_id_8a230bc0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/App.vue":
 /*!*****************************************!*\
   !*** ./resources/js/components/App.vue ***!
@@ -76474,7 +80118,7 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   //PROJECT AREA
-  getallproject: function getallproject() {
+  getproject: function getproject() {
     return new Promise(function (resolve, reject) {
       var successCallback = function successCallback(res) {
         var user = res.data;
@@ -76486,6 +80130,34 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/proyek', successCallback, errorCallback);
+    });
+  },
+  getallproject: function getallproject() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var user = res.data;
+        resolve(res.data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/proyek/all', successCallback, errorCallback);
+    });
+  },
+  getoneproject: function getoneproject(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var user = res.data;
+        resolve(res.data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/proyek/' + id, successCallback, errorCallback);
     });
   },
   addproject: function addproject(payload) {
@@ -76618,6 +80290,18 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   //SUB ITEM PEKERJAAN
+  // updatesubitempekerjaan(payload,id){
+  //     return new Promise((resolve, reject) => {
+  //         const successCallback = (res) => {
+  //             const data = res.data
+  //             resolve(data)
+  //         }
+  //         const errorCallback = (err) => {
+  //             reject(err)
+  //         }
+  //         Http.patch('/api/log_pengerjaan/'+id, payload, successCallback, errorCallback)
+  //     })
+  // },
   deletesubitempekerjaan: function deletesubitempekerjaan(id) {
     return new Promise(function (resolve, reject) {
       var successCallback = function successCallback(res) {
@@ -76772,7 +80456,7 @@ __webpack_require__.r(__webpack_exports__);
         reject(err);
       };
 
-      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/hitungProyek/' + id, successCallback, errorCallback);
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/' + id + '/hitungProyek/', successCallback, errorCallback);
     });
   },
   getProgressDivisi: function getProgressDivisi(id) {
@@ -77029,8 +80713,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_JobDeskV2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/JobDeskV2 */ "./resources/js/components/JobDeskV2.vue");
 /* harmony import */ var _components_JobDeskV3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/JobDeskV3 */ "./resources/js/components/JobDeskV3.vue");
 /* harmony import */ var _components_ManagementEmployee__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/ManagementEmployee */ "./resources/js/components/ManagementEmployee.vue");
-/* harmony import */ var _components_ManagementRole__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/ManagementRole */ "./resources/js/components/ManagementRole.vue");
-/* harmony import */ var _components_JobAccessRequest__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/JobAccessRequest */ "./resources/js/components/JobAccessRequest.vue");
+/* harmony import */ var _components_AdminPanel__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/AdminPanel */ "./resources/js/components/AdminPanel.vue");
+/* harmony import */ var _components_ManagementRole__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/ManagementRole */ "./resources/js/components/ManagementRole.vue");
+/* harmony import */ var _components_JobAccessRequest__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/JobAccessRequest */ "./resources/js/components/JobAccessRequest.vue");
+
 
 
 
@@ -77137,7 +80823,7 @@ var routes = [// {
       name: 'Management Role',
       Akses: ['M-Role-C', 'M-Role-R', 'M-Role-U', 'M-Role-D']
     },
-    component: _components_ManagementRole__WEBPACK_IMPORTED_MODULE_10__["default"],
+    component: _components_ManagementRole__WEBPACK_IMPORTED_MODULE_11__["default"],
     beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
   }, {
     path: 'job-access',
@@ -77145,7 +80831,15 @@ var routes = [// {
       name: 'Job Access Request',
       Akses: ['M-JobAccess-C', 'M-JobAccess-R', 'M-JobAccess-U', 'M-JobAccess-D']
     },
-    component: _components_JobAccessRequest__WEBPACK_IMPORTED_MODULE_11__["default"],
+    component: _components_JobAccessRequest__WEBPACK_IMPORTED_MODULE_12__["default"],
+    beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
+  }, {
+    path: 'admin_panel',
+    meta: {
+      name: 'Admin Panel',
+      Akses: ['Panel']
+    },
+    component: _components_AdminPanel__WEBPACK_IMPORTED_MODULE_10__["default"],
     beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
   }]
 }];

@@ -21,7 +21,6 @@ class CreateAksesPekerjaansTable extends Migration
             $table->string('Verifikasi',50);
             $table->string('Deskripsi',255);
 
-
             $table->softDeletes();
             $table->timestamps();
 

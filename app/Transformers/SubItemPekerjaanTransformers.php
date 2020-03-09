@@ -22,7 +22,8 @@ class SubItemPekerjaanTransformers extends TransformerAbstract
             'Kode'                  => $sub_item->Kode,
             'Deskripsi'             => $sub_item->Deskripsi,
             'Tanggal_Selesai'       => $sub_item->Tanggal_Selesai,
-            'Persentase'            => $sub_item->Persentase
+            'Persentase'            => $sub_item->Persentase,
+            'Prestasi_Kerja'        => $sub_item->Prestasi_Kerja
         ];
     }
 }

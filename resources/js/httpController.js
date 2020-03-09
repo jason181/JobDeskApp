@@ -271,7 +271,7 @@ export default {
     },
 
     //PROJECT AREA
-    getallproject(){
+    getproject(){
         return new Promise((resolve, reject) => {
             
             const successCallback = (res) => {
@@ -285,6 +285,38 @@ export default {
             }
 
             Http.get('/api/proyek', successCallback, errorCallback)
+        })
+    },
+    getallproject(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.get('/api/proyek/all', successCallback, errorCallback)
+        })
+    },
+    getoneproject(id){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const user = res.data
+                resolve(res.data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+
+            Http.get('/api/proyek/'+id, successCallback, errorCallback)
         })
     },
     addproject(payload){
@@ -432,6 +464,22 @@ export default {
         })
     },
     //SUB ITEM PEKERJAAN
+    // updatesubitempekerjaan(payload,id){
+    //     return new Promise((resolve, reject) => {
+    //         const successCallback = (res) => {
+    //             const data = res.data
+    //             resolve(data)
+
+    //         }
+
+    //         const errorCallback = (err) => {
+    //             reject(err)
+
+    //         }
+
+    //         Http.patch('/api/log_pengerjaan/'+id, payload, successCallback, errorCallback)
+    //     })
+    // },
     deletesubitempekerjaan(id){
         return new Promise((resolve, reject) => {
             const successCallback = (res) => {
@@ -615,7 +663,7 @@ export default {
     
             }
 
-            Http.get('/api/hitungProyek/'+id, successCallback, errorCallback)
+            Http.get('/api/'+id+'/hitungProyek/', successCallback, errorCallback)
         })
     },
     getProgressDivisi(id){

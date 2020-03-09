@@ -20,6 +20,7 @@ class CreateItemPekerjaansTable extends Migration
             $table->string('Nama',50);
             // $table->string('Kode',50);
             // $table->string('Satuan',50);
+            $table->integer('Durasi');
             $table->dateTime('Tanggal_Selesai');
             $table->integer('Persentase');
 

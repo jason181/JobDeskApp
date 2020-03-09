@@ -19,6 +19,7 @@ class Sub_Item_Pekerjaan extends Model
         'Deskripsi',
         'Tanggal_Selesai',
         'Persentase',
+        'Prestasi_Kerja'
     ];
     
     public function log_pengerjaans()

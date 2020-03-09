@@ -26,6 +26,13 @@ class ProyekController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    public function allProject()
+    {
+        $proyek=Proyek::get();
+        $response=$this->generateCollection($proyek);
+        return $this->sendResponse($response,201);
+    }
+
     public function store(Request $request)
     {
         try {
@@ -175,7 +182,6 @@ class ProyekController extends RestController
 
     public function update(Request $request, $id)
     {   
-        return $request;
         try{
 
             $events = Proyek::find($id)->update($request->All());
@@ -190,6 +196,7 @@ class ProyekController extends RestController
 
     public function updateAll(Request $request, $id)
     {   
+        // return $request;
         try{
             $events = Proyek::find($id)->update($request->All());
             if($request->has('All_Divisi'))
@@ -239,8 +246,12 @@ class ProyekController extends RestController
 
     public function show($id)
     {
-        $proyek = Proyek::find($id);
-        return response()->json($proyek,200);
+        $proyek = Proyek::withTrashed()->find($id);
+        $response=$this->generateItem($proyek);
+        return $this->sendResponse($response,201);
+
+        // $proyek = Proyek::find($id);
+        // return response()->json($proyek,200);
     }
 
     public function destroy($id)

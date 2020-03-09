@@ -30,6 +30,7 @@ class ProyekTransformers extends TransformerAbstract
             'Tanggal_Mulai'     => $proyek->Tanggal_Mulai,
             'Tanggal_Selesai'   => $proyek->Tanggal_Selesai,
             'Catatan'           => $proyek->Catatan,
+            'deleted_at'        => $proyek->deleted_at,
             // 'Divisi'            => $proyek->divisi_proyeks,
             // 'Sub_Divisi'        => $proyek->divisi_proyeks->sub_divisi_proyeks,
             // 'Task'              => $proyek->divisi_proyeks->sub_divisi_proyeks->item_pekerjaans,
