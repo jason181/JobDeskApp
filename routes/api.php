@@ -49,7 +49,7 @@ Route::get('proyek/all/{id}','ProyekController@allProject');
 
 Route::post ('proyek/add','ProyekController@storeAll'); //Ready & Checked
 Route::patch ('proyek/update/{id}','ProyekController@updateAll'); //Ready & Checked
-
+Route::patch('proyek/restore/{id}','ProyekController@restore');
 //Sub Divisi
 Route::resource('sub_divisi_proyek','SubDivisiProyekController'); //Ready
 
@@ -77,7 +77,7 @@ Route::get('/sinkronisasi', 'UserDataController@sinkronisasi');
 Route::resource('Fingerprint','FingerprintController');
 Route::patch('/active/{id}','FingerprintController@active');
 Route::patch('/deactive/{id}','FingerprintController@deactive');
-Route::get('/check-connection/{id}','FingerprintController@check_connection');
+Route::get('/check-connection/{id}','FingerprintController@checkConnection');
 // Route::group(['prefix' => 'fingerprint'], function() {
 //     Route::get('/', 'FPController@index')->name('fingerprint_index');
 //     Route::get('create', 'FPController@create')->name('fingerprint_create');

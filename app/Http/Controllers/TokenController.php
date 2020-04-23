@@ -38,11 +38,11 @@ class TokenController extends RestController
             $token->Password=str_random(32);
             $token->save();
             
-            $log_sesi = Log_Sesi::create([
-                'Id_Akun'   => $user->Id_Akun,
-                'Waktu'     => $now,
-                'Keterangan'=> "Login"
-            ]);
+            // $log_sesi = Log_Sesi::create([
+            //     'Id_Akun'   => $user->Id_Akun,
+            //     'Waktu'     => $now,
+            //     'Keterangan'=> "Login"
+            // ]);
 
             $response = $this->generateItem($token);
             return $this->sendResponse($response, 201);

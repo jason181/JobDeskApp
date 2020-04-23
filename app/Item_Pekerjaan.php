@@ -20,6 +20,7 @@ class Item_Pekerjaan extends Model
         // 'Kode',
         // 'Satuan',
         'Tanggal_Selesai',
+        'Durasi',
         'Persentase'
     ];
     public function proyeks()

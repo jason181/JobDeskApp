@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Transformers\FingerprintTransformers;
+use App\Transformers\FingerprintMachineTransformers;
 
 use App\Fingerprint_Machine as FP;
 
@@ -14,7 +14,7 @@ class FingerprintController extends RestController
      *
      * @return \Illuminate\Http\Response
      */
-    protected $transformer=FingerprintTransformers::Class;
+    protected $transformer=FingerprintMachineTransformers::Class;
 
     public function index()
     {
@@ -121,13 +121,14 @@ class FingerprintController extends RestController
         FP::find($id)->delete();
     }
 
-    public function check_connection($id)
+    public function checkConnection($id)
     {
         $mesin = FP::find($id);
         $IP = $mesin->IP;
         // $port = $mesin->port;
 
         $connect = @fsockopen($IP, '80', $errno, $errstr, 1);
+        
         // $connect = @fsockopen($IP, $port, $errno, $errstr, 1);
         return response()->json([
             'status' => $connect,

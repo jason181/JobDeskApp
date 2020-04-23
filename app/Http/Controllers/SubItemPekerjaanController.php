@@ -15,6 +15,8 @@ class SubItemPekerjaanController extends RestController
      *
      * @return \Illuminate\Http\Response
      */
+    protected $transformer=SubItemPekerjaanTransformers::Class;
+
     public function index()
     {
         $sub_divisi=Sub_Item_Pekerjaan::get();
@@ -40,12 +42,14 @@ class SubItemPekerjaanController extends RestController
      */
     public function store(Request $request)
     {
+        // return $request;
         try{
             $sub_item = Sub_Item_Pekerjaan::create([
                 'Id_Item_Pekerjaan' => $request->Id_Item_Pekerjaan,
                 'Nama'              => $request->Nama,
                 // 'Kode'              => $request->Kode,
                 'Tanggal_Selesai'   => $request->Tanggal_Selesai,
+                'Durasi'            => $request->Durasi,
                 'Deskripsi'         => $request->Deskripsi,
                 'Persentase'        => $request->Persentase,
                 'Prestasi_Kerja'    => $request->Prestasi_Kerja

@@ -51,7 +51,7 @@
                         <v-icon color>mdi-account</v-icon>
                     </router-link>
 
-                    <v-icon class="toolbar-items" color @click="logout()">mdi-power</v-icon>
+                    <v-icon large class="toolbar-items" color="red" @click="logout()">mdi-power</v-icon>
                 </v-flex>
             </v-toolbar-items>
         </v-toolbar>

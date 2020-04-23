@@ -13,8 +13,8 @@
               :icons-and-text="icons"
           >
               <v-tab-slider></v-tab-slider>
-              <v-tab>Project</v-tab>
-              <v-tab>Employee</v-tab>
+              <v-tab @click="loadProjectData ()">Project</v-tab>
+              <v-tab @click="resetEmployeeData(), loadEmployeeData()">Employee</v-tab>
               <!-- ITEM PROJECT -->
               <v-tab-item>
                 <v-container fluid>
@@ -42,38 +42,37 @@
                         >
                         <template v-slot:header>
                           <v-layout row wrap :class="`pa-3`" @click="getItemData(project)">
-                              <v-flex xs12 md4 >
-                                  <div class="caption grey--text">Project Title</div>
-                                  <div>{{project.Nama}}</div>
-                              </v-flex>
-                              <v-flex xs6 sm4 md2>
-                                  <div class="caption grey--text">Due Date</div>
-                                  <div>{{project.Tanggal_Selesai}}</div>
-                              </v-flex>   
-                              <v-spacer/>
-                              <v-flex>
-                                  <v-btn small @click="openProjectNotesDialog(project)">Notes</v-btn>
-                                  <v-btn small>Detail</v-btn>
-                                  <v-btn small>Restore</v-btn>
-                                  <v-btn small>Delete</v-btn>
-                              </v-flex>  
-                              <!-- <v-flex>
-                                  <v-btn small @click="editProjectDialog(project)">Edit</v-btn>
-                              </v-flex>   -->
+                            <v-flex xs12 md4 >
+                                <div class="caption grey--text">Project Title</div>
+                                <div>{{project.Nama}}</div>
+                            </v-flex>
+                            <v-flex xs6 sm4 md2>
+                                <div class="caption grey--text">Due Date</div>
+                                <div>{{project.Target_Outcome}}</div>
+                            </v-flex>   
+                            <v-spacer/>
+                            <v-flex>
+                                <v-btn small @click="openProjectNotesDialog(project)">Notes</v-btn>
+                                <!-- <v-btn small>Detail</v-btn> -->
+                                <v-btn small v-if="project.deleted_at != null" @click="restoreProject(project)">Restore</v-btn>
+                                <v-btn small>Delete</v-btn>
+                            </v-flex>  
+                            <!-- <v-flex>
+                                <v-btn small @click="editProjectDialog(project)">Edit</v-btn>
+                            </v-flex>   -->
                           </v-layout>
                         </template>
-
                         <v-card class="grey darken-2">
-                            <v-container class="pa-3">
+                          <v-container class="pa-3">
                             <v-card class="pa-2">
                                 <v-card-title>
-                                    <span>Filter</span>
+                                  <span>Filter</span>
                                 </v-card-title>
-                                <!-- <v-layout row wrap>
-                                  <v-flex class="px-1" xs12 sm12 md2 >
+                                <v-layout row wrap>
+                                  <v-flex class="px-1" xs12 sm6 md4 lg2 >
                                     <v-select
                                     v-model="filterDiv"
-                                    :items="project.All_Divisi"
+                                    :items="project_card.All_Divisi"
                                     item-text="Nama"
                                     item-value="Nama"
                                     box
@@ -81,7 +80,7 @@
                                     @change="getSubDivision(project)"
                                     ></v-select>
                                   </v-flex>
-                                  <v-flex class="px-1" xs12 sm12 md2 >
+                                  <v-flex class="px-1" xs12 sm6 md4 lg2 >
                                     <v-select
                                     v-model="filterSubDiv"
                                     :items="sub_division"
@@ -91,8 +90,8 @@
                                     label="Sub Division"
                                     @change="getTask(project)"
                                     ></v-select>
-                                  </v-flex>     
-                                  <v-flex class="px-1" xs12 sm12 md2 >
+                                  </v-flex>
+                                  <v-flex class="px-1" xs12 sm6 md4 lg2 >
                                     <v-select
                                     v-model="filterTask"
                                     :items="task"
@@ -102,13 +101,33 @@
                                     label="Task"
                                     ></v-select>
                                   </v-flex>
-                                  <v-flex class="px-1" xs12 sm6 md2 >
+                                  <v-flex class="px-1" xs12 sm6 md4 lg2 >
+                                    <v-select
+                                    v-model="filterWorkStatus"
+                                    :items="work_status"
+                                    item-text="Work"
+                                    item-value="Value"
+                                    box
+                                    label="Work Status"
+                                    ></v-select>
+                                  </v-flex>
+                                  <v-flex class="px-1" xs12 sm6 md4 lg2 >
+                                    <v-select
+                                    v-model="filterTimeStatus"
+                                    :items="time_status"
+                                    item-text="Time"
+                                    item-value="Value"
+                                    box
+                                    label="Task"
+                                    ></v-select>
+                                  </v-flex>
+                                  <v-flex class="px-1" xs12 sm6 md4 lg2 >
                                     <v-btn  @click="clearFilter()">Clear</v-btn>
                                   </v-flex>
-                                </v-layout>  -->
+                                </v-layout> 
                             </v-card>   
-                            <v-card hover v-ripple class="px-3 scroll-y" v-for="subtask in project_card.All_SubTask" :key="subtask.Nama" flat style="background: #424242 !important;" @click="openTaskDialog(subtask)">
-                              <v-layout row wrap :class="`pa-3  project ${subtask.Color}`">
+                            <v-card hover v-ripple class="px-3 scroll-y" v-for="subtask in filteredTask(project_card.All_SubTask)" :key="subtask.Id_Sub_Item_Pekerjaan" flat style="background: #424242 !important;" @click="openTaskDialog(subtask)">
+                              <v-layout row wrap :class="`pa-3 project ${subtask.Color}`">
                                   <v-flex xs12 md2>
                                       <div class="caption grey--text">{{subtask.Divisi}}</div>
                                       <div>{{subtask.Sub_Divisi}}</div>
@@ -147,7 +166,7 @@
                               <v-divider></v-divider>
                               </v-card>
                             </v-container>
-                        </v-card>
+                          </v-card>
                         </v-expansion-panel-content>
                       </v-expansion-panel>
                       <!-- Expand Panel -->
@@ -157,7 +176,313 @@
               </v-tab-item>
               <!-- ITEM EMPLOYEE -->
               <v-tab-item>
+                <v-container fluid>
+                  <v-layout row wrap v-if="showEmployee==true">
+                    <v-flex xs12 sm6 md4 lg3
+                    v-for="User of this.Users"
+                    :key="User.Username"
+                    >
+                      <v-card hover width="100%" @click="employeeDetails(User)">
+                        <v-avatar tile>
+                          <v-sheet color="blue" width="60" height="60" elevation="10">
+                            <v-icon dark large>person</v-icon>
+                          </v-sheet>
+                        </v-avatar>
+                        <v-card-title class="right ma-1 font-weight-bold" > 
+                          {{User.Username}}
+                        </v-card-title>
+                        <v-divider></v-divider>
+                        <v-card-text>
+                          <div>
+                            <span class="caption font-weight-light"> <v-icon small>person</v-icon> {{User.Nama}}</span>  
+                          </div>
+                          <div>
+                            <span class="caption font-weight-light"> <v-icon small>work</v-icon> {{User.Divisi}}</span>  
+                          </div>
+                          <div>
+                            <span class="caption font-weight-light"> <v-icon small>spa</v-icon> {{User.Jabatan}}</span>  
+                          </div>
+                          <v-divider class="my-2" style="margin-left:0px !important;margin-right:0px !important;"></v-divider>
+                            <v-icon
+                              class="mr-2"
+                              small
+                            >
+                              mdi-clock
+                            </v-icon>
+                            <span class="caption grey--text font-weight-light">last login {{User.Last_Login}}</span>
+                        </v-card-text>
+                      </v-card>
+                    </v-flex>
+                  </v-layout>
+                  <!-- EMPLOYEE DETAILS -->
+                  <div v-else class="shrink">
+                    <v-layout row wrap>
+                      <v-flex xs12 sm12 md6 lg4 class="justify-center">
+                        <v-card width="100%" height="220" max-width="300px">
+                          <v-avatar tile>
+                            <v-sheet color="blue" width="75" height="75" elevation="10">
+                              <v-icon dark large>store</v-icon>
+                            </v-sheet>
+                          </v-avatar>
+                          <v-card-title class="headline right ma-1"> 
+                            Project
+                          </v-card-title>
+                          <div> 
+                            <v-divider class="mt-4"></v-divider>
+                          </div>
+                          <v-card-text class="pa-4 ">
+                            <div class="subheading font-weight-light mb-2">Total Project : {{Total_Project}}</div>
+                            <div class="subheading font-weight-light mb-3">Average Contribution : {{Average_Contribution}}%</div>
+                            <v-divider style="margin:0 !important"></v-divider>
+                            <v-btn small class="right" @click="detailContribution = !detailContribution">
+                                <span class="caption">Details</span>
+                            </v-btn>
+                          </v-card-text>
+                        </v-card>
+                      </v-flex>
+                      <v-flex xs12 sm12 md6 lg4 class="justify-center">
+                        <v-card width="100%" height="220" max-width="300px">
+                          <v-avatar tile>
+                            <v-sheet color="blue" width="75" height="75" elevation="10">
+                            <v-icon dark large>star</v-icon>
+                            </v-sheet>
+                          </v-avatar>
+                          <v-card-title class="headline right ma-1"> 
+                            Performance
+                          </v-card-title>
+                          <div> 
+                            <v-divider class="mt-4"></v-divider>
+                          </div>
+                          <v-card-text class="pa-3" @click="getDetailPerformanceStatus()">
+                              <div align="center">
+                                <v-rating
+                                  v-model="detailPerformanceCard.Rating"
+                                  :length="detailPerformanceCard.length"
+                                  :empty-icon="detailPerformanceCard.emptyIcon"
+                                  :full-icon="detailPerformanceCard.fullIcon"
+                                  :half-increments="detailPerformanceCard.halfIncrements"
+                                  :hover="detailPerformanceCard.hover"
+                                  :readonly="detailPerformanceCard.readonly"
+                                  :size="detailPerformanceCard.size"
+                                  :dense="detailPerformanceCard.dense"
+                                  :color="detailPerformanceCard.color"
+                                  :background-color="detailPerformanceCard.bgColor"
+                                  
+                                ></v-rating>
+                                <div class="subheading font-weight-light mb-2">{{detailPerformanceCard.Keterangan}} </div>
+                                <!-- <div class="mx-auto my-1" style="font-size:14px">Click The Star</div> -->
+                                  <!-- <span class="mx-auto my-2" style="font-size:14px" align="center">Click the Star</span> -->
+                              </div>
+                              <v-divider style="margin:0 !important"></v-divider>
+                              <v-btn small class="right" @click="detailPerformanceDialog = !detailPerformanceDialog">
+                                <span class="caption">Details</span>
+                            </v-btn>
+                          </v-card-text>
+                        </v-card>
+                      </v-flex>
+                      <v-flex xs12 sm12 md6 lg4>
+                          <v-card width="100%" height="220" max-width="300px">
+                          <v-avatar tile>
+                              <v-sheet color="blue" width="75" height="75" elevation="10">
+                              <v-icon dark large>mdi-account-check</v-icon>
+                              </v-sheet>
+                          </v-avatar>
+                          <v-card-title class="headline right ma-1"> 
+                              Attendance
+                          </v-card-title>
+                          <div> 
+                              <v-divider class="mt-4"></v-divider>
+                          </div>
+                          <v-card-text class="pa-4 ">
+                            <div class="subheading font-weight-light mb-2">Total Attendance : 974 Days</div>
+                            <div class="subheading font-weight-light mb-3">Average Attendance : 99,5%</div>
+                            <v-divider style="margin:0 !important"></v-divider>
+                            <v-btn small class="right" @click="detailAttendance = !detailAttendance"> 
+                                <span class="caption">Details</span>
+                            </v-btn>
+                          </v-card-text>
+                          </v-card>
+                      </v-flex>
+                    </v-layout>
+                    <v-layout row wrap>
+                    <!-- PROJECT CONTRIBUTION -->
+                    <v-flex xs12 md12 v-if="detailContribution">
+                        <v-card color="grey darken-2" height="100%" style="margin:4px;">
+                            <v-card-title class="justify-center">
+                                <span class="headline">Project Contribution</span>
+                            </v-card-title>
+                            <v-card-text> 
+                                <v-btn small  @click="expandDetail = !expandDetail" slot="activator">
+                                    <v-icon small left>filter_list</v-icon>
+                                    <span class="caption ">Expand</span>
+                                </v-btn>
+                                <v-list expand style="height: 100%; min-height:320px;">
+                                    <v-list-group
+                                    v-for="project in UserProjects"
+                                    :key="project.Id_Proyek"
+                                    class="px-2"
+                                    :value="expandDetail">
+                                    <template v-slot:activator>
+                                        <v-list-tile>
+                                            <v-list-tile-content style="height:50px">
+                                                <v-list-tile-title style="height:35px;line-height:35px">
+                                                <span>
+                                                {{project.Nama}}
+                                                </span>
+                                                <span class="pr-3 right"> 
+                                                <v-chip small :class="` white--text my-2 caption ${project.Status}`">{{project.Status}}</v-chip>
+                                                </span>
+                                                </v-list-tile-title>
+                                            </v-list-tile-content>
+                                            <v-list-tile-action style="width:125px; !important">
+                                                <v-progress-linear
+                                                color="red"
+                                                height="20"
+                                                :value="project.Contribution"
+                                                >
+                                                <p class="text-xs-center">{{project.Contribution}}%</p>
+                                                </v-progress-linear>
+                                            </v-list-tile-action>
+                                        </v-list-tile>
+                                    </template>
+                                    <v-list-group
+                                        v-for="(div,index) in project.All_Divisi"
+                                        :key="index"
+                                        class="pl-2 pr-2"
+                                        :value="expandDetail"
+                                    >
+                                        <template v-slot:activator>
+                                        <v-list-tile class="d_div">
+                                            <v-list-tile-content style="height:50px">
+                                                <v-list-tile-title style="height:35px;line-height:35px">
+                                                <span>
+                                                {{div.Nama}}
+                                                </span>
+                                                <span class="pr-3 right"> 
+                                                <v-chip small :class="` white--text my-2 caption ${div.Status}`">{{div.Status}}</v-chip>
+                                                </span>
+                                                </v-list-tile-title>
+                                            </v-list-tile-content>
+                                            <v-list-tile-action style="min-width:125px; !important">
+                                                <v-progress-linear
+                                                color="red"
+                                                height="20"
+                                                :value="div.Contribution"
+                                                >
+                                                <p class="text-xs-center">{{div.Contribution}}%</p>
+                                                </v-progress-linear>
+                                            </v-list-tile-action>
+                                        </v-list-tile>
+                                        </template>
+                                        <v-list-group
+                                        v-for="subdiv in project.All_SubDivisi.filter(obj=>obj.Divisi == div.Nama)"
+                                        :key="subdiv.Id_Sub_Divisi_Proyek"
+                                        class="pl-2 pr-2" 
+                                        :value="expandDetail"
+                                        >
+                                        <template v-slot:activator>
+                                            <v-list-tile  class="d_sub_div">
+                                            <v-list-tile-content style="height:50px">
+                                                <v-list-tile-title style="height:35px;line-height:35px">
+                                                <span>
+                                                    {{subdiv.Nama}}
+                                                </span>
+                                                <span class="pr-3 right"> 
+                                                    <v-chip small :class="` white--text my-2 caption ${subdiv.Status}`">{{subdiv.Status}}</v-chip>
+                                                </span>
+                                                </v-list-tile-title>
+                                            </v-list-tile-content>
+                                            <v-list-tile-action style="min-width:125px; !important">
+                                                <v-progress-linear
+                                                color="red"
+                                                height="20"
+                                                :value="subdiv.Contribution"
+                                                >
+                                                <p class="text-xs-center">{{subdiv.Contribution}}%</p>
+                                                </v-progress-linear>
+                                            </v-list-tile-action>
+                                            </v-list-tile>
+                                        </template>
 
+                                        <v-list-group
+                                        v-for="task in project.All_Task.filter(obj=>obj.Sub_Divisi == subdiv.Nama)"
+                                        :key="task.Id_Item_Pekerjaan"
+                                        class="pl-2 pr-2"
+                                        :value="expandDetail"
+                                        >
+                                            <template v-slot:activator>
+                                                <v-list-tile  class="d_task">
+                                                    <v-list-tile-content style="height:50px">
+                                                    <v-list-tile-title style="height:35px;line-height:35px">
+                                                        <span>
+                                                        {{task.Nama}}
+                                                        </span>
+                                                        <span class="pr-3 right"> 
+                                                        <v-chip small :class="` white--text my-2 caption ${task.Status}`">{{task.Status}}</v-chip>
+                                                        </span>
+                                                    </v-list-tile-title>
+                                                    </v-list-tile-content>
+                                                <v-list-tile-action style="min-width:125px; !important">
+                                                    <v-progress-linear  
+                                                    color="red"
+                                                    height="20"
+                                                    :value="task.Contribution"
+                                                    >
+                                                    <p class="text-xs-center">{{task.Contribution}}%</p>
+                                                    </v-progress-linear>
+                                                </v-list-tile-action>
+                                                </v-list-tile>
+                                            </template>
+                                            <v-list-tile
+                                            v-for="subtask in  project.All_SubTask.filter(obj=>obj.Task == task.Nama)"
+                                            :key="subtask.Id_Sub_Item_Pekerjaan"
+                                            class="d_sub_task ml-2 pr-5 mr-3 ">
+                                            <v-list-tile-content>
+                                                <v-list-tile-title style="height:35px;line-height:35px;">
+                                                <v-layout row wrap>
+                                                    <v-flex xs12 md8>
+                                                    <v-tooltip left color="grey darken-4" style="left:-260px"> 
+                                                    <template v-slot:activator="{ on }">
+                                                        <div v-on="on" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size:14px;">{{subtask.Nama}}</div>
+                                                    </template>
+                                                    <span style="color:white;">
+                                                      {{subtask.Nama}} 
+                                                    </span>
+                                                    </v-tooltip>
+                                                    </v-flex>
+                                                    <v-flex xs12 md4>
+                                                    <div class="pr-3 right"> 
+                                                        <v-chip small :class="` white--text my-2 caption ${subtask.Status}`">{{subtask.Status}}</v-chip>
+                                                    </div>
+                                                    </v-flex>
+                                                </v-layout>
+                                                </v-list-tile-title>
+                                            </v-list-tile-content>
+                                            <v-list-tile-action style="min-width:125px; !important">
+                                                <v-progress-linear
+                                                color="red"
+                                                height="20"
+                                                :value="subtask.Contribution"
+                                                >
+                                                <p class="text-xs-center">{{subtask.Contribution}}%</p>
+                                                </v-progress-linear>
+                                            </v-list-tile-action>
+                                            <div class="ml-1" v-if="subtask.Prestasi_Kerja != 0 && subtask.Contribution>0">
+                                              {{subtask.Prestasi_Kerja}} <v-icon small>star</v-icon>
+                                            </div>
+                                            </v-list-tile>
+                                        </v-list-group>
+                                        </v-list-group>
+                                    </v-list-group>
+                                    </v-list-group>
+                                </v-list>
+                            </v-card-text>
+                        </v-card>
+                    </v-flex>
+                    <!-- PROJECT CONTRIBUTION -->
+                    </v-layout>
+                  </div>
+                </v-container>
               </v-tab-item>
               <!-- ITEM EMPLOYEE -->
           </v-tabs>
@@ -167,9 +492,17 @@
         <v-dialog v-model="taskDialog" scrollable persistent max-width="600px">
           <v-card>
               <v-card-title>
-                  <span class="headline">{{editTask.Nama}}</span>
-                  <v-spacer/>
-                  <span v-if="editTask.User!=''">Last Progress By : {{editTask.User}}</span>
+                <v-layout row wrap> 
+                  <v-flex xs12 md8>
+                    <span class="headline">{{editTask.Nama}}</span>
+                  </v-flex>
+                  <v-flex xs12 md4>
+                    <span style="vertical-align:center" class="right" v-if="editTask.User!=''">Taken By : {{editTask.User}}</span>
+                  </v-flex>
+                </v-layout>
+<!--                   
+                  <v-spacer/> -->
+                  
               </v-card-title>
               <v-divider/>
               <span class="ml-4">{{editTask.Divisi}} > {{editTask.Sub_Divisi}} > {{editTask.Task}}</span>
@@ -379,7 +712,7 @@
               <!-- <v-container grid-list-md> -->
                   <v-layout wrap>
                       <!-- Notes -->
-                      <v-flex xs12 @click="getPerformaceStatus()">
+                      <v-flex xs12 @click="getPerformanceStatus()">
                         <div align="center">
                           <v-rating
                             v-model="performance.Rating"
@@ -414,6 +747,31 @@
           </v-dialog>
       </v-layout>
       <!-- Performance Dialog -->
+      <!-- Detail Performance Dialog -->
+      <v-layout row justify-center>
+        <v-dialog v-model="detailPerformanceDialog" scrollable persistent max-width="300px">
+          <v-card>
+              <v-card-title>
+                  <span style="headline">{{ActiveUserData.Username}} PERFORMANCE</span>
+                  <v-spacer/>
+              </v-card-title>
+              <v-divider/>
+              <v-card-text>
+              <div class="subheading font-weight-light mb-2">Best Performance   : {{UserPerformance.Best_Performance}} / {{UserPerformance.Total_Subtask}}</div>
+              <div class="subheading font-weight-light mb-2">Performance        : {{UserPerformance.Performance}} / {{UserPerformance.Total_Subtask}}</div>
+              <div class="subheading font-weight-light mb-2">Semi Performance   : {{UserPerformance.Semi_Performance}} / {{UserPerformance.Total_Subtask}}</div>
+              <div class="subheading font-weight-light mb-2">Bad Performance    : {{UserPerformance.Bad_Performance}} / {{UserPerformance.Total_Subtask}}</div>
+              </v-card-text>
+              <v-divider></v-divider>
+              <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn color="blue darken-1" flat @click="detailPerformanceDialog = false">Close</v-btn>
+              </v-card-actions>
+          </v-card>
+          </v-dialog>
+      </v-layout>
+      <!-- Detail Performance Dialog -->
       <!-- Alert -->
         <v-snackbar right bottom :color="alert.type"  value="true" v-if="alert.type">
         <v-icon>{{alert.icon}}</v-icon>{{alert.message}}
@@ -424,6 +782,7 @@
 <script>
 import Controller from '../httpController'
 import { mapGetters } from 'vuex'
+// import { try } from 'q';
 // import * as easings from 'vuetify/es5/services/goto/easing-patterns'
 
 export default {
@@ -453,7 +812,8 @@ export default {
     right: false,
     tabs: 1,
     //Tabs
-    //Projects
+    //**********PROJECTS**********//
+    AllProjects:[],
     project_card:[],
     projects:[],
     d_projects : [
@@ -542,8 +902,7 @@ export default {
       },
     ],
     logPengerjaanData:[],
-    //Projects
-
+    
     //DIALOG
     //Task Dialog
     taskDialog:false,
@@ -610,13 +969,54 @@ export default {
     //Performance Dialog
     performanceDialog:false,
     //Performance Dialog
-    //Filter
+    //FILTER
+    filterWorkStatus:'',
+    filterTimeStatus:'',
+    work_status:[
+      {
+        Work : 'All',
+        Value : ''
+      },
+      { 
+        Work : 'Available',
+        Value : 'Available'
+      },
+      { 
+        Work : 'On Going',
+        Value : 'On Going'
+      },
+      { 
+        Work : 'Complete',
+        Value : 'Complete'
+      }
+    ],
+    time_status:[
+      {
+        Time : 'All',
+        Value : ''
+      },
+      { 
+        Time : 'In Time' ,
+        Value : 'In Time' 
+      },
+      { 
+        Time : 'On Time' ,
+        Value : 'On Time' 
+      },
+      { 
+        Time : 'Overdue', 
+        Value : 'Overdue'
+      }
+    ],
     filter_status:'',
     filterDiv:'',
+    division:[],
     filterSubDiv:'',
+    sub_division:[],
     filterTask:'',
-    //Filter
-    //Performance Rating
+    task:[],
+    //FILTER
+    //PERFORMANCE RATING
     //DATA
     performance:{
       Nama :'',
@@ -628,7 +1028,7 @@ export default {
       hover: true,
       length: 4,
       readonly: false,
-      size: 32,
+      size: 24,
       dense: false,
       color: 'grey darken-1',
       bgColor: 'grey lighten-1',
@@ -649,7 +1049,81 @@ export default {
       bgColor: 'grey lighten-1',
     },
     //DATA
-    //Performance Rating
+    //PERFORMANCE RATING
+
+    //**********PROJECTS**********//
+    
+    //**********EMPLOYEE**********//
+    Users:[],
+    Accounts:[],
+    SessionLogs:[],
+    expandDetail:false,
+    showEmployee:true,
+    UserProjects:[],
+    ActiveUserData:[],
+    //DETAILS
+    detailContribution:false,
+    detailPerformance:false,
+    detailAttendance:false,
+    //CONTRIBUTION
+    Userlogs:[],
+    Total_Project:0,
+    Average_Contribution:0,
+    //CONTRIBUTION
+    //PERFORMANCE
+    UserPerformance:{
+      Bad_Performance:0,
+      Semi_Performance:0,
+      Performance:0,
+      Best_Performance:0,
+      Total_Subtask:0,
+    },
+    initUserPerformance:{
+      Bad_Performance:0,
+      Semi_Performance:0,
+      Performance:0,
+      Best_Performance:0,
+      Total_Subtask:0,
+    },
+    detailPerformanceCard:{
+      Nama :'',
+      Rating : 0,
+      Keterangan: 'Click The Star',
+      emptyIcon: 'mdi-star-outline',
+      fullIcon: 'mdi-star',
+      halfIncrements: false,
+      hover: true,
+      length: 4,
+      readonly: false,
+      size: 24,
+      dense: false,
+      color: 'grey darken-1',
+      bgColor: 'grey lighten-1',
+    },
+    initDetailPerformanceCard:{
+      Nama :'',
+      Rating : 0,
+      Keterangan: 'Click The Star',
+      emptyIcon: 'mdi-star-outline',
+      fullIcon: 'mdi-star',
+      halfIncrements: false,
+      hover: true,
+      length: 4,
+      readonly: false,
+      size: 24,
+      dense: false,
+      color: 'grey darken-1',
+      bgColor: 'grey lighten-1',
+    },
+    detailPerformanceDialog:false,
+    //PERFORMANCE
+    //ATTENDANCE
+
+    //ATTENDANCE
+    //DETAILS
+
+
+    //**********EMPLOYEE**********//
 
     //LOADING
     savePerformanceLoading:false,
@@ -663,84 +1137,166 @@ export default {
     }),
   },
   mounted () {
-    this.loaddata ()
+    this.loadProjectData ()
   },
   methods : {
-    async loaddata ()
+    async loadProjectData ()
     {
-      // try {
-      //     let data = (await Controller.getallproject()).data
-      //     this.logPengerjaanData = (await Controller.getalllogpengerjaan()).data
-
-      //     for(let item of data)
-      //     {
-      //         this.getDataFormat(item)
-      //     }
-      //     this.projects=data
-      // } catch (err) {
-      //     console.log(err)
-      // }
       try {
         let data = (await Controller.getallproject())
+        this.AllProjects = data
+        this.logPengerjaanData = (await Controller.getalllogpengerjaan()).data
         for(let project of data)
         {
-          project.isGetDataFormat = false;
-          // let pro = (await Controller.getoneproject(project.Id_Proyek)).data
-          // this.getDataFormat(pro)
-          // console.log(pro)
+          project.isGetProjectDataFormat = false;
         }
-        
         this.projects = data
         this.getItemData(this.projects[0])
-        console.log(this.projects)
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async loadEmployeeData()
+    {
+      try {
+        this.showEmployee=true
+        if(this.Users.length==0)
+        {
+          this.Users = (await Controller.getallemployee()).data
+          this.Accounts = (await Controller.getallakun()).data
+          
+          this.SessionLogs = (await Controller.getallsessionlogs()).data
+          for(let User of this.Users)
+          {
+            this.getUserDataFormat(User)
+          }
+          console.log(this.Users)
+        }
       } catch (err) {
         console.log(err)
       }
     },
     //GET DATA
+    getUserProjects()
+    {
+      try {
+        // console.log("this.ActiveUserData")
+        // console.log(this.ActiveUserData)
+        this.UserLogs = this.logPengerjaanData.filter(obj=>obj.Id_Akun == this.ActiveUserData.Id_Akun)
+        // console.log("this.UserLogs")
+        // console.log(this.UserLogs)
+        for(let UserLog of this.UserLogs)
+        {
+          for(let Project of this.AllProjects)
+          {
+            if(UserLog.Id_Proyek == Project.Id_Proyek && this.UserProjects.filter(obj=>obj.Id_Proyek == Project.Id_Proyek).length == 0)
+            {
+              this.getUserProjectDataFormat(Project)
+              this.UserProjects.push(Project)
+            }
+          }
+        }
+        console.log("this.UserProjects")
+        console.log(this.UserProjects)
+        this.Total_Project = this.UserProjects.length
+        let Total_Contribution = 0
+        // let value = 0
+        for(let UserProject of this.UserProjects)
+        {
+          Total_Contribution += UserProject.Contribution
+          // this.labels.push(UserProject.Kode)
+          // value = (Math.round(UserProject.Contribution * 1000) / 1000).toFixed(3)
+          // this.values.push(parseFloat(value))
+          // console.log(value)
+        }
+        // console.log("this.value")
+        // console.log(this.values)
+        
+        this.Average_Contribution = Total_Contribution / this.Total_Project
+        this.Average_Contribution=(Math.round(this.Average_Contribution * 1000) / 1000).toFixed(3);
+        
+        // console.log("WORKSPACE")
+        // console.log(this.logPengerjaanData)
+        console.log(this.UserProjects)
+        // console.log("WORKSPACE")
+      } catch (err) {
+         console.log(err)
+      }
+    },
     async getItemData(item)
     {
-      console.log("item")
-      console.log(item)
       this.project_card = []
-      if(item.isGetDataFormat == false)
+      if(item.isGetProjectDataFormat == false)
       {
         let index = this.projects.indexOf(item)
         let project = (await Controller.getoneproject(item.Id_Proyek)).data
         this.getDataFormat(project)
         this.projects[index] = Object.assign({}, project)
         this.projects[index]=project
-        console.log("CEK")
         this.project_card = this.projects[index];
-        console.log(this.projects)
       }
       else
       {
         let index = this.projects.indexOf(item)
-        // let project = (await Controller.getoneproject(item.Id_Proyek)).data
-        // this.getDataFormat(project)
-        // this.projects[index] = Object.assign({}, project)
-        // this.projects[index]=project
-        // console.log("CEK")
         this.project_card = this.projects[index];
-        console.log(this.projects)
       }
     },
-    // itemData(){
-    //   return this.projects[0];
-    // },
-    async getDataFormat(data){
-      if(this.logPengerjaanData.length == 0)
-        this.logPengerjaanData = (await Controller.getalllogpengerjaan()).data
+    getUserDataFormat(data){
+      data.Username = this.Accounts.find(obj=>obj.Id_Akun == data.Id_Akun).Username.toUpperCase()
+      for(let SessionLog of this.SessionLogs)
+      {
+        if(data.Id_Akun == SessionLog.Id_Akun)
+        {
+          let today = new Date().getTime();
+          let last = new Date(SessionLog.Waktu).getTime();
+          let difference = parseInt((today-last)/1000);
+          if(difference<60)
+          {
+            data.Last_Login = difference +' seconds ago'
+          }
+          else if(difference<3600)
+          {
+            difference = parseInt(difference/60)
+            data.Last_Login = difference +' minutes ago'
+          }
+          else if(difference<86400)
+          {
+            difference = parseInt(difference/3600)
+            data.Last_Login = difference +' hours ago'
+          }
+          else
+          {
+            difference = parseInt(difference/86400)
+            data.Last_Login = difference +' days ago'
+          }
+        }
+      }
+    },
+    getDataFormat(data){
       let alldivisi =[]
       let allsubdivisi=[]
       let alltask=[]
       let allsubtask=[]
 
+      let ProgressProyek = 0
+      let ProgressDivisi = 0
+      let ProgressSubDivisi = 0
+      let ProgressTask = 0
+      let ProgressSubTask = 0
+
+      let ContributionProyek = 0
+      let ContributionDivisi = 0
+      let ContributionSubDivisi = 0
+      let ContributionTask = 0
+      let MySubTaskContribution = 0
+      let OtherSubTaskContribution = 0
+
       let PersentaseProyek = 0
       let PersentaseDivisi = 0
       let PersentaseSubDivisi = 0
       let PersentaseTask = 0
+      let PersentaseSubTask = 0
+
 
       for(let div of data.Divisi.data)
       {    
@@ -773,12 +1329,17 @@ export default {
                           Log_Pengerjaan          :[],
                           Prestasi_Kerja          : subtask.Prestasi_Kerja
                       }
+
                       for(let log of this.logPengerjaanData){
-                          if(log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan){
-                              eachsubtask.Total_Progress = parseInt(log.Progress)+parseInt(eachsubtask.Total_Progress)
-                              eachsubtask.Log_Submitted = log.Waktu_Selesai.split(' ')[0],
-                              eachsubtask.Log_Pengerjaan.push(log)
-                          }
+                        if(eachsubtask.User == '')
+                        {
+                          eachsubtask.User = log.Username;
+                        }
+                        if(log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan){
+                            eachsubtask.Total_Progress = parseInt(log.Progress)+parseInt(eachsubtask.Total_Progress)
+                            eachsubtask.Log_Submitted = log.Waktu_Selesai.split(' ')[0],
+                            eachsubtask.Log_Pengerjaan.push(log)
+                        }
                       }
                       let today = new Date().getTime();
                       let target = new Date(eachsubtask.Tanggal_Selesai).getTime();
@@ -892,9 +1453,311 @@ export default {
       data.All_Task       = alltask
       data.All_SubTask    = allsubtask
       data.Total_Persentase = PersentaseProyek
-      data.isGetDataFormat = true
-      // if(data.c)
-      console.log(data)
+      data.isGetProjectDataFormat = true
+    },
+    getUserProjectDataFormat(data){
+        let alldivisi =[]
+        let allsubdivisi=[]
+        let alltask=[]
+        let allsubtask=[]
+
+        let ProgressProyek = 0
+        let ProgressDivisi = 0
+        let ProgressSubDivisi = 0
+        let ProgressTask = 0
+        let ProgressSubTask = 0
+
+        let ContributionProyek = 0
+        let ContributionDivisi = 0
+        let ContributionSubDivisi = 0
+        let ContributionTask = 0
+        let MySubTaskContribution = 0
+        let OtherSubTaskContribution = 0
+
+        let PersentaseProyek = 0
+        let PersentaseDivisi = 0
+        let PersentaseSubDivisi = 0
+        let PersentaseTask = 0
+        let PersentaseSubTask = 0
+
+        let today = new Date().getTime();
+
+        for(let div of data.Divisi.data)
+        {    
+            for(let subdiv of div.Sub_Divisi.data)
+            {
+                for(let task of subdiv.Task.data)
+                {
+                    for(let subtask of task.Sub_Task.data)
+                    {
+                        let eachsubtask ={
+                            Id_Sub_Item_Pekerjaan   : subtask.Id_Sub_Item_Pekerjaan,
+                            // Id_Item_Pekerjaan       : subtask.Id_Item_Pekerjaan,
+                            Projek                  : data.Nama,
+                            Divisi                  : div.Nama, 
+                            Sub_Divisi              : subdiv.Nama,                     
+                            Task                    : task.Nama,                     
+                            Nama                    : subtask.Nama,
+                            // Kode                    : subtask.Kode,
+                            // Deskripsi               : subtask.Deskripsi,
+                            Tanggal_Selesai         : subtask.Tanggal_Selesai.split(' ')[0],
+                            Persentase              : subtask.Persentase,
+                            User                    : '',
+                            Remaining               : '',
+                            Progress                : '0',
+                            Contribution            : '0',
+                            Status                  : '',
+                            Log_Pengerjaan          :[],
+                            Prestasi_Kerja          : subtask.Prestasi_Kerja,
+                        }
+                        for(let log of this.logPengerjaanData){
+                            if(log.Id_Sub_Item_Pekerjaan == eachsubtask.Id_Sub_Item_Pekerjaan){
+                                eachsubtask.Log_Pengerjaan.push(log)
+                            }
+                        }
+
+                        let logIndexInc = 0
+                        let logs = eachsubtask.Log_Pengerjaan.filter(obj=>obj.Berkas!='')
+                        for(let log of logs)
+                        {
+                          if(log.Nama == this.ActiveUserData.Nama)
+                            MySubTaskContribution += log.Progress
+                          else
+                            OtherSubTaskContribution += log.Progress
+                        }
+                        // console.log("Contribution")
+                        // console.log(MySubTaskContribution)
+                        // console.log(OtherSubTaskContribution)
+                        // console.log(MySubTaskContribution-OtherSubTaskContribution)
+                        eachsubtask.Contribution = MySubTaskContribution
+                        // -OtherSubTaskContribution
+                        MySubTaskContribution = 0
+                        OtherSubTaskContribution = 0
+                        ContributionTask += (eachsubtask.Contribution * eachsubtask.Persentase / 100)
+                        // console.log(ContributionTask)
+                        let target = new Date(eachsubtask.Tanggal_Selesai).getTime();
+                        let remaining = parseInt((target-today)/(24*3600*1000));
+
+                        eachsubtask.Remaining = remaining +' days left'
+
+                        if(eachsubtask.Log_Pengerjaan.length > 0){
+                            eachsubtask.Log_Pengerjaan = eachsubtask.Log_Pengerjaan.slice().reverse()
+                            if(eachsubtask.Log_Pengerjaan.length==1)
+                            {
+                                eachsubtask.Progress = eachsubtask.Log_Pengerjaan[0].Progress
+                                eachsubtask.User = eachsubtask.Log_Pengerjaan[0].Username
+                                ProgressTask += (eachsubtask.Progress*eachsubtask.Persentase/100)
+                            }
+                            else{
+                                let data = eachsubtask.Log_Pengerjaan.find(obj=>obj.Berkas!='' )
+                                eachsubtask.Progress = data.Progress 
+                                eachsubtask.User = data.Username 
+                                ProgressTask += (eachsubtask.Progress*eachsubtask.Persentase/100)
+                            }
+                        }
+                        
+                        if(remaining < 0 && eachsubtask.Progress != '100'){
+                            eachsubtask.Status = 'overdue'
+                            eachsubtask.Remaining = remaining +' days overdue'
+                        }
+                        else if(eachsubtask.Progress!='100'){
+                            eachsubtask.Status = 'ongoing'
+                        }
+                        else{
+                            eachsubtask.Status = 'complete'
+                        }
+                        // console.log("eachsubtask.User")
+                        // console.log(eachsubtask.User)
+                        // console.log("this.ActiveUserData.Username")
+                        // console.log(this.ActiveUserData.Username)
+                        if(eachsubtask.Contribution>0)
+                        {
+                          if(eachsubtask.Prestasi_Kerja == 1)
+                          {
+                            console.log("BAD PERFORMANCE")
+                            this.UserPerformance.Bad_Performance++
+                          }
+                          else if(eachsubtask.Prestasi_Kerja == 2)
+                          {
+                            console.log("SEMI PERFORMANCE")
+                            this.UserPerformance.Semi_Performance++
+                          }
+                          else if(eachsubtask.Prestasi_Kerja == 3)
+                          {
+                            console.log("PERFORMANCE")
+                            this.UserPerformance.Performance++
+                          }
+                          else if(eachsubtask.Prestasi_Kerja == 4)
+                          {
+                            console.log("BEST PERFORMANCE")
+                            this.UserPerformance.Best_Performance++
+                          }
+                          if(eachsubtask.Prestasi_Kerja!=0)
+                          {
+                            this.UserPerformance.Total_Subtask++
+                          }
+                          console.log("this.UserPerformance dalam")
+                          console.log(this.UserPerformance)
+                        }
+                        allsubtask.push(eachsubtask)
+                    }
+                    let target = new Date(task.Tanggal_Selesai).getTime();
+                    let remaining = parseInt((target-today)/(24*3600*1000));
+
+                    let eachtask ={
+                        Id_Item_Pekerjaan   : task.Id_Item_Pekerjaan,
+                        Id_Divisi_Role      : task.Id_Divisi_Role, 
+                        Id_Sub_Divisi_Proyek: task.Id_Sub_Divisi_Proyek,
+                        Sub_Divisi          : task.Sub_Divisi,                        
+                        Nama                : task.Nama,
+                        Kode                : task.Kode,
+                        Satuan              : task.Satuan,
+                        Tanggal_Selesai     : task.Tanggal_Selesai.split(' ')[0],
+                        Persentase          : task.Persentase,
+                        Progress            : ProgressTask,
+                        Contribution        : ContributionTask,
+                        Remaining           : remaining+' days left'
+                    }
+                    ContributionTask = 0
+                    ProgressTask = 0
+                    ContributionSubDivisi += (eachtask.Contribution * eachtask.Persentase / 100 )
+                    ProgressSubDivisi += (eachtask.Progress * eachtask.Persentase / 100)
+                    if(eachtask.Progress == 100)
+                    {
+                      eachtask.Status = 'complete'
+                      eachtask.Remaining = remaining +' days left'
+                    }
+                    else
+                    {
+                      if(remaining >= 0)
+                      {
+                        eachtask.Status = 'ongoing'
+                        eachtask.Remaining = remaining +' days left'
+                      }
+                      else if (remaining < 0)
+                      {
+                        eachtask.Status = 'overdue'
+                        eachtask.Remaining = remaining +' days overdue'
+                      }
+                    }
+                    alltask.push(eachtask)
+                    PersentaseSubDivisi += task.Persentase
+                }
+                let target = new Date(subdiv.Tanggal_Selesai).getTime();
+                let remaining = parseInt((target-today)/(24*3600*1000));
+
+                let eachsubdiv ={
+                    Id_Sub_Divisi_Proyek    : subdiv.Id_Sub_Divisi_Proyek,
+                    Id_Divisi_Proyek        : subdiv.Id_Divisi_Proyek,
+                    Divisi                  : subdiv.Divisi,
+                    Nama                    : subdiv.Nama,
+                    Tanggal_Selesai         : subdiv.Tanggal_Selesai.split(' ')[0],
+                    Persentase              : subdiv.Persentase,
+                    Total_Persentase        : PersentaseSubDivisi,
+                    Progress                : ProgressSubDivisi,
+                    Contribution            : ContributionSubDivisi,
+                    Remaining               : remaining+' days left'
+                }
+                ContributionSubDivisi = 0
+                ProgressSubDivisi = 0
+                ContributionDivisi += (eachsubdiv.Contribution * eachsubdiv.Persentase / 100 )
+                ProgressDivisi += (eachsubdiv.Progress * eachsubdiv.Persentase / 100)
+                if(eachsubdiv.Progress == 100)
+                {
+                  eachsubdiv.Status = 'complete'
+                  eachsubdiv.Remaining = remaining +' days left'
+                }
+                else
+                {
+                  if(remaining >= 0)
+                  {
+                    eachsubdiv.Status = 'ongoing'
+                    eachsubdiv.Remaining = remaining +' days left'
+                  }
+                  else if (remaining < 0)
+                  {
+                    eachsubdiv.Status = 'overdue'
+                    eachsubdiv.Remaining = remaining +' days overdue'
+                  }
+                }
+                allsubdivisi.push(eachsubdiv)
+                PersentaseSubDivisi = 0
+                PersentaseDivisi += subdiv.Persentase
+            }
+            let target = new Date(div.Tanggal_Selesai).getTime();
+            let remaining = parseInt((target-today)/(24*3600*1000));
+            let eachdiv ={
+                Id_Divisi_Proyek    : div.Id_Divisi_Proyek,
+                Id_Divisi_Role      : div.Id_Divisi_Role,
+                Id_Proyek           : div.Id_Proyek,
+                Nama                : div.Nama,
+                Tanggal_Selesai     : div.Tanggal_Selesai.split(' ')[0],
+                Persentase          : div.Persentase,
+                Total_Persentase    : PersentaseDivisi,
+                Progress            : ProgressDivisi,
+                Contribution        : ContributionDivisi,
+                Remaining           : remaining+' days left'
+            }
+            ContributionDivisi = 0
+            ProgressDivisi = 0
+            ContributionProyek += (eachdiv.Contribution * eachdiv.Persentase / 100 ) 
+            ProgressProyek += (eachdiv.Progress * eachdiv.Persentase / 100)
+            if(eachdiv.Progress == 100)
+            {
+              eachdiv.Status = 'complete'
+              eachdiv.Remaining = remaining +' days left'
+            }
+            else
+            {
+              if(remaining >= 0)
+              {
+                eachdiv.Status = 'ongoing'
+                eachdiv.Remaining = remaining +' days left'
+              }
+              else if (remaining < 0)
+              {
+                eachdiv.Status = 'overdue'
+                eachdiv.Remaining = remaining +' days overdue'
+              }
+            }
+            alldivisi.push(eachdiv)
+            PersentaseDivisi = 0
+            PersentaseProyek += div.Persentase
+        }
+        data.Contribution   = ContributionProyek
+        ContributionProyek  = 0
+        data.Progress       = ProgressProyek
+        ProgressProyek      = 0
+        let target = new Date(data.Target_Outcome).getTime();
+        let remaining = parseInt((target-today)/(24*3600*1000));
+        
+        if(data.Progress == 100)
+        {
+          data.Status = 'complete'
+          data.Remaining = remaining +' days left'
+        }
+        else
+        {
+          if(remaining >= 0)
+          {
+            data.Status = 'ongoing'
+            data.Remaining = remaining +' days left'
+          }
+          else if (remaining < 0)
+          {
+            data.Status = 'overdue'
+            data.Remaining = remaining +' days overdue'
+          }
+        }
+        
+        data.Total_Persentase = PersentaseProyek
+        
+        data.All_Divisi     = alldivisi
+        data.All_SubDivisi  = allsubdivisi
+        data.All_Task       = alltask
+        data.All_SubTask    = allsubtask
+        console.log("DATA")
+        console.log(data)
     },
     //***********GET DATA***********\\
 
@@ -915,6 +1778,7 @@ export default {
               }
             }
             let response = (await Controller.updateproject(this.project_card,this.project_card.Id_Proyek).then(()=>{this.savePerformanceLoading=false;}))
+            this.loadProjectData()
             this.close()
             this.showAlert('success','Save Performance Success')
 
@@ -932,6 +1796,18 @@ export default {
 
     //***********DELETE DATA***********\\
 
+    //***********RESTORE DATA***********\\
+    async restoreProject(data){
+      try {
+        let response = await Controller.restoreproject(data.Id_Proyek);
+        console.log(response)
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
+    //***********RESTORE DATA***********\\
+
     //***********OPEN DIALOG***********\\
     openTaskDialog(data){
       this.taskDialog=true
@@ -943,8 +1819,6 @@ export default {
         this.projectNote.Catatan = project.Catatan
     },
     openPerformanceDialog(data){
-        console.log("MASUK");
-        console.log(data);
         this.performanceDialog = true
         this.performance.Nama = data.Nama
         this.performance.Rating = data.Prestasi_Kerja
@@ -974,6 +1848,11 @@ export default {
           this.performance.bgColor = 'blue lighten-1'
         }
     },
+    employeeDetails(data){
+      this.showEmployee=false
+      this.ActiveUserData = data
+      this.getUserProjects()
+    },
     // ***********Close Dialog***********\\
     // closePerformanceDialog()
     // {
@@ -991,7 +1870,6 @@ export default {
         }
         else if(this.filter_status == 'Finished')
         {
-          console.log("SINI")
           return data.filter(obj=>obj.deleted_at != null)
         }
         else
@@ -1003,7 +1881,46 @@ export default {
       {
         return data
       }
-
+    },
+    getSubDivision(data)
+    {
+      this.sub_division = data.All_SubDivisi.filter(obj=>obj.Divisi == this.filterDiv)
+      this.filterSubDiv=''
+      this.filterTask=''
+    },
+    getTask(data){
+        this.task = data.All_Task.filter(obj=>obj.Sub_Divisi == this.filterSubDiv)
+        this.filterTask=''
+    },
+    filteredTask(data){
+      if(this.filterWorkStatus != "")
+      {
+        data = data.filter(obj=>obj.Work_Status==this.filterWorkStatus)
+      }
+      if(this.filterTimeStatus !="")
+      {
+        data = data.filter(obj=>obj.Time_Status==this.filterTimeStatus)
+      }
+      if(this.filterDiv != "" )
+      {
+        data = data.filter(obj=>obj.Divisi == this.filterDiv)
+      }
+      if(this.filterSubDiv != '')
+      {
+        data = data.filter(obj=>obj.Sub_Divisi == this.filterSubDiv)
+      }
+      if(this.filterTask != '' )
+      {
+        data = data.filter(obj=>obj.Task == this.filterTask)
+      }
+      return data;
+    },
+    clearFilter(){
+        this.filterDiv='';
+        this.filterSubDiv='';
+        this.filterTask='';
+        this.filterWorkStatus='';
+        this.filterTimeStatus='';
     },
     //***********FILTER***********\\
     
@@ -1029,12 +1946,9 @@ export default {
           this.namefile.push(this.file.name)
         })
       } else {
-        // console.log("else")
         this.fileName = ''
         this.fileUrl = ''
         
-
-        // this.editedItem.image =''
       }
     },
     removefile(){
@@ -1071,25 +1985,8 @@ export default {
     //***********FILES***********\\
     
     //***********OTHERS***********\\
-    getPerformaceStatus()
+    getPerformanceStatus()
     {
-      console.log("MASUK")
-      
-      // performance:{
-      // Nama :'',
-      // Rating : 0,
-      // Keterangan: 'TES',
-      // emptyIcon: 'mdi-star-outline',
-      // fullIcon: 'mdi-star',
-      // halfIncrements: false,
-      // hover: true,
-      // length: 4,
-      // readonly: false,
-      // size: 64,
-      // dense: false,
-      // color: 'grey darken-1',
-      // bgColor: 'grey lighten-1',
-
       if(this.performance.Rating == 1)
       {
         this.performance.Keterangan = 'Bad Performance'
@@ -1114,18 +2011,49 @@ export default {
         this.performance.color = 'blue'
         this.performance.bgColor = 'blue lighten-1'
       }
-      console.log(this.performance.Keterangan)
+    },
+    getDetailPerformanceStatus()
+    {
+      console.log("this.UserPerformance")
+      console.log(this.UserPerformance)
+      if(this.detailPerformanceCard.Rating == 1)
+      {
+        this.detailPerformanceCard.Keterangan = 'Bad Performance : '+this.UserPerformance.Bad_Performance
+        this.detailPerformanceCard.color = 'red'
+        this.detailPerformanceCard.bgColor = 'red lighten-1'
+      }
+      if(this.detailPerformanceCard.Rating == 2)
+      {
+        this.detailPerformanceCard.Keterangan = 'Semi Performance : '+this.UserPerformance.Semi_Performance
+        this.detailPerformanceCard.color = 'yellow'
+        this.detailPerformanceCard.bgColor = 'yellow lighten-1'
+      }
+      if(this.detailPerformanceCard.Rating == 3)
+      {
+        this.detailPerformanceCard.Keterangan = 'Performance : '+this.UserPerformance.Performance
+        this.detailPerformanceCard.color = 'green'
+        this.detailPerformanceCard.bgColor = 'green lighten-1'
+      }
+      if(this.detailPerformanceCard.Rating == 4)
+      {
+        this.detailPerformanceCard.Keterangan = 'Best Performance : '+this.UserPerformance.Best_Performance
+        this.detailPerformanceCard.color = 'blue'
+        this.detailPerformanceCard.bgColor = 'blue lighten-1'
+      }
+    },
+    resetEmployeeData(){
+      this.Total_Project=0
+      this.Average_Contribution=0
+      this.UserProjects=[]
+      this.ActiveUserData=[]
+      this.UserPerformance = Object.assign({}, this.initUserPerformance)
+      this.detailPerformanceCard = Object.assign({}, this.initDetailPerformanceCard)
     },
     close () {
         setTimeout(() => {
             this.performanceDialog=false;
             this.taskDialog=false
             this.performance = Object.assign({}, this.initPerformance)
-            // this.performance.color='grey darken-1'
-            // this.performance.bgColor= 'grey lighten-1'
-            // this.performance.Nama=''
-            // this.performance.Rating=0
-            // this.performance.Keterangan=''
         }, 300)
     },
     showAlert (type,alert_message) {
@@ -1216,6 +2144,11 @@ export default {
   border-color:#78909C !important;
 }
 
+.project.yyellow{
+  border-left: 4px solid #F9A825  !important;
+  border-color:#F9A825  !important;
+}
+
 
 .v-chip.bblue{
   background: #2196f3 !important;
@@ -1228,6 +2161,9 @@ export default {
 }
 .v-chip.ggrey{
   background: #78909C !important;
+}
+.v-chip.yyellow{
+  background: #F9A825  !important;
 }
 
 </style>

@@ -46,8 +46,8 @@
                   </v-sheet>
 
                   <v-card-text class="pt-0">
-                    <div class="title font-weight-light mb-2">Total Project : {{Total_Project}}</div>
-                    <div class="subheading font-weight-light">Average Contribution : {{Average_Contribution}}%</div>
+                    <div class="title font-weight-light mb-2">Total Proyek : {{Total_Project}}</div>
+                    <div class="subheading font-weight-light">Rata-rata Kontribusi : {{Average_Contribution}}%</div>
                     <v-divider class="my-2"></v-divider>
                     <v-icon
                       class="mr-2"
@@ -263,7 +263,7 @@
                                                 <v-list-tile-title style="height:35px;line-height:35px;">
                                                   <v-layout row wrap>
                                                     <v-flex xs12 md8>
-                                                      <v-tooltip left color="grey darken-4" style="left:-260px"> 
+                                                      <v-tooltip left color="grey darken-4" style="left:-500px"> 
                                                       <template v-slot:activator="{ on }">
                                                         <div v-on="on" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size:14px;">{{subtask.Nama}}</div>
                                                       </template>
@@ -663,7 +663,8 @@ export default {
     async loaddata ()
     {
       try {
-        this.AllProjects = ((await Controller.getallproject()).data)
+        this.responsive=true;
+        this.AllProjects = ((await Controller.getproject()).data)
         // console.log("PROJECTS")
         // console.log(this.AllProjects)
         // console.log("PROJECTS")
@@ -672,6 +673,7 @@ export default {
         // console.log(this.LogPengerjaanData)
         // console.log("LOG")
         this.User = ((await Controller.getallemployee()).data).filter(obj=>obj.Id_Akun == this.id_akun)[0]
+        this.User.Akses = undefined
         this.User.Tanggal_Masuk = this.User.Tanggal_Masuk.toString()
         // console.log("USER")
         // console.log(this.User)
@@ -786,51 +788,17 @@ export default {
                         let logs = eachsubtask.Log_Pengerjaan.filter(obj=>obj.Berkas!='')
                         for(let log of logs)
                         {
-                          if(log.Username == this.nama)
+                          if(log.Nama == this.nama)
                             MySubTaskContribution += log.Progress
                           else
                             OtherSubTaskContribution += log.Progress
-                          // logIndexInc = logs.indexOf(log)+1
-                          // // console.log("LOG INDEX")
-                          // // console.log(logIndexInc)
-                          // // console.log(logs.length)
-                          // if(logIndexInc == logs.length-1)
-                          // {
-                          //   if(log.Username == this.nama)
-                          //   {
-                          //     // console.log("add my")
-                          //     // console.log(log.Progress)
-                          //     MySubTaskContribution += log.Progress
-                          //   }
-                          //   else
-                          //   {
-                          //     // console.log("add other")
-                          //     // console.log(log.Progress)
-                          //     OtherSubTaskContribution += log.Progress
-                          //   }
-                          //   break;
-                          // }
-                          // if(logs[logIndexInc].Username != log.Username)
-                          // {
-                          //   if(log.Username == this.nama)
-                          //   {
-                          //     // console.log("add my")
-                          //     // console.log(log.Progress)
-                          //     MySubTaskContribution += log.Progress
-                          //   }
-                          //   else
-                          //   {
-                          //     // console.log("add other")
-                          //     // console.log(log.Progress)
-                          //     OtherSubTaskContribution += log.Progress
-                          //   }
-                          // }
                         }
                         // console.log("Contribution")
                         // console.log(MySubTaskContribution)
                         // console.log(OtherSubTaskContribution)
                         // console.log(MySubTaskContribution-OtherSubTaskContribution)
-                        eachsubtask.Contribution = MySubTaskContribution-OtherSubTaskContribution
+                        eachsubtask.Contribution = MySubTaskContribution
+                        // -OtherSubTaskContribution
                         MySubTaskContribution = 0
                         OtherSubTaskContribution = 0
                         ContributionTask += (eachsubtask.Contribution * eachsubtask.Persentase / 100)
@@ -1030,8 +998,10 @@ export default {
     async updateProfile()
     {
       try{
+        console.log("User")
         console.log(this.User)
         let response = (await Controller.updateemployee(this.User,this.User.Id_Karyawan))
+        console.log("RESPONSE USER")
         console.log(response)
         await this.loaddata()
         this.close()

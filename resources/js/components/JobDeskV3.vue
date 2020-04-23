@@ -29,7 +29,7 @@
                             </v-flex>
                             <v-flex xs6 sm4 md2>
                                 <div class="caption grey--text">Due Date</div>
-                                <div>{{project.Tanggal_Selesai}}</div>
+                                <div>{{project.Target_Outcome}}</div>
                             </v-flex>   
                             <v-spacer/>
                             <v-flex>
@@ -52,7 +52,59 @@
                                 <span>Filter</span>
                             </v-card-title>
                             <v-layout row wrap>
-                            <v-flex class="px-1" xs12 sm12 md2 >
+                                <v-flex class="px-1" xs12 sm6 md4 lg2 >
+                                    <v-select
+                                    v-model="filterDiv"
+                                    :items="project.All_Divisi"
+                                    item-text="Nama"
+                                    item-value="Nama"
+                                    box
+                                    label="Division"
+                                    @change="getSubDivision(project)"
+                                    ></v-select>
+                                </v-flex>
+                                <v-flex class="px-1" xs12 sm6 md4 lg2 >
+                                    <v-select
+                                    v-model="filterSubDiv"
+                                    :items="sub_division"
+                                    item-text="Nama"
+                                    item-value="Nama"
+                                    box
+                                    label="Sub Division"
+                                    @change="getTask(project)"
+                                    ></v-select>
+                                </v-flex>
+                                <v-flex class="px-1" xs12 sm6 md4 lg2 >
+                                    <v-select
+                                    v-model="filterTask"
+                                    :items="task"
+                                    item-text="Nama"
+                                    item-value="Nama"
+                                    box
+                                    label="Task"
+                                    ></v-select>
+                                </v-flex>
+                                <v-flex class="px-1" xs12 sm6 md4 lg2 >
+                                    <v-select
+                                    v-model="filterWorkStatus"
+                                    :items="work_status"
+                                    item-text="Work"
+                                    item-value="Value"
+                                    box
+                                    label="Work Status"
+                                    ></v-select>
+                                </v-flex>
+                                <v-flex class="px-1" xs12 sm6 md4 lg2 >
+                                    <v-select
+                                    v-model="filterTimeStatus"
+                                    :items="time_status"
+                                    item-text="Time"
+                                    item-value="Value"
+                                    box
+                                    label="Task"
+                                    ></v-select>
+                                </v-flex>
+                            <!-- <v-flex class="px-1" xs12 sm12 md2 >
                                 <v-select
                                 v-model="filterDiv"
                                 :items="project.All_Divisi"
@@ -83,7 +135,7 @@
                                 box
                                 label="Task"
                                 ></v-select>
-                            </v-flex>
+                            </v-flex> -->
                             <v-flex class="px-1" xs12 sm6 md2 >
                                 <v-btn  @click="clearFilter()">Clear</v-btn>
                             </v-flex>
@@ -550,17 +602,17 @@
                                                                         box
                                                                         v-model="editProject.Nilai" 
                                                                         label="Value" 
-                                                                        prepend-icon="contact_support"
+                                                                        prepend-icon="attach_money"
                                                                         ></v-text-field>
                                                                     </v-flex>
-                                                                    <v-flex xs6 md4>
+                                                                    <!-- <v-flex xs6 md4>
                                                                         <v-text-field 
                                                                         box
                                                                         v-model="editProject.Target_Outcome" 
                                                                         label="Target Selesai" 
                                                                         prepend-icon="contact_support"
                                                                         ></v-text-field>
-                                                                    </v-flex>
+                                                                    </v-flex> -->
 
                                                                     <v-flex xs6 md4 class="pr-2">
                                                                         <v-menu
@@ -583,10 +635,15 @@
                                                                             readonly
                                                                             ></v-text-field>
                                                                         </template>
-                                                                        <v-date-picker  v-model="editProject.Tanggal_Mulai" @input="startDate = false"></v-date-picker>
+                                                                        <v-date-picker 
+                                                                            v-model="editProject.Tanggal_Mulai" 
+                                                                            @input="startDate = false"
+                                                                            :min="currentDate"
+                                                                        >
+                                                                        </v-date-picker>
                                                                         </v-menu>
                                                                     </v-flex>
-                                                                    <!-- <v-flex xs12 md4 class="pr-2">
+                                                                    <v-flex xs6 md4 class="pr-2">
                                                                         <v-menu
                                                                         v-model="finishDate"
                                                                         :close-on-content-click="false"
@@ -599,23 +656,28 @@
                                                                         >
                                                                         <template v-slot:activator="{ on }">
                                                                             <v-text-field
-                                                                            v-model="editProject.Tanggal_Selesai"
-                                                                            label="Finish Date"
+                                                                            v-model="editProject.Target_Outcome"
+                                                                            label="Due Date"
                                                                             prepend-icon="event"
                                                                             box
                                                                             v-on="on"
                                                                             readonly
                                                                             ></v-text-field>
                                                                         </template>
-                                                                        <v-date-picker  v-model="editProject.Tanggal_Selesai" @input="finishDate = false"></v-date-picker>
+                                                                        <v-date-picker  
+                                                                            v-model="editProject.Target_Outcome" 
+                                                                            @input="finishDate = false"
+                                                                            :min="editProject.Tanggal_Mulai"
+                                                                        >
+                                                                        </v-date-picker>
                                                                         </v-menu>
-                                                                    </v-flex> -->
+                                                                    </v-flex>
                                                                     <v-flex xs6 md4>
                                                                         <v-text-field 
                                                                         box
                                                                         v-model="editProject.Pemilik" 
                                                                         label="Owner" 
-                                                                        prepend-icon="contact_support"
+                                                                        prepend-icon="mdi mdi-account-box"
                                                                         ></v-text-field>
                                                                     </v-flex>
                                                                     <v-flex xs12 md12 >
@@ -623,7 +685,7 @@
                                                                         box                                     
                                                                         label="Address"
                                                                         v-model="editProject.Alamat"
-                                                                        prepend-icon="contact_support"
+                                                                        prepend-icon="mdi mdi-home"
                                                                         rows="2"
                                                                         ></v-textarea>
                                                                     </v-flex>                                                
@@ -632,7 +694,7 @@
                                                                         box                                     
                                                                         label="Note"
                                                                         v-model="editProject.Catatan"
-                                                                        prepend-icon="contact_support"
+                                                                        prepend-icon="mdi mdi-note-text"
                                                                         rows="6"
                                                                         ></v-textarea>
                                                                     </v-flex>    
@@ -702,7 +764,13 @@
                                                                         readonly
                                                                         ></v-text-field>
                                                                     </template>
-                                                                    <v-date-picker  v-model="divform.Tanggal_Selesai" @input="dateDiv1 = false"></v-date-picker>
+                                                                    <v-date-picker 
+                                                                        v-model="divform.Tanggal_Selesai" 
+                                                                        @input="dateDiv1 = false"
+                                                                        :min="currentDate"
+                                                                        :max="editProject.Target_Outcome"
+                                                                    >
+                                                                    </v-date-picker>
                                                                     </v-menu>
                                                                     <!-- <v-text-field
                                                                         v-model="divform.Tanggal_Selesai"
@@ -857,6 +925,7 @@
                                                                     item-value="Nama"
                                                                     box
                                                                     label="Divisi"
+                                                                    @change="selectDiv()"
                                                                     ></v-select>
                                                                     <v-text-field 
                                                                         v-model="subdivform.Nama"
@@ -896,7 +965,13 @@
                                                                         readonly
                                                                         ></v-text-field>
                                                                     </template>
-                                                                    <v-date-picker  v-model="subdivform.Tanggal_Selesai" @input="dateSubDiv1 = false"></v-date-picker>
+                                                                    <v-date-picker 
+                                                                        v-model="subdivform.Tanggal_Selesai" 
+                                                                        @input="dateSubDiv1 = false"
+                                                                        :min="currentDate"
+                                                                        :max="selecteddivdate"
+                                                                    >
+                                                                    </v-date-picker>
                                                                     </v-menu>
                                                                     <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
                                                                     <v-divider
@@ -1073,6 +1148,7 @@
                                                                     item-value="Nama"
                                                                     box
                                                                     label="Sub Divisi"
+                                                                    @change="selectSubDiv()"
                                                                     ></v-select>
                                                                     <v-text-field 
                                                                         v-model="taskform.Nama"
@@ -1112,7 +1188,13 @@
                                                                         readonly
                                                                         ></v-text-field>
                                                                     </template>
-                                                                    <v-date-picker  v-model="taskform.Tanggal_Selesai" @input="dateTask1 = false"></v-date-picker>
+                                                                    <v-date-picker 
+                                                                        v-model="taskform.Tanggal_Selesai" 
+                                                                        @input="dateTask1 = false"
+                                                                        :min="currentDate"
+                                                                        :max="selectedsubdivdate"
+                                                                    >
+                                                                    </v-date-picker>
                                                                     </v-menu>
                                                                     <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
                                                                     <v-divider
@@ -1317,6 +1399,7 @@
                                                                             box
                                                                             label="Task"
                                                                             class="mx-1"
+                                                                            @change="selectTask()"
                                                                             ></v-select>
                                                                         </v-flex>
                                                                     </v-layout>
@@ -1368,7 +1451,13 @@
                                                                                             readonly
                                                                                             ></v-text-field>
                                                                                         </template>
-                                                                                            <v-date-picker  v-model="subtaskform.Tanggal_Selesai" @input="dateSubTask1 = false"></v-date-picker>
+                                                                                            <v-date-picker  
+                                                                                                v-model="subtaskform.Tanggal_Selesai" 
+                                                                                                @input="dateSubTask1 = false"
+                                                                                                :min="currentDate"
+                                                                                                :max="selectedtaskdate"
+                                                                                                >
+                                                                                                </v-date-picker>
                                                                                         </v-menu>
                                                                                     </v-flex>
                                                                                 </v-layout>
@@ -1719,7 +1808,7 @@
                                                                         <v-list-tile
                                                                         v-for="(subtask,index) in editProject.All_SubTask.filter(obj => obj.Task == task.Nama)"
                                                                         :key="index"
-                                                                        class="d_sub_task pl-2 pr-5 mr-3 ">
+                                                                        class="d_sub_task pr-5 mx-2 ">
                                                                         <v-list-tile-content>
                                                                             <v-list-tile-title>
                                                                                 <v-layout row wrap>
@@ -2045,6 +2134,10 @@ export default {
   data() {
     return {
        //Base
+       //DATE DATA
+        disabledDates: { weekdays: [1, 7] },
+        currentDate: new Date().toISOString().slice(0,10),
+        //DATE DATA
         searchsubtask:'',
         alert:{
             type: null,
@@ -2071,7 +2164,6 @@ export default {
         logPengerjaanData:[],
         tempProjects:[],
         projects: [
-
         { 
             tasks:[
                 // {
@@ -2105,7 +2197,6 @@ export default {
             title: 'Rumah Sakit Arsitektur', 
             due: '2019-09-08', 
         },
-        
 
         ],
         
@@ -2206,9 +2297,48 @@ export default {
             //     name:'Skema'
             // }
         ],
+
         filterDiv:'',
         filterSubDiv:'',
         filterTask:'',
+        filterWorkStatus:'',
+        filterTimeStatus:'',
+        work_status:[
+        {
+            Work : 'All',
+            Value : ''
+        },
+        { 
+            Work : 'Available',
+            Value : 'Available'
+        },
+        { 
+            Work : 'On Going',
+            Value : 'On Going'
+        },
+        { 
+            Work : 'Complete',
+            Value : 'Complete'
+        }
+        ],
+        time_status:[
+        {
+            Time : 'All',
+            Value : ''
+        },
+        { 
+            Time : 'In Time' ,
+            Value : 'In Time' 
+        },
+        { 
+            Time : 'On Time' ,
+            Value : 'On Time' 
+        },
+        { 
+            Time : 'Overdue', 
+            Value : 'Overdue'
+        }
+        ],
 
         noteDialog:false,
         noteText:'',
@@ -2284,7 +2414,7 @@ export default {
             //     },
             // ],
             // Nama: '-', 
-            // Tanggal_Mulai: '',
+            Tanggal_Mulai: new Date().toISOString().slice(0,10),
             // Tanggal_Selesai: '', 
             // Nilai:0,
             // Target_Outcome:'',
@@ -2410,6 +2540,7 @@ export default {
             Tanggal_Selesai:'',
             Total_Persentase:0,
         },
+        selecteddivdate:'',
         subdivform:{
             Nama:'',
             Divisi:'',
@@ -2424,6 +2555,7 @@ export default {
             Tanggal_Selesai:'',
             Total_Persentase:0,
         },
+        selectedsubdivdate:'',
         taskform:{
             Nama:'',
             Sub_Divisi:'',
@@ -2438,6 +2570,7 @@ export default {
             Tanggal_Selesai:'',
             Total_Persentase:0,
         },
+        selectedtaskdate:'',
         subtaskform:{
             Nama:'',
             Task:'',
@@ -2579,6 +2712,7 @@ export default {
         addLoading:false,
         editLoading:false,
         uploadProgressLoading:false,
+
     }
   },
    mounted(){
@@ -2599,19 +2733,20 @@ export default {
     async addProjectAll(){
         try{
             this.addLoading=true;
+            this.checkDates();
             let response = (await Controller.addproject(this.editProject))
-            await this.getProject()
+            (await this.getProject()).then(()=>{this.addLoading=false;})
             this.close()
-            (this.showAlert('success','Sukses Tambah Proyek').then(()=>{this.addLoading=false;}))
+            (this.showAlert('success','Sukses Tambah Proyek'))
 
             console.log(response)
         }catch (err) {
             console.log(err)
-            (this.showAlert('error','Gagal Tambah Proyek').then(()=>{this.addLoading=false;}))
-
+            this.showAlert('error','Gagal Tambah Proyek')
+            this.addLoading=false;
         }
     },
-    async updateProjectAll(){
+    updateProjectAll(){
         // let response 
         //UPDATE
         try{
@@ -2620,23 +2755,90 @@ export default {
             this.deleteDetails();  //Hapus semua detail yang dihapus
             // //UPDATE sisanya, item yang sudah ada didb tapi datanya diubah
             
-            console.log(this.editProject)
-            let response = (await Controller.updateproject(this.editProject,this.editProject.Id_Proyek))
-            console.log(response)
-            await this.getProject()
+            this.updateProject();
+
+            (this.getProject()).then(()=>{this.editLoading=false;})
             this.close()
-            (this.showAlert('success','Sukses Update Proyek').then(()=>{this.editLoading=false;}))
+            this.showAlert('success','Sukses Update Proyek')
 
         }catch (err) {
             console.log(err)
-            (this.showAlert('error','Gagal Update Proyek').then(()=>{this.addLoading=false;}))
-
+            this.showAlert('error','Gagal Update Proyek')
+            this.editLoading=false;
+        }
+    },
+    checkDates(){
+        let projectDueDate = new Date(this.editProject.Target_Outcome.split(' ')[0]).getTime();
+        for(let div of this.editProject.All_Divisi)
+        {
+            let divDueDate = new Date(div.Tanggal_Selesai.split(' ')[0]).getTime();
+            if(projectDueDate<divDueDate)
+            {
+                console.log("DIV FALSE")
+            }
+            else
+            {
+                console.log("DIV TRUE")
+            }
+            console.log("Project Due Date : "+projectDueDate)
+            console.log("Div Due Date : "+divDueDate)
+            for(let subdiv of this.editProject.All_SubDivisi)
+            {
+                let subdivDueDate = new Date(subdiv.Tanggal_Selesai.split(' ')[0]).getTime();
+                if(divDueDate<subdivDueDate)
+                {
+                    console.log("SUB DIV FALSE")
+                }
+                else
+                {
+                    console.log("SUB DIV TRUE")
+                }
+                console.log("Div Due Date : "+divDueDate)
+                console.log("Subdiv Due Date : "+subdivDueDate)
+                for(let task of this.editProject.All_Task)
+                {
+                    let taskDueDate = new Date(task.Tanggal_Selesai.split(' ')[0]).getTime();
+                    if(subdivDueDate<taskDueDate)
+                    {
+                        console.log("TASK FALSE")
+                    }
+                    else
+                    {
+                        console.log("TASK TRUE")
+                    }
+                    console.log("Subdiv Due Date : "+subdivDueDate)
+                    console.log("Task Due Date : "+taskDueDate)
+                    for(let subtask of this.editProject.All_Task)
+                    {
+                        let subtaskDueDate = new Date(subtask.Tanggal_Selesai.split(' ')[0]).getTime();
+                        if(taskDueDate<subtaskDueDate)
+                        {
+                            console.log("SUB TASK FALSE")
+                        }
+                        else
+                        {
+                            console.log("SUB TASK TRUE")
+                        }
+                        console.log("Task Due Date : "+taskDueDate)
+                        console.log("Sub Task Due Date : "+subtaskDueDate)
+                    }
+                }
+            }
+        }
+    },
+    async updateProject(){
+        try{
+            console.log("MASUK UPDATE PROYEK")
+            let response = (await Controller.updateproject(this.editProject,this.editProject.Id_Proyek))
+            console.log(response)
+        }catch(err){
+            console.log(err)
         }
     },
     async deleteProjectAll(data){
         try{
             this.editProject = Object.assign({},data)
-            this.deleteAllDetails(data)
+            // this.deleteAllDetails(data)
             let response = (await Controller.deleteproject(data.Id_Proyek))
             await this.getProject()
             this.close()
@@ -2712,8 +2914,8 @@ export default {
                 }
                 response = await Controller.addsubitempekerjaan(subtask)
                 subtask.Id_Sub_Item_Pekerjaan = response.data.Id_Sub_Item_Pekerjaan
-                // console.log("SUBTASK")
-                // console.log(subtask)
+                console.log("SUBTASK")
+                console.log(subtask)
             }
         }
         return this.editProject
@@ -3128,6 +3330,7 @@ export default {
         this.editProject.All_Divisi.push(this.divform)
         this.editProject.Total_Persentase = parseInt(this.divform.Persentase) + parseInt(this.editProject.Total_Persentase)
         this.divform = Object.assign({}, this.defaultdivform)
+        // this.selecteddivdate=''
     },
     delDivForm(index){
         this.editProject.Total_Persentase = parseInt(this.editProject.Total_Persentase) - parseInt(index.Persentase)
@@ -3153,7 +3356,16 @@ export default {
         this.editProject.All_Task = [...this.editProject.All_Task]
         this.editProject.All_SubTask = [...this.editProject.All_SubTask]
     },
-
+    selectDiv(){
+        for(let div of this.editProject.All_Divisi)
+        {
+            if(div.Nama == this.subdivform.Divisi) 
+            {
+                this.selecteddivdate = div.Tanggal_Selesai
+                console.log(this.selecteddivdate)
+            }
+        }
+    },
     addSubDivForm(){
         this.subdivform.Total_Persentase = 0
         this.editProject.All_SubDivisi.push(this.subdivform)
@@ -3181,6 +3393,16 @@ export default {
         this.editProject.All_SubDivisi.splice(this.editProject.All_SubDivisi.indexOf(index), 1)
         this.editProject.All_SubDivisi = [...this.editProject.All_SubDivisi]
     },
+    selectSubDiv(){
+        for(let subdiv of this.editProject.All_SubDivisi)
+        {
+            if(subdiv.Nama == this.taskform.Sub_Divisi) 
+            {
+                this.selectedsubdivdate = subdiv.Tanggal_Selesai
+                console.log(this.selectedsubdivdate)
+            }
+        }
+    },
     addTaskForm(){
         this.editProject.All_Task.push(this.taskform)
         let subdiv = this.editProject.All_SubDivisi.filter(obj=>obj.Nama == this.taskform.Sub_Divisi)
@@ -3201,6 +3423,16 @@ export default {
         this.editProject.All_Task.splice(this.editProject.All_Task.indexOf(index), 1)
         this.editProject.All_Task = [...this.editProject.All_Task]
        
+    },
+    selectTask(){
+        for(let task of this.editProject.All_Task)
+        {
+            if(task.Nama == this.subtaskform.Task) 
+            {
+                this.selectedtaskdate = task.Tanggal_Selesai
+                console.log(this.selectedtaskdate)
+            }
+        }
     },
     addSubTaskForm(){
         // this.editProject.Prestasi_Kerja = 0
@@ -3512,30 +3744,28 @@ export default {
         this.filterTask=''
     },
     filteredTask(data){
-        if(this.filterDiv!="")
-        {
-            // console.log("in")
-            if(this.filterSubDiv!="")
-            {
-                if(this.filterTask!="")
-                {
-                    return data.filter(obj=>obj.Divisi==this.filterDiv && obj.Sub_Divisi==this.filterSubDiv && obj.Task==this.filterTask )
-
-                }
-                else{
-                    return data.filter(obj=>obj.Divisi==this.filterDiv && obj.Sub_Divisi==this.filterSubDiv)
-                }
-            }
-            else{
-                return data.filter(obj=>obj.Divisi==this.filterDiv)
-            }
-        }
-        else 
-        {
-            return data
-        }
+      if(this.filterWorkStatus != "")
+      {
+        data = data.filter(obj=>obj.Work_Status==this.filterWorkStatus)
+      }
+      if(this.filterTimeStatus !="")
+      {
+        data = data.filter(obj=>obj.Time_Status==this.filterTimeStatus)
+      }
+      if(this.filterDiv != "" )
+      {
+        data = data.filter(obj=>obj.Divisi == this.filterDiv)
+      }
+      if(this.filterSubDiv != '')
+      {
+        data = data.filter(obj=>obj.Sub_Divisi == this.filterSubDiv)
+      }
+      if(this.filterTask != '' )
+      {
+        data = data.filter(obj=>obj.Task == this.filterTask)
+      }
+      return data;
     },
-    // WORKSPACE
     getSubDivisionSubTaskForm(project){
         this.subtaskformfilter.All_SubDivisi = project.All_SubDivisi.filter(obj=>obj.Divisi == this.subtaskformfilter.Divisi)
         this.subtaskformfilter.All_Task = []
@@ -3550,7 +3780,6 @@ export default {
         this.projectNote.Nama = project.Nama
         this.projectNote.Catatan = project.Catatan
     },
-    // WORKSPACE
     clearFilter(){
         this.filterDiv='';
         this.filterSubDiv='';

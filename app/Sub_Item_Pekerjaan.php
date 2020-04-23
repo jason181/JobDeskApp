@@ -18,6 +18,7 @@ class Sub_Item_Pekerjaan extends Model
         // 'Kode',
         'Deskripsi',
         'Tanggal_Selesai',
+        'Durasi',
         'Persentase',
         'Prestasi_Kerja'
     ];

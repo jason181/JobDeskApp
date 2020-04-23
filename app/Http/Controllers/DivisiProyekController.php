@@ -46,6 +46,7 @@ class DivisiProyekController extends RestController
                 'Id_Proyek'         => $request->Id_Proyek,
                 'Nama'              => $request->Nama,
                 'Tanggal_Selesai'   => $request->Tanggal_Selesai,
+                'Durasi'            => $request->Durasi,
                 'Persentase'        => $request->Persentase
             ]);
     

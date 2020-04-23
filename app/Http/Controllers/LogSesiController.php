@@ -15,6 +15,8 @@ class LogSesiController extends RestController
      *
      * @return \Illuminate\Http\Response
      */
+    protected $transformer=LogSesiTransformers::Class;
+
     public function index()
     {
         $log_sesi=Log_Sesi::get();

@@ -26,13 +26,6 @@ class ProyekController extends RestController
         return $this->sendResponse($response,201);
     }
 
-    public function allProject()
-    {
-        $proyek=Proyek::get();
-        $response=$this->generateCollection($proyek);
-        return $this->sendResponse($response,201);
-    }
-
     public function store(Request $request)
     {
         try {
@@ -44,6 +37,7 @@ class ProyekController extends RestController
                 'Alamat'        => $request->Alamat,
                 'Nilai'         => $request->Nilai,
                 'Target_Outcome'=> date('Y-m-d', strtotime($request->Target_Outcome)),
+                'Durasi'        => $request->Durasi,
                 'Tanggal_Mulai' => date('Y-m-d', strtotime($request->Tanggal_Mulai)),
                 'Tanggal_Selesai'=>date('Y-m-d', strtotime($request->Tanggal_Selesai)),
                 'Catatan'       => $request->Catatan
@@ -107,6 +101,7 @@ class ProyekController extends RestController
                 'Alamat'        => $request->Alamat,
                 'Nilai'         => $request->Nilai,
                 'Target_Outcome'=> date('Y-m-d', strtotime($request->Target_Outcome)),
+                'Durasi'        => $request->Durasi,
                 'Tanggal_Mulai' => date('Y-m-d', strtotime($request->Tanggal_Mulai)),
                 'Tanggal_Selesai'=>date('Y-m-d', strtotime($request->Tanggal_Selesai)),
                 'Catatan'       => $request->Catatan
@@ -247,6 +242,7 @@ class ProyekController extends RestController
     public function show($id)
     {
         $proyek = Proyek::withTrashed()->find($id);
+        // $proyek->divisi_proyeks()->withTrashed()->get();
         $response=$this->generateItem($proyek);
         return $this->sendResponse($response,201);
 
@@ -282,5 +278,24 @@ class ProyekController extends RestController
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }
+    }
+
+    
+    public function allProject($id)
+    {
+        $proyek=Proyek::withTrashed()->get();
+        
+        return $proyek;
+        // $response=$this->generateCollection($proyek);
+        // return $this->sendResponse($response,201);
+    }
+
+    public function restore($id)
+    {
+        $proyek=Proyek::onlyTrashed()->find($id)->restore();
+        $divisi_proyek=Proyek::find($id)->divisi_proyeks()->onlyTrashed()->restore();;
+        $proyek=Proyek::find($id)->get();
+        $response=$this->generateCollection($proyek);
+        return $this->sendResponse($response,201);
     }
 }

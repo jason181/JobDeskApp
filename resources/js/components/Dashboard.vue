@@ -630,15 +630,13 @@ export default {
       link.click()
       await this.accessDone()
       this.editProject.Status_Akses ='Locked'
-   
-
     },
 
     downloadIt(data) {
     //   console.log('http://localhost:8000/'+data.Berkas)
       this.$http({
         method: 'get',
-        url: 'http://localhost:8000/'+data.Berkas,
+        url: 'http://192.168.1.71:8000/'+data.Berkas,
         responseType: 'arraybuffer'
       })
       .then(response => {

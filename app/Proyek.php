@@ -19,6 +19,7 @@ class Proyek extends Model
         'Alamat',
         'Nilai',
         'Target_Outcome',
+        'Durasi',
         'Tanggal_Mulai',
         'Tanggal_Selesai',
         'Catatan',

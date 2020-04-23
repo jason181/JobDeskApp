@@ -2,7 +2,7 @@ import Http from './http'
 
 export default {
     //LOG SESI AREA
-    getallsessionlog(){
+    getallsessionlogs(){
         return new Promise((resolve, reject) => {
             
             const successCallback = (res) => {
@@ -35,7 +35,6 @@ export default {
         })
     },
     
-
     //EMPLOYEE AREA
     getallemployee(){
         return new Promise((resolve, reject) => {
@@ -300,7 +299,7 @@ export default {
     
             }
 
-            Http.get('/api/proyek/all', successCallback, errorCallback)
+            Http.get('/api/proyek/all/1', successCallback, errorCallback)
         })
     },
     getoneproject(id){
@@ -365,6 +364,22 @@ export default {
             }
 
             Http.delete('/api/proyek/'+id, successCallback, errorCallback)
+        })
+    },
+    restoreproject(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+
+            }
+
+            Http.patch('/api/proyek/restore/'+id, successCallback, errorCallback)
         })
     },
     //DIVISI PROYEK
@@ -464,6 +479,22 @@ export default {
         })
     },
     //SUB ITEM PEKERJAAN
+    addsubitempekerjaan(payload){
+        return new Promise((resolve, reject) => {
+
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+    
+            }
+            Http.post('/api/sub_item_pekerjaan', payload, successCallback, errorCallback)
+        })
+    },
     // updatesubitempekerjaan(payload,id){
     //     return new Promise((resolve, reject) => {
     //         const successCallback = (res) => {

@@ -75,6 +75,7 @@
 
 <script>
 import auth from '../service/Auth'
+import Controller from '../httpController'
 export default {
   data: function () {
     return {
@@ -96,20 +97,38 @@ export default {
 
   // Sends action to Vuex that will log you in and redirect to the dash otherwise, error
   methods: {
-    async login() {
+    login(){
+      try {
+          this.authenticate()
+          this.addLogSesi()
+          // console.log("test")
+          this.$router.push({ name: 'Dashboard' })
+        } catch (err) {
+           this.showAlert('error','Gagal Login')
+        }
+    },
+    async authenticate() {
         try {
           const data= {
             username : this.username,
             password : this.password,
           }
-          let payload={
-            Username    : this.username,
-            Keterangan  : 'Login'
-          }
           await auth.authenticate(data)
           this.$router.push({ name: 'Dashboard' })
         } catch (err) {
            this.showAlert('error','Gagal Login, Username atau Password salah!')
+        }
+    },
+    async addLogSesi(){
+      try {
+          let payload={
+            Username    : this.username,
+            Keterangan  : 'Login'
+          }
+          await Controller.addsessionlog(payload)
+          this.$router.push({ name: 'Dashboard' })
+        } catch (err) {
+           this.showAlert('error','Gagal Login, Silahkan Coba Lagi')
         }
     },
     showAlert (type,alert_message) {

@@ -33,9 +33,6 @@ class LogPengerjaanTransformers extends TransformerAbstract
             'Progress'              => $log_pengerjaan->Progress,
             'Berkas'                => $log_pengerjaan->Berkas,
             'Catatan'               => $log_pengerjaan->Catatan,
-
-            
-
         ];
     }
 }
