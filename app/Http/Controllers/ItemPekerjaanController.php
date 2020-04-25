@@ -49,6 +49,7 @@ class ItemPekerjaanController extends RestController
                 // 'Kode'              => $request->Kode,
                 // 'Satuan'            => $request->Satuan,
                 'Tanggal_Selesai'   => $request->Tanggal_Selesai,
+                'Durasi'            => $request->Durasi,
                 'Persentase'        => $request->Persentase,
             ]);
 

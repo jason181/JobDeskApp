@@ -15,6 +15,7 @@
               <v-tab-slider></v-tab-slider>
               <v-tab @click="loadProjectData ()">Project</v-tab>
               <v-tab @click="resetEmployeeData(), loadEmployeeData()">Employee</v-tab>
+              <v-tab @click="getAttendanceData()">Attendance</v-tab>
               <!-- ITEM PROJECT -->
               <v-tab-item>
                 <v-container fluid>
@@ -485,6 +486,53 @@
                 </v-container>
               </v-tab-item>
               <!-- ITEM EMPLOYEE -->
+              <!-- ITEM ATTENDANCE -->
+              <v-tab-item>
+                <v-container fluid>
+                  <v-layout row wrap>
+                    <v-flex xs12 md12>
+                      <v-layout justify-start class="mb-2 pa-3">
+                        <h3 style="border-bottom:white solid 3px;">
+                          ATTENDANCE
+                        </h3>
+                      </v-layout>
+                      <v-layout>
+                        <v-flex xs12 sm6 md3>
+                          <v-text-field
+                            v-model="Attendance.Server_IP"
+                            label="Server IP"
+                            box
+                            class="mx-1"
+                          >
+                          </v-text-field>
+                        </v-flex>
+                        <v-flex xs12 sm6 md3>
+                          <v-text-field
+                            v-model="Attendance.Server_Port"
+                            label="Server Port"
+                            box
+                            class="mx-1"
+                          >
+                          </v-text-field>
+                        </v-flex>
+                        <v-flex xs12 sm6 md3>
+                          <v-text-field
+                            v-model="Attendance.Serial_Number"
+                            label="Device Serial Number"
+                            box
+                            class="mx-1"
+                          >
+                          </v-text-field>
+                        </v-flex>
+                        <v-flex xs12 sm6 md3>
+                          <v-btn>Download</v-btn>
+                        </v-flex>
+                      </v-layout>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-tab-item>
+              <!-- ITEM ATTENDANCE -->
           </v-tabs>
       </v-container>
       <!-- Task Dialog -->
@@ -810,7 +858,7 @@ export default {
     prevIcon: false,
     nextIcon: false,
     right: false,
-    tabs: 1,
+    tabs: 2,
     //Tabs
     //**********PROJECTS**********//
     AllProjects:[],
@@ -1128,6 +1176,15 @@ export default {
     //LOADING
     savePerformanceLoading:false,
     //LOADING
+    //**********EMPLOYEE**********//
+
+    //ALL ATTENDANCE
+    Attendance:{
+      Server_IP:'192.168.100.7',
+      Server_Port:'8181',
+      Serial_Number:'616272019372323',
+    }
+    //ALL ATTENDANCE
   }),
   computed : {
     ...mapGetters({
@@ -1759,6 +1816,7 @@ export default {
         console.log("DATA")
         console.log(data)
     },
+    
     //***********GET DATA***********\\
 
     //***********POST DATA***********\\

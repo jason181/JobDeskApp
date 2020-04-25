@@ -25,6 +25,7 @@ class SubDivisiProyekTransformers extends TransformerAbstract
             'Divisi'                => $sub_divisi_proyek->divisi_proyeks->Nama,
             'Nama'                  => $sub_divisi_proyek->Nama,
             'Tanggal_Selesai'       => $sub_divisi_proyek->Tanggal_Selesai,
+            'Durasi'                => $sub_divisi_proyek->Durasi,
             'Persentase'            => $sub_divisi_proyek->Persentase
         ];
     }

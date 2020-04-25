@@ -16,6 +16,7 @@ class Sub_Divisi_Proyek extends Model
         'Id_Divisi_Proyek',
         'Nama',
         'Tanggal_Selesai',
+        'Durasi',
         'Persentase'
     ];
 

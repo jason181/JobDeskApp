@@ -27,6 +27,7 @@ class ProyekTransformers extends TransformerAbstract
             'Alamat'            => $proyek->Alamat,
             'Nilai'             => $proyek->Nilai,
             'Target_Outcome'    => $proyek->Target_Outcome,
+            'Durasi'            => $proyek->Durasi,
             'Tanggal_Mulai'     => $proyek->Tanggal_Mulai,
             'Tanggal_Selesai'   => $proyek->Tanggal_Selesai,
             'Catatan'           => $proyek->Catatan,

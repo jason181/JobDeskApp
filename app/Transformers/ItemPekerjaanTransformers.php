@@ -28,6 +28,7 @@ class ItemPekerjaanTransformers extends TransformerAbstract
             'Kode'              => $item->Kode,
             'Satuan'            => $item->Satuan,
             'Tanggal_Selesai'   => $item->Tanggal_Selesai,
+            'Durasi'            => $item->Durasi,
             'Persentase'        => $item->Persentase,
         ];
     }

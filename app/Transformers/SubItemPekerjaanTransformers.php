@@ -22,6 +22,7 @@ class SubItemPekerjaanTransformers extends TransformerAbstract
             'Kode'                  => $sub_item->Kode,
             'Deskripsi'             => $sub_item->Deskripsi,
             'Tanggal_Selesai'       => $sub_item->Tanggal_Selesai,
+            'Durasi'                => $sub_item->Durasi,
             'Persentase'            => $sub_item->Persentase,
             'Prestasi_Kerja'        => $sub_item->Prestasi_Kerja
         ];

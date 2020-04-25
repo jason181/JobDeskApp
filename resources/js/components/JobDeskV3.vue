@@ -614,7 +614,7 @@
                                                                         ></v-text-field>
                                                                     </v-flex> -->
 
-                                                                    <v-flex xs6 md4 class="pr-2">
+                                                                    <v-flex xs6 md3 class="pr-2">
                                                                         <v-menu
                                                                         v-model="startDate"
                                                                         :close-on-content-click="false"
@@ -643,7 +643,7 @@
                                                                         </v-date-picker>
                                                                         </v-menu>
                                                                     </v-flex>
-                                                                    <v-flex xs6 md4 class="pr-2">
+                                                                    <v-flex xs6 md3 class="pr-2">
                                                                         <v-menu
                                                                         v-model="finishDate"
                                                                         :close-on-content-click="false"
@@ -671,6 +671,14 @@
                                                                         >
                                                                         </v-date-picker>
                                                                         </v-menu>
+                                                                    </v-flex>
+                                                                    <v-flex xs6 md2 class="pr-2">
+                                                                        <v-text-field 
+                                                                        box
+                                                                        v-model="editProject.Durasi" 
+                                                                        label="Durasi" 
+                                                                        prepend-icon="mdi mdi-account-box"
+                                                                        ></v-text-field>
                                                                     </v-flex>
                                                                     <v-flex xs6 md4>
                                                                         <v-text-field 
@@ -712,6 +720,9 @@
                                                     </v-btn>
 
                                                     <v-btn flat>Cancel</v-btn>
+                                                    <v-btn color="blue darken-2" class="right" v-if="editmode" @click="AddDaysDialog = true">
+                                                        Add Days
+                                                    </v-btn>
                                                 </v-stepper-content>
 
                                                 <v-stepper-content step="2">
@@ -732,12 +743,6 @@
                                                                     box
                                                                     label="Divisi"
                                                                     ></v-select>
-                                                                    <!-- <v-text-field 
-                                                                        v-model="divform.Nama"
-                                                                        label="Name"
-                                                                        box
-                                                                        class="mx-1"
-                                                                    ></v-text-field> -->
                                                                     <v-text-field
                                                                         v-model="divform.Persentase"
                                                                         label="Contribute"
@@ -779,6 +784,12 @@
                                                                         class="mx-1"
                                                                     ></v-text-field> -->
                                                                     <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
+                                                                    <v-text-field
+                                                                        v-model="divform.Durasi"
+                                                                        label="Durasi"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
                                                                     <v-divider
                                                                         class="mx-2"
                                                                         inset
@@ -882,6 +893,29 @@
                                                                     </td>
 
                                                                     <td class="text-xs-center">
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.Durasi"
+                                                                        large
+                                                                        lazy
+                                                                        persistent
+                                                                    >
+                                                                        <div>{{ props.item.Durasi }}</div>
+                                                                        <template v-slot:input>
+                                                                        <div class="mt-3 title">Update Durasi</div>
+                                                                        </template>
+                                                                        <template v-slot:input>
+                                                                        <v-text-field
+                                                                            v-model="props.item.Durasi"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                            autofocus
+                                                                        ></v-text-field>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
+                                                                    <td class="text-xs-center">
                                                                         <v-icon
                                                                             small
                                                                             @click="delDivForm(props.item)"
@@ -972,7 +1006,19 @@
                                                                         :max="selecteddivdate"
                                                                     >
                                                                     </v-date-picker>
+                                                                    <v-text-field
+                                                                        v-model="subdivform.Durasi"
+                                                                        label="Durasi"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
                                                                     </v-menu>
+                                                                    <v-text-field
+                                                                        v-model="subdivform.Durasi"
+                                                                        label="Durasi"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
                                                                     <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
                                                                     <v-divider
                                                                         class="mx-2"
@@ -1105,6 +1151,28 @@
                                                                     </td>
 
                                                                     <td class="text-xs-center">
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.Durasi"
+                                                                        large
+                                                                        lazy
+                                                                        persistent
+                                                                    >
+                                                                        <div>{{ props.item.Durasi }}</div>
+                                                                        <template v-slot:input>
+                                                                        <div class="mt-3 title">Update Durasi</div>
+                                                                        </template>
+                                                                        <template v-slot:input>
+                                                                        <v-text-field
+                                                                            v-model="props.item.Durasi"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                            autofocus
+                                                                        ></v-text-field>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+                                                                    <td class="text-xs-center">
                                                                         <v-icon
                                                                             small
                                                                             @click="delSubDivForm(props.item)"
@@ -1197,6 +1265,12 @@
                                                                     </v-date-picker>
                                                                     </v-menu>
                                                                     <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
+                                                                    <v-text-field
+                                                                        v-model="taskform.Durasi"
+                                                                        label="Durasi"
+                                                                        box
+                                                                        class="mx-1"
+                                                                    ></v-text-field>
                                                                     <v-divider
                                                                         class="mx-2"
                                                                         inset
@@ -1326,6 +1400,30 @@
                                                                         </template>
                                                                     </v-edit-dialog>
                                                                     </td>
+                                                                    
+                                                                    <td class="text-xs-center">
+                                                                    <v-edit-dialog
+                                                                        :return-value.sync="props.item.Durasi"
+                                                                        large
+                                                                        lazy
+                                                                        persistent
+                                                                    >
+                                                                        <div>{{ props.item.Durasi }}</div>
+                                                                        <template v-slot:input>
+                                                                        <div class="mt-3 title">Update Durasi</div>
+                                                                        </template>
+                                                                        <template v-slot:input>
+                                                                        <v-text-field
+                                                                            v-model="props.item.Durasi"
+                                                                            label="Edit"
+                                                                            single-line
+                                                                            counter
+                                                                            autofocus
+                                                                        ></v-text-field>
+                                                                        </template>
+                                                                    </v-edit-dialog>
+                                                                    </td>
+
 
                                                                     <td class="text-xs-center">
                                                                         <v-icon
@@ -1410,7 +1508,7 @@
                                                                         <v-flex xs6>
                                                                             <v-container class="pa-0">
                                                                                 <v-layout row>
-                                                                                    <v-flex xs12>
+                                                                                    <v-flex xs6>
                                                                                         <v-text-field 
                                                                                             v-model="subtaskform.Nama"
                                                                                             label="Name"
@@ -1418,10 +1516,6 @@
                                                                                             class="mx-1"
                                                                                         ></v-text-field>
                                                                                     </v-flex>
-                                                                                </v-layout>
-                                                                            </v-container>
-                                                                            <v-container class="pa-0">
-                                                                                <v-layout row>
                                                                                     <v-flex xs6>
                                                                                         <v-text-field
                                                                                             v-model="subtaskform.Persentase"
@@ -1430,6 +1524,10 @@
                                                                                             class="mx-1"
                                                                                         ></v-text-field>
                                                                                     </v-flex>
+                                                                                </v-layout>
+                                                                            </v-container>
+                                                                            <v-container class="pa-0">
+                                                                                <v-layout row>
                                                                                     <v-flex xs6>
                                                                                         <v-menu
                                                                                         v-model="dateSubTask1"
@@ -1459,6 +1557,14 @@
                                                                                                 >
                                                                                                 </v-date-picker>
                                                                                         </v-menu>
+                                                                                    </v-flex>
+                                                                                    <v-flex xs6>
+                                                                                        <v-text-field
+                                                                                            v-model="subtaskform.Durasi"
+                                                                                            label="Durasi"
+                                                                                            box
+                                                                                            class="mx-1"
+                                                                                        ></v-text-field>
                                                                                     </v-flex>
                                                                                 </v-layout>
                                                                             </v-container>
@@ -1601,6 +1707,28 @@
                                                                                         </template>
                                                                                         <v-date-picker  v-model="props.item.Tanggal_Selesai" @input="dateSubtask2 = false"></v-date-picker>
                                                                                         </v-menu>
+                                                                                    </template>
+                                                                                </v-edit-dialog>
+                                                                            </td>
+                                                                            <td class="text-xs-center">
+                                                                                <v-edit-dialog
+                                                                                    :return-value.sync="props.item.Durasi"
+                                                                                    large
+                                                                                    lazy
+                                                                                    persistent
+                                                                                >
+                                                                                    <div>{{ props.item.Durasi }}</div>
+                                                                                    <template v-slot:input>
+                                                                                    <div class="mt-3 title">Update Durasi</div>
+                                                                                    </template>
+                                                                                    <template v-slot:input>
+                                                                                        <v-text-field
+                                                                                            v-model="props.item.Durasi"
+                                                                                            label="Edit"
+                                                                                            single-line
+                                                                                            counter
+                                                                                            autofocus
+                                                                                        ></v-text-field>
                                                                                     </template>
                                                                                 </v-edit-dialog>
                                                                             </td>
@@ -2124,6 +2252,35 @@
                 </v-snackbar>
             <!-- Alert -->
 
+            <!-- Add Days Dialog -->
+            <v-layout row justify-center>
+                <v-dialog v-model="AddDaysDialog" scrollable persistent max-width="300px">
+                <v-card>
+                    <v-card-title>
+                        <span style="font-size:18px;">Add Days</span>
+                        <v-spacer/>
+                    </v-card-title>
+                    <v-divider/>
+                    <v-card-text>
+                        <v-text-field 
+                            v-model="adddays" 
+                            label="Masukkan jumlah hari"
+                            box
+                            prepend-icon="today"
+                        ></v-text-field>
+                    </v-card-text>
+                    <v-divider></v-divider>
+                    <v-card-actions>
+                    <v-spacer></v-spacer>
+
+                    <v-btn color="blue darken-1" flat @click="AddDaysDialog = false">Close</v-btn>
+                    <v-btn color="blue darken-1" @click="addProjectDays()">Save</v-btn>
+                    </v-card-actions>
+                </v-card>
+                </v-dialog>
+            </v-layout>
+            <!-- Add Days Dialog -->
+
         </v-container>
     </div>
 </template>
@@ -2499,6 +2656,7 @@ export default {
           { text: 'Name',align: 'left',sortable: false,value: 'Nama'},
           { text: 'Contribute (%)', value: 'contribute',align: 'center' },
           { text: 'Target Date', value: 'due',align: 'center' },
+          { text: 'Durasi', value:'durasi', align:'center' },
           { text: 'Action', value:'index' ,align: 'center' },
 
         ],
@@ -2507,6 +2665,7 @@ export default {
           { text: 'Name',align: 'left',sortable: false,value: 'Nama'},
           { text: 'Contribute (%)', value: 'contribute',align: 'center' },
           { text: 'Target Date', value: 'due',align: 'center' },
+          { text: 'Durasi', value:'durasi', align:'center' },
           { text: 'Action', value:'index' ,align: 'center' },
         ],
         task_headers: [
@@ -2514,6 +2673,7 @@ export default {
           { text: 'Name',align: 'left',sortable: false,value: 'Nama'},
           { text: 'Contribute (%)', value: 'contribute',align: 'center' },
           { text: 'Target Date', value: 'due',align: 'center' },
+          { text: 'Durasi', value:'durasi', align:'center' },
           { text: 'Action', value:'index' ,align: 'center' },
 
         ],
@@ -2522,6 +2682,7 @@ export default {
           { text: 'Name',align: 'left',sortable: false,value: 'Nama'},
           { text: 'Contribute (%)', value: 'contribute',align: 'center' },
           { text: 'Target Date', value: 'due',align: 'center' },
+          { text: 'Durasi', value:'durasi', align:'center' },
           { text: 'Description', value: 'Deskripsi',align: 'center' },
           { text: 'Action', value:'index' ,align: 'center' },
 
@@ -2712,7 +2873,9 @@ export default {
         addLoading:false,
         editLoading:false,
         uploadProgressLoading:false,
-
+        //Add Days
+        adddays:0,
+        AddDaysDialog:false,
     }
   },
    mounted(){
@@ -3070,6 +3233,7 @@ export default {
                             Kode                    : subtask.Kode,
                             Deskripsi               : subtask.Deskripsi,
                             Tanggal_Selesai         : subtask.Tanggal_Selesai.split(' ')[0],
+                            Durasi                  : subtask.Durasi,
                             Persentase              : subtask.Persentase,
                             User                    : '',
                             Remaining               : '',
@@ -3163,29 +3327,7 @@ export default {
                                     eachsubtask.Time_Status = 'On Time'
                                     eachsubtask.Color = 'bblue'
                                 }
-                                // if(eachsubtask.Time_Status == 'Overdue')
-                                // {
-                                //     eachsubtask.Time_Status = 'Overdue'
-                                //     eachsubtask.Status = 'overdue'
-                                //     eachsubtask.Remaining = remaining +' days overdue'
-                                // }
-                                // else
-                                // {
-                                //     eachsubtask.Time_Status = 'On Time'
-                                //     eachsubtask.Status = 'complete'
-                                // }
                             }
-                            // if(remaining < 0 && eachsubtask.Total_Progress != '100'){
-                            //     eachsubtask.Time_Status = 'Overdue'
-                            //     eachsubtask.Status = 'overdue'
-                            //     eachsubtask.Remaining = remaining +' days overdue'
-                            // }
-                            // else if(eachsubtask.Total_Progress!='100'){
-                            //     eachsubtask.Status = 'ongoing'
-                            // }
-                            // else{
-                            //     eachsubtask.Status = 'complete'
-                            // }
                         }
                         
                         PersentaseTask += subtask.Persentase;
@@ -3201,6 +3343,7 @@ export default {
                         Kode                : task.Kode,
                         Satuan              : task.Satuan,
                         Tanggal_Selesai     : task.Tanggal_Selesai.split(' ')[0],
+                        Durasi              : task.Durasi,
                         Persentase          : task.Persentase,
                         Total_Persentase    : PersentaseTask,
                     }
@@ -3214,6 +3357,7 @@ export default {
                     Divisi                  : subdiv.Divisi,
                     Nama                    : subdiv.Nama,
                     Tanggal_Selesai         : subdiv.Tanggal_Selesai.split(' ')[0],
+                    Durasi                  : subdiv.Durasi,
                     Persentase              : subdiv.Persentase,
                     Total_Persentase        : PersentaseSubDivisi,
                 }
@@ -3227,6 +3371,7 @@ export default {
                 Id_Proyek           : div.Id_Proyek,
                 Nama                : div.Nama,
                 Tanggal_Selesai     : div.Tanggal_Selesai.split(' ')[0],
+                Durasi              : div.Durasi,
                 Persentase          : div.Persentase,
                 Total_Persentase    : PersentaseDivisi,
             }
@@ -3904,6 +4049,115 @@ export default {
             this.showAlert('error','Gagal Mengirim Request')
 
         }
+    },
+    addProjectDays(){
+      while(this.adddays != 0)
+      {
+        let today = new Date().getTime();
+        for(let div of this.editProject.All_Divisi)
+        {
+            //JIKA TANGGAL SELESAI > SEKARANG
+            // let target = new Date(div.Tanggal_Selesai).getTime();
+            // let remaining = parseInt((target-today)/(24*3600*1000));
+            // if(remaining>=0)
+            // {
+                div.Tanggal_Selesai = this.addDays(div.Tanggal_Selesai)
+            // }
+        }
+        for(let subdiv of this.editProject.All_SubDivisi)
+        {
+            subdiv.Tanggal_Selesai = this.addDays(subdiv.Tanggal_Selesai)
+        }
+        for(let task of this.editProject.All_Task)
+        {
+            task.Tanggal_Selesai = this.addDays(task.Tanggal_Selesai);
+        }
+        for(let subtask of this.editProject.All_SubTask)
+        {
+            subtask.Tanggal_Selesai = this.addDays(subtask.Tanggal_Selesai);
+        }
+
+        this.editProject.Target_Outcome = this.addDays(this.editProject.Target_Outcome)
+
+        this.adddays--;
+      }
+      this.AddDaysDialog=false;
+      (this.showAlert('success','Sukses Tambah Hari'))
+    },
+    addDays(date)
+    {
+        let days = 1
+        let check = new Date(date)
+        let strcheck = check.toString();
+        let splitcheck = strcheck.split(" ");
+        if(splitcheck[0] == "Fri")
+        {
+            days = 3;
+        }
+        let split = date.split("-")
+        let year = split[0]
+        let month = split[1]
+        let day = split[2]
+
+        let dateformat = Date.parse(year+"/"+month+"/"+day) + days*86400000
+        
+        let result = new Date(dateformat)
+        return this.getDateFormat(result)
+    },
+    getDateFormat(date)
+    {
+        let str = date.toString();
+        let split = str.split(" ");
+        let month=""
+        if(split[1] == "Jan")
+        {
+            month = "01"
+        }
+        else if(split[1] == "Feb")
+        {
+            month = "02"
+        }
+        else if(split[1] == "Mar")
+        {
+            month = "03"
+        }
+        else if(split[1] == "Apr")
+        {
+            month = "04"
+        }
+        else if(split[1] == "May")
+        {
+            month = "05"
+        }
+        else if(split[1] == "Jun")
+        {
+            month = "06"
+        }
+        else if(split[1] == "Jul")
+        {
+            month = "07"
+        }
+        else if(split[1] == "Aug")
+        {
+            month = "08"
+        }
+        else if(split[1] == "Sep")
+        {
+            month = "09"
+        }
+        else if(split[1] == "Oct")
+        {
+            month = "10"
+        }
+        else if(split[1] == "Nov")
+        {
+            month = "11"
+        }
+        else if(split[1] == "Dec")
+        {
+            month = "12"
+        }
+        return split[3]+"-"+month+"-"+split[2]
     },
     // async totalPersentase()
     // {
