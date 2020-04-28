@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserData extends Migration
+class TbDevice extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateUserData extends Migration
      */
     public function up()
     {
-        Schema::create('user_datas', function (Blueprint $table) {
-            $table->increments('Id_User_Data');
-            $table->string('User_id');
-            $table->datetime('Datetime');
-            $table->integer('Machine_Id');
+        //
+        Schema::create('tb_device', function (Blueprint $table) {
+            $table->increments('Id_Device');
+            $table->integer('No');
+            $table->text('Server_IP');
+            $table->text('Server_Port');
+            $table->text('Device_SN');
 
             $table->softDeletes();
             $table->timestamps();
@@ -31,6 +33,6 @@ class CreateUserData extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_data');
+        //
     }
 }

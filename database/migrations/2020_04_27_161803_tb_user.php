@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFingerprintMachines extends Migration
+class TbUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateFingerprintMachines extends Migration
      */
     public function up()
     {
-        Schema::create('fingerprint_machines', function (Blueprint $table) {
-            $table->increments('Id_Fingerprint_Machine');
-            $table->string('IP');
-            // $table->string('port')->nullable();
-            $table->string('Comkey');
-            $table->integer('Status');
-            
+        Schema::create('tb_user', function (Blueprint $table) {
+            $table->increments('Id_User');
+            // $table->text('PIN');
+            $table->integer('Nama');
+            $table->integer('Password');
+            $table->integer('RFID');
+            $table->integer('privilege');
+
             $table->softDeletes();
             $table->timestamps();
         });
@@ -32,6 +33,6 @@ class CreateFingerprintMachines extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fingerprint_machines');
+        //
     }
 }
